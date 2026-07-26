@@ -90,11 +90,29 @@ body::after {
   margin-bottom: 20px;
   opacity: 0;
   animation: fadeUp 0.8s ease forwards 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .hero-tag::before {
   content: '// ';
   color: var(--text-faint);
+}
+
+.hero-tag .status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  animation: pulse 2s ease-in-out infinite;
+  margin-left: 4px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 211, 160, 0.4); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(34, 211, 160, 0); }
 }
 
 .hero h1 {
@@ -280,6 +298,7 @@ body::after {
 .auto-card:nth-child(2) .auto-icon { background: rgba(34, 211, 160, 0.12); }
 .auto-card:nth-child(3) .auto-icon { background: rgba(255, 179, 71, 0.12); }
 .auto-card:nth-child(4) .auto-icon { background: rgba(129, 140, 248, 0.12); }
+.auto-card:nth-child(5) .auto-icon { background: rgba(248, 113, 113, 0.12); }
 
 .auto-card h3 {
   font-size: 1.15rem;
@@ -482,22 +501,22 @@ body::after {
 <!-- HERO -->
 <section class="hero">
   <div class="container">
-    <div class="hero-tag">AHUT · Mechanical Engineering · UAV Research</div>
+    <div class="hero-tag">AHUT · Mechanical Engineering · UAV Research<span class="status-dot"></span> 5 systems live</div>
     <h1>
       <span class="accent">TS-dinglilu</span>
     </h1>
     <p class="hero-sub">
-      <strong>安徽工业大学</strong>机械工程硕士研究生，研究方向为四旋翼无人机飞行控制与仿真。
+      <strong>安徽工业大学</strong>机械工程硕士研究生（研一升研二），研究方向为四旋翼无人机飞行控制与仿真。
       熟练使用 <strong>MATLAB/Simulink</strong> 仿真、<strong>Python</strong> 强化学习，
-      独立开发多个自动化信息聚合系统。
+      独立开发5个每日自动化信息聚合系统。
     </p>
     <div class="hero-stats">
       <div class="stat">
-        <div class="stat-num">04</div>
+        <div class="stat-num">05</div>
         <div class="stat-label">自动化日报</div>
       </div>
       <div class="stat">
-        <div class="stat-num">15+</div>
+        <div class="stat-num">16+</div>
         <div class="stat-label">GitHub 仓库</div>
       </div>
       <div class="stat">
@@ -555,6 +574,17 @@ body::after {
         <div class="auto-icon">🛩️</div>
         <h3>无人机科研日报</h3>
         <p>arXiv 无人机论文热点、自动驾驶前沿、IEEE 期刊动态，含写作参考建议与全网技术讨论。</p>
+        <div class="auto-meta">
+          <span class="auto-badge active">运行中</span>
+          <span class="auto-badge daily">每日 09:00</span>
+          <span class="auto-link">访问 →</span>
+        </div>
+      </a>
+
+      <a href="https://ts-dinglilu.github.io/ahut-campus-info/" class="auto-card" target="_blank">
+        <div class="auto-icon">🏫</div>
+        <h3>安工大校园生活信息</h3>
+        <p>师兄师姐就业去向与薪资分析、学校政策通知、奖助学金竞赛信息、读博升学指南、研二时间节点规划。</p>
         <div class="auto-meta">
           <span class="auto-badge active">运行中</span>
           <span class="auto-badge daily">每日 09:00</span>
@@ -667,6 +697,7 @@ body::after {
       <a href="https://ts-dinglilu.github.io/mechanical-recruit-news/" target="_blank">机械招聘</a>
       <a href="https://ts-dinglilu.github.io/school-news/" target="_blank">学校新闻</a>
       <a href="https://ts-dinglilu.github.io/drone-research-daily/" target="_blank">无人机日报</a>
+      <a href="https://ts-dinglilu.github.io/ahut-campus-info/" target="_blank">校园生活</a>
     </div>
     <p>// crafted with precision · powered by TRAE Automation</p>
     <p style="margin-top:4px;">© 2026 TS-dinglilu · Anhui University of Technology</p>
