@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TS-dinglilu · 机械工程 / 无人机研究 / 自动化开发</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --bg: #0a0e1a;
+  --bg-elev: #111726;
+  --card: rgba(20, 28, 48, 0.6);
+  --border: rgba(0, 212, 255, 0.12);
+  --border-hover: rgba(0, 212, 255, 0.4);
+  --text: #e2e8f0;
+  --text-dim: #8b95b0;
+  --text-faint: #4a5568;
+  --accent: #00d4ff;
+  --accent-warm: #ffb347;
+  --accent-green: #22d3a0;
+  --grid-line: rgba(0, 212, 255, 0.04);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Blueprint grid background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: -50%; left: -20%;
+  width: 80%; height: 80%;
+  background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+  animation: drift 20s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(20%, 10%); }
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============ HERO ============ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: 80px 0 60px;
+}
+
+.hero-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--accent);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.2s;
+}
+
+.hero-tag::before {
+  content: '// ';
+  color: var(--text-faint);
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.4s;
+}
+
+.hero h1 .accent {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  max-width: 520px;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.6s;
+}
+
+.hero-sub strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.8s;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 2px;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 1.5s, bob 2s ease-in-out infinite 2.5s;
+}
+
+.scroll-hint::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 30px;
+  background: linear-gradient(to bottom, var(--text-faint), transparent);
+  margin: 8px auto 0;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ============ SECTION ============ */
+.section {
+  padding: 60px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.section-header {
+  margin-bottom: 40px;
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.section-label::before {
+  content: '## ';
+  color: var(--text-faint);
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* ============ AUTOMATION CARDS ============ */
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.auto-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.auto-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-green));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.auto-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0, 212, 255, 0.1);
+}
+
+.auto-card:hover::before {
+  transform: scaleX(1);
+}
+
+.auto-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+}
+
+.auto-card:nth-child(1) .auto-icon { background: rgba(0, 212, 255, 0.12); }
+.auto-card:nth-child(2) .auto-icon { background: rgba(34, 211, 160, 0.12); }
+.auto-card:nth-child(3) .auto-icon { background: rgba(255, 179, 71, 0.12); }
+.auto-card:nth-child(4) .auto-icon { background: rgba(129, 140, 248, 0.12); }
+
+.auto-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.auto-card p {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.auto-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+}
+
+.auto-badge {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.auto-badge.active {
+  background: rgba(34, 211, 160, 0.12);
+  color: var(--accent-green);
+}
+
+.auto-badge.daily {
+  background: rgba(255, 179, 71, 0.12);
+  color: var(--accent-warm);
+}
+
+.auto-link {
+  color: var(--accent);
+  margin-left: auto;
+  font-weight: 500;
+  transition: gap 0.2s;
+}
+
+.auto-card:hover .auto-link {
+  gap: 6px;
+}
+
+/* ============ PROJECTS ============ */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.proj-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(10px);
+}
+
+.proj-card:hover {
+  border-color: var(--border-hover);
+  background: rgba(20, 28, 48, 0.8);
+}
+
+.proj-card h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.proj-card p {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.proj-visibility {
+  font-size: 0.65rem;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 400;
+}
+
+.proj-visibility.pub { background: rgba(34, 211, 160, 0.1); color: var(--accent-green); }
+.proj-visibility.priv { background: rgba(138, 149, 176, 0.1); color: var(--text-faint); }
+
+/* ============ SKILLS ============ */
+.skills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-tag {
+  padding: 8px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.skill-tag:hover {
+  border-color: var(--border-hover);
+  color: var(--accent);
+}
+
+.skill-tag .level {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-faint);
+  margin-left: 6px;
+}
+
+/* ============ ABOUT ============ */
+.about-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  backdrop-filter: blur(10px);
+}
+
+.about-card p {
+  color: var(--text-dim);
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.about-card p:last-child { margin-bottom: 0; }
+
+.about-card strong { color: var(--text); font-weight: 600; }
+
+.about-highlight {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  padding: 40px 0;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+
+.footer p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.footer-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--accent); }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .auto-grid { grid-template-columns: 1fr; }
+  .proj-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 20px; }
+  .scroll-hint { display: none; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+  .hero h1 { font-size: 2rem; }
+  .about-card { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-tag">AHUT · Mechanical Engineering · UAV Research</div>
+    <h1>
+      <span class="accent">TS-dinglilu</span>
+    </h1>
+    <p class="hero-sub">
+      <strong>安徽工业大学</strong>机械工程硕士研究生，研究方向为四旋翼无人机飞行控制与仿真。
+      熟练使用 <strong>MATLAB/Simulink</strong> 仿真、<strong>Python</strong> 强化学习，
+      独立开发多个自动化信息聚合系统。
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">04</div>
+        <div class="stat-label">自动化日报</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">GitHub 仓库</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">09:00</div>
+        <div class="stat-label">每日定时推送</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<!-- AUTOMATION PROJECTS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Automation Projects</div>
+      <h2 class="section-title">每日自动化新闻系统</h2>
+    </div>
+    <div class="auto-grid">
+
+      <a href="https://ts-dinglilu.github.io/car-recruit-news/" class="auto-card" target="_blank">
+        <div class="auto-icon">🚗</div>
+        <h3>今日车企招聘速递</h3>
+        <p>比亚迪、奇瑞、吉利、一汽、大众、特斯拉等车企招聘动态，含岗位对比、研究生去向、进车企攻略及全网热议。</p>
+        <div class="auto-meta">
+          <span class="auto-badge active">运行中</span>
+          <span class="auto-badge daily">每日 09:00</span>
+          <span class="auto-link">访问 →</span>
+        </div>
+      </a>
+
+      <a href="https://ts-dinglilu.github.io/mechanical-recruit-news/" class="auto-card" target="_blank">
+        <div class="auto-icon">⚙️</div>
+        <h3>每日机械招聘速递</h3>
+        <p>江浙沪三地机械工程招聘新闻，8家重点企业详情，基于个人技能的个性化岗位推荐矩阵，含通勤分析。</p>
+        <div class="auto-meta">
+          <span class="auto-badge active">运行中</span>
+          <span class="auto-badge daily">每日 09:00</span>
+          <span class="auto-link">访问 →</span>
+        </div>
+      </a>
+
+      <a href="https://ts-dinglilu.github.io/school-news/" class="auto-card" target="_blank">
+        <div class="auto-icon">🎓</div>
+        <h3>每日学校新闻推荐</h3>
+        <p>安徽工业大学（机械院）、长春工程学院、徐州三中、大庙中学最新新闻，含全网热议讨论。</p>
+        <div class="auto-meta">
+          <span class="auto-badge active">运行中</span>
+          <span class="auto-badge daily">每日 09:00</span>
+          <span class="auto-link">访问 →</span>
+        </div>
+      </a>
+
+      <a href="https://ts-dinglilu.github.io/drone-research-daily/" class="auto-card" target="_blank">
+        <div class="auto-icon">🛩️</div>
+        <h3>无人机科研日报</h3>
+        <p>arXiv 无人机论文热点、自动驾驶前沿、IEEE 期刊动态，含写作参考建议与全网技术讨论。</p>
+        <div class="auto-meta">
+          <span class="auto-badge active">运行中</span>
+          <span class="auto-badge daily">每日 09:00</span>
+          <span class="auto-link">访问 →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">About</div>
+      <h2 class="section-title">关于我</h2>
+    </div>
+    <div class="about-card">
+      <p>
+        <strong>安徽工业大学</strong>（马鞍山）机械工程硕士研究生，双非院校工科背景。
+        研究方向为 <span class="about-highlight">四旋翼无人机飞行控制与仿真</span>，
+        参与过 AquaWing UAV 项目，使用 MATLAB/Simulink 进行动力学建模与控制仿真。
+      </p>
+      <p>
+        同时熟练运用 <strong>Python</strong> 进行强化学习算法研究与论文复现，
+        独立开发并维护多个自动化信息聚合系统，每日定时搜集、分析并推送招聘与科研资讯。
+      </p>
+      <p>
+        地理优势：马鞍山紧邻南京（高铁约17分钟），求职方向聚焦
+        <span class="about-highlight">江浙沪地区</span>的仿真工程师、CAE工程师、无人机研发等岗位。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Tech Stack</div>
+      <h2 class="section-title">技术栈</h2>
+    </div>
+    <div class="skills-wrap">
+      <div class="skill-tag">MATLAB / Simulink <span class="level"> proficient</span></div>
+      <div class="skill-tag">Python <span class="level"> proficient</span></div>
+      <div class="skill-tag">强化学习 <span class="level"> research</span></div>
+      <div class="skill-tag">四旋翼无人机仿真 <span class="level"> research</span></div>
+      <div class="skill-tag">CAE 仿真分析 <span class="level"> familiar</span></div>
+      <div class="skill-tag">PyTorch <span class="level"> familiar</span></div>
+      <div class="skill-tag">C/C++ <span class="level"> basic</span></div>
+      <div class="skill-tag">PowerShell <span class="level"> proficient</span></div>
+      <div class="skill-tag">GitHub API <span class="level"> proficient</span></div>
+      <div class="skill-tag">HTML / CSS <span class="level"> proficient</span></div>
+      <div class="skill-tag">飞书 API <span class="level"> proficient</span></div>
+      <div class="skill-tag">Ubuntu Linux <span class="level"> familiar</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- OTHER PROJECTS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Repositories</div>
+      <h2 class="section-title">其他项目</h2>
+    </div>
+    <div class="proj-grid">
+
+      <a href="https://github.com/TS-dinglilu/ai_diary_app" class="proj-card" target="_blank">
+        <h4>📝 AI Diary App <span class="proj-visibility pub">public</span></h4>
+        <p>AI 辅助日记应用，安全可控</p>
+      </a>
+
+      <a href="https://github.com/TS-dinglilu/python_auto" class="proj-card" target="_blank">
+        <h4>🐍 Python Auto <span class="proj-visibility pub">public</span></h4>
+        <p>Python 自动化脚本集合</p>
+      </a>
+
+      <a href="https://github.com/TS-dinglilu/drone_lnn" class="proj-card" target="_blank">
+        <h4>🛸 Drone LNN <span class="proj-visibility priv">private</span></h4>
+        <p>无人机项目（帮老师开发）</p>
+      </a>
+
+      <a href="https://github.com/TS-dinglilu/fast_drone_250_nuc.wifi" class="proj-card" target="_blank">
+        <h4>📡 Drone WiFi Config <span class="proj-visibility priv">private</span></h4>
+        <p>无人机 WiFi 配置工具</p>
+      </a>
+
+      <a href="https://github.com/TS-dinglilu/pytorchlearn" class="proj-card" target="_blank">
+        <h4>🔥 PyTorch Learn <span class="proj-visibility priv">private</span></h4>
+        <p>PyTorch 深度学习实践</p>
+      </a>
+
+      <a href="https://github.com/TS-dinglilu/Ubuntu-22.04-learning" class="proj-card" target="_blank">
+        <h4>🐧 Ubuntu Learning <span class="proj-visibility priv">private</span></h4>
+        <p>Ubuntu 22.04 学习笔记</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="https://github.com/TS-dinglilu" target="_blank">GitHub</a>
+      <a href="https://ts-dinglilu.github.io/car-recruit-news/" target="_blank">车企招聘</a>
+      <a href="https://ts-dinglilu.github.io/mechanical-recruit-news/" target="_blank">机械招聘</a>
+      <a href="https://ts-dinglilu.github.io/school-news/" target="_blank">学校新闻</a>
+      <a href="https://ts-dinglilu.github.io/drone-research-daily/" target="_blank">无人机日报</a>
+    </div>
+    <p>// crafted with precision · powered by TRAE Automation</p>
+    <p style="margin-top:4px;">© 2026 TS-dinglilu · Anhui University of Technology</p>
+  </div>
+</footer>
+
+</body>
+</html>
