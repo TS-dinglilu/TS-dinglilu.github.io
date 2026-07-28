@@ -184,7 +184,8 @@ body::after {
 .report-list { display: flex; flex-direction: column; gap: 12px; }
 
 .report-card {
-  display: block;
+  display: flex;
+  align-items: center;
   text-decoration: none;
   color: inherit;
   background: var(--card);
@@ -222,6 +223,7 @@ body::after {
   font-weight: 700;
   color: var(--accent);
   margin-bottom: 4px;
+  flex-shrink: 0;
 }
 
 .report-card .card-weekday {
@@ -230,13 +232,17 @@ body::after {
   margin-bottom: 8px;
 }
 
-.report-card .card-link {
-  display: inline-flex;
+
+.card-info { flex: 1; }
+
+$1
+  display: flex;
   align-items: center;
   gap: 4px;
   color: var(--accent);
   font-size: 0.85rem;
   font-weight: 500;
+  margin-left: auto;
 }
 
 .report-card .latest-badge {
@@ -298,7 +304,7 @@ body::after {
   .stat-num { font-size: 1.3rem; }
 }
 </style>
-<!-- cache-bust: 1785258686 -->
+<!-- cache-bust: 1785259648 -->
 </head>
 <body>
 
@@ -321,14 +327,18 @@ body::after {
     <h2 class="section-title">报告归档</h2>
     <div class="report-list">
       <a href="report_20260728.html" class="report-card">
+        <div class="card-info">
         <div class="card-date">2026-07-28<span class="latest-badge">LATEST</span></div>
         <div class="card-weekday">星期二</div>
-        <div class="card-link">点击查看 →</div>
+      </div>
+      <div class="card-link">点击查看 →</div>
       </a>
       <a href="report_20260727.html" class="report-card">
+        <div class="card-info">
         <div class="card-date">2026-07-27</div>
         <div class="card-weekday">星期一</div>
-        <div class="card-link">点击查看 →</div>
+      </div>
+      <div class="card-link">点击查看 →</div>
       </a>
     </div>
   </div>
