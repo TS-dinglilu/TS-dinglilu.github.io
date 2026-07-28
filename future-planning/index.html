@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日未来规划</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+:root {
+  --primary: #0f2c4d;
+  --primary-light: #1e4d7b;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-glow: rgba(37, 99, 235, 0.15);
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --text-faint: #94a3b8;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --green: #10b981;
+  --amber: #f59e0b;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
+  --radius: 16px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans SC', 'Inter', -apple-system, 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%; right: -10%;
+  width: 50%; height: 60%;
+  background: radial-gradient(ellipse, rgba(37,99,235,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.container { max-width: 760px; margin: 0 auto; padding: 0 20px 60px; position: relative; z-index: 1; }
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 40%, var(--accent) 100%);
+  color: #fff;
+  padding: 52px 24px 40px;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(15, 44, 77, 0.2);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -50%; left: -20%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: all 0.2s;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.back-home:hover { background: rgba(255,255,255,0.2); transform: translateX(-2px); }
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255,255,255,0.15);
+  position: relative;
+  z-index: 1;
+}
+.hero-tag .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(52,211,153,0.5); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(52,211,153,0); }
+}
+.hero h1 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.hero .subtitle {
+  font-size: 0.92rem;
+  opacity: 0.88;
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.hero .update-time {
+  font-size: 0.76rem;
+  opacity: 0.6;
+  margin-top: 14px;
+  font-family: 'Inter', monospace;
+  position: relative;
+  z-index: 1;
+}
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'Inter', monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.95);
+}
+.stat-label {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 36px 0 16px;
+}
+.section-header .icon { font-size: 1.2rem; }
+.section-header .title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.section-header .line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border) 0%, transparent 100%);
+}
+.section-header .count {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  font-family: 'Inter', monospace;
+}
+.report-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid var(--border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.card-glow {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, rgba(37,99,235,0.04) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.report-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--border);
+  transition: all 0.3s ease;
+}
+.report-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.report-card:hover::before {
+  background: var(--accent);
+  width: 5px;
+}
+.report-card:hover .card-glow { opacity: 1; }
+.report-card.latest {
+  background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+.report-card.latest::before {
+  background: var(--accent);
+  width: 5px;
+}
+.report-badge {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 12px;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+}
+.report-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(37,99,235,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+.report-card:hover .report-icon { transform: scale(1.1) rotate(-5deg); }
+.report-info { flex: 1; }
+.report-date {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.report-weekday {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+.report-action {
+  font-size: 0.84rem;
+  color: var(--accent);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s;
+  flex-shrink: 0;
+}
+.report-card:hover .report-action { gap: 8px; }
+.empty {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-light);
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px dashed var(--border);
+  font-size: 0.9rem;
+}
+.comments-section {
+  margin-top: 36px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.comments-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.comments-desc {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px;
+  font-size: 0.76rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+}
+footer .brand {
+  font-family: 'Inter', monospace;
+  font-weight: 500;
+  color: var(--text-light);
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="hero">
+  <a href="../" class="back-home">← 返回主页</a>
+  <div class="hero-tag"><span class="dot"></span> 每日自动更新</div>
+  <h1>每日未来规划</h1>
+  <p class="subtitle">个人职业发展、行业趋势分析与成长路径</p>
+  <div class="update-time">最后更新: 2026-07-28</div>
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">1</div>
+      <div class="stat-label">报告总数</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">每日</div>
+      <div class="stat-label">自动更新</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-header">
+  <span class="icon">📚</span>
+  <span class="title">报告归档</span>
+  <span class="line"></span>
+  <span class="count">1 篇</span>
+</div>
+
+        <a href="report_20260728.html" class="report-card latest">
+            <div class="card-glow"></div>
+            <div class="report-badge">最新</div>
+            <div class="report-icon">📄</div>
+            <div class="report-info">
+                <div class="report-date">2026-07-28</div>
+                <div class="report-weekday">星期二</div>
+            </div>
+            <div class="report-action">点击查看 →</div>
+        </a>
+
+<div class="comments-section">
+  <div class="comments-title">💬 评论区</div>
+  <div class="comments-desc">欢迎在此交流讨论，分享你的看法和经验</div>
+  <script src="https://giscus.app/client.js"
+    data-repo="TS-dinglilu/TS-dinglilu.github.io"
+    data-repo-id="R_kgDOTjqaJQ"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOTjqaJc4DCIL1"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+  </script>
+</div>
+
+<footer>
+  <span class="brand">// crafted with precision · powered by TRAE Automation</span><br>
+  © 2026 TS-dinglilu · Anhui University of Technology
+</footer>
+</div>
+</body>
+</html>
