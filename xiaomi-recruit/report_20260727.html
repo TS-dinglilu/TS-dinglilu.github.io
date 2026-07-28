@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小米汽车招聘日报 | 2026-07-27</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v2.0 美化版
+   适用于所有自动化任务的报告HTML
+   配色方案: 深蓝(#0f2c4d) + 蓝色强调(#2563eb)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --primary: #0f2c4d;
+  --primary-light: #1e4d7b;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-glow: rgba(37, 99, 235, 0.15);
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --text-faint: #94a3b8;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --green: #10b981;
+  --green-bg: #ecfdf5;
+  --green-border: #a7f3d0;
+  --amber: #f59e0b;
+  --amber-bg: #fffbeb;
+  --amber-border: #fde68a;
+  --red: #ef4444;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+  --blue-bg: #eff6ff;
+  --blue-border: #bfdbfe;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', 'Inter', -apple-system, 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 15px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Decorative grid background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating gradient orb */
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%; right: -10%;
+  width: 50%; height: 60%;
+  background: radial-gradient(ellipse, rgba(37,99,235,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   HEADER - 渐变标题栏 with glass-morphism
+   ============================================================ */
+.header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 40%, var(--accent) 100%);
+  color: #fff;
+  padding: 48px 24px 36px;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(15, 44, 77, 0.2);
+  margin-bottom: 8px;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -50%; left: -20%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.header .subtitle {
+  font-size: 0.9rem;
+  opacity: 0.88;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .date {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  z-index: 1;
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   SECTIONS - 卡片式内容区
+   ============================================================ */
+.section {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin: 20px 0;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, transparent 100%);
+}
+.section h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 20px 0 10px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ============================================================
+   CARDS - 信息卡片
+   ============================================================ */
+.card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-left-color: var(--accent-light);
+}
+.card-title {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-meta {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  font-family: 'Inter', monospace;
+}
+.card-content {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.card-content strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ============================================================
+   NEWS ITEMS - 新闻条目
+   ============================================================ */
+.news-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.news-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--border);
+  transition: all 0.3s ease;
+}
+.news-item:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.news-item:hover::before {
+  background: var(--accent);
+  width: 5px;
+}
+.news-item .badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--blue-bg);
+  color: #1e40af;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-right: 8px;
+  font-weight: 600;
+  border: 1px solid var(--blue-border);
+  letter-spacing: 0.3px;
+}
+.news-item .badge.hot {
+  background: var(--red-bg);
+  color: #dc2626;
+  border-color: var(--red-border);
+}
+.news-item .badge.new {
+  background: var(--green-bg);
+  color: #16a34a;
+  border-color: var(--green-border);
+}
+
+/* ============================================================
+   TABLES - 数据表格
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 16px 0;
+  font-size: 0.84rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+th {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) { background: #f8fafc; }
+tr:hover { background: var(--blue-bg); }
+tr:nth-child(even):hover { background: #eff6ff; }
+
+/* ============================================================
+   TAGS - 标签
+   ============================================================ */
+.tag {
+  display: inline-block;
+  background: var(--blue-bg);
+  color: #3730a3;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin: 2px;
+  font-weight: 500;
+  border: 1px solid var(--blue-border);
+}
+.tag.green { background: var(--green-bg); color: #166534; border-color: var(--green-border); }
+.tag.orange { background: var(--amber-bg); color: #92400e; border-color: var(--amber-border); }
+.tag.red { background: var(--red-bg); color: #991b1b; border-color: var(--red-border); }
+
+/* ============================================================
+   SOURCE LINKS - 原文链接
+   ============================================================ */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: var(--blue-bg);
+  border: 1px solid var(--blue-border);
+  transition: all 0.2s;
+}
+.source-link:hover {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* ============================================================
+   DISCUSSION - 讨论区
+   ============================================================ */
+.discussion {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-border);
+  border-left: 4px solid var(--amber);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 14px 0;
+  transition: all 0.3s;
+}
+.discussion:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.discussion .platform {
+  display: inline-block;
+  background: var(--amber);
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   TIP BOX - 提示框
+   ============================================================ */
+.tip-box {
+  background: var(--green-bg);
+  border: 1px solid var(--green-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.tip-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--green);
+}
+.tip-box h4 {
+  color: #065f46;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.tip-box ul { list-style: none; padding-left: 0; }
+.tip-box li {
+  padding: 5px 0 5px 24px;
+  position: relative;
+  font-size: 0.88rem;
+  color: #1a4731;
+}
+.tip-box li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   WARNING BOX - 警告框
+   ============================================================ */
+.warning-box {
+  background: var(--red-bg);
+  border: 1px solid var(--red-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.warning-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--red);
+}
+.warning-box h4 {
+  color: #991b1b;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SUMMARY TABLE - 汇总表
+   ============================================================ */
+.summary-table { font-size: 0.82rem; }
+.summary-table td:first-child {
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   GISCUS / COMMENTS - 评论区
+   ============================================================ */
+.comments-section {
+  margin-top: 40px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.comments-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.comments-desc {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   FOOTER - 页脚
+   ============================================================ */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   RESPONSIVE - 移动端适配
+   ============================================================ */
+@media (max-width: 600px) {
+  .header { padding: 32px 16px 24px; border-radius: 0 0 20px 20px; }
+  .header h1 { font-size: 1.3rem; }
+  .section { padding: 18px 14px; margin: 14px 0; }
+  .card, .news-item { padding: 14px 16px; }
+  table { font-size: 0.76rem; }
+  th, td { padding: 7px 5px; }
+  .container { padding: 0 12px 40px; }
+}
+
+/* ============================================================
+   UTILITY - 通用工具类
+   ============================================================ */
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-light); text-decoration: underline; }
+strong { color: var(--primary); }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>小米汽车招聘日报</h1>
+  <p class="subtitle">Xiaomi EV Recruitment Daily Report | 智能电动汽车行业人才动态</p>
+  <div class="meta">
+    <div class="meta-item">
+      <div class="num">50+</div>
+      <div class="label">在招岗位</div>
+    </div>
+    <div class="meta-item">
+      <div class="num">6</div>
+      <div class="label">工作城市</div>
+    </div>
+    <div class="meta-item">
+      <div class="num">5</div>
+      <div class="label">岗位方向</div>
+    </div>
+    <div class="meta-item">
+      <div class="num">55万</div>
+      <div class="label">年交付目标</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- 今日概览 -->
+<div class="summary-box">
+  <h2>今日概览（2026-07-27）</h2>
+  <p>
+    小米汽车2026年交付目标<span class="highlight">55万辆</span>，未来五年研发投入<span class="highlight">2000亿元</span>。北京亦庄三期工厂已于2月投产，武汉汉南工厂5月投产主打增程SUV"昆仑N3"，总设计产能达<span class="highlight">117-120万辆/年</span>。YU7 2026上半年累计交付<span class="highlight">10.49万辆</span>，6月环比暴涨64%。新一代SU7预计4月上市，全系标配128线激光雷达、算力700TOPS。当前猎聘平台在招社招岗位<span class="highlight">577+</span>个，校招/实习岗位同步更新。薪资方面，研发岗<span class="highlight">25-50k×15薪</span>（年薪37.5万-75万），高级工程师另有100万期权。
+  </p>
+</div>
+
+<!-- 招聘新闻 -->
+<div class="section">
+  <h2 class="section-title"><span class="icon">📋</span> 小米汽车招聘新闻</h2>
+
+  <!-- 智能座舱 -->
+  <h3 class="group-title">智能座舱方向</h3>
+
+  <div class="card">
+    <div class="card-title">小米汽车-智能座舱Android平台开发工程师</div>
+    <div class="card-meta">
+      <span class="tag tag-location">南京-建邺区</span>
+      <span class="tag tag-salary">面议</span>
+      <span class="tag tag-experience">5-10年/本科</span>
+      <span class="tag tag-category">智能座舱</span>
+    </div>
+    <div class="card-body">
+      负责车载应用设计开发，包含多媒体、导航、空调、设置、车控、Camera等应用。App部分涉及依赖注入、SDK架构设计、复杂UI定制、3D物理引擎渲染；BSP部分含Audio等。面向初级/高级软件工程师、架构师。技术栈：frameworks、SurfaceFlinger、Android、OpenGL、渲染。工作地址：南京建邺区小米集团华东总部。
+    </div>
+    <a class="source-link" href="https://www.zhipin.com/job_detail/9c8d02ff7687284703Rz29y9F1ZX.html" target="_blank">📎 查看原文（BOSS直聘）</a>
+  </div>
+
+  <div class="card">
+    <div class="card-title">小米汽车座舱性能优化工程师</div>
+    <div class="card-meta">
+      <span class="tag tag-location">待定</span>
+      <span class="tag tag-salary">面议</span>
+      <span class="tag tag-category">智能座舱</span>
+    </div>
+    <div class="card-body">
+      负责智能座舱系统性能优化，涵盖HyperOS车载版、语音交互、多模态交互等领域。
+    </div>
+    <a class="source-link" href="https://m.liepin.com/zpxmqczcxnyhgcsfqjntate/" target="_blank">📎 查看原文（猎聘）</a>
+  </div>
+
+  <!-- 自动驾驶 -->
+  <h3 class="group-title">自动驾驶方向</h3>
+
+  <div class="card">
+    <div class="card-title">自动驾驶数据闭环算法工程师</div>
+    <div class="card-meta">
+      <span class="tag tag-location">武汉</span>
+      <span class="tag tag-salary">1.8-2.6万/月</span>
+      <span class="tag tag-experience">1-3年/硕士</span>
+      <span class="tag tag-category">自动驾驶</span>
+      <span class="tag tag-match">高匹配</span>
+    </div>
+    <div class="card-body">
+      负责自动驾驶数据闭环策略研发，车端数据挖掘/主动学习算法设计开发，解决长尾问题；综合车端感知、规控、地图等信息对异常case自动化归因；推进用户数据闭环平台构建优化；从事数据挖掘、自动标注、自动训练端到端业务交付。要求：计算机视觉/模式识别/机器学习等专业本科/硕士，1年以上自动驾驶经验；精通C/C++或Python；熟悉DDS/ROS/Someip等中间件。公司：小米汽车科技有限公司，地址：北京经济技术开发区科创十街15号院。
+    </div>
+    <a class="source-link" href="https://mhr.bjx.com.cn/jobs/968571.html" target="_blank">📎 查看原文（北极星招聘）</a>
+  </div>
+
+  <div class="card">
+    <div class="card-title">自驾法规认证工程师</div>
+    <div class="card-meta">
+      <span class="tag tag-location">北京-海淀区</span>
+      <span class="tag tag-salary">30-60k/月</span>
+      <span class="tag tag-experience">5-10年/本科</span>
+      <span class="tag tag-category">自动驾驶</span>
+    </div>
+    <div class="card-body">
+      负责自动驾驶系统的法规认证工作，对接国内外自动驾驶法规标准，确保产品合规。小米已获北京市L3级自动驾驶道路测试牌照。
+    </div>
+    <a class="source-link" href="https://m.liepin.com/job/1984302259.shtml" target="_blank">📎 查看原文（猎聘）</a>
+  </div>
+
+  <div class="card">
+    <div class="card-title">自动驾驶行车测试工程师</div>
+    <div class="card-meta">
+      <span class="tag tag-location">北京</span>
+      <span class="tag tag-salary">面议</span>
+      <span class="tag tag-category">自动驾驶</span>
+    </div>
+    <div class="card-body">
+      负责自动驾驶行车功能的测试验证，涵盖感知、规控、定位等模块的集成测试与路测。
+    </div>
+    <a class="source-link" href="https://www.zhipin.com/job_detail/c2eba6c1c88a6d4103R82tm5EFFS.html" target="_blank">📎 查看原文（BOSS直聘）</a>
+  </div>
+
+  <!-- 电机电控 -->
+  <h3 class="group-title">电机电控方向</h3>
+
+  <div class="card">
+    <div class="card-title">电驱总成机械集成工程师 (A200461A)</div>
+    <div class="card-meta">
+      <span class="tag tag-location">南京-建邺区</span>
+      <span class="tag tag-salary">25-50k/月</span>
+      <span class="tag tag-experience">经验不限/本科</span>
+      <span class="tag tag-category">电机电控</span>
+    </div>
+    <div class="card-body">
+      负责电驱总成的机械集成设计开发，对应超级电机V8s研发体系。
+    </div>
+    <a class="source-link" href="https://m.liepin.com/job/1984276647.shtml" target="_blank">📎 查看原文（猎聘）</a>
+  </div>
+
+  <div class="card">
+    <div class="card-title">电驱壳体开发工程师 (A66480A)</div>
+    <div class="card-meta">
+      <span class="tag tag-location">上海-浦东新区</span>
+      <span class="tag tag-salary">25-50k/月</span>
+      <span class="tag tag-experience">5年以上/本科</span>
+      <span class="tag tag-category">电机电控</span>
+    </div>
+    <div class="card-body">
+      负责电驱壳体的设计开发与优化，确保散热性能与结构强度。
+    </div>
+    <a class="source-link" href="https://m.liepin.com/job/1984276571.shtml" target="_blank">📎 查看原文（猎聘）</a>
+  </div>
+
+  <div class="card">
+    <div class="card-title">电机控制器系统开发工程师 (A182716)</div>
+    <div class="card-meta">
+      <span class="tag tag-location">上海-浦东新区</span>
+      <span class="tag tag-salary">20-40k/月</span>
+      <span class="tag tag-experience">5年以上/本科</span>
+      <span class="tag tag-category">电机电控</span>
+    </div>
+    <div class="card-body">
+      负责电机控制器系统的架构设计与开发，涵盖功率电子、控制算法等核心领域。
+    </div>
+    <a class="source-link" href="https://m.liepin.com/job/1983787829.shtml" target="_blank">📎 查看原文（猎聘）</a>
+  </div>
+
+  <div class="card">
+    <div class="card-title">减速箱开发工程师 (A230560)</div>
+    <div class="card-meta">
+      <span class="tag tag-location">上海-浦东新区</span>
+      <span class="tag tag-salary">25-45k/月</span>
+      <span class="tag tag-experience">5-8年/硕士</span>
+      <span class="tag tag-category">电机电控</span>
+    </div>
+    <div class="card-body">
+      负责减速箱的设计开发，优化传动效率与NVH表现。
+    </div>
+    <a class="source-link" href="https://m.liepin.com/job/1984276433.shtml" target="_blank">📎 查看原文（猎聘）</a>
+  </div>
+
+  <!-- 整车制造 -->
+  <h3 class="group-title">整车制造方向</h3>
+
+  <div class="card">
+    <div class="card-title">冲压质量工程师（北京）</div>
+    <div class="card-meta">
+      <span class="tag tag-location">北京-通州区</span>
+      <span class="tag tag-salary">20-30k×15薪</span>
+      <span class="tag tag-experience">5年以上/统招本科</span>
+      <span class="tag tag-category">整车制造</span>
+    </div>
+    <div class="card-body">
+      负责冲压工艺质量控制，对应亦庄工厂9100吨一体化压铸集群生产线。
+    </div>
+    <a class="source-link" href="https://m.liepin.com/job/1984381775.shtml" target="_blank">📎 查看原文（猎聘）</a>
+  </div>
+
+  <div class="card">
+    <div class="card-title">冲压质量工程师（上海）</div>
+    <div class="card-meta">
+      <span class="tag tag-location">上海-浦东新区</span>
+      <span class="tag tag-salary">20-30k×15薪</span>
+      <span class="tag tag-experience">5年以上/统招本科</span>
+      <span class="tag tag-category">整车制造</span>
+    </div>
+    <div class="card-body">
+      负责冲压工艺质量控制，保障车身覆盖件成型质量。
+    </div>
+    <a class="source-link" href="https://m.liepin.com/job/1984381777.shtml" target="_blank">📎 查看原文（猎聘）</a>
+  </div>
+
+  <div class="card">
+    <div class="card-title">尺寸工程师</div>
+    <div class="card-meta">
+      <span class="tag tag-location">上海-徐汇区</span>
+      <span class="tag tag-salary">18-29k×15薪</span>
+      <span class="tag tag-experience">5年以上/本科</span>
+      <span class="tag tag-category">整车制造</span>
+    </div>
+    <div class="card-body">
+      负责整车尺寸工程，确保车身装配精度与一致性。
+    </div>
+    <a class="source-link" href="https://m.liepin.com/job/1984219459.shtml" target="_blank">📎 查看原文（猎聘）</a>
+  </div>
+
+  <!-- 销售服务 -->
+  <h3 class="group-title">用户运营/销售服务方向</h3>
+
+  <div class="card">
+    <div class="card-title">直营-城市服务经理（深圳）</div>
+    <div class="card-meta">
+      <span class="tag tag-location">深圳-龙华区</span>
+      <span class="tag tag-salary">20-25k/月</span>
+      <span class="tag tag-experience">8年以上/大专</span>
+      <span class="tag tag-category">销售服务</span>
+    </div>
+    <div class="card-body">
+      负责深圳区域售后服务网络运营管理，统筹服务标准执行与客户满意度。
+    </div>
+    <a class="source-link" href="https://m.liepin.com/job/1984333033.shtml" target="_blank">📎 查看原文（猎聘）</a>
+  </div>
+
+  <div class="card">
+    <div class="card-title">区域交付经理（合肥）</div>
+    <div class="card-meta">
+      <span class="tag tag-location">合肥-包河区</span>
+      <span class="tag tag-salary">25-35k×14薪</span>
+      <span class="tag tag-experience">3-5年/本科</span>
+      <span class="tag tag-category">销售服务</span>
+    </div>
+    <div class="card-body">
+      负责区域交付全流程管理，确保交付效率与客户体验。
+    </div>
+    <a class="source-link" href="https://m.liepin.com/job/1984392293.shtml" target="_blank">📎 查看原文（猎聘）</a>
+  </div>
+
+  <div class="card">
+    <div class="card-title">SU7交付预约专员（上海）</div>
+    <div class="card-meta">
+      <span class="tag tag-location">上海-松江区</span>
+      <span class="tag tag-salary">1.5-1.8万/月</span>
+      <span class="tag tag-experience">1-3年/大专</span>
+      <span class="tag tag-category">销售服务</span>
+    </div>
+    <div class="card-body">
+      负责新车交付预约与协调，底薪+绩效模式。要求新能源汽车/门店销售经验。
+    </div>
+    <a class="source-link" href="https://m.zhaopin.com/jobs/CCL1283957410J40799533805.htm" target="_blank">📎 查看原文（智联招聘）</a>
+  </div>
+</div>
+
+<!-- 重点岗位详解 -->
+<div class="section">
+  <h2 class="section-title"><span class="icon">🎯</span> 重点岗位详解</h2>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>岗位名称</th>
+          <th>薪资</th>
+          <th>地点</th>
+          <th>经验/学历</th>
+          <th>方向</th>
+          <th>来源</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>自驾法规认证工程师</td>
+          <td><span class="tag tag-salary">30-60k</span></td>
+          <td><span class="tag tag-location">北京</span></td>
+          <td>5-10年/本科</td>
+          <td>自动驾驶</td>
+          <td><a class="table-link" href="https://m.liepin.com/job/1984302259.shtml" target="_blank">猎聘</a></td>
+        </tr>
+        <tr>
+          <td>电驱总成机械集成工程师</td>
+          <td><span class="tag tag-salary">25-50k</span></td>
+          <td><span class="tag tag-location">南京</span></td>
+          <td>不限/本科</td>
+          <td>电机电控</td>
+          <td><a class="table-link" href="https://m.liepin.com/job/1984276647.shtml" target="_blank">猎聘</a></td>
+        </tr>
+        <tr>
+          <td>车载控制器硬件集成工程师</td>
+          <td><span class="tag tag-salary">30-60k×15薪</span></td>
+          <td><span class="tag tag-location">南京</span></td>
+          <td>5年以上/本科</td>
+          <td>硬件/座舱</td>
+          <td><a class="table-link" href="https://m.liepin.com/job/1980392369.shtml" target="_blank">猎聘</a></td>
+        </tr>
+        <tr>
+          <td>电驱集成管理 (A66877)</td>
+          <td><span class="tag tag-salary">25-55k</span></td>
+          <td><span class="tag tag-location">上海</span></td>
+          <td>5年以上/本科</td>
+          <td>电机电控</td>
+          <td><a class="table-link" href="https://m.liepin.com/job/1982883425.shtml" target="_blank">猎聘</a></td>
+        </tr>
+        <tr>
+          <td>先进动力研发质量 (A35805)</td>
+          <td><span class="tag tag-salary">30-60k</span></td>
+          <td><span class="tag tag-location">上海</span></td>
+          <td>5年以上/本科</td>
+          <td>动力系统</td>
+          <td><a class="table-link" href="https://m.liepin.com/job/1972486327.shtml" target="_blank">猎聘</a></td>
+        </tr>
+        <tr>
+          <td>自动驾驶数据闭环算法工程师</td>
+          <td><span class="tag tag-salary">1.8-2.6万</span></td>
+          <td><span class="tag tag-location">武汉</span></td>
+          <td>1-3年/硕士</td>
+          <td>自动驾驶</td>
+          <td><a class="table-link" href="https://mhr.bjx.com.cn/jobs/968571.html" target="_blank">北极星</a></td>
+        </tr>
+        <tr>
+          <td>智能座舱Android平台开发</td>
+          <td><span class="tag tag-salary">面议</span></td>
+          <td><span class="tag tag-location">南京</span></td>
+          <td>5-10年/本科</td>
+          <td>智能座舱</td>
+          <td><a class="table-link" href="https://www.zhipin.com/job_detail/9c8d02ff7687284703Rz29y9F1ZX.html" target="_blank">BOSS直聘</a></td>
+        </tr>
+        <tr>
+          <td>区域交付经理</td>
+          <td><span class="tag tag-salary">25-35k×14薪</span></td>
+          <td><span class="tag tag-location">合肥</span></td>
+          <td>3-5年/本科</td>
+          <td>销售服务</td>
+          <td><a class="table-link" href="https://m.liepin.com/job/1984392293.shtml" target="_blank">猎聘</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 面试经验 -->
+<div class="section">
+  <h2 class="section-title"><span class="icon">💬</span> 面试经验分享</h2>
+
+  <div class="card">
+    <div class="card-title">小米汽车 ToB 产品岗完整面经</div>
+    <div class="card-meta">
+      <span class="tag tag-source">CSDN博客</span>
+      <span class="tag tag-experience">校招</span>
+    </div>
+    <div class="card-body">
+      <strong>流程：</strong>6.18投递 → 6.25部门领导一面（自我介绍、实习经历、产品技能、PRD文档、对小米汽车了解、Jira系统、职业规划等14个问题）→ 6.28部门领导的领导二面（产品能力举例、成长规划、是否喜欢车）→ 7.2 HR OC → 7.3 offer。整体约半个月走完全流程。<br>
+      <strong>建议：</strong>深入了解小米汽车产品线与生态链，准备具体产品案例。
+    </div>
+    <a class="source-link" href="https://blog.csdn.net/litterfinger/article/details/141829330" target="_blank">📎 查看原文（CSDN）</a>
+  </div>
+
+  <div class="card">
+    <div class="card-title">前端开发一、二面凉经</div>
+    <div class="card-meta">
+      <span class="tag tag-source">牛客网</span>
+      <span class="tag tag-experience">校招</span>
+    </div>
+    <div class="card-body">
+      <strong>一面：</strong>实习拷打、微前端、ES6字符串插值i18n、Vue v-modal、跨域解决、URL到页面过程、协商缓存/强缓存、事件循环、算法题（递归按parentId构建树）。<br>
+      <strong>二面：</strong>Vue虚拟DOM原理、React Class vs Hook、SPA缺点、TS装饰器、Git命令/rebase理解、手撕深拷贝、手撕并发请求控制。<br>
+      <strong>反馈：</strong>北京部门仅1个HC，技术栈Vue3+TypeScript。面试官心不在焉，二面当天流程终止。
+    </div>
+    <a class="source-link" href="https://m.nowcoder.com/feed/main/detail/53295c5c1b3647c58dca37b766c53ebd?urlSource=home-api" target="_blank">📎 查看原文（牛客网）</a>
+  </div>
+
+  <div class="card">
+    <div class="card-title">拿到offer后纠结是否入职</div>
+    <div class="card-meta">
+      <span class="tag tag-source">今日头条</span>
+      <span class="tag tag-experience">社招</span>
+    </div>
+    <div class="card-body">
+      楼主拿到小米汽车offer后纠结是否入职。评论区有内部员工反馈"基本就是卷、不稳、不确定性高"。楼主权衡后最终拒了offer，在生活和高工资之间选择了生活。面试算法题：串联所有单词的字串（LeetCode第30题）。
+    </div>
+    <a class="source-link" href="http://m.toutiao.com/group/7426661197905101322/" target="_blank">📎 查看原文（今日头条）</a>
+  </div>
+
+  <div class="card">
+    <div class="card-title">小米HR面体验超级好</div>
+    <div class="card-meta">
+      <span class="tag tag-source">牛客网</span>
+      <span class="tag tag-experience">实习</span>
+    </div>
+    <div class="card-body">
+      求职者反馈小米HR面是几十场面试中体验最好的，HR态度极佳。暑期实习一面包括：自我介绍、双亲委派机制等技术问题。面试官和蔼，整体顺利。
+    </div>
+    <a class="source-link" href="https://www.nowcoder.com/feed/main/detail/7d7f655c4d9346798c7db766f557cbaa" target="_blank">📎 查看原文（牛客网）</a>
+  </div>
+</div>
+
+<!-- 薪资待遇 -->
+<div class="section">
+  <h2 class="section-title"><span class="icon">💰</span> 薪资待遇分析</h2>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>岗位层级</th>
+          <th>月薪范围</th>
+          <th>年薪估算</th>
+          <th>股票/期权</th>
+          <th>说明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>校招-产品运营</td>
+          <td>1.2万×15薪</td>
+          <td>≈18万</td>
+          <td>—</td>
+          <td>最低档校招</td>
+        </tr>
+        <tr>
+          <td>校招-软件开发</td>
+          <td>2.2万×15薪</td>
+          <td>≈33万</td>
+          <td>少量</td>
+          <td>技术岗校招较高</td>
+        </tr>
+        <tr>
+          <td>校招-综合</td>
+          <td>1.9-2.4万×15薪</td>
+          <td>28.5-36万</td>
+          <td>少量</td>
+          <td>比市面高20%-30%</td>
+        </tr>
+        <tr>
+          <td>社招-研发岗</td>
+          <td>25-50k×15薪</td>
+          <td>37.5-75万</td>
+          <td>有</td>
+          <td>猎聘2026年数据，中位数约56万</td>
+        </tr>
+        <tr>
+          <td>社招-高级工程师(17级)</td>
+          <td>4万×15薪</td>
+          <td>60万</td>
+          <td>100万期权</td>
+          <td>5年等待期/4年归属</td>
+        </tr>
+        <tr>
+          <td>社招-高级技术</td>
+          <td>5.5-7.2万/月实发</td>
+          <td>78万+</td>
+          <td>有</td>
+          <td>含股票年收入更高</td>
+        </tr>
+        <tr>
+          <td>门店店长</td>
+          <td>2-3万/月</td>
+          <td>24-36万</td>
+          <td>—</td>
+          <td>销售服务岗</td>
+        </tr>
+        <tr>
+          <td>工厂普工</td>
+          <td>0.7-1万/月</td>
+          <td>9-13万</td>
+          <td>—</td>
+          <td>13薪，日10-11h两班倒</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">股票期权分析</div>
+    <div class="card-body">
+      <strong>期权结构：</strong>小米汽车高级工程师可获100万元小米汽车期权，等待期5年、分4年归属。<br>
+      <strong>争议点：</strong>员工反馈"低工资+期权捆绑四年，离职就没期权"，存在一定绑定风险。<br>
+      <strong>2026年Q1：</strong>小米汽车营业利润率达27.6%，登顶全球车企第一，股票价值有支撑。<br>
+      <strong>行业对比：</strong>特斯拉研发岗15-70k含股票期权，蔚来核心专家50-80k×13-14薪，小米与蔚来小鹏同处头部新势力薪资梯队。
+    </div>
+    <a class="source-link" href="http://m.toutiao.com/group/7637399115550196274/" target="_blank">📎 查看原文（今日头条）</a>
+  </div>
+</div>
+
+<!-- 跨界人才分析 -->
+<div class="section">
+  <h2 class="section-title"><span class="icon">🔄</span> 跨界人才需求分析</h2>
+
+  <div class="compare-grid">
+    <div class="compare-card internet">
+      <h3>互联网人才需求</h3>
+      <ul>
+        <li>智能座舱产品经理：需将手机交互逻辑融入汽车产品</li>
+        <li>大模型/AI工程师：武汉在招大模型应用研发</li>
+        <li>前端/全栈开发：Vue3+TypeScript技术栈</li>
+        <li>数据闭环算法：Python/C++，数据挖掘经验</li>
+        <li>用户运营：社群营销、快速反馈迭代</li>
+        <li>软件测试：自动化测试(RobotFramework)</li>
+      </ul>
+    </div>
+    <div class="compare-card auto">
+      <h3>传统汽车人才需求</h3>
+      <ul>
+        <li>电驱总成/壳体/减速箱：5年以上经验</li>
+        <li>冲压质量工程师：亦庄工厂9100吨压铸线</li>
+        <li>尺寸工程：整车装配精度控制</li>
+        <li>电池结构工程师：电控&塑料件开发</li>
+        <li>NVH工程师：上海3-6万×14薪</li>
+        <li>法规认证：自动驾驶合规</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">小米汽车内部人才画像</div>
+    <div class="card-body">
+      据前员工透露，小米汽车内部有三种人特别受欢迎：<br>
+      <strong>1. 技术领域专家</strong>：核心成员多来自吉利、蔚来和特斯拉，倾向招聘能解决核心技术难题的人才；<br>
+      <strong>2. 具有互联网背景的人才</strong>：强调互联网基因，倾向招聘能将智能座舱和手机交互逻辑融入汽车产品的产品经理；<br>
+      <strong>3. 来自杭州某知名车企（吉利）的专业人士</strong>：小米在杭州设立交付中心，利用当地成熟产业链和人才资源。<br>
+      从吉利引入近两三百名核心成员（胡峥楠团队），基层研发人员年薪从20万跳涨到100万，涨幅4倍。
+    </div>
+    <a class="source-link" href="https://baa.m.yiche.com/wenzhang/thread-52497239.html" target="_blank">📎 查看原文（易车社区）</a>
+  </div>
+</div>
+
+<!-- 全网热议 -->
+<div class="section">
+  <h2 class="section-title"><span class="icon">🔥</span> 全网热议</h2>
+
+  <div class="discussion-item">
+    <div class="title">脉脉高聘：小米汽车人才招聘量超蔚来、小鹏，位列行业第四</div>
+    <div class="content">2023年1-10月，小米集团招聘占比达2.82%，超过众多传统汽车厂商。热招岗位前三：汽车电子工程师（6.24%）、算法工程师（6.10%）、智能驾驶工程师（5.39%）。高薪岗位集中在芯片和AI方向，集成电路IC设计平均月薪7.6万元登顶。</div>
+    <div class="meta-row">
+      <span class="tag tag-source">今日头条/脉脉</span>
+      <a class="source-link" href="http://m.toutiao.com/group/7317609995611570722/" target="_blank">📎 查看原帖</a>
+    </div>
+  </div>
+
+  <div class="discussion-item">
+    <div class="title">小米汽车基层研发人员百万薪资引热议</div>
+    <div class="content">一名原吉利汽车杭州湾研发基地基层研发人员入职小米汽车后年薪从20万跳涨到100万，涨幅4倍。2026年猎聘平台小米汽车研发岗薪资25-50k×15薪，折合年薪37.5万至75万，中位数约56万。2026年Q1小米汽车营业利润率达27.6%，登顶全球车企第一。</div>
+    <div class="meta-row">
+      <span class="tag tag-source">今日头条</span>
+      <a class="source-link" href="http://m.toutiao.com/group/7637399115550196274/" target="_blank">📎 查看原帖</a>
+    </div>
+  </div>
+
+  <div class="discussion-item">
+    <div class="title">员工反馈工作强度大："9106"引发讨论</div>
+    <div class="content">多位员工反馈工作节奏快、强度大。有员工直言"9106"（早9晚10一周6天），面试官称强度比头部新势力975更大。但也有反馈"看部门，北京比较卷，上海岗位好一些，非嫡系很少晋升"。工作氛围褒贬不一，看具体组。</div>
+    <div class="meta-row">
+      <span class="tag tag-source">今日头条</span>
+      <a class="source-link" href="http://m.toutiao.com/group/7341767165529440795/" target="_blank">📎 查看原帖</a>
+    </div>
+  </div>
+
+  <div class="discussion-item">
+    <div class="title">非名校文科硕士分享小米工作体验</div>
+    <div class="content">22届文科硕士（本科双非、研究生211）分享小米非技术岗工作体验。福利：食堂每月近700元餐补、12天带薪病假、六险一金、公积金12%。晋升每年2次机会（4月和9月）。强调"汇报和演讲能力尤为重要"。社招原则上要求毕业两年及以上。内推码PZ4ZAC7。</div>
+    <div class="meta-row">
+      <span class="tag tag-source">牛客网</span>
+      <a class="source-link" href="https://m.nowcoder.com/feed/main/detail/bf9455f6698b41fb8b3bc7785490b9b6?urlSource=home-api" target="_blank">📎 查看原帖</a>
+    </div>
+  </div>
+
+  <div class="discussion-item">
+    <div class="title">小米汽车2026年交付目标55万辆，研发投入2000亿</div>
+    <div class="content">雷军宣布2026年交付目标55万辆，未来五年投入2000亿元技术研发。北京亦庄三期工厂2月投产，武汉汉南工厂5月投产。YU7 2026上半年累计交付10.49万辆，6月环比暴涨64%。新一代SU7预计4月上市，全系标配128线激光雷达。</div>
+    <div class="meta-row">
+      <span class="tag tag-source">搜狐/今日头条</span>
+      <a class="source-link" href="https://m.sohu.com/a/972292903_121885030/" target="_blank">📎 查看原帖</a>
+    </div>
+  </div>
+</div>
+
+<!-- 求职攻略 -->
+<div class="section">
+  <h2 class="section-title"><span class="icon">🚀</span> 求职攻略</h2>
+  <ol class="strategy-list">
+    <li><strong>深入了解小米生态链：</strong>面试常问小米汽车竞争优势，重点准备三大优势——生态链资源（IoT设备生态提供车家互联）、高性价比商业模式、用户运营能力（社群营销快速迭代）。</li>
+    <li><strong>技术岗备好八股+算法：</strong>前端面试覆盖Vue3/React对比、虚拟DOM原理、事件循环、缓存机制等。算法题难度LeetCode中等，需熟练手撕深拷贝、并发请求控制、递归构建树等。</li>
+    <li><strong>产品岗准备PRD与案例：</strong>面试官会详细询问PRD撰写经验、产品能力举例。注意"面经味"不要太重，有候选人因准备过度被反馈"做了特别多准备"而未通过。</li>
+    <li><strong>使用内推码投递：</strong>校招社招均可用内推码优先筛选。南京岗位内推码ZQP9FVQ，通用内推码PZ4ZAC7。每位同学至多可投递4个职位。</li>
+    <li><strong>关注重点城市布局：</strong>上海以电机电控/整车制造为主，南京以智能座舱/车载硬件为主，武汉以自动驾驶算法/大模型为主，北京以自动驾驶法规/工厂为主。</li>
+    <li><strong>权衡薪资与强度：</strong>小米薪资在行业头部，但工作强度较大（反馈"9106"）。期权需5年等待期/4年归属，离职即失。建议根据个人阶段权衡。</li>
+    <li><strong>了解最新动态：</strong>2026年是小米汽车产能扩张关键年，三期工厂已投产，武汉工厂主打增程SUV"昆仑N3"，新SU7 4月上市。面试中展示对产品线的了解会加分。</li>
+  </ol>
+</div>
+
+<!-- 信息来源汇总 -->
+<div class="section">
+  <h2 class="section-title"><span class="icon">📎</span> 信息来源汇总</h2>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>来源名称</th>
+          <th>链接</th>
+          <th>日期</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>小米官方校园招聘</td>
+          <td><a class="table-link" href="https://hr.xiaomi.com/campus" target="_blank">hr.xiaomi.com/campus</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>小米官方招聘(飞书)</td>
+          <td><a class="table-link" href="https://xiaomi.jobs.f.mioffice.cn/campus/m/position" target="_blank">xiaomi.jobs.f.mioffice.cn</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>猎聘-小米汽车招聘专场</td>
+          <td><a class="table-link" href="https://m.liepin.com/company-jobs/2174886/jc-N11/" target="_blank">liepin.com</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>BOSS直聘-智能座舱Android开发</td>
+          <td><a class="table-link" href="https://www.zhipin.com/job_detail/9c8d02ff7687284703Rz29y9F1ZX.html" target="_blank">zhipin.com</a></td>
+          <td>2026-06-25</td>
+        </tr>
+        <tr>
+          <td>北极星招聘-自动驾驶数据闭环</td>
+          <td><a class="table-link" href="https://mhr.bjx.com.cn/jobs/968571.html" target="_blank">mhr.bjx.com.cn</a></td>
+          <td>2026</td>
+        </tr>
+        <tr>
+          <td>智联招聘-SU7交付预约专员</td>
+          <td><a class="table-link" href="https://m.zhaopin.com/jobs/CCL1283957410J40799533805.htm" target="_blank">zhaopin.com</a></td>
+          <td>2026</td>
+        </tr>
+        <tr>
+          <td>广东工业大学就业网-汽车销交服校招</td>
+          <td><a class="table-link" href="https://career.gdut.edu.cn/campus/view/id/1019810" target="_blank">career.gdut.edu.cn</a></td>
+          <td>2025-09-07</td>
+        </tr>
+        <tr>
+          <td>今日头条-小米亦庄超级工厂</td>
+          <td><a class="table-link" href="http://m.toutiao.com/group/7667113659386888704/" target="_blank">toutiao.com</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>雪球-小米汽车2026工厂进度</td>
+          <td><a class="table-link" href="https://xueqiu.com/9739866425/374197203" target="_blank">xueqiu.com</a></td>
+          <td>2026-01</td>
+        </tr>
+        <tr>
+          <td>CSDN-小米汽车ToB产品岗面经</td>
+          <td><a class="table-link" href="https://blog.csdn.net/litterfinger/article/details/141829330" target="_blank">blog.csdn.net</a></td>
+          <td>2024-09</td>
+        </tr>
+        <tr>
+          <td>牛客网-前端开发面经</td>
+          <td><a class="table-link" href="https://m.nowcoder.com/feed/main/detail/53295c5c1b3647c58dca37b766c53ebd" target="_blank">nowcoder.com</a></td>
+          <td>2025</td>
+        </tr>
+        <tr>
+          <td>今日头条-小米汽车薪资待遇</td>
+          <td><a class="table-link" href="http://m.toutiao.com/group/7341767165529440795/" target="_blank">toutiao.com</a></td>
+          <td>2024</td>
+        </tr>
+        <tr>
+          <td>今日头条-百万薪资热议</td>
+          <td><a class="table-link" href="http://m.toutiao.com/group/7637399115550196274/" target="_blank">toutiao.com</a></td>
+          <td>2026</td>
+        </tr>
+        <tr>
+          <td>易车社区-小米汽车内部揭秘</td>
+          <td><a class="table-link" href="https://baa.m.yiche.com/wenzhang/thread-52497239.html" target="_blank">baa.m.yiche.com</a></td>
+          <td>2025-05</td>
+        </tr>
+        <tr>
+          <td>今日头条-小米汽车股权架构</td>
+          <td><a class="table-link" href="http://m.toutiao.com/group/7536469789338829362/" target="_blank">toutiao.com</a></td>
+          <td>2024</td>
+        </tr>
+        <tr>
+          <td>力扣-小米汽车南京内推</td>
+          <td><a class="table-link" href="https://leetcode.cn/discuss/post/3277004/" target="_blank">leetcode.cn</a></td>
+          <td>2025-01</td>
+        </tr>
+        <tr>
+          <td>搜狐-雷军2026交付目标55万辆</td>
+          <td><a class="table-link" href="https://m.sohu.com/a/972292903_121885030/" target="_blank">sohu.com</a></td>
+          <td>2026-01</td>
+        </tr>
+        <tr>
+          <td>今日头条-6月销量YU7暴涨64%</td>
+          <td><a class="table-link" href="http://m.toutiao.com/group/7660434417348919817/" target="_blank">toutiao.com</a></td>
+          <td>2026-07</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Giscus评论区 -->
+<div class="giscus-container">
+  <div class="giscus-title">💬 评论区 - 欢迎分享你的小米汽车求职经验</div>
+  <script src="https://giscus.app/client.js"
+    data-repo="TS-dinglilu/TS-dinglilu.github.io"
+    data-repo-id="R_kgDOTjqaJQ"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOTjqaJc4DCIL1"
+    data-mapping="pathname" data-term="report-comments"
+    data-strict="0" data-reactions-enabled="1" data-emit-metadata="0"
+    data-input-position="top" data-theme="preferred_color_scheme"
+    data-lang="zh-CN" crossorigin="anonymous" async>
+  </script>
+</div>
+
+<div class="footer-info">
+  <p>小米汽车招聘日报 | 生成日期：2026-07-27 | 数据来源：官方招聘网站、猎聘、BOSS直聘、智联招聘、牛客网等</p>
+  <p>本报告由自动化系统生成，信息仅供参考，请以官方渠道为准</p>
+</div>
+
+</div>
+</body>
+</html>
