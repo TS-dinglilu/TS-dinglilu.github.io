@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日未来规划 - 2026年7月28日 | 个人职业发展报告</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v2.0 美化版
+   适用于所有自动化任务的报告HTML
+   配色方案: 深蓝(#0f2c4d) + 蓝色强调(#2563eb)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --primary: #0f2c4d;
+  --primary-light: #1e4d7b;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-glow: rgba(37, 99, 235, 0.15);
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --text-faint: #94a3b8;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --green: #10b981;
+  --green-bg: #ecfdf5;
+  --green-border: #a7f3d0;
+  --amber: #f59e0b;
+  --amber-bg: #fffbeb;
+  --amber-border: #fde68a;
+  --red: #ef4444;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+  --blue-bg: #eff6ff;
+  --blue-border: #bfdbfe;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', 'Inter', -apple-system, 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 15px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Decorative grid background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating gradient orb */
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%; right: -10%;
+  width: 50%; height: 60%;
+  background: radial-gradient(ellipse, rgba(37,99,235,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   HEADER - 渐变标题栏 with glass-morphism
+   ============================================================ */
+.header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 40%, var(--accent) 100%);
+  color: #fff;
+  padding: 48px 24px 36px;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(15, 44, 77, 0.2);
+  margin-bottom: 8px;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -50%; left: -20%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.header .subtitle {
+  font-size: 0.9rem;
+  opacity: 0.88;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .date {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  z-index: 1;
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   SECTIONS - 卡片式内容区
+   ============================================================ */
+.section {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin: 20px 0;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, transparent 100%);
+}
+.section h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 20px 0 10px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ============================================================
+   CARDS - 信息卡片
+   ============================================================ */
+.card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-left-color: var(--accent-light);
+}
+.card-title {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-meta {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  font-family: 'Inter', monospace;
+}
+.card-content {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.card-content strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ============================================================
+   NEWS ITEMS - 新闻条目
+   ============================================================ */
+.news-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.news-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--border);
+  transition: all 0.3s ease;
+}
+.news-item:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.news-item:hover::before {
+  background: var(--accent);
+  width: 5px;
+}
+.news-item .badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--blue-bg);
+  color: #1e40af;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-right: 8px;
+  font-weight: 600;
+  border: 1px solid var(--blue-border);
+  letter-spacing: 0.3px;
+}
+.news-item .badge.hot {
+  background: var(--red-bg);
+  color: #dc2626;
+  border-color: var(--red-border);
+}
+.news-item .badge.new {
+  background: var(--green-bg);
+  color: #16a34a;
+  border-color: var(--green-border);
+}
+
+/* ============================================================
+   TABLES - 数据表格
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 16px 0;
+  font-size: 0.84rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+th {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) { background: #f8fafc; }
+tr:hover { background: var(--blue-bg); }
+tr:nth-child(even):hover { background: #eff6ff; }
+
+/* ============================================================
+   TAGS - 标签
+   ============================================================ */
+.tag {
+  display: inline-block;
+  background: var(--blue-bg);
+  color: #3730a3;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin: 2px;
+  font-weight: 500;
+  border: 1px solid var(--blue-border);
+}
+.tag.green { background: var(--green-bg); color: #166534; border-color: var(--green-border); }
+.tag.orange { background: var(--amber-bg); color: #92400e; border-color: var(--amber-border); }
+.tag.red { background: var(--red-bg); color: #991b1b; border-color: var(--red-border); }
+
+/* ============================================================
+   SOURCE LINKS - 原文链接
+   ============================================================ */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: var(--blue-bg);
+  border: 1px solid var(--blue-border);
+  transition: all 0.2s;
+}
+.source-link:hover {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* ============================================================
+   DISCUSSION - 讨论区
+   ============================================================ */
+.discussion {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-border);
+  border-left: 4px solid var(--amber);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 14px 0;
+  transition: all 0.3s;
+}
+.discussion:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.discussion .platform {
+  display: inline-block;
+  background: var(--amber);
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   TIP BOX - 提示框
+   ============================================================ */
+.tip-box {
+  background: var(--green-bg);
+  border: 1px solid var(--green-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.tip-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--green);
+}
+.tip-box h4 {
+  color: #065f46;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.tip-box ul { list-style: none; padding-left: 0; }
+.tip-box li {
+  padding: 5px 0 5px 24px;
+  position: relative;
+  font-size: 0.88rem;
+  color: #1a4731;
+}
+.tip-box li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   WARNING BOX - 警告框
+   ============================================================ */
+.warning-box {
+  background: var(--red-bg);
+  border: 1px solid var(--red-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.warning-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--red);
+}
+.warning-box h4 {
+  color: #991b1b;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SUMMARY TABLE - 汇总表
+   ============================================================ */
+.summary-table { font-size: 0.82rem; }
+.summary-table td:first-child {
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   GISCUS / COMMENTS - 评论区
+   ============================================================ */
+.comments-section {
+  margin-top: 40px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.comments-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.comments-desc {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   FOOTER - 页脚
+   ============================================================ */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   RESPONSIVE - 移动端适配
+   ============================================================ */
+@media (max-width: 600px) {
+  .header { padding: 32px 16px 24px; border-radius: 0 0 20px 20px; }
+  .header h1 { font-size: 1.3rem; }
+  .section { padding: 18px 14px; margin: 14px 0; }
+  .card, .news-item { padding: 14px 16px; }
+  table { font-size: 0.76rem; }
+  th, td { padding: 7px 5px; }
+  .container { padding: 0 12px 40px; }
+}
+
+/* ============================================================
+   UTILITY - 通用工具类
+   ============================================================ */
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-light); text-decoration: underline; }
+strong { color: var(--primary); }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="floating-ball ball-1"></div>
+<div class="floating-ball ball-2"></div>
+
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>每日未来规划报告</h1>
+  <div class="subtitle">个人职业发展 · 行业趋势分析 · 成长路径规划</div>
+  <div class="meta">
+    <span>2026年7月28日</span>
+    <span>机械工程硕士 · 研一升研二</span>
+    <span>安徽工业大学</span>
+    <span>目标区域：江浙沪</span>
+  </div>
+</div>
+
+<!-- 板块1：个人定位分析 -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">01</div>
+    <span>个人定位分析</span>
+    <span class="num">定位</span>
+  </div>
+  
+  <div class="highlight-box">
+    <strong>核心定位：</strong>机械工程硕士在读，具备Python强化学习算法开发 + MATLAB/Simulink仿真集成 + 四旋翼无人机飞控仿真能力，处于"机械+AI+无人机"交叉赛道，差异化竞争力显著。
+  </div>
+
+  <div class="card">
+    <div class="card-title">学历档位</div>
+    <div class="card-content">
+      <span class="tag tag-blue">硕士在读（研一升研二）</span>
+      <span class="tag tag-green">机械工程</span>
+      <span class="tag tag-purple">交叉学科方向</span>
+      <p style="margin-top:8px;">2026年硕士学历仍是就业市场黄金性价比学历，95%的行业硕士完全够用 [$TRAE_REF](http://m.toutiao.com/group/7665646756545348119/)。机械硕士薪资普遍比本科上浮40%-80% [$TRAE_REF](http://m.toutiao.com/group/7666838899414614591/)。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">核心技能矩阵</div>
+    <div class="card-content">
+      <p><strong>Python强化学习算法</strong></p>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div>
+      <p><strong>MATLAB/Simulink仿真集成</strong></p>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div>
+      <p><strong>四旋翼无人机飞控仿真</strong></p>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:65%"></div></div>
+      <p><strong>论文复现与数据分析</strong></p>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:60%"></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">竞争力评估</div>
+    <div class="card-content">
+      <table>
+        <thead><tr><th>维度</th><th>评估</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>技术稀缺性</td><td><span class="badge badge-high">高</span></td><td>机械+RL+UAV三重交叉，市场稀缺</td></tr>
+          <tr><td>学校背景</td><td><span class="badge badge-mid">中</span></td><td>安工大非985/211，需靠技术补位</td></tr>
+          <tr><td>研究方向</td><td><span class="badge badge-high">高</span></td><td>Sim-to-Real为行业热点，格灵深瞳等企业直接招聘 [$TRAE_REF](https://m.zhipin.com/job_detail/c9b209caf0e5547103F_2tS9FVZX.html)</td></tr>
+          <tr><td>地域优势</td><td><span class="badge badge-mid">中</span></td><td>马鞍山近长三角，就业辐射江浙沪</td></tr>
+          <tr><td>实践经验</td><td><span class="badge badge-mid">中</span></td><td>AquaWing UAV项目，需增加企业实习</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 板块2：行业趋势速递 -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">02</div>
+    <span>行业趋势速递</span>
+    <span class="num">趋势</span>
+  </div>
+
+  <div class="card">
+    <div class="card-title">无人机UAV行业：黄金赛道持续爆发</div>
+    <div class="card-content">
+      <p>2025年全球固定翼UAV市场规模约46.5亿美元 [$TRAE_REF](https://m.gelonghui.com/p/3446301)。中国农业UAV市场规模达245.16亿元，年复合增速11.84% [$TRAE_REF](https://m.gelonghui.com/p/3865977)。中国折叠UAV市场预计从2023年150亿元增长至2030年超800亿元，CAGR超30% [$TRAE_REF](https://m.renrendoc.com/paper/413699007.html)。2023年全球无人机飞控系统市场规模约45亿美元 [$TRAE_REF](http://m.toutiao.com/group/7591752654632583743/)。</p>
+      <p style="margin-top:8px;"><strong>关键信号：</strong>低空经济成为国家战略，无人机行业人才缺口巨大，6大主要赛道（研发、飞控、算法、测试、运营、培训）全面扩招 [$TRAE_REF](http://m.toutiao.com/group/7612852767149605414/)。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">机械制造：智能化转型，淘汰低端留高端</div>
+    <div class="card-content">
+      <p>机械制造并非夕阳产业，正全面拥抱智能化与新能源升级 [$TRAE_REF](http://m.toutiao.com/group/7667578764490064393/)。"被淘汰的从来不是机械制造行业本身，而是落后的传统手工加工岗位"。行业从普通操作工转向懂数控编程、智能设备调试、结构优化、数字化运维的技术型人才。</p>
+      <p style="margin-top:8px;"><strong>核心观点：</strong>机械制造是典型的"下限极高、上限靠能力"的长线工科赛道，越深耕越值钱。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">车企仿真：比亚迪/奇瑞等头部企业持续招聘</div>
+    <div class="card-content">
+      <p>比亚迪招聘仿真工程师，涵盖电驱动仿真、热设计仿真、自动驾驶仿真测试等方向 [$TRAE_REF](https://m.zhipin.com/job_detail/29b4cb16731e24b81HN82Ni-E1tX.html)，深圳硕士3-5年月薪2.2-3万 [$TRAE_REF](https://www.zhaopin.com/jobdetail/CC132962990J40607863302.htm)。奇瑞招聘仿真工程师（moldflow/压铸分析） [$TRAE_REF](https://www.zhipin.com/job_detail/f2d9e4dcf21e3b991Hxz29W8EFNW.html)。</p>
+      <p style="margin-top:8px;"><strong>趋势判断：</strong>车企仿真岗位与个人技能高度匹配，MATLAB/Simulink + Python的复合背景是核心竞争力。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">低空经济与机器人：政策红利释放</div>
+    <div class="card-content">
+      <p>低空经济被列为国家战略性新兴产业，无人机、eVTOL、飞行汽车等领域快速发展。人形机器人产业同步爆发，机械+控制+AI复合人才需求激增。华为、大疆、比亚迪等大厂核心研发岗年薪30-40万，门槛硕士起步 [$TRAE_REF](http://m.toutiao.com/group/7610669501142663726/)。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 板块3：薪资档位分析 -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">03</div>
+    <span>薪资档位分析</span>
+    <span class="num">薪资</span>
+  </div>
+
+  <div class="card">
+    <div class="card-title">江浙沪机械工程师薪资分布</div>
+    <div class="card-content">
+      <table>
+        <thead><tr><th>城市/地区</th><th>月薪范围</th><th>年薪范围</th><th>学历要求</th><th>数据来源</th></tr></thead>
+        <tbody>
+          <tr><td>浙江（全省）</td><td>10-20K</td><td>12-24W</td><td>不限</td><td><a class="source-link" href="https://m.jobui.com/salary/zhejiang-jixiegongchengshi/" target="_blank">职友集</a></td></tr>
+          <tr><td>浙江（应届生）</td><td>8.6K</td><td>~10W</td><td>不限</td><td><a class="source-link" href="https://m.jobui.com/salary/zhejiang-jixiegongchengshi/" target="_blank">职友集</a></td></tr>
+          <tr><td>杭州（资深·硕士）</td><td>20-30K</td><td>24-36W</td><td>硕士</td><td><a class="source-link" href="https://m.jobui.com/salary/hangzhou-zishenjixiegongchengshi/edu3/" target="_blank">职友集</a></td></tr>
+          <tr><td>杭州（500-999人企业·硕士）</td><td>20-30K</td><td>24-36W</td><td>硕士</td><td><a class="source-link" href="https://m.jobui.com/salary/hangzhou-jixiegongchengshi/edu3/size5/" target="_blank">职友集</a></td></tr>
+          <tr><td>全国机械硕士</td><td>8-15K</td><td>10-18W</td><td>硕士</td><td><a class="source-link" href="https://www.jobui.com/trends/quanguo-jixiezhuanye/edu3/" target="_blank">职友集</a></td></tr>
+          <tr><td>一线城市</td><td>-</td><td>15-25W</td><td>硕士</td><td><a class="source-link" href="https://m.book118.com/html/2026/0115/7054102114011041.shtm" target="_blank">原创力文档</a></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:8px;"><strong>趋势：</strong>浙江机械工程师2025年较2024年增长17% [$TRAE_REF](https://m.jobui.com/salary/zhejiang-jixiegongchengshi/)，但全国机械硕士2024年较2023年下降16% [$TRAE_REF](https://www.jobui.com/trends/quanguo-jixiezhuanye/edu3/)，区域分化明显。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">各行业薪资对比</div>
+    <div class="card-content">
+      <table>
+        <thead><tr><th>行业方向</th><th>应届硕士起薪</th><th>3-5年薪资</th><th>匹配度</th></tr></thead>
+        <tbody>
+          <tr><td>无人机/飞控算法</td><td>15-25K/月</td><td>25-40K/月</td><td><span class="badge badge-high">极高</span></td></tr>
+          <tr><td>车企仿真工程师</td><td>15-22K/月</td><td>22-30K/月</td><td><span class="badge badge-high">极高</span></td></tr>
+          <tr><td>机器人/自动化</td><td>14-20K/月</td><td>20-35K/月</td><td><span class="badge badge-high">高</span></td></tr>
+          <tr><td>传统机械设计</td><td>8-12K/月</td><td>12-18K/月</td><td><span class="badge badge-mid">中</span></td></tr>
+          <tr><td>科研院所</td><td>10-15K/月</td><td>15-25K/月</td><td><span class="badge badge-mid">中</span></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:8px;"><strong>结论：</strong>无人机飞控算法 + 车企仿真方向薪资天花板最高，且与个人技术栈完美匹配。比亚迪仿真工程师（深圳·硕士·3-5年）月薪达2.2-3万 [$TRAE_REF](https://www.zhaopin.com/jobdetail/CC132962990J40607863302.htm)。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">硕士vs博士薪资对比</div>
+    <div class="card-content">
+      <table>
+        <thead><tr><th>学历</th><th>平均起薪</th><th>就业率</th><th>适用领域</th></tr></thead>
+        <tbody>
+          <tr><td>硕士</td><td>12,000元/月</td><td>92.7%</td><td>95%行业通用</td></tr>
+          <tr><td>博士</td><td>25,000元/月</td><td>95%+</td><td>高校/科研/AI算法/芯片（5%）</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:8px;">数据来源：2026年校招公开数据 [$TRAE_REF](http://m.toutiao.com/group/7665646756545348119/)。机械属于应用型专业，硕士学历完全够用，读博仅适合目标高校教职/硬核研发岗。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 板块4：科研前沿追踪 -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">04</div>
+    <span>科研前沿追踪</span>
+    <span class="num">前沿</span>
+  </div>
+
+  <div class="card">
+    <div class="card-title">CMU NavRL：基于强化学习的无人机自主导航新方案</div>
+    <div class="card-content">
+      <p>卡内基梅隆大学提出 <strong>NavRL（Learning Safe Flight in Dynamic Environments）</strong>，基于PPO算法实现无人机在动态环境中的安全自主飞行 [$TRAE_REF](https://blog.csdn.net/soaring_casia/article/details/147215832)。</p>
+      <p style="margin-top:6px;"><strong>核心创新：</strong></p>
+      <p>- 设计目标坐标系表示，减少全局坐标系依赖，加速收敛</p>
+      <p>- 引入速度障碍物概念构建安全护盾，降低神经网络风险</p>
+      <p>- 利用 NVIDIA Isaac Sim 并行训练 + 课程学习，100个动态障碍物时成功率达80.96%</p>
+      <p>- 实现零样本Sim-to-Real迁移，机载实时运算（RL策略网络仅7ms）</p>
+      <p style="margin-top:6px;"><strong>代码开源：</strong><a class="source-link" href="https://github.com/Zhefan-Xu/NavRL" target="_blank">GitHub - NavRL</a> | <a class="source-link" href="https://ieeexplore.ieee.org/document/10904341" target="_blank">IEEE论文</a></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">北航Air-M：多无人机RL虚拟现实平台</div>
+    <div class="card-content">
+      <p>北京航空航天大学研究团队在 IROS 2023 发表 <strong>Air-M</strong> 平台，解决大规模多无人机强化学习中Sim-to-Real迁移的关键问题 [$TRAE_REF](https://m.sohu.com/a/976810096_122477924/) [$TRAE_REF](https://www.cnblogs.com/motion-capture/p/19493380)。通过NOKOV度量动作捕捉系统构建虚拟现实训练环境，验证多无人机协同策略的真实世界迁移效果。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Nature论文：强化学习无人机极限竞速（被引1070次）</div>
+    <div class="card-content">
+      <p>迄今为止强化学习在无人机领域影响力最大的工作，发表于 <strong>Nature</strong>，被引量1070次 [$TRAE_REF](https://blog.csdn.net/soaring_casia/article/details/161086849)。实现了Sim-to-Real极限竞速，证明了RL策略在高速飞行场景中的超越人类驾驶员的潜力。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">行业需求信号：格灵深瞳招聘无人机RL算法实习生</div>
+    <div class="card-content">
+      <p>格灵深瞳2026年招聘 <strong>无人机强化学习算法实习生</strong>，要求机器人/AI/自动控制专业硕士及以上，岗位职责包括基于DRL的自主无人机控制算法研发、Sim2Real适配和调试 [$TRAE_REF](https://m.zhipin.com/job_detail/c9b209caf0e5547103F_2tS9FVZX.html)。</p>
+      <p style="margin-top:6px;"><span class="tag tag-red">直接匹配</span> 个人研究方向，建议关注此类岗位的正式校招机会。</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <strong>研究热点总结：</strong>当前RL+UAV领域三大核心方向：① Sim-to-Real迁移（零样本部署）② 多无人机协同（群体智能）③ 安全强化学习（安全护盾机制）。个人AquaWing UAV项目可结合NavRL框架进行改进和复现。
+  </div>
+</div>
+
+<!-- 板块5：个性化发展路径 -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">05</div>
+    <span>个性化发展路径</span>
+    <span class="num">路径</span>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="time">短期（3-6个月）· 2026年8月-12月</div>
+      <div class="content">
+        <p><strong>科研推进：</strong>复现NavRL框架，在AquaWing UAV项目中集成PPO算法 + 安全护盾机制，争取产出1篇会议论文</p>
+        <p><strong>技能提升：</strong>学习NVIDIA Isaac Sim仿真环境，掌握并行训练方法</p>
+        <p><strong>求职准备：</strong>完善GitHub开源项目，准备无人机/车企仿真方向简历</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="time">中期（6-12个月）· 2027年1月-7月</div>
+      <div class="content">
+        <p><strong>实习经历：</strong>争取大疆/比亚迪/格灵深瞳等企业的算法/仿真实习岗位</p>
+        <p><strong>论文发表：</strong>完成Sim-to-Real相关研究论文投稿（IROS/ICRA/IEEE SPL等）</p>
+        <p><strong>证书考取：</strong>注册机械工程师、无人机驾驶员执照（多旋翼）</p>
+        <p><strong>人脉积累：</strong>参加无人机学术会议，建立行业联系</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="time">长期（1-3年）· 2027年-2029年</div>
+      <div class="content">
+        <p><strong>就业目标：</strong>进入大疆/亿航/纵横股份等无人机企业飞控算法岗，或比亚迪/小米汽车等车企仿真工程师岗</p>
+        <p><strong>薪资目标：</strong>起薪15-25K/月（江浙沪），3年内达到25-35K/月</p>
+        <p><strong>发展方向：</strong>技术路线（高级算法工程师→技术专家）或管理路线（项目负责人→研发总监）</p>
+        <p><strong>备选路径：</strong>若科研成果突出，可考虑读博深造（目标：北航/上交/中科大）</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 板块6：就业vs深造决策 -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">06</div>
+    <span>就业 vs 深造决策</span>
+    <span class="num">决策</span>
+  </div>
+
+  <div class="highlight-box">
+    <strong>核心判断：</strong>2026年硕士学历仍是就业市场黄金性价比学历，95%行业硕士完全够用 [$TRAE_REF](http://m.toutiao.com/group/7665646756545348119/)。机械属于应用型专业，直接就业的性价比高于读博。但若目标是高校教职或AI算法核心研发岗，读博仍是刚需。
+  </div>
+
+  <div class="decision-grid">
+    <div class="decision-card decision-yes">
+      <h4>✓ 直接就业</h4>
+      <p><strong>适合条件：</strong></p>
+      <p>· 目标无人机/车企/机器人企业研发岗</p>
+      <p>· 想快速积累项目经验和行业资源</p>
+      <p>· 家庭需要经济独立</p>
+      <p>· 硕士学历已满足95%岗位门槛</p>
+      <p style="margin-top:8px;"><strong>薪资预期：</strong>起薪12-25K/月，3年经验可达20-35K</p>
+    </div>
+    <div class="decision-card decision-no">
+      <h4>△ 读博深造</h4>
+      <p><strong>适合条件：</strong></p>
+      <p>· 目标高校教职/中科院/国家重点实验室</p>
+      <p>· 真心热爱科研，能耐住寂寞</p>
+      <p>· 目标AI算法/芯片设计核心研发岗</p>
+      <p>· 家庭经济条件允许5年不赚钱</p>
+      <p style="margin-top:8px;"><strong>薪资预期：</strong>起薪25-40K/月，但时间成本3-5年</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">决策矩阵</div>
+    <div class="card-content">
+      <table>
+        <thead><tr><th>维度</th><th>直接就业</th><th>读博深造</th></tr></thead>
+        <tbody>
+          <tr><td>时间成本</td><td>0年（立即入职场）</td><td>3-5年</td></tr>
+          <tr><td>起薪</td><td>12-25K/月</td><td>25-40K/月</td></tr>
+          <tr><td>3年总收入</td><td>43-90W（含涨薪）</td><td>~15-20W（补贴）</td></tr>
+          <tr><td>就业面</td><td>95%行业通用</td><td>5%特定赛道</td></tr>
+          <tr><td>年龄风险</td><td>25岁入职场，黄金期</td><td>28-32岁入职场，年龄压力</td></tr>
+          <tr><td>匹配个人方向</td><td><span class="badge badge-high">高</span></td><td><span class="badge badge-mid">中</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">建议行动项</div>
+    <div class="card-content">
+      <p><strong>1. 优先直接就业：</strong>个人技术栈（机械+RL+UAV）直接匹配企业需求，早就业早积累</p>
+      <p><strong>2. 保持读博选项：</strong>若研二科研成果突出（有顶会论文），可重新评估读博</p>
+      <p><strong>3. 关键决策节点：</strong>2027年3月（春招）vs 2027年9月（博士申请），根据科研成果和实习经历做最终决定</p>
+      <p><strong>4. 参考依据：</strong>机械专业读研比直接就业优势明显（核心研发岗硕士起步） [$TRAE_REF](http://m.toutiao.com/group/7610669501142663726/)，但读博需精准匹配 [$TRAE_REF](http://m.toutiao.com/group/7665646756545348119/)</p>
+    </div>
+  </div>
+</div>
+
+<!-- 板块7：全网热议 -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">07</div>
+    <span>全网热议</span>
+    <span class="num">热议</span>
+  </div>
+
+  <div class="discussion-item">
+    <div class="platform">头条 · 热议</div>
+    <div class="text"><strong>"机械制造真的过时了？褪去劝退滤镜，2026年真实前景很现实"</strong> —— 被淘汰的从来不是机械制造行业本身，而是落后的传统手工加工岗位。机械制造是"下限极高、上限靠能力"的长线工科赛道。</div>
+    <div class="link"><a class="source-link" href="http://m.toutiao.com/group/7667578764490064393/" target="_blank">📎 查看原文</a></div>
+  </div>
+
+  <div class="discussion-item">
+    <div class="platform">头条 · 职业选择</div>
+    <div class="text"><strong>"硕士职业选择已变天：读博未必加分，这三类人更该直接就业"</strong> —— 2026年硕士毕业生突破120万，博士不再是万能通行证。机械等应用型专业，硕士学历完全够用，读博反而"过度深造"。</div>
+    <div class="link"><a class="source-link" href="http://m.toutiao.com/group/7665646756545348119/" target="_blank">📎 查看原文</a></div>
+  </div>
+
+  <div class="discussion-item">
+    <div class="platform">头条 · 专业选择</div>
+    <div class="text"><strong>"机械专业读研还是就业？2026年别再选错了"</strong> —— 新能源、机器人、低空经济风口行业需求爆炸，华为/大疆/比亚迪核心研发岗年薪30-40万，硕士起步。选对赛道比学历更重要。</div>
+    <div class="link"><a class="source-link" href="http://m.toutiao.com/group/7610669501142663726/" target="_blank">📎 查看原文</a></div>
+  </div>
+
+  <div class="discussion-item">
+    <div class="platform">头条 · 工科热门</div>
+    <div class="text"><strong>"2026十个热门工科专业汇总"</strong> —— 硕士薪资普遍比本科上浮40%-80%。机械工程在智能化转型下焕发新生，与AI/机器人交叉方向前景看好。</div>
+    <div class="link"><a class="source-link" href="http://m.toutiao.com/group/7666838899414614591/" target="_blank">📎 查看原文</a></div>
+  </div>
+
+  <div class="discussion-item">
+    <div class="platform">头条 · 无人机就业</div>
+    <div class="text"><strong>"2026无人机就业前景指南：6个主要赛道"</strong> —— 无人机行业入行门槛和薪资待遇全面解析，研究生及以上学历在算法和飞控方向具有显著优势。</div>
+    <div class="link"><a class="source-link" href="http://m.toutiao.com/group/7612852767149605414/" target="_blank">📎 查看原文</a></div>
+  </div>
+
+  <div class="discussion-item">
+    <div class="platform">CSDN · 技术前沿</div>
+    <div class="text"><strong>"必读高引顶刊！近5年无人机强化学习路径规划经典论文盘点"</strong> —— Nature论文（被引1070次）开创RL无人机极限竞速先河，Sim-to-Real成为核心研究方向。</div>
+    <div class="link"><a class="source-link" href="https://blog.csdn.net/soaring_casia/article/details/161086849" target="_blank">📎 查看原文</a></div>
+  </div>
+
+  <div class="discussion-item">
+    <div class="platform">牛客网 · 讨论</div>
+    <div class="text"><strong>"机械的要不要读研？"</strong> —— 机械读研与不读研就业选择面都较广，关键看目标岗位。核心研发岗需硕士学历，普通工艺岗本科够用。</div>
+    <div class="link"><a class="source-link" href="https://m.nowcoder.com/discuss/754806271156432896" target="_blank">📎 查看原文</a></div>
+  </div>
+</div>
+
+<!-- 板块8：信息来源汇总 -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">08</div>
+    <span>信息来源汇总</span>
+    <span class="num">来源</span>
+  </div>
+
+  <table>
+    <thead><tr><th>来源名称</th><th>链接</th><th>日期</th></tr></thead>
+    <tbody>
+      <tr><td>职友集 - 机械专业硕士工资待遇</td><td><a class="source-link" href="https://www.jobui.com/trends/quanguo-jixiezhuanye/edu3/" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>职友集 - 浙江机械工程师薪资</td><td><a class="source-link" href="https://m.jobui.com/salary/zhejiang-jixiegongchengshi/" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>职友集 - 杭州资深机械工程师硕士薪资</td><td><a class="source-link" href="https://m.jobui.com/salary/hangzhou-zishenjixiegongchengshi/edu3/" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>职友集 - 杭州机械工程师硕士(500-999人)</td><td><a class="source-link" href="https://m.jobui.com/salary/hangzhou-jixiegongchengshi/edu3/size5/" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>格隆汇 - 固定翼无人机UAV行业报告(2026版)</td><td><a class="source-link" href="https://m.gelonghui.com/p/3446301" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>格隆汇 - 农业无人机UAV产业调研(2026)</td><td><a class="source-link" href="https://m.gelonghui.com/p/3865977" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>人人文库 - 折叠无人机UAV行业趋势</td><td><a class="source-link" href="https://m.renrendoc.com/paper/413699007.html" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>头条 - 无人机飞控系统行业发展趋势</td><td><a class="source-link" href="http://m.toutiao.com/group/7591752654632583743/" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>搜狐 - 北航Air-M多无人机RL平台</td><td><a class="source-link" href="https://m.sohu.com/a/976810096_122477924/" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>博客园 - 北航Air-M Sim-to-Real实践</td><td><a class="source-link" href="https://www.cnblogs.com/motion-capture/p/19493380" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>CSDN - CMU NavRL无人机自主导航</td><td><a class="source-link" href="https://blog.csdn.net/soaring_casia/article/details/147215832" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>CSDN - 无人机RL路径规划经典论文盘点</td><td><a class="source-link" href="https://blog.csdn.net/soaring_casia/article/details/161086849" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>IEEE - NavRL论文原文</td><td><a class="source-link" href="https://ieeexplore.ieee.org/document/10904341" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>GitHub - NavRL开源代码</td><td><a class="source-link" href="https://github.com/Zhefan-Xu/NavRL" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>实璞教育网 - 安工大机械类专业就业前景</td><td><a class="source-link" href="https://www.coolmw.com/f3d575dc951862ca.html" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>头条 - 2026热门工科专业汇总</td><td><a class="source-link" href="http://m.toutiao.com/group/7666838899414614591/" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>头条 - 机械制造2026真实前景</td><td><a class="source-link" href="http://m.toutiao.com/group/7667578764490064393/" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>头条 - 硕士读博vs就业决策</td><td><a class="source-link" href="http://m.toutiao.com/group/7665646756545348119/" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>头条 - 机械专业读研还是就业</td><td><a class="source-link" href="http://m.toutiao.com/group/7610669501142663726/" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>头条 - 2026无人机就业前景指南</td><td><a class="source-link" href="http://m.toutiao.com/group/7612852767149605414/" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>BOSS直聘 - 比亚迪仿真工程师</td><td><a class="source-link" href="https://m.zhipin.com/job_detail/9cd8cec5a2c9ca3803d80964GFZQ.html" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>BOSS直聘 - 比亚迪自动驾驶仿真</td><td><a class="source-link" href="https://www.zhipin.com/job_detail/29b4cb16731e24b81HN82Ni-E1tX.html" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>BOSS直聘 - 奇瑞仿真工程师</td><td><a class="source-link" href="https://www.zhipin.com/job_detail/f2d9e4dcf21e3b991Hxz29W8EFNW.html" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>智联招聘 - 比亚迪仿真工程师(深圳)</td><td><a class="source-link" href="https://www.zhaopin.com/jobdetail/CC132962990J40607863302.htm" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>BOSS直聘 - 格灵深瞳无人机RL算法</td><td><a class="source-link" href="https://m.zhipin.com/job_detail/c9b209caf0e5547103F_2tS9FVZX.html" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>猎聘 - 硕士机械工程师招聘</td><td><a class="source-link" href="https://m.liepin.com/zpssjxgcs1mcmv3i/" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>原创力文档 - 机械工程硕士就业前景</td><td><a class="source-link" href="https://m.book118.com/html/2026/0115/7054102114011041.shtm" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+      <tr><td>牛客网 - 机械要不要读研讨论</td><td><a class="source-link" href="https://m.nowcoder.com/discuss/754806271156432896" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Giscus评论区 -->
+<div class="giscus-section">
+  <h3>💬 评论区</h3>
+  <script src="https://giscus.app/client.js"
+    data-repo="TS-dinglilu/TS-dinglilu.github.io"
+    data-repo-id="R_kgDOTjqaJQ"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOTjqaJc4DCIL1"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+  </script>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>每日未来规划报告 · 自动生成于 2026年7月28日</p>
+  <p style="margin-top:4px;">在线访问：<a href="https://ts-dinglilu.github.io/future-planning/" target="_blank">ts-dinglilu.github.io/future-planning</a></p>
+  <p style="margin-top:4px; font-size:12px; color:#9ca3af;">本报告由自动化任务生成，信息来源于公开网络，仅供参考</p>
+</div>
+
+</div>
+</body>
+</html>
