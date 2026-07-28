@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奇瑞招聘日报 | 2026-07-28</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v2.0 美化版
+   适用于所有自动化任务的报告HTML
+   配色方案: 深蓝(#0f2c4d) + 蓝色强调(#2563eb)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --primary: #0f2c4d;
+  --primary-light: #1e4d7b;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-glow: rgba(37, 99, 235, 0.15);
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --text-faint: #94a3b8;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --green: #10b981;
+  --green-bg: #ecfdf5;
+  --green-border: #a7f3d0;
+  --amber: #f59e0b;
+  --amber-bg: #fffbeb;
+  --amber-border: #fde68a;
+  --red: #ef4444;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+  --blue-bg: #eff6ff;
+  --blue-border: #bfdbfe;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', 'Inter', -apple-system, 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 15px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Decorative grid background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating gradient orb */
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%; right: -10%;
+  width: 50%; height: 60%;
+  background: radial-gradient(ellipse, rgba(37,99,235,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   HEADER - 渐变标题栏 with glass-morphism
+   ============================================================ */
+.header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 40%, var(--accent) 100%);
+  color: #fff;
+  padding: 48px 24px 36px;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(15, 44, 77, 0.2);
+  margin-bottom: 8px;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -50%; left: -20%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.header .subtitle {
+  font-size: 0.9rem;
+  opacity: 0.88;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .date {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  z-index: 1;
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   SECTIONS - 卡片式内容区
+   ============================================================ */
+.section {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin: 20px 0;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, transparent 100%);
+}
+.section h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 20px 0 10px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ============================================================
+   CARDS - 信息卡片
+   ============================================================ */
+.card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-left-color: var(--accent-light);
+}
+.card-title {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-meta {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  font-family: 'Inter', monospace;
+}
+.card-content {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.card-content strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ============================================================
+   NEWS ITEMS - 新闻条目
+   ============================================================ */
+.news-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.news-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--border);
+  transition: all 0.3s ease;
+}
+.news-item:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.news-item:hover::before {
+  background: var(--accent);
+  width: 5px;
+}
+.news-item .badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--blue-bg);
+  color: #1e40af;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-right: 8px;
+  font-weight: 600;
+  border: 1px solid var(--blue-border);
+  letter-spacing: 0.3px;
+}
+.news-item .badge.hot {
+  background: var(--red-bg);
+  color: #dc2626;
+  border-color: var(--red-border);
+}
+.news-item .badge.new {
+  background: var(--green-bg);
+  color: #16a34a;
+  border-color: var(--green-border);
+}
+
+/* ============================================================
+   TABLES - 数据表格
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 16px 0;
+  font-size: 0.84rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+th {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) { background: #f8fafc; }
+tr:hover { background: var(--blue-bg); }
+tr:nth-child(even):hover { background: #eff6ff; }
+
+/* ============================================================
+   TAGS - 标签
+   ============================================================ */
+.tag {
+  display: inline-block;
+  background: var(--blue-bg);
+  color: #3730a3;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin: 2px;
+  font-weight: 500;
+  border: 1px solid var(--blue-border);
+}
+.tag.green { background: var(--green-bg); color: #166534; border-color: var(--green-border); }
+.tag.orange { background: var(--amber-bg); color: #92400e; border-color: var(--amber-border); }
+.tag.red { background: var(--red-bg); color: #991b1b; border-color: var(--red-border); }
+
+/* ============================================================
+   SOURCE LINKS - 原文链接
+   ============================================================ */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: var(--blue-bg);
+  border: 1px solid var(--blue-border);
+  transition: all 0.2s;
+}
+.source-link:hover {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* ============================================================
+   DISCUSSION - 讨论区
+   ============================================================ */
+.discussion {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-border);
+  border-left: 4px solid var(--amber);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 14px 0;
+  transition: all 0.3s;
+}
+.discussion:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.discussion .platform {
+  display: inline-block;
+  background: var(--amber);
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   TIP BOX - 提示框
+   ============================================================ */
+.tip-box {
+  background: var(--green-bg);
+  border: 1px solid var(--green-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.tip-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--green);
+}
+.tip-box h4 {
+  color: #065f46;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.tip-box ul { list-style: none; padding-left: 0; }
+.tip-box li {
+  padding: 5px 0 5px 24px;
+  position: relative;
+  font-size: 0.88rem;
+  color: #1a4731;
+}
+.tip-box li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   WARNING BOX - 警告框
+   ============================================================ */
+.warning-box {
+  background: var(--red-bg);
+  border: 1px solid var(--red-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.warning-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--red);
+}
+.warning-box h4 {
+  color: #991b1b;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SUMMARY TABLE - 汇总表
+   ============================================================ */
+.summary-table { font-size: 0.82rem; }
+.summary-table td:first-child {
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   GISCUS / COMMENTS - 评论区
+   ============================================================ */
+.comments-section {
+  margin-top: 40px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.comments-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.comments-desc {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   FOOTER - 页脚
+   ============================================================ */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   RESPONSIVE - 移动端适配
+   ============================================================ */
+@media (max-width: 600px) {
+  .header { padding: 32px 16px 24px; border-radius: 0 0 20px 20px; }
+  .header h1 { font-size: 1.3rem; }
+  .section { padding: 18px 14px; margin: 14px 0; }
+  .card, .news-item { padding: 14px 16px; }
+  table { font-size: 0.76rem; }
+  th, td { padding: 7px 5px; }
+  .container { padding: 0 12px 40px; }
+}
+
+/* ============================================================
+   UTILITY - 通用工具类
+   ============================================================ */
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-light); text-decoration: underline; }
+strong { color: var(--primary); }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+</style>
+</head>
+<body>
+<header class="hero">
+  <a href="https://ts-dinglilu.github.io/chery-recruit/" class="back-home">← 返回归档</a>
+  <div class="hero-tag"><span class="dot"></span> 每日自动更新</div>
+  <h1>奇瑞招聘日报</h1>
+  <div class="subtitle">奇瑞汽车及子品牌（星途/捷途/风云/iCAR）最新招聘信息、岗位详情、薪资待遇与面试攻略</div>
+  <div class="update-time">2026-07-28 星期二 · 自动生成</div>
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">28+</div>
+      <div class="stat-label">在招岗位</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5</div>
+      <div class="stat-label">子品牌</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">8</div>
+      <div class="stat-label">海外岗位</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">信息来源</div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- 今日概览 -->
+  <div class="section-header">
+    <span class="icon">📊</span>
+    <span class="title">今日概览</span>
+    <span class="line"></span>
+  </div>
+  <div class="overview-box">
+    <h3>📋 2026年7月28日 奇瑞招聘动态汇总</h3>
+    <p>
+      奇瑞汽车<span class="highlight">2026届春季校园招聘补录</span>正在进行中，网申时间为2026/06/02至2026/07/01，涵盖数据、机械、汽车制造、产品、运营、财务审计、市场/营销、供应链、电气/自动化、能源等多个方向，工作地点以<span class="highlight">芜湖总部</span>为主。
+      <br><br>
+      社招方面，奇瑞新能源及奇瑞控股持续招聘智能座舱Android开发工程师、智能制造(EOL方向)工程师、HRBP、主管采购工程师等岗位。海外业务板块需求旺盛，涉及<span class="highlight">俄罗斯、中东、中南美、阿联酋</span>等市场的国际销售、项目管理、海外人力及采购总监等高级岗位。
+      <br><br>
+      薪资方面，奇瑞集团薪酬区间为<span class="highlight">4.5K-50K</span>，53.7%的岗位月薪在15-30K之间，本科平均月薪约21.3K，硕士约26.1K。高端岗位如零碳研究院院长年薪可达100K-200K/月，无人驾驶总经理80K-110K/月。
+    </p>
+  </div>
+
+  <!-- 奇瑞及子品牌招聘新闻 -->
+  <div class="section-header">
+    <span class="icon">🏢</span>
+    <span class="title">奇瑞及子品牌招聘信息</span>
+    <span class="line"></span>
+    <span class="count">按品牌分组</span>
+  </div>
+
+  <!-- 奇瑞本品牌 -->
+  <div class="brand-group">
+    <div class="brand-title">🚗 奇瑞 CHERY <span class="badge">本品牌</span></div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <span class="job-title">CAE仿真工程师（校招）</span>
+        <span class="job-salary">8K-11K · 13薪</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-location">📍 芜湖·弋江区</span>
+        <span class="tag tag-edu">🎓 本科</span>
+        <span class="tag tag-match">✅ 校招</span>
+        <span class="tag tag-salary">💰 五险一金</span>
+      </div>
+      <div class="job-desc">负责汽车零部件及整车的CAE仿真分析工作，包括结构分析、碰撞分析、NVH分析等方向。要求机械工程、力学或相关专业背景。</div>
+      <a href="https://jobs.51job.com/campus/caBmVWMVQ2DjUHYlY0.html" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <span class="job-title">电芯工艺开发员（校招）</span>
+        <span class="job-salary">9-13万/年</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-location">📍 芜湖·弋江区</span>
+        <span class="tag tag-edu">🎓 本科</span>
+        <span class="tag tag-match">✅ 校招</span>
+        <span class="tag tag-salary">💰 定期体检</span>
+      </div>
+      <div class="job-desc">负责新能源电芯工艺开发与优化，涉及电芯制造工艺参数设计、产线调试、质量改进等。五险一金、餐补、免费班车等福利齐全。</div>
+      <a href="https://jobs.51job.com/campus/caBmVWMVQ2DjUHYlY0.html" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <span class="job-title">热管理工程师（26届校招）</span>
+        <span class="job-salary">10-14K · 14薪</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-location">📍 芜湖</span>
+        <span class="tag tag-edu">🎓 硕士</span>
+        <span class="tag tag-match">✅ 26届校招</span>
+      </div>
+      <div class="job-desc">负责新能源汽车热管理系统开发，包括电池热管理、座舱热管理、整车热平衡仿真与试验验证等方向。要求硕士学历，热能工程或相关专业。</div>
+      <a href="https://m.liepin.com/job/1980856939.shtml" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <span class="job-title">管培生-产品共创中心</span>
+        <span class="job-salary">面议 · 包吃住</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-location">📍 芜湖</span>
+        <span class="tag tag-match">✅ 校招管培生</span>
+        <span class="tag tag-salary">💰 包吃住</span>
+      </div>
+      <div class="job-desc">产品开发管理部管培生，主导国内品牌（风云、艾瑞泽、瑞虎、QQ等）产品开发管理及产品竞争力提升，涉及运营分析、产品策划、产品定义等方向。</div>
+      <a href="https://www.zhipin.com/job_detail/2782d8fe6c185d6403J52dq1GFBV.html" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <span class="job-title">2026届校招-汽车研发类</span>
+        <span class="job-salary">面议</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-location">📍 鄂尔多斯</span>
+        <span class="tag tag-edu">🎓 本科及以上</span>
+        <span class="tag tag-match">✅ 26届校招</span>
+      </div>
+      <div class="job-desc">2026届奇瑞汽车校园招聘（汽车研发类），招聘岗位包括内外饰设计等方向，工作地点在鄂尔多斯基地。</div>
+      <a href="https://www.zhipin.com/job_detail/27882b560276c40703140ti1GFBT.html" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <span class="job-title">26届校招-服务方向</span>
+        <span class="job-salary">面议</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-location">📍 芜湖</span>
+        <span class="tag tag-edu">🎓 本科</span>
+        <span class="tag tag-match">✅ 26届校招</span>
+      </div>
+      <div class="job-desc">负责研究、策划市场售后服务策略及年度/季度目标和计划，监督执行；策划和研究市场CSI调研方案，并对结果进行分析改进。</div>
+      <a href="https://www.zhipin.com/job_detail/6700e0a6ae66d48d03x-2dy8FldS.html" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <span class="job-title">智能制造工程师（EOL方向）</span>
+        <span class="job-salary">面议</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-location">📍 芜湖</span>
+        <span class="tag tag-match">✅ 社招</span>
+        <span class="tag tag-remote">🏭 新能源制造</span>
+      </div>
+      <div class="job-desc">负责新能源制造数字化系统的开发、调试及上线运行，包括自动化检测云端业务及MES等制造端系统互联；负责新能源制造内软件质量的数字化系统建设。</div>
+      <a href="https://www.jrzp.com/job499460254.shtml" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <!-- 奇瑞新能源 -->
+  <div class="brand-group">
+    <div class="brand-title">⚡ 奇瑞新能源 <span class="badge">新能源板块</span></div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <span class="job-title">Android开发工程师（智能座舱方向）</span>
+        <span class="job-salary">面议</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-location">📍 芜湖</span>
+        <span class="tag tag-match">✅ 社招</span>
+        <span class="tag tag-remote">🤖 智能座舱</span>
+      </div>
+      <div class="job-desc">负责车企智能座舱安卓应用的开发、调试与迭代优化，参与座舱系统功能模块的设计与实现。要求熟悉Android Framework、车载系统开发经验优先。</div>
+      <a href="https://www.zhipin.com/job_detail/80fbcd50ac788ae00nZ93dm5GVVY.html" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <span class="job-title">主管采购工程师-智能网联</span>
+        <span class="job-salary">面议</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-location">📍 芜湖</span>
+        <span class="tag tag-match">✅ 社招</span>
+        <span class="tag tag-remote">🔗 智能网联</span>
+      </div>
+      <div class="job-desc">负责日常采购管理（批量订单管理、资源管理等）；年度成本优化及合同签订；新开发件定点、成本管控、资源管理、变更管理等。</div>
+      <a href="https://m.zhipin.com/job_detail/47863d75265269e21X1y2NS4EVFZ.html" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <span class="job-title">HRBP</span>
+        <span class="job-salary">面议</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-location">📍 芜湖</span>
+        <span class="tag tag-match">✅ 社招</span>
+        <span class="tag tag-remote">👥 人力资源</span>
+      </div>
+      <div class="job-desc">负责业务部门的HR政策、制度、体系与重点项目在业务内部的落地与推动执行。汽车研发/制造方向，10000人以上规模企业。</div>
+      <a href="https://www.zhipin.com/job_detail/1ae43eb1643ad0391HJ929y6EVFZ.html" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <span class="job-title">IT工程师（MOM系统）</span>
+        <span class="job-salary">面议</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-location">📍 芜湖</span>
+        <span class="tag tag-match">✅ 社招</span>
+        <span class="tag tag-remote">💻 IT运维</span>
+      </div>
+      <div class="job-desc">负责MOM系统IOT或生产模块日常运维。要求具备良好的逻辑思维能力和沟通能力，抗压能力强，熟悉制造工厂生产流程。</div>
+      <a href="https://www.zhipin.com/job_detail/704828c6a7089e7403B73di6EFNS.html" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <!-- 星途 EXEED -->
+  <div class="brand-group">
+    <div class="brand-title">🌟 星途 EXEED <span class="badge">高端品牌</span></div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <span class="job-title">汽车产品专家（星途直营）</span>
+        <span class="job-salary">面议</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-location">📍 全国多地</span>
+        <span class="tag tag-match">✅ 社招</span>
+        <span class="tag tag-salary">💰 五险一金</span>
+      </div>
+      <div class="job-desc">奇瑞直营公司（盈丰投资）招聘，归属奇瑞股份全资子公司，主要经营奇瑞集团品牌（包含奇瑞、捷途、星途、iCAR）销售、售后及生态出行服务。负责星途品牌产品专家相关工作。</div>
+      <a href="https://www.zhipin.com/job_detail/cffafe8cd95b82e30ndy3dS8FVdV.html" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <!-- 捷途 JETOUR -->
+  <div class="brand-group">
+    <div class="brand-title">🚙 捷途 JETOUR <span class="badge">旅行越野品牌</span></div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <span class="job-title">普工/操作工（捷途产线）</span>
+        <span class="job-salary">7000-8000/月</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-location">📍 芜湖/青岛/大连</span>
+        <span class="tag tag-edu">🎓 中专/大专</span>
+        <span class="tag tag-salary">💰 五险一金·包吃住</span>
+      </div>
+      <div class="job-desc">奇瑞集团四大品牌（奇瑞、捷途、星途、iCAR）正式工招聘，分厂含青岛（住宿最佳）、大连等。学历要求正规中专/大专，月综合工资7000-8000，包吃住，缴纳五险一金。</div>
+      <a href="https://www.zhipin.com/job_detail/000198a7c618084a03F609q9ElBT.html" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <!-- iCAR -->
+  <div class="brand-group">
+    <div class="brand-title">🔋 iCAR <span class="badge">新能源新势力</span></div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <span class="job-title">iCAR品牌相关岗位</span>
+        <span class="job-salary">面议</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-location">📍 芜湖</span>
+        <span class="tag tag-match">✅ 社招/校招</span>
+        <span class="tag tag-remote">⚡ 新能源</span>
+      </div>
+      <div class="job-desc">iCAR为奇瑞旗下新能源新势力品牌，目前通过奇瑞集团统一招聘渠道招募研发、营销、产品等方向人才。涵盖智能驾驶、三电系统、用户运营等方向。</div>
+      <a href="https://jy.cumtb.edu.cn/Zhaopin/zuijin.html?id=b6a23f70-c260-d97c-d2e2-efd32973d313" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <!-- 风云 -->
+  <div class="brand-group">
+    <div class="brand-title">🌪️ 奇瑞风云 <span class="badge">新能源序列</span></div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <span class="job-title">风云序列研发及营销岗位</span>
+        <span class="job-salary">面议</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-location">📍 芜湖</span>
+        <span class="tag tag-match">✅ 社招/校招</span>
+        <span class="tag tag-remote">⚡ 新能源序列</span>
+      </div>
+      <div class="job-desc">奇瑞风云为奇瑞新能源产品序列，涵盖风云T9、风云T10等车型。相关岗位通过奇瑞汽车产品共创中心统一招聘，涉及产品开发管理、产品策划、产品定义等方向。</div>
+      <a href="https://www.zhipin.com/job_detail/2782d8fe6c185d6403J52dq1GFBV.html" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <!-- 重点岗位详解 -->
+  <div class="section-header">
+    <span class="icon">🎯</span>
+    <span class="title">重点岗位详解</span>
+    <span class="line"></span>
+    <span class="count">8个岗位</span>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>岗位名称</th>
+          <th>薪资范围</th>
+          <th>工作地点</th>
+          <th>学历要求</th>
+          <th>招聘类型</th>
+          <th>核心方向</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>零碳研究院院长</td>
+          <td><span class="salary-tag">100K-200K/月</span></td>
+          <td><span class="location-tag">芜湖</span></td>
+          <td>本科以上</td>
+          <td>社招</td>
+          <td>零碳技术/新能源</td>
+        </tr>
+        <tr>
+          <td>无人驾驶总经理</td>
+          <td><span class="salary-tag">80K-110K/月</span></td>
+          <td><span class="location-tag">芜湖</span></td>
+          <td>本科以上</td>
+          <td>社招</td>
+          <td>自动驾驶</td>
+        </tr>
+        <tr>
+          <td>智能研究专家</td>
+          <td><span class="salary-tag">50K-80K/月</span></td>
+          <td><span class="location-tag">芜湖</span></td>
+          <td>硕士以上</td>
+          <td>社招</td>
+          <td>AI/智能研究</td>
+        </tr>
+        <tr>
+          <td>智能驾驶总工/负责人</td>
+          <td><span class="salary-tag">50K-80K/月</span></td>
+          <td><span class="location-tag">芜湖</span></td>
+          <td>本科以上</td>
+          <td>社招</td>
+          <td>智能驾驶</td>
+        </tr>
+        <tr>
+          <td>造型总工</td>
+          <td><span class="salary-tag">50K-80K/月</span></td>
+          <td><span class="location-tag">芜湖</span></td>
+          <td>本科以上</td>
+          <td>社招</td>
+          <td>整车设计</td>
+        </tr>
+        <tr>
+          <td>用户运营总监</td>
+          <td><span class="salary-tag">40K-70K/月</span></td>
+          <td><span class="location-tag">芜湖</span></td>
+          <td>本科以上</td>
+          <td>社招</td>
+          <td>用户运营</td>
+        </tr>
+        <tr>
+          <td>热管理工程师</td>
+          <td><span class="salary-tag">10-14K · 14薪</span></td>
+          <td><span class="location-tag">芜湖</span></td>
+          <td>硕士</td>
+          <td>26届校招</td>
+          <td>新能源热管理</td>
+        </tr>
+        <tr>
+          <td>CAE仿真工程师</td>
+          <td><span class="salary-tag">8-11K · 13薪</span></td>
+          <td><span class="location-tag">芜湖</span></td>
+          <td>本科</td>
+          <td>校招</td>
+          <td>CAE仿真</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 面试经验分享 -->
+  <div class="section-header">
+    <span class="icon">🎤</span>
+    <span class="title">面试经验分享</span>
+    <span class="line"></span>
+    <span class="count">4条</span>
+  </div>
+
+  <div class="interview-card">
+    <div class="interview-header">
+      <div class="interview-avatar">CA</div>
+      <div class="interview-info">
+        <h4>CAE仿真工程师面试经验</h4>
+        <div class="meta">牛客网 · 2023年 · 机械设计/制造</div>
+      </div>
+    </div>
+    <div class="interview-body">
+      <strong>面试流程：</strong>奇瑞先进行技术面（一轮或两轮），然后是HR面。技术面一般一轮就行，回答得好的直接录用。技术面结束后HR面，主要问对奇瑞的了解、有没有同学在这边工作等，然后告知薪资问能否接受，等几天就发offer了。<br>
+      <strong>面试问题：</strong>工程师面，基本上没问太多专业问题，让做自我介绍，问大论文做什么、期望薪资、家是哪里的、有没有打算到外地工作。<br>
+      <strong>总结：</strong>奇瑞的面试比较简单。
+      <br><a href="https://www.nowcoder.com/feed/main/detail/69ae23153ac34d4dae2c31d96008a74c" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <div class="interview-card">
+    <div class="interview-header">
+      <div class="interview-avatar">底</div>
+      <div class="interview-info">
+        <h4>底盘工程师面试经验</h4>
+        <div class="meta">牛客网 · 机械设计/制造</div>
+      </div>
+    </div>
+    <div class="interview-body">
+      <strong>面试流程：</strong>技术面适合的技术岗轮流面，当时面了底盘和车身，会根据简历中的项目经历提相关问题。项目经历比较适合底盘，且底盘的工作强度比车身要低，所以选择了底盘方向。<br>
+      <strong>建议：</strong>简历上的项目经历要与投递岗位匹配，面试官会深入追问项目细节。
+      <br><a href="https://m.nowcoder.com/feed/main/detail/9fe5c9a2b1d1486b88821c0b1013a6ee" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <div class="interview-card">
+    <div class="interview-header">
+      <div class="interview-avatar">电</div>
+      <div class="interview-info">
+        <h4>电话面试+HR面经验</h4>
+        <div class="meta">牛客网 · 门头沟学院</div>
+      </div>
+    </div>
+    <div class="interview-body">
+      <strong>面试流程：</strong>投过奇瑞，电话联系了两次就开始问聊薪资确认工作地点，还没正式面试就进入薪资协商阶段。技术面结束后告知后续会有HR面，让等着，HR面完基本就结束了。<br>
+      <strong>注意：</strong>奇瑞的流程可能比较快，电话沟通阶段就会讨论薪资和工作地点，提前想好期望。
+      <br><a href="https://www.nowcoder.com/feed/main/detail/69ae23153ac34d4dae2c31d96008a74c" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <div class="interview-card">
+    <div class="interview-header">
+      <div class="interview-avatar">AI</div>
+      <div class="interview-info">
+        <h4>AI领域求职面试攻略</h4>
+        <div class="meta">人人文库 · 奇瑞AI团队</div>
+      </div>
+    </div>
+    <div class="interview-body">
+      <strong>团队概况：</strong>奇瑞AI团队主要围绕智能驾驶、智能座舱等方向展开。求职者需要具备扎实的专业能力，掌握有效的面试技巧与策略。<br>
+      <strong>准备建议：</strong>从技术能力、项目经验、面试准备及求职心态等角度系统准备。面试题涵盖自我介绍、选择奇瑞的理由、专业知识测试等。
+      <br><a href="https://m.renrendoc.com/paper/496967227.html" class="job-source" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <!-- 薪资待遇分析 -->
+  <div class="section-header">
+    <span class="icon">💰</span>
+    <span class="title">薪资待遇分析</span>
+    <span class="line"></span>
+    <span class="count">职友集数据</span>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>岗位类别</th>
+          <th>薪资范围（月薪）</th>
+          <th>占比/备注</th>
+          <th>工作地点</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>零碳研究院院长</td>
+          <td><span class="salary-tag">100K-200K</span></td>
+          <td>高端管理岗</td>
+          <td><span class="location-tag">芜湖</span></td>
+        </tr>
+        <tr>
+          <td>能源公司总经理</td>
+          <td><span class="salary-tag">100K-180K</span></td>
+          <td>高端管理岗</td>
+          <td><span class="location-tag">芜湖</span></td>
+        </tr>
+        <tr>
+          <td>无人驾驶总经理</td>
+          <td><span class="salary-tag">80K-110K</span></td>
+          <td>智能驾驶板块</td>
+          <td><span class="location-tag">芜湖</span></td>
+        </tr>
+        <tr>
+          <td>智能驾驶总工/造型总工</td>
+          <td><span class="salary-tag">50K-80K</span></td>
+          <td>技术领军岗</td>
+          <td><span class="location-tag">芜湖</span></td>
+        </tr>
+        <tr>
+          <td>用户运营总监/充电配总工</td>
+          <td><span class="salary-tag">40K-60K</span></td>
+          <td>中高层管理</td>
+          <td><span class="location-tag">芜湖</span></td>
+        </tr>
+        <tr>
+          <td>机械/仪器仪表类</td>
+          <td><span class="salary-tag">15K-30K</span></td>
+          <td>占比23.2%（最大类）</td>
+          <td><span class="location-tag">芜湖</span></td>
+        </tr>
+        <tr>
+          <td>计算机/网络/技术类</td>
+          <td><span class="salary-tag">15K-30K</span></td>
+          <td>占比16.2%</td>
+          <td><span class="location-tag">芜湖</span></td>
+        </tr>
+        <tr>
+          <td>校招-本科</td>
+          <td><span class="salary-tag">8K-14K</span></td>
+          <td>13-14薪</td>
+          <td><span class="location-tag">芜湖</span></td>
+        </tr>
+        <tr>
+          <td>普工/操作工</td>
+          <td><span class="salary-tag">7K-8K</span></td>
+          <td>包吃住·五险一金</td>
+          <td><span class="location-tag">芜湖/青岛</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="overview-box" style="background: linear-gradient(135deg, #1e4d7b 0%, #2563eb 100%); margin-top: 12px;">
+    <h3>📈 薪资关键数据</h3>
+    <p>
+      • 薪酬区间：<span class="highlight">4.5K-50K/月</span>，平均月薪约19.9K，2025年较上年增长4%<br>
+      • 本科平均月薪：<span class="highlight">21.3K</span> ｜ 硕士：<span class="highlight">26.1K</span> ｜ 博士：<span class="highlight">50.0K</span><br>
+      • 芜湖平均月薪：<span class="highlight">20.5K</span> ｜ 贵阳：<span class="highlight">13.4K</span><br>
+      • 53.7%的岗位月薪在15-30K之间，79.8%的岗位要求本科学历<br>
+      • 福利：五险一金、绩效奖金、节日福利、带薪年假、员工旅游、年终奖金、免费班车、餐补等
+    </p>
+  </div>
+
+  <!-- 海外业务招聘专区 -->
+  <div class="section-header">
+    <span class="icon">🌍</span>
+    <span class="title">海外业务招聘专区</span>
+    <span class="line"></span>
+    <span class="count">奇瑞国际</span>
+  </div>
+
+  <div class="overview-box">
+    <h3>🌏 奇瑞国际业务概况</h3>
+    <p>
+      奇瑞汽车国际有限公司成立于2001年，注册资本10亿元，总资产超100亿元。在全球<span class="highlight">80多个国家和地区</span>设有海外销售公司、办事处与组装工厂。截至2025年末，奇瑞汽车累计出口量超<span class="highlight">300万辆</span>，连续<span class="highlight">21年</span>位居中国乘用车出口量第一，2025年营收超300亿元。
+    </p>
+  </div>
+
+  <div class="overseas-card">
+    <h4>🌐 国际汽车销售（驻墨西哥等）</h4>
+    <p>负责中南美、亚太、俄罗斯、阿联酋、中东等市场的营销作战。根据年度经营计划拟定营销作战地图与商务政策，分解至季度与月度。要求有海外市场经验，熟悉汽车销售业务。</p>
+    <a href="https://m.zhipin.com/job_detail/6efcdb4b4a67752c03J80968E1JR.html" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原文</a>
+  </div>
+
+  <div class="overseas-card">
+    <h4>🌐 汽车项目管理经理（出差俄罗斯等）</h4>
+    <p>负责海外汽车项目管理，出差俄罗斯、英国、德国、巴西、阿联酋等地。要求有欧盟、中东、中南美、独联体等地出国工作或出差经验；本科及以上学历5年以上经验，或硕士及以上学历3年以上经验。</p>
+    <a href="https://www.zhipin.com/job_detail/5a8e6b4e7ad4ce3b03153tS0GFpT.html" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原文</a>
+  </div>
+
+  <div class="overseas-card">
+    <h4>🌐 海外人力负责人（出差俄罗斯）</h4>
+    <p>负责海外子公司HR制度体系及组织能力建设，将集团HR战略本地化，制定适合子公司的招聘、薪酬、绩效、员工关系等政策。要求有人力资源管理经验，熟悉海外劳动法规。</p>
+    <a href="https://www.zhipin.com/job_detail/e56c48651c9342f303N_2dm5EVNT.html" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原文</a>
+  </div>
+
+  <div class="overseas-card">
+    <h4>🌐 海外采购总监（驻俄罗斯）</h4>
+    <p>具有8年及以上汽车主机厂采购工作经验，常驻海外。熟悉汽车内外饰、发动机、电器采购等相关知识，熟悉汽车制造供应链管理。负责海外采购体系搭建与供应商管理。</p>
+    <a href="https://www.zhipin.com/job_detail/cf614d7b7f6e81060ndy3d-6EldR.html" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原文</a>
+  </div>
+
+  <div class="overseas-card">
+    <h4>🌐 国际贸易/外贸业务员</h4>
+    <p>负责新能源相关产品的外贸业务开发，使用Facebook、WhatsApp等工具进行客户开发。要求英语能力良好，学习公司提供的产品专业知识、外贸实务流程、国际业务开发技巧及商务沟通。薪资3000-6000元，有年终奖金、五险、周末双休。</p>
+    <a href="https://www.zhaopin.com/zhaopin/18b2a69ec1274045b0732fdde404233d/" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原文</a>
+  </div>
+
+  <!-- 全网热议 -->
+  <div class="section-header">
+    <span class="icon">🔥</span>
+    <span class="title">全网热议</span>
+    <span class="line"></span>
+    <span class="count">6条精选</span>
+  </div>
+
+  <div class="discussion-card">
+    <span class="discussion-platform platform-maimai">脉脉</span>
+    <div class="discussion-title">奇瑞员工控诉强制加班"896"是标配</div>
+    <div class="discussion-summary">
+      认证为"奇瑞员工"的脉脉网友发帖称，奇瑞汽车内部存在强制加班行为，"896"是标配，销售前线人员更是需要"007"。如此大的强度却没有加班费，仅对加班超过3小时的员工发放10元餐补。为掩盖加班事实，公司会将所有员工的下班打卡时间统一显示成5点。多位奇瑞员工证实该描述属实。
+    </div>
+    <a href="http://m.toutiao.com/group/7388144121552159284/" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原帖</a>
+  </div>
+
+  <div class="discussion-card">
+    <span class="discussion-platform platform-toutiao">今日头条</span>
+    <div class="discussion-title">奇瑞员工提离职，领导告知要启动竞业协议</div>
+    <div class="discussion-summary">
+      又一奇瑞员工提离职，领导告知要启动竞业协议，现在进退两难。奇瑞汽车的白领员工岗，竞业协议和保密协议在入职时基本都签了，这也是车企常见操作。不过，奇瑞的竞业协议在汽车行业来说，员工离职启动的并不是很多。
+    </div>
+    <a href="http://m.toutiao.com/group/7667254777645990440/" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原帖</a>
+  </div>
+
+  <div class="discussion-card">
+    <span class="discussion-platform platform-toutiao">今日头条</span>
+    <div class="discussion-title">在奇瑞年薪25万，跳理想HR问期望薪资怎么报？</div>
+    <div class="discussion-summary">
+      一位在奇瑞年薪25万的员工面试理想汽车时，HR问期望薪资，他不知道该怎么报——怕报高了没戏，报低了又吃亏。引发网友热议，讨论车企跳槽时的薪资谈判策略。
+    </div>
+    <a href="http://m.toutiao.com/group/7636920548890575412/" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原帖</a>
+  </div>
+
+  <div class="discussion-card">
+    <span class="discussion-platform platform-toutiao">今日头条</span>
+    <div class="discussion-title">38岁长城员工跳槽奇瑞30万年薪offer，要去吗？</div>
+    <div class="discussion-summary">
+      一位38岁的长城汽车员工收到奇瑞30万年薪offer，按14薪发放，涨幅不到30%。现单位越来越卷且降薪，生活压力更大，家和孩子都在老家。网友讨论中年跳槽车企的利弊。
+    </div>
+    <a href="http://m.toutiao.com/group/7419228699419165194/" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原帖</a>
+  </div>
+
+  <div class="discussion-card">
+    <span class="discussion-platform platform-toutiao">今日头条</span>
+    <div class="discussion-title">某车企校招待遇很详细！2024奇瑞校招薪资参考</div>
+    <div class="discussion-summary">
+      前车企HR分享2024年奇瑞汽车校招待遇情况，这两年好像也没有涨，参考性很大。校招薪资待遇主要受学校层级（C9、985、211、双非、海外）和学历的影响。提供了详细的薪资对照表。
+    </div>
+    <a href="http://m.toutiao.com/group/7651794567143719476/" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原帖</a>
+  </div>
+
+  <div class="discussion-card">
+    <span class="discussion-platform platform-niuke">牛客网</span>
+    <div class="discussion-title">汽车大厂真实工作体验 | 奇瑞汽车</div>
+    <div class="discussion-summary">
+      工作环境好、同事很nice、还有免费班车。新人培训做得相当到位，只要你愿意学，能学到不少汽车行业的知识。公司氛围活跃，大家都很友好。不过基本上是单休，周六还得上班，薪资在一线城市相比偏低。面试难度适中，不算太难。
+    </div>
+    <a href="https://m.nowcoder.com/discuss/1426490" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原帖</a>
+  </div>
+
+  <!-- 求职攻略 -->
+  <div class="section-header">
+    <span class="icon">📝</span>
+    <span class="title">求职攻略</span>
+    <span class="line"></span>
+    <span class="count">进奇瑞必读</span>
+  </div>
+
+  <div class="tips-card">
+    <h4>🎯 一、投递策略</h4>
+    <ol>
+      <li><strong>关注官方渠道：</strong>奇瑞招聘官网、前程无忧校园招聘页面是校招主要渠道，社招可关注BOSS直聘、猎聘等平台</li>
+      <li><strong>把握时间节点：</strong>26届春招补录网申截止2026/07/01，需抓紧投递；秋招通常在每年9-12月启动</li>
+      <li><strong>多品牌投递：</strong>奇瑞旗下奇瑞、星途、捷途、iCAR、风云等品牌均可投递，增加获offer概率</li>
+      <li><strong>选择基地：</strong>芜湖总部岗位最多，上海偏研发，鄂尔多斯/青岛/常熟/开封等基地也有岗位需求</li>
+    </ol>
+  </div>
+
+  <div class="tips-card">
+    <h4>🎤 二、面试准备</h4>
+    <ol>
+      <li><strong>技术面：</strong>奇瑞技术面相对简单，主要围绕简历项目经历提问，不会问太多深奥的专业问题，但要对自己的项目了如指掌</li>
+      <li><strong>HR面：</strong>主要问对奇瑞的了解、期望薪资、家在哪里、是否愿意到外地工作等泛泛问题，提前想好答案</li>
+      <li><strong>流程特点：</strong>奇瑞流程较快，电话沟通阶段就可能讨论薪资和工作地点，面试前就要确定自己的期望</li>
+      <li><strong>面试轮次：</strong>通常技术面1-2轮 + HR面1轮，技术面表现好可能只需一轮</li>
+    </ol>
+  </div>
+
+  <div class="tips-card">
+    <h4>💰 三、薪资谈判</h4>
+    <ol>
+      <li><strong>了解市场行情：</strong>奇瑞本科校招月薪8-14K（13-14薪），硕博更高；社招薪资根据岗位和经验面议</li>
+      <li><strong>学历加分：</strong>硕士比本科平均高约5K/月，博士可达50K/月，C9/985院校有额外加分</li>
+      <li><strong>关注福利：</strong>五险一金、免费班车、餐补、年终奖、带薪年假、员工旅游等福利较完善</li>
+      <li><strong>合理报价：</strong>HR问期望薪资时，建议参考同岗位水平上浮10-15%，留出谈判空间</li>
+    </ol>
+  </div>
+
+  <div class="tips-card">
+    <h4>⚠️ 四、注意事项</h4>
+    <ol>
+      <li><strong>加班情况：</strong>部分部门存在"896"工作制（早8晚9，每周6天），面试时可委婉了解目标部门的加班情况</li>
+      <li><strong>竞业协议：</strong>白领岗位入职时基本都签竞业协议和保密协议，离职时需注意相关条款</li>
+      <li><strong>发展空间：</strong>奇瑞作为国产车企头部企业，海外业务快速发展，新能源转型加速，长期发展空间较大</li>
+      <li><strong>城市选择：</strong>芜湖生活成本较低但薪资在行业内偏低，需综合考虑生活成本与职业发展</li>
+    </ol>
+  </div>
+
+  <!-- 信息来源汇总 -->
+  <div class="section-header">
+    <span class="icon">📎</span>
+    <span class="title">信息来源汇总</span>
+    <span class="line"></span>
+    <span class="count">18个来源</span>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>来源名称</th>
+          <th>URL</th>
+          <th>日期</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>猎聘-奇瑞招聘</td>
+          <td><a href="https://m.liepin.com/zpqiruiqiche/" target="_blank" style="color:var(--accent);">m.liepin.com/zpqiruiqiche</a></td>
+          <td>2026-07-28</td>
+        </tr>
+        <tr>
+          <td>前程无忧-2026春招</td>
+          <td><a href="https://jobs.51job.com/campus/caBmVWMVQ2DjUHYlY0.html" target="_blank" style="color:var(--accent);">jobs.51job.com/campus</a></td>
+          <td>2026-07-28</td>
+        </tr>
+        <tr>
+          <td>BOSS直聘-管培生</td>
+          <td><a href="https://www.zhipin.com/job_detail/2782d8fe6c185d6403J52dq1GFBV.html" target="_blank" style="color:var(--accent);">zhipin.com/job_detail/2782d8</a></td>
+          <td>2026-07-28</td>
+        </tr>
+        <tr>
+          <td>猎聘-热管理工程师</td>
+          <td><a href="https://m.liepin.com/job/1980856939.shtml" target="_blank" style="color:var(--accent);">m.liepin.com/job/1980856939</a></td>
+          <td>2026-07-28</td>
+        </tr>
+        <tr>
+          <td>BOSS直聘-2026校招研发</td>
+          <td><a href="https://www.zhipin.com/job_detail/27882b560276c40703140ti1GFBT.html" target="_blank" style="color:var(--accent);">zhipin.com/job_detail/27882b</a></td>
+          <td>2026-07-28</td>
+        </tr>
+        <tr>
+          <td>BOSS直聘-普工/操作工</td>
+          <td><a href="https://www.zhipin.com/job_detail/000198a7c618084a03F609q9ElBT.html" target="_blank" style="color:var(--accent);">zhipin.com/job_detail/000198a</a></td>
+          <td>2026-07-28</td>
+        </tr>
+        <tr>
+          <td>BOSS直聘-奇瑞直营</td>
+          <td><a href="https://www.zhipin.com/job_detail/cffafe8cd95b82e30ndy3dS8FVdV.html" target="_blank" style="color:var(--accent);">zhipin.com/job_detail/cffafe8</a></td>
+          <td>2026-07-28</td>
+        </tr>
+        <tr>
+          <td>牛客网-面试经验</td>
+          <td><a href="https://www.nowcoder.com/feed/main/detail/69ae23153ac34d4dae2c31d96008a74c" target="_blank" style="color:var(--accent);">nowcoder.com/feed/detail/69ae23</a></td>
+          <td>2026-07-28</td>
+        </tr>
+        <tr>
+          <td>牛客网-底盘面试</td>
+          <td><a href="https://m.nowcoder.com/feed/main/detail/9fe5c9a2b1d1486b88821c0b1013a6ee" target="_blank" style="color:var(--accent);">m.nowcoder.com/feed/detail/9fe5c9a</a></td>
+          <td>2026-07-28</td>
+        </tr>
+        <tr>
+          <td>牛客网-工作体验</td>
+          <td><a href="https://ac.nowcoder.com/discuss/1438703" target="_blank" style="color:var(--accent);">ac.nowcoder.com/discuss/1438703</a></td>
+          <td>2026-07-28</td>
+        </tr>
+        <tr>
+          <td>牛客网-工作体验2</td>
+          <td><a href="https://m.nowcoder.com/discuss/1426490" target="_blank" style="color:var(--accent);">m.nowcoder.com/discuss/1426490</a></td>
+          <td>2026-07-28</td>
+        </tr>
+        <tr>
+          <td>今日头条-加班争议</td>
+          <td><a href="http://m.toutiao.com/group/7388144121552159284/" target="_blank" style="color:var(--accent);">m.toutiao.com/group/7388144</a></td>
+          <td>2026-07-28</td>
+        </tr>
+        <tr>
+          <td>今日头条-竞业协议</td>
+          <td><a href="http://m.toutiao.com/group/7667254777645990440/" target="_blank" style="color:var(--accent);">m.toutiao.com/group/7667254</a></td>
+          <td>2026-07-28</td>
+        </tr>
+        <tr>
+          <td>今日头条-校招待遇</td>
+          <td><a href="http://m.toutiao.com/group/7651794567143719476/" target="_blank" style="color:var(--accent);">m.toutiao.com/group/7651794</a></td>
+          <td>2026-07-28</td>
+        </tr>
+        <tr>
+          <td>职友集-薪资数据</td>
+          <td><a href="https://m.jobui.com/company/15428320/salary/j/fanyi/wuhu/" target="_blank" style="color:var(--accent);">m.jobui.com/company/15428320</a></td>
+          <td>2026-07-28</td>
+        </tr>
+        <tr>
+          <td>牛客网-2026校招</td>
+          <td><a href="https://www.nowcoder.com/enterprise/5244" target="_blank" style="color:var(--accent);">nowcoder.com/enterprise/5244</a></td>
+          <td>2026-07-28</td>
+        </tr>
+        <tr>
+          <td>BOSS直聘-国际销售</td>
+          <td><a href="https://m.zhipin.com/job_detail/6efcdb4b4a67752c03J80968E1JR.html" target="_blank" style="color:var(--accent);">m.zhipin.com/job_detail/6efcdb4</a></td>
+          <td>2026-07-28</td>
+        </tr>
+        <tr>
+          <td>BOSS直聘-海外采购总监</td>
+          <td><a href="https://www.zhipin.com/job_detail/cf614d7b7f6e81060ndy3d-6EldR.html" target="_blank" style="color:var(--accent);">zhipin.com/job_detail/cf614d7</a></td>
+          <td>2026-07-28</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Giscus 评论区 -->
+  <div class="comments-section">
+    <div class="comments-title">💬 评论区</div>
+    <div class="comments-desc">登录 GitHub 账号即可留言，支持 Markdown 和表情回应。</div>
+    <script src="https://giscus.app/client.js"
+      data-repo="TS-dinglilu/TS-dinglilu.github.io"
+      data-repo-id="R_kgDOTjqaJQ"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOTjqaJc4DCIL1"
+      data-mapping="pathname" data-term="report-comments"
+      data-strict="0" data-reactions-enabled="1" data-emit-metadata="0"
+      data-input-position="top" data-theme="preferred_color_scheme"
+      data-lang="zh-CN" crossorigin="anonymous" async>
+    </script>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="https://ts-dinglilu.github.io/chery-recruit/">← 返回归档</a>
+      <a href="https://github.com/TS-dinglilu/chery-recruit" target="_blank">GitHub 仓库</a>
+      <a href="https://ts-dinglilu.github.io/">返回主页</a>
+    </div>
+    <span class="brand">奇瑞招聘日报</span> ｜ 每日自动生成 ｜ Powered by TRAE Automation
+  </footer>
+
+</div>
+</body>
+</html>
