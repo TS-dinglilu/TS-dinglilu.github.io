@@ -3,798 +3,634 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TS-dinglilu · 机械工程 / 无人机研究 / 自动化开发</title>
+<title>TS-dinglilu | 主页 - 每日自动化日报系统</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
-
 :root {
-  --bg: #0a0e1a;
-  --bg-elev: #111726;
-  --card: rgba(20, 28, 48, 0.6);
-  --card-solid: rgba(20, 28, 48, 0.9);
-  --border: rgba(0, 212, 255, 0.12);
-  --border-hover: rgba(0, 212, 255, 0.4);
-  --text: #e2e8f0;
-  --text-dim: #8b95b0;
-  --text-faint: #4a5568;
-  --accent: #00d4ff;
-  --accent-warm: #ffb347;
-  --accent-green: #22d3a0;
-  --accent-purple: #818cf8;
-  --accent-pink: #f87171;
-  --accent-teal: #14b8a6;
-  --accent-orange: #fb923c;
-  --grid-line: rgba(0, 212, 255, 0.04);
+  --primary: #0f2c4d;
+  --primary-light: #1e4d7b;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --text-faint: #94a3b8;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --green: #10b981;
+  --green-bg: #ecfdf5;
+  --green-border: #a7f3d0;
+  --amber: #f59e0b;
+  --amber-bg: #fffbeb;
+  --amber-border: #fde68a;
+  --red: #ef4444;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+  --blue-bg: #eff6ff;
+  --blue-border: #bfdbfe;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
+  --radius: 16px;
+  --radius-sm: 10px;
 }
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Sans SC', 'Inter', -apple-system, 'Microsoft YaHei', sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
-  overflow-x: hidden;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
 }
-
 body::before {
   content: '';
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background-image:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
   z-index: 0;
 }
-
 body::after {
   content: '';
   position: fixed;
-  top: -50%; left: -20%;
-  width: 80%; height: 80%;
-  background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.06) 0%, transparent 60%);
+  top: -20%; right: -10%;
+  width: 50%; height: 60%;
+  background: radial-gradient(ellipse, rgba(37,99,235,0.06) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
-  animation: drift 20s ease-in-out infinite alternate;
 }
+.container { max-width: 960px; margin: 0 auto; padding: 0 20px 60px; position: relative; z-index: 1; }
 
-@keyframes drift {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(20%, 10%); }
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 40%, var(--accent) 100%);
+  color: #fff;
+  padding: 60px 24px 48px;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(15, 44, 77, 0.2);
 }
-
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 24px;
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 70%);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -50%; left: -20%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
+}
+.hero-tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  padding: 6px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 20px;
   position: relative;
   z-index: 1;
 }
-
-/* ============ HERO ============ */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  padding: 80px 0 40px;
-}
-
-.hero-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78rem;
-  color: var(--accent);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.hero-tag::before { content: '// '; color: var(--text-faint); }
-
-.hero-tag .status-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent-green);
-  animation: pulse 2s ease-in-out infinite;
-  margin-left: 4px;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 211, 160, 0.4); }
-  50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(34, 211, 160, 0); }
-}
-
 .hero h1 {
-  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-size: 2.5rem;
   font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   margin-bottom: 16px;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 0.4s;
-}
-
-.hero h1 .accent {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-green) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-sub {
-  font-size: 1.05rem;
-  color: var(--text-dim);
-  max-width: 560px;
-  margin-bottom: 32px;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 0.6s;
-}
-
-.hero-sub strong { color: var(--text); font-weight: 500; }
-
-.hero-stats {
-  display: flex;
-  gap: 28px;
-  flex-wrap: wrap;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 0.8s;
-}
-
-.stat { display: flex; flex-direction: column; gap: 2px; }
-
-.stat-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--accent);
-}
-
-.stat-label {
-  font-size: 0.72rem;
-  color: var(--text-faint);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.scroll-hint {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
-  color: var(--text-faint);
-  letter-spacing: 2px;
-  opacity: 0;
-  animation: fadeIn 1s ease forwards 1.5s, bob 2s ease-in-out infinite 2.5s;
-}
-
-.scroll-hint::after {
-  content: '';
-  display: block;
-  width: 1px;
-  height: 30px;
-  background: linear-gradient(to bottom, var(--text-faint), transparent);
-  margin: 8px auto 0;
-}
-
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeIn { to { opacity: 1; } }
-@keyframes bob { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
-
-/* ============ SECTION ============ */
-.section { padding: 48px 0; position: relative; z-index: 1; }
-
-.section-header { margin-bottom: 32px; }
-
-.section-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  color: var(--accent);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.section-label::before { content: '## '; color: var(--text-faint); }
-
-.section-title { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.5px; }
-
-/* ============ SEARCH & FILTER ============ */
-.toolbar {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.search-box {
-  flex: 1;
-  min-width: 200px;
   position: relative;
+  z-index: 1;
 }
-
-.search-box input {
-  width: 100%;
-  padding: 10px 16px 10px 40px;
-  background: var(--card-solid);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  color: var(--text);
-  font-size: 0.9rem;
-  font-family: 'Noto Sans SC', sans-serif;
-  outline: none;
-  transition: border-color 0.2s;
-  backdrop-filter: blur(10px);
+.hero .subtitle {
+  font-size: 1.02rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto 28px;
+  position: relative;
+  z-index: 1;
+  line-height: 1.8;
 }
+.hero .subtitle strong { font-weight: 700; }
 
-.search-box input::placeholder { color: var(--text-faint); }
-.search-box input:focus { border-color: var(--border-hover); }
-
-.search-box::before {
-  content: '🔍';
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.9rem;
-  pointer-events: none;
-}
-
-.filter-tabs {
+/* STATS */
+.stats {
   display: flex;
-  gap: 6px;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 24px;
+  position: relative;
+  z-index: 1;
   flex-wrap: wrap;
 }
-
-.filter-tab {
-  padding: 8px 16px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 50px;
-  color: var(--text-dim);
-  font-size: 0.8rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-  backdrop-filter: blur(10px);
-  user-select: none;
+.stat-item { text-align: center; }
+.stat-num {
+  font-size: 2.2rem;
+  font-weight: 900;
+  font-family: 'Inter', monospace;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.78rem;
+  opacity: 0.75;
+  margin-top: 4px;
+  letter-spacing: 0.5px;
 }
 
-.filter-tab:hover { border-color: var(--border-hover); color: var(--text); }
-.filter-tab.active {
-  background: rgba(0, 212, 255, 0.12);
-  border-color: var(--accent);
-  color: var(--accent);
+/* SECTIONS */
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 48px 0 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  background: var(--blue-bg);
+  border-radius: 10px;
+  font-size: 1.1rem;
 }
 
-/* ============ AUTOMATION CARDS ============ */
-.auto-grid {
+/* GRID */
+.grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 12px;
 }
 
-.auto-card {
-  display: block;
-  text-decoration: none;
-  color: inherit;
+/* CARDS */
+.project-card {
   background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: var(--radius);
   padding: 24px 20px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(10px);
-  opacity: 0;
-  animation: cardIn 0.5s ease forwards;
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
-
-@keyframes cardIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-
-.auto-card::before {
+.project-card::before {
   content: '';
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-green));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, transparent 100%);
 }
-
-.auto-card:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(0, 212, 255, 0.1);
+.project-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: var(--accent-light);
 }
-
-.auto-card:hover::before { transform: scaleX(1); }
-
-.auto-card.hidden { display: none; }
-
-.auto-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+.project-card .card-icon {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  display: block;
+}
+.project-card .card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+.project-card .card-desc {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.project-card .card-meta {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-  margin-bottom: 14px;
+  gap: 12px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
 }
-
-.auto-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
-
-.auto-card p {
-  font-size: 0.82rem;
-  color: var(--text-dim);
-  margin-bottom: 14px;
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.auto-meta {
-  display: flex;
+.project-card .card-badge {
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.68rem;
-  flex-wrap: wrap;
+  gap: 4px;
+  background: var(--green-bg);
+  color: #16a34a;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+  border: 1px solid var(--green-border);
+  font-size: 0.72rem;
+}
+.project-card .card-time {
+  font-family: 'Inter', monospace;
 }
 
-.auto-badge { padding: 3px 10px; border-radius: 20px; font-weight: 500; }
-.auto-badge.active { background: rgba(34, 211, 160, 0.12); color: var(--accent-green); }
-.auto-badge.daily { background: rgba(255, 179, 71, 0.12); color: var(--accent-warm); }
-.auto-badge.early { background: rgba(129, 140, 248, 0.12); color: var(--accent-purple); }
-
-.auto-link { color: var(--accent); margin-left: auto; font-weight: 500; }
-.auto-card:hover .auto-link { gap: 6px; }
-
-/* ============ ABOUT ============ */
+/* ABOUT */
 .about-card {
   background: var(--card);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-md);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px;
-  backdrop-filter: blur(10px);
+  margin: 20px 0;
+  position: relative;
+  overflow: hidden;
 }
+.about-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, transparent 100%);
+}
+.about-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
+.about-card p {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+.about-card p strong { color: var(--primary); font-weight: 600; }
 
-.about-card p { color: var(--text-dim); margin-bottom: 12px; font-size: 0.95rem; }
-.about-card p:last-child { margin-bottom: 0; }
-.about-card strong { color: var(--text); font-weight: 600; }
-.about-highlight { color: var(--accent); font-weight: 500; }
-
-/* ============ SKILLS ============ */
-.skills-wrap { display: flex; flex-wrap: wrap; gap: 10px; }
-
-.skill-tag {
-  padding: 8px 16px;
-  background: var(--card);
-  border: 1px solid var(--border);
+/* TECH STACK */
+.tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+.tech-tag {
+  display: inline-block;
+  background: var(--blue-bg);
+  color: #3730a3;
+  font-size: 0.78rem;
+  padding: 5px 14px;
   border-radius: 8px;
-  font-size: 0.85rem;
   font-weight: 500;
-  transition: all 0.2s ease;
-  backdrop-filter: blur(10px);
+  border: 1px solid var(--blue-border);
 }
+.tech-tag.green { background: var(--green-bg); color: #166534; border-color: var(--green-border); }
+.tech-tag.orange { background: var(--amber-bg); color: #92400e; border-color: var(--amber-border); }
 
-.skill-tag:hover { border-color: var(--border-hover); color: var(--accent); }
-.skill-tag .level { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--text-faint); margin-left: 6px; }
-
-/* ============ PROJECTS ============ */
-.proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-
-.proj-card {
-  display: block;
+/* REPO LIST */
+.repo-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+.repo-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
   text-decoration: none;
   color: inherit;
+  transition: all 0.3s;
+}
+.repo-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.repo-card .repo-name {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+.repo-card .repo-desc {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+.repo-card .repo-visibility {
+  display: inline-block;
+  font-size: 0.68rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 6px;
+  font-weight: 600;
+}
+.repo-card .repo-visibility.public { background: var(--green-bg); color: #16a34a; }
+.repo-card .repo-visibility.private { background: var(--amber-bg); color: #92400e; }
+
+/* COMMENTS */
+.comments-section {
+  margin-top: 48px;
   background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px;
-  transition: all 0.25s ease;
-  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
 }
-
-.proj-card:hover { border-color: var(--border-hover); background: var(--card-solid); }
-
-.proj-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
-.proj-card p { font-size: 0.78rem; color: var(--text-dim); }
-
-.proj-visibility { font-size: 0.65rem; font-family: 'JetBrains Mono', monospace; padding: 2px 6px; border-radius: 4px; font-weight: 400; }
-.proj-visibility.pub { background: rgba(34, 211, 160, 0.1); color: var(--accent-green); }
-.proj-visibility.priv { background: rgba(138, 149, 176, 0.1); color: var(--text-faint); }
-
-/* ============ FOOTER ============ */
-.footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 40px; }
-
-.footer p { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-faint); }
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
+.comments-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
 }
-
-.footer-links a {
-  color: var(--text-dim);
-  text-decoration: none;
+.comments-desc {
   font-size: 0.82rem;
-  transition: color 0.2s;
+  color: var(--text-light);
+  margin-bottom: 20px;
 }
 
-.footer-links a:hover { color: var(--accent); }
-
-/* ============ RESPONSIVE ============ */
-@media (max-width: 900px) {
-  .auto-grid { grid-template-columns: repeat(2, 1fr); }
+/* FOOTER */
+footer {
+  text-align: center;
+  margin-top: 48px;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
 }
-
-@media (max-width: 768px) {
-  .auto-grid { grid-template-columns: 1fr; }
-  .proj-grid { grid-template-columns: 1fr; }
-  .hero-stats { gap: 20px; }
-  .scroll-hint { display: none; }
-  .toolbar { flex-direction: column; align-items: stretch; }
-  .filter-tabs { justify-content: center; }
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
 }
+footer a:hover { text-decoration: underline; }
 
-@media (max-width: 480px) {
-  .container { padding: 0 16px; }
-  .hero h1 { font-size: 2rem; }
-  .about-card { padding: 20px; }
+@media (max-width: 600px) {
+  .hero h1 { font-size: 1.8rem; }
+  .stats { gap: 24px; }
+  .stat-num { font-size: 1.8rem; }
+  .grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-tag">AHUT · Mechanical Engineering · UAV Research<span class="status-dot"></span> 13 systems live</div>
-    <h1><span class="accent">TS-dinglilu</span></h1>
-    <p class="hero-sub">
-      <strong>安徽工业大学</strong>机械工程硕士研究生（研一升研二），研究方向为四旋翼无人机飞行控制与仿真。
-      熟练使用 <strong>MATLAB/Simulink</strong> 仿真、<strong>Python</strong> 强化学习，
-      独立开发并维护 13 个每日自动化信息聚合系统，统一部署于单一 GitHub 仓库。
-    </p>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">13</div><div class="stat-label">自动化系统</div></div>
-      <div class="stat"><div class="stat-num">1+13</div><div class="stat-label">主仓库·子站</div></div>
-      <div class="stat"><div class="stat-num">32</div><div class="stat-label">已生成日报</div></div>
-      <div class="stat"><div class="stat-num">05/09</div><div class="stat-label">每日定时</div></div>
+<div class="hero">
+  <span class="hero-tag">AHUT · Mechanical Engineering · UAV Research</span>
+  <h1>TS-dinglilu</h1>
+  <p class="subtitle">
+    <strong>安徽工业大学</strong>机械工程硕士研究生（研一升研二），研究方向为四旋翼无人机飞行控制与仿真。<br>
+    熟练使用<strong>MATLAB/Simulink</strong>仿真、<strong>Python</strong>强化学习，<br>
+    独立开发<strong>13个</strong>每日自动化信息聚合系统，覆盖招聘、科研、校园生活与职业规划。
+  </p>
+  <div class="stats">
+    <div class="stat-item">
+      <div class="stat-num">13</div>
+      <div class="stat-label">自动化日报</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">32+</div>
+      <div class="stat-label">已生成报告</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">09:00</div>
+      <div class="stat-label">每日定时推送</div>
     </div>
   </div>
-  <div class="scroll-hint">SCROLL</div>
-</section>
+</div>
 
-<!-- AUTOMATION PROJECTS -->
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label">Automation Projects</div>
-      <h2 class="section-title">每日自动化新闻系统</h2>
-    </div>
+<div class="container">
 
-    <div class="toolbar">
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="搜索系统名称或关键词..." oninput="filterCards()">
+  <h2 class="section-title"><span class="icon">📡</span> 每日自动化日报系统</h2>
+  <div class="grid">
+
+    <a href="/car-recruit/" class="project-card">
+      <span class="card-icon">🚗</span>
+      <div class="card-title">车企招聘日报</div>
+      <div class="card-desc">比亚迪、奇瑞、吉利、一汽、大众、特斯拉等车企招聘动态，含岗位对比、研究生去向、进车企攻略及全网热议。</div>
+      <div class="card-meta">
+        <span class="card-badge">● 运行中</span>
+        <span class="card-time">每日 09:00</span>
       </div>
-      <div class="filter-tabs">
-        <div class="filter-tab active" onclick="setFilter('all', this)">全部</div>
-        <div class="filter-tab" onclick="setFilter('recruit', this)">招聘</div>
-        <div class="filter-tab" onclick="setFilter('research', this)">科研</div>
-        <div class="filter-tab" onclick="setFilter('campus', this)">校园</div>
-        <div class="filter-tab" onclick="setFilter('personal', this)">规划</div>
+    </a>
+
+    <a href="/mechanical-recruit/" class="project-card">
+      <span class="card-icon">🔧</span>
+      <div class="card-title">机械招聘日报</div>
+      <div class="card-desc">江浙沪三地机械工程招聘新闻，8家重点企业详情，基于个人技能的个性化岗位推荐矩阵，含通勤分析。</div>
+      <div class="card-meta">
+        <span class="card-badge">● 运行中</span>
+        <span class="card-time">每日 09:00</span>
       </div>
-    </div>
+    </a>
 
-    <div class="auto-grid" id="autoGrid">
+    <a href="/school-news/" class="project-card">
+      <span class="card-icon">🎓</span>
+      <div class="card-title">校园新闻日报</div>
+      <div class="card-desc">安徽工业大学（机械院）、长春工程学院、徐州三中、大庙中学最新新闻，含全网热议讨论。</div>
+      <div class="card-meta">
+        <span class="card-badge">● 运行中</span>
+        <span class="card-time">每日 09:00</span>
+      </div>
+    </a>
 
-      <a href="https://ts-dinglilu.github.io/car-recruit/" class="auto-card" target="_blank" data-cat="recruit" style="animation-delay:0.05s">
-        <div class="auto-icon" style="background:rgba(0,212,255,0.12)">🚗</div>
-        <h3>车企招聘日报</h3>
-        <p>比亚迪、奇瑞、吉利、一汽、大众、特斯拉等车企招聘动态，含岗位对比、研究生去向、进车企攻略及全网热议。</p>
-        <div class="auto-meta">
-          <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
-          <span class="auto-link">访问 →</span>
-        </div>
-      </a>
+    <a href="/drone-research/" class="project-card">
+      <span class="card-icon">🚁</span>
+      <div class="card-title">无人机科研日报</div>
+      <div class="card-desc">arXiv无人机论文热点、自动驾驶前沿、IEEE期刊动态，含写作参考建议与全网技术讨论。</div>
+      <div class="card-meta">
+        <span class="card-badge">● 运行中</span>
+        <span class="card-time">每日 09:00</span>
+      </div>
+    </a>
 
-      <a href="https://ts-dinglilu.github.io/mechanical-recruit/" class="auto-card" target="_blank" data-cat="recruit" style="animation-delay:0.1s">
-        <div class="auto-icon" style="background:rgba(34,211,160,0.12)">⚙️</div>
-        <h3>机械招聘日报</h3>
-        <p>江浙沪三地机械工程招聘新闻，8家重点企业详情，基于个人技能的个性化岗位推荐矩阵，含通勤分析。</p>
-        <div class="auto-meta">
-          <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
-          <span class="auto-link">访问 →</span>
-        </div>
-      </a>
+    <a href="/ahut-campus/" class="project-card">
+      <span class="card-icon">🏫</span>
+      <div class="card-title">安工大校园日报</div>
+      <div class="card-desc">师兄师姐就业去向与薪资分析、学校政策通知、奖助学金竞赛信息、读博升学指南、研二时间节点规划。</div>
+      <div class="card-meta">
+        <span class="card-badge">● 运行中</span>
+        <span class="card-time">每日 09:00</span>
+      </div>
+    </a>
 
-      <a href="https://ts-dinglilu.github.io/school-news/" class="auto-card" target="_blank" data-cat="campus" style="animation-delay:0.15s">
-        <div class="auto-icon" style="background:rgba(255,179,71,0.12)">🎓</div>
-        <h3>校园新闻日报</h3>
-        <p>安徽工业大学（机械院）、长春工程学院、徐州三中、大庙中学最新新闻，含全网热议讨论。</p>
-        <div class="auto-meta">
-          <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
-          <span class="auto-link">访问 →</span>
-        </div>
-      </a>
+    <a href="/future-planning/" class="project-card">
+      <span class="card-icon">📊</span>
+      <div class="card-title">未来规划日报</div>
+      <div class="card-desc">个人职业发展路径分析、行业趋势研判、技能提升规划、目标跟踪与每周复盘。</div>
+      <div class="card-meta">
+        <span class="card-badge">● 运行中</span>
+        <span class="card-time">每日 05:00</span>
+      </div>
+    </a>
 
-      <a href="https://ts-dinglilu.github.io/drone-research/" class="auto-card" target="_blank" data-cat="research" style="animation-delay:0.2s">
-        <div class="auto-icon" style="background:rgba(129,140,248,0.12)">🛩️</div>
-        <h3>无人机科研日报</h3>
-        <p>arXiv 无人机论文热点、自动驾驶前沿、IEEE 期刊动态，含写作参考建议与全网技术讨论。</p>
-        <div class="auto-meta">
-          <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
-          <span class="auto-link">访问 →</span>
-        </div>
-      </a>
+  </div>
 
-      <a href="https://ts-dinglilu.github.io/ahut-campus/" class="auto-card" target="_blank" data-cat="campus" style="animation-delay:0.25s">
-        <div class="auto-icon" style="background:rgba(248,113,113,0.12)">🏫</div>
-        <h3>安工大校园日报</h3>
-        <p>师兄师姐就业去向与薪资分析、学校政策通知、奖助学金竞赛信息、读博升学指南、研二时间节点规划。</p>
-        <div class="auto-meta">
-          <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
-          <span class="auto-link">访问 →</span>
-        </div>
-      </a>
+  <h2 class="section-title"><span class="icon">🏭</span> 车企品牌招聘专区</h2>
+  <div class="grid">
 
-      <a href="https://ts-dinglilu.github.io/byd-recruit/" class="auto-card" target="_blank" data-cat="recruit" style="animation-delay:0.3s">
-        <div class="auto-icon" style="background:rgba(0,82,217,0.12)">🔋</div>
-        <h3>比亚迪招聘日报</h3>
-        <p>比亚迪全集团招聘信息：技术研发、生产制造、供应链、销售管理等岗位详情，含深圳/西安/合肥/长沙基地薪资待遇、面试经验与入职攻略。</p>
-        <div class="auto-meta">
-          <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
-          <span class="auto-link">访问 →</span>
-        </div>
-      </a>
+    <a href="/byd-recruit/" class="project-card">
+      <span class="card-icon">⚡</span>
+      <div class="card-title">比亚迪招聘日报</div>
+      <div class="card-desc">比亚迪全集团招聘信息：技术研发、生产制造、供应链、销售管理等岗位详情，含深圳/西安/合肥/长沙等基地薪资待遇、面试经验与入职攻略。</div>
+      <div class="card-meta">
+        <span class="card-badge">● 运行中</span>
+        <span class="card-time">每日 09:00</span>
+      </div>
+    </a>
 
-      <a href="https://ts-dinglilu.github.io/chery-recruit/" class="auto-card" target="_blank" data-cat="recruit" style="animation-delay:0.35s">
-        <div class="auto-icon" style="background:rgba(34,211,160,0.12)">🚙</div>
-        <h3>奇瑞招聘日报</h3>
-        <p>奇瑞汽车及星途/捷途/风云等子品牌招聘：芜湖/上海/常熟基地岗位，含新能源研发、海外营销、智能制造等方向，面试流程与薪酬体系详解。</p>
-        <div class="auto-meta">
-          <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
-          <span class="auto-link">访问 →</span>
-        </div>
-      </a>
+    <a href="/chery-recruit/" class="project-card">
+      <span class="card-icon">🌟</span>
+      <div class="card-title">奇瑞招聘日报</div>
+      <div class="card-desc">奇瑞汽车及星途/捷途/风云等子品牌招聘：芜湖/上海/常熟基地岗位，含新能源研发、海外营销、智能制造等方向，面试流程与薪酬体系详解。</div>
+      <div class="card-meta">
+        <span class="card-badge">● 运行中</span>
+        <span class="card-time">每日 09:00</span>
+      </div>
+    </a>
 
-      <a href="https://ts-dinglilu.github.io/geely-recruit/" class="auto-card" target="_blank" data-cat="recruit" style="animation-delay:0.4s">
-        <div class="auto-icon" style="background:rgba(255,179,71,0.12)">🚘</div>
-        <h3>吉利招聘日报</h3>
-        <p>吉利汽车及领克/极氪/银河/极星等品牌招聘：杭州/宁波/上海/成都基地，含整车研发、三电系统、智能驾驶等岗位，校招/社招通道与福利待遇。</p>
-        <div class="auto-meta">
-          <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
-          <span class="auto-link">访问 →</span>
-        </div>
-      </a>
+    <a href="/geely-recruit/" class="project-card">
+      <span class="card-icon">🚙</span>
+      <div class="card-title">吉利招聘日报</div>
+      <div class="card-desc">吉利汽车及领克/极氪/银河/极星等品牌招聘：杭州/宁波/上海/成都基地，含整车研发、三电系统、智能驾驶等岗位，校招/社招通道与福利待遇。</div>
+      <div class="card-meta">
+        <span class="card-badge">● 运行中</span>
+        <span class="card-time">每日 09:00</span>
+      </div>
+    </a>
 
-      <a href="https://ts-dinglilu.github.io/xiaomi-recruit/" class="auto-card" target="_blank" data-cat="recruit" style="animation-delay:0.45s">
-        <div class="auto-icon" style="background:rgba(248,113,113,0.12)">📱</div>
-        <h3>小米汽车招聘日报</h3>
-        <p>小米汽车SU7/YU7相关招聘：北京/上海/武汉/西安基地，含智能座舱、自动驾驶、电机电控、整车制造等岗位，互联网+制造业跨界人才需求分析。</p>
-        <div class="auto-meta">
-          <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
-          <span class="auto-link">访问 →</span>
-        </div>
-      </a>
+    <a href="/xiaomi-recruit/" class="project-card">
+      <span class="card-icon">📱</span>
+      <div class="card-title">小米汽车招聘日报</div>
+      <div class="card-desc">小米汽车SU7/YU7相关招聘：北京/上海/武汉/西安基地，含智能座舱、自动驾驶、电机电控、整车制造等岗位，互联网+制造业跨界人才需求分析。</div>
+      <div class="card-meta">
+        <span class="card-badge">● 运行中</span>
+        <span class="card-time">每日 09:00</span>
+      </div>
+    </a>
 
-      <a href="https://ts-dinglilu.github.io/weixiaoli-recruit/" class="auto-card" target="_blank" data-cat="recruit" style="animation-delay:0.5s">
-        <div class="auto-icon" style="background:rgba(129,140,248,0.12)">⚡</div>
-        <h3>蔚小理招聘日报</h3>
-        <p>蔚来/小鹏/理想三大新势力招聘：上海/广州/合肥/常州基地，含换电技术、智能驾驶、增程系统、用户体验等方向，薪资竞争力与期权激励对比。</p>
-        <div class="auto-meta">
-          <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
-          <span class="auto-link">访问 →</span>
-        </div>
-      </a>
+    <a href="/weixiaoli-recruit/" class="project-card">
+      <span class="card-icon">🔋</span>
+      <div class="card-title">蔚小理招聘日报</div>
+      <div class="card-desc">蔚来/小鹏/理想三大新势力招聘：上海/广州/合肥/常州基地，含换电技术、智能驾驶、增程系统、用户体验等方向，薪资竞争力与期权激励对比。</div>
+      <div class="card-meta">
+        <span class="card-badge">● 运行中</span>
+        <span class="card-time">每日 09:00</span>
+      </div>
+    </a>
 
-      <a href="https://ts-dinglilu.github.io/traditional-auto/" class="auto-card" target="_blank" data-cat="recruit" style="animation-delay:0.55s">
-        <div class="auto-icon" style="background:rgba(168,85,247,0.12)">🏭</div>
-        <h3>传统车企招聘日报</h3>
-        <p>一汽/上汽/长安/长城/广汽/东风等传统车企招聘：长春/上海/重庆/保定/广州基地，含整车研发、发动机、变速箱、底盘等岗位，国企福利体系与转岗机制。</p>
-        <div class="auto-meta">
-          <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
-          <span class="auto-link">访问 →</span>
-        </div>
-      </a>
+    <a href="/traditional-auto/" class="project-card">
+      <span class="card-icon">🚘</span>
+      <div class="card-title">传统车企招聘日报</div>
+      <div class="card-desc">一汽/上汽/长安/长城/广汽/东风等传统车企招聘：长春/上海/重庆/保定/广州基地，含整车研发、发动机、变速箱、底盘等岗位，国企福利体系与转岗机制。</div>
+      <div class="card-meta">
+        <span class="card-badge">● 运行中</span>
+        <span class="card-time">每日 09:00</span>
+      </div>
+    </a>
 
-      <a href="https://ts-dinglilu.github.io/research-institute/" class="auto-card" target="_blank" data-cat="recruit" style="animation-delay:0.6s">
-        <div class="auto-icon" style="background:rgba(20,184,166,0.12)">🔬</div>
-        <h3>科研院所招聘日报</h3>
-        <p>中科院/航天科技/中电科/航空工业等科研院所招聘：北京/上海/合肥/西安/成都基地，含预研/仿真/算法/硬件等岗位，事业编制与人才引进政策详解。</p>
-        <div class="auto-meta">
-          <span class="auto-badge active">运行中</span>
-          <span class="auto-badge early">每日 05:00</span>
-          <span class="auto-link">访问 →</span>
-        </div>
-      </a>
-      <a href="https://ts-dinglilu.github.io/future-planning/" class="auto-card" target="_blank" data-cat="personal" style="animation-delay:0.65s">
-        <div class="auto-icon" style="background:rgba(234,179,8,0.12)">🎯</div>
-        <h3>未来规划日报</h3>
-        <p>个人职业发展规划：行业趋势分析、薪资档位定位、读博vs就业决策、技能提升路径、科研前沿追踪，结合个人背景定制成长路线图。</p>
-        <div class="auto-meta">
-          <span class="auto-badge active">运行中</span>
-          <span class="auto-badge early">每日 05:00</span>
-          <span class="auto-link">访问 →</span>
-        </div>
-      </a>
+    <a href="/research-institute/" class="project-card">
+      <span class="card-icon">🔬</span>
+      <div class="card-title">科研院所招聘日报</div>
+      <div class="card-desc">中科院/航天科技/航天科工/中电科/兵工等科研院所招聘信息，含事业编制、博士引进计划、博士后工作站、项目合作等方向。</div>
+      <div class="card-meta">
+        <span class="card-badge">● 运行中</span>
+        <span class="card-time">每日 05:00</span>
+      </div>
+    </a>
 
+  </div>
+
+  <h2 class="section-title"><span class="icon">👤</span> 关于我</h2>
+  <div class="about-card">
+    <h3>个人简介</h3>
+    <p><strong>安徽工业大学</strong>（马鞍山）机械工程硕士研究生，双非院校工科背景。研究方向为<strong>四旋翼无人机飞行控制与仿真</strong>，参与过 AquaWing UAV 项目，使用 MATLAB/Simulink 进行动力学建模与控制仿真。</p>
+    <p>同时熟练运用<strong>Python</strong>进行强化学习算法研究与论文复现，独立开发并维护<strong>13个</strong>自动化信息聚合系统，每日定时搜集、分析并推送招聘与科研资讯。</p>
+    <p>地理优势：马鞍山紧邻南京（高铁约17分钟），求职方向聚焦<strong>江浙沪地区</strong>的仿真工程师、CAE工程师、无人机研发等岗位。</p>
+  </div>
+
+  <div class="about-card">
+    <h3>技术栈</h3>
+    <div class="tech-grid">
+      <span class="tech-tag">MATLAB / Simulink</span>
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag green">强化学习</span>
+      <span class="tech-tag green">四旋翼无人机仿真</span>
+      <span class="tech-tag">CAE 仿真分析</span>
+      <span class="tech-tag">PyTorch</span>
+      <span class="tech-tag orange">C/C++</span>
+      <span class="tech-tag">PowerShell</span>
+      <span class="tech-tag">GitHub API</span>
+      <span class="tech-tag">HTML / CSS</span>
+      <span class="tech-tag">飞书 API</span>
+      <span class="tech-tag orange">Ubuntu Linux</span>
     </div>
   </div>
-</section>
 
-<!-- ABOUT -->
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label">About</div>
-      <h2 class="section-title">关于我</h2>
-    </div>
-    <div class="about-card">
-      <p>
-        <strong>安徽工业大学</strong>（马鞍山）机械工程硕士研究生，双非院校工科背景。
-        研究方向为 <span class="about-highlight">四旋翼无人机飞行控制与仿真</span>，
-        参与过 AquaWing UAV 项目，使用 MATLAB/Simulink 进行动力学建模与控制仿真。
-      </p>
-      <p>
-        同时熟练运用 <strong>Python</strong> 进行强化学习算法研究与论文复现，
-        独立开发并维护多个自动化信息聚合系统，每日定时搜集、分析并推送招聘与科研资讯。
-      </p>
-      <p>
-        地理优势：马鞍山紧邻南京（高铁约17分钟），求职方向聚焦
-        <span class="about-highlight">江浙沪地区</span>的仿真工程师、CAE工程师、无人机研发等岗位。
-      </p>
-    </div>
+  <h2 class="section-title"><span class="icon">📦</span> 其他项目</h2>
+  <div class="repo-list">
+    <a href="https://github.com/TS-dinglilu/ai_diary_app" class="repo-card" target="_blank">
+      <div class="repo-name">📝 AI Diary App <span class="repo-visibility public">public</span></div>
+      <div class="repo-desc">AI 辅助日记应用，安全可控</div>
+    </a>
+    <a href="https://github.com/TS-dinglilu/python_auto" class="repo-card" target="_blank">
+      <div class="repo-name">🐍 Python Auto <span class="repo-visibility public">public</span></div>
+      <div class="repo-desc">Python 自动化脚本集合</div>
+    </a>
+    <a href="https://github.com/TS-dinglilu/drone_lnn" class="repo-card" target="_blank">
+      <div class="repo-name">🛸 Drone LNN <span class="repo-visibility private">private</span></div>
+      <div class="repo-desc">无人机项目（帮老师开发）</div>
+    </a>
+    <a href="https://github.com/TS-dinglilu/fast_drone_250_nuc.wifi" class="repo-card" target="_blank">
+      <div class="repo-name">📡 Drone WiFi Config <span class="repo-visibility private">private</span></div>
+      <div class="repo-desc">无人机 WiFi 配置工具</div>
+    </a>
+    <a href="https://github.com/TS-dinglilu/pytorchlearn" class="repo-card" target="_blank">
+      <div class="repo-name">🔥 PyTorch Learn <span class="repo-visibility private">private</span></div>
+      <div class="repo-desc">PyTorch 深度学习实践</div>
+    </a>
+    <a href="https://github.com/TS-dinglilu/Ubuntu-22.04-learning" class="repo-card" target="_blank">
+      <div class="repo-name">🐧 Ubuntu Learning <span class="repo-visibility private">private</span></div>
+      <div class="repo-desc">Ubuntu 22.04 学习笔记</div>
+    </a>
   </div>
-</section>
 
-<!-- SKILLS -->
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label">Tech Stack</div>
-      <h2 class="section-title">技术栈</h2>
-    </div>
-    <div class="skills-wrap">
-      <div class="skill-tag">MATLAB / Simulink <span class="level">proficient</span></div>
-      <div class="skill-tag">Python <span class="level">proficient</span></div>
-      <div class="skill-tag">强化学习 <span class="level">research</span></div>
-      <div class="skill-tag">四旋翼无人机仿真 <span class="level">research</span></div>
-      <div class="skill-tag">CAE 仿真分析 <span class="level">familiar</span></div>
-      <div class="skill-tag">PyTorch <span class="level">familiar</span></div>
-      <div class="skill-tag">C/C++ <span class="level">basic</span></div>
-      <div class="skill-tag">PowerShell <span class="level">proficient</span></div>
-      <div class="skill-tag">GitHub API <span class="level">proficient</span></div>
-      <div class="skill-tag">HTML / CSS <span class="level">proficient</span></div>
-      <div class="skill-tag">飞书 API <span class="level">proficient</span></div>
-      <div class="skill-tag">Ubuntu Linux <span class="level">familiar</span></div>
-    </div>
+  <div class="comments-section">
+    <div class="comments-title">💬 留言讨论</div>
+    <div class="comments-desc">欢迎在这里交流讨论，分享你的想法和建议</div>
+    <script src="https://giscus.app/client.js"
+      data-repo="TS-dinglilu/TS-dinglilu.github.io"
+      data-repo-id="R_kgDOTjqaJQ"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOTjqaJc4DCIL1"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+    </script>
   </div>
-</section>
 
-<!-- OTHER PROJECTS -->
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label">Repositories</div>
-      <h2 class="section-title">其他项目</h2>
-    </div>
-    <div class="proj-grid">
-      <a href="https://github.com/TS-dinglilu/ai_diary_app" class="proj-card" target="_blank">
-        <h4>📝 AI Diary App <span class="proj-visibility pub">public</span></h4>
-        <p>AI 辅助日记应用，安全可控</p>
-      </a>
-      <a href="https://github.com/TS-dinglilu/python_auto" class="proj-card" target="_blank">
-        <h4>🐍 Python Auto <span class="proj-visibility pub">public</span></h4>
-        <p>Python 自动化脚本集合</p>
-      </a>
-      <a href="https://github.com/TS-dinglilu/drone_lnn" class="proj-card" target="_blank">
-        <h4>🛸 Drone LNN <span class="proj-visibility priv">private</span></h4>
-        <p>无人机项目（帮老师开发）</p>
-      </a>
-      <a href="https://github.com/TS-dinglilu/fast_drone_250_nuc.wifi" class="proj-card" target="_blank">
-        <h4>📡 Drone WiFi Config <span class="proj-visibility priv">private</span></h4>
-        <p>无人机 WiFi 配置工具</p>
-      </a>
-      <a href="https://github.com/TS-dinglilu/pytorchlearn" class="proj-card" target="_blank">
-        <h4>🔥 PyTorch Learn <span class="proj-visibility priv">private</span></h4>
-        <p>PyTorch 深度学习实践</p>
-      </a>
-      <a href="https://github.com/TS-dinglilu/Ubuntu-22.04-learning" class="proj-card" target="_blank">
-        <h4>🐧 Ubuntu Learning <span class="proj-visibility priv">private</span></h4>
-        <p>Ubuntu 22.04 学习笔记</p>
-      </a>
-    </div>
-  </div>
-</section>
+  <footer>
+    <p>© 2026 TS-dinglilu · <a href="https://github.com/TS-dinglilu">GitHub</a> · 每日自动更新</p>
+  </footer>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-links">
-      <a href="https://github.com/TS-dinglilu" target="_blank">GitHub</a>
-      <a href="https://ts-dinglilu.github.io/car-recruit/" target="_blank">车企招聘</a>
-      <a href="https://ts-dinglilu.github.io/mechanical-recruit/" target="_blank">机械招聘</a>
-      <a href="https://ts-dinglilu.github.io/school-news/" target="_blank">学校新闻</a>
-      <a href="https://ts-dinglilu.github.io/drone-research/" target="_blank">无人机日报</a>
-      <a href="https://ts-dinglilu.github.io/ahut-campus/" target="_blank">校园生活</a>
-      <a href="https://ts-dinglilu.github.io/byd-recruit/" target="_blank">比亚迪</a>
-      <a href="https://ts-dinglilu.github.io/chery-recruit/" target="_blank">奇瑞</a>
-      <a href="https://ts-dinglilu.github.io/geely-recruit/" target="_blank">吉利</a>
-      <a href="https://ts-dinglilu.github.io/xiaomi-recruit/" target="_blank">小米汽车</a>
-      <a href="https://ts-dinglilu.github.io/weixiaoli-recruit/" target="_blank">蔚小理</a>
-      <a href="https://ts-dinglilu.github.io/traditional-auto/" target="_blank">传统车企</a>
-      <a href="https://ts-dinglilu.github.io/research-institute/" target="_blank">研究所</a>
-      <a href="https://ts-dinglilu.github.io/future-planning/" target="_blank">未来规划</a>
-    </div>
-    <p>// crafted with precision · powered by TRAE Automation</p>
-    <p style="margin-top:4px;">© 2026 TS-dinglilu · Anhui University of Technology</p>
-  </div>
-</footer>
-
-<script>
-var currentFilter = 'all';
-
-function setFilter(cat, el) {
-  currentFilter = cat;
-  document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
-  el.classList.add('active');
-  filterCards();
-}
-
-function filterCards() {
-  var query = document.getElementById('searchInput').value.toLowerCase();
-  var cards = document.querySelectorAll('.auto-card');
-  var visibleCount = 0;
-
-  cards.forEach(function(card) {
-    var title = card.querySelector('h3').textContent.toLowerCase();
-    var desc = card.querySelector('p').textContent.toLowerCase();
-    var cat = card.getAttribute('data-cat');
-    var matchSearch = !query || title.indexOf(query) >= 0 || desc.indexOf(query) >= 0;
-    var matchFilter = currentFilter === 'all' || cat === currentFilter;
-
-    if (matchSearch && matchFilter) {
-      card.classList.remove('hidden');
-      visibleCount++;
-    } else {
-      card.classList.add('hidden');
-    }
-  });
-}
-</script>
+</div>
 
 </body>
 </html>
