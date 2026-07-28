@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>无人机科研日报 | 2026年7月26日</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v2.0 美化版
+   适用于所有自动化任务的报告HTML
+   配色方案: 深蓝(#0f2c4d) + 蓝色强调(#2563eb)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --primary: #0f2c4d;
+  --primary-light: #1e4d7b;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-glow: rgba(37, 99, 235, 0.15);
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --text-faint: #94a3b8;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --green: #10b981;
+  --green-bg: #ecfdf5;
+  --green-border: #a7f3d0;
+  --amber: #f59e0b;
+  --amber-bg: #fffbeb;
+  --amber-border: #fde68a;
+  --red: #ef4444;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+  --blue-bg: #eff6ff;
+  --blue-border: #bfdbfe;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', 'Inter', -apple-system, 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 15px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Decorative grid background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating gradient orb */
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%; right: -10%;
+  width: 50%; height: 60%;
+  background: radial-gradient(ellipse, rgba(37,99,235,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   HEADER - 渐变标题栏 with glass-morphism
+   ============================================================ */
+.header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 40%, var(--accent) 100%);
+  color: #fff;
+  padding: 48px 24px 36px;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(15, 44, 77, 0.2);
+  margin-bottom: 8px;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -50%; left: -20%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.header .subtitle {
+  font-size: 0.9rem;
+  opacity: 0.88;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .date {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  z-index: 1;
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   SECTIONS - 卡片式内容区
+   ============================================================ */
+.section {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin: 20px 0;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, transparent 100%);
+}
+.section h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 20px 0 10px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ============================================================
+   CARDS - 信息卡片
+   ============================================================ */
+.card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-left-color: var(--accent-light);
+}
+.card-title {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-meta {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  font-family: 'Inter', monospace;
+}
+.card-content {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.card-content strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ============================================================
+   NEWS ITEMS - 新闻条目
+   ============================================================ */
+.news-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.news-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--border);
+  transition: all 0.3s ease;
+}
+.news-item:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.news-item:hover::before {
+  background: var(--accent);
+  width: 5px;
+}
+.news-item .badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--blue-bg);
+  color: #1e40af;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-right: 8px;
+  font-weight: 600;
+  border: 1px solid var(--blue-border);
+  letter-spacing: 0.3px;
+}
+.news-item .badge.hot {
+  background: var(--red-bg);
+  color: #dc2626;
+  border-color: var(--red-border);
+}
+.news-item .badge.new {
+  background: var(--green-bg);
+  color: #16a34a;
+  border-color: var(--green-border);
+}
+
+/* ============================================================
+   TABLES - 数据表格
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 16px 0;
+  font-size: 0.84rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+th {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) { background: #f8fafc; }
+tr:hover { background: var(--blue-bg); }
+tr:nth-child(even):hover { background: #eff6ff; }
+
+/* ============================================================
+   TAGS - 标签
+   ============================================================ */
+.tag {
+  display: inline-block;
+  background: var(--blue-bg);
+  color: #3730a3;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin: 2px;
+  font-weight: 500;
+  border: 1px solid var(--blue-border);
+}
+.tag.green { background: var(--green-bg); color: #166534; border-color: var(--green-border); }
+.tag.orange { background: var(--amber-bg); color: #92400e; border-color: var(--amber-border); }
+.tag.red { background: var(--red-bg); color: #991b1b; border-color: var(--red-border); }
+
+/* ============================================================
+   SOURCE LINKS - 原文链接
+   ============================================================ */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: var(--blue-bg);
+  border: 1px solid var(--blue-border);
+  transition: all 0.2s;
+}
+.source-link:hover {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* ============================================================
+   DISCUSSION - 讨论区
+   ============================================================ */
+.discussion {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-border);
+  border-left: 4px solid var(--amber);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 14px 0;
+  transition: all 0.3s;
+}
+.discussion:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.discussion .platform {
+  display: inline-block;
+  background: var(--amber);
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   TIP BOX - 提示框
+   ============================================================ */
+.tip-box {
+  background: var(--green-bg);
+  border: 1px solid var(--green-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.tip-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--green);
+}
+.tip-box h4 {
+  color: #065f46;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.tip-box ul { list-style: none; padding-left: 0; }
+.tip-box li {
+  padding: 5px 0 5px 24px;
+  position: relative;
+  font-size: 0.88rem;
+  color: #1a4731;
+}
+.tip-box li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   WARNING BOX - 警告框
+   ============================================================ */
+.warning-box {
+  background: var(--red-bg);
+  border: 1px solid var(--red-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.warning-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--red);
+}
+.warning-box h4 {
+  color: #991b1b;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SUMMARY TABLE - 汇总表
+   ============================================================ */
+.summary-table { font-size: 0.82rem; }
+.summary-table td:first-child {
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   GISCUS / COMMENTS - 评论区
+   ============================================================ */
+.comments-section {
+  margin-top: 40px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.comments-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.comments-desc {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   FOOTER - 页脚
+   ============================================================ */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   RESPONSIVE - 移动端适配
+   ============================================================ */
+@media (max-width: 600px) {
+  .header { padding: 32px 16px 24px; border-radius: 0 0 20px 20px; }
+  .header h1 { font-size: 1.3rem; }
+  .section { padding: 18px 14px; margin: 14px 0; }
+  .card, .news-item { padding: 14px 16px; }
+  table { font-size: 0.76rem; }
+  th, td { padding: 7px 5px; }
+  .container { padding: 0 12px 40px; }
+}
+
+/* ============================================================
+   UTILITY - 通用工具类
+   ============================================================ */
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-light); text-decoration: underline; }
+strong { color: var(--primary); }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <h1>无人机科研日报</h1>
+    <div class="date">2026年7月26日 · 第26期</div>
+    <div class="subtitle">无人机论文热点 / 自动驾驶前沿 / 全网热议 / 写作参考</div>
+  </div>
+</div>
+
+<div class="overview">
+  <div class="stat-card">
+    <div class="num">8</div>
+    <div class="label">无人机论文</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">4</div>
+    <div class="label">自动驾驶论文</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">8</div>
+    <div class="label">全网热议</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">4</div>
+    <div class="label">期刊动态</div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- 无人机论文热点 -->
+<div class="section">
+  <div class="section-title"><span class="icon">🛩️</span> 无人机论文热点</div>
+
+  <!-- 飞行控制与容错 -->
+  <div class="category">
+    <div class="category-header">飞行控制与容错控制</div>
+
+    <div class="paper-card">
+      <div class="title">Safe and Scalable Multi-Drone Payload Transport via CBF-based Reinforcement Learning with Zero-Shot Sim-to-Real Transfer<span class="tag tag-exp">实验/工程</span></div>
+      <div class="meta">作者：Jaeyoun Choi, Oswin So, Songyuan Zhang, Cooper Taylor, Chuchu Fan | 来源：<span class="src">IEEE RA-L (Early Access, 2026)</span> | 日期：2026-07-22</div>
+      <div class="highlight">提出基于控制屏障函数(CBF)强化学习的多无人机协同载荷运输框架，通过域随机化训练实现零样本仿真到真实迁移，单一策略可泛化至不同团队规模和动态环境，在真实多组硬件实验中验证了安全性。</div>
+      <div class="links">🔗 <a href="https://arxiv.org/abs/2607.20665" target="_blank">arXiv:2607.20665</a> | DOI: 10.1109/LRA.2026.3715346</div>
+    </div>
+  </div>
+
+  <!-- 集群协同 -->
+  <div class="category">
+    <div class="category-header">集群协同</div>
+
+    <div class="paper-card">
+      <div class="title">Decentralized UAV Swarms for Ground Target Protection in GPS- and Communication-Denied Environments<span class="tag tag-exp">实验/工程</span></div>
+      <div class="meta">作者：Dimitria Silveria, Paulo Ricardo Marques de Araujo, Tiago Nascimento, Sidney Givigi | 来源：<span class="src">IROS 2026</span> | 日期：2026-07-22</div>
+      <div class="highlight">在GPS和通信完全拒绝的恶劣环境下，利用分布式无人机集群实现地面目标保护。采用卡尔曼滤波仅依赖相对测量估计目标和集群状态，提出自适应围堵策略拦截敌方无人机，已在真实机器人上验证。</div>
+      <div class="links">🔗 <a href="https://arxiv.org/abs/2607.20710" target="_blank">arXiv:2607.20710</a></div>
+    </div>
+
+    <div class="paper-card">
+      <div class="title">Distributed Model-Based Diffusion For Scalable Multi-Robot Trajectory Optimization<span class="tag tag-theory">综述/理论</span></div>
+      <div class="meta">作者：Haejoon Lee, Xinyi Wang, Taekyung Kim, Dimitra Panagou | 来源：<span class="src">arXiv cs.RO</span> | 日期：2026-07-23</div>
+      <div class="highlight">提出分布式基于模型的扩散框架(DMBD)，将逆扩散过程分解为局部条件逆扩散，每台机器人独立在自己的控制子空间去噪，通过服务器聚合广播实现协调。在目标交换、多层覆盖、停车等场景下亚秒级求解。</div>
+      <div class="links">🔗 <a href="https://arxiv.org/abs/2607.20992" target="_blank">arXiv:2607.20992</a></div>
+    </div>
+  </div>
+
+  <!-- 自主导航与视觉感知 -->
+  <div class="category">
+    <div class="category-header">自主导航与视觉感知</div>
+
+    <div class="paper-card">
+      <div class="title">VoLN: Vision-Only Long-Horizon Navigation—Paradigm, Benchmark, and Method<span class="tag tag-exp">实验/工程</span></div>
+      <div class="meta">作者：Jiabin Lou, Haopeng Wang, Yuanshuai Wang 等 | 来源：<span class="src">arXiv cs.RO/cs.AI</span> | 日期：2026-07-23</div>
+      <div class="highlight">提出纯视觉长程导航新范式VoLN，构建7,210集无人机导航基准VoLN-UAV，在GPS拒绝环境下仅靠局部场景线索（非外部指令）实现目标导向飞行。初始基线在困难场景成功率仅1.8%，揭示长程证据整合与闭环稳定性挑战。</div>
+      <div class="links">🔗 <a href="https://arxiv.org/abs/2607.21400" target="_blank">arXiv:2607.21400</a> | 项目页: <a href="https://admire-ljb.github.io/VoLN-UAV/" target="_blank">VoLN-UAV</a></div>
+    </div>
+
+    <div class="paper-card">
+      <div class="title">DINS-IO: Learned Inertial Odometry via Differentiable INS Consistency<span class="tag tag-theory">综述/理论</span></div>
+      <div class="meta">作者：Hao Qiao, Yan Wang, Jian Kuang, Xiaoji Niu | 来源：<span class="src">arXiv cs.RO</span> | 日期：2026-07-23</div>
+      <div class="highlight">通过可微分惯性导航系统(INS)一致性约束学习惯性里程计，将传统INS物理模型与深度学习结合，提升GPS拒绝环境下的航迹推算精度，对无人机室内/城市峡谷导航有重要参考价值。</div>
+      <div class="links">🔗 <a href="https://arxiv.org/abs/2607.20232" target="_blank">arXiv:2607.20232</a></div>
+    </div>
+  </div>
+
+  <!-- SLAM -->
+  <div class="category">
+    <div class="category-header">SLAM与建图</div>
+
+    <div class="paper-card">
+      <div class="title">GLAM-SLAM: Real-time Gaussian Large-scale Mapping via Flow Densification and Spatial Decomposition<span class="tag tag-exp">实验/工程</span></div>
+      <div class="meta">作者：Panagiotis Mermigkas, Argyris Manetas, Petros Maragos | 来源：<span class="src">IROS 2026</span> | 日期：2026-07-23</div>
+      <div class="highlight">基于3D高斯泼溅(3DGS)的实时大规模室外SLAM系统，通过流致密化锚定策略和场景分区空间分解，在KITTI、Oxford RobotCar等长序列数据集上重建质量提升15%，同时保持实时性能和低GPU内存占用。代码已开源。</div>
+      <div class="links">🔗 <a href="https://arxiv.org/abs/2607.21416" target="_blank">arXiv:2607.21416</a> | 代码: <a href="https://github.com/pmermigkas/GLAM-SLAM/" target="_blank">GitHub</a></div>
+    </div>
+
+    <div class="paper-card">
+      <div class="title">HGeo-TopoMap: Boosting Topological Mapping with Hierarchical Geometric Priors<span class="tag tag-exp">实验/工程</span></div>
+      <div class="meta">作者：Siyu Li, Kunyu Peng, Di Wen, Beiping Hou, Zhiyong Li, Kailun Yang | 来源：<span class="src">arXiv cs.CV/cs.RO</span> | 日期：2026-07-23</div>
+      <div class="highlight">利用层次化几何先验增强拓扑建图，提升机器人在复杂环境中的全局定位与导航能力，代码和模型权重将公开。</div>
+      <div class="links">🔗 <a href="https://arxiv.org/abs/2607.21281" target="_blank">arXiv:2607.21281</a> | 代码: <a href="https://github.com/lynn-yu/HGeo-TopoMap" target="_blank">GitHub</a></div>
+    </div>
+  </div>
+
+  <!-- 轨迹规划 -->
+  <div class="category">
+    <div class="category-header">轨迹规划</div>
+
+    <div class="paper-card">
+      <div class="title">Self-Supervised Bio-Inspired Robotic Trajectory Planning with Obstacle Avoidance<span class="tag tag-theory">综述/理论</span></div>
+      <div class="meta">作者：Miroslav Krupa, Miroslav Cibula, Kristina Malinovska | 来源：<span class="src">ICANN 2026</span> | 日期：2026-07-23</div>
+      <div class="highlight">结合仿生启发与自监督学习实现机器人避障轨迹规划，探索生物导航机制在工程系统中的应用，为无人机在复杂环境中的轨迹生成提供新思路。</div>
+      <div class="links">🔗 <a href="https://arxiv.org/abs/2607.20743" target="_blank">arXiv:2607.20743</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- 自动驾驶论文热点 -->
+<div class="section">
+  <div class="section-title"><span class="icon">🚗</span> 自动驾驶论文热点（技术可迁移至无人机）</div>
+
+  <div class="paper-card">
+    <div class="title">A Real-Time Generalized Nash Equilibrium Framework for Interaction-Aware Autonomous Driving in Mixed Traffic<span class="tag tag-exp">实验/工程</span></div>
+    <div class="meta">作者：Nouhed Naidja, Mohamed-Cherif Rahal 等 | 来源：<span class="src">CoDIT 2026</span> | 日期：2026-07-23</div>
+    <div class="highlight">将混合交通中的驾驶交互建模为广义纳什均衡问题(GNEP)，显式建模共享安全与几何约束，通过PSO求解器在50ms内实时收敛。在真实雷诺Zoé自动驾驶车上验证，生成类人舒适轨迹。<strong>迁移启示：博弈论框架可迁移至无人机避碰与空域协调。</strong></div>
+    <div class="links">🔗 <a href="https://arxiv.org/abs/2607.21043" target="_blank">arXiv:2607.21043</a></div>
+  </div>
+
+  <div class="paper-card">
+    <div class="title">Deep Reinforcement-Learning-Guided Model Predictive Control for Preventing Overtakes in Autonomous Racing<span class="tag tag-exp">实验/工程</span></div>
+    <div class="meta">作者：Yufei Xi, Yijie Liao, Tulga Ersal | 来源：<span class="src">IROS 2026</span> | 日期：2026-07-23</div>
+    <div class="highlight">分层强化学习引导MPC框架用于自动驾驶赛车防守，SAC策略层在Frenet域生成几何感知防御参考，嵌入非线性MPC中。超车时间从8.8s延长至14.6s，33.3ms实时求解。<strong>迁移启示：分层RL+MPC架构可直接用于无人机动态对抗与追逃。</strong></div>
+    <div class="links">🔗 <a href="https://arxiv.org/abs/2607.20973" target="_blank">arXiv:2607.20973</a></div>
+  </div>
+
+  <div class="paper-card">
+    <div class="title">Compact Latent Coordination for Autonomous Vehicles at Unsignalized Intersections<span class="tag tag-theory">综述/理论</span></div>
+    <div class="meta">作者：Gil Lifshits, Igal Bilik, Gilad Katz | 来源：<span class="src">arXiv cs.LG/cs.RO</span> | 日期：2026-07-23</div>
+    <div class="highlight">提出紧凑潜在空间协调方法，解决无信号交叉口多自动驾驶车辆的协同决策问题，通过低维潜在表征降低通信开销。<strong>迁移启示：潜在空间协调可用于无人机集群交叉航路点协调。</strong></div>
+    <div class="links">🔗 <a href="https://arxiv.org/abs/2607.21488" target="_blank">arXiv:2607.21488</a></div>
+  </div>
+
+  <div class="paper-card">
+    <div class="title">SevDiff: Severity-Conditioned Diffusion for Long-Tail Conflict Trajectory Generation<span class="tag tag-theory">综述/理论</span></div>
+    <div class="meta">作者：Eni Solomon Laughter | 来源：<span class="src">arXiv cs.LG/cs.RO</span> | 日期：2026-07-23</div>
+    <div class="highlight">基于严重程度条件的扩散模型生成长尾冲突轨迹，解决安全关键场景数据稀缺问题。<strong>迁移启示：扩散模型生成对抗轨迹可用于无人机碰撞场景测试与安全验证。</strong></div>
+    <div class="links">🔗 <a href="https://arxiv.org/abs/2607.20549" target="_blank">arXiv:2607.20549</a></div>
+  </div>
+</div>
+
+<!-- 期刊动态与征稿 -->
+<div class="section">
+  <div class="section-title"><span class="icon">📚</span> 期刊动态与征稿</div>
+
+  <div class="journal-card">
+    <div class="name">IEEE Robotics and Automation Letters (RA-L)</div>
+    <div class="info">本期亮点：Multi-Drone Payload Transport via CBF-based RL (arXiv:2607.20665) 已被RA-L Early Access收录。该刊聚焦机器人与自动化领域高质量短文，审稿周期约2-3个月。</div>
+    <div class="meta">ISSN: 2377-3766 | JCR Q1 | 中科院2区 | 影响因子: 4.6</div>
+  </div>
+
+  <div class="journal-card">
+    <div class="name">Drones (MDPI)</div>
+    <div class="info">2026年JCR影响因子已发布。该刊覆盖无人机设计、飞行控制、导航、感知、集群、应用等全方向，审稿周期约12.9天首发决定，对研究生友好。ARPAS-UK协会成员投稿享APC折扣。</div>
+    <div class="meta">ISSN: 2504-446X | JCR Q1 | 中科院2区 | 开放获取</div>
+  </div>
+
+  <div class="journal-card">
+    <div class="name">Journal of Field Robotics (Wiley)</div>
+    <div class="info">专注于机器人在真实环境中的实地应用研究，涵盖无人机、自动驾驶、农业机器人等。审稿周期约2个月，LetPub评分7.7。适合发表无人机户外实验与系统级论文。</div>
+    <div class="meta">ISSN: 1556-4959 | JCR Q2 | 中科院2区 | 影响因子: 4.2 | 月刊</div>
+  </div>
+
+  <div class="journal-card">
+    <div class="name">IROS 2026 投稿动态</div>
+    <div class="info">本期多篇无人机相关论文已被IROS 2026接收，包括：Decentralized UAV Swarms (2607.20710)、GLAM-SLAM (2607.21416)、Deep RL-Guided MPC for Racing (2607.20973)等。IROS 2026是无人机与机器人领域顶级会议，关注系统与实验创新。</div>
+    <div class="meta">IEEE/RSJ International Conference on Intelligent Robots and Systems</div>
+  </div>
+</div>
+
+<!-- 全网热议 -->
+<div class="section">
+  <div class="section-title"><span class="icon">🌐</span> 全网热议</div>
+
+  <div class="discussion-card">
+    <span class="platform pl-csdn">CSDN</span>
+    <div class="title">无人机SLAM与动态路径规划算法瓶颈深度剖析</div>
+    <div class="content">文章深入分析了城市空中交通场景中无人机避障失败频发的原因，指出动态环境不可预测性（行人、车辆、其他飞行器）是核心瓶颈。实际系统需结合SLAM与动态窗口法(DWA)进行连续轨迹优化，简单阈值判断已无法满足复杂场景需求。讨论了传感器噪声、计算延迟与环境动态性三重挑战。</div>
+    <div class="source">来源：<a href="https://blog.csdn.net/LogicWander/article/details/155449511" target="_blank">CSDN博客 - LogicWander</a></div>
+  </div>
+
+  <div class="discussion-card">
+    <span class="platform pl-csdn">CSDN</span>
+    <div class="title">无人机视觉/激光雷达集群SLAM技术进展综述</div>
+    <div class="content">综述了无人机集群SLAM的基本概念与挑战，对比了不同传感器配置（视觉、LiDAR、RGB-D、IMU融合）的特点。分析了集中式、分布式和混合式协同SLAM架构的优劣，讨论了通信带宽限制、时钟同步、数据关联等开放问题，对无人机集群建图研究有重要参考价值。</div>
+    <div class="source">来源：<a href="https://blog.csdn.net/u011344545/article/details/151611655" target="_blank">CSDN博客</a></div>
+  </div>
+
+  <div class="discussion-card">
+    <span class="platform pl-csdn">CSDN</span>
+    <div class="title">基于V-SLAM与粒子群优化的无人机三维路径规划</div>
+    <div class="content">介绍了将视觉SLAM与粒子群优化(PSO)结合的两步式无人机路径规划方案，先通过V-SLAM构建环境地图，再用PSO在三维空间搜索最优路径。讨论了PSO参数调优、收敛速度与路径平滑性之间的权衡，评论区有读者分享了在Gazebo仿真中的复现经验。</div>
+    <div class="source">来源：<a href="https://blog.csdn.net/weixin_46039719/article/details/158570912" target="_blank">CSDN博客</a></div>
+  </div>
+
+  <div class="discussion-card">
+    <span class="platform pl-toutiao">头条/公众号</span>
+    <div class="title">同济胡笳团队WCog-VLA：将VLA从反应式驾驶推向主动驾驶</div>
+    <div class="content">同济大学胡笳团队提出WCog-VLA（双层级世界认知视觉-语言-动作模型），将世界模型认知能力融入端到端自动驾驶，从传统的反应式驾驶升级为主动预测式驾驶。讨论区关注VLA模型在无人机场景理解的迁移潜力，以及世界模型对无人机长程规划的启发。</div>
+    <div class="source">来源：<a href="https://arxiv.org/abs/2607.08375" target="_blank">arXiv:2607.08375</a> | 相关讨论: 头条号</div>
+  </div>
+
+  <div class="discussion-card">
+    <span class="platform pl-toutiao">头条/公众号</span>
+    <div class="title">具身智能的3D数据、路径分野与硅谷竞赛：Sim-to-Real成为核心范式</div>
+    <div class="content">讨论了具身智能领域Sim-to-Real范式的崛起，机器人在虚拟环境中经历"数百万年进化"后迁移至现实。已有Demo展示零样本迁移成功案例。评论者将此与无人机领域的域随机化迁移（如本期CBF-RL多无人机论文）进行对比，认为Sim-to-Real是机器人研究的共同趋势。</div>
+    <div class="source">来源：头条号 - AI每日简报</div>
+  </div>
+
+  <div class="discussion-card">
+    <span class="platform pl-reddit">Reddit</span>
+    <div class="title">r/MachineLearning: AAAI 2026审稿过程讨论与论文评价乱象</div>
+    <div class="content">Reddit社区热议AAAI 2026审稿过程，讨论帖获得大量关注。社区反映好论文被刷、低分论文被捧的现象，引发对AI顶会评审机制的反思。有研究者分享了无人机相关论文的审稿经历，建议关注论文质量本身而非仅追求顶会标签。讨论延伸到如何选择适合无人机研究的发表 venue。</div>
+    <div class="source">来源：<a href="https://www.reddit.com/r/machinelearning/" target="_blank">Reddit r/MachineLearning</a></div>
+  </div>
+
+  <div class="discussion-card">
+    <span class="platform pl-toutiao">头条/公众号</span>
+    <div class="title">MDPI全线SCI期刊2026年影响因子发布，Drones期刊稳中有升</div>
+    <div class="content">2026年度JCR期刊引证报告发布，MDPI旗下100本SCI/SSCI期刊影响因子汇总出炉。全线增长仅4本下降，Drones期刊在无人机领域保持领先地位。讨论区关注OA期刊的学术声誉与审稿质量，部分研究者分享了向Drones投稿的积极体验。</div>
+    <div class="source">来源：头条号 - 科检易编辑部</div>
+  </div>
+
+  <div class="discussion-card">
+    <span class="platform pl-zhihu">知乎</span>
+    <div class="title">无人机集群协同控制技术：从分布式优化到强化学习的发展趋势</div>
+    <div class="content">知乎专栏讨论了无人机集群协同控制的技术演进路线，从传统集中式优化到分布式优化算法，再到近期强化学习方法的应用。讨论了通信约束下的可扩展性、鲁棒性控制等核心问题，以及多智能体系统理论与分布式RL的结合方向。与本期DMBD分布式扩散轨迹优化论文高度相关。</div>
+    <div class="source">来源：知乎专栏 - 无人机集群技术</div>
+  </div>
+</div>
+
+<!-- 今日写作参考建议 -->
+<div class="section">
+  <div class="section-title"><span class="icon">✍️</span> 今日写作参考建议</div>
+
+  <div class="tip-card">
+    <span class="tip-num">1</span>
+    <span class="tip-title">聚焦"GPS/通信拒绝环境下的无人机自主性"作为论文差异化亮点</span>
+    <div class="tip-body">本期多篇高质量论文（VoLN纯视觉导航、去中心化UAV集群、DINS-IO惯性里程计）均指向GPS拒绝环境这一热点方向。建议在论文引言中强调GPS/通信不可用场景的现实需求（城市峡谷、电子对抗、室内），并引用这些最新工作作为研究背景。可参考VoLN的benchmark设计思路构建自己的实验评估框架。</div>
+  </div>
+
+  <div class="tip-card">
+    <span class="tip-num">2</span>
+    <span class="tip-title">借鉴"分层RL+MPC"和"CBF安全约束"两条技术路线强化方法论</span>
+    <div class="tip-body">本期RL-Guided MPC论文（IROS 2026）和CBF-based RL论文（RA-L）分别代表了强化学习与传统控制融合的两条路线：前者用RL生成参考轨迹、MPC跟踪执行；后者用CBF作为安全屏障约束RL策略。建议根据你的研究问题选择路线，并在相关工作部分对比两者优劣。两篇论文均已开源代码，可作为复现基线。</div>
+  </div>
+
+  <div class="tip-card">
+    <span class="tip-num">3</span>
+    <span class="tip-title">利用扩散模型进行轨迹优化是新兴趋势，值得关注并预研</span>
+    <div class="tip-body">DMBD（分布式扩散轨迹优化）和SevDiff（扩散冲突轨迹生成）展示了扩散模型在轨迹规划领域的强大潜力。扩散模型天然适合多模态分布建模，在非凸环境中比传统优化方法更有优势。如果你的论文涉及复杂环境下的轨迹规划，建议在方法论中讨论扩散模型与传统优化的对比，这将是审稿人关注的前沿点。</div>
+  </div>
+</div>
+
+<!-- 底部来源汇总 -->
+<div class="section">
+  <div class="section-title"><span class="icon">📋</span> 来源汇总</div>
+  <div class="source-list">
+    <ul>
+      <li>📄 arXiv cs.RO 最新论文列表 - <a href="https://arxiv.org/list/cs.RO/recent" target="_blank">arxiv.org/list/cs.RO/recent</a></li>
+      <li>📄 arXiv:2607.21400 - VoLN: Vision-Only Long-Horizon Navigation</li>
+      <li>📄 arXiv:2607.20710 - Decentralized UAV Swarms for Ground Target Protection</li>
+      <li>📄 arXiv:2607.20665 - Safe Multi-Drone Payload Transport via CBF-based RL</li>
+      <li>📄 arXiv:2607.21416 - GLAM-SLAM: Real-time Gaussian Large-scale Mapping</li>
+      <li>📄 arXiv:2607.20992 - Distributed Model-Based Diffusion for Multi-Robot Trajectory</li>
+      <li>📄 arXiv:2607.20743 - Self-Supervised Bio-Inspired Robotic Trajectory Planning</li>
+      <li>📄 arXiv:2607.20232 - DINS-IO: Learned Inertial Odometry</li>
+      <li>📄 arXiv:2607.21281 - HGeo-TopoMap: Hierarchical Geometric Priors</li>
+      <li>📄 arXiv:2607.21043 - GNEP for Interaction-Aware Autonomous Driving</li>
+      <li>📄 arXiv:2607.20973 - Deep RL-Guided MPC for Autonomous Racing</li>
+      <li>📄 arXiv:2607.21488 - Compact Latent Coordination for AV</li>
+      <li>📄 arXiv:2607.20549 - SevDiff: Severity-Conditioned Diffusion</li>
+      <li>💬 CSDN: 无人机SLAM与动态路径规划算法瓶颈</li>
+      <li>💬 CSDN: 无人机视觉/激光雷达集群SLAM技术进展综述</li>
+      <li>💬 CSDN: 基于V-SLAM与PSO的无人机路径规划</li>
+      <li>💬 头条/公众号: 同济胡笳团队WCog-VLA</li>
+      <li>💬 头条/公众号: 具身智能Sim-to-Real讨论</li>
+      <li>💬 Reddit: r/MachineLearning AAAI 2026讨论</li>
+      <li>💬 头条/公众号: MDPI 2026年影响因子汇总</li>
+      <li>💬 知乎: 无人机集群协同控制技术讨论</li>
+      <li>📚 IEEE RA-L | Drones (MDPI) | Journal of Field Robotics | IROS 2026</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <p>无人机科研日报 | 每日9:00自动生成 | 数据来源：arXiv, CSDN, 知乎, Reddit, 微信公众号等</p>
+  <p>归档地址：<a href="https://ts-dinglilu.github.io/drone-research-daily/" style="color:var(--accent);text-decoration:none;">ts-dinglilu.github.io/drone-research-daily</a></p>
+</div>
+
+<!-- 评论区 -->
+<div style="max-width:860px;margin:40px auto 0;padding:24px 20px;background:#fff;border-radius:12px;border:1px solid #e2e8f0;">
+<h2 style="font-size:1.1rem;color:#1a3a5c;margin-bottom:6px;">💬 评论区</h2>
+<p style="font-size:0.82rem;color:#718096;margin-bottom:20px;">登录GitHub账号即可评论，支持Markdown和表情回应。历史报告也可评论。</p>
+<script src="https://giscus.app/client.js" data-repo="TS-dinglilu/TS-dinglilu.github.io" data-repo-id="R_kgDOTjqaJQ" data-category="Announcements" data-category-id="DIC_kwDOTjqaJc4DCIL1" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async></script>
+</div>
+
+</body>
+</html>
