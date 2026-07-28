@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>科研院所招聘日报 | 2026-07-29</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v3.0 暗色主题版
+   适用于所有自动化任务的报告HTML
+   配色方案: 深空蓝(#0a0e1a) + 青色强调(#00d4ff)
+   字体: JetBrains Mono + Noto Sans SC
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --bg: #0a0e1a;
+  --bg-elev: #111726;
+  --card: rgba(20, 28, 48, 0.6);
+  --card-solid: rgba(20, 28, 48, 0.75);
+  --border: rgba(0, 212, 255, 0.12);
+  --border-hover: rgba(0, 212, 255, 0.4);
+  --text: #e8eef5;
+  --text-dim: #e0e8f2;
+  --text-faint: #d8e2f0;
+  --accent: #00d4ff;
+  --accent-warm: #ffb347;
+  --accent-green: #22d3a0;
+  --accent-purple: #818cf8;
+  --accent-pink: #f87171;
+  --accent-teal: #14b8a6;
+  --accent-orange: #fb923c;
+  --grid-line: rgba(0, 212, 255, 0.04);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.5);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', 'JetBrains Mono', -apple-system, 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 15px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Decorative grid background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating gradient orb with radial-gradient animation */
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%; right: -10%;
+  width: 50%; height: 60%;
+  background: radial-gradient(ellipse, rgba(0,212,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: floatOrb 18s ease-in-out infinite;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate(-40px, 30px) scale(1.15); opacity: 1; }
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   HEADER - 渐变标题栏 with glass-morphism
+   ============================================================ */
+.header {
+  background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(20,28,48,0.8) 40%, rgba(129,140,248,0.08) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text);
+  padding: 48px 24px 36px;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-top: none;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.4);
+  margin-bottom: 8px;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(0,212,255,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -50%; left: -20%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(129,140,248,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0,212,255,0.3);
+}
+.header .subtitle {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .date {
+  font-size: 0.8rem;
+  color: var(--accent);
+  background: rgba(0,212,255,0.1);
+  backdrop-filter: blur(8px);
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 50px;
+  border: 1px solid var(--border-hover);
+  position: relative;
+  z-index: 1;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ============================================================
+   SECTIONS - 卡片式内容区
+   相邻section间距28px，底部2px边框实现清晰视觉分隔
+   ============================================================ */
+.section {
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin: 48px 0;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  border-top: 2px solid rgba(0, 212, 255, 0.3);
+  border-bottom: 2px solid rgba(0, 212, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 50%, transparent 100%);
+}
+.section h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid rgba(0, 212, 255, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 20px 0 10px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ============================================================
+   CARDS - 信息卡片 (间距16px，多层透明度)
+   ============================================================ */
+.card {
+  background: var(--card-solid);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 16px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-left-color: var(--accent);
+  border-color: var(--border-hover);
+}
+.card-title {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-meta {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.card-content {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.card p { color: var(--text); line-height: 1.75; margin-bottom: 8px; }
+.card-content strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ============================================================
+   NEWS ITEMS - 新闻条目
+   ============================================================ */
+.news-item {
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 16px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.news-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--border-hover);
+  transition: all 0.3s ease;
+}
+.news-item:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.news-item:hover::before {
+  background: var(--accent);
+  width: 5px;
+}
+.news-item p { color: var(--text); line-height: 1.75; margin-bottom: 8px; }
+.news-item .badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(0,212,255,0.12);
+  color: var(--accent);
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-right: 8px;
+  font-weight: 600;
+  border: 1px solid rgba(0,212,255,0.25);
+  letter-spacing: 0.3px;
+}
+.news-item .badge.hot {
+  background: rgba(248,113,113,0.15);
+  color: var(--accent-pink);
+  border-color: rgba(248,113,113,0.3);
+}
+.news-item .badge.new {
+  background: rgba(34,211,160,0.15);
+  color: var(--accent-green);
+  border-color: rgba(34,211,160,0.3);
+}
+
+/* ============================================================
+   TABLES - 数据表格 (暗色背景，行交替色)
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 16px 0;
+  font-size: 0.84rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  background: var(--card-solid);
+}
+th {
+  background: var(--bg-elev);
+  color: var(--accent);
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid var(--border-hover);
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) { background: rgba(0,0,0,0.15); }
+tr:hover { background: rgba(0,212,255,0.08); }
+tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
+
+/* ============================================================
+   TAGS - 标签
+   ============================================================ */
+.tag {
+  display: inline-block;
+  background: rgba(0,212,255,0.1);
+  color: var(--accent);
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin: 2px;
+  font-weight: 500;
+  border: 1px solid rgba(0,212,255,0.2);
+}
+.tag.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
+.tag.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
+.tag.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
+
+/* ============================================================
+   SOURCE LINKS - 原文链接
+   ============================================================ */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.2);
+  transition: all 0.2s;
+}
+.source-link:hover {
+  background: var(--accent);
+  color: var(--bg);
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,212,255,0.3);
+}
+
+/* ============================================================
+   DISCUSSION - 讨论区
+   ============================================================ */
+.discussion {
+  background: rgba(255,179,71,0.08);
+  border: 1px solid rgba(255,179,71,0.2);
+  border-left: 4px solid var(--accent-warm);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 16px 0;
+  transition: all 0.3s;
+}
+.discussion:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.discussion .platform {
+  display: inline-block;
+  background: var(--accent-warm);
+  color: var(--bg);
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   TIP BOX - 提示框
+   ============================================================ */
+.tip-box {
+  background: rgba(34,211,160,0.08);
+  border: 1px solid rgba(34,211,160,0.2);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 16px 0;
+  position: relative;
+  overflow: hidden;
+}
+.tip-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--accent-green);
+}
+.tip-box h4 {
+  color: var(--accent-green);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.tip-box ul { list-style: none; padding-left: 0; }
+.tip-box li {
+  padding: 5px 0 5px 24px;
+  position: relative;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+.tip-box li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent-green);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   WARNING BOX - 警告框
+   ============================================================ */
+.warning-box {
+  background: rgba(248,113,113,0.08);
+  border: 1px solid rgba(248,113,113,0.2);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 16px 0;
+  position: relative;
+  overflow: hidden;
+}
+.warning-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--accent-pink);
+}
+.warning-box h4 {
+  color: var(--accent-pink);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SUMMARY TABLE - 汇总表
+   ============================================================ */
+.summary-table { font-size: 0.82rem; }
+.summary-table td:first-child {
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   GISCUS / COMMENTS - 评论区 (dark_dimmed 主题)
+   注意: HTML中giscus script需设置 data-theme="dark_dimmed"
+   ============================================================ */
+.comments-section {
+  margin-top: 40px;
+  background: var(--card-solid);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.comments-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.comments-desc {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   FOOTER - 页脚
+   ============================================================ */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ============================================================
+   RESPONSIVE - 移动端适配
+   ============================================================ */
+@media (max-width: 600px) {
+  .header { padding: 32px 16px 24px; border-radius: 0 0 20px 20px; }
+  .header h1 { font-size: 1.3rem; }
+  .section { padding: 18px 14px; margin: 48px 0; }
+  .card, .news-item { padding: 14px 16px; }
+  table { font-size: 0.76rem; }
+  th, td { padding: 7px 5px; }
+  .container { padding: 0 12px 40px; }
+}
+
+/* ============================================================
+   SECTION TITLE - 带编号的板块标题
+   ============================================================ */
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 56px 0 28px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(20,28,48,0.5) 100%);
+  border-left: 4px solid var(--accent);
+  border-top: 1px solid rgba(0, 212, 255, 0.25);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 0 12px 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.section-title .emoji,
+.section-title .icon {
+  font-size: 1.3rem;
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+}
+.section-title .num {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  background: rgba(0,212,255,0.1);
+  padding: 3px 12px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: 1px solid var(--border);
+}
+.section-title > span:not(.num):not(.emoji):not(.icon) {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ============================================================
+   HIGHLIGHT BOX - 高亮提示框
+   ============================================================ */
+.highlight-box {
+  background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(129,140,248,0.05) 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text);
+  position: relative;
+  transition: all 0.3s;
+}
+.highlight-box:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+  border-color: var(--border-hover);
+}
+.highlight-box strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ============================================================
+   SKILL BAR - 技能进度条
+   ============================================================ */
+.skill-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(0,212,255,0.08);
+  border-radius: 50px;
+  margin: 6px 0 12px;
+  overflow: hidden;
+  position: relative;
+}
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 100%);
+  border-radius: 50px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.skill-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 20px; height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 100%);
+  border-radius: 50px;
+}
+
+/* ============================================================
+   TAG VARIANTS - 标签变体
+   ============================================================ */
+.tag-blue { background: rgba(0,212,255,0.1); color: var(--accent); border: 1px solid rgba(0,212,255,0.2); }
+.tag-green, .tag.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border: 1px solid rgba(34,211,160,0.25); }
+.tag-purple { background: rgba(129,140,248,0.1); color: var(--accent-purple); border: 1px solid rgba(129,140,248,0.25); }
+.tag-red, .tag.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border: 1px solid rgba(248,113,113,0.25); }
+.tag-orange, .tag.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border: 1px solid rgba(255,179,71,0.25); }
+
+/* ============================================================
+   BADGE - 评估徽章 (独立使用，不限于news-item内)
+   ============================================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.badge-high {
+  background: rgba(34,211,160,0.15);
+  color: var(--accent-green);
+  border: 1px solid rgba(34,211,160,0.3);
+}
+.badge-mid {
+  background: rgba(255,179,71,0.15);
+  color: var(--accent-warm);
+  border: 1px solid rgba(255,179,71,0.3);
+}
+.badge-low {
+  background: rgba(248,113,113,0.15);
+  color: var(--accent-pink);
+  border: 1px solid rgba(248,113,113,0.3);
+}
+
+/* ============================================================
+   HEADER META - 标题栏元数据
+   ============================================================ */
+.header .meta {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .meta span {
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  background: rgba(0,212,255,0.08);
+  backdrop-filter: blur(8px);
+  padding: 4px 12px;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+}
+
+/* ============================================================
+   TIMELINE - 时间线
+   ============================================================ */
+.timeline {
+  position: relative;
+  padding-left: 24px;
+  margin: 16px 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--border) 100%);
+  border-radius: 50px;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 8px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -21px; top: 6px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
+  z-index: 1;
+}
+.timeline-item .time {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 6px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.timeline-item .content {
+  background: var(--card-solid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  transition: all 0.3s;
+}
+.timeline-item .content:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateX(2px);
+  border-color: var(--border-hover);
+}
+.timeline-item .content p { margin-bottom: 4px; }
+.timeline-item .content strong { color: var(--accent); }
+
+/* ============================================================
+   DECISION GRID - 决策对比卡片
+   ============================================================ */
+.decision-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 16px 0;
+}
+@media (max-width: 600px) {
+  .decision-grid { grid-template-columns: 1fr; }
+}
+.decision-card {
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.decision-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.decision-card h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.decision-card p { margin-bottom: 4px; }
+.decision-card strong { font-weight: 600; }
+.decision-yes {
+  background: rgba(34,211,160,0.08);
+  border: 1px solid rgba(34,211,160,0.2);
+  border-left: 4px solid var(--accent-green);
+}
+.decision-yes h4 { color: var(--accent-green); }
+.decision-yes strong { color: var(--accent-green); }
+.decision-no {
+  background: rgba(255,179,71,0.08);
+  border: 1px solid rgba(255,179,71,0.2);
+  border-left: 4px solid var(--accent-warm);
+}
+.decision-no h4 { color: var(--accent-warm); }
+.decision-no strong { color: var(--accent-warm); }
+
+/* ============================================================
+   DISCUSSION ITEM - 讨论条目
+   ============================================================ */
+.discussion-item {
+  background: rgba(255,179,71,0.08);
+  border: 1px solid rgba(255,179,71,0.2);
+  border-left: 4px solid var(--accent-warm);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  margin: 12px 0;
+  transition: all 0.3s;
+}
+.discussion-item:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.discussion-item .platform {
+  display: inline-block;
+  background: var(--accent-warm);
+  color: var(--bg);
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.discussion-item .text {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.discussion-item .text strong { color: var(--accent); }
+.discussion-item .link { font-size: 0.82rem; }
+
+/* ============================================================
+   GISCUS SECTION - 评论区别名 (dark_dimmed 主题)
+   注意: HTML中giscus script需设置 data-theme="dark_dimmed"
+   ============================================================ */
+.giscus-section {
+  margin-top: 40px;
+  background: var(--card-solid);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.giscus-section h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ============================================================
+   FOOTER (div version) - 页脚别名
+   ============================================================ */
+div.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+}
+div.footer a { color: var(--accent); }
+div.footer a:hover { color: var(--accent-purple); }
+
+/* ============================================================
+   DECORATIVE ELEMENTS - 装饰元素 (隐藏，由body伪元素替代)
+   ============================================================ */
+.grid-bg { display: none; }
+.floating-ball { display: none; }
+
+/* ============================================================
+   UTILITY - 通用工具类
+   ============================================================ */
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-purple); text-decoration: underline; }
+strong { color: var(--text); font-weight: 700; }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+
+/* SALARY GRID - 薪资网格 (补充定义确保文字可读) */
+.salary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0;
+}
+@media (max-width: 600px) {
+  .salary-grid { grid-template-columns: 1fr; }
+}
+.salary-item {
+  background: rgba(0,212,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  text-align: center;
+}
+.salary-item .level {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.salary-item .amount {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.salary-item .note {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+/* PILL - 小标签 (补充定义确保文字可读) */
+.pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+  margin: 2px;
+  font-weight: 500;
+  background: rgba(0,212,255,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(0,212,255,0.2);
+}
+.pill.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
+.pill.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
+.pill.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
+
+/* INFO ROW - 信息行 */
+.info-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin: 10px 0;
+}
+
+/* META BAR - 元数据栏 */
+.meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- 页头 -->
+<header class="header">
+  <div class="container">
+    <h1>科研院所招聘日报</h1>
+    <div class="date-badge">2026年7月29日</div>
+    <div class="stats-row">
+      <div class="stat-card">
+        <span class="num">38+</span>
+        <span class="label">在招岗位</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">22+</span>
+        <span class="label">重点院所</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">11+</span>
+        <span class="label">城市政策</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">35+</span>
+        <span class="label">信息来源</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 今日概览 -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title"><span class="icon">📊</span>今日概览</h2>
+    <div class="overview-box">
+      <h3>今日搜集到的招聘动态一览</h3>
+      <ul>
+        <li><strong>中科院系统</strong>：力学所博士后20-60万/年、上海光机所、微电子所、地球环境所、工程热物理所招聘99人</li>
+        <li><strong>航天系统</strong>：航天科工二院/六院601所/十院/科技保障中心2026届校招持续进行</li>
+        <li><strong>航空系统</strong>：航空工业东方、南京机电、上海航空电器2026届招聘，机械类专业为重点需求</li>
+        <li><strong>中电科系统</strong>：45所/电科院/12所等在招，47家研究所全面启动2026校招社招</li>
+        <li><strong>兵器/船舶/核工业</strong>：兵器202/205/59所春招、中船701所机械工程岗、中核集团星原计划硕士40万起</li>
+        <li><strong>新型研发机构</strong>：之江实验室2026校招含机械岗位、鹏城实验室工业互联网方向招聘</li>
+        <li><strong>薪资亮点</strong>：兵器类硕士年薪28-50万、中电科硕士38万+、航天口待遇最优</li>
+        <li><strong>人才政策</strong>：11城更新硕士落户/住房补贴政策，青岛购房补贴最高30万</li>
+      </ul>
+      <p style="margin-top:18px;font-size:0.92rem;opacity:0.9;">本报告专为<strong>安徽工业大学机械工程硕士研究生</strong>量身定制，全面覆盖2026届校招与社招岗位，涵盖中科院、航天、航空、中电科、兵器船舶核工业及新型研发机构六大系统。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 中科院系统招聘 -->
+<section class="section" style="background:rgba(20,28,48,0.9);">
+  <div class="container">
+    <h2 class="section-title"><span class="icon">🔬</span>中科院系统招聘动态</h2>
+
+    <div class="group-title">中科院力学研究所（北京）</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>特别研究助理岗位（博士后）</h3>
+        <span class="sys-tag tag-cas">中科院系统</span>
+      </div>
+      <div class="job-meta">
+        <span class="pill">💰 20-60万/年</span>
+        <span class="pill green">📍 北京</span>
+        <span class="pill orange">🎓 博士研究生</span>
+        <span class="pill green">编制：事业编制</span>
+      </div>
+      <div class="job-desc"><strong>需求专业：</strong>力学、机械工程、光学工程、材料科学与工程、动力工程及工程热物理、控制科学与工程、航空宇航科学与技术、人工智能等</div>
+      <div class="job-desc"><strong>福利待遇：</strong>提供流动公寓或住房补贴，特别优秀人才薪资上不封顶，合同期满可申请正式工作岗位</div>
+      <div class="job-desc"><strong>截止日期：</strong>2026-07-23（需关注是否延期）</div>
+      <a class="link-btn" href="https://m.gaoxiaojob.com/job/detail/2182038.html" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">中科院上海光学精密机械研究所</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2025-2026年度特别研究助理（博士后）</h3>
+        <span class="sys-tag tag-cas">中科院系统</span>
+      </div>
+      <div class="job-desc"><strong>院所简介：</strong>成立于1964年，我国建立最早、规模最大的激光科学技术专业研究所</div>
+      <div class="job-desc"><strong>研究方向：</strong>现代光学重大基础及应用研究，含精密机械、光学工程等交叉学科</div>
+      <a class="link-btn" href="http://m.toutiao.com/group/7545763356829827618/" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">中科院微电子研究所</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026年特别研究助理岗位（15个职位）</h3>
+        <span class="sys-tag tag-cas">中科院系统</span>
+      </div>
+      <div class="job-meta">
+        <span class="pill orange">🎓 博士研究生</span>
+        <span class="pill">报名方式：站内投递</span>
+      </div>
+      <div class="job-desc"><strong>需求专业：</strong>物理学、化学、机械工程、光学工程、仪器科学与技术、材料科学与工程、电子科学与技术等</div>
+      <a class="link-btn" href="https://m.gaoxiaojob.com/announcement/detail/308162.html" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">中科院工程热物理研究所</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>科研部门招聘99人</h3>
+        <span class="sys-tag tag-cas">中科院系统</span>
+      </div>
+      <div class="job-desc"><strong>特别助理研究员：</strong>招聘对象为博士、博士后，获得博士学位3年以内，应届博士毕业生优先</div>
+      <div class="job-desc"><strong>研究方向：</strong>工程热物理、动力工程、机械工程等相关领域</div>
+      <a class="link-btn" href="http://m.toutiao.com/group/7546128588404228654/" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">中科院地球环境研究所</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026年特别研究助理（含博士后）</h3>
+        <span class="sys-tag tag-cas">中科院系统</span>
+      </div>
+      <div class="job-desc"><strong>岗位职责：</strong>系统掌握本专业基础理论知识，有独立研究能力，参与基础性研究工作</div>
+      <a class="link-btn" href="http://m.toutiao.com/group/7595091501084869161/" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+  </div>
+</section>
+
+<!-- 航天系统招聘 -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title"><span class="icon">🚀</span>航天系统招聘动态</h2>
+
+    <div class="group-title">航天科工二院（成都）</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026年博士后招聘</h3>
+        <span class="sys-tag tag-hangtian">航天系统</span>
+      </div>
+      <div class="job-meta">
+        <span class="pill orange">🎓 博士研究生</span>
+        <span class="pill green">📍 成都</span>
+        <span class="pill">招若干人</span>
+      </div>
+      <div class="job-desc"><strong>院所简介：</strong>中国航天科工集团有限公司第二研究院，企业研发机构，公立（国有）</div>
+      <a class="link-btn" href="https://m.gaoxiaojob.com/hotword/gsoa203896" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">航天科工科技保障中心</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026年校园招聘</h3>
+        <span class="sys-tag tag-hangtian">航天系统</span>
+      </div>
+      <div class="job-desc"><strong>招聘对象：</strong>面向普通高校招聘2026届硕士及以上应届毕业生</div>
+      <div class="job-desc"><strong>岗位包括：</strong>预先研究岗（人工智能相关专业）等多个方向</div>
+      <a class="link-btn" href="http://m.toutiao.com/group/7642309370793722402/" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">航天科工六院601所</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026届校园招聘</h3>
+        <span class="sys-tag tag-hangtian">航天系统</span>
+      </div>
+      <div class="job-desc"><strong>院所简介：</strong>始建于1965年，我国第一座大型固体火箭发动机地面试验基地，被誉为"我国固体火箭发动机试验的摇篮"</div>
+      <div class="job-desc"><strong>需求专业：</strong>机械工程、航空宇航科学与技术、动力工程等</div>
+      <a class="link-btn" href="http://m.toutiao.com/group/7613227612474704430/" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">航天科工六院（整体校招）</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026届校园招聘正式启动</h3>
+        <span class="sys-tag tag-hangtian">航天系统</span>
+      </div>
+      <div class="job-desc"><strong>信息来源：</strong>东南大学机械工程学院发布，面向机械工程等专业招聘</div>
+      <a class="link-btn" href="https://me.seu.edu.cn/2025/0813/c1350a536370/page.htm" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">航天科工十院</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026届秋季招聘</h3>
+        <span class="sys-tag tag-hangtian">航天系统</span>
+      </div>
+      <div class="job-meta">
+        <span class="pill orange">🎓 硕士研究生</span>
+        <span class="pill green">📍 北京</span>
+      </div>
+      <div class="job-desc"><strong>需求专业：</strong>含机械类、材料类、电气工程类等多个专业方向</div>
+      <a class="link-btn" href="https://www.gaoxiaojob.com/announcement/job-list?id=343361" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+  </div>
+</section>
+
+<!-- 航空系统招聘 -->
+<section class="section" style="background:rgba(20,28,48,0.9);">
+  <div class="container">
+    <h2 class="section-title"><span class="icon">✈️</span>航空系统招聘动态</h2>
+
+    <div class="group-title">航空工业南京机电</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026届校园招聘</h3>
+        <span class="sys-tag tag-hangtian">航空系统</span>
+      </div>
+      <div class="job-meta">
+        <span class="pill orange">🎓 硕士、博士毕业生</span>
+        <span class="pill green">📍 南京</span>
+      </div>
+      <div class="job-desc"><strong>招聘岗位：</strong>研发工程师、工艺工程师、职能管理岗三大类</div>
+      <div class="job-desc"><strong>招聘专业：</strong>航空航天类、自动控制类、材料类、<strong style="color:var(--accent-warm);">机械类</strong>、电气工程类等</div>
+      <a class="link-btn" href="http://m.offcn.com/gqzp/2025/0928/202309.html" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">航空工业东方（陕西）</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026年招聘公告</h3>
+        <span class="sys-tag tag-hangtian">航空系统</span>
+      </div>
+      <div class="job-desc"><strong>院所简介：</strong>陕西东方航空仪表有限责任公司，隶属于中航机载系统有限公司，研制和生产航空仪表飞行控制系统以及扭矩工具、检测仪器等系列产品</div>
+      <div class="job-desc"><strong>单位性质：</strong>国有军工企业</div>
+      <a class="link-btn" href="http://m.offcn.com/gqzp/2026/0112/217093.html" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">航空工业上海航空电器有限公司</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026届招聘简章</h3>
+        <span class="sys-tag tag-hangtian">航空系统</span>
+      </div>
+      <div class="job-desc"><strong>院所简介：</strong>隶属于中国航空工业集团公司，2009年进入上交所上市公司中航机载（股票代码600372），拥有4家控股子公司，在职员工1400余人</div>
+      <div class="job-desc"><strong>集团使命：</strong>"航空报国、航空强国"</div>
+      <a class="link-btn" href="https://jxxy.zua.edu.cn/info/1061/2315.htm" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">航空工业集团（整体校招）</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026校园招聘公告</h3>
+        <span class="sys-tag tag-hangtian">航空系统</span>
+      </div>
+      <div class="job-desc"><strong>覆盖范围：</strong>航空工业集团下属多家单位联合招聘，含机械类岗位</div>
+      <a class="link-btn" href="http://m.toutiao.com/group/7543538945100792371/" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+  </div>
+</section>
+
+<!-- 中电科系统招聘 -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title"><span class="icon">📡</span>中电科系统招聘动态</h2>
+
+    <div class="group-title">中国电科整体招聘动态</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026年校招社招全面启动</h3>
+        <span class="sys-tag tag-dianke">中电科系统</span>
+      </div>
+      <div class="job-desc"><strong>集团规模：</strong>国务院国资委直管核心科技型企业，下属47家国家级研究所、19家上市公司</div>
+      <div class="job-desc"><strong>招聘领域：</strong>芯片研发、人工智能、网络安全、通信工程等核心领域</div>
+      <div class="job-desc"><strong>官网入口：</strong>通过官方招聘平台全面启动2026校招社招</div>
+      <a class="link-btn" href="https://www.cetc.com.cn" target="_blank" rel="noopener">📎 官网入口</a>
+      <a class="link-btn" href="https://m.gwy.com/gqzp/399794.html" target="_blank" rel="noopener">📎 查看招聘详情</a>
+    </div>
+
+    <div class="group-title">电科45所（北京）</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026校园招聘</h3>
+        <span class="sys-tag tag-dianke">中电科系统</span>
+      </div>
+      <div class="job-meta">
+        <span class="pill orange">🎓 硕士研究生/博士研究生</span>
+        <span class="pill green">📍 北京</span>
+        <span class="pill">职位类别：科学研究人员</span>
+      </div>
+      <div class="job-desc"><strong>投递邮箱：</strong>hr45@cetc.com.cn</div>
+      <a class="link-btn" href="https://m.yingjiesheng.com/job-007-870-873.html" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">中国电科电子科学研究院</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026届校园招聘</h3>
+        <span class="sys-tag tag-dianke">中电科系统</span>
+      </div>
+      <div class="job-desc"><strong>院所简介：</strong>国家级科研机构，隶属于世界500强中国电子科技集团有限公司，1984年正式成立，建院40余年</div>
+      <a class="link-btn" href="https://www.jrzp.com/shiyezhaopin/ED39D91B6B2F7891.shtml" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">电科12所</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026年校园招聘启动</h3>
+        <span class="sys-tag tag-dianke">中电科系统</span>
+      </div>
+      <div class="job-desc"><strong>院所简介：</strong>中国电子科技集团公司第十二研究所，国家级电真空器件研发机构</div>
+      <a class="link-btn" href="https://m.sohu.com/a/946144071_121106822/" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">中电科发展规划研究院</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026届校园招聘（10人）</h3>
+        <span class="sys-tag tag-dianke">中电科系统</span>
+      </div>
+      <div class="job-desc"><strong>笔试内容：</strong>含选择题（法律法规、宏观调控目标等）、言语理解与表达等模块</div>
+      <a class="link-btn" href="https://m.renrendoc.com/paper/495373259.html" target="_blank" rel="noopener">📎 查看笔试题</a>
+      <a class="link-btn" href="https://m.renrendoc.com:8443/paper/504664888.html" target="_blank" rel="noopener">📎 查看32所笔试题库</a>
+    </div>
+  </div>
+</section>
+
+<!-- 兵器/船舶/核工业招聘 -->
+<section class="section" style="background:rgba(20,28,48,0.9);">
+  <div class="container">
+    <h2 class="section-title"><span class="icon">⚓</span>兵器/船舶/核工业系统招聘动态</h2>
+
+    <div class="group-title">兵器工业集团（整体）</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026届春季招聘信息合集</h3>
+        <span class="sys-tag tag-bingqi">兵器工业</span>
+      </div>
+      <div class="job-desc"><strong>重点专业：</strong>兵器类、<strong style="color:var(--accent-warm);">机械</strong>、自动化、电子信息、计算机、材料、光学工程、控制科学等</div>
+      <div class="job-desc"><strong>参与单位：</strong>第二〇二研究所、兵器工业试验测试研究院、江山重工研究院等</div>
+      <a class="link-btn" href="https://m.sohu.com/a/995697529_121124036/" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">兵器202所（咸阳）</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026届春季校园招聘</h3>
+        <span class="sys-tag tag-bingqi">兵器工业</span>
+      </div>
+      <div class="job-meta">
+        <span class="pill green">📍 咸阳</span>
+        <span class="pill">编制：事业编制</span>
+      </div>
+      <div class="job-desc"><strong>需求专业：</strong>控制科学与工程、电气工程、<strong style="color:var(--accent-warm);">机械工程</strong>、兵器科学与技术</div>
+      <div class="job-item">
+        <h4>硕士待遇</h4>
+        <div class="job-meta">
+          <span class="pill">年收入18-24万</span>
+          <span class="pill">安家费10万</span>
+        </div>
+      </div>
+      <div class="job-item">
+        <h4>博士待遇</h4>
+        <div class="job-meta">
+          <span class="pill">年收入36-45万</span>
+          <span class="pill">安家费30-50万</span>
+        </div>
+      </div>
+      <a class="link-btn" href="https://m.yingjiesheng.com/job-007-886-891.html" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">兵器205所（西安）</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026年校园招聘</h3>
+        <span class="sys-tag tag-bingqi">兵器工业</span>
+      </div>
+      <div class="job-desc"><strong>院所简介：</strong>创建于1962年，位于西安，我国唯一以光电技术和计量技术为双核心的国防军工科研院所</div>
+      <a class="link-btn" href="http://career.bit.edu.cn/f/recruitmentFair/show?recruitmentFairId=18189280e1bc4452acd065f7951b776d" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">兵器59所（重庆）</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026年校园招聘</h3>
+        <span class="sys-tag tag-bingqi">兵器工业</span>
+      </div>
+      <div class="job-desc"><strong>院所简介：</strong>国家基础型、创新型和综合型国防军工科研院所，正厅级中央在渝科研事业单位</div>
+      <a class="link-btn" href="http://m.toutiao.com/group/7574721483994415654/" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">中船701所（上海/武汉）</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026届校园招聘（25个职位）</h3>
+        <span class="sys-tag tag-chuanbo">船舶工业</span>
+      </div>
+      <div class="job-meta">
+        <span class="pill orange">🎓 硕士研究生</span>
+        <span class="pill green">📍 上海/武汉</span>
+        <span class="pill">招若干人</span>
+      </div>
+      <div class="job-desc"><strong>重点岗位：</strong><strong style="color:var(--accent-warm);">机械工程岗</strong>、控制科学与工程岗、动力工程及工程热物理岗、船舶与海洋结构物设计制造岗等</div>
+      <div class="job-desc"><strong>院所简介：</strong>两大总体所之一，被誉为"战舰摇篮"</div>
+      <a class="link-btn" href="https://m.gaoxiaojob.com/announcement/detail/343429.html" target="_blank" rel="noopener">📎 查看原文</a>
+      <a class="link-btn" href="https://m.gaoxiaojob.com/job/detail/1799243.html" target="_blank" rel="noopener">📎 机械工程岗详情</a>
+    </div>
+
+    <div class="group-title">中船系统工程研究院</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026年招聘公告</h3>
+        <span class="sys-tag tag-chuanbo">船舶工业</span>
+      </div>
+      <div class="job-desc"><strong>院所简介：</strong>成立于1970年，我国最早以"系统工程"命名，并将系统工程理论和方法应用于海军装备建设的军工科研单位</div>
+      <a class="link-btn" href="http://m.toutiao.com/group/7612568914093949474/" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">中船750试验场</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026年校园招聘</h3>
+        <span class="sys-tag tag-chuanbo">船舶工业</span>
+      </div>
+      <div class="job-meta">
+        <span class="pill orange">🎓 硕士研究生</span>
+        <span class="pill green">📍 昆明/三亚</span>
+      </div>
+      <div class="job-desc"><strong>招聘岗位：</strong>管理人员、科研人员</div>
+      <a class="link-btn" href="https://m.gaoxiaojob.com/announcement/detail/407915.html" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="group-title">中核集团</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026届春季校园招聘</h3>
+        <span class="sys-tag tag-he">核工业</span>
+      </div>
+      <div class="job-item">
+        <h4>星原计划</h4>
+        <div class="job-meta">
+          <span class="pill green">本科≥30万/年</span>
+          <span class="pill green">硕士≥40万/年</span>
+          <span class="pill green">博士≥60万/年</span>
+          <span class="pill red">上不封顶</span>
+        </div>
+      </div>
+      <div class="job-item">
+        <h4>招聘专业</h4>
+        <div class="job-desc">含机械工程、核科学与技术、动力工程等，部分技术研发岗要求硕士或博士</div>
+      </div>
+      <a class="link-btn" href="https://hr.cnnc.com.cn/" target="_blank" rel="noopener">📎 网申入口</a>
+      <a class="link-btn" href="http://m.toutiao.com/group/7612623870884987407/" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+  </div>
+</section>
+
+<!-- 新型研发机构招聘 -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title"><span class="icon">🧪</span>新型研发机构招聘动态</h2>
+
+    <div class="group-title">之江实验室（杭州/宁波）</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>2026届校招已启动</h3>
+        <span class="sys-tag tag-new">新型研发</span>
+      </div>
+      <div class="job-desc"><strong>院所简介：</strong>由浙江省政府牵头，联合浙江大学和阿里巴巴共同创立，注册资金1亿，坐落于杭州</div>
+      <div class="job-meta">
+        <span class="pill"><strong style="color:var(--accent-warm);">机械</strong></span>
+        <span class="pill">硬件工程师</span>
+        <span class="pill">电子/半导体</span>
+        <span class="pill">研发工程师</span>
+        <span class="pill">电气/自动化</span>
+        <span class="pill">人工智能/算法</span>
+      </div>
+      <div class="job-desc"><strong>岗位覆盖：</strong>后端/前端开发、测试、数据、运维、机械、化工、技术支持等多类岗位</div>
+      <a class="link-btn" href="https://www.nowcoder.com/enterprise/2759" target="_blank" rel="noopener">📎 查看校招职位</a>
+      <a class="link-btn" href="https://m.yingjiesheng.com/industry_wmuyc5vfr6.html" target="_blank" rel="noopener">📎 查看招聘行程</a>
+    </div>
+
+    <div class="group-title">鹏城实验室（深圳）</div>
+    <div class="card">
+      <div class="card-header">
+        <h3>助理研究员/博士后 - 工业互联网方向</h3>
+        <span class="sys-tag tag-new">新型研发</span>
+      </div>
+      <div class="job-desc"><strong>岗位职责：</strong>从事以工业互联网为应用背景的计算机体系结构、计算机网络、微处理器、操作系统、编译系统、云计算/大数据/人工智能等方向研究</div>
+      <div class="job-desc"><strong>地点：</strong>深圳</div>
+      <a class="link-btn" href="https://m.zhipin.com/job_detail/74f75501023d8ab203Z72tS6FlJW.html" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+  </div>
+</section>
+
+<!-- 薪资待遇对比表 -->
+<section class="section" style="background:rgba(20,28,48,0.9);">
+  <div class="container">
+    <h2 class="section-title"><span class="icon">💰</span>薪资待遇对比表</h2>
+    <p style="margin-bottom:16px;color:var(--text-dim);font-size:0.88rem;">各系统科研院所硕士/博士薪资待遇汇总，数据来源于公开招聘信息及网络分享。</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>系统</th>
+            <th>硕士年薪</th>
+            <th>博士年薪</th>
+            <th>编制</th>
+            <th>安家费</th>
+            <th>公积金</th>
+            <th>核心福利</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>中科院</strong></td>
+            <td>25-35万</td>
+            <td>20-60万（博后）</td>
+            <td>事业编</td>
+            <td>视单位</td>
+            <td>五险一金/二金</td>
+            <td>住房公寓/子女教育</td>
+          </tr>
+          <tr>
+            <td><strong>航天科工</strong></td>
+            <td>18-30万</td>
+            <td>25-45万</td>
+            <td>事业/企业编</td>
+            <td>5-30万</td>
+            <td>五险二金</td>
+            <td>户口/住房/食堂</td>
+          </tr>
+          <tr>
+            <td><strong>航空工业</strong></td>
+            <td>18-25万</td>
+            <td>25-40万</td>
+            <td>科研事业编</td>
+            <td>8-30万</td>
+            <td>五险二金</td>
+            <td>户口/住房补贴</td>
+          </tr>
+          <tr>
+            <td><strong>中电科</strong></td>
+            <td>20-38万</td>
+            <td>25-55万</td>
+            <td>事业编</td>
+            <td>10-65万</td>
+            <td>24%+26%住房补贴</td>
+            <td>六险二金三补贴</td>
+          </tr>
+          <tr>
+            <td><strong>兵器工业</strong></td>
+            <td>18-25万</td>
+            <td>25-45万</td>
+            <td>事业编</td>
+            <td>3-50万</td>
+            <td>六险两金</td>
+            <td>补充医保/保密津贴</td>
+          </tr>
+          <tr>
+            <td><strong>船舶工业</strong></td>
+            <td>17-28万</td>
+            <td>18-38万</td>
+            <td>事业/企业编</td>
+            <td>3-90万</td>
+            <td>12%-30%</td>
+            <td>出差补助/单身公寓</td>
+          </tr>
+          <tr>
+            <td><strong>核工业</strong></td>
+            <td>≥40万（星原）</td>
+            <td>≥60万（星原）</td>
+            <td>事业/企业编</td>
+            <td>最高18万</td>
+            <td>七险二金</td>
+            <td>疗休养/科研资金</td>
+          </tr>
+          <tr>
+            <td><strong>新型研发机构</strong></td>
+            <td>20-40万</td>
+            <td>30-60万</td>
+            <td>合同制</td>
+            <td>视项目</td>
+            <td>五险一金</td>
+            <td>科研经费/弹性工作</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="job-desc" style="margin-top:12px;"><strong>说明：</strong>航天口待遇普遍最优，中电科薪资竞争力强，兵器类近年薪资持续走高（硕士平均年薪28-50万），船舶和兵器相对略低但稳定性强。<a class="source-link" href="http://m.toutiao.com/group/7614294000141140506/" target="_blank">📎 查看原文</a></div>
+  </div>
+</section>
+
+<!-- 面试经验分享 -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title"><span class="icon">💬</span>面试经验分享</h2>
+
+    <div class="exp-card">
+      <h4>经验1：投递研究所你需要知道的17件事</h4>
+      <span class="platform">来源：牛客网</span>
+      <div class="job-item" style="margin-top:10px;">
+        <div class="job-desc"><strong>核心要点：</strong></div>
+        <div class="job-desc">1. 研究所很看重性别和学历，本科双非有机会但比较难</div>
+        <div class="job-desc">2. 通过名字可判断方向（2,3,8航天口，6航发口，7船口），航天口待遇最好</div>
+        <div class="job-desc">3. 薪资坑多，签约只谈范围不写合同，需问在职人员实际到手</div>
+        <div class="job-desc">4. "确定解决户口"和"优先解决户口"差别巨大</div>
+        <div class="job-desc">5. 研究方向对口比代码能力更重要</div>
+        <div class="job-desc">6. 总体所待遇好（如中船701、二院二部、八院八部）</div>
+        <div class="job-desc">7. 谈情怀的所大概率待遇一般</div>
+      </div>
+      <a class="link-btn" href="https://m.nowcoder.com/feed/main/detail/77446a2810e34864a70429c4043e2e27" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="exp-card">
+      <h4>经验2：中电科30所面试感受</h4>
+      <span class="platform">来源：智联招聘</span>
+      <div class="job-item" style="margin-top:10px;">
+        <div class="job-desc"><strong>薪资范围：</strong>C++岗位15k-25k</div>
+        <div class="job-desc"><strong>面试流程：</strong>两次面试（技术面+人力面），历时三个星期</div>
+        <div class="job-desc"><strong>注意事项：</strong>最终待遇可能是劳务派遣制（至少一年），无年终奖，签约前务必确认用工性质</div>
+      </div>
+      <a class="link-btn" href="https://zhiq.zhaopin.com/moment/2032713/" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="exp-card">
+      <h4>经验3：中电科29所面试一面/二面</h4>
+      <span class="platform">来源：牛客网</span>
+      <div class="job-item" style="margin-top:10px;">
+        <div class="job-desc"><strong>一面流程：</strong>上午11点面试，两个面试官，交三份简历</div>
+        <div class="job-desc"><strong>面试内容：</strong>自我介绍后围绕项目展开（做了哪些工作、遇到的困难、怎么解决的）</div>
+      </div>
+      <a class="link-btn" href="https://m.nowcoder.com/feed/main/detail/e7e686b65a3f49a4bb0f285560aa39a9" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="exp-card">
+      <h4>经验4：航空航天院所技术面试要点</h4>
+      <span class="platform">来源：道客巴巴</span>
+      <div class="job-item" style="margin-top:10px;">
+        <div class="job-desc"><strong>专业知识考察：</strong>火箭推进系统涡轮泵工作原理、结构强度分析等</div>
+        <div class="job-desc"><strong>航天科技面试题：</strong>含载人航天知识、卫星发射中心、深空探测轨道设计等</div>
+        <div class="job-desc"><strong>航天科工面试：</strong>项目管理"三重约束"、研发项目技术细节考察</div>
+      </div>
+      <a class="link-btn" href="https://m.doc88.com/p-74380462287360.html" target="_blank" rel="noopener">📎 查看面试题解析</a>
+      <a class="link-btn" href="https://m.renrendoc.com/paper/511098036.html" target="_blank" rel="noopener">📎 航天科技面试题</a>
+    </div>
+  </div>
+</section>
+
+<!-- 人才政策汇总 -->
+<section class="section" style="background:rgba(20,28,48,0.9);">
+  <div class="container">
+    <h2 class="section-title"><span class="icon">🎓</span>人才政策汇总</h2>
+    <p style="margin-bottom:18px;color:var(--text-dim);font-size:0.88rem;">2026年各地最新硕士人才引进政策，涵盖落户、住房补贴、购房补贴等。<a class="source-link" href="https://www.sohu.com/a/982116010_120774387" target="_blank">📎 查看原文</a></p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>城市</th>
+            <th>落户政策</th>
+            <th>租房/住房补贴</th>
+            <th>购房补贴</th>
+            <th>其他福利</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>西安</strong></td>
+            <td>E类人才（硕士）即可落户</td>
+            <td>300元/月，最高3年</td>
+            <td>人才公租房低于市场价30%</td>
+            <td>D类人才1000元/月</td>
+          </tr>
+          <tr>
+            <td><strong>北京</strong></td>
+            <td>双一流硕士可计划单列落户</td>
+            <td>经开区3万/年（3年）</td>
+            <td>怀柔区3个月免费租住</td>
+            <td>研究生学历加26分</td>
+          </tr>
+          <tr>
+            <td><strong>上海</strong></td>
+            <td>一流大学硕士可直接落户</td>
+            <td>各区800-2000元/月不等</td>
+            <td>长宁区1600元/月（24个月）</td>
+            <td>2025年标准分72分</td>
+          </tr>
+          <tr>
+            <td><strong>广州</strong></td>
+            <td>45岁以下硕士即可落户</td>
+            <td>2000元/月，累计30个月</td>
+            <td>花都区3万（分两年）</td>
+            <td>增城区免租3年或补贴3万</td>
+          </tr>
+          <tr>
+            <td><strong>深圳</strong></td>
+            <td>硕士可直接落户</td>
+            <td>入户补贴最高5万</td>
+            <td>-</td>
+            <td>青年人才服务保障</td>
+          </tr>
+          <tr>
+            <td><strong>南京</strong></td>
+            <td>研究生即可落户，无年龄限制</td>
+            <td>800元/月，最长36个月</td>
+            <td>集成电路领域960元/月</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td><strong>成都</strong></td>
+            <td>研究生任意区域，无年龄/社保限制</td>
+            <td>安家补贴+生活补贴双重保障</td>
+            <td>-</td>
+            <td>不限应届生身份</td>
+          </tr>
+          <tr>
+            <td><strong>青岛</strong></td>
+            <td>50岁以下硕士即可落户</td>
+            <td>800元/月（紧缺专业1200元）</td>
+            <td>理工类硕士20-30万</td>
+            <td>实习生活补贴3000元/月</td>
+          </tr>
+          <tr>
+            <td><strong>苏州</strong></td>
+            <td>50岁以下硕士可直接落户</td>
+            <td>不低于600元/月</td>
+            <td>工业园区应届硕士2-3万/年</td>
+            <td>人才优租房3年</td>
+          </tr>
+          <tr>
+            <td><strong>武汉</strong></td>
+            <td>硕士可直接落户</td>
+            <td>免租1年（每月不超过1500元）</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td><strong>哈尔滨</strong></td>
+            <td>-</td>
+            <td>-</td>
+            <td>硕士购房补贴5万</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="policy-card">
+      <h4>上海人才引进细则（2025年5号文件）</h4>
+      <p>上海市人才工作局印发《上海市引进人才申办本市常住户口办法实施细则》，对硕士及以上学历的年龄、社保基数和岗位性质有明确要求。<a class="source-link" href="http://m.toutiao.com/group/7579077024128500276/" target="_blank">📎 查看原文</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- 个性化岗位推荐 -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title"><span class="icon">🎯</span>个性化岗位推荐</h2>
+    <p style="margin-bottom:18px;color:var(--text-dim);font-size:0.88rem;">基于<strong style="color:var(--accent);">安徽工业大学机械工程硕士研究生</strong>背景，精选以下最匹配的岗位机会。</p>
+
+    <div class="recommend-card">
+      <span class="match-tag">★ 最高匹配度</span>
+      <h4>中船701所 - 机械工程岗</h4>
+      <div class="job-meta">
+        <span class="pill green">📍 上海/武汉</span>
+        <span class="pill orange">🎓 硕士</span>
+        <span class="pill">编制：事业编制</span>
+        <span class="pill">第一年税前20万</span>
+        <span class="pill">三年后30万+</span>
+      </div>
+      <div class="job-desc"><strong>推荐理由：</strong>机械工程专业直接对口，两大总体所之一，待遇在船舶系统中属于最优梯队，公积金12%+餐补800元/月+出差补助180元/天+单身公寓</div>
+      <a class="link-btn" href="https://m.gaoxiaojob.com/announcement/detail/343429.html" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="recommend-card">
+      <span class="match-tag">★ 高匹配度</span>
+      <h4>兵器202所 - 机械工程岗</h4>
+      <div class="job-meta">
+        <span class="pill green">📍 咸阳</span>
+        <span class="pill orange">🎓 硕士</span>
+        <span class="pill">编制：事业编制</span>
+        <span class="pill">年收入18-24万</span>
+        <span class="pill">安家费10万</span>
+      </div>
+      <div class="job-desc"><strong>推荐理由：</strong>明确招聘机械工程专业，事业编制+安家费，咸阳生活成本较低，性价比高</div>
+      <a class="link-btn" href="https://m.yingjiesheng.com/job-007-886-891.html" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="recommend-card">
+      <span class="match-tag">★ 高匹配度</span>
+      <h4>航空工业南京机电 - 研发/工艺工程师</h4>
+      <div class="job-meta">
+        <span class="pill green">📍 南京</span>
+        <span class="pill orange">🎓 硕士</span>
+        <span class="pill">三大岗位类</span>
+      </div>
+      <div class="job-desc"><strong>推荐理由：</strong>明确招聘机械类专业，南京人才政策优厚（硕士800元/月补贴36个月+直接落户），航空工业稳定有发展</div>
+      <a class="link-btn" href="http://m.offcn.com/gqzp/2025/0928/202309.html" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="recommend-card">
+      <span class="match-tag">★ 高匹配度</span>
+      <h4>航天科工六院601所 - 机械工程岗</h4>
+      <div class="job-meta">
+        <span class="pill green">📍 呼和浩特</span>
+        <span class="pill orange">🎓 硕士</span>
+      </div>
+      <div class="job-desc"><strong>推荐理由：</strong>固体火箭发动机试验基地，机械工程为核心需求专业，航天口待遇最优系统</div>
+      <a class="link-btn" href="http://m.toutiao.com/group/7613227612474704430/" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="recommend-card">
+      <span class="match-tag">★ 推荐关注</span>
+      <h4>之江实验室 - 机械/硬件工程师</h4>
+      <div class="job-meta">
+        <span class="pill green">📍 杭州</span>
+        <span class="pill orange">🎓 硕士及以上</span>
+      </div>
+      <div class="job-desc"><strong>推荐理由：</strong>新型研发机构，2026校招明确含机械岗位，杭州人才政策优厚，省政府+浙大+阿里联合创立，发展前景好</div>
+      <a class="link-btn" href="https://www.nowcoder.com/enterprise/2759" target="_blank" rel="noopener">📎 查看校招职位</a>
+    </div>
+
+    <div class="recommend-card">
+      <span class="match-tag">★ 推荐关注</span>
+      <h4>中科院力学研究所 - 特别研究助理（博士后）</h4>
+      <div class="job-meta">
+        <span class="pill green">📍 北京</span>
+        <span class="pill orange">🎓 博士</span>
+        <span class="pill">20-60万/年</span>
+      </div>
+      <div class="job-desc"><strong>推荐理由：</strong>机械工程为明确需求专业，若未来读博可重点关注，薪资上不封顶，提供住房公寓，北京户口机会</div>
+      <a class="link-btn" href="https://m.gaoxiaojob.com/job/detail/2182038.html" target="_blank" rel="noopener">📎 查看原文</a>
+    </div>
+
+    <div class="tip-card" style="margin-top:20px;">
+      <div class="tip-num">!</div>
+      <div class="tip-content">
+        <h4>求职建议</h4>
+        <p>作为安徽工业大学机械工程硕士，建议重点关注：<strong>兵器系统</strong>（202所/205所/59所，机械工程为核心需求）、<strong>船舶系统</strong>（701所机械工程岗直接对口）、<strong>航空系统</strong>（南京机电明确招聘机械类）。同时建议利用导师资源了解内部信息，签约前务必确认用工性质（事业编/企业编/劳务派遣）和实际到手薪资。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 全网热议讨论 -->
+<section class="section" style="background:rgba(20,28,48,0.9);">
+  <div class="container">
+    <h2 class="section-title"><span class="icon">🔥</span>全网热议讨论</h2>
+    <p style="margin-bottom:18px;color:var(--text-dim);font-size:0.88rem;">知乎/牛客/今日头条等平台关于科研院所招聘的热门讨论精选。</p>
+
+    <div class="hot-card">
+      <h4>热议1：兵器类专业成2026工科黑马，冷门赛道藏高薪铁饭碗</h4>
+      <span class="platform">来源：今日头条</span>
+      <ul>
+        <li><strong>就业率：</strong>近5年平均就业率96.5%-97.2%，稳居工科前6</li>
+        <li><strong>薪资水平：</strong>硕士平均年薪28-50万，高端装备研发岗40万+</li>
+        <li><strong>中电科/航天/兵器硕士年薪38万+，5年经验核心岗70万+</strong></li>
+        <li>全行业人才缺口超150万，高端智能兵器研发缺口超40万</li>
+        <li>体制内+高薪双保障，"进可冲市场化高端研发，退可守军工单位端铁饭碗"</li>
+      </ul>
+      <a class="source-link" href="http://m.toutiao.com/group/7614294000141140506/" target="_blank">📎 查看原帖</a>
+    </div>
+
+    <div class="hot-card">
+      <h4>热议2：考研调剂不要死盯高校，科研院所更具性价比</h4>
+      <span class="platform">来源：今日头条</span>
+      <ul>
+        <li>科研院所读研优势：导师多为行业大牛、项目实战多、毕业稳进央企</li>
+        <li>部分院所提供事业编制、安家费等优厚待遇</li>
+        <li>竞争压力小于985高校，但行业认可度高</li>
+      </ul>
+      <a class="source-link" href="http://m.toutiao.com/group/7611072897158890018/" target="_blank">📎 查看原帖</a>
+    </div>
+
+    <div class="hot-card">
+      <h4>热议3：投递研究所你需要知道的那些事（17条干货经验）</h4>
+      <span class="platform">来源：牛客网</span>
+      <ul>
+        <li>研究所看重性别和学历，但本科双非也有机会</li>
+        <li>航天口待遇最好，船和兵器会差一些</li>
+        <li>薪资坑多，"年薪20万"可能连住房公积金都算上，到手可能只有13万</li>
+        <li>"确定解决户口"vs"优先解决户口"差别巨大</li>
+        <li>总体所待遇好（中船701、二院二部、八院八部等）</li>
+        <li>跟你谈情怀的所大概率待遇一般</li>
+      </ul>
+      <a class="source-link" href="https://m.nowcoder.com/feed/main/detail/77446a2810e34864a70429c4043e2e27" target="_blank">📎 查看原帖</a>
+    </div>
+
+    <div class="hot-card">
+      <h4>热议4：中电科30所面试感受 - 劳务派遣引争议</h4>
+      <span class="platform">来源：智联招聘</span>
+      <ul>
+        <li>C++岗位标称15k-25k，实际面试后告知为劳务派遣制</li>
+        <li>至少一年劳务派遣，无年终奖</li>
+        <li>两次面试（技术+人力），历时三周</li>
+        <li>提醒：签约前务必确认用工性质</li>
+      </ul>
+      <a class="source-link" href="https://zhiq.zhaopin.com/moment/2032713/" target="_blank">📎 查看原帖</a>
+    </div>
+
+    <div class="hot-card">
+      <h4>热议5：CS博士找工作经验 - 央企/国企差异巨大</h4>
+      <span class="platform">来源：北邮人论坛</span>
+      <ul>
+        <li>航空、航天、中电科、电网、兵器等央企待遇相差很大</li>
+        <li>不同研究所、不同部门差异明显</li>
+        <li>需单独讨论每个单位的实际情况</li>
+      </ul>
+      <a class="source-link" href="https://bbs.byr.cn/n/article/Job/2140560" target="_blank">📎 查看原帖</a>
+    </div>
+
+    <div class="hot-card">
+      <h4>热议6：中核集团2026届春招启动，星原计划硕士40万起</h4>
+      <span class="platform">来源：今日头条</span>
+      <ul>
+        <li>星原计划：本科≥30万、硕士≥40万、博士≥60万，上不封顶</li>
+        <li>核星计划：市场竞争力薪酬+首席专家导师</li>
+        <li>江苏核电30万+/年+七险二金</li>
+        <li>核动力院保底12-30万+安家费最高18万</li>
+      </ul>
+      <a class="source-link" href="http://m.toutiao.com/group/7612623870884987407/" target="_blank">📎 查看原帖</a>
+    </div>
+  </div>
+</section>
+
+<!-- 求职攻略 -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title"><span class="icon">📋</span>求职攻略</h2>
+
+    <div class="tip-card">
+      <div class="tip-num">1</div>
+      <div class="tip-content">
+        <h4>把握时间节点</h4>
+        <p>提前批3-6月投递，秋招正式批8-9月集中面试，春招补录次年3-4月。航天科工六院等已启动2026届校招，建议尽早投递。</p>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-num">2</div>
+      <div class="tip-content">
+        <h4>学历与专业匹配</h4>
+        <p>多数核心研究所要求硕士及以上，机械工程在兵器、船舶、航空系统中属于重点需求专业。安徽工业大学虽非985/211，但机械工程硕士在兵器系统、船舶系统有明确对口岗位。</p>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-num">3</div>
+      <div class="tip-content">
+        <h4>确认用工性质</h4>
+        <p>签约前必须确认：事业编制/企业编制/劳务派遣。部分研究所（如中电科30所）实际为劳务派遣制，薪资待遇与正式编差异巨大。务必问清楚"到手月薪"而非"年薪范围"。</p>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-num">4</div>
+      <div class="tip-content">
+        <h4>利用导师资源</h4>
+        <p>导师在研究所的资源远比你想象的强大。很多研究所招聘时优先考虑导师推荐的学生，研究方向对口比个人能力更重要。建议主动与导师沟通求职意向。</p>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-num">5</div>
+      <div class="tip-content">
+        <h4>关注城市配套政策</h4>
+        <p>除薪资外，关注各城市人才政策：青岛理工类硕士购房补贴20-30万、深圳入户补贴5万、武汉免租1年、成都安家+生活双重补贴。这些隐性福利价值可达数十万。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 信息来源汇总表 -->
+<section class="section" style="background:rgba(20,28,48,0.9);">
+  <div class="container">
+    <h2 class="section-title"><span class="icon">📚</span>信息来源汇总表</h2>
+    <p style="margin-bottom:18px;color:var(--text-dim);font-size:0.88rem;">本报告全部信息来源汇总，所有链接均可点击查看原文。</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>序号</th>
+            <th>来源名称</th>
+            <th>可点击链接</th>
+            <th>日期</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>中科院力学研究所博士后招聘</td><td><a href="https://m.gaoxiaojob.com/job/detail/2182038.html" target="_blank" rel="noopener">gaoxiaojob.com/.../2182038</a></td><td>2026-07-29</td></tr>
+          <tr><td>2</td><td>中科院上海光机所博士后招聘</td><td><a href="http://m.toutiao.com/group/7545763356829827618/" target="_blank" rel="noopener">toutiao.com/group/7545763356829827618</a></td><td>2026-07-29</td></tr>
+          <tr><td>3</td><td>中科院微电子研究所招聘</td><td><a href="https://m.gaoxiaojob.com/announcement/detail/308162.html" target="_blank" rel="noopener">gaoxiaojob.com/.../308162</a></td><td>2026-07-29</td></tr>
+          <tr><td>4</td><td>中科院工程热物理研究所招聘99人</td><td><a href="http://m.toutiao.com/group/7546128588404228654/" target="_blank" rel="noopener">toutiao.com/group/7546128588404228654</a></td><td>2026-07-29</td></tr>
+          <tr><td>5</td><td>中科院地球环境研究所招聘</td><td><a href="http://m.toutiao.com/group/7595091501084869161/" target="_blank" rel="noopener">toutiao.com/group/7595091501084869161</a></td><td>2026-07-29</td></tr>
+          <tr><td>6</td><td>航天科工二院博士后招聘</td><td><a href="https://m.gaoxiaojob.com/hotword/gsoa203896" target="_blank" rel="noopener">gaoxiaojob.com/hotword/gsoa203896</a></td><td>2026-07-29</td></tr>
+          <tr><td>7</td><td>航天科工科技保障中心校招</td><td><a href="http://m.toutiao.com/group/7642309370793722402/" target="_blank" rel="noopener">toutiao.com/group/7642309370793722402</a></td><td>2026-07-29</td></tr>
+          <tr><td>8</td><td>航天科工六院601所校招</td><td><a href="http://m.toutiao.com/group/7613227612474704430/" target="_blank" rel="noopener">toutiao.com/group/7613227612474704430</a></td><td>2026-07-29</td></tr>
+          <tr><td>9</td><td>航天科工六院校招（东南大学）</td><td><a href="https://me.seu.edu.cn/2025/0813/c1350a536370/page.htm" target="_blank" rel="noopener">me.seu.edu.cn/.../c1350a536370</a></td><td>2026-07-29</td></tr>
+          <tr><td>10</td><td>航天科工十院秋季招聘</td><td><a href="https://www.gaoxiaojob.com/announcement/job-list?id=343361" target="_blank" rel="noopener">gaoxiaojob.com/.../343361</a></td><td>2026-07-29</td></tr>
+          <tr><td>11</td><td>航空工业南京机电校招</td><td><a href="http://m.offcn.com/gqzp/2025/0928/202309.html" target="_blank" rel="noopener">offcn.com/.../202309</a></td><td>2026-07-29</td></tr>
+          <tr><td>12</td><td>航空工业东方招聘公告</td><td><a href="http://m.offcn.com/gqzp/2026/0112/217093.html" target="_blank" rel="noopener">offcn.com/.../217093</a></td><td>2026-07-29</td></tr>
+          <tr><td>13</td><td>航空工业上海航空电器招聘</td><td><a href="https://jxxy.zua.edu.cn/info/1061/2315.htm" target="_blank" rel="noopener">jxxy.zua.edu.cn/info/1061/2315</a></td><td>2026-07-29</td></tr>
+          <tr><td>14</td><td>航空工业集团2026校招</td><td><a href="http://m.toutiao.com/group/7543538945100792371/" target="_blank" rel="noopener">toutiao.com/group/7543538945100792371</a></td><td>2026-07-29</td></tr>
+          <tr><td>15</td><td>中电科官网招聘入口</td><td><a href="https://www.cetc.com.cn" target="_blank" rel="noopener">cetc.com.cn</a></td><td>2026-07-29</td></tr>
+          <tr><td>16</td><td>中电科2026招聘详情</td><td><a href="https://m.gwy.com/gqzp/399794.html" target="_blank" rel="noopener">gwy.com/gqzp/399794</a></td><td>2026-07-29</td></tr>
+          <tr><td>17</td><td>电科45所校园招聘</td><td><a href="https://m.yingjiesheng.com/job-007-870-873.html" target="_blank" rel="noopener">yingjiesheng.com/.../870-873</a></td><td>2026-07-29</td></tr>
+          <tr><td>18</td><td>中国电科电子科学研究院校招</td><td><a href="https://www.jrzp.com/shiyezhaopin/ED39D91B6B2F7891.shtml" target="_blank" rel="noopener">jrzp.com/.../ED39D91B6B2F7891</a></td><td>2026-07-29</td></tr>
+          <tr><td>19</td><td>电科12所校园招聘</td><td><a href="https://m.sohu.com/a/946144071_121106822/" target="_blank" rel="noopener">sohu.com/a/946144071</a></td><td>2026-07-29</td></tr>
+          <tr><td>20</td><td>中电科发展规划研究院笔试题</td><td><a href="https://m.renrendoc.com/paper/495373259.html" target="_blank" rel="noopener">renrendoc.com/paper/495373259</a></td><td>2026-07-29</td></tr>
+          <tr><td>21</td><td>电科32所笔试题库</td><td><a href="https://m.renrendoc.com:8443/paper/504664888.html" target="_blank" rel="noopener">renrendoc.com/paper/504664888</a></td><td>2026-07-29</td></tr>
+          <tr><td>22</td><td>兵器工业集团2026春招合集</td><td><a href="https://m.sohu.com/a/995697529_121124036/" target="_blank" rel="noopener">sohu.com/a/995697529</a></td><td>2026-07-29</td></tr>
+          <tr><td>23</td><td>兵器202所招聘</td><td><a href="https://m.yingjiesheng.com/job-007-886-891.html" target="_blank" rel="noopener">yingjiesheng.com/.../886-891</a></td><td>2026-07-29</td></tr>
+          <tr><td>24</td><td>兵器205所校招</td><td><a href="http://career.bit.edu.cn/f/recruitmentFair/show?recruitmentFairId=18189280e1bc4452acd065f7951b776d" target="_blank" rel="noopener">career.bit.edu.cn/.../18189280e1bc4452</a></td><td>2026-07-29</td></tr>
+          <tr><td>25</td><td>兵器59所校招</td><td><a href="http://m.toutiao.com/group/7574721483994415654/" target="_blank" rel="noopener">toutiao.com/group/7574721483994415654</a></td><td>2026-07-29</td></tr>
+          <tr><td>26</td><td>兵器工业集团最新招聘</td><td><a href="https://m.gaodun.com/jr/1753698.html" target="_blank" rel="noopener">gaodun.com/jr/1753698</a></td><td>2026-07-29</td></tr>
+          <tr><td>27</td><td>中船701所校招</td><td><a href="https://m.gaoxiaojob.com/announcement/detail/343429.html" target="_blank" rel="noopener">gaoxiaojob.com/.../343429</a></td><td>2026-07-29</td></tr>
+          <tr><td>28</td><td>中船701所机械工程岗</td><td><a href="https://m.gaoxiaojob.com/job/detail/1799243.html" target="_blank" rel="noopener">gaoxiaojob.com/.../1799243</a></td><td>2026-07-29</td></tr>
+          <tr><td>29</td><td>中船系统工程研究院招聘</td><td><a href="http://m.toutiao.com/group/7612568914093949474/" target="_blank" rel="noopener">toutiao.com/group/7612568914093949474</a></td><td>2026-07-29</td></tr>
+          <tr><td>30</td><td>中船750试验场校招</td><td><a href="https://m.gaoxiaojob.com/announcement/detail/407915.html" target="_blank" rel="noopener">gaoxiaojob.com/.../407915</a></td><td>2026-07-29</td></tr>
+          <tr><td>31</td><td>中核集团春招网申入口</td><td><a href="https://hr.cnnc.com.cn/" target="_blank" rel="noopener">hr.cnnc.com.cn</a></td><td>2026-07-29</td></tr>
+          <tr><td>32</td><td>中核集团2026春招公告</td><td><a href="http://m.toutiao.com/group/7612623870884987407/" target="_blank" rel="noopener">toutiao.com/group/7612623870884987407</a></td><td>2026-07-29</td></tr>
+          <tr><td>33</td><td>之江实验室2026校招职位</td><td><a href="https://www.nowcoder.com/enterprise/2759" target="_blank" rel="noopener">nowcoder.com/enterprise/2759</a></td><td>2026-07-29</td></tr>
+          <tr><td>34</td><td>之江实验室招聘行程</td><td><a href="https://m.yingjiesheng.com/industry_wmuyc5vfr6.html" target="_blank" rel="noopener">yingjiesheng.com/.../wmuyc5vfr6</a></td><td>2026-07-29</td></tr>
+          <tr><td>35</td><td>鹏城实验室招聘</td><td><a href="https://m.zhipin.com/job_detail/74f75501023d8ab203Z72tS6FlJW.html" target="_blank" rel="noopener">zhipin.com/.../74f75501023d8ab2</a></td><td>2026-07-29</td></tr>
+          <tr><td>36</td><td>2026各地人才引进政策</td><td><a href="https://www.sohu.com/a/982116010_120774387" target="_blank" rel="noopener">sohu.com/a/982116010</a></td><td>2026-07-29</td></tr>
+          <tr><td>37</td><td>上海人才引进落户政策</td><td><a href="http://m.toutiao.com/group/7579077024128500276/" target="_blank" rel="noopener">toutiao.com/group/7579077024128500276</a></td><td>2026-07-29</td></tr>
+          <tr><td>38</td><td>哈尔滨人才购房补贴</td><td><a href="http://m.toutiao.com/group/7611010654673912320/" target="_blank" rel="noopener">toutiao.com/group/7611010654673912320</a></td><td>2026-07-29</td></tr>
+          <tr><td>39</td><td>兵器类2026工科黑马分析</td><td><a href="http://m.toutiao.com/group/7614294000141140506/" target="_blank" rel="noopener">toutiao.com/group/7614294000141140506</a></td><td>2026-07-29</td></tr>
+          <tr><td>40</td><td>科研院所调剂性价比讨论</td><td><a href="http://m.toutiao.com/group/7611072897158890018/" target="_blank" rel="noopener">toutiao.com/group/7611072897158890018</a></td><td>2026-07-29</td></tr>
+          <tr><td>41</td><td>投递研究所17条经验（牛客网）</td><td><a href="https://m.nowcoder.com/feed/main/detail/77446a2810e34864a70429c4043e2e27" target="_blank" rel="noopener">nowcoder.com/.../77446a2810e34864a70429c4043e2e27</a></td><td>2026-07-29</td></tr>
+          <tr><td>42</td><td>中电科30所面试感受</td><td><a href="https://zhiq.zhaopin.com/moment/2032713/" target="_blank" rel="noopener">zhiq.zhaopin.com/moment/2032713</a></td><td>2026-07-29</td></tr>
+          <tr><td>43</td><td>中电科29所面试面经</td><td><a href="https://m.nowcoder.com/feed/main/detail/e7e686b65a3f49a4bb0f285560aa39a9" target="_blank" rel="noopener">nowcoder.com/.../e7e686b65a3f49a4bb0f285560aa39a9</a></td><td>2026-07-29</td></tr>
+          <tr><td>44</td><td>航空航天院所面试题解析</td><td><a href="https://m.doc88.com/p-74380462287360.html" target="_blank" rel="noopener">doc88.com/.../74380462287360</a></td><td>2026-07-29</td></tr>
+          <tr><td>45</td><td>航天科技面试题及答案</td><td><a href="https://m.renrendoc.com/paper/511098036.html" target="_blank" rel="noopener">renrendoc.com/paper/511098036</a></td><td>2026-07-29</td></tr>
+          <tr><td>46</td><td>CS博士找工作经验（北邮论坛）</td><td><a href="https://bbs.byr.cn/n/article/Job/2140560" target="_blank" rel="noopener">bbs.byr.cn/.../Job/2140560</a></td><td>2026-07-29</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Giscus评论区 -->
+<section class="comments-section">
+  <div class="container">
+    <h2 class="section-title"><span class="icon">✍️</span>评论区</h2>
+    <p style="margin-bottom:18px;color:var(--text-dim);font-size:0.88rem;">欢迎在下方留言讨论，分享你的求职经验与看法。</p>
+    <div class="giscus">
+      <script src="https://giscus.app/client.js"
+        data-repo="TS-dinglilu/TS-dinglilu.github.io"
+        data-repo-id="R_kgDOTjqaJQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOTjqaJc4DCIL1"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="dark_dimmed"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="container">
+    <p>科研院所招聘日报 | 2026年7月29日</p>
+    <p style="margin-top:8px;opacity:0.7;">本报告由自动化采集整理，信息来源于公开网络，仅供求职参考。如有疑问请在评论区留言。</p>
+    <p style="margin-top:8px;"><a href="https://ts-dinglilu.github.io/research-institute/" target="_blank" rel="noopener">返回报告汇总页</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
