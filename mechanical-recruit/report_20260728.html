@@ -15,8 +15,8 @@
   --border: rgba(0, 212, 255, 0.12);
   --border-hover: rgba(0, 212, 255, 0.4);
   --text: #e2e8f0;
-  --text-dim: #b8c5d6;
-  --text-faint: #6b7a99;
+  --text-dim: #c8d3e6;
+  --text-faint: #8b9bb5;
   --accent: #00d4ff;
   --accent-warm: #ffb347;
   --accent-green: #22d3a0;
@@ -120,9 +120,10 @@ body::after {
 .section {
   background: var(--card);
   border: 1px solid var(--border);
+  border-top: 2px solid rgba(0, 212, 255, 0.2);
   border-radius: 16px;
   padding: 28px 24px;
-  margin: 28px 0;
+  margin: 32px 0;
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
@@ -145,7 +146,7 @@ body::after {
   color: var(--accent);
   margin-bottom: 20px;
   padding-bottom: 14px;
-  border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+  border-bottom: 2px solid rgba(0, 212, 255, 0.25);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -175,7 +176,7 @@ body::after {
   transform: translateY(-1px);
 }
 .card-title { font-weight: 700; color: var(--text); font-size: 1.02rem; margin-bottom: 8px; }
-.card-meta { font-size: 0.78rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.card-meta { font-size: 0.78rem; color: var(--text-dim); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
 .card-content { font-size: 0.92rem; color: var(--text); line-height: 1.75; }
 .card p { color: var(--text); line-height: 1.75; margin-bottom: 8px; }
 .card-content strong { color: var(--accent); font-weight: 600; }
@@ -201,7 +202,8 @@ body::after {
 }
 .news-item:hover { border-color: var(--border-hover); transform: translateY(-2px); }
 .news-item:hover::before { background: var(--accent); width: 5px; }
-.news-item .badge {
+.news-item p { color: var(--text); line-height: 1.75; margin-bottom: 8px; }
+$1 {
   display: inline-flex;
   align-items: center;
   background: rgba(0, 212, 255, 0.1);
@@ -356,7 +358,7 @@ footer, div.footer {
   margin-top: 40px;
   padding: 24px 20px;
   font-size: 0.78rem;
-  color: var(--text-faint);
+  color: var(--text-dim);
   border-top: 1px solid var(--border);
   font-family: 'JetBrains Mono', monospace;
 }
@@ -368,7 +370,7 @@ footer a, div.footer a { color: var(--accent); text-decoration: none; }
   .container { padding: 0 16px 40px; }
 }
 </style>
-<!-- cache-bust: 1785259517 -->
+<!-- cache-bust: 1785260433 -->
 </head>
 <body>
 
