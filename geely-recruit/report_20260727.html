@@ -15,8 +15,8 @@
   --border: rgba(0, 212, 255, 0.12);
   --border-hover: rgba(0, 212, 255, 0.4);
   --text: #e8eef5;
-  --text-dim: #d0dae8;
-  --text-faint: #c8d3e6;
+  --text-dim: #e0e8f2;
+  --text-faint: #d8e2f0;
   --accent: #00d4ff;
   --accent-warm: #ffb347;
   --accent-green: #22d3a0;
@@ -123,7 +123,7 @@ body::after {
   border-top: 3px solid rgba(0, 212, 255, 0.35);
   border-radius: 16px;
   padding: 28px 24px;
-  margin: 40px 0;
+  margin: 48px 0;
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
@@ -165,7 +165,7 @@ body::after {
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--accent);
-  margin: 48px 0 24px;
+  margin: 56px 0 28px;
   padding: 16px 20px;
   background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(20,28,48,0.5) 100%);
   border-left: 4px solid var(--accent);
@@ -409,6 +409,97 @@ footer a, div.footer a { color: var(--accent); text-decoration: none; }
   .header h1 { font-size: 1.4rem; }
   .container { padding: 0 16px 40px; }
 }
+
+/* SECTION DIVIDER - 渐变分割线增强视觉分隔 */
+.section-title {
+  position: relative;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  top: -28px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0,212,255,0.5) 15%, rgba(129,140,248,0.4) 50%, rgba(0,212,255,0.5) 85%, transparent 100%);
+  border-radius: 2px;
+  opacity: 0.7;
+}
+/* 第一个section-title不需要分隔线 */
+.section-title:first-of-type::after {
+  display: none;
+}
+
+
+/* SALARY GRID - 薪资网格 (补充定义确保文字可读) */
+.salary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0;
+}
+@media (max-width: 600px) {
+  .salary-grid { grid-template-columns: 1fr; }
+}
+.salary-item {
+  background: rgba(0,212,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  text-align: center;
+}
+.salary-item .level {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.salary-item .amount {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.salary-item .note {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+/* PILL - 小标签 (补充定义确保文字可读) */
+.pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+  margin: 2px;
+  font-weight: 500;
+  background: rgba(0,212,255,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(0,212,255,0.2);
+}
+.pill.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
+.pill.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
+.pill.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
+
+/* INFO ROW - 信息行 */
+.info-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin: 10px 0;
+}
+
+/* META BAR - 元数据栏 */
+.meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
 </style>
 <!-- cache-bust: 1785261213 -->
 </head>
