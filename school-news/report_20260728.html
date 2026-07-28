@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日学校新闻推荐 | 2026年7月28日</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v2.0 美化版
+   适用于所有自动化任务的报告HTML
+   配色方案: 深蓝(#0f2c4d) + 蓝色强调(#2563eb)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --primary: #0f2c4d;
+  --primary-light: #1e4d7b;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-glow: rgba(37, 99, 235, 0.15);
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --text-faint: #94a3b8;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --green: #10b981;
+  --green-bg: #ecfdf5;
+  --green-border: #a7f3d0;
+  --amber: #f59e0b;
+  --amber-bg: #fffbeb;
+  --amber-border: #fde68a;
+  --red: #ef4444;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+  --blue-bg: #eff6ff;
+  --blue-border: #bfdbfe;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', 'Inter', -apple-system, 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 15px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Decorative grid background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating gradient orb */
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%; right: -10%;
+  width: 50%; height: 60%;
+  background: radial-gradient(ellipse, rgba(37,99,235,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   HEADER - 渐变标题栏 with glass-morphism
+   ============================================================ */
+.header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 40%, var(--accent) 100%);
+  color: #fff;
+  padding: 48px 24px 36px;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(15, 44, 77, 0.2);
+  margin-bottom: 8px;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -50%; left: -20%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.header .subtitle {
+  font-size: 0.9rem;
+  opacity: 0.88;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .date {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  z-index: 1;
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   SECTIONS - 卡片式内容区
+   ============================================================ */
+.section {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin: 20px 0;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, transparent 100%);
+}
+.section h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 20px 0 10px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ============================================================
+   CARDS - 信息卡片
+   ============================================================ */
+.card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-left-color: var(--accent-light);
+}
+.card-title {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-meta {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  font-family: 'Inter', monospace;
+}
+.card-content {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.card-content strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ============================================================
+   NEWS ITEMS - 新闻条目
+   ============================================================ */
+.news-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.news-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--border);
+  transition: all 0.3s ease;
+}
+.news-item:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.news-item:hover::before {
+  background: var(--accent);
+  width: 5px;
+}
+.news-item .badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--blue-bg);
+  color: #1e40af;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-right: 8px;
+  font-weight: 600;
+  border: 1px solid var(--blue-border);
+  letter-spacing: 0.3px;
+}
+.news-item .badge.hot {
+  background: var(--red-bg);
+  color: #dc2626;
+  border-color: var(--red-border);
+}
+.news-item .badge.new {
+  background: var(--green-bg);
+  color: #16a34a;
+  border-color: var(--green-border);
+}
+
+/* ============================================================
+   TABLES - 数据表格
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 16px 0;
+  font-size: 0.84rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+th {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) { background: #f8fafc; }
+tr:hover { background: var(--blue-bg); }
+tr:nth-child(even):hover { background: #eff6ff; }
+
+/* ============================================================
+   TAGS - 标签
+   ============================================================ */
+.tag {
+  display: inline-block;
+  background: var(--blue-bg);
+  color: #3730a3;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin: 2px;
+  font-weight: 500;
+  border: 1px solid var(--blue-border);
+}
+.tag.green { background: var(--green-bg); color: #166534; border-color: var(--green-border); }
+.tag.orange { background: var(--amber-bg); color: #92400e; border-color: var(--amber-border); }
+.tag.red { background: var(--red-bg); color: #991b1b; border-color: var(--red-border); }
+
+/* ============================================================
+   SOURCE LINKS - 原文链接
+   ============================================================ */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: var(--blue-bg);
+  border: 1px solid var(--blue-border);
+  transition: all 0.2s;
+}
+.source-link:hover {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* ============================================================
+   DISCUSSION - 讨论区
+   ============================================================ */
+.discussion {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-border);
+  border-left: 4px solid var(--amber);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 14px 0;
+  transition: all 0.3s;
+}
+.discussion:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.discussion .platform {
+  display: inline-block;
+  background: var(--amber);
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   TIP BOX - 提示框
+   ============================================================ */
+.tip-box {
+  background: var(--green-bg);
+  border: 1px solid var(--green-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.tip-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--green);
+}
+.tip-box h4 {
+  color: #065f46;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.tip-box ul { list-style: none; padding-left: 0; }
+.tip-box li {
+  padding: 5px 0 5px 24px;
+  position: relative;
+  font-size: 0.88rem;
+  color: #1a4731;
+}
+.tip-box li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   WARNING BOX - 警告框
+   ============================================================ */
+.warning-box {
+  background: var(--red-bg);
+  border: 1px solid var(--red-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.warning-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--red);
+}
+.warning-box h4 {
+  color: #991b1b;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SUMMARY TABLE - 汇总表
+   ============================================================ */
+.summary-table { font-size: 0.82rem; }
+.summary-table td:first-child {
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   GISCUS / COMMENTS - 评论区
+   ============================================================ */
+.comments-section {
+  margin-top: 40px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.comments-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.comments-desc {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   FOOTER - 页脚
+   ============================================================ */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   RESPONSIVE - 移动端适配
+   ============================================================ */
+@media (max-width: 600px) {
+  .header { padding: 32px 16px 24px; border-radius: 0 0 20px 20px; }
+  .header h1 { font-size: 1.3rem; }
+  .section { padding: 18px 14px; margin: 14px 0; }
+  .card, .news-item { padding: 14px 16px; }
+  table { font-size: 0.76rem; }
+  th, td { padding: 7px 5px; }
+  .container { padding: 0 12px 40px; }
+}
+
+/* ============================================================
+   UTILITY - 通用工具类
+   ============================================================ */
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-light); text-decoration: underline; }
+strong { color: var(--primary); }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <h1>每日学校新闻推荐</h1>
+  <p class="subtitle">安徽工业大学 / 长春工程学院 / 徐州三中 / 大庙中学</p>
+  <div class="date-badge">2026年7月28日 · 星期二</div>
+</div>
+
+<div class="container">
+
+<!-- ==================== 安徽工业大学（机械工程学院）==================== -->
+<div class="section">
+  <div class="section-title">
+    <span class="icon">🔧</span>
+    安徽工业大学 — 机械工程学院
+    <span class="tag-focus">重点关注</span>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-ahut">机械工程学院</span>
+    <div class="card-title">机械工程学院召开本科专业人才培养方案修订推进会</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07-22</span>
+      <span class="card-source">安徽工业大学机械工程学院官网</span>
+    </div>
+    <div class="card-summary">
+      7月22日上午，机械工程学院召开本科专业人才培养方案修订推进会。副院长饶思贤系统解读了2027版本科专业人才培养方案修订前期调研工作的各部分内容和要求，院长刘庆运强调要梳理2023版培养方案存在问题，主动适应国家创新驱动发展战略和区域经济社会发展新需求，服务安徽"1188"现代化产业体系高质量发展。院党委书记吴文兵指出各系室要高度重视人才培养方案修订工作，高标准、高质量推进各项工作落地。
+    </div>
+    <a href="https://jxgcxy.ahut.edu.cn/info/2597/16244.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-ahut">机械工程学院</span>
+    <div class="card-title">机械工程学院领导走访暑期留校学生宿舍</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07-22</span>
+      <span class="card-source">安徽工业大学机械工程学院官网</span>
+    </div>
+    <div class="card-summary">
+      7月22日上午，院党委副书记陈庆林带领辅导员一行深入学生宿舍，走访看望暑期留校学生，重点检查宿舍安全情况。陈庆林查看宿舍用电、消防设施和卫生环境，详细询问空调、插座等设备的使用情况，反复提醒同学们注意用电安全。他同时了解学生的复习进度和学习安排，鼓励正在备战考研、参加学科竞赛的同学，要耐得住寂寞、坐得住冷板凳，以踏实的态度和科学的方法推进复习计划。
+    </div>
+    <a href="https://jxgcxy.ahut.edu.cn/info/2597/16243.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-ahut">机械工程学院</span>
+    <div class="card-title">深化产教融合 共育机械英才——机械工程学院与安徽日发纺织机械、三联泵业共建教学科研实践基地</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07-14</span>
+      <span class="card-source">安徽工业大学机械工程学院官网</span>
+    </div>
+    <div class="card-summary">
+      近日，机械工程学院分别赴安徽日发纺织机械有限公司、三联泵业股份有限公司举行教学科研实践基地授牌仪式。学院师生团队走进两家企业生产车间、研发中心与检测实验室，实地观摩纺织智能装备、工业泵阀成套设备研发制造全流程。专业将以基地为载体，优化课程实践内容，组织学生进驻企业开展生产实习、课程设计、毕业设计，实现课堂理论教学与工业一线实践深度衔接。
+    </div>
+    <a href="https://jxgcxy.ahut.edu.cn/info/2597/16236.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-ahut">机械工程学院</span>
+    <div class="card-title">机械工程学院钢筋铁骨实践团赴马钢9号高炉开展红色研学实践活动</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07-11</span>
+      <span class="card-source">安徽工业大学机械工程学院官网</span>
+    </div>
+    <div class="card-summary">
+      机械工程学院钢筋铁骨实践团赴马钢9号高炉开展红色研学实践活动，将钢铁工业的红色基因与工程实践深度融合，让学生在实地研学中感悟钢铁精神，厚植工科报国情怀。
+    </div>
+    <a href="https://jxgcxy.ahut.edu.cn/info/2597/16231.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-ahut">机械工程学院</span>
+    <div class="card-title">机械工程学院举办"采石·铸新—智能制造"研究生学术论坛（2026年第三期）</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07-10</span>
+      <span class="card-source">安徽工业大学机械工程学院官网</span>
+    </div>
+    <div class="card-summary">
+      机械工程学院举办2026年第三期"采石·铸新—智能制造"研究生学术论坛，为研究生提供学术交流平台，促进智能制造领域的前沿研究分享与学术思想碰撞。
+    </div>
+    <a href="https://jxgcxy.ahut.edu.cn/info/2597/16226.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-ahut">机械工程学院</span>
+    <div class="card-title">机械工程学院成功举办2026年度青年教师讲课比赛</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07-10</span>
+      <span class="card-source">安徽工业大学机械工程学院官网</span>
+    </div>
+    <div class="card-summary">
+      机械工程学院成功举办2026年度青年教师讲课比赛，旨在提升青年教师教学能力，促进教学经验交流，推动教育教学质量持续提升。
+    </div>
+    <a href="https://jxgcxy.ahut.edu.cn/info/2597/16225.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+</div>
+
+<!-- ==================== 安徽工业大学（学校层面）==================== -->
+<div class="section">
+  <div class="section-title">
+    <span class="icon">🏫</span>
+    安徽工业大学 — 学校要闻
+  </div>
+
+  <div class="card">
+    <span class="pill pill-ahut">学校要闻</span>
+    <div class="card-title">校领导调研指导2026年本科招生录取工作</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07-26</span>
+      <span class="card-source">安徽工业大学新闻网</span>
+    </div>
+    <div class="card-summary">
+      7月24日下午，校党委书记陆林、副校长郑啸一行深入本科招生录取现场，调研指导2026年本科招生录取工作。据悉，今年学校面向全国26个省（区、市）招生6700人，扩招120人。截至目前，已完成25省6500余人的录取工作。安徽省普通批次物理+化学组录取最低分位次持续提升，较2025年提升4400余名。
+    </div>
+    <a href="https://news.ahut.edu.cn/info/1130/69016.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-ahut">学校要闻</span>
+    <div class="card-title">我校荣获8项安徽省科学技术奖</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07-21</span>
+      <span class="card-source">安徽工业大学新闻网</span>
+    </div>
+    <div class="card-summary">
+      7月20日上午，安徽省科技创新大会召开，表彰2024年度安徽省科学技术奖获奖成果。我校荣获安徽省科学技术奖8项，其中科技进步一等奖2项、二等奖4项、三等奖2项。张世宏教授团队主持完成的"极端环境多组元金属/陶瓷功能涂层及发电装备应用"荣获科技进步一等奖。学校立足冶金、材料、装备制造学科特色，聚焦先进材料、精品钢铁、绿色冶金等安徽省重点产业领域推进有组织科研。
+    </div>
+    <a href="https://news.ahut.edu.cn/info/1130/69006.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-ahut">学校要闻</span>
+    <div class="card-title">我校学子荣获第24届全国大学生田径锦标赛银牌</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07-25</span>
+      <span class="card-source">安徽工业大学新闻网</span>
+    </div>
+    <div class="card-summary">
+      我校学子在第24届全国大学生田径锦标赛中表现优异，荣获银牌，展现了安工大学子在全国体育赛事中的竞技水平和拼搏精神。
+    </div>
+    <a href="https://news.ahut.edu.cn/info/1130/69015.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-ahut">学校要闻</span>
+    <div class="card-title">五个新学院（研究院）揭牌成立</div>
+    <div class="card-meta">
+      <span class="card-date">2026-04-29</span>
+      <span class="card-source">安徽工业大学新闻网</span>
+    </div>
+    <div class="card-summary">
+      4月29日，安徽工业大学正式揭牌成立氢能工程学院、智能机器人学院、科技商学院、卓越工程师学院、深空冶金与极端材料未来技术研究院五个新学院（研究院）。中国科学院院士孙世刚、中国工程院院士王运敏等领导专家共同见证揭牌。学校按照"2个新工科学院、2个特色人才培养学院、1个未来技术研究院"的"2+2+1"布局，着力构建工科引领、交叉融合、产教协同的办学新生态。
+    </div>
+    <a href="https://news.ahut.edu.cn/info/1130/68423.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-ahut">学校要闻</span>
+    <div class="card-title">学校实现国家级重大工程和原创探索延续资助项目双突破</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07-23</span>
+      <span class="card-source">安徽工业大学新闻网</span>
+    </div>
+    <div class="card-summary">
+      学校在国家级科研项目申报中取得重大突破，实现国家级重大工程和原创探索延续资助项目双突破，标志着学校科研实力和创新能力迈上新台阶。
+    </div>
+    <a href="https://news.ahut.edu.cn/info/1130/69008.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-ahut">学校要闻</span>
+    <div class="card-title">校领导率队赴江西访企拓岗</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07-27</span>
+      <span class="card-source">安徽工业大学新闻网</span>
+    </div>
+    <div class="card-summary">
+      校领导率队赴江西开展访企拓岗促就业专项行动，深化校企合作，拓展毕业生就业渠道，推动产教融合深入发展。
+    </div>
+    <a href="https://news.ahut.edu.cn/info/1130/69020.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+</div>
+
+<!-- ==================== 长春工程学院 ==================== -->
+<div class="section">
+  <div class="section-title">
+    <span class="icon">🎓</span>
+    长春工程学院
+  </div>
+
+  <div class="card">
+    <span class="pill pill-ccit">招生动态</span>
+    <div class="card-title">长春工程学院2026年全国各省录取工作陆续启动，7月27日发布最新录取动态</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07-27</span>
+      <span class="card-source">高考直通车</span>
+    </div>
+    <div class="card-summary">
+      长春工程学院2026年全国各省（市、区）各批次录取工作已陆续启动。各省分批次录取时间、录取进度、各专业分数段等全部官方数据统一发布于长春工程学院招生信息网。学校深耕工程教育75载，期待与各位新生共赴新程。录取通知书发出后，考生可查询EMS单号实时查看邮寄状态。
+    </div>
+    <a href="https://app.gaokaozhitongche.com/newsguide/h/0GdEWwPN" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-ccit">人才招聘</span>
+    <div class="card-title">2026年吉林省省直事业单位长春工程学院公开招聘高层次思政教师公告</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07-23</span>
+      <span class="card-source">吉林华图</span>
+    </div>
+    <div class="card-summary">
+      根据《吉林省事业单位公开招聘工作人员实施办法》等文件规定，长春工程学院启动2026年高层次思政教师公开招聘工作，经过资格审查、面试、体检、考察等环节，选拔优秀思政教育人才加入教师队伍。
+    </div>
+    <a href="https://jl.huatu.com/2026/0723/2680700.html" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-ccit">学校发展</span>
+    <div class="card-title">长春工程学院全解析：王牌专业、毕业去向及分数线</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07</span>
+      <span class="card-source">今日头条</span>
+    </div>
+    <div class="card-summary">
+      长春工程学院由原电力、建筑、地质系统三所专科院校合并组建，在电力基建、水利工程、岩土勘测领域积累了深厚底蕴。作为卓越工程师、双万计划大学，创建于1951年，距今已有74年办学历史。学校成功入选硕士学位授予单位，在升大更名方面迈出坚实步伐。
+    </div>
+    <a href="http://m.toutiao.com/group/7665867065747685898/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-ccit">学校发展</span>
+    <div class="card-title">长春工程学院有望更名，五个校名供挑选</div>
+    <div class="card-meta">
+      <span class="card-date">2026</span>
+      <span class="card-source">今日头条</span>
+    </div>
+    <div class="card-summary">
+      长春工程学院近些年实力不断提升，在升大更名方面迈出坚实步伐。学校由长春建专、长春工业高专、长春电专合并而来，随着成功入选硕士学位授予单位，更名大学已成为下一步发展目标，五个候选校名引发网友热议讨论。
+    </div>
+    <a href="http://m.toutiao.com/group/7542373756241592866/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+</div>
+
+<!-- ==================== 徐州市第三中学 ==================== -->
+<div class="section">
+  <div class="section-title">
+    <span class="icon">📚</span>
+    徐州市第三中学
+  </div>
+
+  <div class="card">
+    <span class="pill pill-xz3z">校园活动</span>
+    <div class="card-title">徐州三中举办第10期"学长学姐返校日"活动，潇湘校区首次承办</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07-21</span>
+      <span class="card-source">今日头条</span>
+    </div>
+    <div class="card-summary">
+      7月21日，徐州三中潇湘校区迎来第10期"学长学姐返校日"活动，这是潇湘校区自投入使用以来首次承办该项传统活动。来自全国17所高校的30名优秀毕业生跨越山海重返母校，通过"大学及专业介绍""互动交流""给学弟学妹的建议"三个环节，为在校生带来大学文化、王牌专业、学科特色的生动分享，并在咨询摊位前零距离答疑解惑。
+    </div>
+    <a href="http://m.toutiao.com/group/7666506290692948531/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-xz3z">体育捷报</span>
+    <div class="card-title">徐州三中足球队征战第二届"援疆杯"校园足球赛，六战全胜勇夺总冠军</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07-23</span>
+      <span class="card-source">今日头条</span>
+    </div>
+    <div class="card-summary">
+      受江苏省教育厅委派，徐州三中足球队与苏州吴县高中足球队一同，和克州本土队员联合混编组成克州男子足球队，以东道主身份征战第二届"援疆杯"校园足球总决赛。全队六战全胜，全程攻入27粒进球，以绝对优势斩获男子组总冠军。徐州三中教师彭冰荣获"优秀教练员"荣誉称号。此次活动既是足球竞技的赛场，也是浸润文化、厚植情怀的成长研学之旅。
+    </div>
+    <a href="http://m.toutiao.com/group/7666663999978717722/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-xz3z">校友活动</span>
+    <div class="card-title">归来是少年 | 徐州三中1966届校友毕业六十周年重返母校</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07-03</span>
+      <span class="card-source">今日头条</span>
+    </div>
+    <div class="card-summary">
+      7月3日，徐州市第三中学迎来一场意义非凡的重逢，66届高三老校友跨越六十年光阴，从各地奔赴母校，举办毕业六十周年庆典。昔日风华少年如今已是耄耋长者，重返校园共叙同窗情谊，见证母校发展变化。
+    </div>
+    <a href="http://m.toutiao.com/group/7665933370764870170/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-xz3z">高考成绩</span>
+    <div class="card-title">2026年徐州三中高考成绩亮眼：985录取73人，211录取206人</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07</span>
+      <span class="card-source">今日头条</span>
+    </div>
+    <div class="card-summary">
+      据统计，2026年徐州三中应届705人，C9录取9人，985录取73人，211录取206人，双一流录取224人。在徐州市区高中中位列第二梯队前列，是市区优质省重点高中，培养中等高分段学生，综合升学表现扎实。
+    </div>
+    <a href="http://m.toutiao.com/group/7667303552305611266/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-xz3z">校园建设</span>
+    <div class="card-title">徐州市第三中学学生课桌椅及教师办公用品搬迁服务项目成交公告</div>
+    <div class="card-meta">
+      <span class="card-date">2026-07-27</span>
+      <span class="card-source">采招网</span>
+    </div>
+    <div class="card-summary">
+      徐州市第三中学学生课桌椅及教师办公用品搬迁服务项目成交公告发布，中选报价8820元，项目编号JSZC，发布时间2026年7月27日，为新校区搬迁工作提供后勤保障。
+    </div>
+    <a href="https://m.bidcenter.com.cn/news-4-432731170.html" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+</div>
+
+<!-- ==================== 徐州市大庙中心中学 ==================== -->
+<div class="section">
+  <div class="section-title">
+    <span class="icon">📖</span>
+    徐州市大庙中心中学
+  </div>
+
+  <div class="card">
+    <span class="pill pill-dmzx">学生管理</span>
+    <div class="card-title">徐州市大庙中学2025-2026学年度第二学期全体学生情况调查表</div>
+    <div class="card-meta">
+      <span class="card-date">2026年春季学期</span>
+      <span class="card-source">问卷星</span>
+    </div>
+    <div class="card-summary">
+      为更好帮助孩子健康成长，顺利完成初中学业，大庙中学对全体学生基本情况进行摸排，以利于学校根据学生实际情况做出更科学的帮扶安排。调查表涉及学生家庭情况、学习状况等信息，请各位家长认真、如实填写。
+    </div>
+    <a href="https://www.wjx.cn/xz/351231388.aspx" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-dmzx">校园活动</span>
+    <div class="card-title">大庙中学参观徐州市阳光学校（经开区徐庄）成交公告</div>
+    <div class="card-meta">
+      <span class="card-date">2026-01-16</span>
+      <span class="card-source">招标网</span>
+    </div>
+    <div class="card-summary">
+      徐州市大庙中学参观徐州市阳光学校（经开区徐庄）项目成交公告发布，供应商为徐州宝芹校车服务有限公司，中选报价400元，为学生研学实践教育活动提供交通保障。
+    </div>
+    <a href="https://m.yfbzb.com/winbid/detail/20260116_571079046.html" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+
+  <div class="card">
+    <span class="pill pill-dmzx">媒体关注</span>
+    <div class="card-title">大庙中学"家委会"收取360元补课费事件：被认定为典型违规收费</div>
+    <div class="card-meta">
+      <span class="card-date">历史事件·仍受关注</span>
+      <span class="card-source">网易新闻</span>
+    </div>
+    <div class="card-summary">
+      《政风热线》栏目曾报道大庙中学初三年级家长群中"家委会"收取360元补课费一事，引起社会广泛关注。徐州经济技术开发区教体局调查后认定为典型违规收费，责成学校退费，并对相关责任人作出进一步处理。该事件至今仍是家长和网友讨论学校规范管理的重要话题。
+    </div>
+    <a href="http://3g.163.com/dy/article/G1S05NSP0536RFS3.html" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+  </div>
+</div>
+
+<!-- ==================== 全网热议 ==================== -->
+<div class="section">
+  <div class="section-title">
+    <span class="icon">🔥</span>
+    全网热议
+    <span class="tag-focus">必看板块</span>
+  </div>
+
+  <div class="discussion-card positive">
+    <div class="discussion-title">
+      <span class="discussion-platform platform-masok">马鞍山论坛</span>
+      安徽工业大学机械专业毕业9年，同寝室4人现状分享
+    </div>
+    <div class="discussion-content">
+      网友分享：机械类专业具有广泛的就业前景，只要不过于挑剔，几乎都能找到合适的工作机会。收入方面取决于个人能力和所在城市的整体薪资水平，不能一概而论。整体来看，安工大机械专业毕业生在制造业、汽车工业等领域发展较为稳定。
+    </div>
+    <a href="http://mapi.masok.cn/wap/thread/view-thread?tid=4254324" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 来源：马鞍山论坛讨论</a>
+  </div>
+
+  <div class="discussion-card positive">
+    <div class="discussion-title">
+      <span class="discussion-platform platform-toutiao">今日头条</span>
+      安徽工业大学就业率最高的五个"王牌专业"
+    </div>
+    <div class="discussion-content">
+      安徽工业大学近年来交出了一份亮眼的就业成绩单：毕业生去向落实率高达97%，远超许多同类高校。部分专业毕业生甚至达到了98%以上的就业率。机械重工行业是安工大毕业生的重要就业方向之一，约9%的毕业生在机械重工行业有较好的发展。
+    </div>
+    <a href="http://m.toutiao.com/group/7571725438013014538/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 来源：今日头条讨论</a>
+  </div>
+
+  <div class="discussion-card">
+    <div class="discussion-title">
+      <span class="discussion-platform platform-web">教育平台</span>
+      安徽工业大学机械专业就业方向大揭秘
+    </div>
+    <div class="discussion-content">
+      安徽工业大学机械类专业是工科起家的王牌专业之一，师资力量雄厚，教学经验丰富，在业内口碑一直不错。就业方向涵盖机械制造、汽车工业、航空航天等行业，机械设计制造及其自动化专业就业前景广阔。
+    </div>
+    <a href="https://www.coolmw.com/ef13f6470e1fc7fe.html" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 来源：实璞教育网</a>
+  </div>
+
+  <div class="discussion-card negative">
+    <div class="discussion-title">
+      <span class="discussion-platform platform-toutiao">今日头条</span>
+      2026安徽投档线锐评：安工大被安徽理工拉开分差，区位成制约
+    </div>
+    <div class="discussion-content">
+      网友热议：2026年安徽省各高校本科普通批投档线出炉后，安徽工业大学作为传统老牌工科，今年被安徽理工大学拉开分差，区位马鞍山成为明显制约因素。讨论中有人认为安工大底蕴仍在，也有人指出区位劣势影响生源吸引力，观点分歧明显。
+    </div>
+    <a href="http://m.toutiao.com/group/7666372562708021783/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 来源：今日头条讨论</a>
+  </div>
+
+  <div class="discussion-card">
+    <div class="discussion-title">
+      <span class="discussion-platform platform-gaokao">掌上高考</span>
+      张雪峰谈长春工程学院：和211的差距对比、热门专业推荐
+    </div>
+    <div class="discussion-content">
+      张雪峰评价长春工程学院是位于吉林长春的卓越工程师、双万计划大学，创建于1951年，距今已有74年办学历史。王牌专业是电气工程及其自动化，2025年在河北物理组分数线583分，超本科线124分。从分数线对比看，长春工程学院比211录取分数仅低1分，差距非常小。
+    </div>
+    <a href="https://m.6617.com/p_334264585.html" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 来源：掌上高考讨论</a>
+  </div>
+
+  <div class="discussion-card">
+    <div class="discussion-title">
+      <span class="discussion-platform platform-gaokao">掌上高考</span>
+      长春工程学院怎么样？2026年口碑评价
+    </div>
+    <div class="discussion-content">
+      网友评价：长春工程学院是长春乃至吉林本科院校中的明星，学校机制健全，管理严格，但是住宿条件不敢恭维。逸夫图书馆和七教是数一数二的。学校档次比较高，不是双一流档次的名牌大学，是隶属于吉林省的本科公立级别高校。
+    </div>
+    <a href="https://m.gaokao.cn/gk-mb/128/394" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 来源：掌上高考口碑评价</a>
+  </div>
+
+  <div class="discussion-card positive">
+    <div class="discussion-title">
+      <span class="discussion-platform platform-toutiao">今日头条</span>
+      2026年徐州三中高考成绩汇总：985录取73人，211达206人
+    </div>
+    <div class="discussion-content">
+      2026年徐州三中应届705人，清北0人，C9录取9人，985录取73人，211录取206人，双一流录取224人。网友评价：作为市区优质省重点，三中培养中等高分段学生，综合升学表现扎实，在徐州高中实力梯队中位列第三梯队前列。
+    </div>
+    <a href="http://m.toutiao.com/group/7667303552305611266/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 来源：今日头条讨论</a>
+  </div>
+
+  <div class="discussion-card">
+    <div class="discussion-title">
+      <span class="discussion-platform platform-web">新教网</span>
+      徐州市第三中学怎么样？教学质量与师资全面评价
+    </div>
+    <div class="discussion-content">
+      徐州市第三中学位于云龙区，作为一所历史悠久、教学资源丰富的学校，在教学质量、师资力量、校园环境等方面均表现出色，是许多学生和家长关注的热门学校之一。近五年本科升学率持续保持高位，2020年本科升学率高达97.73%。
+    </div>
+    <a href="https://www.xhjyxxw.com/ricwd/202601/3860233.html" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 来源：新教网评价</a>
+  </div>
+
+  <div class="discussion-card negative">
+    <div class="discussion-title">
+      <span class="discussion-platform platform-163">网易新闻</span>
+      大庙中学违规收费事件持续引发网友热议
+    </div>
+    <div class="discussion-content">
+      大庙中学"家委会"收取360元补课费事件被《政风热线》曝光后，引发网友广泛讨论。网友纷纷质疑：家委会是否有权收费？学校是否知情？教育部门三令五申禁止有偿补课，为何此类事件仍屡禁不止？该事件最终被教体局认定为典型违规收费，学校被责令退费，相关责任人被追责。
+    </div>
+    <a href="http://3g.163.com/dy/article/G1S05NSP0536RFS3.html" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 来源：网易新闻报道</a>
+  </div>
+
+  <div class="discussion-card">
+    <div class="discussion-title">
+      <span class="discussion-platform platform-toutiao">今日头条</span>
+      长春工程学院有望更名大学，五个候选校名引网友热议
+    </div>
+    <div class="discussion-content">
+      长春工程学院近些年实力不断提升，成功入选硕士学位授予单位后，更名大学成为下一步发展目标。五个候选校名引发网友热烈讨论，有人支持保留"工程"特色，也有人建议更名为"大学"以提升社会认知度。讨论反映了公众对省属工科院校发展的关注。
+    </div>
+    <a href="http://m.toutiao.com/group/7542373756241592866/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 来源：今日头条讨论</a>
+  </div>
+</div>
+
+<!-- ==================== 每日亮点 ==================== -->
+<div class="highlights">
+  <h2>⭐ 每日亮点</h2>
+  <ul>
+    <li>安徽工业大学机械工程学院召开本科专业人才培养方案修订推进会，主动服务安徽"1188"现代化产业体系</li>
+    <li>机械工程学院与安徽日发纺织机械、三联泵业共建教学科研实践基地，深化产教融合</li>
+    <li>安徽工业大学2026年招生6700人扩招120人，安徽省物理+化学组录取位次提升4400余名</li>
+    <li>安徽工业大学荣获8项安徽省科学技术奖，含科技进步一等奖2项</li>
+    <li>长春工程学院2026年录取工作全面启动，7月27日发布最新录取动态</li>
+    <li>徐州三中足球队六战全胜勇夺第二届"援疆杯"校园足球赛总冠军</li>
+    <li>徐州三中2026高考985录取73人、211录取206人，升学表现扎实</li>
+    <li>全网热议：安工大被安徽理工拉开投档线分差，区位制约成焦点话题</li>
+  </ul>
+</div>
+
+<!-- ==================== 来源汇总表 ==================== -->
+<div class="section">
+  <div class="section-title">
+    <span class="icon">📎</span>
+    来源汇总
+  </div>
+  <table class="source-table">
+    <thead>
+      <tr>
+        <th>来源名称</th>
+        <th>链接</th>
+        <th>日期</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>安徽工业大学机械工程学院官网</td>
+        <td><a href="https://jxgcxy.ahut.edu.cn/info/2597/16244.htm" target="_blank">人才培养方案修订推进会</a></td>
+        <td>2026-07-22</td>
+      </tr>
+      <tr>
+        <td>安徽工业大学机械工程学院官网</td>
+        <td><a href="https://jxgcxy.ahut.edu.cn/info/2597/16243.htm" target="_blank">走访暑期留校学生宿舍</a></td>
+        <td>2026-07-22</td>
+      </tr>
+      <tr>
+        <td>安徽工业大学机械工程学院官网</td>
+        <td><a href="https://jxgcxy.ahut.edu.cn/info/2597/16236.htm" target="_blank">共建教学科研实践基地</a></td>
+        <td>2026-07-14</td>
+      </tr>
+      <tr>
+        <td>安徽工业大学机械工程学院官网</td>
+        <td><a href="https://jxgcxy.ahut.edu.cn/info/2597/16231.htm" target="_blank">钢筋铁骨实践团红色研学</a></td>
+        <td>2026-07-11</td>
+      </tr>
+      <tr>
+        <td>安徽工业大学机械工程学院官网</td>
+        <td><a href="https://jxgcxy.ahut.edu.cn/info/2597/16226.htm" target="_blank">研究生学术论坛</a></td>
+        <td>2026-07-10</td>
+      </tr>
+      <tr>
+        <td>安徽工业大学机械工程学院官网</td>
+        <td><a href="https://jxgcxy.ahut.edu.cn/info/2597/16225.htm" target="_blank">青年教师讲课比赛</a></td>
+        <td>2026-07-10</td>
+      </tr>
+      <tr>
+        <td>安徽工业大学新闻网</td>
+        <td><a href="https://news.ahut.edu.cn/info/1130/69016.htm" target="_blank">校领导调研招生录取工作</a></td>
+        <td>2026-07-26</td>
+      </tr>
+      <tr>
+        <td>安徽工业大学新闻网</td>
+        <td><a href="https://news.ahut.edu.cn/info/1130/69006.htm" target="_blank">荣获8项安徽省科学技术奖</a></td>
+        <td>2026-07-21</td>
+      </tr>
+      <tr>
+        <td>安徽工业大学新闻网</td>
+        <td><a href="https://news.ahut.edu.cn/info/1130/69015.htm" target="_blank">全国大学生田径锦标赛银牌</a></td>
+        <td>2026-07-25</td>
+      </tr>
+      <tr>
+        <td>安徽工业大学新闻网</td>
+        <td><a href="https://news.ahut.edu.cn/info/1130/68423.htm" target="_blank">五个新学院揭牌成立</a></td>
+        <td>2026-04-29</td>
+      </tr>
+      <tr>
+        <td>安徽工业大学新闻网</td>
+        <td><a href="https://news.ahut.edu.cn/info/1130/69008.htm" target="_blank">国家级项目双突破</a></td>
+        <td>2026-07-23</td>
+      </tr>
+      <tr>
+        <td>安徽工业大学新闻网</td>
+        <td><a href="https://news.ahut.edu.cn/info/1130/69020.htm" target="_blank">赴江西访企拓岗</a></td>
+        <td>2026-07-27</td>
+      </tr>
+      <tr>
+        <td>高考直通车</td>
+        <td><a href="https://app.gaokaozhitongche.com/newsguide/h/0GdEWwPN" target="_blank">长春工程学院录取动态</a></td>
+        <td>2026-07-27</td>
+      </tr>
+      <tr>
+        <td>吉林华图</td>
+        <td><a href="https://jl.huatu.com/2026/0723/2680700.html" target="_blank">公开招聘高层次思政教师</a></td>
+        <td>2026-07-23</td>
+      </tr>
+      <tr>
+        <td>今日头条</td>
+        <td><a href="http://m.toutiao.com/group/7665867065747685898/" target="_blank">长春工程学院全解析</a></td>
+        <td>2026-07</td>
+      </tr>
+      <tr>
+        <td>今日头条</td>
+        <td><a href="http://m.toutiao.com/group/7542373756241592866/" target="_blank">长春工程学院更名讨论</a></td>
+        <td>2026</td>
+      </tr>
+      <tr>
+        <td>今日头条</td>
+        <td><a href="http://m.toutiao.com/group/7666506290692948531/" target="_blank">徐州三中学长学姐返校日</a></td>
+        <td>2026-07-21</td>
+      </tr>
+      <tr>
+        <td>今日头条</td>
+        <td><a href="http://m.toutiao.com/group/7666663999978717722/" target="_blank">徐州三中足球队援疆杯夺冠</a></td>
+        <td>2026-07-23</td>
+      </tr>
+      <tr>
+        <td>今日头条</td>
+        <td><a href="http://m.toutiao.com/group/7665933370764870170/" target="_blank">66届校友毕业六十周年返校</a></td>
+        <td>2026-07-03</td>
+      </tr>
+      <tr>
+        <td>今日头条</td>
+        <td><a href="http://m.toutiao.com/group/7667303552305611266/" target="_blank">徐州三中2026高考成绩汇总</a></td>
+        <td>2026-07</td>
+      </tr>
+      <tr>
+        <td>采招网</td>
+        <td><a href="https://m.bidcenter.com.cn/news-4-432731170.html" target="_blank">课桌椅搬迁服务项目公告</a></td>
+        <td>2026-07-27</td>
+      </tr>
+      <tr>
+        <td>问卷星</td>
+        <td><a href="https://www.wjx.cn/xz/351231388.aspx" target="_blank">大庙中学学生情况调查表</a></td>
+        <td>2026春季</td>
+      </tr>
+      <tr>
+        <td>招标网</td>
+        <td><a href="https://m.yfbzb.com/winbid/detail/20260116_571079046.html" target="_blank">大庙中学参观阳光学校公告</a></td>
+        <td>2026-01-16</td>
+      </tr>
+      <tr>
+        <td>网易新闻</td>
+        <td><a href="http://3g.163.com/dy/article/G1S05NSP0536RFS3.html" target="_blank">大庙中学违规收费报道</a></td>
+        <td>历史·仍受关注</td>
+      </tr>
+      <tr>
+        <td>马鞍山论坛</td>
+        <td><a href="http://mapi.masok.cn/wap/thread/view-thread?tid=4254324" target="_blank">安工大机械专业就业讨论</a></td>
+        <td>近期</td>
+      </tr>
+      <tr>
+        <td>今日头条</td>
+        <td><a href="http://m.toutiao.com/group/7571725438013014538/" target="_blank">安工大就业率最高五个专业</a></td>
+        <td>近期</td>
+      </tr>
+      <tr>
+        <td>实璞教育网</td>
+        <td><a href="https://www.coolmw.com/ef13f6470e1fc7fe.html" target="_blank">安工大机械专业就业方向</a></td>
+        <td>近期</td>
+      </tr>
+      <tr>
+        <td>今日头条</td>
+        <td><a href="http://m.toutiao.com/group/7666372562708021783/" target="_blank">安徽高校2026投档线锐评</a></td>
+        <td>2026-07</td>
+      </tr>
+      <tr>
+        <td>掌上高考</td>
+        <td><a href="https://m.6617.com/p_334264585.html" target="_blank">张雪峰谈长春工程学院</a></td>
+        <td>近期</td>
+      </tr>
+      <tr>
+        <td>掌上高考</td>
+        <td><a href="https://m.gaokao.cn/gk-mb/128/394" target="_blank">长春工程学院口碑评价</a></td>
+        <td>2026</td>
+      </tr>
+      <tr>
+        <td>新教网</td>
+        <td><a href="https://www.xhjyxxw.com/ricwd/202601/3860233.html" target="_blank">徐州三中怎么样评价</a></td>
+        <td>2026-01</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+<!-- 评论区 -->
+<div style="max-width:860px;margin:40px auto 0;padding:24px 20px;background:#fff;border-radius:12px;border:1px solid #e2e8f0;">
+<h2 style="font-size:1.1rem;color:#1a3a5c;margin-bottom:6px;">💬 评论区</h2>
+<p style="font-size:0.82rem;color:#718096;margin-bottom:20px;">登录GitHub账号即可评论，支持Markdown和表情回应。历史报告也可评论。</p>
+<script src="https://giscus.app/client.js" data-repo="TS-dinglilu/TS-dinglilu.github.io" data-repo-id="R_kgDOTjqaJQ" data-category="Announcements" data-category-id="DIC_kwDOTjqaJc4DCIL1" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async></script>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>每日学校新闻推荐 · 自动化生成 · 数据来源于公开网络</p>
+  <p style="margin-top:6px;">在线访问：<a href="https://ts-dinglilu.github.io/school-news/" target="_blank">GitHub Pages</a> | 报告日期：2026-07-28</p>
+</div>
+
+</body>
+</html>
