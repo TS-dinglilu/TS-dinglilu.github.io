@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安工大校园日报 | 2026-07-29</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v3.0 暗色主题版
+   适用于所有自动化任务的报告HTML
+   配色方案: 深空蓝(#0a0e1a) + 青色强调(#00d4ff)
+   字体: JetBrains Mono + Noto Sans SC
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --bg: #0a0e1a;
+  --bg-elev: #111726;
+  --card: rgba(20, 28, 48, 0.6);
+  --card-solid: rgba(20, 28, 48, 0.75);
+  --border: rgba(0, 212, 255, 0.12);
+  --border-hover: rgba(0, 212, 255, 0.4);
+  --text: #e8eef5;
+  --text-dim: #e0e8f2;
+  --text-faint: #d8e2f0;
+  --accent: #00d4ff;
+  --accent-warm: #ffb347;
+  --accent-green: #22d3a0;
+  --accent-purple: #818cf8;
+  --accent-pink: #f87171;
+  --accent-teal: #14b8a6;
+  --accent-orange: #fb923c;
+  --grid-line: rgba(0, 212, 255, 0.04);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.5);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', 'JetBrains Mono', -apple-system, 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 15px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Decorative grid background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating gradient orb with radial-gradient animation */
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%; right: -10%;
+  width: 50%; height: 60%;
+  background: radial-gradient(ellipse, rgba(0,212,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: floatOrb 18s ease-in-out infinite;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate(-40px, 30px) scale(1.15); opacity: 1; }
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   HEADER - 渐变标题栏 with glass-morphism
+   ============================================================ */
+.header {
+  background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(20,28,48,0.8) 40%, rgba(129,140,248,0.08) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text);
+  padding: 48px 24px 36px;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-top: none;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.4);
+  margin-bottom: 8px;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(0,212,255,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -50%; left: -20%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(129,140,248,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0,212,255,0.3);
+}
+.header .subtitle {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .date {
+  font-size: 0.8rem;
+  color: var(--accent);
+  background: rgba(0,212,255,0.1);
+  backdrop-filter: blur(8px);
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 50px;
+  border: 1px solid var(--border-hover);
+  position: relative;
+  z-index: 1;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ============================================================
+   SECTIONS - 卡片式内容区
+   相邻section间距28px，底部2px边框实现清晰视觉分隔
+   ============================================================ */
+.section {
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin: 48px 0;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  border-top: 2px solid rgba(0, 212, 255, 0.3);
+  border-bottom: 2px solid rgba(0, 212, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 50%, transparent 100%);
+}
+.section h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid rgba(0, 212, 255, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 20px 0 10px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ============================================================
+   CARDS - 信息卡片 (间距16px，多层透明度)
+   ============================================================ */
+.card {
+  background: var(--card-solid);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 16px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-left-color: var(--accent);
+  border-color: var(--border-hover);
+}
+.card-title {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-meta {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.card-content {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.card p { color: var(--text); line-height: 1.75; margin-bottom: 8px; }
+.card-content strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ============================================================
+   NEWS ITEMS - 新闻条目
+   ============================================================ */
+.news-item {
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 16px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.news-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--border-hover);
+  transition: all 0.3s ease;
+}
+.news-item:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.news-item:hover::before {
+  background: var(--accent);
+  width: 5px;
+}
+.news-item p { color: var(--text); line-height: 1.75; margin-bottom: 8px; }
+.news-item .badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(0,212,255,0.12);
+  color: var(--accent);
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-right: 8px;
+  font-weight: 600;
+  border: 1px solid rgba(0,212,255,0.25);
+  letter-spacing: 0.3px;
+}
+.news-item .badge.hot {
+  background: rgba(248,113,113,0.15);
+  color: var(--accent-pink);
+  border-color: rgba(248,113,113,0.3);
+}
+.news-item .badge.new {
+  background: rgba(34,211,160,0.15);
+  color: var(--accent-green);
+  border-color: rgba(34,211,160,0.3);
+}
+
+/* ============================================================
+   TABLES - 数据表格 (暗色背景，行交替色)
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 16px 0;
+  font-size: 0.84rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  background: var(--card-solid);
+}
+th {
+  background: var(--bg-elev);
+  color: var(--accent);
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid var(--border-hover);
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) { background: rgba(0,0,0,0.15); }
+tr:hover { background: rgba(0,212,255,0.08); }
+tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
+
+/* ============================================================
+   TAGS - 标签
+   ============================================================ */
+.tag {
+  display: inline-block;
+  background: rgba(0,212,255,0.1);
+  color: var(--accent);
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin: 2px;
+  font-weight: 500;
+  border: 1px solid rgba(0,212,255,0.2);
+}
+.tag.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
+.tag.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
+.tag.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
+
+/* ============================================================
+   SOURCE LINKS - 原文链接
+   ============================================================ */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.2);
+  transition: all 0.2s;
+}
+.source-link:hover {
+  background: var(--accent);
+  color: var(--bg);
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,212,255,0.3);
+}
+
+/* ============================================================
+   DISCUSSION - 讨论区
+   ============================================================ */
+.discussion {
+  background: rgba(255,179,71,0.08);
+  border: 1px solid rgba(255,179,71,0.2);
+  border-left: 4px solid var(--accent-warm);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 16px 0;
+  transition: all 0.3s;
+}
+.discussion:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.discussion .platform {
+  display: inline-block;
+  background: var(--accent-warm);
+  color: var(--bg);
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   TIP BOX - 提示框
+   ============================================================ */
+.tip-box {
+  background: rgba(34,211,160,0.08);
+  border: 1px solid rgba(34,211,160,0.2);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 16px 0;
+  position: relative;
+  overflow: hidden;
+}
+.tip-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--accent-green);
+}
+.tip-box h4 {
+  color: var(--accent-green);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.tip-box ul { list-style: none; padding-left: 0; }
+.tip-box li {
+  padding: 5px 0 5px 24px;
+  position: relative;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+.tip-box li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent-green);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   WARNING BOX - 警告框
+   ============================================================ */
+.warning-box {
+  background: rgba(248,113,113,0.08);
+  border: 1px solid rgba(248,113,113,0.2);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 16px 0;
+  position: relative;
+  overflow: hidden;
+}
+.warning-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--accent-pink);
+}
+.warning-box h4 {
+  color: var(--accent-pink);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SUMMARY TABLE - 汇总表
+   ============================================================ */
+.summary-table { font-size: 0.82rem; }
+.summary-table td:first-child {
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   GISCUS / COMMENTS - 评论区 (dark_dimmed 主题)
+   注意: HTML中giscus script需设置 data-theme="dark_dimmed"
+   ============================================================ */
+.comments-section {
+  margin-top: 40px;
+  background: var(--card-solid);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.comments-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.comments-desc {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   FOOTER - 页脚
+   ============================================================ */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ============================================================
+   RESPONSIVE - 移动端适配
+   ============================================================ */
+@media (max-width: 600px) {
+  .header { padding: 32px 16px 24px; border-radius: 0 0 20px 20px; }
+  .header h1 { font-size: 1.3rem; }
+  .section { padding: 18px 14px; margin: 48px 0; }
+  .card, .news-item { padding: 14px 16px; }
+  table { font-size: 0.76rem; }
+  th, td { padding: 7px 5px; }
+  .container { padding: 0 12px 40px; }
+}
+
+/* ============================================================
+   SECTION TITLE - 带编号的板块标题
+   ============================================================ */
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 56px 0 28px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(20,28,48,0.5) 100%);
+  border-left: 4px solid var(--accent);
+  border-top: 1px solid rgba(0, 212, 255, 0.25);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 0 12px 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.section-title .emoji,
+.section-title .icon {
+  font-size: 1.3rem;
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+}
+.section-title .num {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  background: rgba(0,212,255,0.1);
+  padding: 3px 12px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: 1px solid var(--border);
+}
+.section-title > span:not(.num):not(.emoji):not(.icon) {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ============================================================
+   HIGHLIGHT BOX - 高亮提示框
+   ============================================================ */
+.highlight-box {
+  background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(129,140,248,0.05) 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text);
+  position: relative;
+  transition: all 0.3s;
+}
+.highlight-box:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+  border-color: var(--border-hover);
+}
+.highlight-box strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ============================================================
+   SKILL BAR - 技能进度条
+   ============================================================ */
+.skill-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(0,212,255,0.08);
+  border-radius: 50px;
+  margin: 6px 0 12px;
+  overflow: hidden;
+  position: relative;
+}
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 100%);
+  border-radius: 50px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.skill-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 20px; height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 100%);
+  border-radius: 50px;
+}
+
+/* ============================================================
+   TAG VARIANTS - 标签变体
+   ============================================================ */
+.tag-blue { background: rgba(0,212,255,0.1); color: var(--accent); border: 1px solid rgba(0,212,255,0.2); }
+.tag-green, .tag.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border: 1px solid rgba(34,211,160,0.25); }
+.tag-purple { background: rgba(129,140,248,0.1); color: var(--accent-purple); border: 1px solid rgba(129,140,248,0.25); }
+.tag-red, .tag.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border: 1px solid rgba(248,113,113,0.25); }
+.tag-orange, .tag.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border: 1px solid rgba(255,179,71,0.25); }
+
+/* ============================================================
+   BADGE - 评估徽章 (独立使用，不限于news-item内)
+   ============================================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.badge-high {
+  background: rgba(34,211,160,0.15);
+  color: var(--accent-green);
+  border: 1px solid rgba(34,211,160,0.3);
+}
+.badge-mid {
+  background: rgba(255,179,71,0.15);
+  color: var(--accent-warm);
+  border: 1px solid rgba(255,179,71,0.3);
+}
+.badge-low {
+  background: rgba(248,113,113,0.15);
+  color: var(--accent-pink);
+  border: 1px solid rgba(248,113,113,0.3);
+}
+
+/* ============================================================
+   HEADER META - 标题栏元数据
+   ============================================================ */
+.header .meta {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .meta span {
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  background: rgba(0,212,255,0.08);
+  backdrop-filter: blur(8px);
+  padding: 4px 12px;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+}
+
+/* ============================================================
+   TIMELINE - 时间线
+   ============================================================ */
+.timeline {
+  position: relative;
+  padding-left: 24px;
+  margin: 16px 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--border) 100%);
+  border-radius: 50px;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 8px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -21px; top: 6px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
+  z-index: 1;
+}
+.timeline-item .time {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 6px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.timeline-item .content {
+  background: var(--card-solid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  transition: all 0.3s;
+}
+.timeline-item .content:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateX(2px);
+  border-color: var(--border-hover);
+}
+.timeline-item .content p { margin-bottom: 4px; }
+.timeline-item .content strong { color: var(--accent); }
+
+/* ============================================================
+   DECISION GRID - 决策对比卡片
+   ============================================================ */
+.decision-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 16px 0;
+}
+@media (max-width: 600px) {
+  .decision-grid { grid-template-columns: 1fr; }
+}
+.decision-card {
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.decision-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.decision-card h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.decision-card p { margin-bottom: 4px; }
+.decision-card strong { font-weight: 600; }
+.decision-yes {
+  background: rgba(34,211,160,0.08);
+  border: 1px solid rgba(34,211,160,0.2);
+  border-left: 4px solid var(--accent-green);
+}
+.decision-yes h4 { color: var(--accent-green); }
+.decision-yes strong { color: var(--accent-green); }
+.decision-no {
+  background: rgba(255,179,71,0.08);
+  border: 1px solid rgba(255,179,71,0.2);
+  border-left: 4px solid var(--accent-warm);
+}
+.decision-no h4 { color: var(--accent-warm); }
+.decision-no strong { color: var(--accent-warm); }
+
+/* ============================================================
+   DISCUSSION ITEM - 讨论条目
+   ============================================================ */
+.discussion-item {
+  background: rgba(255,179,71,0.08);
+  border: 1px solid rgba(255,179,71,0.2);
+  border-left: 4px solid var(--accent-warm);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  margin: 12px 0;
+  transition: all 0.3s;
+}
+.discussion-item:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.discussion-item .platform {
+  display: inline-block;
+  background: var(--accent-warm);
+  color: var(--bg);
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.discussion-item .text {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.discussion-item .text strong { color: var(--accent); }
+.discussion-item .link { font-size: 0.82rem; }
+
+/* ============================================================
+   GISCUS SECTION - 评论区别名 (dark_dimmed 主题)
+   注意: HTML中giscus script需设置 data-theme="dark_dimmed"
+   ============================================================ */
+.giscus-section {
+  margin-top: 40px;
+  background: var(--card-solid);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.giscus-section h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ============================================================
+   FOOTER (div version) - 页脚别名
+   ============================================================ */
+div.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+}
+div.footer a { color: var(--accent); }
+div.footer a:hover { color: var(--accent-purple); }
+
+/* ============================================================
+   DECORATIVE ELEMENTS - 装饰元素 (隐藏，由body伪元素替代)
+   ============================================================ */
+.grid-bg { display: none; }
+.floating-ball { display: none; }
+
+/* ============================================================
+   UTILITY - 通用工具类
+   ============================================================ */
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-purple); text-decoration: underline; }
+strong { color: var(--text); font-weight: 700; }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+
+/* SALARY GRID - 薪资网格 (补充定义确保文字可读) */
+.salary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0;
+}
+@media (max-width: 600px) {
+  .salary-grid { grid-template-columns: 1fr; }
+}
+.salary-item {
+  background: rgba(0,212,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  text-align: center;
+}
+.salary-item .level {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.salary-item .amount {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.salary-item .note {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+/* PILL - 小标签 (补充定义确保文字可读) */
+.pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+  margin: 2px;
+  font-weight: 500;
+  background: rgba(0,212,255,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(0,212,255,0.2);
+}
+.pill.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
+.pill.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
+.pill.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
+
+/* INFO ROW - 信息行 */
+.info-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin: 10px 0;
+}
+
+/* META BAR - 元数据栏 */
+.meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>安徽工业大学 校园日报</h1>
+  <div class="date">2026年7月29日 · 星期三</div>
+  <div class="subtitle">就业去向 / 政策通知 / 奖学金竞赛 / 升学读博 / 校园生活</div>
+  <div class="tags">
+    <span class="tag">制造业就业40%</span>
+    <span class="tag">挑战杯特等奖</span>
+    <span class="tag">博士年补超6万</span>
+    <span class="tag">ESI前1%</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="nav-links">
+    <a href="#section1">就业去向</a>
+    <a href="#section2">政策通知</a>
+    <a href="#section3">奖学金竞赛</a>
+    <a href="#section4">升学读博</a>
+    <a href="#section5">校园生活</a>
+    <a href="#section6">全网热议</a>
+    <a href="#comments">评论区</a>
+  </div>
+
+  <!-- 板块1：就业去向与薪资分析 -->
+  <div class="section" id="section1">
+    <div class="section-title">
+      <span class="icon">📊</span>
+      师兄师姐就业去向与薪资分析
+    </div>
+
+    <div class="card">
+      <h3>2023届毕业生整体就业概况</h3>
+      <p>安徽工业大学2023届毕业生共7404人，其中男生4902人（66.21%），女生2502人（33.79%），研究生1343人（18.14%），本科生5915人（79.89%）。生源主要来自安徽省，占78.78%。</p>
+      <p>截至2023年8月31日，毕业去向落实率<strong style="color:var(--accent-green)">95.99%</strong>，其中研究生落实率95.83%，本科生落实率95.93%。毕业生以签订协议和劳动合同就业为主，占56.75%，升学（含出国出境）占20.88%。<a class="source-link" href="https://m.sohu.com/a/785462223_121931941/" target="_blank">📎 查看原文</a></p>
+      <div class="meta">数据来源：安徽工业大学2023届毕业生就业质量报告</div>
+    </div>
+
+    <div class="card">
+      <h3>本科生就业行业分布</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>行业排名</th><th>行业名称</th><th>人数</th><th>占比</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>制造业</td><td>1407人</td><td><strong style="color:var(--accent)">40.17%</strong></td></tr>
+          <tr><td>2</td><td>建筑业</td><td>521人</td><td>14.87%</td></tr>
+          <tr><td>3</td><td>信息传输、软件和信息技术服务业</td><td>451人</td><td>12.87%</td></tr>
+          <tr><td>4</td><td>其他行业</td><td>—</td><td>32.09%</td></tr>
+        </tbody>
+      </table>
+      <p>本科生就业单位行业分布呈现明显特点，以<strong style="color:var(--accent)">制造业和建筑业为主</strong>，这与安工大工科为主的学科特色高度匹配。制造业占比40.17%远超其他行业，体现了学校在冶金、材料、机械等传统工科领域的深厚积累。<a class="source-link" href="https://m.sohu.com/a/785462223_121931941/" target="_blank">📎 查看原文</a></p>
+    </div>
+
+    <div class="card">
+      <h3>就业单位性质分布</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>单位性质</th><th>人数</th><th>占比</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>其他企业（含民营企业）</td><td>2369人</td><td>67.63%</td></tr>
+          <tr><td><strong style="color:var(--accent-warm)">国有企业</strong></td><td>822人</td><td><strong style="color:var(--accent-warm)">23.47%</strong></td></tr>
+          <tr><td>三资企业</td><td>214人</td><td>6.11%</td></tr>
+          <tr><td>机关</td><td>—</td><td>1.45%</td></tr>
+        </tbody>
+      </table>
+      <p>国有企业就业占比达23.47%，在省属高校中处于较高水平，主要去向包括宝武钢铁、马钢集团等大型国企。<a class="source-link" href="https://m.sohu.com/a/785462223_121931941/" target="_blank">📎 查看原文</a></p>
+      <div class="meta">另据掌上高考数据：国有企业占比19.01%，其他企业72.51%，外商投资4.74%</div>
+    </div>
+
+    <div class="card">
+      <h3>就业地区流向</h3>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="num">88.76%</div>
+          <div class="label">华东地区就业</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">47.35%</div>
+          <div class="label">安徽省内就业</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">19.51%</div>
+          <div class="label">江苏省就业</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">12.51%</div>
+          <div class="label">上海市就业</div>
+        </div>
+      </div>
+      <p>本科生就业省份前三：安徽57.69%、江苏14.32%、浙江7.10%。长三角地区是安工大毕业生的核心就业区域，得益于学校毗邻南京的区位优势。<a class="source-link" href="https://m.gaokao.cn/school/69/job" target="_blank">📎 查看原文</a></p>
+    </div>
+
+    <div class="card">
+      <h3>升学情况</h3>
+      <p>2023届毕业生共有1546人升学，升学率20.88%。其中1420人考取研究生，65人升博，43人在国（境）外继续学习，18人专升本。保研去向中80%进入211/985高校，中科大（13人）、合工大（8人）为主要去向。</p>
+      <div class="meta">2025年保研率升至近5%，冶金、材料学院保研率超5%</div>
+      <a class="source-link" href="http://m.toutiao.com/group/7556874734999306787/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="card">
+      <h3>王牌专业就业表现</h3>
+      <p>电气工程及其自动化专业人才需求持续增长，毕业生薪资水平水涨船高。自动化专业就业率连续三年超96%，是"智能制造核心"专业。冶金工程专业毕业生大多进入钢铁、机械、材料类企业，同宿舍6人毕业8年后分布在国企、科研院所、民企、公务员等岗位。<a class="source-link" href="http://m.toutiao.com/group/7571725438013014538/" target="_blank">📎 查看原文</a></p>
+      <p>主要就业企业包括：宝武钢铁、马钢集团、江淮汽车等，岗位涵盖工艺工程师、质量检测、软件开发、数据分析等。<a class="source-link" href="https://tp.xhlnet.com/gaoxiao/408367.html" target="_blank">📎 查看原文</a></p>
+      <div style="margin-top:10px;">
+        <span class="pill pill-blue">电气工程</span>
+        <span class="pill pill-green">自动化</span>
+        <span class="pill pill-purple">冶金工程</span>
+        <span class="pill pill-orange">计算机科学</span>
+        <span class="pill pill-teal">材料科学</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 板块2：学校政策通知 -->
+  <div class="section" id="section2">
+    <div class="section-title">
+      <span class="icon">📢</span>
+      学校政策通知
+    </div>
+
+    <div class="card">
+      <h3>2026年学生转专业工作通知</h3>
+      <p>根据《安徽工业大学全日制本科学生转专业实施细则》（教学〔2023〕4号）文件精神，学校发布2026年学生转专业工作通知，公布转专业计划和考核办法。物理+化学组与物理+不限组专业可互转，每年500+学生成功转专业。</p>
+      <div class="meta">发布单位：教务处</div>
+      <a class="source-link" href="https://jwc.ahut.edu.cn/info/1091/5706.htm" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="card">
+      <h3>2025-2026学年第二学期选课及教材征订通知</h3>
+      <p>学校发布2025-2026学年第二学期选课安排。第一轮选课时间为2022、2023级12月26日-29日。第二轮选课结束后原则上不接受补退选课申请，个别因选课受限、课程冲突等特殊情况可申请补选。</p>
+      <div class="meta">发布单位：教务处</div>
+      <a class="source-link" href="https://jwc.ahut.edu.cn/info/1091/5640.htm" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="card">
+      <h3>研究生网上选课工作通知</h3>
+      <p>根据《安徽工业大学研究生课程教学管理办法》（研究生〔2023〕1号）相关规定，学校发布2025-2026学年第一学期研究生网上选课工作通知，规范研究生选课流程。</p>
+      <div class="meta">发布单位：研究生院</div>
+      <a class="source-link" href="https://graduate.ahut.edu.cn/info/1176/8785.htm" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="card">
+      <h3>非全日制硕士研究生教育管理规定</h3>
+      <p>学校制定并印发《安徽工业大学非全日制硕士研究生教育管理的有关规定》，经校长办公会议研究同意，进一步规范非全日制硕士研究生的教育管理工作。</p>
+      <div class="meta">发布单位：校办</div>
+      <a class="source-link" href="https://xb.ahut.edu.cn/info/1842/4100.htm" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="card">
+      <h3>高等学历继续教育学费管理办法（修订）</h3>
+      <p>学校对原《安徽工业大学成人高等学历教育学费管理办法》（安工大〔2021〕55号）进行修订，经校长办公会研究同意，现印发修订后的《安徽工业大学高等学历继续教育学费管理办法》。</p>
+      <div class="meta">发布单位：校办</div>
+      <a class="source-link" href="https://xb.ahut.edu.cn/info/1872/4177.htm" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="card">
+      <h3>2025-2026学年公共选修课选课</h3>
+      <p>教务处发布公共选修课选课通知，第一学期选课时间为9月8日15:00至9月15日18:00。新生选课时间为9月18日-22日。2025级本科新生需根据学校新生教学安排进行选课。</p>
+      <div class="meta">发布单位：教务处</div>
+      <a class="source-link" href="https://jwc.ahut.edu.cn/info/1091/5489.htm" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <!-- 板块3：奖学金竞赛评优信息 -->
+  <div class="section" id="section3">
+    <div class="section-title">
+      <span class="icon">🏆</span>
+      奖学金竞赛评优信息
+    </div>
+
+    <div class="card">
+      <h3>2025年国家奖学金、国家励志奖学金、国家助学金评审</h3>
+      <p>根据安徽省财政厅等六部门《安徽省学生资助资金管理实施办法》及学校相关评审办法，学校启动2025年国家奖学金、国家励志奖学金、国家助学金评审工作。</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>奖学金类型</th><th>评选对象</th><th>报送截止时间</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>国家奖学金</td><td>全日制二年级以上本科学生</td><td>9月28日前</td></tr>
+          <tr><td>国家励志奖学金</td><td>全日制二年级以上本科学生</td><td>10月20日前</td></tr>
+          <tr><td>国家助学金</td><td>全日制本科在校学生（含2025级新生）</td><td>10月20日前</td></tr>
+        </tbody>
+      </table>
+      <p>国家助学金按2500元、3500元、5000元三个档次确定资助人选。纸质材料送至秀山校区大学生活动中心306。<a class="source-link" href="https://xgb.ahut.edu.cn/info/1002/5142.htm" target="_blank">📎 查看原文</a></p>
+    </div>
+
+    <div class="card">
+      <h3>研究生国家奖学金评审管理办法</h3>
+      <p>学校在总结近年来研究生国家奖学金评选经验基础上，对原《安徽工业大学研究生国家奖学金综合评选实施细则》（安工大〔2020〕7号）进行修订，发布新的评审管理办法。各培养单位已制订研究生国家奖学金评审实施细则。<a class="source-link" href="https://jgxy.ahut.edu.cn/info/2771/4019.htm" target="_blank">📎 查看原文</a></p>
+    </div>
+
+    <div class="card">
+      <h3>第十九届"挑战杯"竞赛斩获佳绩</h3>
+      <p>安徽工业大学在第十九届"挑战杯"全国大学生课外学术科技作品竞赛2025年度中国青年科技创新"揭榜挂帅"擂台赛全国总决赛上，<strong style="color:var(--accent)">斩获特等奖1项、二等奖2项、三等奖1项</strong>，获奖等次及数量均取得新突破。</p>
+      <p>化学与化工学院研究生穆佳雨负责的项目《高硫工业木质素解聚新路径》荣获学生赛道<strong style="color:var(--accent-green)">特等奖</strong>。《海风熵盾—海上风电轴承激光熔覆高熵合金涂层技术》《数据驱动下高端数控机床几何误差跨域协同控制研究》获二等奖，《智能踝关节康复装置与人机交互系统开发与研究》获三等奖。<a class="source-link" href="https://www.ah.chinanews.com/news/2025/1023/337419.shtml" target="_blank">📎 查看原文</a></p>
+      <div style="margin-top:10px;">
+        <span class="pill pill-green">特等奖×1</span>
+        <span class="pill pill-blue">二等奖×2</span>
+        <span class="pill pill-purple">三等奖×1</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>"互联网+"大赛与AIGC专项赛</h3>
+      <p>安工大在"互联网+"大学生创新创业大赛省赛金奖获奖数<strong style="color:var(--accent)">稳居安徽省高校前三</strong>。在第十一届"挑战杯"安徽省AIGC视觉模型应用创新专项赛决赛中，艺术与设计学院师生团队荣获二等奖。<a class="source-link" href="https://news.ahut.edu.cn/info/1003/67307.htm" target="_blank">📎 查看原文</a></p>
+      <p>近年来学生年均参与学科竞赛超3万项，获国家级奖项1862项。<a class="source-link" href="https://zs.ahut.edu.cn/info/5971/2742.htm" target="_blank">📎 查看原文</a></p>
+    </div>
+  </div>
+
+  <!-- 板块4：升学读博指南 -->
+  <div class="section" id="section4">
+    <div class="section-title">
+      <span class="icon">🎓</span>
+      升学读博指南
+    </div>
+
+    <div class="card">
+      <h3>博士点与学科平台</h3>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="num">8个</div>
+          <div class="label">博士学位点</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">1个</div>
+          <div class="label">专业博士点</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">2个</div>
+          <div class="label">博士后流动站</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">30个</div>
+          <div class="label">硕士学位点</div>
+        </div>
+      </div>
+      <p>材料科学、工程学、化学、计算机科学4个学科进入ESI全球前1%。保研率2025年升至近5%，冶金、材料学院保研率超5%。<a class="source-link" href="http://m.toutiao.com/group/7556874734999306787/" target="_blank">📎 查看原文</a></p>
+    </div>
+
+    <div class="card">
+      <h3>安徽高等研究院项目博士招生</h3>
+      <p>2025年教育部安徽高等研究院校企联合人才培养和科研攻关项目博士招生计划：</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>招生类型</th><th>招生人数</th><th>招生方式</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>全日制学术学位博士</td><td>5人</td><td>硕博连读 / 申请-考核制</td></tr>
+          <tr><td>全日制专业学位博士</td><td>5人</td><td>硕博连读 / 申请-考核制</td></tr>
+          <tr><td>非全日制专业学位博士</td><td>4人</td><td>申请-考核制</td></tr>
+        </tbody>
+      </table>
+      <p>培养模式为产教融合、校企合作，实施工学交替培养和校企双导师制联合指导。毕业证书、学位证书与安工大同类博士研究生一致。<a class="source-link" href="https://graduate.ahut.edu.cn/info/1133/8697.htm" target="_blank">📎 查看原文</a></p>
+    </div>
+
+    <div class="card">
+      <h3>博士待遇与保障政策</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="time">奖助学金</div>
+          <div class="content">全日制博士享受学校全日制研究生奖助学金和待遇</div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">政府科研补贴</div>
+          <div class="content">企业所在市政府按照全日制博士<strong style="color:var(--accent)">不低于5000元/月/生</strong>设置政府奖学金或科研实践补贴，按一年12个月分次发放，年补贴超6万元</div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">入企住宿</div>
+          <div class="content">全日制博士入企期间由企业<strong style="color:var(--accent-green)">免费提供住宿</strong>，原则上一人一间</div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">人才专项政策</div>
+          <div class="content">毕业并获博士学位后经考核合格，可获<strong style="color:var(--accent-warm)">高级工程师职称</strong>；不要求到合作企业定向就业，同等条件下企业优先录用</div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">入职购房补贴</div>
+          <div class="content">博士入职教师享<strong style="color:var(--accent-pink)">50万购房补贴</strong>（仅限机械、计算机等5个学科）</div>
+        </div>
+      </div>
+      <a class="source-link" href="https://graduate.ahut.edu.cn/info/1133/8697.htm" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="card">
+      <h3>申请时间节点（参考2025年）</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="time">4月17日-29日</div>
+          <div class="content">硕博连读网上报名时间</div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">4月29日-5月10日</div>
+          <div class="content">申请-考核制网上报名时间</div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">5月13日前</div>
+          <div class="content">申请-考核制纸质材料寄送截止</div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">报名费用</div>
+          <div class="content">250元/人，网上缴费</div>
+        </div>
+      </div>
+      <p>招生方式包括直博生、硕博连读、申请-考核制三种，分批次招生。2026年招生简章已发布，计划招收硕士研究生1725名。<a class="source-link" href="https://m.sohu.com/a/826425409_121298389/" target="_blank">📎 查看原文</a></p>
+    </div>
+
+    <div class="card">
+      <h3>硕博连读基本条件</h3>
+      <p>符合下列条件的安工大全日制非定向在读硕士研究生（含学术学位和专业学位），本科获得学士学位，可申请硕博连读：拥护中国共产党的领导，遵纪守法，品德良好；身体健康状况符合国家和学校规定的体检要求。<a class="source-link" href="https://m.sohu.com/a/826425409_121298389/" target="_blank">📎 查看原文</a></p>
+      <div style="margin-top:10px;">
+        <span class="pill pill-blue">硕博连读</span>
+        <span class="pill pill-green">申请-考核制</span>
+        <span class="pill pill-purple">直博生</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 板块5：校园生活学习攻略 -->
+  <div class="section" id="section5">
+    <div class="section-title">
+      <span class="icon">🏠</span>
+      校园生活学习攻略
+    </div>
+
+    <div class="card">
+      <h3>校区概况</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>校区</th><th>位置</th><th>特点</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>佳山校区（本部）</td><td>马鞍山市湖东北路400号</td><td>主校区，市中心，承担大部分教学</td></tr>
+          <tr><td>秀山校区（东校区）</td><td>马鞍山市马向路1530号</td><td>高铁站旁，设施新，研究生公寓</td></tr>
+        </tbody>
+      </table>
+      <p>学校占地2539亩，全日制在校生约2.5万人（本科生2.18万、研究生2700人、留学生380人）。秀山校区二期工程新建了大量研究生公寓，网络、独立卫生间、热水器等设施齐全，实验室也很近。<a class="source-link" href="http://m.toutiao.com/group/7532315874934424099/" target="_blank">📎 查看原文</a></p>
+    </div>
+
+    <div class="card">
+      <h3>费用参考</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>费用类别</th><th>金额</th><th>备注</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>学费（文科类）</td><td>4900元/年</td><td>法学、公共事业管理等</td></tr>
+          <tr><td>学费（理科类）</td><td>5200元/年</td><td>数学、物理等</td></tr>
+          <tr><td>学费（工科类）</td><td>5200-5720元/年</td><td>自动化、计算机等</td></tr>
+          <tr><td>学费（艺术类）</td><td>8000元/年</td><td>视觉传达、环境设计</td></tr>
+          <tr><td>住宿费</td><td>600-1000元/年</td><td>四人间，空调、独立卫浴</td></tr>
+          <tr><td>月度生活费</td><td>1500-2500元</td><td>含餐饮、交通、通讯</td></tr>
+          <tr><td>教材费</td><td>预收1000元/年</td><td>多退少补</td></tr>
+          <tr><td>宿舍宽带</td><td>50元/月</td><td>自愿，校园网免费</td></tr>
+        </tbody>
+      </table>
+      <a class="source-link" href="http://m.toutiao.com/group/7532315874934424099/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="card">
+      <h3>研二时间节点规划建议</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="time">9月-10月</div>
+          <div class="content">完成课程选课，确定研究方向；关注国家奖学金评审（9月28日截止）</div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">11月-12月</div>
+          <div class="content">推进实验/课题研究；准备学科竞赛（挑战杯、互联网+等）；第二学期选课</div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">1月-3月</div>
+          <div class="content">论文写作与投稿；关注博士申请时间节点（硕博连读4月报名）</div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">4月-5月</div>
+          <div class="content">博士申请报名（4月17日-29日硕博连读，4月29日-5月10日申请-考核制）；中期考核</div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">6月-8月</div>
+          <div class="content">暑期科研实习；参加校企联合项目；准备开题/答辩</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>实验室与校企合作</h3>
+      <p>学校与马钢、宝武集团等共建产业学院，强化工程实训。集成电路设计专业实验室与长鑫存储共建，获政府芯片产业基金支持。材料科学全国专业排名第3，契合安徽新能源产业布局。<a class="source-link" href="http://m.toutiao.com/group/7556874734999306787/" target="_blank">📎 查看原文</a></p>
+      <div style="margin-top:10px;">
+        <span class="pill pill-blue">马钢集团</span>
+        <span class="pill pill-green">宝武集团</span>
+        <span class="pill pill-purple">长鑫存储</span>
+        <span class="pill pill-orange">产业学院</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>校园文化活动</h3>
+      <p>学校举办丰富多彩的校园文化活动，包括新生才艺大赛暨大学生艺术展演、"校园大舞台——徽风皖韵进高校"泗州戏专场演出、首届"金色梧桐节"、校园十佳歌手大赛等，为师生提供多元的文化体验。<a class="source-link" href="https://www.ahut.edu.cn/index/xysh.htm" target="_blank">📎 查看原文</a></p>
+    </div>
+
+    <div class="card">
+      <h3>转专业政策</h3>
+      <p>学校实行灵活的转专业政策，物理+化学组与物理+不限组专业可互转。每年有500+学生成功转专业，为学生提供了二次选择专业的机会。转专业考核办法由各学院公布。<a class="source-link" href="https://jwc.ahut.edu.cn/info/1091/5706.htm" target="_blank">📎 查看原文</a></p>
+    </div>
+  </div>
+
+  <!-- 全网热议讨论 -->
+  <div class="section" id="section6">
+    <div class="section-title">
+      <span class="icon">🔥</span>
+      全网热议讨论
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform pill pill-orange">头条</span>
+      <div class="title">安徽工业大学老校名消失后，新名字带不动，如今已没有存在感</div>
+      <div class="desc">网友讨论安工大的知名度问题。展示安工大校园时，评论区有网友问"这个学校是不是二本？"实际它是老牌一本，只是名声不大。校友群常有人说起往事，有老师傅晒出八十年代录取通知书。引发关于校名更换对高校影响力变化的讨论。</div>
+      <a class="source-link" href="http://m.toutiao.com/group/7529002432047645219/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform pill pill-blue">头条</span>
+      <div class="title">安徽工业大学2025年新生入学参考（学费、生活费、杂费）</div>
+      <div class="desc">详细介绍了安工大的学校概况、校区分布、学费标准、住宿条件、生活费预估等信息。两个校区占地2539亩，全日制在校生约2.5万人，4个学科进入ESI全球前1%。引起准新生对校园生活的关注。</div>
+      <a class="source-link" href="http://m.toutiao.com/group/7532315874934424099/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform pill pill-purple">头条</span>
+      <div class="title">安徽工业大学，冶金工程专业，同宿舍6人毕业8年后薪资谁最辛</div>
+      <div class="desc">冶金工程专业同宿舍6人毕业8年后的去向对比，分布在国企、科研院所、民企、考公务员等不同岗位。真实展现了安工大冶金工程专业毕业生的职业发展轨迹和薪资差异，引发对专业选择与职业发展的思考。</div>
+      <a class="source-link" href="http://m.toutiao.com/group/7533883909168284187/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform pill pill-green">高考100</span>
+      <div class="title">千万别来安徽工业大学？张雪峰评价安徽工业大学</div>
+      <div class="desc">张雪峰老师评价安工大是位于安徽省马鞍山的省重点、保研资格大学，创建于1958年。但也有声音指出宿舍环境不尽如人意、所在地非省会、空气质量等问题，学科相对单一。讨论呈现两极化，引发择校思考。</div>
+      <a class="source-link" href="https://m.gk100.com/read_75261.htm" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform pill pill-warm">头条</span>
+      <div class="title">记录我的2024:安徽工业大学，以及所有的大学生们，醒醒吧</div>
+      <div class="desc">一位安工大教师分享对学生就业的观察和建议，强调中国社会和企业特别看重大学生毕业院校和学历。涵盖安工大一本生、皖江工学院和马鞍山学院二本生的不同就业现状，引发关于学历与就业竞争力的讨论。</div>
+      <a class="source-link" href="http://m.toutiao.com/group/7349590626712830499/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform pill pill-pink">网易</span>
+      <div class="title">知乎百度 | 来看看，他们竟这样评价工大</div>
+      <div class="desc">汇总知乎等平台网友对安工大的评价。"工大没有科大厉害，工大没有安大浪漫，工大没有周围院校女生多，但是仔细想想，我觉得在工大……"展现了校友对学校的复杂情感和真实评价。</div>
+      <a class="source-link" href="https://3g.163.com/dy/article/CIFM741R0514EK8P.html" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform pill pill-teal">头条</span>
+      <div class="title">安徽理科学生：南京工业大学和安徽工业大学，选哪个比较好？</div>
+      <div class="desc">对比南京工业大学和安徽工业大学的学费、住宿条件、校园生活等方面。安工大工科5200元/年，住宿1500元/年含空调独立卫浴。讨论涉及地理位置、就业前景、学科实力等多维度比较，引发跨校择校讨论。</div>
+      <a class="source-link" href="http://m.toutiao.com/group/7522374350784168488/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform pill pill-blue">职朋校友圈</span>
+      <div class="title">安徽工业大学专业怎么样？校友真实分享</div>
+      <div class="desc">多位校友分享对安工大的评价。"学校在我入学之前的评价一直都是比较不错的，毕竟是老牌一本，有一定的学术积累。"涵盖了校园环境、教学氛围、专业实力等维度，为考生提供参考。</div>
+      <a class="source-link" href="https://m.showxue.com/dianping/5601/115.html" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <!-- 信息来源汇总 -->
+  <div class="section">
+    <div class="section-title">
+      <span class="icon">📋</span>
+      信息来源汇总
+    </div>
+    <div class="card">
+      <table class="source-table">
+        <thead>
+          <tr><th>来源名称</th><th>链接</th><th>日期</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>搜狐·就业质量报告</td>
+            <td><a href="https://m.sohu.com/a/785462223_121931941/" target="_blank">查看原文</a></td>
+            <td>2024-06-12</td>
+          </tr>
+          <tr>
+            <td>掌上高考·就业去向</td>
+            <td><a href="https://m.gaokao.cn/school/69/job" target="_blank">查看原文</a></td>
+            <td>2026-01</td>
+          </tr>
+          <tr>
+            <td>今日头条·王牌专业</td>
+            <td><a href="http://m.toutiao.com/group/7571725438013014538/" target="_blank">查看原文</a></td>
+            <td>2025</td>
+          </tr>
+          <tr>
+            <td>今日头条·升学就业指南</td>
+            <td><a href="http://m.toutiao.com/group/7556874734999306787/" target="_blank">查看原文</a></td>
+            <td>2025</td>
+          </tr>
+          <tr>
+            <td>教务处·转专业通知</td>
+            <td><a href="https://jwc.ahut.edu.cn/info/1091/5706.htm" target="_blank">查看原文</a></td>
+            <td>2026</td>
+          </tr>
+          <tr>
+            <td>教务处·选课通知</td>
+            <td><a href="https://jwc.ahut.edu.cn/info/1091/5640.htm" target="_blank">查看原文</a></td>
+            <td>2025-12</td>
+          </tr>
+          <tr>
+            <td>研究生院·选课通知</td>
+            <td><a href="https://graduate.ahut.edu.cn/info/1176/8785.htm" target="_blank">查看原文</a></td>
+            <td>2025</td>
+          </tr>
+          <tr>
+            <td>学生工作部·奖学金通知</td>
+            <td><a href="https://xgb.ahut.edu.cn/info/1002/5142.htm" target="_blank">查看原文</a></td>
+            <td>2025-09-15</td>
+          </tr>
+          <tr>
+            <td>中新网·挑战杯获奖</td>
+            <td><a href="https://www.ah.chinanews.com/news/2025/1023/337419.shtml" target="_blank">查看原文</a></td>
+            <td>2025-10-23</td>
+          </tr>
+          <tr>
+            <td>新闻网·AIGC竞赛</td>
+            <td><a href="https://news.ahut.edu.cn/info/1003/67307.htm" target="_blank">查看原文</a></td>
+            <td>2025-11</td>
+          </tr>
+          <tr>
+            <td>招生网·学科竞赛</td>
+            <td><a href="https://zs.ahut.edu.cn/info/5971/2742.htm" target="_blank">查看原文</a></td>
+            <td>2025</td>
+          </tr>
+          <tr>
+            <td>研究生院·博士招生</td>
+            <td><a href="https://graduate.ahut.edu.cn/info/1133/8697.htm" target="_blank">查看原文</a></td>
+            <td>2025-04-27</td>
+          </tr>
+          <tr>
+            <td>搜狐·博士招生简章</td>
+            <td><a href="https://m.sohu.com/a/826425409_121298389/" target="_blank">查看原文</a></td>
+            <td>2025</td>
+          </tr>
+          <tr>
+            <td>头条·新生入学参考</td>
+            <td><a href="http://m.toutiao.com/group/7532315874934424099/" target="_blank">查看原文</a></td>
+            <td>2025</td>
+          </tr>
+          <tr>
+            <td>安工大官网·校园生活</td>
+            <td><a href="https://www.ahut.edu.cn/index/xysh.htm" target="_blank">查看原文</a></td>
+            <td>2025</td>
+          </tr>
+          <tr>
+            <td>头条·校名讨论</td>
+            <td><a href="http://m.toutiao.com/group/7529002432047645219/" target="_blank">查看原文</a></td>
+            <td>2025</td>
+          </tr>
+          <tr>
+            <td>网易·知乎评价</td>
+            <td><a href="https://3g.163.com/dy/article/CIFM741R0514EK8P.html" target="_blank">查看原文</a></td>
+            <td>2025</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Giscus评论区 -->
+  <div class="giscus-section" id="comments">
+    <h2>💬 评论区</h2>
+    <script src="https://giscus.app/client.js"
+      data-repo="TS-dinglilu/TS-dinglilu.github.io"
+      data-repo-id="R_kgDOTjqaJQ"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOTjqaJc4DCIL1"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="dark_dimmed"
+      data-lang="zh-CN"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </div>
+
+  <div class="footer">
+    <p>安工大校园日报 | 自动生成于 2026-07-29</p>
+    <p style="margin-top:8px;">Powered by TRAE自动化 · <a href="https://ts-dinglilu.github.io/ahut-campus/">返回归档首页</a></p>
+  </div>
+
+</div>
+
+</body>
+</html>
