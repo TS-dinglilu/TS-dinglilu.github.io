@@ -15,8 +15,8 @@
   --border: rgba(0, 212, 255, 0.12);
   --border-hover: rgba(0, 212, 255, 0.4);
   --text: #e8eef5;
-  --text-dim: #d0dae8;
-  --text-faint: #c8d3e6;
+  --text-dim: #e0e8f2;
+  --text-faint: #d8e2f0;
   --accent: #00d4ff;
   --accent-warm: #ffb347;
   --accent-green: #22d3a0;
@@ -162,7 +162,7 @@ body::after {
 }
 
 /* SECTION */
-.section { padding: 32px 0; }
+.section { padding: 36px 0; }
 
 .section-label {
   font-family: 'JetBrains Mono', monospace;
@@ -306,6 +306,27 @@ body::after {
   .stats { gap: 20px; }
   .stat-num { font-size: 1.3rem; }
 }
+
+/* SECTION DIVIDER - 渐变分割线增强视觉分隔 */
+.section-title {
+  position: relative;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  top: -28px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0,212,255,0.5) 15%, rgba(129,140,248,0.4) 50%, rgba(0,212,255,0.5) 85%, transparent 100%);
+  border-radius: 2px;
+  opacity: 0.7;
+}
+/* 第一个section-title不需要分隔线 */
+.section-title:first-of-type::after {
+  display: none;
+}
+
 </style>
 <!-- cache-bust: 1785260481 -->
 </head>
