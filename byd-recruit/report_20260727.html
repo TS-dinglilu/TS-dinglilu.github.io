@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>比亚迪招聘日报 | 2026年7月27日</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v2.0 美化版
+   适用于所有自动化任务的报告HTML
+   配色方案: 深蓝(#0f2c4d) + 蓝色强调(#2563eb)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --primary: #0f2c4d;
+  --primary-light: #1e4d7b;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-glow: rgba(37, 99, 235, 0.15);
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --text-faint: #94a3b8;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --green: #10b981;
+  --green-bg: #ecfdf5;
+  --green-border: #a7f3d0;
+  --amber: #f59e0b;
+  --amber-bg: #fffbeb;
+  --amber-border: #fde68a;
+  --red: #ef4444;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+  --blue-bg: #eff6ff;
+  --blue-border: #bfdbfe;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', 'Inter', -apple-system, 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 15px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Decorative grid background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating gradient orb */
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%; right: -10%;
+  width: 50%; height: 60%;
+  background: radial-gradient(ellipse, rgba(37,99,235,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   HEADER - 渐变标题栏 with glass-morphism
+   ============================================================ */
+.header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 40%, var(--accent) 100%);
+  color: #fff;
+  padding: 48px 24px 36px;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(15, 44, 77, 0.2);
+  margin-bottom: 8px;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -50%; left: -20%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.header .subtitle {
+  font-size: 0.9rem;
+  opacity: 0.88;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .date {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  z-index: 1;
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   SECTIONS - 卡片式内容区
+   ============================================================ */
+.section {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin: 20px 0;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, transparent 100%);
+}
+.section h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 20px 0 10px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ============================================================
+   CARDS - 信息卡片
+   ============================================================ */
+.card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-left-color: var(--accent-light);
+}
+.card-title {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-meta {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  font-family: 'Inter', monospace;
+}
+.card-content {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.card-content strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ============================================================
+   NEWS ITEMS - 新闻条目
+   ============================================================ */
+.news-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.news-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--border);
+  transition: all 0.3s ease;
+}
+.news-item:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.news-item:hover::before {
+  background: var(--accent);
+  width: 5px;
+}
+.news-item .badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--blue-bg);
+  color: #1e40af;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-right: 8px;
+  font-weight: 600;
+  border: 1px solid var(--blue-border);
+  letter-spacing: 0.3px;
+}
+.news-item .badge.hot {
+  background: var(--red-bg);
+  color: #dc2626;
+  border-color: var(--red-border);
+}
+.news-item .badge.new {
+  background: var(--green-bg);
+  color: #16a34a;
+  border-color: var(--green-border);
+}
+
+/* ============================================================
+   TABLES - 数据表格
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 16px 0;
+  font-size: 0.84rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+th {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) { background: #f8fafc; }
+tr:hover { background: var(--blue-bg); }
+tr:nth-child(even):hover { background: #eff6ff; }
+
+/* ============================================================
+   TAGS - 标签
+   ============================================================ */
+.tag {
+  display: inline-block;
+  background: var(--blue-bg);
+  color: #3730a3;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin: 2px;
+  font-weight: 500;
+  border: 1px solid var(--blue-border);
+}
+.tag.green { background: var(--green-bg); color: #166534; border-color: var(--green-border); }
+.tag.orange { background: var(--amber-bg); color: #92400e; border-color: var(--amber-border); }
+.tag.red { background: var(--red-bg); color: #991b1b; border-color: var(--red-border); }
+
+/* ============================================================
+   SOURCE LINKS - 原文链接
+   ============================================================ */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: var(--blue-bg);
+  border: 1px solid var(--blue-border);
+  transition: all 0.2s;
+}
+.source-link:hover {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* ============================================================
+   DISCUSSION - 讨论区
+   ============================================================ */
+.discussion {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-border);
+  border-left: 4px solid var(--amber);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 14px 0;
+  transition: all 0.3s;
+}
+.discussion:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.discussion .platform {
+  display: inline-block;
+  background: var(--amber);
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   TIP BOX - 提示框
+   ============================================================ */
+.tip-box {
+  background: var(--green-bg);
+  border: 1px solid var(--green-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.tip-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--green);
+}
+.tip-box h4 {
+  color: #065f46;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.tip-box ul { list-style: none; padding-left: 0; }
+.tip-box li {
+  padding: 5px 0 5px 24px;
+  position: relative;
+  font-size: 0.88rem;
+  color: #1a4731;
+}
+.tip-box li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   WARNING BOX - 警告框
+   ============================================================ */
+.warning-box {
+  background: var(--red-bg);
+  border: 1px solid var(--red-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.warning-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--red);
+}
+.warning-box h4 {
+  color: #991b1b;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SUMMARY TABLE - 汇总表
+   ============================================================ */
+.summary-table { font-size: 0.82rem; }
+.summary-table td:first-child {
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   GISCUS / COMMENTS - 评论区
+   ============================================================ */
+.comments-section {
+  margin-top: 40px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.comments-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.comments-desc {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   FOOTER - 页脚
+   ============================================================ */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   RESPONSIVE - 移动端适配
+   ============================================================ */
+@media (max-width: 600px) {
+  .header { padding: 32px 16px 24px; border-radius: 0 0 20px 20px; }
+  .header h1 { font-size: 1.3rem; }
+  .section { padding: 18px 14px; margin: 14px 0; }
+  .card, .news-item { padding: 14px 16px; }
+  table { font-size: 0.76rem; }
+  th, td { padding: 7px 5px; }
+  .container { padding: 0 12px 40px; }
+}
+
+/* ============================================================
+   UTILITY - 通用工具类
+   ============================================================ */
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-light); text-decoration: underline; }
+strong { color: var(--primary); }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<div class="header">
+  <div class="container header-content">
+    <h1>比亚迪招聘日报</h1>
+    <p class="subtitle">每日比亚迪招聘信息 · 岗位详情 · 薪资待遇 · 面试攻略</p>
+    <span class="date-badge">📅 2026年7月27日 · 星期一</span>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num">18+</div>
+        <div class="stat-label">在招岗位</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">6</div>
+        <div class="stat-label">重点方向</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5</div>
+        <div class="stat-label">热议话题</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">12</div>
+        <div class="stat-label">信息来源</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 今日概览 ===== -->
+<div class="section">
+  <div class="container">
+    <h2 class="section-title">今日概览</h2>
+    <div class="summary-box">
+      <h3>📊 7月27日比亚迪招聘动态摘要</h3>
+      <ul>
+        <li>比亚迪2026届校招持续推进，前程无忧已上线多岗位招聘，覆盖深圳、西安、合肥、郑州等基地，AI训练工程师、智能座舱产品专家等高薪岗位在招</li>
+        <li>智联招聘显示，深圳坪山区集中放出智能座舱DMS产品经理、汽车研发项目经理等核心岗位，薪资1-2.5万/月</li>
+        <li>BOSS直聘上比亚迪智能驾驶系统专家岗位面向10年以上资深人才，海外销售经理岗位覆盖阿联酋、南非、沙特等地区</li>
+        <li>2026届校招薪资曝光：985硕士F类底薪15K（年薪约24.5万），C9硕士F类底薪18K（年薪约29.4万），清北硕士F类底薪25K（年薪40.8万）</li>
+        <li>全网热议：比亚迪一天收到12万份简历成热搜，录取率不到3%，从"点击就送"到"高攀不起"的转变引发广泛讨论</li>
+        <li>社招方面，E3职级成"最舒服"级别，月薪可达40K，活不算多且不易被裁</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 招聘新闻 ===== -->
+<div class="section" style="background: rgba(37,99,235,0.02);">
+  <div class="container">
+    <h2 class="section-title">比亚迪招聘新闻 · 按地区分组</h2>
+
+    <!-- 深圳 -->
+    <div class="location-group">
+      <div class="location-header"><span class="location-pin">📍</span> 深圳（坪山区总部）</div>
+      <div class="jobs-grid">
+        <div class="job-card">
+          <div class="job-title">AI训练工程师</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">8K-16K/月</span>
+            <span class="tag tag-location">深圳·坪山区</span>
+            <span class="tag tag-edu">本科</span>
+            <span class="tag tag-exp">1年+</span>
+          </div>
+          <p class="job-desc">负责AI模型训练与数据标注工作，参与智能驾驶、智能座舱等前沿方向的AI能力建设。比亚迪2026校招核心岗位之一。</p>
+          <a class="job-link" href="https://mmq.51job.com/i1395/co193864/xiaozhao/" target="_blank">📎 查看原文</a>
+        </div>
+        <div class="job-card">
+          <div class="job-title">座舱DMS智能化产品经理</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">10K-20K/月</span>
+            <span class="tag tag-location">深圳·坪山区</span>
+            <span class="tag tag-edu">本科</span>
+            <span class="tag tag-exp">3-5年</span>
+          </div>
+          <p class="job-desc">主导智能座舱DMS（驾驶员监测系统）产品规划，雇员评价"同事很nice、工作环境好、氛围活跃、团队执行强"。</p>
+          <a class="job-link" href="https://www.zhaopin.com/jobdetail/CC132962990J40043749202.htm" target="_blank">📎 查看原文</a>
+        </div>
+        <div class="job-card">
+          <div class="job-title">智能座舱产品专家-C端</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">面议（高级）</span>
+            <span class="tag tag-location">深圳</span>
+            <span class="tag tag-edu">本科</span>
+            <span class="tag tag-exp">5-10年</span>
+            <span class="tag tag-hot">🔥 热招</span>
+          </div>
+          <p class="job-desc">主导智能座舱智能助手的C端产品规划与交互设计，以用户体验为核心，推动智能座舱产品迭代升级。</p>
+          <a class="job-link" href="https://www.zhipin.com/job_detail/e381c1eaf5445cd603N_39S6FVtQ.html" target="_blank">📎 查看原文</a>
+        </div>
+        <div class="job-card">
+          <div class="job-title">智能驾驶系统专家</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">面议（专家级）</span>
+            <span class="tag tag-location">深圳</span>
+            <span class="tag tag-edu">本科</span>
+            <span class="tag tag-exp">10年+</span>
+            <span class="tag tag-hot">🔥 热招</span>
+          </div>
+          <p class="job-desc">负责系统性能优化（CPU/内存）、智能驾驶相关业务及图像处理、指标监控运维。比亚迪精密制造直招。</p>
+          <a class="job-link" href="https://www.zhipin.com/job_detail/0946eca8e835685103Ry3d68GFVZ.html" target="_blank">📎 查看原文</a>
+        </div>
+        <div class="job-card">
+          <div class="job-title">汽车研发项目经理</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">15K-25K/月</span>
+            <span class="tag tag-location">深圳</span>
+            <span class="tag tag-edu">本科</span>
+            <span class="tag tag-exp">经验不限</span>
+          </div>
+          <p class="job-desc">负责智能汽车、智能座舱、无人驾驶、智能网联汽车、新能源等研发项目管理。核心方向覆盖全面。</p>
+          <a class="job-link" href="https://www.zhaopin.com/jobdetail/CC671591020J40237940507.htm" target="_blank">📎 查看原文</a>
+        </div>
+        <div class="job-card">
+          <div class="job-title">高级/商务专员</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">14K-28K/月</span>
+            <span class="tag tag-location">深圳·坪山区</span>
+            <span class="tag tag-edu">本科</span>
+            <span class="tag tag-exp">1年+</span>
+          </div>
+          <p class="job-desc">负责商务合作与高级专员工作，比亚迪总部核心职能部门，薪资区间较高。</p>
+          <a class="job-link" href="https://mmq.51job.com/i1395/co193864/xiaozhao/" target="_blank">📎 查看原文</a>
+        </div>
+        <div class="job-card">
+          <div class="job-title">融资经理</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">10K-20K/月</span>
+            <span class="tag tag-location">深圳·坪山区</span>
+            <span class="tag tag-edu">本科</span>
+            <span class="tag tag-exp">无需经验</span>
+          </div>
+          <p class="job-desc">负责企业融资相关业务，接受应届毕业生，比亚迪集团财务体系岗位。</p>
+          <a class="job-link" href="https://mmq.51job.com/i1395/co193864/xiaozhao/" target="_blank">📎 查看原文</a>
+        </div>
+        <div class="job-card">
+          <div class="job-title">热成型模具设计工程师</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">10K-15K/月</span>
+            <span class="tag tag-location">深圳·坪山区</span>
+            <span class="tag tag-edu">大专</span>
+            <span class="tag tag-exp">1年+</span>
+          </div>
+          <p class="job-desc">负责汽车热成型模具设计与开发，制造工艺核心岗位，大专学历即可投递。</p>
+          <a class="job-link" href="https://mmq.51job.com/i1395/co193864/xiaozhao/" target="_blank">📎 查看原文</a>
+        </div>
+        <div class="job-card">
+          <div class="job-title">冲压工艺工程师</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">10K-15K/月</span>
+            <span class="tag tag-location">深圳·坪山区</span>
+            <span class="tag tag-edu">大专</span>
+            <span class="tag tag-exp">1年+</span>
+          </div>
+          <p class="job-desc">负责冲压工艺开发与优化，汽车制造核心环节，大专学历可投递。</p>
+          <a class="job-link" href="https://mmq.51job.com/i1395/co193864/xiaozhao/" target="_blank">📎 查看原文</a>
+        </div>
+        <div class="job-card">
+          <div class="job-title">海外市场专员（营销）</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">8K-15K/月</span>
+            <span class="tag tag-location">深圳·龙岗区</span>
+            <span class="tag tag-edu">本科</span>
+            <span class="tag tag-exp">1-3年</span>
+          </div>
+          <p class="job-desc">负责比亚迪海外市场营销工作，雇员评价"同事很nice、工作环境好、实力大公司"。</p>
+          <a class="job-link" href="https://www.zhaopin.com/jobdetail/CC132962990J40520751602.htm" target="_blank">📎 查看原文</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 西安 -->
+    <div class="location-group">
+      <div class="location-header"><span class="location-pin">📍</span> 西安（长安区）</div>
+      <div class="jobs-grid">
+        <div class="job-card">
+          <div class="job-title">成本会计</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">6K-10K/月</span>
+            <span class="tag tag-location">西安·长安区</span>
+            <span class="tag tag-edu">本科</span>
+            <span class="tag tag-exp">无需经验</span>
+          </div>
+          <p class="job-desc">负责成本核算与分析工作，接受应届毕业生，西安基地财务岗位。</p>
+          <a class="job-link" href="https://mmq.51job.com/i1395/co193864/xiaozhao/" target="_blank">📎 查看原文</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 合肥 -->
+    <div class="location-group">
+      <div class="location-header"><span class="location-pin">📍</span> 合肥</div>
+      <div class="jobs-grid">
+        <div class="job-card">
+          <div class="job-title">成本会计</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">5K-8K/月</span>
+            <span class="tag tag-location">合肥</span>
+            <span class="tag tag-edu">本科</span>
+            <span class="tag tag-exp">无需经验</span>
+          </div>
+          <p class="job-desc">负责成本核算与分析，接受应届毕业生，合肥基地财务岗位。</p>
+          <a class="job-link" href="https://mmq.51job.com/i1395/co193864/xiaozhao/" target="_blank">📎 查看原文</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 郑州 -->
+    <div class="location-group">
+      <div class="location-header"><span class="location-pin">📍</span> 郑州（航空港区）</div>
+      <div class="jobs-grid">
+        <div class="job-card">
+          <div class="job-title">非标机械设计工程师</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">8K-16K/月</span>
+            <span class="tag tag-location">郑州·新郑市</span>
+            <span class="tag tag-edu">本科</span>
+            <span class="tag tag-exp">1年+</span>
+          </div>
+          <p class="job-desc">负责非标自动化设备的机械设计与开发，郑州基地核心技术岗位。</p>
+          <a class="job-link" href="https://mmq.51job.com/i1395/co193864/xiaozhao/" target="_blank">📎 查看原文</a>
+        </div>
+        <div class="job-card">
+          <div class="job-title">成本会计</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">5K-8K/月</span>
+            <span class="tag tag-location">郑州·航空港区</span>
+            <span class="tag tag-edu">本科</span>
+            <span class="tag tag-exp">无需经验</span>
+          </div>
+          <p class="job-desc">负责成本核算与分析工作，接受应届毕业生，郑州基地财务岗位。</p>
+          <a class="job-link" href="https://mmq.51job.com/i1395/co193864/xiaozhao/" target="_blank">📎 查看原文</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 苏州 -->
+    <div class="location-group">
+      <div class="location-header"><span class="location-pin">📍</span> 苏州（高新区）</div>
+      <div class="jobs-grid">
+        <div class="job-card">
+          <div class="job-title">仰望汽车-服务顾问</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">7K-10K/月</span>
+            <span class="tag tag-location">苏州·高新区</span>
+            <span class="tag tag-edu">大专</span>
+            <span class="tag tag-exp">1年+</span>
+          </div>
+          <p class="job-desc">比亚迪高端品牌"仰望"汽车服务顾问，负责客户接待与售后服务，大专学历可投递。</p>
+          <a class="job-link" href="https://mmq.51job.com/i1395/co193864/xiaozhao/" target="_blank">📎 查看原文</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 广州 -->
+    <div class="location-group">
+      <div class="location-header"><span class="location-pin">📍</span> 广州</div>
+      <div class="jobs-grid">
+        <div class="job-card">
+          <div class="job-title">塑胶模具设计工程师</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">10K-20K/月</span>
+            <span class="tag tag-location">广州</span>
+            <span class="tag tag-edu">大专</span>
+            <span class="tag tag-exp">1年+</span>
+          </div>
+          <p class="job-desc">负责塑胶模具设计与开发，汽车零部件制造核心岗位，大专学历可投递。</p>
+          <a class="job-link" href="https://mmq.51job.com/i1395/co193864/xiaozhao/" target="_blank">📎 查看原文</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 汕尾 -->
+    <div class="location-group">
+      <div class="location-header"><span class="location-pin">📍</span> 汕尾（海丰县）</div>
+      <div class="jobs-grid">
+        <div class="job-card">
+          <div class="job-title">塑胶模具设计工程师</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">10K-15K/月</span>
+            <span class="tag tag-location">汕尾·海丰县</span>
+            <span class="tag tag-edu">中技/中专</span>
+            <span class="tag tag-exp">1年+</span>
+          </div>
+          <p class="job-desc">负责塑胶模具设计与开发，学历要求门槛较低，适合有实操经验的技术人才。</p>
+          <a class="job-link" href="https://mmq.51job.com/i1395/co193864/xiaozhao/" target="_blank">📎 查看原文</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 东莞 -->
+    <div class="location-group">
+      <div class="location-header"><span class="location-pin">📍</span> 东莞</div>
+      <div class="jobs-grid">
+        <div class="job-card">
+          <div class="job-title">社招24届招聘（质量管理方向）</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">8K-13K/月</span>
+            <span class="tag tag-location">东莞</span>
+            <span class="tag tag-edu">本科</span>
+            <span class="tag tag-exp">无经验（24届）</span>
+          </div>
+          <p class="job-desc">面向2024届毕业生，理工科（电气/机械/材料/电子等）专业，涉及汽车电气设备、新能源汽车、质量管理方向，招10人。</p>
+          <a class="job-link" href="https://www.zhaopin.com/jobdetail/CC285657410J40658050909.htm" target="_blank">📎 查看原文</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 海外 -->
+    <div class="location-group">
+      <div class="location-header"><span class="location-pin">📍</span> 海外（出差/驻外）</div>
+      <div class="jobs-grid">
+        <div class="job-card">
+          <div class="job-title">海外销售经理（驻阿联酋）</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">面议</span>
+            <span class="tag tag-location">阿联酋（驻外）</span>
+            <span class="tag tag-edu">本科</span>
+            <span class="tag tag-exp">经验不限</span>
+            <span class="tag tag-hot">🔥 海外</span>
+          </div>
+          <p class="job-desc">分析乘用车市场容量、发展趋势、消费习惯、价格走势，提出市场发展策略，制定并执行所属市场年度/季度销售计划。</p>
+          <a class="job-link" href="https://www.zhipin.com/job_detail/92dc1ec718dadc9c1Hdy2NW7FlNS.html" target="_blank">📎 查看原文</a>
+        </div>
+        <div class="job-card">
+          <div class="job-title">海外销售经理-商用车（出差南非）</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">面议</span>
+            <span class="tag tag-location">南非（出差）</span>
+            <span class="tag tag-edu">本科</span>
+            <span class="tag tag-exp">经验不限</span>
+          </div>
+          <p class="job-desc">负责所属区域商用车市场调研和规划，制定市场策略及销售目标，实现策略有效落地和销售目标达成。</p>
+          <a class="job-link" href="https://www.zhipin.com/job_detail/6a3b7b3b94e3f4751Hx43du1E1RY.html" target="_blank">📎 查看原文</a>
+        </div>
+        <div class="job-card">
+          <div class="job-title">海外市场营销专员（出差沙特等）</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">面议</span>
+            <span class="tag tag-location">沙特阿拉伯（出差）</span>
+            <span class="tag tag-edu">本科</span>
+            <span class="tag tag-exp">经验不限</span>
+          </div>
+          <p class="job-desc">策划年度、季度、月度营销活动及线上推广、广告投放方案，与经销商共同调整优化，确保有效执行落地。</p>
+          <a class="job-link" href="https://www.zhipin.com/job_detail/3e864ea2e95e44241Hx73dm-GFNY.html" target="_blank">📎 查看原文</a>
+        </div>
+        <div class="job-card">
+          <div class="job-title">海外市场经理（澳新/北美/东南亚）</div>
+          <div class="job-tags">
+            <span class="tag tag-salary">10万起/年</span>
+            <span class="tag tag-location">全国/海外</span>
+            <span class="tag tag-edu">学历不限</span>
+            <span class="tag tag-exp">经验不限</span>
+          </div>
+          <p class="job-desc">BYD海外市场招聘专场进行时，猎聘平台新增2210个职位，覆盖澳新、北美、东南亚等区域市场经理岗位。</p>
+          <a class="job-link" href="https://www.liepin.com/s/bydhwscf4h9/pn2/" target="_blank">📎 查看原文</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 重点岗位详解 ===== -->
+<div class="section">
+  <div class="container">
+    <h2 class="section-title">重点岗位详解</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>岗位名称</th>
+            <th>部门/方向</th>
+            <th>工作地点</th>
+            <th>薪资范围</th>
+            <th>学历要求</th>
+            <th>核心技能要求</th>
+            <th>招聘链接</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>智能驾驶系统专家</strong></td>
+            <td>智能驾驶</td>
+            <td>深圳</td>
+            <td><span class="tag tag-salary">面议（专家级）</span></td>
+            <td>本科</td>
+            <td>系统性能优化、图像处理、指标监控运维、10年+经验</td>
+            <td><a class="table-link" href="https://www.zhipin.com/job_detail/0946eca8e835685103Ry3d68GFVZ.html" target="_blank">📎 查看招聘</a></td>
+          </tr>
+          <tr>
+            <td><strong>智能座舱产品专家-C端</strong></td>
+            <td>智能座舱</td>
+            <td>深圳</td>
+            <td><span class="tag tag-salary">面议（高级）</span></td>
+            <td>本科</td>
+            <td>C端产品规划、交互设计、用户体验、5-10年经验</td>
+            <td><a class="table-link" href="https://www.zhipin.com/job_detail/e381c1eaf5445cd603N_39S6FVtQ.html" target="_blank">📎 查看招聘</a></td>
+          </tr>
+          <tr>
+            <td><strong>汽车研发项目经理</strong></td>
+            <td>研发管理</td>
+            <td>深圳</td>
+            <td><span class="tag tag-salary">15K-25K/月</span></td>
+            <td>本科</td>
+            <td>智能汽车/座舱/无人驾驶/智能网联/新能源项目管理</td>
+            <td><a class="table-link" href="https://www.zhaopin.com/jobdetail/CC671591020J40237940507.htm" target="_blank">📎 查看招聘</a></td>
+          </tr>
+          <tr>
+            <td><strong>座舱DMS智能化产品经理</strong></td>
+            <td>智能座舱</td>
+            <td>深圳·坪山</td>
+            <td><span class="tag tag-salary">10K-20K/月</span></td>
+            <td>本科</td>
+            <td>DMS产品规划、智能化产品、3-5年经验</td>
+            <td><a class="table-link" href="https://www.zhaopin.com/jobdetail/CC132962990J40043749202.htm" target="_blank">📎 查看招聘</a></td>
+          </tr>
+          <tr>
+            <td><strong>AI训练工程师</strong></td>
+            <td>人工智能</td>
+            <td>深圳·坪山</td>
+            <td><span class="tag tag-salary">8K-16K/月</span></td>
+            <td>本科</td>
+            <td>AI模型训练、数据标注、深度学习、1年+经验</td>
+            <td><a class="table-link" href="https://mmq.51job.com/i1395/co193864/xiaozhao/" target="_blank">📎 查看招聘</a></td>
+          </tr>
+          <tr>
+            <td><strong>非标机械设计工程师</strong></td>
+            <td>机械研发</td>
+            <td>郑州·新郑</td>
+            <td><span class="tag tag-salary">8K-16K/月</span></td>
+            <td>本科</td>
+            <td>非标自动化设计、机械制图、SolidWorks/AutoCAD</td>
+            <td><a class="table-link" href="https://mmq.51job.com/i1395/co193864/xiaozhao/" target="_blank">📎 查看招聘</a></td>
+          </tr>
+          <tr>
+            <td><strong>海外销售经理（驻阿联酋）</strong></td>
+            <td>海外业务</td>
+            <td>阿联酋</td>
+            <td><span class="tag tag-salary">面议</span></td>
+            <td>本科</td>
+            <td>市场分析、销售策略、跨文化沟通、英语/阿拉伯语</td>
+            <td><a class="table-link" href="https://www.zhipin.com/job_detail/92dc1ec718dadc9c1Hdy2NW7FlNS.html" target="_blank">📎 查看招聘</a></td>
+          </tr>
+          <tr>
+            <td><strong>塑胶模具设计工程师</strong></td>
+            <td>制造工艺</td>
+            <td>广州</td>
+            <td><span class="tag tag-salary">10K-20K/月</span></td>
+            <td>大专</td>
+            <td>模具设计、UG/Pro-E、注塑工艺、1年+经验</td>
+            <td><a class="table-link" href="https://mmq.51job.com/i1395/co193864/xiaozhao/" target="_blank">📎 查看招聘</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 面试经验分享 ===== -->
+<div class="section" style="background: rgba(37,99,235,0.02);">
+  <div class="container">
+    <h2 class="section-title">面试经验分享</h2>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">工艺工程师 · 秋招面经（笔试+HR面+技术面）</div>
+        <span class="exp-platform">牛客网</span>
+      </div>
+      <div class="exp-content">
+        <p><strong>面试流程：</strong></p>
+        <div class="exp-flow">
+          <span class="flow-step">笔试</span> → <span class="flow-step">HR面（一对一）</span> → <span class="flow-step">技术面</span>
+        </div>
+        <p><strong>笔试：</strong>题目和公务员考试差不多，题量不大，大部分人都过了。</p>
+        <p><strong>一面（HR面）：</strong>氛围轻松，注重考察稳定性。自我介绍（最好用英文）、个人兴趣爱好、工艺经历及项目成果、对BYD的认识、薪资问题及加班看法、工作地意愿、家庭情况。</p>
+        <p><strong>二面（技术面）：</strong>以前有没有做过仪表板数据设计、数据设计怎么样、齿轮传动比怎样计算（列出公式）。</p>
+        <p><strong>难度评价：</strong>⭐⭐⭐（中等），技术问题偏基础，HR面重在稳定性考察。</p>
+      </div>
+      <a class="job-link" href="https://m.nowcoder.com/discuss/594188?source_id=community_index_nctrack" target="_blank" style="margin-top:12px;">📎 查看原文</a>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">嵌入式软件开发 · 入职一年工作感受</div>
+        <span class="exp-platform">牛客网</span>
+      </div>
+      <div class="exp-content">
+        <p><strong>工作环境：</strong>在坪山总部工作，公司有餐厅（工作餐6.5元，好一点15左右）、健身房、瑞幸咖啡、肯德基、面点王、操场、羽毛球、乒乓球。提供宿舍，F级及以上住集体宿舍每月补贴400元，购买比亚迪汽车每月补贴700元，上下班有班车接送。</p>
+        <p><strong>职场感受：</strong>没有日报周报，每个月填绩效表用于评绩效，工作压力不是特别大，有一定的工作主动性。</p>
+        <p><strong>建议：</strong>毕业应届非常建议入职，与上大学差不多，球类活动、操场乐队等可以丰富业余生活。部门内部尔虞我诈不多，对应届生第一年工作要求不大。</p>
+        <p><strong>不足：</strong>距离深圳中心较远，坐地铁需要一个多小时到岗夏北。</p>
+        <p><strong>难度评价：</strong>⭐⭐⭐（中等），工作节奏适中，适合应届生过渡成长。</p>
+      </div>
+      <a class="job-link" href="https://m.nowcoder.com/feed/main/detail/db7a827a51bd48199f1a4cd0637aa2cb?urlSource=home-api" target="_blank" style="margin-top:12px;">📎 查看原文</a>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">线下HR面+一面+线上二面 · 真实面经</div>
+        <span class="exp-platform">技术栈</span>
+      </div>
+      <div class="exp-content">
+        <p><strong>面试流程：</strong></p>
+        <div class="exp-flow">
+          <span class="flow-step">线下HR面</span> → <span class="flow-step">一面</span> → <span class="flow-step">线上二面</span>
+        </div>
+        <p><strong>HR面：</strong>自我介绍、意愿来深圳坪山工作、学的最好的科目、家庭情况、是否愿意接受这份工作、为什么来比亚迪。</p>
+        <p><strong>一面：</strong>自我介绍、优缺点分析、专业技能基础问题。</p>
+        <p><strong>二面（线上）：</strong>主要涉及计算机科学基础知识和开发工具，没有编程题。</p>
+        <p><strong>难度评价：</strong>⭐⭐⭐（中等），基础知识为主，重点考察稳定性和意愿度。</p>
+      </div>
+      <a class="job-link" href="https://jishuzhan.net/article/1976089247594643458" target="_blank" style="margin-top:12px;">📎 查看原文</a>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">秋招面试技巧总结</div>
+        <span class="exp-platform">日历网</span>
+      </div>
+      <div class="exp-content">
+        <p><strong>面试流程：</strong></p>
+        <div class="exp-flow">
+          <span class="flow-step">宣讲会投简历</span> → <span class="flow-step">笔试</span> → <span class="flow-step">终面</span>
+        </div>
+        <p><strong>第一步（秋招）：</strong>比亚迪各线路招聘铺开，招聘人数多，主要通过宣讲会投简历，效率较高，当晚基本完成筛选。</p>
+        <p><strong>第二步（笔试）：</strong>题目中规中矩，题量不大但内容较广，最后有英文作文，难度不大。</p>
+        <p><strong>第三步（终面）：</strong>不会问太多专业问题，主要是家庭、环境因素方面，跟HR坦诚交流即可。比亚迪可带本科生参与研发工作。</p>
+        <p><strong>难度评价：</strong>⭐⭐⭐（中等），整体流程简洁高效，重态度与匹配度。</p>
+      </div>
+      <a class="job-link" href="http://m.rili32.com/zixun00D5E73414b17b84.htm" target="_blank" style="margin-top:12px;">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 薪资待遇分析 ===== -->
+<div class="section">
+  <div class="container">
+    <h2 class="section-title">薪资待遇分析</h2>
+    <p style="margin-bottom:16px; color:var(--text-secondary); font-size:0.9rem;">比亚迪校招薪资按"院校档次 × 学历 × 专业"分为4档16类，F类（计算机、机械、控制等硬核专业）额外加码。以下为2026届校招最新薪资标准：</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>院校档次</th>
+            <th>学历</th>
+            <th>底薪（月）</th>
+            <th>绩效系数</th>
+            <th>预估年薪</th>
+            <th>备注</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>双非院校</td>
+            <td>本科</td>
+            <td>5,500元</td>
+            <td>×1.36</td>
+            <td>≈9.0万</td>
+            <td>基础档</td>
+          </tr>
+          <tr>
+            <td>211院校</td>
+            <td>本科</td>
+            <td>6,000元</td>
+            <td>×1.36</td>
+            <td>≈9.8万</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>985院校</td>
+            <td>本科</td>
+            <td>7,000元</td>
+            <td>×1.36</td>
+            <td>≈11.4万</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>C9高校</td>
+            <td>本科</td>
+            <td>7,500元</td>
+            <td>×1.36</td>
+            <td>≈12.2万</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>985院校</td>
+            <td>硕士 · F类</td>
+            <td>15,000元</td>
+            <td>×1.36</td>
+            <td>≈24.5万</td>
+            <td><span class="tag tag-match">F类加码</span></td>
+          </tr>
+          <tr>
+            <td>C9高校</td>
+            <td>硕士 · F类</td>
+            <td>18,000元</td>
+            <td>×1.36</td>
+            <td>≈29.4万</td>
+            <td><span class="tag tag-match">F类加码</span></td>
+          </tr>
+          <tr>
+            <td>清北</td>
+            <td>硕士 · F类</td>
+            <td>25,000元</td>
+            <td>×1.36</td>
+            <td>≈40.8万</td>
+            <td><span class="tag tag-match">F类加码</span></td>
+          </tr>
+          <tr>
+            <td>C9/清北</td>
+            <td>博士 · F类</td>
+            <td>33,000元</td>
+            <td>×1.36</td>
+            <td>≈49.0万</td>
+            <td><span class="tag tag-match">F类加码</span></td>
+          </tr>
+          <tr>
+            <td>社招</td>
+            <td>E3职级</td>
+            <td>≈40,000元</td>
+            <td>—</td>
+            <td>≈48万+</td>
+            <td><span class="tag tag-hot">🔥 最舒服职级</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:20px; background:var(--card-bg); backdrop-filter:blur(10px); border:1px solid var(--border); border-radius:16px; padding:24px; box-shadow:var(--shadow);">
+      <h4 style="color:var(--primary); margin-bottom:12px; font-size:1rem;">💰 福利待遇补充</h4>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:12px; font-size:0.88rem; color:var(--text-secondary);">
+        <p>🏠 <strong>免费住宿：</strong>四人间员工宿舍，独立卫浴、空调、热水器、洗衣机、WiFi一应俱全</p>
+        <p>🍽️ <strong>员工食堂：</strong>三餐平价供应，早餐4元起、午晚餐十余元</p>
+        <p>🚗 <strong>购车补贴：</strong>购买比亚迪汽车每月补贴700元</p>
+        <p>🏠 <strong>住宿补贴：</strong>F级及以上住集体宿舍每月补贴400元</p>
+        <p>🚌 <strong>通勤班车：</strong>上下班班车接送</p>
+        <p>🏋️ <strong>生活设施：</strong>健身房、瑞幸咖啡、肯德基、面点王、操场</p>
+        <p>📊 <strong>绩效奖金：</strong>转正后绩效约为底薪的33%</p>
+        <p>📈 <strong>股权激励：</strong>核心岗位享有股权激励</p>
+      </div>
+    </div>
+
+    <div style="margin-top:14px;">
+      <a class="job-link" href="http://m.toutiao.com/group/7665286865511105026/" target="_blank">📎 查看薪资原文（头条）</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 全网热议 ===== -->
+<div class="section" style="background: rgba(37,99,235,0.02);">
+  <div class="container">
+    <h2 class="section-title">全网热议</h2>
+
+    <div class="discuss-card">
+      <div class="discuss-header">
+        <span class="discuss-platform platform-toutiao">头条</span>
+        <span class="discuss-title">"一天12万份简历"，比亚迪成了应届生的终极信仰</span>
+      </div>
+      <div class="discuss-content">
+        从"迪子"到"爹迪"，比亚迪一天收到12万份简历冲上热搜。2023年校招3.18万人，硕博占比61.8%；2024年骤降至1.13万人，硕博占比飙至67%，录取率不到3%，比考公还难。2026届校招第一批只圈定24所高校，主力16所985，深圳大学作为非211也入选。年轻人赌的是"一艘还在加速的火箭"。
+      </div>
+      <a class="discuss-link" href="http://m.toutiao.com/group/7665286865511105026/" target="_blank">📎 查看原帖</a>
+    </div>
+
+    <div class="discuss-card">
+      <div class="discuss-header">
+        <span class="discuss-platform platform-toutiao">头条</span>
+        <span class="discuss-title">比亚迪员工爆料：E3是迪子最舒服的职级，社招拿个E3一个月40k</span>
+      </div>
+      <div class="discuss-content">
+        比亚迪员工爆料称E3是公司里最舒服的职级——不是D，也不是更高的管理层。社招进去拿个E3，一个月40k左右，活不算太多，也没那么容易被裁，属于很多人羡慕的"天花板"级别。
+      </div>
+      <a class="discuss-link" href="http://m.toutiao.com/group/7665525096915665408/" target="_blank">📎 查看原帖</a>
+    </div>
+
+    <div class="discuss-card">
+      <div class="discuss-header">
+        <span class="discuss-platform platform-nowcoder">牛客网</span>
+        <span class="discuss-title">比亚迪工作体验吐槽（已离职）</span>
+      </div>
+      <div class="discuss-content">
+        22年初入职时面试官说是在比亚迪，以为是坪山的比亚迪，结果到了坑梓的比亚迪，站在门口懵了半天。真实分享在比亚迪的工作体验，包括工作环境、薪资实际到手、加班情况等，供求职者参考。
+      </div>
+      <a class="discuss-link" href="https://m.nowcoder.com/discuss/649761444845694976" target="_blank">📎 查看原帖</a>
+    </div>
+
+    <div class="discuss-card">
+      <div class="discuss-header">
+        <span class="discuss-platform platform-nowcoder">牛客网</span>
+        <span class="discuss-title">入职比亚迪半个月，说说自己的状况</span>
+      </div>
+      <div class="discuss-content">
+        真实入职半个月感受分享：目前部门没有年终奖，其他部门有也少。年假工作一年以上才有5天，十年以上10天。过年放5天，通知写的9天有4天是调休。适合应届生过渡，但薪资和福利与预期有差距。
+      </div>
+      <a class="discuss-link" href="https://m.nowcoder.com/discuss/654351690203680768?urlSource=home-api" target="_blank">📎 查看原帖</a>
+    </div>
+
+    <div class="discuss-card">
+      <div class="discuss-header">
+        <span class="discuss-platform platform-toutiao">头条</span>
+        <span class="discuss-title">比亚迪招聘9000人！各学历均有岗，最高月薪20000元</span>
+      </div>
+      <div class="discuss-content">
+        比亚迪鹅埠零部件基地与小漠整车制造基地联合扩招，岗位总数超9000个，覆盖操作工、技术工、质检、管理等多个层级。福利包括免费四人间宿舍、三餐平价食堂等，各学历层次均有对应岗位。
+      </div>
+      <a class="discuss-link" href="http://m.toutiao.com/group/7665283663370453567/" target="_blank">📎 查看原帖</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 求职攻略 ===== -->
+<div class="section">
+  <div class="container">
+    <h2 class="section-title">求职攻略 · 进比亚迪的5条实用建议</h2>
+    <div class="tips-grid">
+      <div class="tip-item">
+        <div class="tip-num">1</div>
+        <div class="tip-content">
+          <h4>把握网申时间节点，宣讲会是第一入口</h4>
+          <p>比亚迪秋招通常在9-11月启动，春招在3-4月。2026届校招宣讲已覆盖76所院校，宣讲会后投递简历当晚即完成筛选。建议提前关注比亚迪招聘官网（job.byd.com）和前程无忧校招专区，第一时间参加线下宣讲会，宣讲会投递的简历通过率远高于纯网申。</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">2</div>
+        <div class="tip-content">
+          <h4>简历优化：突出院校档次与专业对口度</h4>
+          <p>比亚迪薪资体系直接按"院校档次×学历×专业"定级，简历中务必明确标注毕业院校层次（C9/985/211/双非）和专业方向。F类专业（计算机、机械、控制、电子、材料等硬核工科）有额外加薪，简历中应重点突出相关项目经历、竞赛获奖和技术技能。核心岗位招聘专业清单清一色指向硬核工科。</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">3</div>
+        <div class="tip-content">
+          <h4>面试准备：重稳定性与基础，英文自我介绍是加分项</h4>
+          <p>比亚迪面试以HR面+技术面为主，HR面重点考察稳定性（工作地意愿、家庭情况、加班态度），建议准备流利的英文自我介绍。技术面问题偏基础，如齿轮传动比计算、数据设计等，不会出太难的编程题。笔试类似公务员考试题型，题量不大但内容广，最后有英文作文，细心作答即可。</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">4</div>
+        <div class="tip-content">
+          <h4>了解比亚迪业务全貌，展现行业认知</h4>
+          <p>比亚迪业务横跨汽车、轨道交通、新能源和电子四大产业，是全球新能源销量冠军。面试中展示对比亚迪新能源战略、刀片电池、DM-i混动、仰望/方程豹等品牌矩阵的了解，能体现你的诚意和行业认知深度。王传福曾透露"直管的总经理有一半是从应届毕业生成长起来的"，强调长期发展意愿。</p>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">5</div>
+        <div class="tip-content">
+          <h4>合理管理预期：关注职级与长期成长</h4>
+          <p>社招进入建议瞄准E3职级（月薪约40K），是内部公认"性价比最高"的级别。应届生入职后第一年要求不高，适合成长过渡，但需注意年终奖因部门差异较大。比亚迪近三年招录5万+应届生，硕博占70%，晋升通道相对清晰。入职前了解清楚具体事业部和工作地点（坪山总部vs其他基地），避免入职后落差过大。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 信息来源汇总 ===== -->
+<div class="section" style="background: rgba(37,99,235,0.02);">
+  <div class="container">
+    <h2 class="section-title">信息来源汇总</h2>
+    <div class="table-wrap">
+      <table class="source-table">
+        <thead>
+          <tr>
+            <th>来源名称</th>
+            <th>链接</th>
+            <th>日期</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>比亚迪招聘官网</td>
+            <td><a class="table-link" href="https://job.byd.com" target="_blank">https://job.byd.com</a></td>
+            <td>2026-07-27</td>
+          </tr>
+          <tr>
+            <td>前程无忧 · 比亚迪2026校招</td>
+            <td><a class="table-link" href="https://mmq.51job.com/i1395/co193864/xiaozhao/" target="_blank">51job.com 比亚迪校招专区</a></td>
+            <td>2026-07-27</td>
+          </tr>
+          <tr>
+            <td>智联招聘 · 座舱DMS产品经理</td>
+            <td><a class="table-link" href="https://www.zhaopin.com/jobdetail/CC132962990J40043749202.htm" target="_blank">zhaopin.com 岗位详情</a></td>
+            <td>2026-07-27</td>
+          </tr>
+          <tr>
+            <td>智联招聘 · 汽车研发项目经理</td>
+            <td><a class="table-link" href="https://www.zhaopin.com/jobdetail/CC671591020J40237940507.htm" target="_blank">zhaopin.com 岗位详情</a></td>
+            <td>2026-07-27</td>
+          </tr>
+          <tr>
+            <td>智联招聘 · 海外市场专员</td>
+            <td><a class="table-link" href="https://www.zhaopin.com/jobdetail/CC132962990J40520751602.htm" target="_blank">zhaopin.com 岗位详情</a></td>
+            <td>2026-07-27</td>
+          </tr>
+          <tr>
+            <td>智联招聘 · 社招24届（东莞）</td>
+            <td><a class="table-link" href="https://www.zhaopin.com/jobdetail/CC285657410J40658050909.htm" target="_blank">zhaopin.com 岗位详情</a></td>
+            <td>2026-07-27</td>
+          </tr>
+          <tr>
+            <td>BOSS直聘 · 智能座舱产品专家</td>
+            <td><a class="table-link" href="https://www.zhipin.com/job_detail/e381c1eaf5445cd603N_39S6FVtQ.html" target="_blank">zhipin.com 岗位详情</a></td>
+            <td>2026-07-27</td>
+          </tr>
+          <tr>
+            <td>BOSS直聘 · 智能驾驶系统专家</td>
+            <td><a class="table-link" href="https://www.zhipin.com/job_detail/0946eca8e835685103Ry3d68GFVZ.html" target="_blank">zhipin.com 岗位详情</a></td>
+            <td>2026-07-27</td>
+          </tr>
+          <tr>
+            <td>BOSS直聘 · 海外销售经理</td>
+            <td><a class="table-link" href="https://www.zhipin.com/job_detail/92dc1ec718dadc9c1Hdy2NW7FlNS.html" target="_blank">zhipin.com 岗位详情</a></td>
+            <td>2026-07-27</td>
+          </tr>
+          <tr>
+            <td>猎聘 · BYD海外市场招聘专场</td>
+            <td><a class="table-link" href="https://www.liepin.com/s/bydhwscf4h9/pn2/" target="_blank">liepin.com 招聘专场</a></td>
+            <td>2026-07-27</td>
+          </tr>
+          <tr>
+            <td>头条 · 12万份简历热搜</td>
+            <td><a class="table-link" href="http://m.toutiao.com/group/7665286865511105026/" target="_blank">toutiao.com 热文</a></td>
+            <td>2026-07-27</td>
+          </tr>
+          <tr>
+            <td>牛客网 · 面试经验与工作体验</td>
+            <td><a class="table-link" href="https://m.nowcoder.com/discuss/594188" target="_blank">nowcoder.com 面经分享</a></td>
+            <td>2026-07-27</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Giscus 评论区 ===== -->
+<div class="giscus-section">
+  <div class="container">
+    <h2 class="section-title">评论区 · 欢迎分享你的比亚迪求职经历</h2>
+    <div class="giscus-box">
+      <script src="https://giscus.app/client.js"
+        data-repo="TS-dinglilu/TS-dinglilu.github.io"
+        data-repo-id="R_kgDOTjqaJQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOTjqaJc4DCIL1"
+        data-mapping="pathname"
+        data-term="report-comments"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Footer ===== -->
+<div class="footer">
+  <p>比亚迪招聘日报 · 每日自动更新 · 数据来源：比亚迪官网、前程无忧、智联招聘、BOSS直聘、猎聘、牛客网、头条等</p>
+  <p style="margin-top:8px;">生成时间：2026-07-27 | Powered by TRAE 自动化任务系统</p>
+</div>
+
+</body>
+</html>
