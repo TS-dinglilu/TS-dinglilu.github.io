@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安工大校园生活信息日报 | 2026-07-27</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v2.0 美化版
+   适用于所有自动化任务的报告HTML
+   配色方案: 深蓝(#0f2c4d) + 蓝色强调(#2563eb)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --primary: #0f2c4d;
+  --primary-light: #1e4d7b;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-glow: rgba(37, 99, 235, 0.15);
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --text-faint: #94a3b8;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --green: #10b981;
+  --green-bg: #ecfdf5;
+  --green-border: #a7f3d0;
+  --amber: #f59e0b;
+  --amber-bg: #fffbeb;
+  --amber-border: #fde68a;
+  --red: #ef4444;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+  --blue-bg: #eff6ff;
+  --blue-border: #bfdbfe;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', 'Inter', -apple-system, 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 15px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Decorative grid background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating gradient orb */
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%; right: -10%;
+  width: 50%; height: 60%;
+  background: radial-gradient(ellipse, rgba(37,99,235,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   HEADER - 渐变标题栏 with glass-morphism
+   ============================================================ */
+.header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 40%, var(--accent) 100%);
+  color: #fff;
+  padding: 48px 24px 36px;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(15, 44, 77, 0.2);
+  margin-bottom: 8px;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -50%; left: -20%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.header .subtitle {
+  font-size: 0.9rem;
+  opacity: 0.88;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .date {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  z-index: 1;
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   SECTIONS - 卡片式内容区
+   ============================================================ */
+.section {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin: 20px 0;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, transparent 100%);
+}
+.section h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 20px 0 10px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ============================================================
+   CARDS - 信息卡片
+   ============================================================ */
+.card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-left-color: var(--accent-light);
+}
+.card-title {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-meta {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  font-family: 'Inter', monospace;
+}
+.card-content {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.card-content strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ============================================================
+   NEWS ITEMS - 新闻条目
+   ============================================================ */
+.news-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.news-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--border);
+  transition: all 0.3s ease;
+}
+.news-item:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.news-item:hover::before {
+  background: var(--accent);
+  width: 5px;
+}
+.news-item .badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--blue-bg);
+  color: #1e40af;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-right: 8px;
+  font-weight: 600;
+  border: 1px solid var(--blue-border);
+  letter-spacing: 0.3px;
+}
+.news-item .badge.hot {
+  background: var(--red-bg);
+  color: #dc2626;
+  border-color: var(--red-border);
+}
+.news-item .badge.new {
+  background: var(--green-bg);
+  color: #16a34a;
+  border-color: var(--green-border);
+}
+
+/* ============================================================
+   TABLES - 数据表格
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 16px 0;
+  font-size: 0.84rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+th {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) { background: #f8fafc; }
+tr:hover { background: var(--blue-bg); }
+tr:nth-child(even):hover { background: #eff6ff; }
+
+/* ============================================================
+   TAGS - 标签
+   ============================================================ */
+.tag {
+  display: inline-block;
+  background: var(--blue-bg);
+  color: #3730a3;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin: 2px;
+  font-weight: 500;
+  border: 1px solid var(--blue-border);
+}
+.tag.green { background: var(--green-bg); color: #166534; border-color: var(--green-border); }
+.tag.orange { background: var(--amber-bg); color: #92400e; border-color: var(--amber-border); }
+.tag.red { background: var(--red-bg); color: #991b1b; border-color: var(--red-border); }
+
+/* ============================================================
+   SOURCE LINKS - 原文链接
+   ============================================================ */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: var(--blue-bg);
+  border: 1px solid var(--blue-border);
+  transition: all 0.2s;
+}
+.source-link:hover {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* ============================================================
+   DISCUSSION - 讨论区
+   ============================================================ */
+.discussion {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-border);
+  border-left: 4px solid var(--amber);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 14px 0;
+  transition: all 0.3s;
+}
+.discussion:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.discussion .platform {
+  display: inline-block;
+  background: var(--amber);
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   TIP BOX - 提示框
+   ============================================================ */
+.tip-box {
+  background: var(--green-bg);
+  border: 1px solid var(--green-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.tip-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--green);
+}
+.tip-box h4 {
+  color: #065f46;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.tip-box ul { list-style: none; padding-left: 0; }
+.tip-box li {
+  padding: 5px 0 5px 24px;
+  position: relative;
+  font-size: 0.88rem;
+  color: #1a4731;
+}
+.tip-box li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   WARNING BOX - 警告框
+   ============================================================ */
+.warning-box {
+  background: var(--red-bg);
+  border: 1px solid var(--red-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.warning-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--red);
+}
+.warning-box h4 {
+  color: #991b1b;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SUMMARY TABLE - 汇总表
+   ============================================================ */
+.summary-table { font-size: 0.82rem; }
+.summary-table td:first-child {
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   GISCUS / COMMENTS - 评论区
+   ============================================================ */
+.comments-section {
+  margin-top: 40px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.comments-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.comments-desc {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   FOOTER - 页脚
+   ============================================================ */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   RESPONSIVE - 移动端适配
+   ============================================================ */
+@media (max-width: 600px) {
+  .header { padding: 32px 16px 24px; border-radius: 0 0 20px 20px; }
+  .header h1 { font-size: 1.3rem; }
+  .section { padding: 18px 14px; margin: 14px 0; }
+  .card, .news-item { padding: 14px 16px; }
+  table { font-size: 0.76rem; }
+  th, td { padding: 7px 5px; }
+  .container { padding: 0 12px 40px; }
+}
+
+/* ============================================================
+   UTILITY - 通用工具类
+   ============================================================ */
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-light); text-decoration: underline; }
+strong { color: var(--primary); }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+</style>
+</head>
+<body>
+
+<div class="header">
+<h1>🎓 安徽工业大学校园生活信息日报</h1>
+<div class="date">📅 2026年7月27日 · 星期一</div>
+<div class="subtitle">师兄师姐就业去向 | 学校政策通知 | 奖学金升学指南 | 校园生活攻略</div>
+</div>
+
+<div class="container">
+
+<!-- ===== 一、师兄师姐就业去向 ===== -->
+<div class="sec-title">📊 一、师兄师姐就业去向</div>
+
+<div class="card">
+<h3>📌 2024届毕业生整体就业数据（含研究生）</h3>
+<p>2024届毕业生总数9726人，其中研究生1481人。研究生以签就业协议形式就业（占比71.84%）、签劳动合同形式就业（占比11.95%）为主。</p>
+<ul>
+<li><span class="tag tag-blue">制造业</span>研究生就业主力行业，占比 <strong>40.07%</strong></li>
+<li><span class="tag tag-green">教育</span>占比 12.31%</li>
+<li><span class="tag tag-purple">信息技术</span>软件和信息技术服务业占比 7.54%</li>
+<li><span class="tag tag-yellow">国企</span>研究生进入国有企业占比 <strong>31.04%</strong>（远高于本科16.27%）</li>
+<li><span class="tag tag-red">名企</span>259人进入世界500强、中国500强、央企和省企</li>
+<li><span class="tag tag-blue">长三角</span>安徽省内就业60.50%，江苏省15.25%，浙江省5.80%</li>
+</ul>
+<a href="http://m.toutiao.com/group/7564432155842036260/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+</div>
+
+<div class="card">
+<h3>📌 2025届毕业生进入优质单位数据</h3>
+<ul>
+<li>国家电网录用 <strong>43人</strong></li>
+<li>银行录用 <strong>120人</strong></li>
+<li>烟草局录用 <strong>7人</strong>（机械工程专业在烟草局录用中占比较多）</li>
+<li>选调生 <strong>16人</strong>（含自动化、工业工程等专业）</li>
+</ul>
+<a href="https://m.6617.com/p_332355553253.html" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+</div>
+
+<div class="card">
+<h3>📌 机械专业就业去向分析</h3>
+<p>安工大机械专业毕业生就业和深造率连续保持在 <strong>95%以上</strong>。主要就业方向：</p>
+<ul>
+<li><strong>制造业（主力军）</strong>：汽车行业和通用机械行业，从事产品设计、生产管理</li>
+<li><strong>设计与研发岗</strong>：进入企业设计部门或研发中心</li>
+<li><strong>设备维护与管理</strong>：设备安装、调试、维护、保养</li>
+<li><strong>销售与技术支持</strong>：大型机械设备公司的销售工程师</li>
+<li><strong>科研院所与设计院</strong>：优秀毕业生进入高校、科研院所或专业设计院</li>
+<li><strong>公务员与事业单位</strong>：质监局、知识产权局等</li>
+</ul>
+<p><strong>就业地域</strong>：长三角地区（上海、苏州、南京、杭州）为主要就业区域，其次是皖江城市带（合肥、芜湖、马鞍山）。</p>
+<p><strong>深造情况</strong>：每年约30%以上毕业生考取或保送研究生，去向包括上海交通大学、同济大学、吉林大学、湖南大学、重庆大学、合肥工业大学等双一流高校。</p>
+<a href="https://www.coolmw.com/f3d575dc951862ca.html" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+</div>
+
+<div class="card">
+<h3>📌 机械工程学院就业工作动态</h3>
+<p>2025年5月26日，机械工程学院召开2025届毕业生就业工作推进会，院长刘庆运强调抢抓就业冲刺关键期。2024年9月已召开研究生毕业生就业动员大会，强调抓住"秋季招聘就业黄金期"。</p>
+<a href="https://jxgcxy.ahut.edu.cn/info/2431/14996.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+&nbsp;&nbsp;<a href="https://jxgcxy.ahut.edu.cn/info/2597/13998.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文（动员大会）</a>
+</div>
+
+<div class="card">
+<h3>📌 薪资水平分析（按地区分类）</h3>
+<div class="salary-box">
+<h4>🏙️ 江浙沪地区（上海/苏州/南京/杭州）</h4>
+<ul>
+<li>安工大机械硕士月薪预计 <strong>8000-15000元</strong>（试用期至转正）</li>
+<li>参考合工大（211）机械硕士在江浙沪年薪20-35万，安工大作为双非院校，年薪预计 <strong>12-25万</strong></li>
+<li>合肥地区机械硕士应届生市场月薪约 <strong>10.8K</strong></li>
+</ul>
+</div>
+<div class="salary-box">
+<h4>📍 其他地区（安徽非合肥/京津冀/中西部）</h4>
+<ul>
+<li>安徽省内（马鞍山/芜湖等）：月薪预计 <strong>6000-10000元</strong>，年薪约8-15万</li>
+<li>燕山大学（双非对标）硕士均薪1.3万/月，安工大水平应相近</li>
+<li>安工大整体毕业生平均月薪5600元（含本科，全校数据）</li>
+</ul>
+</div>
+<div class="highlight-box">
+💡 <strong>同层次院校薪资对比</strong>：合工大（211）机械硕士年薪20-35万（江浙沪大厂）；燕山大学（双非）硕士均薪约1.3万/月（年薪约15万）；安工大（双非）预计年薪12-20万。
+</div>
+<a href="https://m.jobui.com/salary/hefei-jixiegong/edu3/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文（合肥薪资）</a>
+&nbsp;&nbsp;<a href="http://m.163.com/dy/article/K95RMPPG0553T4Y3.html" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文（燕大对比）</a>
+&nbsp;&nbsp;<a href="http://m.toutiao.com/group/7337527025047110196/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文（合工大对比）</a>
+</div>
+
+<div class="card">
+<h3>📌 官方就业质量报告</h3>
+<p>安徽工业大学在党务校务公开网发布年度毕业生就业质量报告，最新为《安徽工业大学2024年毕业生就业质量年度报告》（2025年10月发布），以PDF附件形式提供。建议直接下载PDF获取最准确数据。</p>
+<a href="https://xwgk.ahut.edu.cn/info/4735/26621.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文（2024年报告）</a>
+&nbsp;&nbsp;<a href="https://xwgk.ahut.edu.cn/xxgklm/jxzl/jyndbg.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文（报告列表）</a>
+</div>
+
+<!-- ===== 二、学校政策与通知 ===== -->
+<div class="sec-title">📢 二、学校政策与通知</div>
+
+<div class="card">
+<h3>📌 研究生院最新工作通知（2026年7月）</h3>
+<table>
+<tr><th>日期</th><th>通知标题</th></tr>
+<tr><td>2026-07-08</td><td>关于启动2026年研究生突发灾害临时困难补助工作的通知</td></tr>
+<tr><td>2026-06-22</td><td>2026-2027学年第一学期研究生教学助理岗位申报和选聘通知</td></tr>
+<tr><td>2026-06-17</td><td>2026年研究生新生入学指南</td></tr>
+<tr><td>2026-06-15</td><td>长三角科学道德和学风建设交流研讨会校内征集活动</td></tr>
+<tr><td>2026-05-20</td><td>首届研究生"大思政课"全景资源创意展示大赛通知</td></tr>
+<tr><td>2026-05-19</td><td>第十一届研究生交叉学科学术沙龙活动通知</td></tr>
+<tr><td>2026-05-06</td><td>2026年上半年研究生困难补助工作通知</td></tr>
+<tr><td>2026-04-22</td><td>2026年春季学期"研究生文明宿舍"建设申报通知</td></tr>
+</table>
+<a href="https://graduate.ahut.edu.cn/list-new.jsp?urltype=tree.TreeTempUrl&wbtreeid=1176" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+</div>
+
+<div class="card">
+<h3>📌 研究生院新闻动态（2026年7月最新）</h3>
+<ul>
+<li>我校研究生在中国冶金教育学会2026年研究生学术论坛获佳绩</li>
+<li>2026-07-09：研究生院召开暑期研究生座谈会暨第二十一期"院长直通车"</li>
+<li>2026-07-08：研究生吴海云入选马鞍山市科技志愿服务宣讲团</li>
+<li>2026-06-24：27名同等学力申硕学员获得硕士学位</li>
+<li>2026-06-23：积极开展2027年研究生招生宣讲活动</li>
+<li>2026-06-11：举办优秀研究生成长经验分享会</li>
+</ul>
+<a href="http://graduate.ahut.edu.cn/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+</div>
+
+<div class="card">
+<h3>📌 研究生中期考核管理办法（核心规定）</h3>
+<div class="highlight-box">
+⚠️ <strong>关键时间节点</strong>：硕士研究生应于<strong>第四学期结束前</strong>完成中期考核；开题报告通过后<strong>半年</strong>进行中期考核；中期考核通过后<strong>半年</strong>才允许答辩。
+</div>
+<ul>
+<li><strong>考核内容</strong>：思想政治素质 + 培养计划执行情况 + 学术素养和论文进展</li>
+<li><strong>考核结果</strong>：优秀（≤20%）、通过、不通过三类</li>
+<li><strong>"优秀"者优先</strong>：推荐奖学金、评优评选、硕博连读</li>
+<li><strong>不通过</strong>：三个月后至半年内重新申请；二次不通过一般退学</li>
+<li><strong>学分要求</strong>：原则上应取得不低于80%的课程学分</li>
+</ul>
+<a href="https://xb.ahut.edu.cn/info/1842/2862.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+</div>
+
+<div class="card">
+<h3>📌 开题报告与培养环节规定</h3>
+<ul>
+<li><strong>学习年限</strong>：弹性学制2-5年，全日制学术型硕士基本学制3年</li>
+<li><strong>课程学分</strong>：总学分不少于30学分（学位必修课≥16学分，非学位选修课≥14学分）</li>
+<li><strong>开题时间</strong>：第三学期前十周左右完成（2年制在第三学期开学初）</li>
+<li><strong>文献要求</strong>：阅读文献不少于40篇，外文不少于10篇</li>
+<li><strong>学术活动</strong>：做2次公开学术报告 + 参加8次学术活动</li>
+<li><strong>论文工作时间</strong>：实际工作时间不少于九个月</li>
+<li><strong>盲审</strong>：评阅人名单对学位申请人保密，导师不得参与</li>
+</ul>
+<a href="https://xb.ahut.edu.cn/info/1842/2821.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+&nbsp;&nbsp;<a href="https://jgxy.ahut.edu.cn/info/2754/3250.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文（开题细则）</a>
+</div>
+
+<div class="card">
+<h3>📌 奖助学金政策总览</h3>
+<table>
+<tr><th>类别</th><th>名称</th><th>金额</th><th>备注</th></tr>
+<tr><td><span class="tag tag-red">国奖</span></td><td>研究生国家奖学金（硕士）</td><td>20000元/年</td><td>获奖比例3%</td></tr>
+<tr><td><span class="tag tag-red">国奖</span></td><td>研究生国家奖学金（博士）</td><td>30000元/年</td><td>—</td></tr>
+<tr><td><span class="tag tag-blue">校奖</span></td><td>校长奖学金</td><td>5000元/年</td><td>比例2-3%</td></tr>
+<tr><td><span class="tag tag-green">学业</span></td><td>学业奖学金（一等）</td><td>10000元/年</td><td>第一志愿报考</td></tr>
+<tr><td><span class="tag tag-green">学业</span></td><td>学业奖学金（二等）</td><td>8000元/年</td><td>调剂生</td></tr>
+<tr><td><span class="tag tag-yellow">新生</span></td><td>优秀新生奖学金</td><td>5000-20000元</td><td>分三等</td></tr>
+<tr><td><span class="tag tag-purple">助学金</span></td><td>国家助学金（硕士）</td><td>6000元/年</td><td>按10个月计发</td></tr>
+<tr><td><span class="tag tag-purple">助学金</span></td><td>国家助学金（博士）</td><td>10000元/年</td><td>按10个月计发</td></tr>
+<tr><td><span class="tag tag-blue">三助</span></td><td>助研/助教/助管</td><td>岗位津贴</td><td>需申请</td></tr>
+</table>
+<p>📞 咨询联系方式：研工部 0555-2311731、0555-2315363</p>
+<a href="https://kaoyan.360eol.com/school/news/236/12904" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+</div>
+
+<div class="card">
+<h3>📌 机械工程学院2025年奖学金评选</h3>
+<ul>
+<li><strong>国奖名额</strong>：硕士8个等额指标、博士1个差额指标</li>
+<li><strong>学业奖学金</strong>：377名同学获得</li>
+<li><strong>评选时间</strong>：每年9月开展，9月13日前提交材料，9月19日答辩</li>
+<li><strong>公示</strong>：9月23日-27日网页公示5个工作日</li>
+<li><strong>成果截止</strong>：2025年9月8日</li>
+</ul>
+<p>📞 机械工程学院联系人：王老师 0555-2316533</p>
+<a href="https://jxgcxy.ahut.edu.cn/info/2583/15239.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文（评选细则）</a>
+&nbsp;&nbsp;<a href="https://jxgcxy.ahut.edu.cn/info/2583/15256.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文（评选结果）</a>
+</div>
+
+<div class="card">
+<h3>📌 竞赛与学术活动</h3>
+<ul>
+<li><span class="tag tag-red">国家级</span><strong>中国大学生机械工程创新创意大赛：无损检测创新实践与应用赛全国总决赛</strong>于2026年7月25日在安工大举行，副校长李伟出席开幕式</li>
+<li><span class="tag tag-blue">校级</span><strong>第十一届研究生交叉学科学术沙龙</strong>："智慧前沿·融合创新"主题，特邀机械工程学院胡文锋老师任评委</li>
+<li><span class="tag tag-purple">校级</span><strong>首届研究生"大思政课"全景资源创意展示大赛</strong>：纪念长征胜利九十周年</li>
+<li><span class="tag tag-green">奖励</span>设有学科竞赛奖励：数学建模、"挑战杯"等全国重大赛事获奖者可获奖励</li>
+</ul>
+<a href="http://m.toutiao.com/group/7666398990816100899/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文（机械创新大赛）</a>
+&nbsp;&nbsp;<a href="https://graduate.ahut.edu.cn/article-new.jsp?urltype=news.NewsContentUrl&wbtreeid=1176&wbnewsid=9056" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文（学术沙龙）</a>
+</div>
+
+<!-- ===== 三、升学读博指南 ===== -->
+<div class="sec-title">🎓 三、升学读博指南</div>
+
+<div class="card">
+<h3>📌 安工大本校机械工程博士点</h3>
+<div class="highlight-box">
+🎉 <strong>好消息</strong>：安徽工业大学机械工程学院于2024年正式获批"机械工程"一级学科博士点，实现本-硕-博贯通培养！现有博士生导师28人，硕士生导师53人，在校博士/硕士研究生365人。
+</div>
+<ul>
+<li><strong>5个国家级/省部级科研平台</strong>：特殊服役环境智能装备制造国际科技合作基地、智能机器人先进机构与控制技术国家地方联合工程研究中心、液压振动技术安徽省工程技术研究中心、特种重载机器人安徽省重点实验室、安徽省智能破拆装备工程实验室</li>
+<li><strong>专任教师博士化率</strong>：超过72%</li>
+<li>2025年已开展硕博连读博士招生（第二批3人进入考核）</li>
+</ul>
+<a href="https://www.ahut.edu.cn/info/1002/26395.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+</div>
+
+<div class="card">
+<h3>📌 博士招生三种方式对比</h3>
+<table>
+<tr><th>方式</th><th>面向对象</th><th>流程</th><th>特点</th></tr>
+<tr><td><span class="tag tag-green">硕博连读</span></td><td>本校在读硕士</td><td>研二申请转博</td><td>全程5年，无硕士学位证，竞争压力小</td></tr>
+<tr><td><span class="tag tag-blue">申请-考核制</span></td><td>全国所有硕士</td><td>提交材料→审核→综合考核</td><td>外校考生主流渠道，看重科研成果</td></tr>
+<tr><td><span class="tag tag-yellow">普通招考</span></td><td>已获硕士学位者</td><td>统一笔试→复试</td><td>传统方式，采用院校渐少</td></tr>
+</table>
+<a href="http://m.toutiao.com/group/7655168637237510675/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+</div>
+
+<div class="card">
+<h3>📌 推荐院校博士招生信息（江浙沪重点）</h3>
+<table>
+<tr><th>院校</th><th>层次</th><th>2026年招生方式</th><th>来源</th></tr>
+<tr><td>中国科学技术大学</td><td>985</td><td>工程硕博士改革专项，招130人</td><td><a href="http://m.wanxue.cn/zixun/dongtai/21596.html" target="_blank" style="color:#2563eb;">查看</a></td></tr>
+<tr><td>上海交通大学</td><td>985</td><td>硕博连读+申请考核，需提前联系导师</td><td><a href="https://me.sjtu.edu.cn/YanJS/mainnotice/7597.html" target="_blank" style="color:#2563eb;">查看</a></td></tr>
+<tr><td>东南大学</td><td>985</td><td>学术学位+专业学位博士，机械领域招生</td><td><a href="http://m.toutiao.com/group/7569636183395877410/" target="_blank" style="color:#2563eb;">查看</a></td></tr>
+<tr><td>南京理工大学</td><td>211</td><td>专业学位博士约200名</td><td><a href="https://www.sohu.com/a/957449637_121124292" target="_blank" style="color:#2563eb;">查看</a></td></tr>
+<tr><td>合肥工业大学</td><td>211</td><td>申请考核制+硕博连读</td><td><a href="https://jxxy.hfut.edu.cn/info/1053/4721.htm" target="_blank" style="color:#2563eb;">查看</a></td></tr>
+<tr><td>安徽工业大学</td><td>双非</td><td>硕博连读（2024年新获批博士点）</td><td><a href="https://www.ahut.edu.cn/info/1002/26395.htm" target="_blank" style="color:#2563eb;">查看</a></td></tr>
+</table>
+</div>
+
+<div class="card">
+<h3>📌 读博准备清单</h3>
+<ul>
+<li><strong>学历要求</strong>：应届/往届硕士毕业生（需持有硕士学位）</li>
+<li><strong>学术要求</strong>：硕士阶段成绩单（多数要求GPA 3.0/4.0以上）；研究计划书（3千-5千字）；2-3篇核心期刊论文（理工科要求SCI/EI）</li>
+<li><strong>语言要求</strong>：英语CET-6≥425或托福/雅思同等成绩（部分985要求托福85+/雅思6.5+）</li>
+<li><strong>其他材料</strong>：2-3封推荐信（来自业内知名专家或导师）、硕士论文</li>
+<li><strong>英语豁免</strong>：发表高水平SCI/EI论文者可申请英语成绩豁免</li>
+<li><strong>导师联系</strong>：建议提前半年至一年联系，附上研究计划书和简历</li>
+</ul>
+<a href="http://m.toutiao.com/group/7664834621657449011/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+</div>
+
+<div class="card">
+<h3>📌 博士奖学金与待遇</h3>
+<table>
+<tr><th>项目</th><th>金额</th><th>备注</th></tr>
+<tr><td>国家助学金</td><td>13000元/年</td><td>硕士6000元/年，按月发放</td></tr>
+<tr><td>学业奖学金</td><td>12000元/年</td><td>2025年起上调</td></tr>
+<tr><td>国家助学贷款上限</td><td>25000元/年</td><td>—</td></tr>
+<tr><td>导师补贴</td><td>因导师而异</td><td>理工科横向课题较多</td></tr>
+</table>
+<div class="highlight-box">
+💡 <strong>博士阶段实际收入</strong>：国家助学金（每月约3500元）+ 导师补贴，部分理工科博士通过横向课题年收入可达 <strong>15万元</strong>。国内高校博士年收入约4.2万-15万（含补贴）。
+</div>
+<a href="https://news.sohu.com/a/944065974_121850355" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+</div>
+
+<!-- ===== 四、校园生活攻略 ===== -->
+<div class="sec-title">🏫 四、校园生活攻略</div>
+
+<div class="card">
+<h3>📌 图书馆资源</h3>
+<ul>
+<li><strong>两馆分布</strong>：秀山校区（东校区）和佳山校区（校本部）两馆</li>
+<li><strong>开放时间</strong>：阅览室周开放达98小时，暑假期间电子资源24小时开放</li>
+<li><strong>2026暑期安排</strong>：7月13日-8月29日正常开放（部分区域除外），每周五上午8:30-11:00提供借还服务，8月30日起恢复正常</li>
+<li><strong>数字资源</strong>：知网（CNKI）、Web of Science、IEEE Xplore等数据库24小时开放</li>
+<li><strong>特色服务</strong>：查收查引、科技查新、专利信息服务（需提前预约）</li>
+</ul>
+<a href="https://lib.ahut.edu.cn/content.jsp?urltype=news.NewsContentUrl&wbtreeid=1007&wbnewsid=3139" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文（暑期安排）</a>
+&nbsp;&nbsp;<a href="https://m.baike.com/wiki/安徽工业大学图书馆/4910197" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文（图书馆概况）</a>
+</div>
+
+<div class="card">
+<h3>📌 宿舍与食堂</h3>
+<ul>
+<li><strong>宿舍</strong>：本科生4-6人/间（800-1000元/年），均安装空调；研究生公寓位于秀山校区</li>
+<li><strong>食堂</strong>：全校共10个学生食堂，秀山校区有六食堂、九食堂、风味食堂、东苑食堂、西苑食堂、第八食堂、研究生食堂等</li>
+<li><strong>校区分布</strong>：秀山校区（东校区，马鞍山市马向路1530号）和佳山校区（校本部，湖东北路400号）</li>
+</ul>
+<a href="http://m.okaoyan.com/gaozhaobang/benkeyuanxiao/684297_66.html" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+</div>
+
+<div class="card">
+<h3>📌 马鞍山生活成本</h3>
+<div class="salary-box">
+<h4>💰 学生月均生活费</h4>
+<ul>
+<li>吃饭 + 住宿 + 水电 + 零花钱：<strong>1200-1800元/月</strong></li>
+<li>租房参考：单间公寓约800-1500元/月（马鞍山租金约20-30元/㎡/月）</li>
+<li>生活节奏舒适，消费水平不高</li>
+</ul>
+</div>
+<a href="http://mapi.masok.cn/wap/thread/view-thread/tid=4256896" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+</div>
+
+<div class="card">
+<h3>📌 交通方式（马鞍山出发）</h3>
+<table>
+<tr><th>目的地</th><th>方式</th><th>耗时</th><th>参考费用</th></tr>
+<tr><td>南京</td><td>宁安高铁</td><td>约20-30分钟</td><td>—</td></tr>
+<tr><td>上海</td><td>高铁直达（G7274/G7150等）</td><td>约2-2.5小时</td><td>二等座约188-190元</td></tr>
+<tr><td>杭州</td><td>经南京中转</td><td>约2-3小时</td><td>—</td></tr>
+</table>
+<a href="http://m.ctrip.com/html5/trains/maanshandong-shanghainan/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文</a>
+</div>
+
+<div class="card">
+<h3>📌 研二关键时间节点</h3>
+<div class="timeline-item">
+<strong>研二上学期（第三学期）</strong>
+<ul>
+<li>11月底前：完成学位论文开题报告（学术型硕士）</li>
+<li>4月底前：完成开题报告（专业型硕士，第二学期）</li>
+<li>阅读文献不少于40篇（外文不少于10篇）</li>
+</ul>
+</div>
+<div class="timeline-item">
+<strong>研二下学期（第四学期）</strong>
+<ul>
+<li>学期结束前：完成中期考核</li>
+<li>中期考核内容：思想政治 + 培养计划执行 + 论文进展</li>
+<li>"优秀"比例不超过20%，优先推荐奖学金和硕博连读</li>
+</ul>
+</div>
+<div class="timeline-item">
+<strong>中期考核→答辩</strong>
+<ul>
+<li>中期考核通过后至少半年才允许答辩</li>
+<li>论文实际工作时间不少于九个月</li>
+<li>需通过学术不端检测和盲审</li>
+</ul>
+</div>
+<a href="https://xb.ahut.edu.cn/info/1842/2862.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文（中期考核）</a>
+&nbsp;&nbsp;<a href="https://jgxy.ahut.edu.cn/info/2754/3250.htm" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 查看原文（开题细则）</a>
+</div>
+
+<!-- ===== 五、全网热议 ===== -->
+<div class="sec-title">🔥 五、全网热议</div>
+
+<div class="discussion-card">
+<div class="platform">📍 平台：马鞍山OK论坛（masok.cn）</div>
+<p><strong>安工大机械专业毕业9年同寝室4人发展现状</strong>：室友A考入东北985航天方向硕博连读，博士毕业后留校任教，在深圳做博士后；室友B考入南京211机械设计硕士，入职徐工集团年薪约15万；室友C考取上海双非车辆工程硕士，加入大型车企年薪约30万，在上海购房；分享人本人回汉中入职航空国企月薪8000+。评论认为"安工大学理工科好找工作"。</p>
+<a href="http://mapi.masok.cn/wap/thread/view-thread?tid=4254324" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 来源：马鞍山OK论坛讨论</a>
+</div>
+
+<div class="discussion-card">
+<div class="platform">📍 平台：今日头条</div>
+<p><strong>机械考研方向就业对比</strong>：机械原理、机构学方向除非想读博进高校或去研究院所，否则企业端岗位极少。但考公岗位比想象中多，市场监管局、质检系统偶尔会招机械专业硕士。</p>
+<a href="http://m.toutiao.com/group/7604062152214708788/" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 来源：今日头条讨论</a>
+</div>
+
+<div class="discussion-card">
+<div class="platform">📍 平台：牛客网</div>
+<p><strong>机械读研还有红利吗</strong>：这几年就业环境比以前差，研究生、博士越来越多，研究生学历每年都在贬值。建议：后续想读博或想去高校的学生可以读研读博；自己想提升学历也可以读，反正现在就业环境一般。</p>
+<a href="https://m.nowcoder.com/discuss/820387718147407872" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 来源：牛客网讨论</a>
+</div>
+
+<div class="discussion-card">
+<div class="platform">📍 平台：职朋校友圈</div>
+<p><strong>安工大机械工程专业校友评价</strong>：就业前景不错，算是学校的热门专业，在省内都有不错的工作机会。碰到的老师都比较好。约30%的毕业生保研或考取清华大学、浙江大学、华中科技大学、中国科学技术大学等研究生继续深造。</p>
+<a href="https://www.showxue.com/dianping/5601/1455.html" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 来源：职朋校友圈讨论</a>
+</div>
+
+<div class="discussion-card">
+<div class="platform">📍 平台：实璞教育网</div>
+<p><strong>安工大机械研究生性价比</strong>：在安徽省区域性价比还是比较高的。机械类专业是学校王牌专业之一，师资力量雄厚，教学经验丰富，在业内口碑不错。可以考虑投递马钢、十七冶等本地国企。</p>
+<a href="https://www.coolmw.com/c2f9acdcd9fdbd5c.html" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 来源：实璞教育网</a>
+&nbsp;&nbsp;<a href="https://www.coolmw.com/2aaffe6e201397bf.html" target="_blank" style="color:#2563eb;text-decoration:none;font-size:0.8rem;font-weight:600;">📎 来源：就业前景分析</a>
+</div>
+
+<!-- ===== 底部来源汇总表 ===== -->
+<div class="footer-src">
+<h3>📑 信息来源汇总</h3>
+<table>
+<tr><th>来源名称</th><th>URL</th><th>日期</th></tr>
+<tr><td>今日头条（2024届就业数据）</td><td><a href="http://m.toutiao.com/group/7564432155842036260/" target="_blank">m.toutiao.com/group/7564432155842036260</a></td><td>2025年</td></tr>
+<tr><td>6617资讯（2025届体制内）</td><td><a href="https://m.6617.com/p_332355553253.html" target="_blank">m.6617.com/p_332355553253</a></td><td>2026-03-20</td></tr>
+<tr><td>实璞教育网（就业去向分析）</td><td><a href="https://www.coolmw.com/f3d575dc951862ca.html" target="_blank">coolmw.com/f3d575dc951862ca</a></td><td>2025-12-01</td></tr>
+<tr><td>机械工程学院官网（就业推进会）</td><td><a href="https://jxgcxy.ahut.edu.cn/info/2431/14996.htm" target="_blank">jxgcxy.ahut.edu.cn/info/2431/14996</a></td><td>2025-05-27</td></tr>
+<tr><td>机械工程学院官网（就业动员）</td><td><a href="https://jxgcxy.ahut.edu.cn/info/2597/13998.htm" target="_blank">jxgcxy.ahut.edu.cn/info/2597/13998</a></td><td>2024-09</td></tr>
+<tr><td>看准网（合肥机械硕士薪资）</td><td><a href="https://m.jobui.com/salary/hefei-jixiegong/edu3/" target="_blank">m.jobui.com/salary/hefei-jixiegong/edu3</a></td><td>2024年</td></tr>
+<tr><td>网易（燕山大学对比）</td><td><a href="http://m.163.com/dy/article/K95RMPPG0553T4Y3.html" target="_blank">m.163.com/dy/article/K95RMPPG0553T4Y3</a></td><td>2025-09-11</td></tr>
+<tr><td>今日头条（合工大对比）</td><td><a href="http://m.toutiao.com/group/7337527025047110196/" target="_blank">m.toutiao.com/group/7337527025047110196</a></td><td>2024年</td></tr>
+<tr><td>安工大党务校务公开（就业报告）</td><td><a href="https://xwgk.ahut.edu.cn/info/4735/26621.htm" target="_blank">xwgk.ahut.edu.cn/info/4735/26621</a></td><td>2025-10-24</td></tr>
+<tr><td>安工大研究生院（通知列表）</td><td><a href="https://graduate.ahut.edu.cn/list-new.jsp?urltype=tree.TreeTempUrl&wbtreeid=1176" target="_blank">graduate.ahut.edu.cn/list-new</a></td><td>2026-07-08</td></tr>
+<tr><td>安工大研究生院（首页）</td><td><a href="http://graduate.ahut.edu.cn/" target="_blank">graduate.ahut.edu.cn</a></td><td>2026-07-09</td></tr>
+<tr><td>安工大教务处（中期考核）</td><td><a href="https://xb.ahut.edu.cn/info/1842/2862.htm" target="_blank">xb.ahut.edu.cn/info/1842/2862</a></td><td>2023-01-04</td></tr>
+<tr><td>安工大教务处（培养规定）</td><td><a href="https://xb.ahut.edu.cn/info/1842/2821.htm" target="_blank">xb.ahut.edu.cn/info/1842/2821</a></td><td>2018-01-17</td></tr>
+<tr><td>考研360（奖助体系）</td><td><a href="https://kaoyan.360eol.com/school/news/236/12904" target="_blank">kaoyan.360eol.com/school/news/236/12904</a></td><td>现行政策</td></tr>
+<tr><td>机械工程学院（奖学金评选）</td><td><a href="https://jxgcxy.ahut.edu.cn/info/2583/15239.htm" target="_blank">jxgcxy.ahut.edu.cn/info/2583/15239</a></td><td>2025-09-13</td></tr>
+<tr><td>机械工程学院（学业奖学金）</td><td><a href="https://jxgcxy.ahut.edu.cn/info/2583/15256.htm" target="_blank">jxgcxy.ahut.edu.cn/info/2583/15256</a></td><td>2025-09-23</td></tr>
+<tr><td>今日头条（机械创新大赛）</td><td><a href="http://m.toutiao.com/group/7666398990816100899/" target="_blank">m.toutiao.com/group/7666398990816100899</a></td><td>2026-07-25</td></tr>
+<tr><td>安工大官网（博士点介绍）</td><td><a href="https://www.ahut.edu.cn/info/1002/26395.htm" target="_blank">ahut.edu.cn/info/1002/26395</a></td><td>2025-04-28</td></tr>
+<tr><td>今日头条（博士招生方式）</td><td><a href="http://m.toutiao.com/group/7655168637237510675/" target="_blank">m.toutiao.com/group/7655168637237510675</a></td><td>2025年</td></tr>
+<tr><td>上交机械学院（博士招生）</td><td><a href="https://me.sjtu.edu.cn/YanJS/mainnotice/7597.html" target="_blank">me.sjtu.edu.cn/YanJS/mainnotice/7597</a></td><td>2025年</td></tr>
+<tr><td>搜狐（南理工博士）</td><td><a href="https://www.sohu.com/a/957449637_121124292" target="_blank">sohu.com/a/957449637_121124292</a></td><td>2025年</td></tr>
+<tr><td>合工大机械学院（博士）</td><td><a href="https://jxxy.hfut.edu.cn/info/1053/4721.htm" target="_blank">jxxy.hfut.edu.cn/info/1053/4721</a></td><td>2025年</td></tr>
+<tr><td>搜狐（博士奖助学金）</td><td><a href="https://news.sohu.com/a/944065974_121850355" target="_blank">news.sohu.com/a/944065974_121850355</a></td><td>2025年</td></tr>
+<tr><td>安工大图书馆（暑期安排）</td><td><a href="https://lib.ahut.edu.cn/content.jsp?urltype=news.NewsContentUrl&wbtreeid=1007&wbnewsid=3139" target="_blank">lib.ahut.edu.cn</a></td><td>2026-07-09</td></tr>
+<tr><td>安工大建工学院（开题细则）</td><td><a href="https://jgxy.ahut.edu.cn/info/2754/3250.htm" target="_blank">jgxy.ahut.edu.cn/info/2754/3250</a></td><td>2025年</td></tr>
+<tr><td>OK考研（宿舍食堂）</td><td><a href="http://m.okaoyan.com/gaozhaobang/benkeyuanxiao/684297_66.html" target="_blank">m.okaoyan.com/684297_66</a></td><td>2025年</td></tr>
+<tr><td>马鞍山OK论坛（生活费）</td><td><a href="http://mapi.masok.cn/wap/thread/view-thread/tid=4256896" target="_blank">mapi.masok.cn/tid=4256896</a></td><td>2025年</td></tr>
+<tr><td>携程（交通查询）</td><td><a href="http://m.ctrip.com/html5/trains/maanshandong-shanghainan/" target="_blank">m.ctrip.com/trains/maanshandong-shanghainan</a></td><td>2025年</td></tr>
+<tr><td>马鞍山OK论坛（校友发展）</td><td><a href="http://mapi.masok.cn/wap/thread/view-thread?tid=4254324" target="_blank">mapi.masok.cn/tid=4254324</a></td><td>2025年</td></tr>
+<tr><td>今日头条（机械方向就业）</td><td><a href="http://m.toutiao.com/group/7604062152214708788/" target="_blank">m.toutiao.com/group/7604062152214708788</a></td><td>2025年</td></tr>
+<tr><td>牛客网（读博vs就业）</td><td><a href="https://m.nowcoder.com/discuss/820387718147407872" target="_blank">m.nowcoder.com/discuss/820387718147407872</a></td><td>2025年</td></tr>
+<tr><td>职朋校友圈（校友评价）</td><td><a href="https://www.showxue.com/dianping/5601/1455.html" target="_blank">showxue.com/dianping/5601/1455</a></td><td>2025年</td></tr>
+<tr><td>实璞教育网（考研难度）</td><td><a href="https://www.coolmw.com/c2f9acdcd9fdbd5c.html" target="_blank">coolmw.com/c2f9acdcd9fdbd5c</a></td><td>2025年</td></tr>
+</table>
+</div>
+
+<div style="text-align:center;padding:20px;color:#94a3b8;font-size:0.78rem;">
+本报告由自动化任务生成 | 每日更新 | 数据来源已标注<br>
+如需更多信息请联系研究生院：0555-2311310
+</div>
+
+</div>
+
+<!-- 评论区 -->
+<div style="max-width:860px;margin:40px auto 0;padding:24px 20px;background:#fff;border-radius:12px;border:1px solid #e2e8f0;">
+<h2 style="font-size:1.1rem;color:#1a3a5c;margin-bottom:6px;">💬 评论区</h2>
+<p style="font-size:0.82rem;color:#718096;margin-bottom:20px;">登录GitHub账号即可评论，支持Markdown和表情回应。历史报告也可评论。</p>
+<script src="https://giscus.app/client.js" data-repo="TS-dinglilu/TS-dinglilu.github.io" data-repo-id="R_kgDOTjqaJQ" data-category="Announcements" data-category-id="DIC_kwDOTjqaJc4DCIL1" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async></script>
+</div>
+
+</body>
+</html>
