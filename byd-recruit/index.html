@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>比亚迪招聘日报</title>
+<title>比亚迪招聘日报 - 报告汇总</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
 :root {
@@ -11,7 +11,6 @@
   --primary-light: #1e4d7b;
   --accent: #2563eb;
   --accent-light: #3b82f6;
-  --accent-glow: rgba(37, 99, 235, 0.15);
   --bg: #f0f4f8;
   --card: #ffffff;
   --text: #1e293b;
@@ -23,7 +22,6 @@
   --amber: #f59e0b;
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
   --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
   --radius: 16px;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -36,8 +34,6 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
-
-/* Decorative grid background */
 body::before {
   content: '';
   position: fixed;
@@ -49,8 +45,6 @@ body::before {
   pointer-events: none;
   z-index: 0;
 }
-
-/* Floating gradient orbs */
 body::after {
   content: '';
   position: fixed;
@@ -60,10 +54,7 @@ body::after {
   pointer-events: none;
   z-index: 0;
 }
-
 .container { max-width: 760px; margin: 0 auto; padding: 0 20px 60px; position: relative; z-index: 1; }
-
-/* HERO HEADER */
 .hero {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 40%, var(--accent) 100%);
   color: #fff;
@@ -159,8 +150,6 @@ body::after {
   position: relative;
   z-index: 1;
 }
-
-/* STATS BAR */
 .stats-bar {
   display: flex;
   justify-content: center;
@@ -182,8 +171,6 @@ body::after {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-
-/* SECTION HEADER */
 .section-header {
   display: flex;
   align-items: center;
@@ -206,8 +193,6 @@ body::after {
   color: var(--text-faint);
   font-family: 'Inter', monospace;
 }
-
-/* REPORT CARDS */
 .report-card {
   display: flex;
   align-items: center;
@@ -316,8 +301,6 @@ body::after {
   border: 1px dashed var(--border);
   font-size: 0.9rem;
 }
-
-/* COMMENTS */
 .comments-section {
   margin-top: 36px;
   background: var(--card);
@@ -340,8 +323,6 @@ body::after {
   color: var(--text-light);
   margin-bottom: 20px;
 }
-
-/* FOOTER */
 footer {
   text-align: center;
   margin-top: 40px;
@@ -355,22 +336,6 @@ footer .brand {
   font-weight: 500;
   color: var(--text-light);
 }
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
-}
-.footer-links a {
-  color: var(--text-light);
-  text-decoration: none;
-  font-size: 0.78rem;
-  transition: color 0.2s;
-}
-.footer-links a:hover { color: var(--accent); }
-
-/* RESPONSIVE */
 @media (max-width: 600px) {
   .hero { padding: 40px 20px 32px; border-radius: 0 0 24px 24px; }
   .hero h1 { font-size: 1.5rem; }
@@ -386,86 +351,78 @@ footer .brand {
 </style>
 </head>
 <body>
-<header class="hero">
+<div class="container">
+<div class="hero">
   <a href="https://ts-dinglilu.github.io/" class="back-home">← 返回主页</a>
   <div class="hero-tag"><span class="dot"></span> 每日自动更新</div>
   <h1>比亚迪招聘日报</h1>
-  <div class="subtitle">每日比亚迪招聘信息、岗位详情、薪资待遇与面试攻略</div>
-  <div class="update-time">最后更新：2026-07-28 05:05 北京时间</div>
+  <p class="subtitle">比亚迪全集团招聘信息与薪资待遇</p>
+  <div class="update-time">最后更新: 2026-07-29</div>
   <div class="stats-bar">
     <div class="stat-item">
       <div class="stat-num">2</div>
-      <div class="stat-label">已生成报告</div>
+      <div class="stat-label">报告总数</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">每日</div>
       <div class="stat-label">自动更新</div>
     </div>
-    <div class="stat-item">
-      <div class="stat-num">GitHub</div>
-      <div class="stat-label">Pages 托管</div>
-    </div>
   </div>
-</header>
+</div>
 
-<div class="container">
-  <div class="section-header">
-    <span class="icon">📂</span>
-    <span class="title">归档报告</span>
-    <span class="line"></span>
-    <span class="count">2 篇</span>
-  </div>
-          <a href="report_20260728.html" class="report-card latest">
+<div class="section-header">
+  <span class="icon">📚</span>
+  <span class="title">报告归档</span>
+  <span class="line"></span>
+  <span class="count">2 篇</span>
+</div>
+
+        <a href="report_20260728.html" class="report-card latest">
             <div class="card-glow"></div>
             <div class="report-badge">最新</div>
             <div class="report-icon">📄</div>
             <div class="report-info">
                 <div class="report-date">2026-07-28</div>
-                <div class="report-weekday">星期二</div>
+                <div class="report-weekday">星期一</div>
             </div>
             <div class="report-action">点击查看 →</div>
-        </a>        <a href="report_20260727.html" class="report-card">
+        </a>
+        <a href="report_20260727.html" class="report-card">
             <div class="card-glow"></div>
             <div class="report-icon">📄</div>
             <div class="report-info">
                 <div class="report-date">2026-07-27</div>
-                <div class="report-weekday">星期一</div>
+                <div class="report-weekday">星期日</div>
             </div>
             <div class="report-action">查看 →</div>
         </a>
 
-  <div class="comments-section">
-    <div class="comments-title">💬 站点留言</div>
-    <div class="comments-desc">登录 GitHub 账号即可留言，支持 Markdown 和表情回应。每篇报告底部也有独立评论区。</div>
-    <script src="https://giscus.app/client.js"
-      data-repo="TS-dinglilu/byd-recruit"
-      data-repo-id="R_kgDOTlGH5g"
-      data-category="Announcements"
-      data-category-id="DIC_kwDOTlGH5s4DCFT3"
-      data-mapping="specific"
-      data-term="index-page-comments"
-      data-strict="0"
-      data-reactions-enabled="1"
-      data-emit-metadata="0"
-      data-input-position="top"
-      data-theme="preferred_color_scheme"
-      data-lang="zh-CN"
-      crossorigin="anonymous"
-      async>
-    </script>
-  </div>
 
-  <footer>
-    <div class="footer-links">
-      <a href="https://ts-dinglilu.github.io/">← 返回主页</a>
-      <a href="https://github.com/TS-dinglilu/byd-recruit" target="_blank">GitHub 仓库</a>
-      <a href="https://ts-dinglilu.github.io/car-recruit-news/">车企招聘</a>
-      <a href="https://ts-dinglilu.github.io/mechanical-recruit-news/">机械招聘</a>
-      <a href="https://ts-dinglilu.github.io/drone-research-daily/">无人机日报</a>
-      <a href="https://ts-dinglilu.github.io/research-institute-recruit/">研究所</a>
-    </div>
-    <span class="brand">比亚迪招聘日报</span> ｜ 自动生成 ｜ Powered by TRAE Automation
-  </footer>
+<div class="comments-section">
+  <div class="comments-title">💬 评论区</div>
+  <div class="comments-desc">欢迎在此交流讨论，分享你的看法和经验</div>
+  <script src="https://giscus.app/client.js"
+    data-repo="TS-dinglilu/TS-dinglilu.github.io"
+    data-repo-id="R_kgDOTjqaJQ"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOTjqaJc4DCIL1"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+  </script>
+</div>
+
+<footer>
+  <span class="brand">// crafted with precision · powered by TRAE Automation</span><br>
+  © 2026 TS-dinglilu · Anhui University of Technology
+</footer>
 </div>
 </body>
 </html>
