@@ -15,8 +15,8 @@
   --border: rgba(0, 212, 255, 0.12);
   --border-hover: rgba(0, 212, 255, 0.4);
   --text: #e8eef5;
-  --text-dim: #c8d3e6;
-  --text-faint: #b0bdd4;
+  --text-dim: #d0dae8;
+  --text-faint: #c8d3e6;
   --accent: #00d4ff;
   --accent-warm: #ffb347;
   --accent-green: #22d3a0;
@@ -120,13 +120,14 @@ body::after {
 .section {
   background: var(--card);
   border: 1px solid var(--border);
-  border-top: 2px solid rgba(0, 212, 255, 0.2);
+  border-top: 3px solid rgba(0, 212, 255, 0.35);
   border-radius: 16px;
   padding: 28px 24px;
-  margin: 32px 0;
+  margin: 40px 0;
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
+  border-bottom: 2px solid rgba(0, 212, 255, 0.25);
 }
 .section::before {
   content: '';
@@ -146,7 +147,7 @@ body::after {
   color: var(--accent);
   margin-bottom: 20px;
   padding-bottom: 14px;
-  border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+  border-bottom: 2px solid rgba(0, 212, 255, 0.4);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -164,7 +165,7 @@ body::after {
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--accent);
-  margin: 44px 0 20px;
+  margin: 48px 0 24px;
   padding: 16px 20px;
   background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(20,28,48,0.5) 100%);
   border-left: 4px solid var(--accent);
@@ -338,7 +339,7 @@ tr:hover { background: rgba(0, 212, 255, 0.05); }
 .discussion .platform {
   display: inline-block;
   background: var(--accent-warm);
-  color: #0a0e1a;
+  color: #e8eef5;
   font-size: 0.72rem;
   padding: 3px 12px;
   border-radius: 50px;
@@ -706,15 +707,15 @@ footer a, div.footer a { color: var(--accent); text-decoration: none; }
 <div class="section" style="border:3px solid #48bb78;">
 <div class="section-title">🎯 个性化推荐矩阵（核心板块）</div>
 
-<h3 style="font-size:0.95rem;color:#1a3a5c;margin-bottom:12px;">📋 用户技能匹配分析</h3>
+<h3 style="font-size:0.95rem;color:#e8eef5;margin-bottom:12px;">📋 用户技能匹配分析</h3>
 <div class="info-grid" style="margin-bottom:16px;">
 <div class="info-item" style="background:#ebf8ff;padding:10px;border-radius:8px;"><strong>MATLAB仿真</strong>（AquaWing UAV项目）→ 适合：仿真工程师、CAE工程师、动力学仿真、控制系统仿真</div>
 <div class="info-item" style="background:#f0fff4;padding:10px;border-radius:8px;"><strong>Python强化学习</strong> → 适合：智能控制算法、机器人路径规划、自动驾驶算法</div>
-<div class="info-item" style="background:#fffaf0;padding:10px;border-radius:8px;"><strong>四旋翼无人机开发</strong> → 适合：无人机研发、飞控工程师、航空系统工程师</div>
+<div class="info-item" style="background:rgba(20,28,48,0.9)af0;padding:10px;border-radius:8px;"><strong>四旋翼无人机开发</strong> → 适合：无人机研发、飞控工程师、航空系统工程师</div>
 <div class="info-item" style="background:#faf5ff;padding:10px;border-radius:8px;"><strong>机械工程硕士</strong>（双非）→ 适合：机械设计、结构分析、产品工程师</div>
 </div>
 
-<h3 style="font-size:0.95rem;color:#1a3a5c;margin-bottom:12px;">🏆 推荐岗位（按匹配度排序）</h3>
+<h3 style="font-size:0.95rem;color:#e8eef5;margin-bottom:12px;">🏆 推荐岗位（按匹配度排序）</h3>
 
 <!-- 高匹配度 -->
 <div class="recommend-card recommend-high">
@@ -942,7 +943,7 @@ footer a, div.footer a { color: var(--accent); text-decoration: none; }
 </tr>
 </tbody>
 </table>
-<p style="font-size:0.8rem;color:#718096;margin-top:8px;">数据来源：职友集机械工程师/仿真工程师/CAE工程师薪资统计（2026年7月）</p>
+<p style="font-size:0.8rem;color:#c8d3e6;margin-top:8px;">数据来源：职友集机械工程师/仿真工程师/CAE工程师薪资统计（2026年7月）</p>
 <a href="https://m.jobui.com/salary/quanguo-jixiegongchengshi/edu3/" target="_blank" class="source-link">📎 机械工程师薪资数据</a>
 <a href="https://m.jobui.com/salary/quanguo-jixiefangzhengongchengshi/edu3/" target="_blank" style="color:#00d4ff;text-decoration:none;font-size:0.8rem;font-weight:600;margin-left:8px;">📎 仿真工程师薪资数据</a>
 <a href="https://m.jobui.com/salary/quanguo-jixiecaegongchengshi/ind-gongchengjixie/" target="_blank" style="color:#00d4ff;text-decoration:none;font-size:0.8rem;font-weight:600;margin-left:8px;">📎 CAE工程师薪资数据</a>
@@ -996,7 +997,7 @@ footer a, div.footer a { color: var(--accent); text-decoration: none; }
 <a href="https://m.zhipin.com/job_detail/b762f4b8518d143803193d-7F1FZ.html" target="_blank" class="source-link">📎 查看原文</a>
 </div>
 
-<h3 style="font-size:0.95rem;color:#1a3a5c;margin:16px 0 10px;">💰 薪资数据参考（应届硕士）</h3>
+<h3 style="font-size:0.95rem;color:#e8eef5;margin:16px 0 10px;">💰 薪资数据参考（应届硕士）</h3>
 <table>
 <thead>
 <tr><th>岗位类型</th><th>平均月薪</th><th>薪资分布</th><th>趋势</th></tr>
@@ -1009,7 +1010,7 @@ footer a, div.footer a { color: var(--accent); text-decoration: none; }
 <tr><td>机器人仿真工程师</td><td>17.5K（1-3年）</td><td>66.6%拿8-20K</td><td>—</td></tr>
 </tbody>
 </table>
-<p style="font-size:0.8rem;color:#718096;margin-top:8px;">数据来源：职友集，样本量1743份（截至2026-07-27）</p>
+<p style="font-size:0.8rem;color:#c8d3e6;margin-top:8px;">数据来源：职友集，样本量1743份（截至2026-07-27）</p>
 </div>
 
 <!-- ===================== 六、通勤分析 ===================== -->
@@ -1021,11 +1022,11 @@ footer a, div.footer a { color: var(--accent); text-decoration: none; }
 </thead>
 <tbody>
 <tr style="background:#f0fff4;"><td><strong>南京</strong></td><td>🟢 17分钟</td><td>约25-30元</td><td>约1,100-1,320元</td><td>⭐⭐⭐⭐⭐ 极度推荐<br>通勤无压力，可每日往返</td></tr>
-<tr style="background:#fffaf0;"><td><strong>苏州</strong></td><td>🟡 约1.5-2小时</td><td>约120-150元</td><td>约5,280-6,600元</td><td>⭐⭐⭐ 可接受<br>建议周通勤（住公司附近）</td></tr>
-<tr style="background:#fffaf0;"><td><strong>杭州</strong></td><td>🟡 约2-2.5小时</td><td>约150-180元</td><td>约6,600-7,920元</td><td>⭐⭐⭐ 可接受<br>建议周通勤</td></tr>
-<tr style="background:#fff5f5;"><td><strong>上海</strong></td><td>🔴 约2-2.5小时</td><td>约150-200元</td><td>约6,600-8,800元</td><td>⭐⭐ 勉强<br>建议租房，周末回家</td></tr>
-<tr style="background:#fff5f5;"><td><strong>宁波</strong></td><td>🔴 约2.5-3小时</td><td>约180-220元</td><td>约7,920-9,680元</td><td>⭐ 建议租房<br>通勤成本过高</td></tr>
-<tr style="background:#fff5f5;"><td><strong>徐州</strong></td><td>🔴 约2-3小时</td><td>约100-150元</td><td>约4,400-6,600元</td><td>⭐⭐ 勉强<br>建议租房</td></tr>
+<tr style="background:rgba(20,28,48,0.9)af0;"><td><strong>苏州</strong></td><td>🟡 约1.5-2小时</td><td>约120-150元</td><td>约5,280-6,600元</td><td>⭐⭐⭐ 可接受<br>建议周通勤（住公司附近）</td></tr>
+<tr style="background:rgba(20,28,48,0.9)af0;"><td><strong>杭州</strong></td><td>🟡 约2-2.5小时</td><td>约150-180元</td><td>约6,600-7,920元</td><td>⭐⭐⭐ 可接受<br>建议周通勤</td></tr>
+<tr style="background:rgba(20,28,48,0.9)5f5;"><td><strong>上海</strong></td><td>🔴 约2-2.5小时</td><td>约150-200元</td><td>约6,600-8,800元</td><td>⭐⭐ 勉强<br>建议租房，周末回家</td></tr>
+<tr style="background:rgba(20,28,48,0.9)5f5;"><td><strong>宁波</strong></td><td>🔴 约2.5-3小时</td><td>约180-220元</td><td>约7,920-9,680元</td><td>⭐ 建议租房<br>通勤成本过高</td></tr>
+<tr style="background:rgba(20,28,48,0.9)5f5;"><td><strong>徐州</strong></td><td>🔴 约2-3小时</td><td>约100-150元</td><td>约4,400-6,600元</td><td>⭐⭐ 勉强<br>建议租房</td></tr>
 </tbody>
 </table>
 <div style="background:#ebf8ff;padding:14px;border-radius:8px;margin-top:12px;">
@@ -1172,9 +1173,9 @@ footer a, div.footer a { color: var(--accent); text-decoration: none; }
 </div>
 
 <!-- 评论区 -->
-<div style="max-width:860px;margin:40px auto 0;padding:24px 20px;background:#fff;border-radius:12px;border:1px solid rgba(0, 212, 255, 0.12);">
-<h2 style="font-size:1.1rem;color:#1a3a5c;margin-bottom:6px;">💬 评论区</h2>
-<p style="font-size:0.82rem;color:#718096;margin-bottom:20px;">登录GitHub账号即可评论，支持Markdown和表情回应。历史报告也可评论。</p>
+<div style="max-width:860px;margin:40px auto 0;padding:24px 20px;background:rgba(20,28,48,0.9);border-radius:12px;border:1px solid rgba(0, 212, 255, 0.12);">
+<h2 style="font-size:1.1rem;color:#e8eef5;margin-bottom:6px;">💬 评论区</h2>
+<p style="font-size:0.82rem;color:#c8d3e6;margin-bottom:20px;">登录GitHub账号即可评论，支持Markdown和表情回应。历史报告也可评论。</p>
 <script src="https://giscus.app/client.js" data-repo="TS-dinglilu/TS-dinglilu.github.io" data-repo-id="R_kgDOTjqaJQ" data-category="Announcements" data-category-id="DIC_kwDOTjqaJc4DCIL1" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark_dimmed" data-lang="zh-CN" crossorigin="anonymous" async></script>
 </div>
 
