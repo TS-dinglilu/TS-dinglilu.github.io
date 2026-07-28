@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蔚小理招聘日报 | 2026年7月27日</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v2.0 美化版
+   适用于所有自动化任务的报告HTML
+   配色方案: 深蓝(#0f2c4d) + 蓝色强调(#2563eb)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --primary: #0f2c4d;
+  --primary-light: #1e4d7b;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-glow: rgba(37, 99, 235, 0.15);
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --text-faint: #94a3b8;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --green: #10b981;
+  --green-bg: #ecfdf5;
+  --green-border: #a7f3d0;
+  --amber: #f59e0b;
+  --amber-bg: #fffbeb;
+  --amber-border: #fde68a;
+  --red: #ef4444;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+  --blue-bg: #eff6ff;
+  --blue-border: #bfdbfe;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', 'Inter', -apple-system, 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 15px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Decorative grid background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating gradient orb */
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%; right: -10%;
+  width: 50%; height: 60%;
+  background: radial-gradient(ellipse, rgba(37,99,235,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   HEADER - 渐变标题栏 with glass-morphism
+   ============================================================ */
+.header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 40%, var(--accent) 100%);
+  color: #fff;
+  padding: 48px 24px 36px;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(15, 44, 77, 0.2);
+  margin-bottom: 8px;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -50%; left: -20%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.header .subtitle {
+  font-size: 0.9rem;
+  opacity: 0.88;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .date {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  z-index: 1;
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   SECTIONS - 卡片式内容区
+   ============================================================ */
+.section {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin: 20px 0;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, transparent 100%);
+}
+.section h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 20px 0 10px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ============================================================
+   CARDS - 信息卡片
+   ============================================================ */
+.card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-left-color: var(--accent-light);
+}
+.card-title {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-meta {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  font-family: 'Inter', monospace;
+}
+.card-content {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.card-content strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ============================================================
+   NEWS ITEMS - 新闻条目
+   ============================================================ */
+.news-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.news-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--border);
+  transition: all 0.3s ease;
+}
+.news-item:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.news-item:hover::before {
+  background: var(--accent);
+  width: 5px;
+}
+.news-item .badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--blue-bg);
+  color: #1e40af;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-right: 8px;
+  font-weight: 600;
+  border: 1px solid var(--blue-border);
+  letter-spacing: 0.3px;
+}
+.news-item .badge.hot {
+  background: var(--red-bg);
+  color: #dc2626;
+  border-color: var(--red-border);
+}
+.news-item .badge.new {
+  background: var(--green-bg);
+  color: #16a34a;
+  border-color: var(--green-border);
+}
+
+/* ============================================================
+   TABLES - 数据表格
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 16px 0;
+  font-size: 0.84rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+th {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) { background: #f8fafc; }
+tr:hover { background: var(--blue-bg); }
+tr:nth-child(even):hover { background: #eff6ff; }
+
+/* ============================================================
+   TAGS - 标签
+   ============================================================ */
+.tag {
+  display: inline-block;
+  background: var(--blue-bg);
+  color: #3730a3;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin: 2px;
+  font-weight: 500;
+  border: 1px solid var(--blue-border);
+}
+.tag.green { background: var(--green-bg); color: #166534; border-color: var(--green-border); }
+.tag.orange { background: var(--amber-bg); color: #92400e; border-color: var(--amber-border); }
+.tag.red { background: var(--red-bg); color: #991b1b; border-color: var(--red-border); }
+
+/* ============================================================
+   SOURCE LINKS - 原文链接
+   ============================================================ */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: var(--blue-bg);
+  border: 1px solid var(--blue-border);
+  transition: all 0.2s;
+}
+.source-link:hover {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* ============================================================
+   DISCUSSION - 讨论区
+   ============================================================ */
+.discussion {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-border);
+  border-left: 4px solid var(--amber);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 14px 0;
+  transition: all 0.3s;
+}
+.discussion:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.discussion .platform {
+  display: inline-block;
+  background: var(--amber);
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   TIP BOX - 提示框
+   ============================================================ */
+.tip-box {
+  background: var(--green-bg);
+  border: 1px solid var(--green-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.tip-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--green);
+}
+.tip-box h4 {
+  color: #065f46;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.tip-box ul { list-style: none; padding-left: 0; }
+.tip-box li {
+  padding: 5px 0 5px 24px;
+  position: relative;
+  font-size: 0.88rem;
+  color: #1a4731;
+}
+.tip-box li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   WARNING BOX - 警告框
+   ============================================================ */
+.warning-box {
+  background: var(--red-bg);
+  border: 1px solid var(--red-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.warning-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--red);
+}
+.warning-box h4 {
+  color: #991b1b;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SUMMARY TABLE - 汇总表
+   ============================================================ */
+.summary-table { font-size: 0.82rem; }
+.summary-table td:first-child {
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   GISCUS / COMMENTS - 评论区
+   ============================================================ */
+.comments-section {
+  margin-top: 40px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.comments-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.comments-desc {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   FOOTER - 页脚
+   ============================================================ */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   RESPONSIVE - 移动端适配
+   ============================================================ */
+@media (max-width: 600px) {
+  .header { padding: 32px 16px 24px; border-radius: 0 0 20px 20px; }
+  .header h1 { font-size: 1.3rem; }
+  .section { padding: 18px 14px; margin: 14px 0; }
+  .card, .news-item { padding: 14px 16px; }
+  table { font-size: 0.76rem; }
+  th, td { padding: 7px 5px; }
+  .container { padding: 0 12px 40px; }
+}
+
+/* ============================================================
+   UTILITY - 通用工具类
+   ============================================================ */
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-light); text-decoration: underline; }
+strong { color: var(--primary); }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-tag"><span class="dot"></span> 每日自动更新 · 蔚小理招聘追踪</div>
+  <h1>蔚小理招聘日报</h1>
+  <div class="subtitle">蔚来 / 小鹏 / 理想 三大新势力车企招聘信息、岗位详情、薪资待遇与面试攻略</div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">20+</div><div class="label">热招岗位</div></div>
+    <div class="hero-stat"><div class="num">3</div><div class="label">新势力车企</div></div>
+    <div class="hero-stat"><div class="num">15+</div><div class="label">城市覆盖</div></div>
+    <div class="hero-stat"><div class="num">8000+</div><div class="label">小鹏招聘规模</div></div>
+  </div>
+  <div class="update-time">2026年7月27日 星期一 · 自动生成</div>
+</header>
+
+<div class="container">
+
+  <!-- 今日概览 -->
+  <div class="section-header">
+    <span class="icon">📊</span>
+    <span class="title">今日概览</span>
+    <span class="line"></span>
+  </div>
+  <div class="overview-box">
+    <h3>三大新势力车企2026届校招全面启动</h3>
+    <p>蔚来2026届春季校园招聘持续推进，聚焦智能辅助驾驶、换电技术与海外业务，岗位覆盖上海、北京、合肥等城市，海外市场招聘专场提供1260+职位。小鹏汽车启动史上最大规模AI人才招聘，计划从6000人扩至8000人，重点聚焦智能驾驶、AI大模型、飞行汽车与机器人，2026年目标实现飞行汽车、IRON人形机器人、L4级Robotaxi三大前沿科技量产。理想汽车2026届校招覆盖九大类职位，员工超30000人，AI人才专项"理想+"计划同步推进，增程与高压纯电双线布局。</p>
+    <div class="company-tags">
+      <span class="company-tag nio">🔵 蔚来 NIO · 换电+智驾+海外</span>
+      <span class="company-tag xpeng">🟢 小鹏 XPeng · AI+飞行汽车+机器人</span>
+      <span class="company-tag li">🟠 理想 Li Auto · 增程+纯电+AI</span>
+    </div>
+  </div>
+
+  <!-- 蔚来招聘 -->
+  <div class="section-header">
+    <span class="icon">🔵</span>
+    <span class="title">蔚来招聘新闻</span>
+    <span class="line"></span>
+  </div>
+  <div class="company-section">
+    <div class="company-banner nio">
+      <span class="logo">🚗</span> 蔚来 NIO
+      <span class="count">8个热招岗位</span>
+    </div>
+  </div>
+
+  <div class="job-card nio">
+    <div class="job-title">智能辅助驾驶软件开发实习生</div>
+    <div class="job-meta">
+      <span class="pill salary">300-400元/天</span>
+      <span class="pill location">上海</span>
+      <span class="pill edu">本科</span>
+      <span class="pill type">实习</span>
+    </div>
+    <div class="job-desc">负责协助团队进行智能辅助驾驶域HMI模块软件架构设计，参与智能辅助驾驶域控上的HMI模块代码开发。蔚来自动驾驶研发团队核心岗位，接触行业领先的智驾技术栈。</div>
+    <a href="https://m.zhipin.com/job_detail/b0aa1a0ae7baf3bf0nV629y-ElRS.html" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="job-card nio">
+    <div class="job-title">校招-智能辅助驾驶SRE工程师</div>
+    <div class="job-meta">
+      <span class="pill salary">面议</span>
+      <span class="pill location">北京</span>
+      <span class="pill edu">本科及以上</span>
+      <span class="pill type">2026春招</span>
+    </div>
+    <div class="job-desc">参与智能辅助驾驶核心系统的稳定性建设，负责系统监控、故障排查与性能优化。蔚来2026届春季校园招聘项目，职位ID: A88245，隶属数字技术-技术运维方向。</div>
+    <a href="https://nio.jobs.feishu.cn/campus/m/position/detail/7610630472154810675" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="job-card nio">
+    <div class="job-title">校招-智能辅助驾驶系统工程师</div>
+    <div class="job-meta">
+      <span class="pill salary">面议</span>
+      <span class="pill location">上海 / 北京</span>
+      <span class="pill edu">硕士及以上</span>
+      <span class="pill type">2026春招</span>
+    </div>
+    <div class="job-desc">负责对智能辅助驾驶系统在测试和量产过程中的系统级问题进行分析与解决，需要扎实的系统工程与自动驾驶知识背景。职位ID: A235340，数字技术-数字架构方向。</div>
+    <a href="https://nio.jobs.feishu.cn/campus/m/position/detail/7610630296203626802" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="job-card nio">
+    <div class="job-title">内外饰CMF产品经理</div>
+    <div class="job-meta">
+      <span class="pill salary">25-45K·13薪</span>
+      <span class="pill location">上海</span>
+      <span class="pill edu">本科</span>
+      <span class="pill match">高薪岗位</span>
+    </div>
+    <div class="job-desc">负责蔚来车型内外饰CMF（色彩/材质/工艺）产品定义与项目管理，需要汽车设计或工业设计背景，对豪华品牌材质有深入理解。社招核心岗位，薪资竞争力强。</div>
+    <a href="https://www.zhipin.com/gongsir/c101020100/c61d023bc6632dd91XZy2dQ~.html" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="job-card nio">
+    <div class="job-title">HR实习生 - 海外招聘方向（意大利）</div>
+    <div class="job-meta">
+      <span class="pill salary">面议</span>
+      <span class="pill location">上海</span>
+      <span class="pill edu">本科</span>
+      <span class="pill type">实习</span>
+    </div>
+    <div class="job-desc">维护和拓展公司海外招聘渠道，协助招聘工作；根据岗位需求进行简历开源、候选人沟通、邀约面试。反映蔚来加速欧洲市场布局的人才需求，意大利语能力为加分项。</div>
+    <a href="https://www.zhipin.com/job_detail/44d9944db62f398b1XF83d64FlZV.html" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="job-card nio">
+    <div class="job-title">蔚来海外市场招聘专场</div>
+    <div class="job-meta">
+      <span class="pill salary">10万起</span>
+      <span class="pill location">全国/海外</span>
+      <span class="pill type">1260+职位</span>
+      <span class="pill match">大规模招聘</span>
+    </div>
+    <div class="job-desc">蔚来海外市场招聘专场进行时，新增1260个职位，涵盖客户售后服务工程师-海外市场等岗位，汇聚众多行业名企，五险一金，发展空间大。反映蔚来全球化战略加速推进。</div>
+    <a href="https://www.liepin.com/s/niowlhwscz8z4/" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="job-card nio">
+    <div class="job-title">换电站值守专员</div>
+    <div class="job-meta">
+      <span class="pill salary">8-10K</span>
+      <span class="pill location">上海浦东</span>
+      <span class="pill edu">高中</span>
+      <span class="pill type">全职</span>
+    </div>
+    <div class="job-desc">负责用户前来换电的对接，为用户提供换电服务。需C1驾驶证，无经验要求，五险一金。蔚来换电网络持续扩张的基础运营岗位，入职门槛较低。</div>
+    <a href="https://m.zhaopin.com/jobs/CCL1452310800J40445678106.htm" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="job-card nio">
+    <div class="job-title">运营专员</div>
+    <div class="job-meta">
+      <span class="pill salary">10-30K</span>
+      <span class="pill location">上海</span>
+      <span class="pill edu">本科</span>
+      <span class="pill type">社招</span>
+    </div>
+    <div class="job-desc">上海蔚来运营专员岗位，薪酬区间10K-30K，最多岗位拿10-15K。负责用户运营、社区运营等方向，蔚来用户运营体系是新势力中的标杆。</div>
+    <a href="https://m.jobui.com/company/12421524/salary/j/yunyingzhuanyuan/shanghai/" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <!-- 小鹏招聘 -->
+  <div class="section-header">
+    <span class="icon">🟢</span>
+    <span class="title">小鹏招聘新闻</span>
+    <span class="line"></span>
+  </div>
+  <div class="company-section">
+    <div class="company-banner xpeng">
+      <span class="logo">🚗</span> 小鹏 XPeng
+      <span class="count">6个热招方向</span>
+    </div>
+  </div>
+
+  <div class="job-card xpeng">
+    <div class="job-title">2026届校园招聘 - 史上最大规模AI人才招聘</div>
+    <div class="job-meta">
+      <span class="pill salary">n×15薪</span>
+      <span class="pill location">广州/深圳/上海/北京</span>
+      <span class="pill type">300+岗位</span>
+      <span class="pill match">大规模招聘</span>
+    </div>
+    <div class="job-desc">面向2025年9月至2026年8月毕业的国内外应届生，提供超过300个岗位方向，涵盖15大类别，包括自动驾驶、数据智能、智能机器人等热门领域。招聘计划从6000人调整到8000人，年内员工规模将接近3万人。工作地点遍布国内城市及美国、荷兰、德国等地。</div>
+    <a href="https://www.sohu.com/a/950171632_122362510" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="job-card xpeng">
+    <div class="job-title">飞行汽车自动驾驶路径规划算法工程师（小鹏汇天）</div>
+    <div class="job-meta">
+      <span class="pill salary">面议</span>
+      <span class="pill location">广州</span>
+      <span class="pill edu">硕士及以上</span>
+      <span class="pill match">前沿赛道</span>
+    </div>
+    <div class="job-desc">负责飞行汽车空中全局和局部决策规划算法开发及优化，负责空中决策规划算法的仿真和实车测试。小鹏汇天专注低空出行与飞行汽车研发，分体式飞行汽车"陆地航母"已完成试产下线，全球订单超7000台。</div>
+    <a href="https://m.zhipin.com/job_detail/a7e553cc2e3222290nV42Nu9F1ZW.html" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="job-card xpeng">
+    <div class="job-title">飞行自驾感知算法负责人（小鹏汇天）</div>
+    <div class="job-meta">
+      <span class="pill salary">面议</span>
+      <span class="pill location">广州</span>
+      <span class="pill edu">硕士及以上</span>
+      <span class="pill match">核心技术岗</span>
+    </div>
+    <div class="job-desc">针对飞行汽车自动驾驶领域的相机、感知等上下游，负责设计和开发高性能的异构（CPU+GPU+DLA+NPU+xPU）软件架构。小鹏汇天自动驾驶架构/高性能计算方向高级/资深工程师岗位。</div>
+    <a href="https://m.zhipin.com/job_detail/132c4219d8d7844803d40tS4GFBT.html" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="job-card xpeng">
+    <div class="job-title">2026三大前沿科技量产计划</div>
+    <div class="job-meta">
+      <span class="pill type">战略方向</span>
+      <span class="pill match">全球首家</span>
+    </div>
+    <div class="job-desc">何小鹏为小鹏锚定历史性目标：成为全球首家在同一年实现飞行汽车（陆地航母）、IRON人形机器人、L4级Robotaxi三大前沿科技全面量产的科技公司。三大业务共享第二代VLA视觉-语言-动作大模型技术底座，研发投入实现"一次投入，多场景复用"。</div>
+    <a href="https://chejiahao.m.autohome.com.cn/pingan/chejiahao/detailinfo/24887206" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="job-card xpeng">
+    <div class="job-title">人力资源培训生（招聘方向）</div>
+    <div class="job-meta">
+      <span class="pill salary">面议</span>
+      <span class="pill location">广州</span>
+      <span class="pill edu">本科</span>
+      <span class="pill type">26届校招</span>
+    </div>
+    <div class="job-desc">负责对接业务部门，有效落实执行各类人力资源管理工作，包括组织发展、培训、绩效考核、员工关系等。小鹏"探索者计划"为年轻员工提供专属职业通道，加速进阶。</div>
+    <a href="https://www.zhipin.com/job_detail/9bb1378bbfcba92f03x43N20E1BU.html" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="job-card xpeng">
+    <div class="job-title">小鹏2026年招聘8000人计划</div>
+    <div class="job-meta">
+      <span class="pill type">年度计划</span>
+      <span class="pill match">史上最大规模</span>
+    </div>
+    <div class="job-desc">小鹏汽车近日宣布启动2026届校园招聘，此次校招为其史上最大规模AI人才招聘，重点聚焦智能驾驶、AI大模型等核心领域。年初公司已推出6000人计划，现调整为8000人，半年度新增2000人编制，年内员工规模接近3万人。</div>
+    <a href="http://m.toutiao.com/group/7527579916909560361/" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <!-- 理想招聘 -->
+  <div class="section-header">
+    <span class="icon">🟠</span>
+    <span class="title">理想招聘新闻</span>
+    <span class="line"></span>
+  </div>
+  <div class="company-section">
+    <div class="company-banner li">
+      <span class="logo">🚗</span> 理想 Li Auto
+      <span class="count">6个热招方向</span>
+    </div>
+  </div>
+
+  <div class="job-card li">
+    <div class="job-title">2026届校园招聘 - 九大类职位全面覆盖</div>
+    <div class="job-meta">
+      <span class="pill salary">10-50K</span>
+      <span class="pill location">北京/上海/常州/杭州</span>
+      <span class="pill type">九大类职位</span>
+      <span class="pill match">30000+员工</span>
+    </div>
+    <div class="job-desc">理想汽车现有员工超过30000人，本次校招覆盖九大类职位：整车研发、算法与软件、芯片研发、产品、供应链与智能制造、销售与售后服务、项目管理、设计、职能与综合管理。工作地点覆盖北京、上海、常州、杭州、香港、慕尼黑等。</div>
+    <a href="https://job.ncepu.edu.cn/zpgg/76cf6ed85d9e49dba31c3f9b585c8347.htm" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="job-card li">
+    <div class="job-title">AI人才专项"理想+"招聘计划</div>
+    <div class="job-meta">
+      <span class="pill salary">面议</span>
+      <span class="pill location">北京/上海/杭州</span>
+      <span class="pill type">AI专项</span>
+      <span class="pill match">核心赛道</span>
+    </div>
+    <div class="job-desc">理想汽车2026届AI人才专项"理想+"招聘启动，杭州有岗。理想汽车定位"全球领先的人工智能终端企业"，认为汽车将从工业时代的交通工具进化为人工智能时代的空间机器人，推动人工智能普惠到每一个家庭。</div>
+    <a href="https://jxdxsjy.jx.edu.cn/jxufe/campus/view/id/977162/mark/jxufe" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="job-card li">
+    <div class="job-title">主动安全模型算法工程师</div>
+    <div class="job-meta">
+      <span class="pill salary">30-50K·14薪</span>
+      <span class="pill location">上海 / 北京</span>
+      <span class="pill edu">硕士</span>
+      <span class="pill match">高薪岗位</span>
+    </div>
+    <div class="job-desc">理想汽车主动安全模型算法工程师岗位，薪资30-50K·14薪，要求硕士学历，3-5年相关经验。负责主动安全相关算法模型研发，是理想智能驾驶体系的核心社招岗位。</div>
+    <a href="https://m.liepin.com/job/1984368391.shtml" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="job-card li">
+    <div class="job-title">自动驾驶算法工程师（校招）</div>
+    <div class="job-meta">
+      <span class="pill salary">面议</span>
+      <span class="pill location">北京</span>
+      <span class="pill edu">本科</span>
+      <span class="pill type">26届校招</span>
+    </div>
+    <div class="job-desc">负责理想汽车自动驾驶算法预研和工程落地，包括但不限于多任务感知模型、行为预测模型等。应届生岗位，理想智能驾驶团队核心方向，接触端到端自动驾驶前沿技术。</div>
+    <a href="https://www.zhipin.com/job_detail/6be9e1224b4a4a601Xx52925EVNZ.html" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="job-card li">
+    <div class="job-title">AI算法工程师 / 强化学习算法研究员</div>
+    <div class="job-meta">
+      <span class="pill salary">面议</span>
+      <span class="pill location">上海 / 北京</span>
+      <span class="pill edu">硕博</span>
+      <span class="pill type">26届校招</span>
+    </div>
+    <div class="job-desc">北京理想汽车有限公司招聘AI算法工程师（上海）和强化学习算法研究员（北京），2026年2月发布。反映理想在AI领域的持续投入，强化学习方向尤其稀缺。</div>
+    <a href="https://m.yingjiesheng.com/ypyear.php?ID=whjnc6cgfd" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="job-card li">
+    <div class="job-title">理想MEGA高压纯电平台研发</div>
+    <div class="job-meta">
+      <span class="pill type">战略方向</span>
+      <span class="pill match">5C高压纯电</span>
+    </div>
+    <div class="job-desc">理想MEGA是全球首款5C高压纯电MPV，手握"增程""纯电"两张王牌，2026年将全面加速。理想汽车增程系统研发与高压纯电平台并行推进，相关研发岗位持续招聘中。</div>
+    <a href="http://m.toutiao.com/group/7577369923559768612/" class="job-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <!-- 重点岗位详解 -->
+  <div class="section-header">
+    <span class="icon">🎯</span>
+    <span class="title">重点岗位详解</span>
+    <span class="line"></span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>公司</th>
+          <th>岗位名称</th>
+          <th>薪资</th>
+          <th>地点</th>
+          <th>学历</th>
+          <th>类型</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="company-badge nio">蔚来</span></td>
+          <td>内外饰CMF产品经理</td>
+          <td>25-45K·13薪</td>
+          <td>上海</td>
+          <td>本科</td>
+          <td>社招</td>
+        </tr>
+        <tr>
+          <td><span class="company-badge nio">蔚来</span></td>
+          <td>智能辅助驾驶系统工程师</td>
+          <td>面议</td>
+          <td>上海/北京</td>
+          <td>硕士+</td>
+          <td>校招</td>
+        </tr>
+        <tr>
+          <td><span class="company-badge xpeng">小鹏</span></td>
+          <td>飞行汽车路径规划算法工程师</td>
+          <td>面议</td>
+          <td>广州</td>
+          <td>硕士+</td>
+          <td>校招</td>
+        </tr>
+        <tr>
+          <td><span class="company-badge xpeng">小鹏</span></td>
+          <td>飞行自驾感知算法负责人</td>
+          <td>面议</td>
+          <td>广州</td>
+          <td>硕士+</td>
+          <td>社招</td>
+        </tr>
+        <tr>
+          <td><span class="company-badge li">理想</span></td>
+          <td>主动安全模型算法工程师</td>
+          <td>30-50K·14薪</td>
+          <td>上海/北京</td>
+          <td>硕士</td>
+          <td>社招</td>
+        </tr>
+        <tr>
+          <td><span class="company-badge li">理想</span></td>
+          <td>自动驾驶算法工程师</td>
+          <td>面议</td>
+          <td>北京</td>
+          <td>本科</td>
+          <td>校招</td>
+        </tr>
+        <tr>
+          <td><span class="company-badge li">理想</span></td>
+          <td>强化学习算法研究员</td>
+          <td>面议</td>
+          <td>北京</td>
+          <td>硕博</td>
+          <td>校招</td>
+        </tr>
+        <tr>
+          <td><span class="company-badge nio">蔚来</span></td>
+          <td>智能辅助驾驶SRE工程师</td>
+          <td>面议</td>
+          <td>北京</td>
+          <td>本科+</td>
+          <td>校招</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 面试经验分享 -->
+  <div class="section-header">
+    <span class="icon">💬</span>
+    <span class="title">面试经验分享</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="interview-card">
+    <div class="iv-header">
+      <span class="company-badge nio">蔚来</span>
+      <span class="iv-title">蔚来HR岗面试复盘：电话面10分钟</span>
+    </div>
+    <div class="iv-body">一面为电话面试约10分钟：自我介绍（学校+社团实习经历）→通过什么方式了解蔚来HR岗位→HR需要哪些能力→自己有哪些品质符合HR岗位→反向提问。面试节奏较快，建议提前准备对蔚来企业文化的理解，突出与岗位匹配的个人特质。</div>
+    <a href="https://m.nowcoder.com/discuss/424890406443212800" class="iv-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="interview-card">
+    <div class="iv-header">
+      <span class="company-badge nio">蔚来</span>
+      <span class="iv-title">蔚来面试千字教训：面试后两工作日收感谢信</span>
+    </div>
+    <div class="iv-body">面试后两个工作日收到感谢信。当天面试完问HR岗位需求紧急度，HR回答"还要再筛选下"，基本预示结果不理想。建议面试中展现对岗位的紧迫感和匹配度，避免给HR"犹豫"的信号。蔚来面试节奏偏快，反馈周期短。</div>
+    <a href="https://m.nowcoder.com/discuss/408761542281355264" class="iv-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="interview-card">
+    <div class="iv-header">
+      <span class="company-badge xpeng">小鹏</span>
+      <span class="iv-title">小鹏汽车面试经历：HR电话面20分钟轻松过关</span>
+    </div>
+    <div class="iv-body">初试为HR电话面试，主要了解基本情况和求职意向，问了为什么选择小鹏汽车、对公司了解多少等常规问题，聊了约20分钟，感觉较轻松。一面面试官对论文及项目很感兴趣，深入交谈并展示了实验视频及论文成果，当场感觉稳了。</div>
+    <a href="https://m.nowcoder.com/discuss/647867303392030720" class="iv-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="interview-card">
+    <div class="iv-header">
+      <span class="company-badge xpeng">小鹏</span>
+      <span class="iv-title">小鹏品质岗面试：985机械硕士肇庆电话面</span>
+    </div>
+    <div class="iv-body">985机械小硕接到小鹏汽车制造中心（肇庆）电话面试，本来报的智能制造被HR调到品质岗，系统显示设备管培生。面试官也是品质岗人员。提醒投递时注意岗位可能被调剂，提前了解制造端岗位差异。</div>
+    <a href="https://m.nowcoder.com/discuss/462464" class="iv-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="interview-card">
+    <div class="iv-header">
+      <span class="company-badge li">理想</span>
+      <span class="iv-title">理想汽车面试全流程：初筛到终面多轮评估</span>
+    </div>
+    <div class="iv-body">初筛主要通过简历筛选，重点考察教育背景、工作经历与岗位匹配度。进入多轮面试后，候选人需依次通过技术、产品、行为能力等专项评估，终面则由高层管理者或HR进行综合考察。理想面试流程较为规范，每轮侧重点不同，建议针对性准备。</div>
+    <a href="https://m.renrendoc.com:8443/paper/498362260.html" class="iv-link" target="_blank">📎 查看原文</a>
+  </div>
+
+  <!-- 薪资待遇对比 -->
+  <div class="section-header">
+    <span class="icon">💰</span>
+    <span class="title">薪资待遇对比</span>
+    <span class="line"></span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>对比维度</th>
+          <th>蔚来 NIO</th>
+          <th>小鹏 XPeng</th>
+          <th>理想 Li Auto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>应届生薪资</td>
+          <td>研发约20W/年</td>
+          <td>n×15薪 (1.2-1.6万/月)</td>
+          <td>整车研发10-20K/月</td>
+        </tr>
+        <tr>
+          <td>社招高薪岗位</td>
+          <td>CMF产品经理25-45K</td>
+          <td>飞行自驾感知算法负责人</td>
+          <td>算法工程师30-50K·14薪</td>
+        </tr>
+        <tr>
+          <td>年终奖/股权</td>
+          <td>年终奖2-5万+股权</td>
+          <td>13-15薪+期权</td>
+          <td>14薪+股权激励</td>
+        </tr>
+        <tr>
+          <td>工作强度</td>
+          <td>较高（有加班争议）</td>
+          <td>中等（已取消大小周）</td>
+          <td>较高（末尾淘汰制）</td>
+        </tr>
+        <tr>
+          <td>福利体系</td>
+          <td>住房/交通补贴+五险一金</td>
+          <td>五险一金+培训体系</td>
+          <td>五险一金+额外补贴</td>
+        </tr>
+        <tr>
+          <td>薪资竞争力</td>
+          <td>销售岗领先新势力</td>
+          <td>早期高薪现趋稳</td>
+          <td>行业中上水平</td>
+        </tr>
+        <tr>
+          <td>员工规模</td>
+          <td>32820人(2025)</td>
+          <td>接近30000人</td>
+          <td>30000+人</td>
+        </tr>
+        <tr>
+          <td>海外布局</td>
+          <td>柏林/欧洲四国</td>
+          <td>美国/荷兰/德国</td>
+          <td>慕尼黑/香港</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 全网热议 -->
+  <div class="section-header">
+    <span class="icon">🔥</span>
+    <span class="title">全网热议</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="hot-card">
+    <span class="hot-platform weibo">微博热搜</span>
+    <div class="hot-title">蔚来员工曝半年加班500小时进急诊3次，HR称系自愿加班</div>
+    <div class="hot-desc">一位蔚来汽车员工爆料在蔚来工作三年，仅半年加班时长就高达500小时，进急诊3次。HR回应"不鼓励加班，系自愿"。此话题登上微博热搜，引发对新势力车企工作强度的广泛讨论。</div>
+    <a href="https://m.ithome.com/html/688310.htm" class="hot-link" target="_blank">📎 查看原帖</a>
+  </div>
+
+  <div class="hot-card">
+    <span class="hot-platform news">资讯</span>
+    <div class="hot-title">小鹏取消"大小周"，蔚来理想仍为"义务加班"</div>
+    <div class="hot-desc">小鹏汽车取消"大小周"工作制，员工称不影响收入，此前都是"义务加班"。据了解，目前蔚来和理想汽车工作日超时加班、周末加班也没有加班费，全部属于"义务加班"。</div>
+    <a href="http://m.toutiao.com/group/7003548763297939982/" class="hot-link" target="_blank">📎 查看原帖</a>
+  </div>
+
+  <div class="hot-card">
+    <span class="hot-platform maimai">脉脉</span>
+    <div class="hot-title">新势力核心岗位高管离职率上升37%，工作强度成主因</div>
+    <div class="hot-desc">据脉脉2025年《新能源汽车行业人才流动报告》，2023-2024年新势力车企核心岗位高管离职率同比上升37%，其中"工作强度过大"成为仅次于"战略分歧"的离职主因。小鹏魏斌离职引发关注。</div>
+    <a href="http://m.toutiao.com/group/7623997636508533311/" class="hot-link" target="_blank">📎 查看原帖</a>
+  </div>
+
+  <div class="hot-card">
+    <span class="hot-platform maimai">脉脉</span>
+    <div class="hot-title">理想汽车被曝裁员15%，按工时高低末尾淘汰</div>
+    <div class="hot-desc">有网友在脉脉爆料理想汽车将在第二季度裁员15%，采用末尾淘汰制度，按工时高低淘汰员工。引发"互联网裁员潮蔓延新能源行业"的担忧。提醒求职者关注新势力车企的人员稳定性。</div>
+    <a href="http://m.toutiao.com/group/7083732833130414631/" class="hot-link" target="_blank">📎 查看原帖</a>
+  </div>
+
+  <div class="hot-card">
+    <span class="hot-platform news">资讯</span>
+    <div class="hot-title">蔚小理十年了还算新势力吗？该给"新势力"重新下定义</div>
+    <div class="hot-desc">蔚来成立于2014年11月，小鹏2014年8月，理想2015年7月，三家均超十年。有报道说面对残酷市场竞争，蔚小理在主动撕掉"造车新势力"标签，理想创始人李想公开说想把理想打造为全球领先的人工智能企业。</div>
+    <a href="http://m.toutiao.com/group/7666639824807297580/" class="hot-link" target="_blank">📎 查看原帖</a>
+  </div>
+
+  <div class="hot-card">
+    <span class="hot-platform news">资讯</span>
+    <div class="hot-title">2026年6月零跑、鸿蒙智行、蔚来、小鹏月销量均突破4万辆</div>
+    <div class="hot-desc">2026年6月，零跑、鸿蒙智行、蔚来、小鹏的月销量纷纷突破4万辆大关，标志着新势力行业正式告别"烧钱讲故事"的草莽时代，进入比拼全体系能力的成熟竞争阶段。理想在增程与纯电双线布局下保持竞争力。</div>
+    <a href="http://m.toutiao.com/group/7667130187833705014/" class="hot-link" target="_blank">📎 查看原帖</a>
+  </div>
+
+  <!-- 求职攻略 -->
+  <div class="section-header">
+    <span class="icon">🧭</span>
+    <span class="title">求职攻略</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="advice-card">
+    <div class="adv-title">🔵 蔚来：适合追求用户运营与海外视野的人才</div>
+    <div class="adv-body">蔚来在<strong>用户运营、换电技术、海外业务</strong>方面有独特优势。如果你对高端品牌运营、用户社区生态有兴趣，蔚来是最佳选择。面试需展现对蔚来"用户企业"理念的理解。研发岗年薪约20W起，软件岗更高。注意工作强度较大，曾有加班争议，需做好心理准备。海外岗位（意大利/德国）适合有外语优势的候选人。</div>
+  </div>
+
+  <div class="advice-card">
+    <div class="adv-title">🟢 小鹏：适合热衷AI与前沿科技的极客型人才</div>
+    <div class="adv-body">小鹏是三家中<strong>技术投入最激进</strong>的，飞行汽车、人形机器人、L4级Robotaxi三大前沿赛道并行。如果你是AI/算法/自动驾驶方向，追求技术前沿，小鹏是首选。2026年招聘8000人，规模最大，机会最多。校招n×15薪，应届生1.2-1.6万/月。已取消"大小周"，工作强度相对可控。建议投递时突出论文、项目和技术深度。</div>
+  </div>
+
+  <div class="advice-card">
+    <div class="adv-title">🟠 理想：适合看重商业化与稳定性的务实型人才</div>
+    <div class="adv-body">理想是三家中<strong>盈利能力最强、商业化最成熟</strong>的，增程+纯电双线布局。如果你看重公司稳定性和产品落地能力，理想是稳妥选择。面试流程规范（初筛→技术→产品→行为→终面），每轮侧重点不同。薪资行业中上，算法岗30-50K·14薪。注意理想有末尾淘汰制度，入职后需持续保持绩效。AI方向（强化学习/算法）尤其稀缺，竞争相对较小。</div>
+  </div>
+
+  <div class="advice-card">
+    <div class="adv-title">⚡ 三家差异化选择建议</div>
+    <div class="adv-body"><strong>技术前沿</strong>选小鹏（飞行汽车/机器人/AI），<strong>用户品牌</strong>选蔚来（高端运营/海外），<strong>商业稳健</strong>选理想（盈利/产品落地）。三家都在2026届校招中重点招募AI与智能驾驶人才，建议同时投递多家增加机会。面试前深入研究各公司最新产品（蔚来ET9/小鹏G7/理想i8）和技术路线，面试中展现差异化理解。关注脉脉、看准网最新薪资数据，2026年AI相关岗位薪资涨幅较大。</div>
+  </div>
+
+  <!-- 信息来源汇总 -->
+  <div class="section-header">
+    <span class="icon">📎</span>
+    <span class="title">信息来源汇总</span>
+    <span class="line"></span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>来源名称</th>
+          <th>链接</th>
+          <th>日期</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>BOSS直聘-蔚来招聘</td><td><a href="https://www.zhipin.com/gongsir/c101020100/c61d023bc6632dd91XZy2dQ~.html" target="_blank">zhipin.com</a></td><td>2026-07</td></tr>
+        <tr><td>蔚来校招飞书</td><td><a href="https://nio.jobs.feishu.cn/campus/m/position/detail/7610630472154810675" target="_blank">nio.jobs.feishu.cn</a></td><td>2026-07</td></tr>
+        <tr><td>猎聘-蔚来海外市场</td><td><a href="https://www.liepin.com/s/niowlhwscz8z4/" target="_blank">liepin.com</a></td><td>2026-07</td></tr>
+        <tr><td>搜狐-小鹏2026校招</td><td><a href="https://www.sohu.com/a/950171632_122362510" target="_blank">sohu.com</a></td><td>2025-11</td></tr>
+        <tr><td>汽车之家-小鹏2026战略</td><td><a href="https://chejiahao.m.autohome.com.cn/pingan/chejiahao/detailinfo/24887206" target="_blank">autohome.com.cn</a></td><td>2026-02</td></tr>
+        <tr><td>华北电力大学-理想校招</td><td><a href="https://job.ncepu.edu.cn/zpgg/76cf6ed85d9e49dba31c3f9b585c8347.htm" target="_blank">job.ncepu.edu.cn</a></td><td>2025-09</td></tr>
+        <tr><td>猎聘-理想算法岗</td><td><a href="https://m.liepin.com/job/1984368391.shtml" target="_blank">liepin.com</a></td><td>2026-07</td></tr>
+        <tr><td>牛客网-蔚来面试经验</td><td><a href="https://m.nowcoder.com/discuss/408761542281355264" target="_blank">nowcoder.com</a></td><td>2026-07</td></tr>
+        <tr><td>牛客网-小鹏面试经验</td><td><a href="https://m.nowcoder.com/discuss/647867303392030720" target="_blank">nowcoder.com</a></td><td>2026-07</td></tr>
+        <tr><td>IT之家-蔚来加班事件</td><td><a href="https://m.ithome.com/html/688310.htm" target="_blank">ithome.com</a></td><td>2026-04</td></tr>
+        <tr><td>今日头条-小鹏取消大小周</td><td><a href="http://m.toutiao.com/group/7003548763297939982/" target="_blank">toutiao.com</a></td><td>2026-07</td></tr>
+        <tr><td>今日头条-新势力离职率</td><td><a href="http://m.toutiao.com/group/7623997636508533311/" target="_blank">toutiao.com</a></td><td>2026-07</td></tr>
+        <tr><td>今日头条-理想裁员</td><td><a href="http://m.toutiao.com/group/7083732833130414631/" target="_blank">toutiao.com</a></td><td>2026-07</td></tr>
+        <tr><td>今日头条-新势力月销4万</td><td><a href="http://m.toutiao.com/group/7667130187833705014/" target="_blank">toutiao.com</a></td><td>2026-07</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Giscus评论区 -->
+  <div class="comments-section">
+    <div class="comments-title">💬 评论区</div>
+    <div class="comments-desc">登录 GitHub 账号即可留言，支持 Markdown 和表情回应。分享你的面试经验或求职问题。</div>
+    <script src="https://giscus.app/client.js"
+      data-repo="TS-dinglilu/TS-dinglilu.github.io"
+      data-repo-id="R_kgDOTjqaJQ"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOTjqaJc4DCIL1"
+      data-mapping="pathname" data-term="report-comments"
+      data-strict="0" data-reactions-enabled="1" data-emit-metadata="0"
+      data-input-position="top" data-theme="preferred_color_scheme"
+      data-lang="zh-CN" crossorigin="anonymous" async>
+    </script>
+  </div>
+
+  <footer>
+    <span class="brand">蔚小理招聘日报</span> ｜ 自动生成 ｜ Powered by TRAE Automation
+  </footer>
+</div>
+</body>
+</html>
