@@ -14,9 +14,9 @@
   --card-solid: rgba(20, 28, 48, 0.9);
   --border: rgba(0, 212, 255, 0.12);
   --border-hover: rgba(0, 212, 255, 0.4);
-  --text: #e2e8f0;
+  --text: #e8eef5;
   --text-dim: #c8d3e6;
-  --text-faint: #8b9bb5;
+  --text-faint: #b0bdd4;
   --accent: #00d4ff;
   --accent-warm: #ffb347;
   --accent-green: #22d3a0;
@@ -146,7 +146,7 @@ body::after {
   color: var(--accent);
   margin-bottom: 20px;
   padding-bottom: 14px;
-  border-bottom: 2px solid rgba(0, 212, 255, 0.25);
+  border-bottom: 2px solid rgba(0, 212, 255, 0.3);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -161,20 +161,41 @@ body::after {
 }
 
 .section-title {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--accent);
-  margin: 36px 0 16px;
-  padding: 14px 0 12px;
-  border-top: 2px solid rgba(0, 212, 255, 0.15);
-  border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+  margin: 44px 0 20px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(20,28,48,0.5) 100%);
+  border-left: 4px solid var(--accent);
+  border-top: 1px solid rgba(0, 212, 255, 0.25);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 0 12px 12px 0;
   display: flex;
   align-items: center;
   gap: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
 }
-.section-title .emoji {
+.section-title .emoji,
+.section-title .icon {
   font-size: 1.3rem;
-  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.3));
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+}
+.section-title .num {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  background: rgba(0,212,255,0.1);
+  padding: 3px 12px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: 1px solid var(--border);
+}
+.section-title > span:not(.num):not(.emoji):not(.icon) {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
 }
 
 
