@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>吉利招聘日报 | 2026年7月27日</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v2.0 美化版
+   适用于所有自动化任务的报告HTML
+   配色方案: 深蓝(#0f2c4d) + 蓝色强调(#2563eb)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --primary: #0f2c4d;
+  --primary-light: #1e4d7b;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-glow: rgba(37, 99, 235, 0.15);
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --text-faint: #94a3b8;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --green: #10b981;
+  --green-bg: #ecfdf5;
+  --green-border: #a7f3d0;
+  --amber: #f59e0b;
+  --amber-bg: #fffbeb;
+  --amber-border: #fde68a;
+  --red: #ef4444;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+  --blue-bg: #eff6ff;
+  --blue-border: #bfdbfe;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', 'Inter', -apple-system, 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 15px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Decorative grid background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating gradient orb */
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%; right: -10%;
+  width: 50%; height: 60%;
+  background: radial-gradient(ellipse, rgba(37,99,235,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   HEADER - 渐变标题栏 with glass-morphism
+   ============================================================ */
+.header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 40%, var(--accent) 100%);
+  color: #fff;
+  padding: 48px 24px 36px;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(15, 44, 77, 0.2);
+  margin-bottom: 8px;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -50%; left: -20%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.header .subtitle {
+  font-size: 0.9rem;
+  opacity: 0.88;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .date {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  z-index: 1;
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   SECTIONS - 卡片式内容区
+   ============================================================ */
+.section {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin: 20px 0;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, transparent 100%);
+}
+.section h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 20px 0 10px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ============================================================
+   CARDS - 信息卡片
+   ============================================================ */
+.card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-left-color: var(--accent-light);
+}
+.card-title {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-meta {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  font-family: 'Inter', monospace;
+}
+.card-content {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.card-content strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ============================================================
+   NEWS ITEMS - 新闻条目
+   ============================================================ */
+.news-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.news-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--border);
+  transition: all 0.3s ease;
+}
+.news-item:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.news-item:hover::before {
+  background: var(--accent);
+  width: 5px;
+}
+.news-item .badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--blue-bg);
+  color: #1e40af;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-right: 8px;
+  font-weight: 600;
+  border: 1px solid var(--blue-border);
+  letter-spacing: 0.3px;
+}
+.news-item .badge.hot {
+  background: var(--red-bg);
+  color: #dc2626;
+  border-color: var(--red-border);
+}
+.news-item .badge.new {
+  background: var(--green-bg);
+  color: #16a34a;
+  border-color: var(--green-border);
+}
+
+/* ============================================================
+   TABLES - 数据表格
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 16px 0;
+  font-size: 0.84rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+th {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) { background: #f8fafc; }
+tr:hover { background: var(--blue-bg); }
+tr:nth-child(even):hover { background: #eff6ff; }
+
+/* ============================================================
+   TAGS - 标签
+   ============================================================ */
+.tag {
+  display: inline-block;
+  background: var(--blue-bg);
+  color: #3730a3;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin: 2px;
+  font-weight: 500;
+  border: 1px solid var(--blue-border);
+}
+.tag.green { background: var(--green-bg); color: #166534; border-color: var(--green-border); }
+.tag.orange { background: var(--amber-bg); color: #92400e; border-color: var(--amber-border); }
+.tag.red { background: var(--red-bg); color: #991b1b; border-color: var(--red-border); }
+
+/* ============================================================
+   SOURCE LINKS - 原文链接
+   ============================================================ */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: var(--blue-bg);
+  border: 1px solid var(--blue-border);
+  transition: all 0.2s;
+}
+.source-link:hover {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* ============================================================
+   DISCUSSION - 讨论区
+   ============================================================ */
+.discussion {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-border);
+  border-left: 4px solid var(--amber);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 14px 0;
+  transition: all 0.3s;
+}
+.discussion:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.discussion .platform {
+  display: inline-block;
+  background: var(--amber);
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   TIP BOX - 提示框
+   ============================================================ */
+.tip-box {
+  background: var(--green-bg);
+  border: 1px solid var(--green-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.tip-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--green);
+}
+.tip-box h4 {
+  color: #065f46;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.tip-box ul { list-style: none; padding-left: 0; }
+.tip-box li {
+  padding: 5px 0 5px 24px;
+  position: relative;
+  font-size: 0.88rem;
+  color: #1a4731;
+}
+.tip-box li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   WARNING BOX - 警告框
+   ============================================================ */
+.warning-box {
+  background: var(--red-bg);
+  border: 1px solid var(--red-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.warning-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--red);
+}
+.warning-box h4 {
+  color: #991b1b;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SUMMARY TABLE - 汇总表
+   ============================================================ */
+.summary-table { font-size: 0.82rem; }
+.summary-table td:first-child {
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   GISCUS / COMMENTS - 评论区
+   ============================================================ */
+.comments-section {
+  margin-top: 40px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.comments-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.comments-desc {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   FOOTER - 页脚
+   ============================================================ */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   RESPONSIVE - 移动端适配
+   ============================================================ */
+@media (max-width: 600px) {
+  .header { padding: 32px 16px 24px; border-radius: 0 0 20px 20px; }
+  .header h1 { font-size: 1.3rem; }
+  .section { padding: 18px 14px; margin: 14px 0; }
+  .card, .news-item { padding: 14px 16px; }
+  table { font-size: 0.76rem; }
+  th, td { padding: 7px 5px; }
+  .container { padding: 0 12px 40px; }
+}
+
+/* ============================================================
+   UTILITY - 通用工具类
+   ============================================================ */
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-light); text-decoration: underline; }
+strong { color: var(--primary); }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+</style>
+</head>
+<body>
+
+<!-- HERO HEADER -->
+<header class="hero">
+<div class="hero-tag"><span class="dot"></span> 每日自动更新</div>
+<h1>吉利招聘日报</h1>
+<div class="subtitle">吉利汽车及子品牌（领克/极氪/银河/极星/翼真）最新招聘信息、岗位详情、薪资待遇与面试攻略</div>
+<div class="date-badge">2026年7月27日 星期一</div>
+<div class="hero-stats">
+<div class="hero-stat"><div class="num">25+</div><div class="label">在招岗位</div></div>
+<div class="hero-stat"><div class="num">6</div><div class="label">子品牌</div></div>
+<div class="hero-stat"><div class="num">4</div><div class="label">面试经验</div></div>
+<div class="hero-stat"><div class="num">7</div><div class="label">热议话题</div></div>
+</div>
+</header>
+
+<div class="container">
+
+<!-- 今日概览 -->
+<div class="overview-box">
+<h3>📊 今日概览</h3>
+<p>吉利控股集团2026届全球校园招聘已启动，预计招募<span class="highlight">2000余人</span>，数智化研发岗位占比近<span class="highlight">40%</span>，覆盖软件算法、整车研发、新能源开发、智能制造等方向。极氪被吉利以<span class="highlight">172亿元</span>全资收购后正式回归吉利体系，"回归一个吉利"战略加速推进。极氪目前在猎聘上有约<span class="highlight">100个</span>汽车职位需求，智驾岗位月薪达<span class="highlight">30-60K</span>。吉利汽车2025上半年人均年薪约<span class="highlight">26.4万元</span>，在民营车企中领先。<span class="warn">注意：极氪2026届校招几乎停招，社招HC也极为有限。</span></p>
+</div>
+
+<!-- 吉利及子品牌招聘新闻 -->
+<div class="section-header">
+<span class="icon">🏭</span>
+<span class="title">吉利及子品牌招聘新闻</span>
+<span class="line"></span>
+</div>
+
+<!-- 吉利本品牌 -->
+<div class="brand-group">
+<div class="brand-header geely">
+<span>吉利汽车（本品牌）</span>
+<span class="badge">校招+社招</span>
+</div>
+
+<div class="job-card">
+<div class="job-title">2026届全球校园招聘 — 软件算法/整车研发/新能源开发等</div>
+<div class="job-meta">
+<span class="tag salary">10K-15K起</span>
+<span class="tag location">杭州/宁波</span>
+<span class="tag match">高匹配</span>
+<span class="tag exp">本科及以上</span>
+</div>
+<div class="job-detail">吉利控股集团2026届全球校园招聘正式启动，预计招募<strong>2000余人</strong>，覆盖软件算法、整车研发、新能源开发、营销服务、智能制造、采购/供应链/质量、设计、职能等方向。数智化研发岗位占比近<strong>40%</strong>。具体岗位包括：大数据开发岗、智算平台开发岗、车联网软件开发岗、AI算法开发岗、架构集成岗、人工智能算法研究岗等。宣讲会首站走进吉利学院，CHO潘雷方出席。</div>
+<a href="http://m.toutiao.com/group/7548809979920024104/" target="_blank" class="source-link">📎 查看原文</a>
+</div>
+
+<div class="job-card">
+<div class="job-title">吉利人才发展集团 — 国际市场岗/教务管理岗</div>
+<div class="job-meta">
+<span class="tag salary">20-50万/年</span>
+<span class="tag location">海南三亚</span>
+<span class="tag exp">硕士研究生</span>
+</div>
+<div class="job-detail">吉利人才发展集团2026年招聘公告发布，市场部设<strong>国际市场岗</strong>，负责国际客户商务洽谈、合同签订与客户关系维护。教务管理专员/主管岗位年薪<strong>20-50万</strong>，工作地点海南三亚，要求硕士研究生学历。</div>
+<a href="https://www.gaoxiaojob.com/announcement/job-list?id=367163" target="_blank" class="source-link">📎 查看原文</a>
+</div>
+</div>
+
+<!-- 领克 -->
+<div class="brand-group">
+<div class="brand-header lynk">
+<span>领克汽车（Lynk & Co）</span>
+<span class="badge">社招为主</span>
+</div>
+
+<div class="job-card">
+<div class="job-title">领克张家口工厂 — 2026届校园招聘</div>
+<div class="job-meta">
+<span class="tag location">张家口</span>
+<span class="tag match">高匹配</span>
+<span class="tag exp">本科及以上</span>
+</div>
+<div class="job-detail">凯悦汽车大部件制造（张家口）有限公司（领克张家口工厂）启动2026届校园招聘。该工厂项目总投资<strong>125亿元</strong>，是领克品牌重要生产基地。岗位覆盖制造工程、质量管理、生产管理等方向。</div>
+<a href="https://jy.cumtb.edu.cn/Zhaopin/zuijin.html?id=9e022618-1063-9f1d-ab94-be5e6bc8fbf5" target="_blank" class="source-link">📎 查看原文</a>
+</div>
+
+<div class="job-card">
+<div class="job-title">领克汽车 — 汽车主播/零售顾问</div>
+<div class="job-meta">
+<span class="tag salary">8K-10K/月</span>
+<span class="tag location">全国多城</span>
+<span class="tag exp">经验不限</span>
+</div>
+<div class="job-detail">领克汽车在BOSS直聘发布多个岗位，包括汽车主播（底薪8500+绩效奖金，五险一金）、零售顾问等。要求新能源汽车行业经验优先，工作地点覆盖多个城市。</div>
+<a href="https://www.zhipin.com/job_detail/3d6e65aaa76dd99e03d52tu9EldS.html" target="_blank" class="source-link">📎 查看原文</a>
+</div>
+</div>
+
+<!-- 极氪 -->
+<div class="brand-group">
+<div class="brand-header zeekr">
+<span>极氪汽车（ZEEKR）</span>
+<span class="badge">社招活跃</span>
+</div>
+
+<div class="job-card">
+<div class="job-title">极氪智能科技 — 高级零售顾问（多区有岗）</div>
+<div class="job-meta">
+<span class="tag salary">面议</span>
+<span class="tag location">苏州/常州/合肥/深圳</span>
+<span class="tag match">高匹配</span>
+<span class="tag exp">1-3年大专</span>
+</div>
+<div class="job-detail">极氪智能科技在多个城市招聘高级零售顾问，负责热情接待进店顾客，提供专业讲解，传递ZEEKR品牌理念与产品优势。合肥区域极氪伙伴/主管/店长岗位月薪<strong>1.2-1.8万</strong>，深圳提供<strong>六险一金</strong>。门店普通岗位月薪10-15K，大区负责人20-30K/月（14薪）。</div>
+<a href="https://www.zhipin.com/job_detail/bf3f979c94b14f3f03153tu7FFtR.html" target="_blank" class="source-link">📎 查看原文</a>
+<a href="https://www.zhaopin.com/jobdetail/CC453635220J40388831203.htm" target="_blank" class="source-link" style="margin-left:12px;">📎 智联招聘</a>
+</div>
+
+<div class="job-card">
+<div class="job-title">极氪 — 智驾/软件开发岗（社招）</div>
+<div class="job-meta">
+<span class="tag salary">30-60K/月</span>
+<span class="tag location">宁波/杭州</span>
+<span class="tag match">高匹配</span>
+<span class="tag remote">核心技术</span>
+</div>
+<div class="job-detail">吉利收购极氪后，极氪在猎聘上放出约<strong>100个</strong>汽车职位需求，主要包括智驾、软件、数据方向。智驾相关职位薪酬较高，大都在<strong>30-60K/月</strong>。3年经验P6职级开发岗base在20-30K。极氪提供补充公积金，年终奖一般在1月30日前发放。</div>
+<a href="http://m.toutiao.com/group/7527955929858310694/" target="_blank" class="source-link">📎 查看原文</a>
+</div>
+
+<div class="job-card">
+<div class="job-title">极氪 — 视频制作实习生</div>
+<div class="job-meta">
+<span class="tag salary">实习薪资</span>
+<span class="tag location">宁波</span>
+<span class="tag exp">在校生</span>
+</div>
+<div class="job-detail">负责公司业务相关短视频全流程制作，包含选题策划、脚本策划、现场拍摄、后期剪辑及视频发布。需结合营销热点与业务需求（如新车上市、节日等）进行创意输出。</div>
+<a href="https://www.zhipin.com/job_detail/ea65296002a58bcf03d52Nq7GFZU.html" target="_blank" class="source-link">📎 查看原文</a>
+</div>
+</div>
+
+<!-- 吉利银河 -->
+<div class="brand-group">
+<div class="brand-header galaxy">
+<span>吉利银河（Galaxy）</span>
+<span class="badge">销售扩招</span>
+</div>
+
+<div class="job-card">
+<div class="job-title">吉利银河 — 新能源汽车销售顾问</div>
+<div class="job-meta">
+<span class="tag salary">7K-12K/月</span>
+<span class="tag location">烟台/郑州/全国</span>
+<span class="tag exp">1-3年</span>
+</div>
+<div class="job-detail">吉利银河新能源汽车销售岗位持续扩招。烟台地区薪资7K-11K/月，郑州地区8K-12K/月（五险）。4S店经验优先，一对一培训，覆盖新能源车线下销售。多家经销商门店同步招聘。</div>
+<a href="https://www.zhipin.com/job_detail/96ee05987de8e13b03Z83Nm_FlpW.html" target="_blank" class="source-link">📎 查看原文</a>
+<a href="https://www.zhipin.com/job_detail/9e1cee6b3fec2ca803x52N67ElJZ.html" target="_blank" class="source-link" style="margin-left:12px;">📎 郑州岗位</a>
+</div>
+</div>
+
+<!-- 极星 -->
+<div class="brand-group">
+<div class="brand-header polestar">
+<span>极星汽车（Polestar）</span>
+<span class="badge">有限岗位</span>
+</div>
+
+<div class="job-card">
+<div class="job-title">Polestar极星 — 新媒体客户转化专员（外包）</div>
+<div class="job-meta">
+<span class="tag salary">8K-10K/月</span>
+<span class="tag location">上海</span>
+<span class="tag exp">1-3年大专</span>
+</div>
+<div class="job-detail">极星招聘新媒体客户转化专员（外包岗位），底薪7000元/月，五险一金。负责通过新媒体渠道进行客户转化。极星全球管理会计负责人（驻瑞典）岗位此前曾开放，但目前已关闭。</div>
+<a href="https://m.zhipin.com/job_detail/7377447fe66ebbae03B72du7EFRZ.html" target="_blank" class="source-link">📎 查看原文</a>
+</div>
+</div>
+
+<!-- 吉利翼真 -->
+<div class="brand-group">
+<div class="brand-header levc">
+<span>吉利翼真（LEVC）</span>
+<span class="badge">销售岗位</span>
+</div>
+
+<div class="job-card">
+<div class="job-title">吉利翼真 — 汽车销售顾问</div>
+<div class="job-meta">
+<span class="tag salary">5K+提成</span>
+<span class="tag location">全国</span>
+<span class="tag exp">经验不限</span>
+</div>
+<div class="job-detail">吉利翼真（LEVC）汽车销售顾问岗位开放招聘。试用期3500/月+提成，转正5000+提成，单车提成2000+。负责热情接待进店用户、品牌宣导并积极鼓励试驾，保证最佳用户体验。LEVC是吉利旗下伦敦电动车品牌，聚焦高端出行。</div>
+<a href="https://www.zhipin.com/job_detail/dd3001ead76db6941HJ80tS0EFBV.html" target="_blank" class="source-link">📎 查看原文</a>
+</div>
+</div>
+
+<!-- 重点岗位详解 -->
+<div class="section-header">
+<span class="icon">🎯</span>
+<span class="title">重点岗位详解</span>
+<span class="line"></span>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>岗位名称</th>
+<th>品牌</th>
+<th>工作地点</th>
+<th>薪资范围</th>
+<th>学历要求</th>
+<th>匹配度</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI算法开发岗</td>
+<td>吉利本品牌</td>
+<td>杭州</td>
+<td><span class="tag high">15K-25K</span></td>
+<td>硕士及以上</td>
+<td><span class="tag high">高</span></td>
+<td><a href="http://m.toutiao.com/group/7548809979920024104/" target="_blank" style="color:#2563eb;text-decoration:none;">头条</a></td>
+</tr>
+<tr>
+<td>智驾算法工程师</td>
+<td>极氪</td>
+<td>宁波/杭州</td>
+<td><span class="tag high">30K-60K</span></td>
+<td>本科及以上</td>
+<td><span class="tag high">高</span></td>
+<td><a href="http://m.toutiao.com/group/7527955929858310694/" target="_blank" style="color:#2563eb;text-decoration:none;">头条</a></td>
+</tr>
+<tr>
+<td>车联网软件开发岗</td>
+<td>吉利本品牌</td>
+<td>杭州/宁波</td>
+<td><span class="tag mid">12K-20K</span></td>
+<td>本科及以上</td>
+<td><span class="tag high">高</span></td>
+<td><a href="http://m.toutiao.com/group/7548809979920024104/" target="_blank" style="color:#2563eb;text-decoration:none;">头条</a></td>
+</tr>
+<tr>
+<td>整车研发工程师</td>
+<td>吉利本品牌</td>
+<td>宁波/杭州</td>
+<td><span class="tag mid">15K-25K</span></td>
+<td>本科及以上</td>
+<td><span class="tag high">高</span></td>
+<td><a href="http://m.toutiao.com/group/7548809979920024104/" target="_blank" style="color:#2563eb;text-decoration:none;">头条</a></td>
+</tr>
+<tr>
+<td>高级零售顾问</td>
+<td>极氪</td>
+<td>苏州/合肥/深圳</td>
+<td><span class="tag mid">12K-18K</span></td>
+<td>大专及以上</td>
+<td><span class="tag mid">中</span></td>
+<td><a href="https://www.zhaopin.com/jobdetail/CC453635220J40388831203.htm" target="_blank" style="color:#2563eb;text-decoration:none;">智联</a></td>
+</tr>
+<tr>
+<td>新能源销售顾问</td>
+<td>吉利银河</td>
+<td>烟台/郑州</td>
+<td><span class="tag low">7K-12K</span></td>
+<td>不限</td>
+<td><span class="tag mid">中</span></td>
+<td><a href="https://www.zhipin.com/job_detail/96ee05987de8e13b03Z83Nm_FlpW.html" target="_blank" style="color:#2563eb;text-decoration:none;">BOSS</a></td>
+</tr>
+<tr>
+<td>制造工程岗</td>
+<td>领克</td>
+<td>张家口</td>
+<td><span class="tag mid">10K-15K</span></td>
+<td>本科及以上</td>
+<td><span class="tag high">高</span></td>
+<td><a href="https://jy.cumtb.edu.cn/Zhaopin/zuijin.html?id=9e022618-1063-9f1d-ab94-be5e6bc8fbf5" target="_blank" style="color:#2563eb;text-decoration:none;">校招</a></td>
+</tr>
+<tr>
+<td>大数据开发岗</td>
+<td>吉利本品牌</td>
+<td>杭州</td>
+<td><span class="tag high">15K-25K</span></td>
+<td>硕士优先</td>
+<td><span class="tag high">高</span></td>
+<td><a href="http://m.toutiao.com/group/7548809979920024104/" target="_blank" style="color:#2563eb;text-decoration:none;">头条</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- 面试经验分享 -->
+<div class="section-header">
+<span class="icon">🎤</span>
+<span class="title">面试经验分享</span>
+<span class="line"></span>
+</div>
+
+<div class="interview-card">
+<div class="role">吉利汽车 — 客服岗面试经验</div>
+<div class="meta">来源：牛客网 ｜ 面试形式：线下面</div>
+<div class="process"><strong>面试流程：</strong>宣讲会当天接收简历并通知面试，当晚出结果。共两轮：第一轮HR综合面试，第二轮技术面，均为1v1。HR面结束后等5分钟通知第二轮。<strong>常见问题：</strong>"你了解我们招聘的岗位吗？"建议从岗位职责和对候选人的要求两方面回答。面试整体难度不大，但需提前了解用人单位信息。<strong>建议：</strong>详细阅读招聘信息，从多途径收集单位信息。</div>
+<span class="difficulty easy">难度：较低</span>
+<a href="https://m.nowcoder.com/discuss/842445" target="_blank" class="source-link" style="margin-left:12px;">📎 查看原文</a>
+</div>
+
+<div class="interview-card">
+<div class="role">极氪汽车 — 销售管培生面试经验</div>
+<div class="meta">来源：牛客网 ｜ 面试形式：腾讯会议群面</div>
+<div class="process"><strong>面试流程：</strong>腾讯会议线上群面，面试者三男一女。HR先自我介绍，介绍极氪销售管培生岗位及工作基本信息（薪资、休息制度等），然后统一问两大问题：<strong>1. 自我介绍</strong>（有无销售相关经验）；<strong>2. 情景模拟</strong>（如何应对客户异议等）。<strong>建议：</strong>提前准备自我介绍话术，突出销售相关经历，了解极氪品牌定位与产品线。</div>
+<span class="difficulty medium">难度：中等</span>
+<a href="https://m.nowcoder.com/discuss/1068834" target="_blank" class="source-link" style="margin-left:12px;">📎 查看原文</a>
+</div>
+
+<div class="interview-card">
+<div class="role">吉利极氪 — 软件开发岗面经</div>
+<div class="meta">来源：牛客网 ｜ 面试形式：电话约面+技术面</div>
+<div class="process"><strong>面试流程：</strong>先电话约面，一面全程写代码。<strong>技术问题包括：</strong>堆排序实现、向上调整/向下调整实现、汉诺塔实现、最长公共子序列实现、口述迪杰斯特拉算法、深挖项目经历。<strong>建议：</strong>重点复习数据结构与算法（排序、图论、动态规划），准备好项目深挖的细节。技术面侧重代码实现能力，需要手写完整代码。</div>
+<span class="difficulty hard">难度：较高</span>
+<a href="https://m.nowcoder.com/discuss/397773664056340480" target="_blank" class="source-link" style="margin-left:12px;">📎 查看原文</a>
+</div>
+
+<div class="interview-card">
+<div class="role">极氪 — 财务大雁岗笔试面试经验</div>
+<div class="meta">来源：牛客网 ｜ 面试形式：线上专业面（闪面APP）</div>
+<div class="process"><strong>面试流程：</strong>一面为专业面，需提前下载"闪面"APP并调试设备。面试官会提前5-10分钟进场。<strong>注意事项：</strong>提前调试摄像头角度，避免尴尬。面试官会问你"对极氪的期待是什么"等问题。<strong>建议：</strong>提前了解极氪品牌定位、财务状况及行业趋势，准备好对岗位的理解和职业规划。</div>
+<span class="difficulty medium">难度：中等</span>
+<a href="https://m.nowcoder.com/discuss/770572" target="_blank" class="source-link" style="margin-left:12px;">📎 查看原文</a>
+</div>
+
+<!-- 薪资待遇分析 -->
+<div class="section-header">
+<span class="icon">💰</span>
+<span class="title">薪资待遇分析</span>
+<span class="line"></span>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>品牌</th>
+<th>校招起薪（月薪）</th>
+<th>社招中位（月薪）</th>
+<th>核心技术岗（月薪）</th>
+<th>年终奖</th>
+<th>福利亮点</th>
+<th>数据来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>极氪（ZEEKR）</strong></td>
+<td><span class="tag low">8K-20K</span></td>
+<td><span class="tag mid">20K-30K</span></td>
+<td><span class="tag high">30K-60K</span></td>
+<td>约1个月</td>
+<td>补充公积金8%、食堂、宿舍</td>
+<td><a href="http://m.toutiao.com/group/7569205529722012211/" target="_blank" style="color:#2563eb;text-decoration:none;">头条</a></td>
+</tr>
+<tr>
+<td><strong>吉利本品牌</strong></td>
+<td><span class="tag mid">10K-15K</span></td>
+<td><span class="tag mid">15K-25K</span></td>
+<td><span class="tag high">25K-50K</span></td>
+<td>1-3个月</td>
+<td>五险一金、内购优惠</td>
+<td><a href="http://m.toutiao.com/group/7586917509756944948/" target="_blank" style="color:#2563eb;text-decoration:none;">头条</a></td>
+</tr>
+<tr>
+<td><strong>领克（Lynk&Co）</strong></td>
+<td><span class="tag low">8K-12K</span></td>
+<td><span class="tag mid">12K-20K</span></td>
+<td><span class="tag mid">20K-35K</span></td>
+<td>1-2个月</td>
+<td>五险一金、绩效奖金</td>
+<td><a href="https://www.zhipin.com/job_detail/3d6e65aaa76dd99e03d52tu9EldS.html" target="_blank" style="color:#2563eb;text-decoration:none;">BOSS</a></td>
+</tr>
+<tr>
+<td><strong>吉利银河</strong></td>
+<td><span class="tag low">7K-10K</span></td>
+<td><span class="tag low">8K-12K</span></td>
+<td><span class="tag mid">15K-25K</span></td>
+<td>1-2个月</td>
+<td>五险、一对一培训</td>
+<td><a href="https://www.zhipin.com/job_detail/96ee05987de8e13b03Z83Nm_FlpW.html" target="_blank" style="color:#2563eb;text-decoration:none;">BOSS</a></td>
+</tr>
+<tr>
+<td><strong>极星（Polestar）</strong></td>
+<td><span class="tag low">8K-10K</span></td>
+<td><span class="tag mid">15K-25K</span></td>
+<td><span class="tag high">25K-50K</span></td>
+<td>1-2个月</td>
+<td>五险一金（外包岗）</td>
+<td><a href="https://m.zhipin.com/job_detail/7377447fe66ebbae03B72du7EFRZ.html" target="_blank" style="color:#2563eb;text-decoration:none;">BOSS</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="overview-box" style="margin-top:16px;">
+<p><strong>关键数据：</strong>吉利汽车2025上半年人均年薪约<span class="highlight">26.4万元</span>，高于长城（19.08万）和比亚迪（14.55万）。极氪7岗研发岗年薪区间<span class="highlight">40-80万</span>不等，具体取决于是否有股票分配。极氪员工反映2年不涨薪情况存在，有员工收到零跑offer（14薪总包39W）后选择跳槽。</p>
+</div>
+
+<!-- 全网热议 -->
+<div class="section-header">
+<span class="icon">🔥</span>
+<span class="title">全网热议</span>
+<span class="line"></span>
+</div>
+
+<div class="discussion-card">
+<span class="platform toutiao">今日头条</span>
+<div class="title">极氪汽车（宁波）职场内幕：吉利光环下的内卷与挣扎</div>
+<div class="content">详细分析极氪职场真实体验。管理层<strong>华为帮占比高</strong>，带来华为式狼性文化，研发岗日均工时11小时起步，重点项目开启"9-10-6"模式。加班无加班费，只有周末加班算调休。薪资涨幅基本可忽略，每年仅50元工龄补贴。"14薪"更像宣传噱头，常规绩效年终奖约1个月。但SEA浩瀚架构技术积累和产品矩阵是核心竞争力。回归吉利后有望共享供应链、研发资源。</div>
+<a href="http://m.toutiao.com/group/7569205529722012211/" target="_blank" class="source-link">📎 查看原帖</a>
+</div>
+
+<div class="discussion-card">
+<span class="platform nowcoder">牛客网</span>
+<div class="title">极氪半年工作体验：氛围和善，加班不算太频繁</div>
+<div class="content">极氪IT开发岗员工分享：公司氛围<strong>和善</strong>，加班不算太频繁，8点多很多人陆续离开，<strong>双休有保障</strong>。缴纳补充公积金，年终奖发放较早（1月30日前）。周二、周四晚加班到8:30提供加班零食。缺点：强制打卡（每月仅3次补卡机会），薪资较高时税收心疼。</div>
+<a href="https://www.nowcoder.com/discuss/612692509889744896" target="_blank" class="source-link">📎 查看原帖</a>
+</div>
+
+<div class="discussion-card">
+<span class="platform nowcoder">牛客网</span>
+<div class="title">吉利汽车工作一年多感受（已离职）</div>
+<div class="content">前吉利员工分享：吉利待遇<strong>中规中矩</strong>，有些岗位还不错。公司<strong>看重学历和实习经历</strong>。薪资方面和奇瑞、长城差不多，甚至比比亚迪还少点。杭州吉利工作时间较长，工作强度大，但有涨薪和购车机会。9点上班6点下班，固定打卡制度。</div>
+<a href="https://m.nowcoder.com/feed/main/detail/f7ead52216bd482789634442e9837add" target="_blank" class="source-link">📎 查看原帖</a>
+</div>
+
+<div class="discussion-card">
+<span class="platform toutiao">今日头条</span>
+<div class="title">拿到吉利、长城、奇瑞三个offer，薪资都差不多，选哪个？</div>
+<div class="content">211硕士同时拿到三家企业底盘设计岗offer，薪资均约<strong>25万</strong>。<strong>吉利</strong>：平台大体系完善，但晋升慢（有人5年还是P5），7点多下班周六偶尔加班。<strong>长城</strong>：待遇不错，底盘调校技术深，但智能化转型慢。<strong>奇瑞</strong>：发展快机会多，但稳定性存疑。建议：想要稳定平台选吉利，看重技术深耕选长城，想快速成长选奇瑞。</div>
+<a href="http://m.toutiao.com/group/7636627320844894735/" target="_blank" class="source-link">📎 查看原帖</a>
+</div>
+
+<div class="discussion-card">
+<span class="platform toutiao">今日头条</span>
+<div class="title">民营车企薪酬哪家强？吉利人均26万 长城人均19万</div>
+<div class="content">2025年上半年数据：吉利汽车人均年薪约<strong>26.4万元</strong>，长城约19.08万元，比亚迪人均约14.55万元（员工基数88.54万人）。宁德时代人均约24.86万元。吉利在民营车企中薪酬领先，已启动2026年1月基层员工薪资上调计划。</div>
+<a href="http://m.toutiao.com/group/7586917509756944948/" target="_blank" class="source-link">📎 查看原帖</a>
+</div>
+
+<div class="discussion-card">
+<span class="platform toutiao">今日头条</span>
+<div class="title">吉利宁波杭州湾offer，涨薪约40%，要不要去？</div>
+<div class="content">收到吉利宁波杭州湾offer，涨薪40%，核心业务岗位。据内部同事了解，<strong>加班大概到八九点，双休</strong>。建议：年轻人不要太纠结，选了之后好好干，3年后跳槽薪资涨50%就赚了。</div>
+<a href="http://m.toutiao.com/group/7667012390373966342/" target="_blank" class="source-link">📎 查看原帖</a>
+</div>
+
+<div class="discussion-card">
+<span class="platform toutiao">今日头条</span>
+<div class="title">172亿！吉利收购极氪，大量职位薪酬曝光</div>
+<div class="content">吉利以约<strong>172亿元</strong>全资收购极氪剩余34.3%股份，极氪正式成为吉利100%控股全资子公司。合并后有望降低采购成本3%、研发效率提升10-20%。极氪目前在猎聘上有约100个职位需求，门店普通岗位10-15K/月，大区负责人20-30K/月（14薪），智驾职位30-60K/月。</div>
+<a href="http://m.toutiao.com/group/7527955929858310694/" target="_blank" class="source-link">📎 查看原帖</a>
+</div>
+
+<!-- 求职攻略 -->
+<div class="section-header">
+<span class="icon">📝</span>
+<span class="title">求职攻略：如何进吉利体系</span>
+<span class="line"></span>
+</div>
+
+<div class="tip-box">
+<h3>🎯 吉利体系求职核心建议</h3>
+<div class="tip-item"><strong>选对品牌定位：</strong>极氪适合追求高端智能电动汽车研发的人才（智驾/软件方向薪资最高30-60K）；吉利本品牌适合想要稳定平台、系统学习的应届生；领克张家口工厂适合制造工程方向；银河和翼真目前以销售岗为主。</div>
+<div class="tip-item"><strong>关注"回归一个吉利"战略：</strong>极氪已回归吉利体系，资源整合带来新机会。关注猎聘上极氪约100个职位缺口，尤其是智驾、软件、数据方向。但注意极氪2026届校招几乎停招，社招HC也有限。</div>
+<div class="tip-item"><strong>提前准备技术面：</strong>吉利极氪技术面侧重代码实现（堆排序、汉诺塔、最长公共子序列、图论算法），务必手写练习。财务/非技术岗使用"闪面"APP，提前调试设备。</div>
+<div class="tip-item"><strong>了解品牌知识：</strong>面试常问"你了解我们的岗位吗"和"对极氪品牌的理解"。熟悉吉利旗下品牌矩阵：吉利、领克、极氪、沃尔沃、极星、路特斯、LEVC、雷达、远程。</div>
+<div class="tip-item"><strong>薪资谈判要点：</strong>吉利7岗研发岗年薪可达40-80万（含股票），无股票则偏低。极氪14薪是宣传说法，实际年终奖约1个月。入职时谈好股票/期权兑现条件，注意可能"打骨折"或延期归属。</div>
+<div class="tip-item"><strong>评估工作强度：</strong>极氪研发岗日均工时11小时，重点项目9-10-6。吉利本品牌7点多下班，周六偶尔加班。面试时可委婉了解团队工作节奏和加班情况。</div>
+<div class="tip-item"><strong>利用多渠道投递：</strong>校招关注吉利控股集团官网和各高校就业网宣讲会信息；社招关注BOSS直聘、智联招聘、猎聘。极氪岗位在猎聘上最全。</div>
+</div>
+
+<!-- 信息来源汇总 -->
+<div class="section-header">
+<span class="icon">📎</span>
+<span class="title">信息来源汇总</span>
+<span class="line"></span>
+</div>
+
+<div class="table-wrap">
+<table class="summary-table">
+<thead>
+<tr>
+<th>来源名称</th>
+<th>URL</th>
+<th>日期</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>今日头条 - 吉利2026校招启动</td><td><a href="http://m.toutiao.com/group/7548809979920024104/" target="_blank">m.toutiao.com/group/7548809979920024104/</a></td><td>2025-09-04</td></tr>
+<tr><td>今日头条 - 吉利校招走进吉利学院</td><td><a href="http://m.toutiao.com/group/7553582432881033762/" target="_blank">m.toutiao.com/group/7553582432881033762/</a></td><td>2025-09-23</td></tr>
+<tr><td>高校人才网 - 吉利人才发展集团招聘</td><td><a href="https://www.gaoxiaojob.com/announcement/job-list?id=367163" target="_blank">gaoxiaojob.com</a></td><td>2026-07</td></tr>
+<tr><td>BOSS直聘 - 领克汽车主播</td><td><a href="https://www.zhipin.com/job_detail/3d6e65aaa76dd99e03d52tu9EldS.html" target="_blank">zhipin.com</a></td><td>2026-07</td></tr>
+<tr><td>BOSS直聘 - 极氪高级零售顾问</td><td><a href="https://www.zhipin.com/job_detail/bf3f979c94b14f3f03153tu7FFtR.html" target="_blank">zhipin.com</a></td><td>2026-07</td></tr>
+<tr><td>智联招聘 - 极氪伙伴/主管/店长</td><td><a href="https://www.zhaopin.com/jobdetail/CC453635220J40388831203.htm" target="_blank">zhaopin.com</a></td><td>2026-07</td></tr>
+<tr><td>BOSS直聘 - 吉利银河销售</td><td><a href="https://www.zhipin.com/job_detail/96ee05987de8e13b03Z83Nm_FlpW.html" target="_blank">zhipin.com</a></td><td>2026-07</td></tr>
+<tr><td>BOSS直聘 - 极星新媒体专员</td><td><a href="https://m.zhipin.com/job_detail/7377447fe66ebbae03B72du7EFRZ.html" target="_blank">zhipin.com</a></td><td>2026-07</td></tr>
+<tr><td>BOSS直聘 - 吉利翼真销售</td><td><a href="https://www.zhipin.com/job_detail/dd3001ead76db6941HJ80tS0EFBV.html" target="_blank">zhipin.com</a></td><td>2026-07</td></tr>
+<tr><td>牛客网 - 吉利客服面试经验</td><td><a href="https://m.nowcoder.com/discuss/842445" target="_blank">nowcoder.com/discuss/842445</a></td><td>2025</td></tr>
+<tr><td>牛客网 - 极氪销售管培生面经</td><td><a href="https://m.nowcoder.com/discuss/1068834" target="_blank">nowcoder.com/discuss/1068834</a></td><td>2025</td></tr>
+<tr><td>牛客网 - 极氪软件开发面经</td><td><a href="https://m.nowcoder.com/discuss/397773664056340480" target="_blank">nowcoder.com</a></td><td>2025</td></tr>
+<tr><td>牛客网 - 极氪财务面试经验</td><td><a href="https://m.nowcoder.com/discuss/770572" target="_blank">nowcoder.com</a></td><td>2025</td></tr>
+<tr><td>今日头条 - 极氪职场内幕</td><td><a href="http://m.toutiao.com/group/7569205529722012211/" target="_blank">m.toutiao.com</a></td><td>2025-10</td></tr>
+<tr><td>牛客网 - 极氪半年工作体验</td><td><a href="https://www.nowcoder.com/discuss/612692509889744896" target="_blank">nowcoder.com</a></td><td>2024-04</td></tr>
+<tr><td>今日头条 - 吉利长城奇瑞offer选择</td><td><a href="http://m.toutiao.com/group/7636627320844894735/" target="_blank">m.toutiao.com</a></td><td>2026-07</td></tr>
+<tr><td>今日头条 - 民营车企薪酬对比</td><td><a href="http://m.toutiao.com/group/7586917509756944948/" target="_blank">m.toutiao.com</a></td><td>2025-12</td></tr>
+<tr><td>今日头条 - 吉利收购极氪薪酬曝光</td><td><a href="http://m.toutiao.com/group/7527955929858310694/" target="_blank">m.toutiao.com</a></td><td>2025-07</td></tr>
+<tr><td>今日头条 - 吉利宁波offer涨薪40%</td><td><a href="http://m.toutiao.com/group/7667012390373966342/" target="_blank">m.toutiao.com</a></td><td>2026-07</td></tr>
+<tr><td>BOSS直聘 - 吉利员工工作体验</td><td><a href="https://m.zhipin.com/gongsi/review/56fa581bc671ee031XZ83dg~.html" target="_blank">zhipin.com</a></td><td>2025</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- Giscus 评论区 -->
+<div class="comments-section">
+<div class="comments-title">💬 评论区</div>
+<div class="comments-desc">登录 GitHub 账号即可留言，支持 Markdown 和表情回应。分享你的吉利/极氪/领克面试经验或工作感受！</div>
+<script src="https://giscus.app/client.js"
+  data-repo="TS-dinglilu/TS-dinglilu.github.io"
+  data-repo-id="R_kgDOTjqaJQ"
+  data-category="Announcements"
+  data-category-id="DIC_kwDOTjqaJc4DCIL1"
+  data-mapping="pathname" data-term="report-comments"
+  data-strict="0" data-reactions-enabled="1" data-emit-metadata="0"
+  data-input-position="top" data-theme="preferred_color_scheme"
+  data-lang="zh-CN" crossorigin="anonymous" async>
+</script>
+</div>
+
+<footer>
+<span class="brand">吉利招聘日报</span> ｜ 自动生成 ｜ Powered by TRAE Automation
+</footer>
+
+</div>
+</body>
+</html>
