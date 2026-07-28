@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>传统车企招聘日报 - 2026年7月28日</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v2.0 美化版
+   适用于所有自动化任务的报告HTML
+   配色方案: 深蓝(#0f2c4d) + 蓝色强调(#2563eb)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --primary: #0f2c4d;
+  --primary-light: #1e4d7b;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-glow: rgba(37, 99, 235, 0.15);
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --text-faint: #94a3b8;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --green: #10b981;
+  --green-bg: #ecfdf5;
+  --green-border: #a7f3d0;
+  --amber: #f59e0b;
+  --amber-bg: #fffbeb;
+  --amber-border: #fde68a;
+  --red: #ef4444;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+  --blue-bg: #eff6ff;
+  --blue-border: #bfdbfe;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', 'Inter', -apple-system, 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 15px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Decorative grid background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating gradient orb */
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%; right: -10%;
+  width: 50%; height: 60%;
+  background: radial-gradient(ellipse, rgba(37,99,235,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   HEADER - 渐变标题栏 with glass-morphism
+   ============================================================ */
+.header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 40%, var(--accent) 100%);
+  color: #fff;
+  padding: 48px 24px 36px;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(15, 44, 77, 0.2);
+  margin-bottom: 8px;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -50%; left: -20%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.header .subtitle {
+  font-size: 0.9rem;
+  opacity: 0.88;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .date {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  z-index: 1;
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   SECTIONS - 卡片式内容区
+   ============================================================ */
+.section {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin: 20px 0;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, transparent 100%);
+}
+.section h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 20px 0 10px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ============================================================
+   CARDS - 信息卡片
+   ============================================================ */
+.card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-left-color: var(--accent-light);
+}
+.card-title {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-meta {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  font-family: 'Inter', monospace;
+}
+.card-content {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.card-content strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ============================================================
+   NEWS ITEMS - 新闻条目
+   ============================================================ */
+.news-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.news-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--border);
+  transition: all 0.3s ease;
+}
+.news-item:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.news-item:hover::before {
+  background: var(--accent);
+  width: 5px;
+}
+.news-item .badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--blue-bg);
+  color: #1e40af;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-right: 8px;
+  font-weight: 600;
+  border: 1px solid var(--blue-border);
+  letter-spacing: 0.3px;
+}
+.news-item .badge.hot {
+  background: var(--red-bg);
+  color: #dc2626;
+  border-color: var(--red-border);
+}
+.news-item .badge.new {
+  background: var(--green-bg);
+  color: #16a34a;
+  border-color: var(--green-border);
+}
+
+/* ============================================================
+   TABLES - 数据表格
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 16px 0;
+  font-size: 0.84rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+th {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) { background: #f8fafc; }
+tr:hover { background: var(--blue-bg); }
+tr:nth-child(even):hover { background: #eff6ff; }
+
+/* ============================================================
+   TAGS - 标签
+   ============================================================ */
+.tag {
+  display: inline-block;
+  background: var(--blue-bg);
+  color: #3730a3;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin: 2px;
+  font-weight: 500;
+  border: 1px solid var(--blue-border);
+}
+.tag.green { background: var(--green-bg); color: #166534; border-color: var(--green-border); }
+.tag.orange { background: var(--amber-bg); color: #92400e; border-color: var(--amber-border); }
+.tag.red { background: var(--red-bg); color: #991b1b; border-color: var(--red-border); }
+
+/* ============================================================
+   SOURCE LINKS - 原文链接
+   ============================================================ */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: var(--blue-bg);
+  border: 1px solid var(--blue-border);
+  transition: all 0.2s;
+}
+.source-link:hover {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* ============================================================
+   DISCUSSION - 讨论区
+   ============================================================ */
+.discussion {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-border);
+  border-left: 4px solid var(--amber);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 14px 0;
+  transition: all 0.3s;
+}
+.discussion:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.discussion .platform {
+  display: inline-block;
+  background: var(--amber);
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   TIP BOX - 提示框
+   ============================================================ */
+.tip-box {
+  background: var(--green-bg);
+  border: 1px solid var(--green-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.tip-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--green);
+}
+.tip-box h4 {
+  color: #065f46;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.tip-box ul { list-style: none; padding-left: 0; }
+.tip-box li {
+  padding: 5px 0 5px 24px;
+  position: relative;
+  font-size: 0.88rem;
+  color: #1a4731;
+}
+.tip-box li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   WARNING BOX - 警告框
+   ============================================================ */
+.warning-box {
+  background: var(--red-bg);
+  border: 1px solid var(--red-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.warning-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--red);
+}
+.warning-box h4 {
+  color: #991b1b;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SUMMARY TABLE - 汇总表
+   ============================================================ */
+.summary-table { font-size: 0.82rem; }
+.summary-table td:first-child {
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   GISCUS / COMMENTS - 评论区
+   ============================================================ */
+.comments-section {
+  margin-top: 40px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.comments-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.comments-desc {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   FOOTER - 页脚
+   ============================================================ */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   RESPONSIVE - 移动端适配
+   ============================================================ */
+@media (max-width: 600px) {
+  .header { padding: 32px 16px 24px; border-radius: 0 0 20px 20px; }
+  .header h1 { font-size: 1.3rem; }
+  .section { padding: 18px 14px; margin: 14px 0; }
+  .card, .news-item { padding: 14px 16px; }
+  table { font-size: 0.76rem; }
+  th, td { padding: 7px 5px; }
+  .container { padding: 0 12px 40px; }
+}
+
+/* ============================================================
+   UTILITY - 通用工具类
+   ============================================================ */
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-light); text-decoration: underline; }
+strong { color: var(--primary); }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <h1>传统车企招聘日报</h1>
+  <div class="date">2026年7月28日 | Traditional Auto Recruitment Daily</div>
+  <div class="subtitle">一汽 / 上汽 / 长安 / 长城 / 广汽 / 东风 六大传统车企招聘动态全覆盖</div>
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="num">6</span>
+      <span class="label">车企集团</span>
+    </div>
+    <div class="stat-item">
+      <span class="num">30+</span>
+      <span class="label">在招岗位</span>
+    </div>
+    <div class="stat-item">
+      <span class="num">15+</span>
+      <span class="label">品牌矩阵</span>
+    </div>
+    <div class="stat-item">
+      <span class="num">20+</span>
+      <span class="label">城市覆盖</span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- 今日概览 -->
+  <section class="section">
+    <h2 class="section-title"><span class="icon">📊</span> 今日概览</h2>
+    <div class="overview-box">
+      <h3>六大传统车企招聘动态汇总</h3>
+      <p>2026年7月，传统车企招聘进入暑期补录与秋招预热阶段。一汽集团2026全球校招持续推进，研发总院聚焦智能出行领域人才；上汽集团2026届校招已于去年10月启动，涵盖上汽大众、智己汽车等多个品牌，岗位覆盖研发、软件、新能源等方向；长安汽车作为新晋央企，重庆总部及全国多地研发中心持续扩招，深蓝汽车与阿维塔品牌新能源岗位需求旺盛；长城汽车旗下哈弗、魏牌、坦克等品牌校招社招并行，蜂巢能源电池研发岗位热门；广汽集团2026校招规模达500人，覆盖传祺、埃安、丰田、本田全品牌；东风集团岚图汽车高端新能源岗位持续招聘，东风日产/本田合资品牌稳定扩招。行业整体呈现"油转电"加速趋势，智驾、三电、软件人才成为各家争夺焦点。</p>
+      <div class="overview-grid">
+        <div class="overview-card">
+          <div class="brand">一汽集团</div>
+          <div class="info">2026全球校招 | 红旗研发 | 长春/天津</div>
+        </div>
+        <div class="overview-card">
+          <div class="brand">上汽集团</div>
+          <div class="info">2026届校招 | 大众/智己 | 上海/南京</div>
+        </div>
+        <div class="overview-card">
+          <div class="brand">长安汽车</div>
+          <div class="info">新央企扩招 | 深蓝/阿维塔 | 重庆/北京</div>
+        </div>
+        <div class="overview-card">
+          <div class="brand">长城汽车</div>
+          <div class="info">校招社招并行 | 哈弗/魏牌/坦克 | 保定/上海</div>
+        </div>
+        <div class="overview-card">
+          <div class="brand">广汽集团</div>
+          <div class="info">500人校招 | 传祺/埃安 | 广州/宜昌</div>
+        </div>
+        <div class="overview-card">
+          <div class="brand">东风集团</div>
+          <div class="info">岚图高端招聘 | 日产/本田 | 武汉/广州</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 一汽集团 -->
+  <section class="section">
+    <h2 class="section-title"><span class="icon">🚗</span> 一汽集团招聘</h2>
+    <div class="card-grid">
+      <div class="job-card faw">
+        <span class="brand-tag">一汽红旗</span>
+        <h4>研发总院 2026全球校园招聘</h4>
+        <p class="desc">中国一汽研发总院2026届校招启动，以创新为引擎，聚焦智能出行新纪元。涵盖智能驾驶、新能源动力、整车研发等方向，面向软件类、汽车类、机械类等专业。</p>
+        <div class="tag-row">
+          <span class="tag salary">本科8-18W/年</span>
+          <span class="tag location">长春</span>
+          <span class="tag match">高匹配</span>
+          <span class="tag type">校招</span>
+        </div>
+        <a class="source-link" href="https://job.bit.edu.cn/f/recruitmentFair/show?recruitmentFairId=a87f9822d45f413e9e9bd2f849aba413" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="job-card faw">
+        <span class="brand-tag">一汽红旗</span>
+        <h4>销售顾问（社招）</h4>
+        <p class="desc">负责一汽红旗汽车销售工作，为客户提供专业咨询，维护客户关系，跟进销售流程确保交易顺利进行。红旗品牌近年销量持续增长，销售岗位需求旺盛。</p>
+        <div class="tag-row">
+          <span class="tag salary">底薪+提成</span>
+          <span class="tag location">全国多地</span>
+          <span class="tag type">社招</span>
+        </div>
+        <a class="source-link" href="https://www.zhipin.com/job_detail/1d95ab0a9964a213031_0tu0FlRS.html" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="job-card faw">
+        <span class="brand-tag">一汽-大众</span>
+        <h4>操作技工（社招）</h4>
+        <p class="desc">一汽大众操作技工岗位，综合月薪5500-6500元。薪资结构含岗位工资+生产绩效奖金+加班费+夜班补贴+全勤奖，提供线上面试，包吃包住双休。</p>
+        <div class="tag-row">
+          <span class="tag salary">5500-6500元/月</span>
+          <span class="tag location">天津</span>
+          <span class="tag type">社招</span>
+        </div>
+        <a class="source-link" href="https://www.zhipin.com/job_detail/a4ffe59080e467610nZ5292_F1dW.html" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="job-card faw">
+        <span class="brand-tag">一汽红旗</span>
+        <h4>物流操作人员（社招）</h4>
+        <p class="desc">长春一汽红旗物流操作人员岗位，月薪4000-6000元。要求身体健康，48周岁以内，认识26个英文字母，良好的沟通能力。</p>
+        <div class="tag-row">
+          <span class="tag salary">4000-6000元/月</span>
+          <span class="tag location">长春</span>
+          <span class="tag type">社招</span>
+        </div>
+        <a class="source-link" href="https://www.zhaopin.com/jobdetail/CCL1292063290J40066629415.htm" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 上汽集团 -->
+  <section class="section">
+    <h2 class="section-title"><span class="icon">🏭</span> 上汽集团招聘</h2>
+    <div class="card-grid">
+      <div class="job-card saic">
+        <span class="brand-tag">上汽集团</span>
+        <h4>2026届校园招聘（集团统一）</h4>
+        <p class="desc">上汽集团2026届校招已启动，涵盖上汽大众、智己汽车等多个所属企业。提供研发、软件、新能源、营销、财务等多类岗位，面向软件类、汽车类、机械类、管理类等专业。工作地点包括上海、柳州、南京等地。</p>
+        <div class="tag-row">
+          <span class="tag salary">本科起薪有竞争力</span>
+          <span class="tag location">上海/南京/柳州</span>
+          <span class="tag match">高匹配</span>
+          <span class="tag type">校招</span>
+        </div>
+        <a class="source-link" href="http://m.163.com/dy/article/KCE2T93K0511A6N9.html" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="job-card saic">
+        <span class="brand-tag">上汽通用</span>
+        <h4>2026届应届生招聘</h4>
+        <p class="desc">上汽通用汽车面向2025年9月至2026年12月毕业的国内及海外应届生。专业要求涵盖汽车类、电气类、信息类、软件类、机械类、管理类、美术及设计类等。</p>
+        <div class="tag-row">
+          <span class="tag salary">面议</span>
+          <span class="tag location">上海</span>
+          <span class="tag type">校招</span>
+        </div>
+        <a class="source-link" href="https://eee.hytc.edu.cn/info/1033/49071.htm" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="job-card saic">
+        <span class="brand-tag">智己汽车</span>
+        <h4>销售精英（社招）</h4>
+        <p class="desc">上汽智己汽车高端新能源品牌销售岗位，负责智己品牌产品销售，与客户建立并维护良好关系，完成销售目标并提升客户满意度。智己汽车由阿里+上汽强助攻，重新定义智能汽车。</p>
+        <div class="tag-row">
+          <span class="tag salary">底薪+高提成</span>
+          <span class="tag location">全国多地</span>
+          <span class="tag type">社招</span>
+        </div>
+        <a class="source-link" href="https://www.zhipin.com/job_detail/009da5e80c8ffd0a03V40t61ElBW.html" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 长安汽车 -->
+  <section class="section">
+    <h2 class="section-title"><span class="icon">🔧</span> 长安汽车招聘</h2>
+    <div class="card-grid">
+      <div class="job-card changan">
+        <span class="brand-tag">长安汽车</span>
+        <h4>2026届校园招聘（集团统一）</h4>
+        <p class="desc">长安汽车集团2026校招，覆盖长安引力、长安启源、长安凯程、深蓝汽车、阿维塔等自主品牌及长安福特、长安马自达等合资品牌。六险一金足额缴纳，公积金双边合计最高20%。应届本科8-18万，硕士15-25万，博士22-40万。年终奖3-6个月。</p>
+        <div class="tag-row">
+          <span class="tag salary">本科8-18W/硕士15-25W</span>
+          <span class="tag location">重庆/北京/上海</span>
+          <span class="tag match">高匹配</span>
+          <span class="tag type">校招</span>
+        </div>
+        <a class="source-link" href="https://changan.zhiye.com/campus" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="job-card changan">
+        <span class="brand-tag">深蓝汽车</span>
+        <h4>新能源研发岗（社招）</h4>
+        <p class="desc">深蓝汽车2024年销售24.3万辆，新能源赛道增长迅猛。智能驾驶、软件、电控等核心岗本科2年以上15-23K·15薪，硕士3年以上20-25K·15薪。算法、资深研发专家年薪30-50万。</p>
+        <div class="tag-row">
+          <span class="tag salary">15-25K·15薪</span>
+          <span class="tag location">重庆</span>
+          <span class="tag match">高匹配</span>
+          <span class="tag type">社招</span>
+        </div>
+        <a class="source-link" href="http://m.toutiao.com/group/7615884029317775872/" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="job-card changan">
+        <span class="brand-tag">阿维塔</span>
+        <h4>销售顾问/DCC邀约（社招）</h4>
+        <p class="desc">阿维塔品牌（长安占股39.02%第一大股东）今年上半年销量达5.9万辆，月均近万辆。销售顾问、DCC电话邀约客服等岗位持续招聘，经营品牌含长安启源、长安引力、深蓝汽车、阿维塔。</p>
+        <div class="tag-row">
+          <span class="tag salary">底薪+提成</span>
+          <span class="tag location">全国多地</span>
+          <span class="tag type">社招</span>
+        </div>
+        <a class="source-link" href="https://www.zhipin.com/job_detail/59f20a34ed7e8a3203B73966GVdQ.html" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="job-card changan">
+        <span class="brand-tag">长安本部</span>
+        <h4>职能管理岗（社招）</h4>
+        <p class="desc">人力、财务、行政等职能岗，本科3-5年月薪10-18K，硕士5年以上年薪25-50万。区域差异明显，北京研发中心平均月薪27.7K，重庆主基地平均月薪18.7K。</p>
+        <div class="tag-row">
+          <span class="tag salary">10-18K/月</span>
+          <span class="tag location">重庆/北京</span>
+          <span class="tag type">社招</span>
+        </div>
+        <a class="source-link" href="http://m.toutiao.com/group/7534937954305770030/" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 长城汽车 -->
+  <section class="section">
+    <h2 class="section-title"><span class="icon">🛻</span> 长城汽车招聘</h2>
+    <div class="card-grid">
+      <div class="job-card greatwall">
+        <span class="brand-tag">魏牌新能源</span>
+        <h4>汽车销售-校招（25-26届）</h4>
+        <p class="desc">魏牌新能源2026年校招岗位，负责产品讲解、接待进店用户，结合用户情况与使用场景传达产品核心价值。长城智选(唐山)等城市同步招聘，面向25-26届毕业生。</p>
+        <div class="tag-row">
+          <span class="tag salary">5-8K·15薪</span>
+          <span class="tag location">唐山/银川</span>
+          <span class="tag type">校招</span>
+        </div>
+        <a class="source-link" href="https://www.zhipin.com/job_detail/02cf108537179b9703R62dq-FVZS.html" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="job-card greatwall">
+        <span class="brand-tag">长城汽车</span>
+        <h4>核算管理岗（26届校招）</h4>
+        <p class="desc">长城汽车2026届校招核算管理岗，5000-7000元·15薪。工作地点保定莲池区长城汽车哈弗技术中心，负责资产核算等职能工作。</p>
+        <div class="tag-row">
+          <span class="tag salary">5000-7000元·15薪</span>
+          <span class="tag location">保定</span>
+          <span class="tag type">校招</span>
+        </div>
+        <a class="source-link" href="https://m.zhaopin.com/jobs/CC120341430J40846868705.htm" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="job-card greatwall">
+        <span class="brand-tag">蜂巢能源</span>
+        <h4>物流/工程规划岗（社招）</h4>
+        <p class="desc">长城汽车蜂巢电驱动研发中心招聘物流/工程规划岗，4000-6000元，保定莲池区。雇员评价：工作环境好、团队执行强、同事很nice、五险一金、交通便利。</p>
+        <div class="tag-row">
+          <span class="tag salary">4000-6000元/月</span>
+          <span class="tag location">保定</span>
+          <span class="tag type">社招</span>
+        </div>
+        <a class="source-link" href="https://www.zhaopin.com/jobdetail/CC120341430J40075490605.htm" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="job-card greatwall">
+        <span class="brand-tag">长城汽车</span>
+        <h4>营销策划岗-校招</h4>
+        <p class="desc">长城汽车2025届校招营销策划岗，5-8K·15薪，保定。负责哈弗品牌、欧拉品牌旗下车型的营销策划及执行工作。长城人均薪酬23.5万/年，居七大汽车集团第一。</p>
+        <div class="tag-row">
+          <span class="tag salary">5-8K·15薪</span>
+          <span class="tag location">保定</span>
+          <span class="tag type">校招</span>
+        </div>
+        <a class="source-link" href="https://m.zhipin.com/job_detail/9228fb6f29a4958b03Z73t-4EVBS.html" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 广汽集团 -->
+  <section class="section">
+    <h2 class="section-title"><span class="icon">🚙</span> 广汽集团招聘</h2>
+    <div class="card-grid">
+      <div class="job-card gac">
+        <span class="brand-tag">广汽集团</span>
+        <h4>2026校园招聘（集团统一·500人）</h4>
+        <p class="desc">广汽集团2026校招规模500人，月薪8500-9499元，工作地点广州。招聘对象为2025年9月-2026年12月毕业的全球应届生。岗位涵盖产品研发、商品企划、设计、智能网联、智能制造、营销、新媒体运营、海外运营、财务金融等。流程：网申→线上测评→初试→终面→体检→offer。</p>
+        <div class="tag-row">
+          <span class="tag salary">8500-9499元/月</span>
+          <span class="tag location">广州</span>
+          <span class="tag match">高匹配</span>
+          <span class="tag type">校招</span>
+        </div>
+        <a class="source-link" href="https://myjob.dlmu.edu.cn/job/view/id/1914951" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="job-card gac">
+        <span class="brand-tag">广汽丰田</span>
+        <h4>26届校招-市场品质管理/项目研究</h4>
+        <p class="desc">广汽丰田汽车有限公司2026届校招，含市场品质管理岗（广州）和项目可行性研究担当岗。广汽丰田生产凯美瑞、汉兰达、赛那、铂智3X等知名产品系列。</p>
+        <div class="tag-row">
+          <span class="tag salary">面议</span>
+          <span class="tag location">广州</span>
+          <span class="tag type">校招</span>
+        </div>
+        <a class="source-link" href="https://www.yingjiesheng.com/2023_industry_whhuc64r4v.html" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="job-card gac">
+        <span class="brand-tag">广汽埃安/传祺</span>
+        <h4>新能源汽车销售顾问（社招）</h4>
+        <p class="desc">广汽传祺、广汽埃安诚聘新能源汽车销售顾问。广汽埃安为新能源品牌，产品覆盖AION S/V/UT系列；广汽传祺覆盖M8/GS8/向往S7等。宜昌等地4S店持续招聘。</p>
+        <div class="tag-row">
+          <span class="tag salary">底薪+提成</span>
+          <span class="tag location">宜昌/广州</span>
+          <span class="tag type">社招</span>
+        </div>
+        <a class="source-link" href="https://www.zhipin.com/job_detail/ccc07204f1c10a031H1_2Nq6FVJX.html" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="job-card gac">
+        <span class="brand-tag">广汽集团</span>
+        <h4>底盘类博士岗（社招）</h4>
+        <p class="desc">广汽集团底盘类博士岗位招聘，旗下品牌矩阵含自主品牌广汽传祺、广汽埃安、广汽昊铂，合资品牌广汽本田、广汽丰田，产品覆盖乘用车、商用车、摩托车全品类。</p>
+        <div class="tag-row">
+          <span class="tag salary">博士面议</span>
+          <span class="tag location">广州</span>
+          <span class="tag match">高匹配</span>
+          <span class="tag type">社招</span>
+        </div>
+        <a class="source-link" href="https://www.zhipin.com/job_detail/f0a9ea7b567d22b80nV-3tS5EFRT.html" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 东风集团 -->
+  <section class="section">
+    <h2 class="section-title"><span class="icon">🚐</span> 东风集团招聘</h2>
+    <div class="card-grid">
+      <div class="job-card dongfeng">
+        <span class="brand-tag">岚图汽车</span>
+        <h4>技术信息岗-校招（1.5-2万/月）</h4>
+        <p class="desc">东风岚图汽车2026校招技术信息岗，月薪1.5-2万，武汉，招7人。要求本科及以上学历，机械、车辆工程、计算机、控制等相关专业。岚图汽车隶属东风汽车，致力打造具有中国文化底蕴与智慧的高端豪华新能源汽车品牌。</p>
+        <div class="tag-row">
+          <span class="tag salary">1.5-2万/月</span>
+          <span class="tag location">武汉</span>
+          <span class="tag match">高匹配</span>
+          <span class="tag type">校招</span>
+        </div>
+        <a class="source-link" href="https://www.zhaopin.com/jobdetail/CCL1241577670J40778906009.htm" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="job-card dongfeng">
+        <span class="brand-tag">东风日产</span>
+        <h4>2026校园招聘</h4>
+        <p class="desc">东风汽车有限公司东风日产乘用车公司2026校园招聘启动。涵盖质量检验等岗位，工作地点武汉。东风日产为东风集团核心合资品牌，持续稳定招聘。</p>
+        <div class="tag-row">
+          <span class="tag salary">面议</span>
+          <span class="tag location">广州/武汉</span>
+          <span class="tag type">校招</span>
+        </div>
+        <a class="source-link" href="https://m.yingjiesheng.com/ypyear.php?ID=w8j8c5vv6d" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="job-card dongfeng">
+        <span class="brand-tag">岚图汽车</span>
+        <h4>装配工程师（社招）</h4>
+        <p class="desc">东风岚图装配工程师岗位，月薪7000+，武汉。按照图纸、工艺要求和技术规范完成设备装配作业。另有焊接车间岗位7-10K，包吃住。</p>
+        <div class="tag-row">
+          <span class="tag salary">7000+元/月</span>
+          <span class="tag location">武汉</span>
+          <span class="tag type">社招</span>
+        </div>
+        <a class="source-link" href="https://m.zhipin.com/job_detail/ba2127b0f19b9e3b03N43Ny7GVRS.html" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="job-card dongfeng">
+        <span class="brand-tag">岚图汽车</span>
+        <h4>产品专员/交付专员（社招）</h4>
+        <p class="desc">岚图汽车销售顾问及交付专员招聘，底薪+高提成+豪华品牌培训。交付专员全程1v1服务，从文件签署到功能讲解打造尊享体验。高端新能源赛道，职业发展快车道。</p>
+        <div class="tag-row">
+          <span class="tag salary">底薪+高提成</span>
+          <span class="tag location">全国多地</span>
+          <span class="tag type">社招</span>
+        </div>
+        <a class="source-link" href="https://www.zhipin.com/job_detail/1dcabaa87a67b4a103F60t-7ElFZ.html" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 重点岗位详解 -->
+  <section class="section">
+    <h2 class="section-title"><span class="icon">⭐</span> 重点岗位详解</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>车企</th>
+            <th>岗位名称</th>
+            <th>薪资范围</th>
+            <th>工作地点</th>
+            <th>招聘类型</th>
+            <th>核心要求</th>
+            <th>来源</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="table-brand" style="background:var(--faw)">一汽红旗</span></td>
+            <td>研发总院校招</td>
+            <td>本科8-18W/年</td>
+            <td>长春</td>
+            <td>校招</td>
+            <td>软件/汽车/机械类</td>
+            <td><a href="https://job.bit.edu.cn/f/recruitmentFair/show?recruitmentFairId=a87f9822d45f413e9e9bd2f849aba413" target="_blank" style="color:var(--accent)">📎链接</a></td>
+          </tr>
+          <tr>
+            <td><span class="table-brand" style="background:var(--changan)">深蓝汽车</span></td>
+            <td>智能驾驶研发</td>
+            <td>15-25K·15薪</td>
+            <td>重庆</td>
+            <td>社招</td>
+            <td>本科2年+/硕士3年+</td>
+            <td><a href="http://m.toutiao.com/group/7615884029317775872/" target="_blank" style="color:var(--accent)">📎链接</a></td>
+          </tr>
+          <tr>
+            <td><span class="table-brand" style="background:var(--dongfeng)">岚图汽车</span></td>
+            <td>技术信息岗</td>
+            <td>1.5-2万/月</td>
+            <td>武汉</td>
+            <td>校招</td>
+            <td>机械/车辆/计算机/控制</td>
+            <td><a href="https://www.zhaopin.com/jobdetail/CCL1241577670J40778906009.htm" target="_blank" style="color:var(--accent)">📎链接</a></td>
+          </tr>
+          <tr>
+            <td><span class="table-brand" style="background:var(--gac)">广汽集团</span></td>
+            <td>集团统一校招(500人)</td>
+            <td>8500-9499元/月</td>
+            <td>广州</td>
+            <td>校招</td>
+            <td>研发/设计/智能网联/营销</td>
+            <td><a href="https://myjob.dlmu.edu.cn/job/view/id/1914951" target="_blank" style="color:var(--accent)">📎链接</a></td>
+          </tr>
+          <tr>
+            <td><span class="table-brand" style="background:var(--saic)">上汽集团</span></td>
+            <td>集团统一校招</td>
+            <td>本科起薪有竞争力</td>
+            <td>上海/南京/柳州</td>
+            <td>校招</td>
+            <td>软件/汽车/机械/管理类</td>
+            <td><a href="http://m.163.com/dy/article/KCE2T93K0511A6N9.html" target="_blank" style="color:var(--accent)">📎链接</a></td>
+          </tr>
+          <tr>
+            <td><span class="table-brand" style="background:var(--greatwall)">长城汽车</span></td>
+            <td>核算管理岗</td>
+            <td>5000-7000元·15薪</td>
+            <td>保定</td>
+            <td>校招</td>
+            <td>本科/资产核算方向</td>
+            <td><a href="https://m.zhaopin.com/jobs/CC120341430J40846868705.htm" target="_blank" style="color:var(--accent)">📎链接</a></td>
+          </tr>
+          <tr>
+            <td><span class="table-brand" style="background:var(--gac)">广汽丰田</span></td>
+            <td>市场品质管理</td>
+            <td>面议</td>
+            <td>广州</td>
+            <td>校招</td>
+            <td>26届应届本科及以上</td>
+            <td><a href="https://www.yingjiesheng.com/2023_industry_whhuc64r4v.html" target="_blank" style="color:var(--accent)">📎链接</a></td>
+          </tr>
+          <tr>
+            <td><span class="table-brand" style="background:var(--changan)">长安本部</span></td>
+            <td>职能管理岗</td>
+            <td>10-18K/月</td>
+            <td>重庆/北京</td>
+            <td>社招</td>
+            <td>本科3-5年/硕士5年+</td>
+            <td><a href="http://m.toutiao.com/group/7534937954305770030/" target="_blank" style="color:var(--accent)">📎链接</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 面试经验分享 -->
+  <section class="section">
+    <h2 class="section-title"><span class="icon">💬</span> 面试经验分享</h2>
+
+    <div class="discussion-card">
+      <span class="platform zhihu">知乎/看准网</span>
+      <h4>一汽集团面试经验：一天流程，上午笔试下午面试</h4>
+      <p>一汽面试通常需要一天时间。到达后HR核对姓名，领大家进入会议室。HR介绍一天流程：上午是笔试（含行测+专业知识），下午是面试（半结构化+无领导小组讨论）。笔试需准备一汽企业文化相关知识，面试侧重对一汽品牌理解和个人岗位匹配度。一汽财务公司等子公司可能在宣讲会后直接进入第一轮面试。建议提前了解一汽发展历程（1953年建厂，毛泽东亲笔题写厂名）及旗下红旗、解放、大众、丰田等品牌矩阵。</p>
+      <a class="source-link" href="http://m.creditsailing.com/BiShiMianShiJingYan/53753.html" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-card">
+      <span class="platform toutiao">今日头条</span>
+      <h4>长安汽车面试经验：新央企待遇提升，面试侧重技术+综合素质</h4>
+      <p>长安汽车2025年7月从兵器装备集团拆分升格为央企集团后，面试竞争更加激烈。校招面试通常包括技术面和HR面，技术面侧重机械、电气、软件等专业基础，HR面关注职业规划和对长安品牌的认知。网友反馈优点是福利补贴齐全（六险一金、餐补、住房补贴、安家费），发展势头好；劣势是加班多（行业通病），晋升有按资排辈情况但管理层正年轻化。重庆本地性价比高，985院校薪资有加持，新能源、智能网联等核心部门上浮10%-20%。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7534937954305770030/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-card">
+      <span class="platform zhihu">知乎/BOSS直聘</span>
+      <h4>长城汽车面试经验：保定总部为主，校招流程规范</h4>
+      <p>长城汽车校招面试主要在保定总部，流程包括网申→笔试→面试。笔试含行测和汽车行业基础知识，面试分技术面和综合面。技术面关注汽车构造、机械原理等专业知识，综合面考察沟通表达和团队协作。长城旗下品牌多（哈弗、魏牌、欧拉、坦克），面试时需明确意向品牌。网友分享长城人均薪酬23.5万/年居七大集团第一，但一线普工年薪约8.3万（2025年税前）。校招营销策划岗5-8K·15薪，核算管理岗5-7K·15薪，15薪为亮点。</p>
+      <a class="source-link" href="https://m.zhipin.com/job_detail/9228fb6f29a4958b03Z73t-4EVBS.html" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-card">
+      <span class="platform autohome">汽车之家</span>
+      <h4>多车企面试对比：合资品牌vs自主品牌差异明显</h4>
+      <p>从面试体验来看，合资品牌（一汽-大众、上汽大众、广汽丰田、东风日产）面试流程更标准化，注重日语/英语能力和日系/德系企业文化认同；自主品牌（红旗、深蓝、阿维塔、埃安、岚图）更看重创新能力和对新技术的理解。广汽集团校招流程为网申→线上测评→初试→终面→体检→offer，较为规范。上汽集团校招涵盖多品牌，面试时可表达对具体品牌（如智己、大众）的偏好。建议准备时研究各品牌最新车型和技术路线。</p>
+      <a class="source-link" href="https://chejiahao.m.autohome.com.cn/pingan/chejiahao/detailinfo/15032273" target="_blank">📎 查看原文</a>
+    </div>
+  </section>
+
+  <!-- 薪资待遇对比 -->
+  <section class="section">
+    <h2 class="section-title"><span class="icon">💰</span> 薪资待遇对比</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>车企集团</th>
+            <th>校招本科起薪</th>
+            <th>校招硕士起薪</th>
+            <th>校招博士起薪</th>
+            <th>人均年薪(2023)</th>
+            <th>年终奖</th>
+            <th>企业性质</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="table-brand" style="background:var(--greatwall)">长城汽车</span></td>
+            <td>5-8K·15薪</td>
+            <td>面议(15薪)</td>
+            <td>面议</td>
+            <td><strong>23.5万</strong></td>
+            <td>3-5个月</td>
+            <td>民企</td>
+          </tr>
+          <tr>
+            <td><span class="table-brand" style="background:var(--saic)">上汽集团</span></td>
+            <td>有竞争力</td>
+            <td>有竞争力</td>
+            <td>面议</td>
+            <td><strong>21.6万</strong></td>
+            <td>2-4个月(波动)</td>
+            <td>国企</td>
+          </tr>
+          <tr>
+            <td><span class="table-brand" style="background:var(--faw)">一汽集团</span></td>
+            <td>8-18W/年</td>
+            <td>15-25W/年</td>
+            <td>22-40W/年</td>
+            <td>未上市(参考)</td>
+            <td>3-5个月</td>
+            <td>央企</td>
+          </tr>
+          <tr>
+            <td><span class="table-brand" style="background:var(--gac)">广汽集团</span></td>
+            <td>8500-9499元/月</td>
+            <td>面议</td>
+            <td>面议</td>
+            <td><strong>17.3万</strong></td>
+            <td>2-4个月(波动)</td>
+            <td>国企</td>
+          </tr>
+          <tr>
+            <td><span class="table-brand" style="background:var(--changan)">长安汽车</span></td>
+            <td>8-18W/年</td>
+            <td>15-25W/年</td>
+            <td>22-40W/年</td>
+            <td><strong>16.2万</strong></td>
+            <td>3-6个月(4.3倍+3000)</td>
+            <td>央企(新晋)</td>
+          </tr>
+          <tr>
+            <td><span class="table-brand" style="background:var(--dongfeng)">东风集团</span></td>
+            <td>1.5-2万/月(岚图)</td>
+            <td>面议</td>
+            <td>面议</td>
+            <td><strong>14.6万</strong></td>
+            <td>2-4个月</td>
+            <td>央企</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:30px;color:var(--primary);font-size:1.15rem;margin-bottom:16px;">国企福利体系对比</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>福利项目</th>
+            <th>一汽集团</th>
+            <th>上汽集团</th>
+            <th>长安汽车</th>
+            <th>长城汽车</th>
+            <th>广汽集团</th>
+            <th>东风集团</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>五险一金</strong></td>
+            <td>足额缴纳</td>
+            <td>足额缴纳</td>
+            <td>足额(双边20%)</td>
+            <td>足额缴纳</td>
+            <td>足额缴纳</td>
+            <td>足额缴纳</td>
+          </tr>
+          <tr>
+            <td><strong>企业年金</strong></td>
+            <td>有</td>
+            <td>有</td>
+            <td>有(补充医疗)</td>
+            <td>有</td>
+            <td>有</td>
+            <td>有</td>
+          </tr>
+          <tr>
+            <td><strong>住房补贴</strong></td>
+            <td>部分岗位</td>
+            <td>部分岗位</td>
+            <td>有+人才公寓</td>
+            <td>有</td>
+            <td>部分岗位</td>
+            <td>部分岗位</td>
+          </tr>
+          <tr>
+            <td><strong>安家费</strong></td>
+            <td>博士有</td>
+            <td>高层次有</td>
+            <td>硕士5-8万/博士15万+</td>
+            <td>高层次有</td>
+            <td>部分有</td>
+            <td>博士有</td>
+          </tr>
+          <tr>
+            <td><strong>医疗保障</strong></td>
+            <td>补充医疗</td>
+            <td>补充医疗</td>
+            <td>补充医疗(六险)</td>
+            <td>补充医疗</td>
+            <td>补充医疗</td>
+            <td>补充医疗</td>
+          </tr>
+          <tr>
+            <td><strong>内部购车</strong></td>
+            <td>有优惠</td>
+            <td>有优惠</td>
+            <td>有优惠</td>
+            <td>有优惠</td>
+            <td>有优惠</td>
+            <td>有优惠</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:12px;font-size:0.82rem;color:var(--text-secondary);">注：人均年薪数据来源于2023年各公司财报，仅供参考。一汽未上市，数据为综合估算。数据来源：<a href="https://chejiahao.m.autohome.com.cn/pingan/chejiahao/detailinfo/15032273" target="_blank" style="color:var(--accent)">汽车之家</a>。</p>
+  </section>
+
+  <!-- 全网热议 -->
+  <section class="section">
+    <h2 class="section-title"><span class="icon">🔥</span> 全网热议</h2>
+
+    <div class="discussion-card">
+      <span class="platform zhihu">知乎</span>
+      <h4>传统车企vs新势力，待遇差距到底有多大？</h4>
+      <p>知乎热议话题：传统车企高管薪资较为固定，而新势力车企大多采用大额股权激励的模式发薪。在2022至2024年的横向业绩对比中，新势力车企销量增幅远超传统车企增幅。但也有网友指出，传统车企稳定性更高，国企体系下"求稳"也是一种策略。2026年造车新势力和传统车企将各展所长，头部新势力增长势头更猛，但传统车企依靠积淀稳健转型。</p>
+      <a class="source-link" href="https://c.m.163.com/news/a/JVMTS0PK05199UVN.html" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-card">
+      <span class="platform maimai">脉脉</span>
+      <h4>传统车企跳槽新势力，薪资能翻多少？</h4>
+      <p>脉脉用户爆料：宇通汽车一流本科4年传统研发岗年薪15万+，跳槽奇瑞、三一给到20万。传统主机厂工作3-5年的工程师年薪中位数为14.8万，而新能源车企同岗位薪资达18-25万（如蔚来、比亚迪）。传统车企内部薪酬体系僵化，职级晋升需平均5年，年度调薪幅度仅3%-5%，远低于市场涨幅。"老员工陷阱"和"新人倒逼老人"成为热议焦点。</p>
+      <a class="source-link" href="https://m.cehome.com/news/20250407/332555.shtml" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-card">
+      <span class="platform toutiao">今日头条</span>
+      <h4>长安升格央企后待遇全解析，到底值不值得去？</h4>
+      <p>头条热文解析长安汽车作为新晋央企的职场待遇。长安24年销量268.4万辆位居三大央企第二，净利润73.21亿元居央国企第一。校招本科起薪8-18W，硕士15-25W，博士22-40W。年终奖3-6个月（2025年为4.3倍月薪+3000元固定奖），相比之下上汽、广汽去年年终跌得较惨。网友评价：福利补贴齐全，发展势头好，但在重庆性价比不错，适合本地人或想在重庆定居的朋友。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7534937954305770030/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-card">
+      <span class="platform toutiao">今日头条</span>
+      <h4>车企员工薪酬大比拼：长城人均22万居首，东风央企垫底</h4>
+      <p>头条热文引发广泛讨论：长城汽车人均年薪高达22-23.5万，稳坐七大汽车集团榜首；上汽人均超20万排名第二；而央企东风人均仅14.6万垫底。网友热议：长城作为民企"豪气"发薪，但工作强度也大；东风虽然薪酬垫底但央企稳定性强。广汽17.3万排名第五，长安16.2万排名第六。有评论指出："一汽、奇瑞未上市无法精确对比，但整体趋势是民企>国企>央企。"</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7358725341654958655/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-card">
+      <span class="platform toutiao">今日头条</span>
+      <h4>2025年车市厮杀升级！传统巨头反击，新势力狂飙</h4>
+      <p>讨论传统车企与新势力在2025-2026年的竞争格局。上汽集团2025年销售整车450.7万辆，吉利超302万辆，奇瑞280.6万辆，展现传统巨头深厚体系韧性。面对新势力猛攻，传统车企开始放大招：吉利推出2025款星瑞东方曜，比亚迪祭出"性价比王"大旗。网友讨论：2026年造车业新势力和传统车企谁更"吃香"？多数认为头部新势力增长势头更猛，但传统车企依靠积淀稳健转型。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7601763537060495922/" target="_blank">📎 查看原文</a>
+    </div>
+  </section>
+
+  <!-- 求职攻略 -->
+  <section class="section">
+    <h2 class="section-title"><span class="icon">📋</span> 求职攻略</h2>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">🎯</div>
+        <h4>选择车企的关键因素</h4>
+        <p>选择传统车企需综合考虑企业性质（央企/国企/民企）、地域偏好、品牌发展势头和个人专业匹配度。</p>
+        <ul>
+          <li>央企（一汽/东风/长安）：稳定性最强，福利体系完善，但薪资相对保守</li>
+          <li>国企（上汽/广汽）：体系成熟，合资品牌资源丰富，薪资中等偏上</li>
+          <li>民企（长城）：薪酬最高，但工作强度大，晋升机制灵活</li>
+          <li>优先选择新能源/智能网联核心部门，薪资上浮10%-20%</li>
+        </ul>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🔄</div>
+        <h4>转岗机制分析</h4>
+        <p>传统车企正经历"油转电"转型，内部转岗机制日趋重要。</p>
+        <ul>
+          <li>传统动力总成经验在电动化赛道仅20%可直接复用</li>
+          <li>优先选择混动/氢能等过渡技术领域，避免押注单一技术</li>
+          <li>小鹏等新势力为转型工程师提供6个月带薪脱产学习</li>
+          <li>一汽红旗已试点"双轨制薪资"，新能源项目组奖金上浮50%</li>
+          <li>2025年传统向新能源领域人才流动预计增长40%</li>
+        </ul>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">📝</div>
+        <h4>面试准备要点</h4>
+        <p>传统车企面试侧重专业知识、企业文化认同和综合素质。</p>
+        <ul>
+          <li>提前研究目标品牌最新车型和技术路线（如红旗H9、深蓝S7、阿维塔12）</li>
+          <li>了解企业发展历程（一汽1953年建厂、长安44年造车积累）</li>
+          <li>准备行业趋势见解：电动化、智能化、国际化</li>
+          <li>合资品牌面试注重外语能力和外企文化认同</li>
+          <li>半结构化面试+无领导小组讨论为主流形式</li>
+        </ul>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">📈</div>
+        <h4>职业发展路径</h4>
+        <p>传统车企职业发展呈"双通道"特征：管理通道与技术通道并行。</p>
+        <ul>
+          <li>技术通道：工程师→高级工程师→专家→首席专家</li>
+          <li>管理通道：专员→主管→经理→总监→高管</li>
+          <li>管理岗（非高层）年薪25-50万元</li>
+          <li>北京研发中心平均月薪27.7K，重庆主基地18.7K</li>
+          <li>海外业务覆盖63个国家，东南亚、欧洲市场增速显著</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 信息来源汇总 -->
+  <section class="section">
+    <h2 class="section-title"><span class="icon">📎</span> 信息来源汇总</h2>
+    <div class="table-wrapper">
+      <table class="source-table">
+        <thead>
+          <tr>
+            <th>来源名称</th>
+            <th>链接</th>
+            <th>日期</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>北京理工大学就业网</td>
+            <td><a href="https://job.bit.edu.cn/f/recruitmentFair/show?recruitmentFairId=a87f9822d45f413e9e9bd2f849aba413" target="_blank">中国一汽2026全球校园招聘</a></td>
+            <td>2026</td>
+          </tr>
+          <tr>
+            <td>网易新闻</td>
+            <td><a href="http://m.163.com/dy/article/KCE2T93K0511A6N9.html" target="_blank">上汽集团正式启动2026届校园招聘</a></td>
+            <td>2025-10-21</td>
+          </tr>
+          <tr>
+            <td>今日头条</td>
+            <td><a href="http://m.toutiao.com/group/7615884029317775872/" target="_blank">2026年长安汽车集团重庆招聘</a></td>
+            <td>2026</td>
+          </tr>
+          <tr>
+            <td>今日头条</td>
+            <td><a href="http://m.toutiao.com/group/7534937954305770030/" target="_blank">新央企长安集团职场待遇全解析</a></td>
+            <td>2025</td>
+          </tr>
+          <tr>
+            <td>大连海事大学就业网</td>
+            <td><a href="https://myjob.dlmu.edu.cn/job/view/id/1914951" target="_blank">广汽集团2026校园招聘</a></td>
+            <td>2025-09-19</td>
+          </tr>
+          <tr>
+            <td>智联招聘</td>
+            <td><a href="https://www.zhaopin.com/jobdetail/CCL1241577670J40778906009.htm" target="_blank">东风岚图技术信息岗校招</a></td>
+            <td>2026</td>
+          </tr>
+          <tr>
+            <td>汽车之家</td>
+            <td><a href="https://chejiahao.m.autohome.com.cn/pingan/chejiahao/detailinfo/15032273" target="_blank">七大汽车集团人均薪酬一览</a></td>
+            <td>2024-04-14</td>
+          </tr>
+          <tr>
+            <td>第一工程机械网</td>
+            <td><a href="https://m.cehome.com/news/20250407/332555.shtml" target="_blank">传统车企与新能源人才争夺战</a></td>
+            <td>2025-04-07</td>
+          </tr>
+          <tr>
+            <td>今日头条</td>
+            <td><a href="http://m.toutiao.com/group/7358725341654958655/" target="_blank">车企员工薪酬长城人均22万居首</a></td>
+            <td>2024</td>
+          </tr>
+          <tr>
+            <td>网易新闻</td>
+            <td><a href="https://c.m.163.com/news/a/JVMTS0PK05199UVN.html" target="_blank">新势力与传统车企悬殊薪酬</a></td>
+            <td>2025</td>
+          </tr>
+          <tr>
+            <td>应届生求职网</td>
+            <td><a href="https://www.yingjiesheng.com/2023_industry_whhuc64r4v.html" target="_blank">广汽丰田校园招聘行程</a></td>
+            <td>2026-02-26</td>
+          </tr>
+          <tr>
+            <td>BOSS直聘</td>
+            <td><a href="https://www.zhipin.com/job_detail/a4ffe59080e467610nZ5292_F1dW.html" target="_blank">一汽大众操作技工招聘</a></td>
+            <td>2026</td>
+          </tr>
+          <tr>
+            <td>BOSS直聘</td>
+            <td><a href="https://m.zhipin.com/job_detail/9228fb6f29a4958b03Z73t-4EVBS.html" target="_blank">长城汽车营销策划岗校招</a></td>
+            <td>2025</td>
+          </tr>
+          <tr>
+            <td>智联招聘</td>
+            <td><a href="https://m.zhaopin.com/jobs/CC120341430J40846868705.htm" target="_blank">长城汽车核算管理岗校招</a></td>
+            <td>2026-03-03</td>
+          </tr>
+          <tr>
+            <td>今日头条</td>
+            <td><a href="http://m.toutiao.com/group/7601763537060495922/" target="_blank">2026年造车业新势力vs传统车企</a></td>
+            <td>2026</td>
+          </tr>
+          <tr>
+            <td>高考升学网</td>
+            <td><a href="http://m.creditsailing.com/BiShiMianShiJingYan/53753.html" target="_blank">一汽笔试面试经验分享</a></td>
+            <td>2026</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Giscus评论区 -->
+  <section class="section">
+    <h2 class="section-title"><span class="icon">💬</span> 评论区</h2>
+    <div class="giscus-section">
+      <script src="https://giscus.app/client.js"
+        data-repo="TS-dinglilu/TS-dinglilu.github.io"
+        data-repo-id="R_kgDOTjqaJQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOTjqaJc4DCIL1"
+        data-mapping="pathname" data-term="report-comments"
+        data-strict="0" data-reactions-enabled="1" data-emit-metadata="0"
+        data-input-position="top" data-theme="preferred_color_scheme"
+        data-lang="zh-CN" crossorigin="anonymous" async>
+      </script>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <p>传统车企招聘日报 | 2026年7月28日 | 数据来源：智联招聘、BOSS直聘、猎聘、应届生求职网、汽车之家、今日头条、网易新闻等</p>
+  <p style="margin-top:8px;opacity:0.7;">本报告由自动化系统每日生成，信息仅供参考，具体以企业官方招聘为准</p>
+</footer>
+
+</body>
+</html>
