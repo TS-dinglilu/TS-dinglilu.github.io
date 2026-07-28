@@ -14,9 +14,9 @@
   --card-solid: rgba(20, 28, 48, 0.9);
   --border: rgba(0, 212, 255, 0.12);
   --border-hover: rgba(0, 212, 255, 0.4);
-  --text: #e2e8f0;
-  --text-dim: #8b95b0;
-  --text-faint: #4a5568;
+  --text: #e8eef5;
+  --text-dim: #e0e8f2;
+  --text-faint: #d8e2f0;
   --accent: #00d4ff;
   --accent-warm: #ffb347;
   --accent-green: #22d3a0;
@@ -462,6 +462,27 @@ body::after {
   .hero h1 { font-size: 2rem; }
   .about-card { padding: 20px; }
 }
+
+/* SECTION DIVIDER - 渐变分割线增强视觉分隔 */
+.section-title {
+  position: relative;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  top: -28px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0,212,255,0.5) 15%, rgba(129,140,248,0.4) 50%, rgba(0,212,255,0.5) 85%, transparent 100%);
+  border-radius: 2px;
+  opacity: 0.7;
+}
+/* 第一个section-title不需要分隔线 */
+.section-title:first-of-type::after {
+  display: none;
+}
+
 </style>
 </head>
 <body>
@@ -736,6 +757,34 @@ body::after {
         <h4>🐧 Ubuntu Learning <span class="proj-visibility priv">private</span></h4>
         <p>Ubuntu 22.04 学习笔记</p>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- COMMENTS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Comments</div>
+      <h2 class="section-title">留言讨论</h2>
+    </div>
+    <div class="about-card">
+      <p>欢迎在这里交流讨论，分享你的想法和建议。登录 GitHub 账号即可评论，支持 Markdown 和表情回应。</p>
+      <script src="https://giscus.app/client.js"
+        data-repo="TS-dinglilu/TS-dinglilu.github.io"
+        data-repo-id="R_kgDOTjqaJQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOTjqaJc4DCIL1"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="dark_dimmed"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+      </script>
     </div>
   </div>
 </section>
