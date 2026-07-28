@@ -15,8 +15,8 @@
   --border: rgba(0, 212, 255, 0.12);
   --border-hover: rgba(0, 212, 255, 0.4);
   --text: #e8eef5;
-  --text-dim: #c8d3e6;
-  --text-faint: #b0bdd4;
+  --text-dim: #d0dae8;
+  --text-faint: #c8d3e6;
   --accent: #00d4ff;
   --accent-warm: #ffb347;
   --accent-green: #22d3a0;
@@ -120,13 +120,14 @@ body::after {
 .section {
   background: var(--card);
   border: 1px solid var(--border);
-  border-top: 2px solid rgba(0, 212, 255, 0.2);
+  border-top: 3px solid rgba(0, 212, 255, 0.35);
   border-radius: 16px;
   padding: 28px 24px;
-  margin: 32px 0;
+  margin: 40px 0;
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
+  border-bottom: 2px solid rgba(0, 212, 255, 0.25);
 }
 .section::before {
   content: '';
@@ -146,7 +147,7 @@ body::after {
   color: var(--accent);
   margin-bottom: 20px;
   padding-bottom: 14px;
-  border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+  border-bottom: 2px solid rgba(0, 212, 255, 0.4);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -164,7 +165,7 @@ body::after {
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--accent);
-  margin: 44px 0 20px;
+  margin: 48px 0 24px;
   padding: 16px 20px;
   background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(20,28,48,0.5) 100%);
   border-left: 4px solid var(--accent);
@@ -338,7 +339,7 @@ tr:hover { background: rgba(0, 212, 255, 0.05); }
 .discussion .platform {
   display: inline-block;
   background: var(--accent-warm);
-  color: #0a0e1a;
+  color: #e8eef5;
   font-size: 0.72rem;
   padding: 3px 12px;
   border-radius: 50px;
@@ -898,9 +899,9 @@ footer a, div.footer a { color: var(--accent); text-decoration: none; }
 </div>
 
 <!-- 评论区 -->
-<div style="max-width:860px;margin:40px auto 0;padding:24px 20px;background:#fff;border-radius:12px;border:1px solid rgba(0, 212, 255, 0.12);">
-<h2 style="font-size:1.1rem;color:#1a3a5c;margin-bottom:6px;">💬 评论区</h2>
-<p style="font-size:0.82rem;color:#718096;margin-bottom:20px;">登录GitHub账号即可评论，支持Markdown和表情回应。历史报告也可评论。</p>
+<div style="max-width:860px;margin:40px auto 0;padding:24px 20px;background:rgba(20,28,48,0.9);border-radius:12px;border:1px solid rgba(0, 212, 255, 0.12);">
+<h2 style="font-size:1.1rem;color:#e8eef5;margin-bottom:6px;">💬 评论区</h2>
+<p style="font-size:0.82rem;color:#c8d3e6;margin-bottom:20px;">登录GitHub账号即可评论，支持Markdown和表情回应。历史报告也可评论。</p>
 <script src="https://giscus.app/client.js" data-repo="TS-dinglilu/TS-dinglilu.github.io" data-repo-id="R_kgDOTjqaJQ" data-category="Announcements" data-category-id="DIC_kwDOTjqaJc4DCIL1" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark_dimmed" data-lang="zh-CN" crossorigin="anonymous" async></script>
 </div>
 
