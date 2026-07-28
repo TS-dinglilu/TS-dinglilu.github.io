@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小米汽车招聘日报 | 2026-07-28</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v2.0 美化版
+   适用于所有自动化任务的报告HTML
+   配色方案: 深蓝(#0f2c4d) + 蓝色强调(#2563eb)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --primary: #0f2c4d;
+  --primary-light: #1e4d7b;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-glow: rgba(37, 99, 235, 0.15);
+  --bg: #f0f4f8;
+  --card: #ffffff;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --text-faint: #94a3b8;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --green: #10b981;
+  --green-bg: #ecfdf5;
+  --green-border: #a7f3d0;
+  --amber: #f59e0b;
+  --amber-bg: #fffbeb;
+  --amber-border: #fde68a;
+  --red: #ef4444;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+  --blue-bg: #eff6ff;
+  --blue-border: #bfdbfe;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', 'Inter', -apple-system, 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 15px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Decorative grid background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating gradient orb */
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%; right: -10%;
+  width: 50%; height: 60%;
+  background: radial-gradient(ellipse, rgba(37,99,235,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   HEADER - 渐变标题栏 with glass-morphism
+   ============================================================ */
+.header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 40%, var(--accent) 100%);
+  color: #fff;
+  padding: 48px 24px 36px;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(15, 44, 77, 0.2);
+  margin-bottom: 8px;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -50%; left: -20%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.header .subtitle {
+  font-size: 0.9rem;
+  opacity: 0.88;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .date {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  z-index: 1;
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   SECTIONS - 卡片式内容区
+   ============================================================ */
+.section {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin: 20px 0;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, transparent 100%);
+}
+.section h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 20px 0 10px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ============================================================
+   CARDS - 信息卡片
+   ============================================================ */
+.card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-left-color: var(--accent-light);
+}
+.card-title {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-meta {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  font-family: 'Inter', monospace;
+}
+.card-content {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.card-content strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ============================================================
+   NEWS ITEMS - 新闻条目
+   ============================================================ */
+.news-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.news-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--border);
+  transition: all 0.3s ease;
+}
+.news-item:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.news-item:hover::before {
+  background: var(--accent);
+  width: 5px;
+}
+.news-item .badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--blue-bg);
+  color: #1e40af;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-right: 8px;
+  font-weight: 600;
+  border: 1px solid var(--blue-border);
+  letter-spacing: 0.3px;
+}
+.news-item .badge.hot {
+  background: var(--red-bg);
+  color: #dc2626;
+  border-color: var(--red-border);
+}
+.news-item .badge.new {
+  background: var(--green-bg);
+  color: #16a34a;
+  border-color: var(--green-border);
+}
+
+/* ============================================================
+   TABLES - 数据表格
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 16px 0;
+  font-size: 0.84rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+th {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) { background: #f8fafc; }
+tr:hover { background: var(--blue-bg); }
+tr:nth-child(even):hover { background: #eff6ff; }
+
+/* ============================================================
+   TAGS - 标签
+   ============================================================ */
+.tag {
+  display: inline-block;
+  background: var(--blue-bg);
+  color: #3730a3;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin: 2px;
+  font-weight: 500;
+  border: 1px solid var(--blue-border);
+}
+.tag.green { background: var(--green-bg); color: #166534; border-color: var(--green-border); }
+.tag.orange { background: var(--amber-bg); color: #92400e; border-color: var(--amber-border); }
+.tag.red { background: var(--red-bg); color: #991b1b; border-color: var(--red-border); }
+
+/* ============================================================
+   SOURCE LINKS - 原文链接
+   ============================================================ */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: var(--blue-bg);
+  border: 1px solid var(--blue-border);
+  transition: all 0.2s;
+}
+.source-link:hover {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* ============================================================
+   DISCUSSION - 讨论区
+   ============================================================ */
+.discussion {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-border);
+  border-left: 4px solid var(--amber);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 14px 0;
+  transition: all 0.3s;
+}
+.discussion:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.discussion .platform {
+  display: inline-block;
+  background: var(--amber);
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   TIP BOX - 提示框
+   ============================================================ */
+.tip-box {
+  background: var(--green-bg);
+  border: 1px solid var(--green-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.tip-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--green);
+}
+.tip-box h4 {
+  color: #065f46;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.tip-box ul { list-style: none; padding-left: 0; }
+.tip-box li {
+  padding: 5px 0 5px 24px;
+  position: relative;
+  font-size: 0.88rem;
+  color: #1a4731;
+}
+.tip-box li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   WARNING BOX - 警告框
+   ============================================================ */
+.warning-box {
+  background: var(--red-bg);
+  border: 1px solid var(--red-border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.warning-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--red);
+}
+.warning-box h4 {
+  color: #991b1b;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SUMMARY TABLE - 汇总表
+   ============================================================ */
+.summary-table { font-size: 0.82rem; }
+.summary-table td:first-child {
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   GISCUS / COMMENTS - 评论区
+   ============================================================ */
+.comments-section {
+  margin-top: 40px;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.comments-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.comments-desc {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   FOOTER - 页脚
+   ============================================================ */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  font-family: 'Inter', monospace;
+}
+
+/* ============================================================
+   RESPONSIVE - 移动端适配
+   ============================================================ */
+@media (max-width: 600px) {
+  .header { padding: 32px 16px 24px; border-radius: 0 0 20px 20px; }
+  .header h1 { font-size: 1.3rem; }
+  .section { padding: 18px 14px; margin: 14px 0; }
+  .card, .news-item { padding: 14px 16px; }
+  table { font-size: 0.76rem; }
+  th, td { padding: 7px 5px; }
+  .container { padding: 0 12px 40px; }
+}
+
+/* ============================================================
+   UTILITY - 通用工具类
+   ============================================================ */
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-light); text-decoration: underline; }
+strong { color: var(--primary); }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<div class="header">
+  <div class="container">
+    <div class="header-content">
+      <h1>🚗 小米汽车招聘日报</h1>
+      <div class="subtitle">Xiaomi EV Recruitment Daily Report</div>
+      <div class="date-badge">📅 2026年7月28日 · 星期二</div>
+      <div class="stats-bar">
+        <div class="stat-item">
+          <span class="num">35+</span>
+          <span class="label">在招岗位</span>
+        </div>
+        <div class="stat-item">
+          <span class="num">6</span>
+          <span class="label">招聘方向</span>
+        </div>
+        <div class="stat-item">
+          <span class="num">5</span>
+          <span class="label">工作城市</span>
+        </div>
+        <div class="stat-item">
+          <span class="num">18-60w</span>
+          <span class="label">薪资范围</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ========== 今日概览 ========== -->
+<div class="section">
+  <div class="section-title"><span class="icon">📊</span> 今日概览</div>
+  <div class="overview-card">
+    <h3>📌 2026年7月28日 小米汽车招聘动态</h3>
+    <p>小米汽车2026届全球校招及社招持续进行中。智能座舱、自动驾驶、电机电控三大核心技术方向持续扩招，北京亦庄超级工厂与武汉工厂同步招募智能制造人才。小米集团2026届春季校招已覆盖软件研发、算法、硬件研发、产品、运营等16大职类，校招薪资范围18万-42万年薪。社招方面，高级工程师年薪可达60万+100万期权，自动驾驶感知/规控算法岗位热度最高。脉脉高聘数据显示，小米汽车人才招聘量已超蔚来、小鹏，位列行业第四。</p>
+    <div class="overview-tags">
+      <span class="overview-tag">🔥 自动驾驶扩招</span>
+      <span class="overview-tag">🚀 HyperOS座舱</span>
+      <span class="overview-tag">⚙️ 超级电机V8s</span>
+      <span class="overview-tag">🏭 亦庄+武汉双工厂</span>
+      <span class="overview-tag">💰 校招最高42w</span>
+      <span class="overview-tag">📈 社招溢价20-30%</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 招聘新闻 ========== -->
+<div class="section">
+  <div class="section-title"><span class="icon">📋</span> 小米汽车招聘新闻</div>
+
+  <!-- 智能座舱 -->
+  <div class="job-group">
+    <div class="job-group-title"><span class="dot" style="background:#2563eb"></span> 智能座舱方向</div>
+
+    <div class="job-card">
+      <div class="job-card-head">
+        <h4>智能座舱产品专家</h4>
+        <span class="tag tag-match">高匹配</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-salary">40-70K·15薪</span>
+        <span class="tag tag-location">📍 北京</span>
+        <span class="tag tag-purple">5-10年经验</span>
+        <span class="tag tag-gray">本科及以上</span>
+      </div>
+      <div class="job-desc">
+        参与各用车场景下驾驶、影像相关模块的座舱人机交互体验设计定义和推进落地；持续挖掘用户需求和痛点，结合对驾驶体验、影像体验和软硬件交互的理解，输出产品体验定义及落地方案；与整车、辅助驾驶、手机部等兄弟部门充分合作，共同打造世界一流的整车驾驶和影像体验；为 HyperOS 澎湃座舱系统各功能模块提供支持。
+      </div>
+      <a class="job-source" href="https://www.zhipin.com/job_detail/a980048f07adf4f903142t27EVNR.html" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-card-head">
+        <h4>系统稳定性研发工程师（智能座舱）</h4>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-salary">50-80K</span>
+        <span class="tag tag-location">📍 南京</span>
+        <span class="tag tag-purple">3年以上</span>
+        <span class="tag tag-gray">本科</span>
+      </div>
+      <div class="job-desc">
+        负责小米汽车智能座舱系统稳定性研发，涵盖HyperOS车载版核心模块的性能优化、崩溃分析与修复、内存管理及系统级调优。要求熟悉Android/Linux内核，有车机或嵌入式系统开发经验优先。
+      </div>
+      <a class="job-source" href="https://www.liepin.com/s/ebccc3613384bd15c16dfc517fa4444b/pn2/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-card-head">
+        <h4>智能座舱语音交互工程师</h4>
+        <span class="tag tag-match">热门</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-salary">25-45K·15薪</span>
+        <span class="tag tag-location">📍 北京/上海</span>
+        <span class="tag tag-purple">3-5年</span>
+        <span class="tag tag-gray">硕士优先</span>
+      </div>
+      <div class="job-desc">
+        负责小米汽车车载语音交互系统的算法研发与优化，包括语音识别（ASR）、自然语言理解（NLU）、多模态交互等方向。结合HyperOS生态，打造车载场景下最优的语音交互体验。
+      </div>
+      <a class="job-source" href="https://hr.xiaomi.com/" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <!-- 自动驾驶 -->
+  <div class="job-group">
+    <div class="job-group-title"><span class="dot" style="background:#16a34a"></span> 自动驾驶方向</div>
+
+    <div class="job-card">
+      <div class="job-card-head">
+        <h4>自动驾驶感知系统工程师</h4>
+        <span class="tag tag-match">高匹配</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-salary">35-65K·15薪</span>
+        <span class="tag tag-location">📍 北京</span>
+        <span class="tag tag-purple">3-5年</span>
+        <span class="tag tag-gray">本科及以上</span>
+      </div>
+      <div class="job-desc">
+        负责自动驾驶感知系统的研发，要求熟练掌握C/C++、深度学习框架，有算法工程化经验和模型加速/性能优化能力。具备团队管理经验或优秀开源项目经历者优先。小米汽车自动驾驶部门首批招募500名技术员工，自研L4级智能驾驶能力。
+      </div>
+      <a class="job-source" href="https://m.zhipin.com/job_detail/769ddfd7dedd4be31H1y3dy4FVBW.html" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-card-head">
+        <h4>决策规划算法工程师</h4>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-salary">30-55K·15薪</span>
+        <span class="tag tag-location">📍 北京/上海</span>
+        <span class="tag tag-purple">3年以上</span>
+        <span class="tag tag-gray">硕士优先</span>
+      </div>
+      <div class="job-desc">
+        负责自动驾驶车辆路径规划、运动规划和控制算法的开发、优化与落地，包括全局路径规划、局部行为决策、轨迹生成、车辆横向/纵向控制等。要求熟悉ROS、有自动驾驶规控算法实际落地经验。
+      </div>
+      <a class="job-source" href="https://m.zhipin.com/job_detail/69b52ae54607fa080nB639y-FVJU.html" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-card-head">
+        <h4>自动驾驶Unity3D仿真工程师</h4>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-salary">25-45K·15薪</span>
+        <span class="tag tag-location">📍 北京</span>
+        <span class="tag tag-purple">3年以上</span>
+        <span class="tag tag-gray">本科</span>
+      </div>
+      <div class="job-desc">
+        负责车机端Unity3D项目开发、性能优化与技术攻关，构建自动驾驶仿真环境。要求精通Unity3D引擎，有自动驾驶仿真或数字孪生项目经验优先。
+      </div>
+      <a class="job-source" href="https://blog.csdn.net/unityofficial/article/details/131641000" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <!-- 电机电控 -->
+  <div class="job-group">
+    <div class="job-group-title"><span class="dot" style="background:#ea580c"></span> 电机电控方向</div>
+
+    <div class="job-card">
+      <div class="job-card-head">
+        <h4>BMS算法工程师</h4>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-salary">21-35K·15薪</span>
+        <span class="tag tag-location">📍 北京/上海</span>
+        <span class="tag tag-purple">3年以上</span>
+        <span class="tag tag-gray">硕士优先</span>
+      </div>
+      <div class="job-desc">
+        负责动力电池管理系统（BMS）核心算法研发，包括SOC/SOH估算、均衡策略、热管理算法等。要求有电池系统建模经验，熟悉嵌入式开发流程。超级电机V8s研发团队持续扩招。
+      </div>
+      <a class="job-source" href="https://m.liepin.com/company-jobs/2174886/jc-N11/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-card-head">
+        <h4>电控系统高级工程师</h4>
+        <span class="tag tag-match">急聘</span>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-salary">30-50K·15薪</span>
+        <span class="tag tag-location">📍 北京</span>
+        <span class="tag tag-purple">5年以上</span>
+        <span class="tag tag-gray">本科及以上</span>
+      </div>
+      <div class="job-desc">
+        负责小米汽车电控系统软硬件架构设计与开发，涵盖电机控制器（MCU）、整车控制器（VCU）等核心模块。参与超级电机V8s电控系统研发，要求有新能源汽车电控系统量产经验。
+      </div>
+      <a class="job-source" href="https://m.liepin.com/zpxmqcl7r5q/pn1/" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <!-- 整车制造 -->
+  <div class="job-group">
+    <div class="job-group-title"><span class="dot" style="background:#7c3aed"></span> 整车制造方向</div>
+
+    <div class="job-card">
+      <div class="job-card-head">
+        <h4>中试涂装技师（武汉工厂）</h4>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-salary">7-12K</span>
+        <span class="tag tag-location">📍 武汉</span>
+        <span class="tag tag-purple">经验不限</span>
+        <span class="tag tag-gray">中专及以上</span>
+      </div>
+      <div class="job-desc">
+        负责实验室日常管理、车身/零部件喷涂、烘干及漆面质量检查与返修。要求28岁以下，具备相关行业经验，有奔驰、特斯拉等头部车企工作背景者优先。
+      </div>
+      <a class="job-source" href="https://auto.sina.cn/2026-07-18/detail-iniifxrv8248430.d.html" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-card-head">
+        <h4>车身装调技师 / 机器人调试技师</h4>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-salary">7-12K</span>
+        <span class="tag tag-location">📍 北京亦庄/武汉</span>
+        <span class="tag tag-purple">经验不限</span>
+        <span class="tag tag-gray">中专及以上</span>
+      </div>
+      <div class="job-desc">
+        车身装调技师负责组织车身门盖装调生产，依据工艺完成装配调整，满足BVS标准。机器人调试技师负责机器人轨迹调试、参数维护与程序编写修改。北京亦庄超级工厂占地71.8万㎡，包含六大车间及2.5km测试跑道。
+      </div>
+      <a class="job-source" href="https://auto.sina.cn/2026-07-18/detail-iniifxrv8248430.d.html" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-card-head">
+        <h4>金属3D打印技师 / 纤维复材技师</h4>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-salary">8-15K</span>
+        <span class="tag tag-location">📍 武汉</span>
+        <span class="tag tag-purple">1-3年</span>
+        <span class="tag tag-gray">中专及以上</span>
+      </div>
+      <div class="job-desc">
+        金属3D打印技师负责金属3D打印全工序实施，包括粉末预处理、参数调试、过程监控。纤维复材技师负责纤维复材全流程生产，包括铺层、树脂调配、成型及后处理。武汉工厂正持续扩招智能制造、车身装调、涂装等多类技术人才。
+      </div>
+      <a class="job-source" href="https://m.zhaopin.com/jobs/CC440313810J40767982109.htm" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <!-- 用户运营 -->
+  <div class="job-group">
+    <div class="job-group-title"><span class="dot" style="background:#dc2626"></span> 用户运营与销售方向</div>
+
+    <div class="job-card">
+      <div class="job-card-head">
+        <h4>小米汽车门店店长</h4>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-salary">15-25K</span>
+        <span class="tag tag-location">📍 湖州/全国</span>
+        <span class="tag tag-purple">3-5年</span>
+        <span class="tag tag-gray">大专及以上</span>
+      </div>
+      <div class="job-desc">
+        负责小米汽车零售体验中心的全面运营管理，高效管理门店零售团队，通过客户服务、产品知识讲解和门店推广等驱动业务发展，对销售目标负责。认可小米汽车品牌文化，具有创业精神。
+      </div>
+      <a class="job-source" href="https://m.zhipin.com/job_detail/2804fa755927be2303d_3Nu-FltW.html" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-card-head">
+        <h4>小米汽车销售计划专员（2026届校招）</h4>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-salary">12-18K·15薪</span>
+        <span class="tag tag-location">📍 北京</span>
+        <span class="tag tag-purple">应届生</span>
+        <span class="tag tag-gray">本科及以上</span>
+      </div>
+      <div class="job-desc">
+        负责PSI管理，根据产品操盘策略，制定年度、月度PSI滚动计划，并输出给相关部门，进行产销存工作的推进。要求数据分析能力强，有汽车行业相关实习经验优先。
+      </div>
+      <a class="job-source" href="https://m.zhipin.com/job_detail/c079d426a183892203V73di4E1dY.html" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-card-head">
+        <h4>HRBP（小米汽车）</h4>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-salary">20-35K·15薪</span>
+        <span class="tag tag-location">📍 北京</span>
+        <span class="tag tag-purple">2年以上</span>
+        <span class="tag tag-gray">本科及以上</span>
+      </div>
+      <div class="job-desc">
+        本科及以上学历，具备汽车行业经验优先。2年以上上市公司或行业头部企业HRBP或招聘BP工作经验，对所负责模块业务有较深入理解和良好的业务感知力。
+      </div>
+      <a class="job-source" href="https://m.zhipin.com/job_detail/793b7cf13b32aeff03183t-4FFRV.html" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="job-card">
+      <div class="job-card-head">
+        <h4>一线客服（武汉，需求400人）</h4>
+      </div>
+      <div class="job-tags">
+        <span class="tag tag-salary">5-8K</span>
+        <span class="tag tag-location">📍 武汉</span>
+        <span class="tag tag-purple">经验不限</span>
+        <span class="tag tag-gray">大专及以上</span>
+      </div>
+      <div class="job-desc">
+        通过400及在线服务方式，向顾客提供服务，服务内容包括产品信息解答、公司销售政策流程、售后服务等。武汉小米汽车一线客服大规模招聘，需求400人。
+      </div>
+      <a class="job-source" href="https://k.sina.cn/article_7879923058_1d5ae157201901jk3g.html" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 重点岗位详解 ========== -->
+<div class="section">
+  <div class="section-title"><span class="icon">🎯</span> 重点岗位详解</div>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>岗位名称</th>
+          <th>方向</th>
+          <th>薪资范围</th>
+          <th>地点</th>
+          <th>经验要求</th>
+          <th>学历</th>
+          <th>热度</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>自动驾驶感知算法工程师</td>
+          <td>自动驾驶</td>
+          <td class="salary-text">28K×15 = 42万/年</td>
+          <td class="location-text">北京</td>
+          <td>校招（Top3硕）</td>
+          <td>硕士</td>
+          <td>🔥🔥🔥</td>
+        </tr>
+        <tr>
+          <td>规控算法工程师</td>
+          <td>自动驾驶</td>
+          <td class="salary-text">26K×15 = 39万/年</td>
+          <td class="location-text">北京</td>
+          <td>校招（985硕）</td>
+          <td>硕士</td>
+          <td>🔥🔥🔥</td>
+        </tr>
+        <tr>
+          <td>智能座舱产品专家</td>
+          <td>智能座舱</td>
+          <td class="salary-text">40-70K×15薪</td>
+          <td class="location-text">北京</td>
+          <td>5-10年</td>
+          <td>本科</td>
+          <td>🔥🔥</td>
+        </tr>
+        <tr>
+          <td>系统稳定性研发工程师</td>
+          <td>智能座舱</td>
+          <td class="salary-text">50-80K</td>
+          <td class="location-text">南京</td>
+          <td>3年以上</td>
+          <td>本科</td>
+          <td>🔥🔥</td>
+        </tr>
+        <tr>
+          <td>BMS算法工程师</td>
+          <td>电机电控</td>
+          <td class="salary-text">21K×15 = 31.5万/年</td>
+          <td class="location-text">北京/上海</td>
+          <td>校招（211硕）</td>
+          <td>硕士</td>
+          <td>🔥🔥</td>
+        </tr>
+        <tr>
+          <td>嵌入式开发工程师</td>
+          <td>电机电控</td>
+          <td class="salary-text">22K×15 = 33万/年</td>
+          <td class="location-text">北京/上海</td>
+          <td>校招（985硕）</td>
+          <td>硕士</td>
+          <td>🔥🔥</td>
+        </tr>
+        <tr>
+          <td>门店店长</td>
+          <td>用户运营</td>
+          <td class="salary-text">15-25K</td>
+          <td class="location-text">全国</td>
+          <td>3-5年</td>
+          <td>大专</td>
+          <td>🔥</td>
+        </tr>
+        <tr>
+          <td>新能源充电解决方案</td>
+          <td>整车制造</td>
+          <td class="salary-text">52万总包</td>
+          <td class="location-text">北京</td>
+          <td>校招（清华博）</td>
+          <td>博士</td>
+          <td>🔥🔥🔥</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ========== 面试经验 ========== -->
+<div class="section">
+  <div class="section-title"><span class="icon">🎤</span> 面试经验分享</div>
+
+  <div class="interview-card">
+    <h4>📝 小米汽车ToB产品经理校招面经</h4>
+    <div class="meta">📅 2024年9月 · 来源：CSDN · 岗位：产品经理（校招）</div>
+    <div class="content">
+      <strong>一面（部门领导）：6.25</strong><br>
+      ①自我介绍 ②询问日常爱好和家庭情况 ③问实习经历，学到了什么 ④产品经理需要具备哪些技能 ⑤讲一个从接到需求到需求功能上线的全过程，过程里关键的里程碑 ⑥PRD文档怎么写 ⑦对小米汽车有什么了解 ⑧对工作岗位的理解 ⑨对Jira系统的了解 ⑩工作中有没有哪些事情令你很沮丧 ⑩①职业规划 ⑩②学习方式 ⑩③录用理由 ⑩④反问<br><br>
+      <strong>二面（部门领导的领导）：6.28</strong><br>
+      ①自我介绍 ②你认为工作职位具体要做什么 ③从简历展开一个例子，讲体现产品能力的 ④怎么看待产品经理方向 ⑤怎么成长，成长规划 ⑥对小米有什么了解 ⑦平时喜欢看车方面的东西么 ⑧反问<br><br>
+      <strong>结果：7.2 HR OC → 7.3 Offer</strong>
+    </div>
+    <a class="source-link" href="https://blog.csdn.net/litterfinger/article/details/141829330" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="interview-card">
+    <h4>📝 小米汽车算法面试题：串联所有单词的字串</h4>
+    <div class="meta">📅 来源：头条 · 岗位：算法工程师</div>
+    <div class="content">
+      小米汽车算法面试考察LeetCode第30题"串联所有单词的字串"。面试者在拿到offer后因个人原因拒绝。小米汽车算法岗面试侧重基础数据结构与算法能力，同时会结合简历深入提问项目经历。建议准备时重点刷LeetCode中等及以上难度题目。
+    </div>
+    <a class="source-link" href="http://m.toutiao.com/group/7426661197905101322/" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="interview-card">
+    <h4>📝 上汽座舱开发跳槽小米汽车经验</h4>
+    <div class="meta">📅 2025年 · 来源：头条 · 岗位：座舱开发工程师</div>
+    <div class="content">
+      上汽座舱开发跳小米汽车年包多了6万。猎头反馈：8295座舱平台2025年下半年开始大规模上车，2026年是量产爆发期，有完整迁移经验的人在这个时间窗口非常值钱。建议有传统车企座舱经验的工程师关注这个时间窗口，小米对有量产经验的候选人非常青睐。
+    </div>
+    <a class="source-link" href="http://m.toutiao.com/group/7644473237796717091/" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="interview-card">
+    <h4>📝 小米汽车2026届秋季汽车销售服校招</h4>
+    <div class="meta">📅 2026年 · 来源：高校就业网 · 岗位：销售服岗（校招）</div>
+    <div class="content">
+      小米汽车销售服岗位面向2026届海内外应届毕业生（中国内地毕业时间2026年1月1日-12月31日）。招聘以"寻找心中有火，眼里有光的你"为主题，期待与候选人一同奔跑成长。岗位涵盖门店销售、用户运营、售后服务等方向。
+    </div>
+    <a class="source-link" href="https://job.xmut.edu.cn/info/1007/10959.htm" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="interview-card">
+    <h4>📝 小米汽车工厂面试经验</h4>
+    <div class="meta">📅 2026年7月 · 来源：BOSS直聘 · 岗位：工厂普工/技师</div>
+    <div class="content">
+      小米汽车工厂以严苛的招聘标准著称，大部分岗位年龄限制28岁以下、学历最低中专起。即便曾在奔驰、特斯拉等头部车企工作过的工人，也会因面试准备不充分而被淘汰。面试需携带无犯罪记录证明，接受倒班。建议提前积累汽车制造或相关行业经验，认真准备面试。
+    </div>
+    <a class="source-link" href="https://auto.sina.cn/2026-07-18/detail-iniifxrv8248430.d.html" target="_blank">📎 查看原文</a>
+  </div>
+</div>
+
+<!-- ========== 薪资待遇分析 ========== -->
+<div class="section">
+  <div class="section-title"><span class="icon">💰</span> 薪资待遇分析</div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>岗位方向</th>
+          <th>校招薪资（月薪×15）</th>
+          <th>社招年薪</th>
+          <th>股票期权</th>
+          <th>学历要求</th>
+          <th>备注</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>自动驾驶感知算法</td>
+          <td class="salary-text">28K×15 = 42万/年</td>
+          <td class="salary-text">50-80万</td>
+          <td>有</td>
+          <td>Top3硕士</td>
+          <td>🔥 最热门方向</td>
+        </tr>
+        <tr>
+          <td>深度学习/AI大模型</td>
+          <td class="salary-text">28K×15 = 42万/年</td>
+          <td class="salary-text">50-80万</td>
+          <td>有</td>
+          <td>985硕士</td>
+          <td>算法核心岗</td>
+        </tr>
+        <tr>
+          <td>图像视觉算法</td>
+          <td class="salary-text">28K×15 = 42万/年</td>
+          <td class="salary-text">45-70万</td>
+          <td>有</td>
+          <td>985硕士</td>
+          <td>感知方向</td>
+        </tr>
+        <tr>
+          <td>规控算法</td>
+          <td class="salary-text">26K×15 = 39万/年</td>
+          <td class="salary-text">40-65万</td>
+          <td>有</td>
+          <td>985硕士</td>
+          <td>自动驾驶核心</td>
+        </tr>
+        <tr>
+          <td>NLP算法</td>
+          <td class="salary-text">26K×15 = 39万/年</td>
+          <td class="salary-text">40-60万</td>
+          <td>有</td>
+          <td>硕士</td>
+          <td>语音交互</td>
+        </tr>
+        <tr>
+          <td>嵌入式开发</td>
+          <td class="salary-text">20-22K×15 = 30-33万/年</td>
+          <td class="salary-text">35-55万</td>
+          <td>有</td>
+          <td>985硕士</td>
+          <td>电控方向</td>
+        </tr>
+        <tr>
+          <td>决策规划算法</td>
+          <td class="salary-text">23K×15 = 34.5万/年</td>
+          <td class="salary-text">35-55万</td>
+          <td>有</td>
+          <td>211硕士</td>
+          <td>规控方向</td>
+        </tr>
+        <tr>
+          <td>BMS算法</td>
+          <td class="salary-text">21K×15 = 31.5万/年</td>
+          <td class="salary-text">30-50万</td>
+          <td>有</td>
+          <td>211硕士</td>
+          <td>电池管理</td>
+        </tr>
+        <tr>
+          <td>智能座舱产品经理</td>
+          <td class="salary-text">20K×15 = 30万/年</td>
+          <td class="salary-text">40-70万</td>
+          <td>有</td>
+          <td>985硕士</td>
+          <td>产品方向</td>
+        </tr>
+        <tr>
+          <td>底盘/车身/机械结构</td>
+          <td class="salary-text">20K×15 = 30万/年</td>
+          <td class="salary-text">30-50万</td>
+          <td>有</td>
+          <td>985硕士</td>
+          <td>整车工程</td>
+        </tr>
+        <tr>
+          <td>高级工程师（社招17级）</td>
+          <td>—</td>
+          <td class="salary-text">60万/年</td>
+          <td>100万期权（5年）</td>
+          <td>—</td>
+          <td>经理级，行业较高水平</td>
+        </tr>
+        <tr>
+          <td>新能源充电解决方案</td>
+          <td class="salary-text">52万总包</td>
+          <td>—</td>
+          <td>有</td>
+          <td>清华博士</td>
+          <td>最高薪校招offer</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="overview-card" style="margin-top: 16px;">
+    <h3>💡 薪资亮点分析</h3>
+    <p>
+      • <strong>校招薪资区间</strong>：18万-42万年薪，技术岗显著高于非技术岗，算法岗最高可达42万<br>
+      • <strong>社招溢价</strong>：小米汽车社招薪资比行业市面高出20%-30%，高级工程师年薪60万+100万期权（5年归属期）<br>
+      • <strong>期权机制</strong>：以期权为利益诱导，捆绑4年研发周期，离职则期权失效。内部员工反馈"低工资+期权"模式需谨慎评估<br>
+      • <strong>城市差异</strong>：北京部门较卷，上海部门相对好一些；校招主要分布在上海、北京<br>
+      • <strong>小米集团薪资分布</strong>：26K-36K区间占比最高（24%），36K-46K占14%，46K-56K占9%
+    </p>
+  </div>
+</div>
+
+<!-- ========== 跨界人才需求分析 ========== -->
+<div class="section">
+  <div class="section-title"><span class="icon">🔄</span> 跨界人才需求分析</div>
+  <p style="color: #475569; margin-bottom: 20px; font-size: 0.95rem;">
+    小米作为互联网科技公司跨界造车，对互联网人才与传统汽车人才有着差异化的需求。以下从多个维度对比分析两类人才在小米汽车的不同定位与价值：
+  </p>
+
+  <div class="compare-container">
+    <div class="compare-card internet">
+      <h4>🌐 互联网人才需求</h4>
+      <ul>
+        <li><strong>核心优势</strong>：软件开发、算法能力、用户思维、快速迭代</li>
+        <li><strong>适配方向</strong>：智能座舱（HyperOS）、自动驾驶算法、用户运营、数据分析</li>
+        <li><strong>代表岗位</strong>：感知算法工程师、座舱产品经理、AI大模型工程师、前端开发</li>
+        <li><strong>薪资水平</strong>：校招28K×15（算法岗），社招50-80万</li>
+        <li><strong>工作节奏</strong>：追求效率与速度，旗舰开发周期1年，改型半年</li>
+        <li><strong>小米期待</strong>：将互联网敏捷开发理念带入汽车软件，加速OTA迭代</li>
+        <li><strong>潜在风险</strong>：对汽车安全验证流程理解不足，需补齐功能安全知识</li>
+      </ul>
+    </div>
+    <div class="compare-card traditional">
+      <h4>🚗 传统汽车人才需求</h4>
+      <ul>
+        <li><strong>核心优势</strong>：整车工程经验、供应链管理、制造工艺、质量体系</li>
+        <li><strong>适配方向</strong>：整车制造、底盘调校、车身设计、工厂运营、供应链</li>
+        <li><strong>代表岗位</strong>：底盘工程师、车身工程师、涂装技师、机器人调试技师</li>
+        <li><strong>薪资水平</strong>：校招20K×15（工程岗），社招30-50万</li>
+        <li><strong>工作节奏</strong>：汽车开发周期3-5年，反复验证测试，追求稳健</li>
+        <li><strong>小米期待</strong>：补齐制造端短板，确保量产质量与安全合规</li>
+        <li><strong>潜在风险</strong>：对互联网企业快节奏文化不适应，文化冲突风险</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="overview-card">
+    <h3>⚡ 融合挑战与趋势</h3>
+    <p>
+      小米汽车营销负责人周钘（原上汽通用五菱）离职事件揭示了跨界人才融合的核心难题：互联网企业追求"快"，传统车企强调"稳"，开发周期差异巨大（手机1年 vs 汽车3-5年）。小米采取的策略是<strong>双轨并行</strong>——互联网人才负责软件与用户体验，传统汽车人才负责工程与制造。乘联会秘书长崔东树认为："传统车企和造车新势力各有优劣势，融合发展是大势所趋。"脉脉高聘数据显示，小米汽车人才招聘量已超蔚来、小鹏，位列行业第四，对两类人才均有强烈需求。
+    </p>
+    <div class="overview-tags">
+      <span class="overview-tag">人才招聘量行业第4</span>
+      <span class="overview-tag">研发团队超2300人</span>
+      <span class="overview-tag">新业务投入超30亿</span>
+      <span class="overview-tag">投入达同行3倍</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 全网热议 ========== -->
+<div class="section">
+  <div class="section-title"><span class="icon">🔥</span> 全网热议</div>
+
+  <div class="discussion-card">
+    <span class="platform platform-maimai">脉脉</span>
+    <h4>小米汽车人才招聘量超蔚来、小鹏，位列行业第四</h4>
+    <p>脉脉高聘数据显示，2023年比亚迪、吉利领衔热招车企，小米集团与理想、蔚来等新势力紧随其后。小米汽车发布一揽子技术给车圈带来"小震撼"，行业热战，人才先行。小米汽车在跨界造车企业中招聘力度领先。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7317600247176593931/" target="_blank">📎 查看原帖</a>
+  </div>
+
+  <div class="discussion-card">
+    <span class="platform platform-zhihu">知乎</span>
+    <h4>在小米工作，累却很充实，也有干不完的活</h4>
+    <p>知乎用户分享：在小米工作，累，却很充实，也有干不完的活。以前很喜欢到知乎脉脉等渠道收集员工的心得体会，后来发现有价值的信息其实很少，大部分是自己的片面经历。北京部门都比较卷，上海部门相对好一些。</p>
+    <a class="source-link" href="https://xueqiu.com/5594298572/202496098" target="_blank">📎 查看原帖</a>
+  </div>
+
+  <div class="discussion-card">
+    <span class="platform platform-maimai">脉脉</span>
+    <h4>小米汽车高级工程师薪资曝光：年薪60万+100万期权</h4>
+    <p>脉脉用户曝光小米汽车高级工程师聘书：职别17级，税前4万/月，年终奖3个月（12万），年薪60万。另有100万小米汽车期权，等待期5年。内部员工表示："这就是一个低工资，以期权为利益诱导，捆绑四年的职位。"猎头称小米offer比市面高出20%-30%。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7333213094397116954/" target="_blank">📎 查看原帖</a>
+  </div>
+
+  <div class="discussion-card">
+    <span class="platform platform-csdn">CSDN</span>
+    <h4>小米汽车2025校招offer汇总：算法岗最高42万年薪</h4>
+    <p>CSDN社区用户汇总了小米汽车2025校招offer情况：自动驾驶感知算法工程师28K×15（Top3硕），图像视觉算法28K×15（985硕），规控算法26K×15（985硕），BMS算法21K×15（211硕），智能座舱产品经理20K×15（985硕），新能源充电解决方案52万总包（清华博）。</p>
+    <a class="source-link" href="https://devpress.csdn.net/v1/article/detail/148881338" target="_blank">📎 查看原帖</a>
+  </div>
+
+  <div class="discussion-card">
+    <span class="platform platform-zhihu">知乎</span>
+    <h4>小米SU7营销革命：互联网思维重构汽车行业增长逻辑</h4>
+    <p>知乎讨论：小米SU7凭借一套颠覆式营销组合拳实现突围，不仅创下9个月销量13.5万辆的成绩，更重塑了行业对跨界营销的认知框架。正是互联网思维对传统制造业的降维改造，为科技创业公司跨界造车提供了新范式。</p>
+    <a class="source-link" href="https://c.m.163.com/news/a/KIP08GEU0556IGOV.html" target="_blank">📎 查看原帖</a>
+  </div>
+
+  <div class="discussion-card">
+    <span class="platform platform-maimai">脉脉</span>
+    <h4>小米汽车跨界造车人才融合难题：营销负责人周钘离职</h4>
+    <p>脉脉热议：小米汽车营销负责人周钘（原上汽通用五菱）已离职，揭示了跨界造车人才融合的核心难题。从手机行业转型至车企的管理层人士表示："车企和手机企业的节奏差异比较大，车企太慢了。"传统车企人士则反映新势力"过于追求效率和速度，部分验证测试并不完善"。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7202913550979826213/" target="_blank">📎 查看原帖</a>
+  </div>
+
+  <div class="discussion-card">
+    <span class="platform platform-zhihu">知乎</span>
+    <h4>小米汽车内部员工吐槽不算啥，对比比亚迪宁德时代</h4>
+    <p>雪球转发知乎帖子：如果再关注一下知乎、脉脉上内部员工对比亚迪、宁德时代的吐槽，可能你会觉得这俩企业都要倒闭了，怎么一看股价，居然是翻了N倍的大牛股？员工吐槽是正常现象，关键看企业实际发展。</p>
+    <a class="source-link" href="https://xueqiu.com/1343870938/205100785" target="_blank">📎 查看原帖</a>
+  </div>
+</div>
+
+<!-- ========== 求职攻略 ========== -->
+<div class="section">
+  <div class="section-title"><span class="icon">🎓</span> 求职攻略：进小米汽车</div>
+
+  <div class="tips-card">
+    <h4>1️⃣ 明确方向，精准投递</h4>
+    <p>小米汽车招聘分为技术岗（算法/开发/工程）和非技术岗（产品/运营/销售）。算法岗薪资最高（28K×15），但竞争最激烈。建议根据自身背景选择：计算机/AI背景选自动驾驶或智能座舱算法岗；机械/车辆背景选整车工程或制造岗；商科背景选产品或用户运营岗。小米校招每人可投递4个职位。</p>
+  </div>
+
+  <div class="tips-card">
+    <h4>2️⃣ 校招关注时间节点</h4>
+    <p>小米集团2026届全球校招已启动，面向2026届海内外应届毕业生（中国内地毕业时间2026年1月1日-12月31日），覆盖软件研发、算法、硬件研发、产品、运营、设计等16大职类。春季招聘通常3月启动，秋季招聘通常9月启动。建议提前在 hr.xiaomi.com 注册并完善简历。</p>
+  </div>
+
+  <div class="tips-card">
+    <h4>3️⃣ 技术面试准备重点</h4>
+    <p>算法岗：重点刷LeetCode中等以上题目（小米汽车面试出现过LeetCode第30题"串联所有单词的字串"），深入理解深度学习、计算机视觉、NLP基础。座舱产品岗：准备产品需求文档（PRD）写作，了解Jira系统，熟悉从需求到上线的全流程。工程岗：熟悉C/C++、ROS、嵌入式开发，有车机或自动驾驶项目经验加分。</p>
+  </div>
+
+  <div class="tips-card">
+    <h4>4️⃣ 社招关注溢价机会</h4>
+    <p>小米汽车社招薪资比行业市面高出20%-30%，对有量产经验的候选人非常青睐。8295座舱平台2025年下半年大规模上车，2026年是量产爆发期，有完整迁移经验的座舱工程师在当前时间窗口非常值钱。传统车企工程师跳槽小米，年包可增加6万以上。</p>
+  </div>
+
+  <div class="tips-card">
+    <h4>5️⃣ 工厂岗位应聘建议</h4>
+    <p>北京亦庄与武汉两大工厂正持续扩招智能制造、车身装调、涂装等技术人才。注意事项：①年龄限制28岁以下，学历最低中专起；②要求具备相关行业经验，零基础几乎无法应聘；③即使有奔驰、特斯拉背景也需认真准备面试；④年龄接近28岁应尽早投递。招聘岗位涵盖压铸、车身、涂装、总装等方向。</p>
+  </div>
+
+  <div class="tips-card">
+    <h4>6️⃣ 评估期权与长期价值</h4>
+    <p>小米汽车采用"薪资+期权"模式，期权归属期4-5年。内部员工反馈需评估自身是否愿意在小米完成完整研发周期。离职则期权失效。建议综合考虑：小米汽车作为新公司在雷军带领下未来可期，福利很好但加班是常态。选择就业不仅塑造职业生涯，更关系到人生规划。</p>
+  </div>
+</div>
+
+<!-- ========== 信息来源汇总 ========== -->
+<div class="section">
+  <div class="section-title"><span class="icon">📎</span> 信息来源汇总</div>
+  <div class="table-wrapper">
+    <table class="source-table">
+      <thead>
+        <tr>
+          <th>来源名称</th>
+          <th>链接</th>
+          <th>日期</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>小米招聘官网</td>
+          <td><a href="https://hr.xiaomi.com/" target="_blank">hr.xiaomi.com</a></td>
+          <td>2026-07-28</td>
+        </tr>
+        <tr>
+          <td>BOSS直聘 - 智能座舱产品专家</td>
+          <td><a href="https://www.zhipin.com/job_detail/a980048f07adf4f903142t27EVNR.html" target="_blank">zhipin.com/job_detail/...</a></td>
+          <td>2026-07-21</td>
+        </tr>
+        <tr>
+          <td>BOSS直聘 - 自动驾驶感知系统工程师</td>
+          <td><a href="https://m.zhipin.com/job_detail/769ddfd7dedd4be31H1y3dy4FVBW.html" target="_blank">zhipin.com/job_detail/...</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>BOSS直聘 - 门店店长</td>
+          <td><a href="https://m.zhipin.com/job_detail/2804fa755927be2303d_3Nu-FltW.html" target="_blank">zhipin.com/job_detail/...</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>BOSS直聘 - 销售计划专员校招</td>
+          <td><a href="https://m.zhipin.com/job_detail/c079d426a183892203V73di4E1dY.html" target="_blank">zhipin.com/job_detail/...</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>BOSS直聘 - HRBP（小米汽车）</td>
+          <td><a href="https://m.zhipin.com/job_detail/793b7cf13b32aeff03183t-4FFRV.html" target="_blank">zhipin.com/job_detail/...</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>猎聘 - 小米汽车招聘</td>
+          <td><a href="https://m.liepin.com/company-jobs/2174886/jc-N11/" target="_blank">liepin.com/company-jobs/...</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>猎聘 - 系统稳定性研发工程师</td>
+          <td><a href="https://www.liepin.com/s/ebccc3613384bd15c16dfc517fa4444b/pn2/" target="_blank">liepin.com/s/...</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>智联招聘 - 小米YU7/SU7工厂</td>
+          <td><a href="https://m.zhaopin.com/jobs/CC440313810J40767982109.htm" target="_blank">zhaopin.com/jobs/...</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>新浪汽车 - 小米汽车工厂招聘条件</td>
+          <td><a href="https://auto.sina.cn/2026-07-18/detail-iniifxrv8248430.d.html" target="_blank">auto.sina.cn/2026-07-18/...</a></td>
+          <td>2026-07-18</td>
+        </tr>
+        <tr>
+          <td>头条 - 小米汽车薪资待遇曝光</td>
+          <td><a href="http://m.toutiao.com/group/7333213094397116954/" target="_blank">toutiao.com/group/7333...</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>头条 - 小米汽车跨界人才融合难题</td>
+          <td><a href="http://m.toutiao.com/group/7202913550979826213/" target="_blank">toutiao.com/group/7202...</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>头条 - 脉脉高聘小米汽车招聘量</td>
+          <td><a href="http://m.toutiao.com/group/7317600247176593931/" target="_blank">toutiao.com/group/7317...</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>头条 - 上汽座舱跳槽小米汽车</td>
+          <td><a href="http://m.toutiao.com/group/7644473237796717091/" target="_blank">toutiao.com/group/7644...</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>CSDN - 小米汽车ToB产品面经</td>
+          <td><a href="https://blog.csdn.net/litterfinger/article/details/141829330" target="_blank">blog.csdn.net/.../141829330</a></td>
+          <td>2026-07-25</td>
+        </tr>
+        <tr>
+          <td>CSDN - 小米汽车2025校招offer汇总</td>
+          <td><a href="https://devpress.csdn.net/v1/article/detail/148881338" target="_blank">devpress.csdn.net/.../148881338</a></td>
+          <td>2025-06-29</td>
+        </tr>
+        <tr>
+          <td>CSDN - 小米汽车自动驾驶Unity工程师</td>
+          <td><a href="https://blog.csdn.net/unityofficial/article/details/131641000" target="_blank">blog.csdn.net/.../131641000</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>厦门理工 - 小米汽车2026秋招销售服</td>
+          <td><a href="https://job.xmut.edu.cn/info/1007/10959.htm" target="_blank">job.xmut.edu.cn/info/...</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>新浪 - 武汉小米汽车一线客服招聘</td>
+          <td><a href="https://k.sina.cn/article_7879923058_1d5ae157201901jk3g.html" target="_blank">k.sina.cn/article_7879...</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>网易 - 小米SU7营销革命</td>
+          <td><a href="https://c.m.163.com/news/a/KIP08GEU0556IGOV.html" target="_blank">c.m.163.com/news/a/KIP0...</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>雪球 - 知乎小米员工体验</td>
+          <td><a href="https://xueqiu.com/5594298572/202496098" target="_blank">xueqiu.com/5594298572/...</a></td>
+          <td>2026-07</td>
+        </tr>
+        <tr>
+          <td>游民星空 - 小米汽车高级工程师薪酬</td>
+          <td><a href="https://wap.gamersky.com/news/Content-1434593.html" target="_blank">gamersky.com/news/...</a></td>
+          <td>2026-07</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ========== Giscus 评论区 ========== -->
+<div class="giscus-wrapper">
+  <h2 style="font-size: 1.3rem; font-weight: 700; color: var(--primary); margin-bottom: 16px; text-align: center;">💬 评论区</h2>
+  <script src="https://giscus.app/client.js"
+    data-repo="TS-dinglilu/TS-dinglilu.github.io"
+    data-repo-id="R_kgDOTjqaJQ"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOTjqaJc4DCIL1"
+    data-mapping="pathname" data-term="report-comments"
+    data-strict="0" data-reactions-enabled="1" data-emit-metadata="0"
+    data-input-position="top" data-theme="preferred_color_scheme"
+    data-lang="zh-CN" crossorigin="anonymous" async>
+  </script>
+</div>
+
+<!-- ========== Footer ========== -->
+<div class="footer">
+  <p>🚗 小米汽车招聘日报 | 自动化生成于 2026-07-28</p>
+  <p style="margin-top: 6px;">数据来源：BOSS直聘、智联招聘、猎聘、知乎、脉脉、CSDN、头条等公开信息</p>
+  <p style="margin-top: 6px;"><a href="https://ts-dinglilu.github.io/xiaomi-recruit/" target="_blank">📊 访问历史报告归档</a></p>
+</div>
+
+</div>
+</body>
+</html>
