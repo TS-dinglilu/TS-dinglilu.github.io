@@ -14,9 +14,9 @@
   --card-solid: rgba(20, 28, 48, 0.9);
   --border: rgba(0, 212, 255, 0.12);
   --border-hover: rgba(0, 212, 255, 0.4);
-  --text: rgba(0, 212, 255, 0.12);
-  --text-dim: #8b95b0;
-  --text-faint: #4a5568;
+  --text: #e2e8f0;
+  --text-dim: #b8c5d6;
+  --text-faint: #6b7a99;
   --accent: #00d4ff;
   --accent-warm: #ffb347;
   --accent-green: #22d3a0;
@@ -122,7 +122,7 @@ body::after {
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 28px 24px;
-  margin: 20px 0;
+  margin: 28px 0;
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
@@ -140,12 +140,12 @@ body::after {
 .section:hover::before { transform: scaleX(1); }
 
 .section h2 {
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: var(--accent);
-  margin-bottom: 18px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border);
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid rgba(0, 212, 255, 0.2);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -161,12 +161,12 @@ body::after {
 
 /* CARDS */
 .card {
-  background: var(--card-solid);
+  background: rgba(20, 28, 48, 0.75);
   border: 1px solid var(--border);
   border-left: 4px solid var(--accent);
   border-radius: 12px;
-  padding: 18px 20px;
-  margin: 14px 0;
+  padding: 20px 22px;
+  margin: 16px 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .card:hover {
@@ -176,16 +176,17 @@ body::after {
 }
 .card-title { font-weight: 700; color: var(--text); font-size: 1.02rem; margin-bottom: 8px; }
 .card-meta { font-size: 0.78rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
-.card-content { font-size: 0.9rem; color: var(--text-dim); line-height: 1.75; }
+.card-content { font-size: 0.92rem; color: var(--text); line-height: 1.75; }
+.card p { color: var(--text); line-height: 1.75; margin-bottom: 8px; }
 .card-content strong { color: var(--accent); font-weight: 600; }
 
 /* NEWS ITEMS */
 .news-item {
-  background: var(--card-solid);
+  background: rgba(20, 28, 48, 0.75);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 18px 20px;
-  margin: 14px 0;
+  padding: 20px 22px;
+  margin: 16px 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -238,7 +239,7 @@ th {
 td {
   padding: 10px;
   border-bottom: 1px solid var(--border);
-  color: var(--text-dim);
+  color: var(--text);
 }
 tr:last-child td { border-bottom: none; }
 tr:nth-child(even) { background: rgba(20, 28, 48, 0.3); }
@@ -317,7 +318,7 @@ tr:hover { background: rgba(0, 212, 255, 0.05); }
 .tip-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent-green); }
 .tip-box h4 { color: var(--accent-green); font-size: 0.95rem; margin-bottom: 10px; font-weight: 600; }
 .tip-box ul { list-style: none; padding-left: 0; }
-.tip-box li { padding: 5px 0 5px 24px; position: relative; font-size: 0.88rem; color: var(--text-dim); }
+.tip-box li { padding: 5px 0 5px 24px; position: relative; font-size: 0.9rem; color: var(--text); }
 .tip-box li::before { content: '✓'; position: absolute; left: 0; color: var(--accent-green); font-weight: 700; }
 
 /* WARNING BOX */
@@ -367,7 +368,7 @@ footer a, div.footer a { color: var(--accent); text-decoration: none; }
   .container { padding: 0 16px 40px; }
 }
 </style>
-<!-- cache-bust: 1785258662 -->
+<!-- cache-bust: 1785259623 -->
 </head>
 <body>
 
