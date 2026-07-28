@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>车企招聘日报 | 2026-07-29</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v3.0 暗色主题版
+   适用于所有自动化任务的报告HTML
+   配色方案: 深空蓝(#0a0e1a) + 青色强调(#00d4ff)
+   字体: JetBrains Mono + Noto Sans SC
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --bg: #0a0e1a;
+  --bg-elev: #111726;
+  --card: rgba(20, 28, 48, 0.6);
+  --card-solid: rgba(20, 28, 48, 0.75);
+  --border: rgba(0, 212, 255, 0.12);
+  --border-hover: rgba(0, 212, 255, 0.4);
+  --text: #e8eef5;
+  --text-dim: #e0e8f2;
+  --text-faint: #d8e2f0;
+  --accent: #00d4ff;
+  --accent-warm: #ffb347;
+  --accent-green: #22d3a0;
+  --accent-purple: #818cf8;
+  --accent-pink: #f87171;
+  --accent-teal: #14b8a6;
+  --accent-orange: #fb923c;
+  --grid-line: rgba(0, 212, 255, 0.04);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.5);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', 'JetBrains Mono', -apple-system, 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 15px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Decorative grid background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating gradient orb with radial-gradient animation */
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%; right: -10%;
+  width: 50%; height: 60%;
+  background: radial-gradient(ellipse, rgba(0,212,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: floatOrb 18s ease-in-out infinite;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate(-40px, 30px) scale(1.15); opacity: 1; }
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   HEADER - 渐变标题栏 with glass-morphism
+   ============================================================ */
+.header {
+  background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(20,28,48,0.8) 40%, rgba(129,140,248,0.08) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text);
+  padding: 48px 24px 36px;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-top: none;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.4);
+  margin-bottom: 8px;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(0,212,255,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -50%; left: -20%;
+  width: 60%; height: 80%;
+  background: radial-gradient(ellipse, rgba(129,140,248,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0,212,255,0.3);
+}
+.header .subtitle {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .date {
+  font-size: 0.8rem;
+  color: var(--accent);
+  background: rgba(0,212,255,0.1);
+  backdrop-filter: blur(8px);
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 50px;
+  border: 1px solid var(--border-hover);
+  position: relative;
+  z-index: 1;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ============================================================
+   SECTIONS - 卡片式内容区
+   相邻section间距28px，底部2px边框实现清晰视觉分隔
+   ============================================================ */
+.section {
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin: 48px 0;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  border-top: 2px solid rgba(0, 212, 255, 0.3);
+  border-bottom: 2px solid rgba(0, 212, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 50%, transparent 100%);
+}
+.section h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid rgba(0, 212, 255, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 20px 0 10px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ============================================================
+   CARDS - 信息卡片 (间距16px，多层透明度)
+   ============================================================ */
+.card {
+  background: var(--card-solid);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 16px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-left-color: var(--accent);
+  border-color: var(--border-hover);
+}
+.card-title {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-meta {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.card-content {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.card p { color: var(--text); line-height: 1.75; margin-bottom: 8px; }
+.card-content strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ============================================================
+   NEWS ITEMS - 新闻条目
+   ============================================================ */
+.news-item {
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 16px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.news-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--border-hover);
+  transition: all 0.3s ease;
+}
+.news-item:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.news-item:hover::before {
+  background: var(--accent);
+  width: 5px;
+}
+.news-item p { color: var(--text); line-height: 1.75; margin-bottom: 8px; }
+.news-item .badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(0,212,255,0.12);
+  color: var(--accent);
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-right: 8px;
+  font-weight: 600;
+  border: 1px solid rgba(0,212,255,0.25);
+  letter-spacing: 0.3px;
+}
+.news-item .badge.hot {
+  background: rgba(248,113,113,0.15);
+  color: var(--accent-pink);
+  border-color: rgba(248,113,113,0.3);
+}
+.news-item .badge.new {
+  background: rgba(34,211,160,0.15);
+  color: var(--accent-green);
+  border-color: rgba(34,211,160,0.3);
+}
+
+/* ============================================================
+   TABLES - 数据表格 (暗色背景，行交替色)
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 16px 0;
+  font-size: 0.84rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  background: var(--card-solid);
+}
+th {
+  background: var(--bg-elev);
+  color: var(--accent);
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid var(--border-hover);
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) { background: rgba(0,0,0,0.15); }
+tr:hover { background: rgba(0,212,255,0.08); }
+tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
+
+/* ============================================================
+   TAGS - 标签
+   ============================================================ */
+.tag {
+  display: inline-block;
+  background: rgba(0,212,255,0.1);
+  color: var(--accent);
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin: 2px;
+  font-weight: 500;
+  border: 1px solid rgba(0,212,255,0.2);
+}
+.tag.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
+.tag.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
+.tag.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
+
+/* ============================================================
+   SOURCE LINKS - 原文链接
+   ============================================================ */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.2);
+  transition: all 0.2s;
+}
+.source-link:hover {
+  background: var(--accent);
+  color: var(--bg);
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,212,255,0.3);
+}
+
+/* ============================================================
+   DISCUSSION - 讨论区
+   ============================================================ */
+.discussion {
+  background: rgba(255,179,71,0.08);
+  border: 1px solid rgba(255,179,71,0.2);
+  border-left: 4px solid var(--accent-warm);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 16px 0;
+  transition: all 0.3s;
+}
+.discussion:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.discussion .platform {
+  display: inline-block;
+  background: var(--accent-warm);
+  color: var(--bg);
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   TIP BOX - 提示框
+   ============================================================ */
+.tip-box {
+  background: rgba(34,211,160,0.08);
+  border: 1px solid rgba(34,211,160,0.2);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 16px 0;
+  position: relative;
+  overflow: hidden;
+}
+.tip-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--accent-green);
+}
+.tip-box h4 {
+  color: var(--accent-green);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.tip-box ul { list-style: none; padding-left: 0; }
+.tip-box li {
+  padding: 5px 0 5px 24px;
+  position: relative;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+.tip-box li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent-green);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   WARNING BOX - 警告框
+   ============================================================ */
+.warning-box {
+  background: rgba(248,113,113,0.08);
+  border: 1px solid rgba(248,113,113,0.2);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 16px 0;
+  position: relative;
+  overflow: hidden;
+}
+.warning-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--accent-pink);
+}
+.warning-box h4 {
+  color: var(--accent-pink);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SUMMARY TABLE - 汇总表
+   ============================================================ */
+.summary-table { font-size: 0.82rem; }
+.summary-table td:first-child {
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   GISCUS / COMMENTS - 评论区 (dark_dimmed 主题)
+   注意: HTML中giscus script需设置 data-theme="dark_dimmed"
+   ============================================================ */
+.comments-section {
+  margin-top: 40px;
+  background: var(--card-solid);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.comments-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.comments-desc {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   FOOTER - 页脚
+   ============================================================ */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ============================================================
+   RESPONSIVE - 移动端适配
+   ============================================================ */
+@media (max-width: 600px) {
+  .header { padding: 32px 16px 24px; border-radius: 0 0 20px 20px; }
+  .header h1 { font-size: 1.3rem; }
+  .section { padding: 18px 14px; margin: 48px 0; }
+  .card, .news-item { padding: 14px 16px; }
+  table { font-size: 0.76rem; }
+  th, td { padding: 7px 5px; }
+  .container { padding: 0 12px 40px; }
+}
+
+/* ============================================================
+   SECTION TITLE - 带编号的板块标题
+   ============================================================ */
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 56px 0 28px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(20,28,48,0.5) 100%);
+  border-left: 4px solid var(--accent);
+  border-top: 1px solid rgba(0, 212, 255, 0.25);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 0 12px 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.section-title .emoji,
+.section-title .icon {
+  font-size: 1.3rem;
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+}
+.section-title .num {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  background: rgba(0,212,255,0.1);
+  padding: 3px 12px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: 1px solid var(--border);
+}
+.section-title > span:not(.num):not(.emoji):not(.icon) {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ============================================================
+   HIGHLIGHT BOX - 高亮提示框
+   ============================================================ */
+.highlight-box {
+  background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(129,140,248,0.05) 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text);
+  position: relative;
+  transition: all 0.3s;
+}
+.highlight-box:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+  border-color: var(--border-hover);
+}
+.highlight-box strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ============================================================
+   SKILL BAR - 技能进度条
+   ============================================================ */
+.skill-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(0,212,255,0.08);
+  border-radius: 50px;
+  margin: 6px 0 12px;
+  overflow: hidden;
+  position: relative;
+}
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 100%);
+  border-radius: 50px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.skill-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 20px; height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 100%);
+  border-radius: 50px;
+}
+
+/* ============================================================
+   TAG VARIANTS - 标签变体
+   ============================================================ */
+.tag-blue { background: rgba(0,212,255,0.1); color: var(--accent); border: 1px solid rgba(0,212,255,0.2); }
+.tag-green, .tag.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border: 1px solid rgba(34,211,160,0.25); }
+.tag-purple { background: rgba(129,140,248,0.1); color: var(--accent-purple); border: 1px solid rgba(129,140,248,0.25); }
+.tag-red, .tag.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border: 1px solid rgba(248,113,113,0.25); }
+.tag-orange, .tag.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border: 1px solid rgba(255,179,71,0.25); }
+
+/* ============================================================
+   BADGE - 评估徽章 (独立使用，不限于news-item内)
+   ============================================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.badge-high {
+  background: rgba(34,211,160,0.15);
+  color: var(--accent-green);
+  border: 1px solid rgba(34,211,160,0.3);
+}
+.badge-mid {
+  background: rgba(255,179,71,0.15);
+  color: var(--accent-warm);
+  border: 1px solid rgba(255,179,71,0.3);
+}
+.badge-low {
+  background: rgba(248,113,113,0.15);
+  color: var(--accent-pink);
+  border: 1px solid rgba(248,113,113,0.3);
+}
+
+/* ============================================================
+   HEADER META - 标题栏元数据
+   ============================================================ */
+.header .meta {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .meta span {
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  background: rgba(0,212,255,0.08);
+  backdrop-filter: blur(8px);
+  padding: 4px 12px;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+}
+
+/* ============================================================
+   TIMELINE - 时间线
+   ============================================================ */
+.timeline {
+  position: relative;
+  padding-left: 24px;
+  margin: 16px 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--border) 100%);
+  border-radius: 50px;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 8px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -21px; top: 6px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
+  z-index: 1;
+}
+.timeline-item .time {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 6px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.timeline-item .content {
+  background: var(--card-solid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  transition: all 0.3s;
+}
+.timeline-item .content:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateX(2px);
+  border-color: var(--border-hover);
+}
+.timeline-item .content p { margin-bottom: 4px; }
+.timeline-item .content strong { color: var(--accent); }
+
+/* ============================================================
+   DECISION GRID - 决策对比卡片
+   ============================================================ */
+.decision-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 16px 0;
+}
+@media (max-width: 600px) {
+  .decision-grid { grid-template-columns: 1fr; }
+}
+.decision-card {
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.decision-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.decision-card h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.decision-card p { margin-bottom: 4px; }
+.decision-card strong { font-weight: 600; }
+.decision-yes {
+  background: rgba(34,211,160,0.08);
+  border: 1px solid rgba(34,211,160,0.2);
+  border-left: 4px solid var(--accent-green);
+}
+.decision-yes h4 { color: var(--accent-green); }
+.decision-yes strong { color: var(--accent-green); }
+.decision-no {
+  background: rgba(255,179,71,0.08);
+  border: 1px solid rgba(255,179,71,0.2);
+  border-left: 4px solid var(--accent-warm);
+}
+.decision-no h4 { color: var(--accent-warm); }
+.decision-no strong { color: var(--accent-warm); }
+
+/* ============================================================
+   DISCUSSION ITEM - 讨论条目
+   ============================================================ */
+.discussion-item {
+  background: rgba(255,179,71,0.08);
+  border: 1px solid rgba(255,179,71,0.2);
+  border-left: 4px solid var(--accent-warm);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  margin: 12px 0;
+  transition: all 0.3s;
+}
+.discussion-item:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.discussion-item .platform {
+  display: inline-block;
+  background: var(--accent-warm);
+  color: var(--bg);
+  font-size: 0.72rem;
+  padding: 3px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.discussion-item .text {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.discussion-item .text strong { color: var(--accent); }
+.discussion-item .link { font-size: 0.82rem; }
+
+/* ============================================================
+   GISCUS SECTION - 评论区别名 (dark_dimmed 主题)
+   注意: HTML中giscus script需设置 data-theme="dark_dimmed"
+   ============================================================ */
+.giscus-section {
+  margin-top: 40px;
+  background: var(--card-solid);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.giscus-section h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ============================================================
+   FOOTER (div version) - 页脚别名
+   ============================================================ */
+div.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+}
+div.footer a { color: var(--accent); }
+div.footer a:hover { color: var(--accent-purple); }
+
+/* ============================================================
+   DECORATIVE ELEMENTS - 装饰元素 (隐藏，由body伪元素替代)
+   ============================================================ */
+.grid-bg { display: none; }
+.floating-ball { display: none; }
+
+/* ============================================================
+   UTILITY - 通用工具类
+   ============================================================ */
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-purple); text-decoration: underline; }
+strong { color: var(--text); font-weight: 700; }
+hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+
+/* SALARY GRID - 薪资网格 (补充定义确保文字可读) */
+.salary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0;
+}
+@media (max-width: 600px) {
+  .salary-grid { grid-template-columns: 1fr; }
+}
+.salary-item {
+  background: rgba(0,212,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  text-align: center;
+}
+.salary-item .level {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.salary-item .amount {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.salary-item .note {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+/* PILL - 小标签 (补充定义确保文字可读) */
+.pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+  margin: 2px;
+  font-weight: 500;
+  background: rgba(0,212,255,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(0,212,255,0.2);
+}
+.pill.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
+.pill.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
+.pill.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
+
+/* INFO ROW - 信息行 */
+.info-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin: 10px 0;
+}
+
+/* META BAR - 元数据栏 */
+.meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>车企招聘日报</h1>
+  <p class="subtitle">比亚迪 / 奇瑞 / 吉利 / 一汽 / 大众 / 特斯拉 招聘动态与岗位分析</p>
+  <div class="date">2026-07-29</div>
+</div>
+
+<div class="container">
+
+  <a href="https://ts-dinglilu.github.io/car-recruit/" class="back-link">← 返回车企招聘报告汇总</a>
+  <a href="https://ts-dinglilu.github.io/" class="back-link" style="margin-left:16px;">← 返回主页</a>
+
+  <!-- 板块1：今日车企招聘新闻动态 -->
+  <div class="section-title">
+    <span class="emoji">🚗</span>
+    <span>今日车企招聘新闻动态</span>
+    <span class="num">板块 1</span>
+  </div>
+
+  <div class="section">
+    <h3>比亚迪（BYD）</h3>
+    <div class="news-item">
+      <span class="badge hot">重磅扩招</span>
+      <span class="tag tag-byd">比亚迪</span>
+      <p><strong>超9000个岗位！深汕比亚迪启动大规模招聘</strong> — 2026年7月21日，深圳深汕特别合作区比亚迪基地放出超9000个岗位，覆盖操作工、技术工、质检、管理等多层级。这是深汕比亚迪今年以来最大规模社招——3月春招仅2000人，4个月后用工需求翻4倍多。最高月收入可达20000元，主要生产方程豹钛7等中高端车型及宋Plus、宋Pro等出口车型。比亚迪6月单月出口175349辆，同比增长95%创历史新高。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7665235168174178862/" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <span class="badge new">校招动态</span>
+      <span class="tag tag-byd">比亚迪</span>
+      <p><strong>比亚迪2026校招最爱哪些大学的毕业生</strong> — 比亚迪2025校招录用超3万人，2026校招宣讲已覆盖76所院校，车辆、机械、材料强校是录用大户，不全看985牌子。长沙理工（双非）190人录用，比中科大还多。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7662308624034742826/" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <span class="badge">秋招简章</span>
+      <span class="tag tag-byd">比亚迪</span>
+      <p><strong>寻找爱"迪"生——比亚迪2026届秋季校园招聘</strong> — 覆盖储能及新型电池（软件开发、电力电子、BMS、SOC、SOH等）、机械结构设计等方向。工作地点涵盖深圳、西安、惠州、成都、上海、郑州、长沙、合肥、济南等16城。</p>
+      <a class="source-link" href="https://www.wenda.edu.cn/wrjxy/m/display_129.html" target="_blank">📎 查看原文</a>
+    </div>
+
+    <h3>奇瑞汽车</h3>
+    <div class="news-item">
+      <span class="badge hot">里程碑</span>
+      <span class="tag tag-chery">奇瑞</span>
+      <p><strong>奇瑞全球累计销量突破2000万辆</strong> — 2026年7月25日，奇瑞集团成为首个达成2000万辆里程碑的中国品牌车企。上半年出口94.38万辆，同比增长71.5%，出口占比近70%，产品覆盖130多个国家和地区。已在全球布局16座海外工厂，7月3日南非罗斯林工厂正式启用。董事长尹同跃表态"不再参加内卷"，转向品牌向上与技术突破，海外扩产带来用工需求增长。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7667353704772715048/" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <span class="badge">海外扩张</span>
+      <span class="tag tag-chery">奇瑞</span>
+      <p><strong>奇瑞买下日产南非工厂，计划2027年中投产</strong> — 年产能单班5万辆，目标2028年前实现40%本地化率。尹同跃表示"真正的全球化不是简单的产品输出"。海外本土化必然带来新岗位需求。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7664962852066820651/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <h3>吉利汽车</h3>
+    <div class="news-item">
+      <span class="badge new">校招启动</span>
+      <span class="tag tag-geely">吉利</span>
+      <p><strong>吉利汽车集团2027校园招聘启动</strong> — 2026年7月1日发布，招募储备干部与职能岗，覆盖浙江、陕西、山东等地。</p>
+      <a class="source-link" href="https://m.yingjiesheng.com/industry_wyk8crvvfv.html" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <span class="badge">人才计划</span>
+      <span class="tag tag-geely">吉利</span>
+      <p><strong>吉利"芯青年计划"投入3-5亿元扶持大学生创业</strong> — 搭建订单式培养体系，2026届全球校招预计招募2000余人，数智化研发岗位占比近40%，覆盖软件算法、整车研发、新能源开发、智能制造等方向。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7548809979920024104/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <h3>长春一汽</h3>
+    <div class="news-item">
+      <span class="badge">校招信息</span>
+      <span class="tag tag-faw">一汽</span>
+      <p><strong>中国一汽2026全球校园招聘</strong> — 一汽是较早启动2026届校招的车企之一。一汽红旗新能源在长春绿园区招聘普工/操作工，月薪6000-8000元，主要汽车组装，招20人，反映红旗新能源产线用工需求。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7582577320738488882/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <h3>大众汽车</h3>
+    <div class="news-item">
+      <span class="badge warn">裁员警报</span>
+      <span class="tag tag-vw">大众</span>
+      <p><strong>大众集团2026上半年利润暴跌30.7%，中国销量腰斩</strong> — 2026年7月28日最新发布。大众上半年税后利润同比暴跌30.7%至31亿欧元，中国市场销量暴跌31.1%至仅85.6万辆。集团宣布全球裁员约5万岗位，后续可能再裁5万，总裁员规模触及10万人。中国区招聘大幅收紧，但2026年将启动品牌成立以来最大电动化产品攻势，仅大众品牌计划年内落地13款新能源新车，新能源研发人才需求增加。</p>
+      <a class="source-link" href="https://auto.sina.cn/2026-07-28/detail-inikizzw8059519.d.html" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <span class="badge warn">裁员详情</span>
+      <span class="tag tag-vw">大众</span>
+      <p><strong>大众官宣拟裁员5万人，总裁员或达10万</strong> — 德国大众发布2026上半年财报，受全球关税壁垒、市场竞争加剧、新能源冲击多重影响，管理层公布裁员计划。燃油车岗位收缩明显。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7667017677512180258/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <h3>特斯拉（Tesla）</h3>
+    <div class="news-item">
+      <span class="badge">校招进行中</span>
+      <span class="tag tag-tesla">特斯拉</span>
+      <p><strong>特斯拉中国2026届秋季招聘火热进行中</strong> — 放出工程技术类、动力&能源类、硬件类、软件类、材料类、物流及设施类等岗位。上海研发团队持续扩张，技术支持团队负责人50-60K·17薪，FTE Engineer 25-40K，硕士应届可投。</p>
+      <a class="source-link" href="https://www.cqbys.com/campus/view/mark/cqu/id/717923" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <span class="badge">高薪岗位</span>
+      <span class="tag tag-tesla">特斯拉</span>
+      <p><strong>特斯拉上海研发/技术团队扩张</strong> — 招聘技术支持团队负责人（50-60k·17薪，要求统招本科+10年经验）、FTE Engineer（25-40k，硕士应届）等岗位，上海工厂普工月薪6000-8000元。</p>
+      <a class="source-link" href="https://m.liepin.com/job/1984456549.shtml" target="_blank">📎 查看原文</a>
+    </div>
+
+    <h3>其他车企 & 行业趋势</h3>
+    <div class="news-item">
+      <span class="badge hot">行业焦点</span>
+      <span class="tag tag-other">行业趋势</span>
+      <p><strong>27届校招大幕已启，蔚来小鹏火箭全在抢人</strong> — 蔚来、小鹏、宇通、箭元科技等近30家公司启动招聘，造车、火箭、互联网跨界抢人。智驾工程师供需比仅0.38，相当于三个岗位争抢一名合适人员。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7666437408505741864/" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <span class="badge hot">人才缺口</span>
+      <span class="tag tag-other">三电/智驾</span>
+      <p><strong>2026新能源汽车人才缺口突破105万</strong> — 智驾工程师需供比高达8.2居全行业首位，三电系统技师缺口超23万，维保技工缺口超80万。自动驾驶领域应届博士年薪普遍40万元。教育部2026年增补27个职业本科专业。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7664838373948916270/" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <span class="badge warn">高管流动</span>
+      <span class="tag tag-other">智驾圈</span>
+      <p><strong>小鹏AI负责人跳槽OpenAI，智驾圈高管流动频繁</strong> — 2026年6-7月，小鹏机器人业务负责人及产品规划高级总监相继离职。知行科技蒋京芳6月底辞任后火速出任智驾新程总裁。高通高管加盟英伟达，智驾芯片/方案商之间人才争夺白热化。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7666314599972586024/" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <!-- 板块2：同层次研究生就业去向数据 -->
+  <div class="section-title">
+    <span class="emoji">📊</span>
+    <span>同层次研究生就业去向数据</span>
+    <span class="num">板块 2</span>
+  </div>
+
+  <div class="section">
+    <div class="stats-grid">
+      <div class="stat-box">
+        <span class="num">90%+</span>
+        <span class="label">江苏大学机械研究生就业率</span>
+        <span class="sub">高于全国平均</span>
+      </div>
+      <div class="stat-box">
+        <span class="num">22.4%</span>
+        <span class="label">燕山大学机械进新能源车企比例</span>
+        <span class="sub">近三年新方向</span>
+      </div>
+      <div class="stat-box">
+        <span class="num">1:10</span>
+        <span class="label">河南科大轴承方向供需比</span>
+        <span class="sub">几乎供不应求</span>
+      </div>
+      <div class="stat-box">
+        <span class="num">15.7K</span>
+        <span class="label">车企机械硕士应届月薪</span>
+        <span class="sub">2025年数据</span>
+      </div>
+    </div>
+
+    <h3>安徽工业大学（安工大）</h3>
+    <div class="card">
+      <p>安工大机械专业毕业生主要流向<strong>长三角地区</strong>（江浙沪），上海、苏州、南京、杭州为主要就业城市。就业方向包括机械制造企业（产品设计、生产管理）、汽车行业（汽车零部件设计制造）、航空航天、电子设备厂等。有校友案例显示硕士毕业后加入大型车企，目前年薪约<strong>30万元</strong>。安工大机械在安徽本地及长三角制造业有一定行业识别度，但整体不如燕山大学、江苏大学等机械强校。</p>
+      <a class="source-link" href="http://mapi.masok.cn/wap/thread/view-thread?tid=4254324" target="_blank">📎 查看原文</a>
+      <a class="source-link" href="https://www.coolmw.com/f3d575dc951862ca.html" target="_blank">📎 安工大机械就业去向</a>
+    </div>
+
+    <h3>江苏大学</h3>
+    <div class="card">
+      <p>江苏大学机械研究生就业率保持在<strong>90%以上</strong>，就业领域集中在制造业（汽车、机械、电子、能源）。江苏地区机械工程岗位42.1%月薪在10-20K（年薪12-24万），2025年较2024年增长20%，应届生平均月薪约11.7K。被多次提及为"普通一本、强双非"梯队中机械行业认可度高的院校，适合投车企的工艺开发、制造技术、结构设计、质量工程等岗位。</p>
+      <a class="source-link" href="https://www.drbdp.com/3-5153805.html" target="_blank">📎 查看原文</a>
+      <a class="source-link" href="https://m.jobui.com/salary/jiangsu-jixiegongcheng/" target="_blank">📎 江苏机械薪资数据</a>
+    </div>
+
+    <h3>燕山大学</h3>
+    <div class="card">
+      <p>燕山大学机械工程是<strong>绝对王牌专业</strong>，结构研发、重工设备、车企岗位遍地，硕士入职大厂总包可达20万+。一个班约58人中，进新能源车企和自动驾驶公司的有13人，占<strong>22.4%</strong>，是近几年蹿起的新方向。被列为"机械四小龙"之一，与江苏大学、广东工业大学、浙江工业大学并列为机械领域有行业识别度的双非院校。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7658217730596487734/" target="_blank">📎 查看原文</a>
+      <a class="source-link" href="http://m.toutiao.com/group/7646796357197414964/" target="_blank">📎 燕大机械就业详情</a>
+    </div>
+
+    <h3>河南科技大学</h3>
+    <div class="card">
+      <p>河南科技大学机械专业就业率稳定在<strong>92%-98%</strong>，轴承方向几乎供不应求（供需比约1:10），进央企/国企及行业头部企业比例超50%。被誉为中国轴承行业"黄埔军校"，培养了轴承行业70%以上的中高级技术骨干。本科应届6000-8000元/月，轴承方向与军工岗位可达8000-12000元/月。技术岗5-8年可晋升技术总监，年薪25-40万。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7589600507853881890/" target="_blank">📎 查看原文</a>
+      <a class="source-link" href="http://m.toutiao.com/group/7667479242497737259/" target="_blank">📎 轴承黄埔历史</a>
+    </div>
+
+    <h3>其他双非机械强校</h3>
+    <div class="card">
+      <p><strong>太原科技大学</strong>：重型机械领域传统强校，是一汽/吉利/三一定点校招院校。 <strong>广东工业大学、浙江工业大学</strong>：第四轮学科评估较高档位，在车企/制造业有行业识别度。 <strong>重庆理工大学、上海工程技术大学、大连交通大学</strong>：在机械、车辆、装备制造、区域产业对接上比很多综合院校更实用。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7648669855289328154/" target="_blank">📎 8所双非王牌就业</a>
+    </div>
+
+    <h3>车企薪资水平（2025-2026年）</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>方向</th><th>月薪区间</th><th>应届起薪</th><th>备注</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>车企机械硕士</td><td><strong>10-30K</strong></td><td>15.7K</td><td>48.5%岗位在10-20K</td></tr>
+          <tr><td>车企机械结构工程师硕士</td><td><strong>10-30K</strong></td><td>15.8K</td><td>73.1%岗位在10-30K</td></tr>
+          <tr><td>上海新能源机械硕士</td><td><strong>15-50K</strong></td><td>15.0K</td><td>2025年同比增长24%</td></tr>
+          <tr><td>智能车辆工程校招</td><td><strong>起薪35万/年</strong></td><td>—</td><td>远超传统机械20万/年</td></tr>
+          <tr><td>新能源车企结构研发</td><td><strong>6-9K起</strong></td><td>—</td><td>三年后9-14K，五年后可达18K</td></tr>
+          <tr><td>传统机械制造厂</td><td><strong>3-5K起</strong></td><td>—</td><td>三年后4.5-6.5K</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <a class="source-link" href="https://m.jobui.com/salary/quanguo-jixiegong/edu3/ind-qiche/" target="_blank">📎 薪资数据来源</a>
+    <a class="source-link" href="http://m.toutiao.com/group/7666932668596011526/" target="_blank">📎 180人真实收入数据</a>
+  </div>
+
+  <!-- 板块3：进入车企实用攻略 -->
+  <div class="section-title">
+    <span class="emoji">🎯</span>
+    <span>进入车企实用攻略</span>
+    <span class="num">板块 3</span>
+  </div>
+
+  <div class="section">
+    <h3>核心岗位推荐（机械硕士四条链）</h3>
+    <div class="card">
+      <p><strong>第一类：研发岗（上限最高，门槛最高）</strong></p>
+      <p>推荐方向：底盘设计、车身结构、热管理、NVH、CAE仿真、悬架/转向/制动系统、电池包结构、整车试验与性能开发。更偏好硕士，尤其CAE、NVH、底盘控制、热管理仿真等方向。三年后可成为系统小负责人。</p>
+      <p><strong>核心技能</strong>：CATIA/UG/SolidWorks/AutoCAD、有限元/CAE基础、材料力学、公差配合GD&T、结构设计与失效分析。</p>
+    </div>
+    <div class="card">
+      <p><strong>第二类：工艺岗（最实用，适合双非扎根）</strong></p>
+      <p>推荐方向：新产品导入、冲压/焊装/涂装/总装工艺、机加工工艺、PACK工艺、模具工艺、产线节拍优化、良率改善、PFMEA/控制计划。三年后若能做工艺规划、良率提升，价值逐步上来。</p>
+    </div>
+    <div class="card">
+      <p><strong>第三类：设备岗（下限稳定，需防困在维护保全）</strong></p>
+      <p>高配方向：非标设备开发、自动化产线开发、机器人工作站、视觉检测、数字化工厂。需补：PLC、伺服运动控制、工业机器人、EPLAN、机器视觉、工业总线。</p>
+    </div>
+    <div class="card">
+      <p><strong>第四类：普通机械岗（需看清是产品结构还是工装夹具）</strong></p>
+      <p>推荐：内外饰结构设计、座椅结构设计、车身附件设计、底盘零部件设计、电池箱体结构设计。避坑：低端工装、夹具、拆图、现场改图，成长慢。</p>
+    </div>
+    <a class="source-link" href="http://m.toutiao.com/group/7639388268227838507/" target="_blank">📎 查看原文</a>
+
+    <h3>学历门槛</h3>
+    <ul class="strategy-list">
+      <li><strong>研发岗（卡得最严）</strong>：比亚迪、特斯拉及国内主流车企整车研发岗，更偏爱本科功底扎实的应届生。部分车企已要求"双2"（本科硕士都要求211），按C9/F类专业分薪资等级。</li>
+      <li><strong>工艺岗/设备岗/质量岗/供应链岗</strong>：对第一学历几乎不卡，双非硕士完全有机会。</li>
+      <li><strong>非技术岗（后勤、采购等）</strong>：几乎不会卡第一学历。</li>
+      <li><strong>"卡第一学历"潜规则</strong>：超六成HR筛选简历时参考第一学历，约三成直接把"本科非985/211"简历扔进待定区。2025年4月教育部严禁发布限定985/211字样，但执行层面企业"该怎么筛还是怎么筛"。</li>
+    </ul>
+    <a class="source-link" href="http://m.toutiao.com/group/7667396325155029531/" target="_blank">📎 查看原文</a>
+
+    <h3>校招时间线</h3>
+    <ul class="strategy-list">
+      <li><strong>秋招（主力批次）</strong>：通常9-11月启动，是车企招聘核心窗口。建议研二暑期前完成简历准备，9月秋招启动即投递。</li>
+      <li><strong>春招（补充批次）</strong>：次年2-4月，岗位数量少于秋招，但仍在持续招人。</li>
+      <li><strong>投递节奏</strong>：有学生10月开始投简历，秋招月余投近200份。建议多投多面，积累经验。</li>
+    </ul>
+    <a class="source-link" href="http://m.toutiao.com/group/7637048287728402959/" target="_blank">📎 查看原文</a>
+
+    <h3>简历准备</h3>
+    <ul class="strategy-list">
+      <li>简历上不能只有课程作业，必须有<strong>可展示的成果</strong>：解决过的缺陷、优化过的节拍、做过的实验数据，越具体越好。</li>
+      <li><strong>研发岗</strong>：三维建模（CATIA/UG/SolidWorks）、CAE仿真（ANSYS）、力学、材料、公差与尺寸链、结构设计项目、MATLAB/Python基础。</li>
+      <li><strong>工艺岗</strong>：机械制造工艺、材料成型、焊接/冲压/注塑/压铸、PFMEA、控制计划、工装夹具、精益生产。</li>
+      <li><strong>设备岗</strong>：PLC、电气控制、机器人、气动液压、传感器、EPLAN、机器视觉、非标设备设计。</li>
+      <li><strong>成功案例</strong>：双非一本男生大三泡实验室把CATIA和ANSYS练熟，自己复刻电池包结构设计项目写进简历，秋招投7家新能源车企被合肥二线车企录用。</li>
+    </ul>
+    <a class="source-link" href="http://m.toutiao.com/group/7666932668596011526/" target="_blank">📎 查看原文</a>
+
+    <h3>面试常见问题</h3>
+    <ul class="strategy-list">
+      <li>面试前需深入研究公司主营业务、技术方向、产品体系及行业地位。</li>
+      <li>现场招聘会中企业会直接提问：薪资期望、专业学习情况、<strong>毕设主题是什么</strong>（考验综合科研能力，若与企业关心议题契合可能达成合作）。</li>
+      <li>面试场景更偏向技术面、专业面，话术需贴合机械行业特性。</li>
+      <li>通用能力加分项：英文资料阅读、基础仿真思路、数据整理表达、跨部门沟通。</li>
+    </ul>
+    <a class="source-link" href="http://m.toutiao.com/group/7438027601362338344/" target="_blank">📎 查看原文</a>
+
+    <h3>双非硕士加分建议</h3>
+    <ul class="strategy-list">
+      <li><strong>垂直赛道做到不可替代</strong>：学历是通用标签，但在细分领域硬核的项目成果和技术能力才是通行证。</li>
+      <li><strong>用可量化成果替代学历信号</strong>：实习经历、专利论文、竞赛获奖、高质量开源贡献不会被一刀切掉。</li>
+      <li><strong>绕过筛选直达决策层</strong>：行业社区、技术博客、自媒体建立个人影响力，内推和猎头渠道可跳过学历关卡。</li>
+      <li><strong>提前掌握车企核心软件</strong>：CATIA、ANSYS、UG、SolidWorks——有案例大三就泡实验室练熟，秋招投7家车企全部进面。</li>
+      <li><strong>复刻车企相关项目写进简历</strong>：如电池包结构设计项目，比课程作业有说服力得多。</li>
+      <li><strong>复合技能加分</strong>：掌握编程、仿真、项目管理的复合技能，起薪比只会画图的高2000元。</li>
+      <li><strong>补齐行业认证知识</strong>：IATF16949、APQP、PPAP、SPC、MSA、8D、供应商质量——汽车行业很认这些。</li>
+      <li><strong>不要只盯主机厂</strong>：供应链零部件企业（博世、采埃孚、华域、拓普、宁德时代等）岗位同样适合且门槛更友好。</li>
+    </ul>
+    <a class="source-link" href="http://m.toutiao.com/group/7667396325155029531/" target="_blank">📎 查看原文</a>
+    <a class="source-link" href="http://m.toutiao.com/group/7639388268227838507/" target="_blank">📎 岗位选择攻略</a>
+  </div>
+
+  <!-- 板块4：今日推荐岗位 -->
+  <div class="section-title">
+    <span class="emoji">💼</span>
+    <span>今日推荐岗位</span>
+    <span class="num">板块 4</span>
+  </div>
+
+  <div class="section">
+    <p style="color:var(--text-dim);font-size:0.88rem;margin-bottom:20px;">结合安徽工业大学机械工程硕士背景，以下岗位匹配度较高：</p>
+
+    <div class="recommend-card">
+      <div class="company">比亚迪</div>
+      <div class="position">机械结构设计工程师（2026秋招）</div>
+      <span class="salary">年薪12-24万</span>
+      <p class="desc">工作地点：深圳/西安/合肥/长沙等16城。覆盖储能及新型电池机械结构设计、BMS系统结构等方向。比亚迪校招不按排名出牌，专业对口度和地域便利性是加分项。合肥工厂投产，安徽本地院校有地域优势。</p>
+      <span class="match">匹配度：★★★★★ 安工大机械硕士+地域优势</span>
+      <br>
+      <a class="source-link" href="https://www.wenda.edu.cn/wrjxy/m/display_129.html" target="_blank">📎 比亚迪2026秋招简章</a>
+      <a class="source-link" href="http://m.toutiao.com/group/7536004865680605738/" target="_blank">📎 比亚迪校招数据</a>
+    </div>
+
+    <div class="recommend-card">
+      <div class="company">奇瑞汽车</div>
+      <div class="position">工艺开发工程师 / 制造技术岗</div>
+      <span class="salary">月薪8-15K</span>
+      <p class="desc">工作地点：芜湖。奇瑞全球累计2000万辆，海外16座工厂，出海带来大量工艺/制造岗位需求。芜湖距马鞍山较近，安工大毕业生有地域优势。工艺岗对双非硕士友好，不卡第一学历。</p>
+      <span class="match">匹配度：★★★★★ 地域近+工艺岗不卡学历</span>
+      <br>
+      <a class="source-link" href="https://www.zhaopin.com/sou/kwB53N8NJCFM7MC" target="_blank">📎 奇瑞招聘信息</a>
+      <a class="source-link" href="http://m.toutiao.com/group/7667353704772715048/" target="_blank">📎 奇瑞2000万辆</a>
+    </div>
+
+    <div class="recommend-card">
+      <div class="company">吉利汽车</div>
+      <div class="position">智能制造岗 / 储备干部（2027校招）</div>
+      <span class="salary">年薪12-20万</span>
+      <p class="desc">工作地点：浙江/陕西/山东。2027校招已启动，数智化研发岗位占比近40%。吉利是太原科技大学等双非机械强校的定点校招企业，对双非认可度较高。订单式培养体系，投入3-5亿元扶持大学生。</p>
+      <span class="match">匹配度：★★★★☆ 双非定点校招+智能制造方向</span>
+      <br>
+      <a class="source-link" href="https://m.yingjiesheng.com/industry_wyk8crvvfv.html" target="_blank">📎 吉利2027校招</a>
+    </div>
+
+    <div class="recommend-card">
+      <div class="company">一汽红旗新能源</div>
+      <div class="position">新能源汽车工艺/设备工程师</div>
+      <span class="salary">月薪6-8K起（技术岗更高）</span>
+      <p class="desc">工作地点：长春。红旗新能源产线正在扩张，招聘普工/操作工基础上，技术岗位持续招人。一汽是较早启动2026校招的车企，研发岗卡学历但工艺/设备岗对双非友好。</p>
+      <span class="match">匹配度：★★★★☆ 工艺设备岗不卡学历</span>
+      <br>
+      <a class="source-link" href="http://m.toutiao.com/group/7582577320738488882/" target="_blank">📎 一汽2026校招</a>
+    </div>
+
+    <div class="recommend-card">
+      <div class="company">特斯拉中国</div>
+      <div class="position">FTE Engineer（硕士应届）</div>
+      <span class="salary">25-40K/月</span>
+      <p class="desc">工作地点：上海。特斯拉上海研发团队持续扩张，FTE Engineer岗位接受硕士应届生。要求有扎实的工程技术基础，竞争激烈但薪资极具吸引力。建议提前准备英文面试和技术面。</p>
+      <span class="match">匹配度：★★★☆☆ 高薪但竞争激烈</span>
+      <br>
+      <a class="source-link" href="https://m.liepin.com/lptjob/84449973/" target="_blank">📎 特斯拉FTE岗位</a>
+    </div>
+
+    <div class="recommend-card">
+      <div class="company">供应链零部件企业（推荐备选）</div>
+      <div class="position">结构设计/工艺/质量工程师</div>
+      <span class="salary">月薪10-20K</span>
+      <p class="desc">推荐企业：博世、采埃孚、法雷奥、麦格纳、华域汽车、拓普集团、三花智控、银轮股份、宁德时代、蜂巢能源、弗迪动力等。岗位同样适合机械学生，门槛比主机厂更友好，是双非硕士的优质选择。</p>
+      <span class="match">匹配度：★★★★★ 门槛友好+岗位丰富</span>
+      <br>
+      <a class="source-link" href="http://m.toutiao.com/group/7639388268227838507/" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <!-- 板块5：岗位类型对比分析表格 -->
+  <div class="section-title">
+    <span class="emoji">📋</span>
+    <span>岗位类型对比分析（6家重点车企）</span>
+    <span class="num">板块 5</span>
+  </div>
+
+  <div class="section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>车企</th>
+            <th>主要招聘岗位</th>
+            <th>薪资水平</th>
+            <th>学历门槛</th>
+            <th>双非友好度</th>
+            <th>工作地点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>比亚迪</strong></td>
+            <td>机械结构设计、储能电池、工艺、操作工</td>
+            <td>硕士10-20K；普工最高20K</td>
+            <td>研发岗看专业对口；工艺/普工不限</td>
+            <td><strong>★★★★★</strong> 双非可进前10</td>
+            <td>深圳/西安/合肥/长沙等16城</td>
+          </tr>
+          <tr>
+            <td><strong>奇瑞</strong></td>
+            <td>工艺开发、制造技术、海外派驻</td>
+            <td>月薪8-15K（技术岗）</td>
+            <td>工艺岗不卡学历；研发岗看能力</td>
+            <td><strong>★★★★☆</strong> 定点校招双非</td>
+            <td>芜湖/海外16国</td>
+          </tr>
+          <tr>
+            <td><strong>吉利</strong></td>
+            <td>智能制造、数智化研发、储备干部</td>
+            <td>年薪12-20万</td>
+            <td>校招对双非较友好</td>
+            <td><strong>★★★★☆</strong> 定点校招</td>
+            <td>浙江/陕西/山东</td>
+          </tr>
+          <tr>
+            <td><strong>一汽</strong></td>
+            <td>红旗新能源工艺/设备、研发</td>
+            <td>普工6-8K；技术岗更高</td>
+            <td>研发卡"双2"；工艺/设备不卡</td>
+            <td><strong>★★★☆☆</strong> 研发卡学历</td>
+            <td>长春</td>
+          </tr>
+          <tr>
+            <td><strong>大众</strong></td>
+            <td>新能源研发（扩张中）；燃油车岗位收缩</td>
+            <td>合资企业待遇较好</td>
+            <td>研发岗要求高；中国区招聘收紧</td>
+            <td><strong>★★☆☆☆</strong> 裁员中</td>
+            <td>长春/上海/各地合资</td>
+          </tr>
+          <tr>
+            <td><strong>特斯拉</strong></td>
+            <td>FTE Engineer、工程技术、硬件软件</td>
+            <td>硕士25-40K；普工6-8K</td>
+            <td>研发/技术岗要求高</td>
+            <td><strong>★★★☆☆</strong> 看能力</td>
+            <td>上海</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--text-dim);font-size:0.8rem;margin-top:12px;">注：薪资数据来源于职友集、猎聘等平台2025-2026年公开数据，实际以企业offer为准。双非友好度综合考量校招录取数据、学历门槛和岗位开放程度。</p>
+  </div>
+
+  <!-- 板块6：全网热议讨论 -->
+  <div class="section-title">
+    <span class="emoji">💬</span>
+    <span>全网热议讨论</span>
+    <span class="num">板块 6</span>
+  </div>
+
+  <div class="section">
+    <div class="discussion-item">
+      <span class="platform">牛客网</span>
+      <span class="heat">🔥 热门讨论</span>
+      <p><strong>双非机械硕士出路？</strong> — 网友讨论双非机械硕士就业方向。观点一认为双非应老老实实搞结构设计，非标结构设计工资尚可；观点二认为双非转码难度大，大公司招聘要求高，计算机科班竞争激烈。</p>
+      <a class="source-link" href="https://m.nowcoder.com/discuss/674709859010453504" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform">今日头条</span>
+      <span class="heat">🔥 180人真实收入</span>
+      <p><strong>机械专业真没前途？180人真实收入数据揭开扎心真相</strong> — 两名双非本科机械毕业生对比：一个进新能源车企做结构研发，刚入职到手7000-8500元；另一位进老牌地方制造国企，每月到手4000出头。反映车企与传统制造业薪资差距。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7667134597024612908/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform">今日头条</span>
+      <p><strong>机械专业进车企，别把岗位选错了</strong> — 提醒机械专业毕业生进车企后岗位选择的重要性。同样挂车企工牌，机械岗、工艺岗、设备岗、研发岗发展路径完全不同。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7639388268227838507/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform">今日头条</span>
+      <p><strong>985机械女硕入职特斯拉一年忠告</strong> — 中部985机械女硕士秋招投了近50份简历，毕业典礼前一周才收到特斯拉offer。分享入职一年真实体验和应届生建议。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7667366950485574187/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform">牛客网</span>
+      <span class="heat">🔥 高热度</span>
+      <p><strong>从互联网"逃"到车企，应届生选车企真香？</strong> — 计算机方向应届生分享从互联网实习转向车企经历。最终加入现代汽车前瞻技术研发中心（上海），认为车企对应届生友好，涉及L2到L4智驾项目，推荐计算机同学考虑车企。</p>
+      <a class="source-link" href="https://m.nowcoder.com/discuss/1520864" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform">虎扑社区</span>
+      <span class="heat">🔥 阅读8.5万+</span>
+      <p><strong>小红书比亚迪加班情况讨论</strong> — 转载小红书上关于比亚迪加班情况的帖子，引发大量讨论。评论区有吉利粉丝与比亚迪支持者争论，反映车企加班文化是热门话题。</p>
+      <a class="source-link" href="https://m.hupu.com/bbs/632984861.html" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform">今日头条</span>
+      <span class="heat">🔥 深度分析</span>
+      <p><strong>车企高管带头降薪：不是"寒冬将至"，而是"泡沫将破"</strong> — 理想汽车年终奖腰斩，研发员工年终奖减半；广汽推行"3P1M"薪酬改革，高管降薪50-70万；蔚来员工净减过万。2025年汽车行业销售利润率降至4.1%，2026年1-2月进一步下滑至2.9%。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7631129433227575871/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform">今日头条</span>
+      <p><strong>2026年造车业：新势力和传统车企谁更"吃香"？</strong> — 鸿蒙智行1月交付57915台（同比+65.6%），小米超39000台（+39%）；但理想27668台（同比-7.55%），中小新势力面临淘汰。核心观点：2026年吃香与否不再取决于出身，而是看谁更能融合创新与稳健。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7601763537060495922/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform">今日头条</span>
+      <p><strong>2026新能源汽车技术专业真实前景</strong> — 新能源汽车技术专业曾成报考大热门，但随着行业从野蛮扩张进入稳健发展，有人质疑行业红利消退。文章分析专业优势和短板。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7666865467675460122/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform">虎扑社区</span>
+      <p><strong>应届硕士车企offer选择：广汽研VS小鹏</strong> — 应届硕士收到广汽研究院智能网联中心offer和小鹏汽车智能驾驶应用软件开发岗offer，求助网友选择。反映传统车企研究院与新势力车企之间的offer抉择困境。</p>
+      <a class="source-link" href="https://m.hupu.com/bbs/42166993.html" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform">今日头条</span>
+      <p><strong>成哥看过3000份应届生车企offer，选错的人5个共同点</strong> — 基于3000份应届生车企offer经验，总结选错offer的5个常见错误。第一个错误是"只看年薪，不看薪资结构"。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7640279456556401186/" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="discussion-item">
+      <span class="platform">今日头条</span>
+      <p><strong>一周1.5万汽车人失业！6家车企被曝裁员</strong> — 汇总一汽、保时捷、日产、通用、福特、VinFast 6家汽车品牌裁员信息，涉及裁员超过15550人，最高赔偿N+4。</p>
+      <a class="source-link" href="http://m.toutiao.com/group/7507605888367968768/" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <!-- 板块7：Giscus评论区 -->
+  <div class="section-title">
+    <span class="emoji">✍️</span>
+    <span>评论区</span>
+    <span class="num">板块 7</span>
+  </div>
+
+  <div class="section">
+    <p style="color:var(--text-dim);font-size:0.9rem;margin-bottom:20px;">欢迎在下方留言讨论，分享你的车企求职经验或提问交流。评论通过 GitHub Discussions 加载，请使用 GitHub 账号登录。</p>
+    <div class="giscus-container">
+      <script src="https://giscus.app/client.js"
+        data-repo="TS-dinglilu/TS-dinglilu.github.io"
+        data-repo-id="R_kgDOTjqaJQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOTjqaJc4DCIL1"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="dark_dimmed"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </div>
+  </div>
+
+  <!-- 信息来源汇总 -->
+  <div class="section-title">
+    <span class="emoji">📚</span>
+    <span>信息来源汇总</span>
+  </div>
+
+  <div class="section">
+    <table class="source-table">
+      <thead>
+        <tr><th>来源名称</th><th>链接</th><th>日期</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>今日头条 - 深汕比亚迪大规模招聘</td><td><a href="http://m.toutiao.com/group/7665235168174178862/" target="_blank">查看原文</a></td><td>2026-07-21</td></tr>
+        <tr><td>今日头条 - 比亚迪2026校招数据</td><td><a href="http://m.toutiao.com/group/7662308624034742826/" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+        <tr><td>今日头条 - 奇瑞2000万辆里程碑</td><td><a href="http://m.toutiao.com/group/7667353704772715048/" target="_blank">查看原文</a></td><td>2026-07-25</td></tr>
+        <tr><td>应届生求职网 - 吉利2027校招</td><td><a href="https://m.yingjiesheng.com/industry_wyk8crvvfv.html" target="_blank">查看原文</a></td><td>2026-07-01</td></tr>
+        <tr><td>新浪汽车 - 大众利润暴跌30.7%</td><td><a href="https://auto.sina.cn/2026-07-28/detail-inikizzw8059519.d.html" target="_blank">查看原文</a></td><td>2026-07-28</td></tr>
+        <tr><td>今日头条 - 大众裁员5万人</td><td><a href="http://m.toutiao.com/group/7667017677512180258/" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+        <tr><td>重庆毕业生就业网 - 特斯拉2026秋招</td><td><a href="https://www.cqbys.com/campus/view/mark/cqu/id/717923" target="_blank">查看原文</a></td><td>2026秋招</td></tr>
+        <tr><td>猎聘 - 特斯拉FTE Engineer</td><td><a href="https://m.liepin.com/lptjob/84449973/" target="_blank">查看原文</a></td><td>2026</td></tr>
+        <tr><td>今日头条 - 27届校招抢人</td><td><a href="http://m.toutiao.com/group/7666437408505741864/" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+        <tr><td>今日头条 - 新能源人才缺口105万</td><td><a href="http://m.toutiao.com/group/7664838373948916270/" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+        <tr><td>今日头条 - 小鹏AI负责人跳槽</td><td><a href="http://m.toutiao.com/group/7666314599972586024/" target="_blank">查看原文</a></td><td>2026-07</td></tr>
+        <tr><td>安工大校友论坛 - 机械就业去向</td><td><a href="http://mapi.masok.cn/wap/thread/view-thread?tid=4254324" target="_blank">查看原文</a></td><td>2026</td></tr>
+        <tr><td>今日头条 - 江苏大学机械就业</td><td><a href="http://m.fanwenlai.com/fwbaike-223524062/" target="_blank">查看原文</a></td><td>2026</td></tr>
+        <tr><td>今日头条 - 燕山大学机械就业</td><td><a href="http://m.toutiao.com/group/7658217730596487734/" target="_blank">查看原文</a></td><td>2026</td></tr>
+        <tr><td>今日头条 - 河南科技大学就业质量</td><td><a href="http://m.toutiao.com/group/7589600507853881890/" target="_blank">查看原文</a></td><td>2026</td></tr>
+        <tr><td>职友集 - 车企机械硕士薪资</td><td><a href="https://m.jobui.com/salary/quanguo-jixiegong/edu3/ind-qiche/" target="_blank">查看原文</a></td><td>2025-2026</td></tr>
+        <tr><td>今日头条 - 180人真实收入数据</td><td><a href="http://m.toutiao.com/group/7666932668596011526/" target="_blank">查看原文</a></td><td>2026</td></tr>
+        <tr><td>今日头条 - 机械进车企岗位选择</td><td><a href="http://m.toutiao.com/group/7639388268227838507/" target="_blank">查看原文</a></td><td>2026</td></tr>
+        <tr><td>今日头条 - 第一学历门槛</td><td><a href="http://m.toutiao.com/group/7667396325155029531/" target="_blank">查看原文</a></td><td>2026</td></tr>
+        <tr><td>牛客网 - 双非机械硕士出路</td><td><a href="https://m.nowcoder.com/discuss/674709859010453504" target="_blank">查看原文</a></td><td>2026</td></tr>
+        <tr><td>牛客网 - 从互联网到车企</td><td><a href="https://m.nowcoder.com/discuss/1520864" target="_blank">查看原文</a></td><td>2026</td></tr>
+        <tr><td>虎扑 - 比亚迪加班讨论</td><td><a href="https://m.hupu.com/bbs/632984861.html" target="_blank">查看原文</a></td><td>2026</td></tr>
+        <tr><td>今日头条 - 车企降薪深度分析</td><td><a href="http://m.toutiao.com/group/7631129433227575871/" target="_blank">查看原文</a></td><td>2026</td></tr>
+        <tr><td>今日头条 - 新势力vs传统车企</td><td><a href="http://m.toutiao.com/group/7601763537060495922/" target="_blank">查看原文</a></td><td>2026</td></tr>
+        <tr><td>搜狐 - 2026新能源人才白皮书</td><td><a href="https://news.sohu.com/a/981060876_122490801" target="_blank">查看原文</a></td><td>2026</td></tr>
+        <tr><td>盖世汽车 - 工信部人才稀缺</td><td><a href="https://i.gasgoo.com/news/70466877.html" target="_blank">查看原文</a></td><td>2025-2026</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    <p>车企招聘日报 | 2026-07-29 | 数据采集时间：2026年7月29日</p>
+    <p style="margin-top:8px;"><a href="https://ts-dinglilu.github.io/car-recruit/">返回报告汇总</a> | <a href="https://ts-dinglilu.github.io/">返回主页</a></p>
+    <p style="margin-top:8px;opacity:0.5;">本报告由自动化系统生成，数据来源于网络公开信息，仅供参考</p>
+  </div>
+
+</div>
+
+</body>
+</html>
