@@ -5,424 +5,361 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>小米汽车招聘日报 - 报告汇总</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
 :root {
-  --primary: #0f2c4d;
-  --primary-light: #1e4d7b;
-  --accent: #2563eb;
-  --accent-light: #3b82f6;
-  --bg: #f0f4f8;
-  --card: #ffffff;
-  --text: #1e293b;
-  --text-light: #64748b;
-  --text-faint: #94a3b8;
-  --border: #e2e8f0;
-  --border-hover: #cbd5e1;
-  --green: #10b981;
-  --amber: #f59e0b;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-  --radius: 16px;
+  --bg: #0a0e1a;
+  --bg-elev: #111726;
+  --card: rgba(20, 28, 48, 0.6);
+  --card-solid: rgba(20, 28, 48, 0.9);
+  --border: rgba(0, 212, 255, 0.12);
+  --border-hover: rgba(0, 212, 255, 0.4);
+  --text: #e2e8f0;
+  --text-dim: #8b95b0;
+  --text-faint: #4a5568;
+  --accent: #00d4ff;
+  --accent-warm: #ffb347;
+  --accent-green: #22d3a0;
+  --accent-purple: #818cf8;
+  --accent-pink: #f87171;
+  --accent-teal: #14b8a6;
+  --accent-orange: #fb923c;
+  --grid-line: rgba(0, 212, 255, 0.04);
 }
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Noto Sans SC', 'Inter', -apple-system, 'Microsoft YaHei', sans-serif;
+  font-family: 'Noto Sans SC', sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.7;
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
+
 body::before {
   content: '';
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background-image:
-    linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
   z-index: 0;
 }
+
 body::after {
   content: '';
   position: fixed;
-  top: -20%; right: -10%;
-  width: 50%; height: 60%;
-  background: radial-gradient(ellipse, rgba(37,99,235,0.06) 0%, transparent 70%);
+  top: -50%; left: -20%;
+  width: 80%; height: 80%;
+  background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.06) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
+  animation: drift 20s ease-in-out infinite alternate;
 }
-.container { max-width: 760px; margin: 0 auto; padding: 0 20px 60px; position: relative; z-index: 1; }
+
+@keyframes drift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(20%, 10%); }
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* HEADER */
 .hero {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 40%, var(--accent) 100%);
-  color: #fff;
-  padding: 52px 24px 40px;
+  padding: 56px 24px 40px;
   text-align: center;
   border-radius: 0 0 32px 32px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.05) 0%, rgba(34,211,160,0.05) 100%);
+  border-bottom: 1px solid var(--border);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 12px 48px rgba(15, 44, 77, 0.2);
 }
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -30%; right: -10%;
-  width: 60%; height: 80%;
-  background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -50%; left: -20%;
-  width: 60%; height: 80%;
-  background: radial-gradient(ellipse, rgba(59,130,246,0.15) 0%, transparent 70%);
-  pointer-events: none;
-}
-.back-home {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(8px);
-  padding: 6px 16px;
-  border-radius: 50px;
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: #fff;
-  text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.18);
-  transition: all 0.2s;
-  margin-bottom: 20px;
-  position: relative;
-  z-index: 1;
-}
-.back-home:hover { background: rgba(255,255,255,0.2); transform: translateX(-2px); }
+
 .hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(8px);
-  padding: 6px 16px;
-  border-radius: 50px;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 1px;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
   margin-bottom: 16px;
-  border: 1px solid rgba(255,255,255,0.15);
-  position: relative;
-  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
-.hero-tag .dot {
+
+.hero-tag .status-dot {
+  display: inline-block;
   width: 8px; height: 8px;
   border-radius: 50%;
-  background: #34d399;
+  background: var(--accent-green);
   animation: pulse 2s ease-in-out infinite;
 }
+
 @keyframes pulse {
-  0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(52,211,153,0.5); }
-  50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(52,211,153,0); }
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 211, 160, 0.4); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(34, 211, 160, 0); }
 }
+
 .hero h1 {
-  font-size: 1.85rem;
+  font-size: 2rem;
   font-weight: 800;
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;
   margin-bottom: 10px;
-  position: relative;
-  z-index: 1;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
+
 .hero .subtitle {
-  font-size: 0.92rem;
-  opacity: 0.88;
-  max-width: 480px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  margin-bottom: 16px;
 }
+
 .hero .update-time {
-  font-size: 0.76rem;
-  opacity: 0.6;
-  margin-top: 14px;
-  font-family: 'Inter', monospace;
-  position: relative;
-  z-index: 1;
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--accent-warm);
+  background: rgba(255, 179, 71, 0.1);
+  border: 1px solid rgba(255, 179, 71, 0.2);
+  padding: 4px 14px;
+  border-radius: 50px;
 }
-.stats-bar {
+
+/* STATS */
+.stats {
   display: flex;
   justify-content: center;
   gap: 32px;
-  margin-top: 20px;
-  position: relative;
-  z-index: 1;
+  margin-top: 24px;
+  flex-wrap: wrap;
 }
-.stat-item { text-align: center; }
+
+.stat { text-align: center; }
 .stat-num {
-  font-family: 'Inter', monospace;
-  font-size: 1.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: rgba(255,255,255,0.95);
+  color: var(--accent);
 }
 .stat-label {
-  font-size: 0.68rem;
-  color: rgba(255,255,255,0.6);
+  font-size: 0.72rem;
+  color: var(--text-faint);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 36px 0 16px;
+
+/* SECTION */
+.section { padding: 32px 0; }
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
 }
-.section-header .icon { font-size: 1.2rem; }
-.section-header .title {
-  font-size: 1.15rem;
+.section-label::before { content: '## '; color: var(--text-faint); }
+.section-title {
+  font-size: 1.3rem;
   font-weight: 700;
-  color: var(--primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
 }
-.section-header .line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, var(--border) 0%, transparent 100%);
-}
-.section-header .count {
-  font-size: 0.78rem;
-  color: var(--text-faint);
-  font-family: 'Inter', monospace;
-}
+
+/* REPORT CARDS */
+.report-list { display: flex; flex-direction: column; gap: 12px; }
+
 .report-card {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 20px 24px;
-  margin-bottom: 10px;
+  display: block;
   text-decoration: none;
-  color: var(--text);
+  color: inherit;
+  background: var(--card);
   border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
 }
-.card-glow {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: linear-gradient(135deg, rgba(37,99,235,0.04) 0%, transparent 50%);
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
-}
+
 .report-card::before {
   content: '';
   position: absolute;
   top: 0; left: 0;
-  width: 4px; height: 100%;
-  background: var(--border);
-  transition: all 0.3s ease;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-green));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
 }
+
 .report-card:hover {
   border-color: var(--border-hover);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.08);
 }
-.report-card:hover::before {
-  background: var(--accent);
-  width: 5px;
-}
-.report-card:hover .card-glow { opacity: 1; }
-.report-card.latest {
-  background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
-  border-color: rgba(37, 99, 235, 0.2);
-}
-.report-card.latest::before {
-  background: var(--accent);
-  width: 5px;
-}
-.report-badge {
-  position: absolute;
-  top: 10px;
-  right: 14px;
-  background: var(--accent);
-  color: #fff;
-  font-size: 0.68rem;
-  font-weight: 600;
-  padding: 2px 12px;
-  border-radius: 50px;
-  letter-spacing: 0.5px;
-}
-.report-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: rgba(37,99,235,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-  flex-shrink: 0;
-  transition: transform 0.3s;
-}
-.report-card:hover .report-icon { transform: scale(1.1) rotate(-5deg); }
-.report-info { flex: 1; }
-.report-date {
-  font-size: 1.05rem;
+
+.report-card:hover::before { transform: scaleX(1); }
+
+.report-card .card-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: var(--primary);
-}
-.report-weekday {
-  font-size: 0.78rem;
-  font-weight: 400;
-  color: var(--text-light);
-  margin-top: 2px;
-}
-.report-action {
-  font-size: 0.84rem;
   color: var(--accent);
-  font-weight: 600;
-  display: flex;
+  margin-bottom: 4px;
+}
+
+.report-card .card-weekday {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+
+.report-card .card-link {
+  display: inline-flex;
   align-items: center;
   gap: 4px;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.report-card .latest-badge {
+  display: inline-block;
+  background: rgba(34, 211, 160, 0.15);
+  color: var(--accent-green);
+  font-size: 0.7rem;
+  padding: 2px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+  margin-left: 8px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* BACK LINK */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 20px;
   transition: gap 0.2s;
-  flex-shrink: 0;
 }
-.report-card:hover .report-action { gap: 8px; }
-.empty {
-  text-align: center;
-  padding: 48px 24px;
-  color: var(--text-light);
-  background: var(--card);
-  border-radius: var(--radius);
-  border: 1px dashed var(--border);
-  font-size: 0.9rem;
-}
+.back-link:hover { gap: 10px; }
+
+/* COMMENTS */
 .comments-section {
-  margin-top: 36px;
+  margin-top: 40px;
   background: var(--card);
-  border-radius: var(--radius);
-  padding: 28px 24px;
   border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
+  border-radius: 16px;
+  padding: 28px 24px;
+  backdrop-filter: blur(10px);
 }
 .comments-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--primary);
   margin-bottom: 6px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 .comments-desc {
   font-size: 0.82rem;
-  color: var(--text-light);
+  color: var(--text-dim);
   margin-bottom: 20px;
 }
-footer {
-  text-align: center;
-  margin-top: 40px;
-  padding: 24px;
-  font-size: 0.76rem;
-  color: var(--text-faint);
-  border-top: 1px solid var(--border);
-}
-footer .brand {
-  font-family: 'Inter', monospace;
-  font-weight: 500;
-  color: var(--text-light);
-}
-@media (max-width: 600px) {
-  .hero { padding: 40px 20px 32px; border-radius: 0 0 24px 24px; }
+
+/* FOOTER */
+.footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 40px; }
+.footer p { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-faint); }
+.footer-links { display: flex; justify-content: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+.footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent); }
+
+@media (max-width: 768px) {
   .hero h1 { font-size: 1.5rem; }
-  .hero .subtitle { font-size: 0.82rem; }
-  .stats-bar { gap: 20px; }
-  .stat-num { font-size: 1.2rem; }
-  .container { padding: 0 14px 40px; }
-  .report-card { padding: 16px 18px; gap: 12px; }
-  .report-icon { width: 38px; height: 38px; font-size: 1.1rem; }
-  .report-date { font-size: 0.95rem; }
-  .comments-section { padding: 20px 16px; }
+  .stats { gap: 20px; }
+  .stat-num { font-size: 1.3rem; }
 }
 </style>
 </head>
 <body>
-<div class="container">
+
 <div class="hero">
-  <a href="https://ts-dinglilu.github.io/" class="back-home">← 返回主页</a>
-  <div class="hero-tag"><span class="dot"></span> 每日自动更新</div>
+  <div class="hero-tag">小米汽车招聘日报<span class="status-dot"></span> 自动更新</div>
   <h1>小米汽车招聘日报</h1>
   <p class="subtitle">小米汽车招聘信息与岗位分析</p>
   <div class="update-time">最后更新: 2026-07-29</div>
-  <div class="stats-bar">
-    <div class="stat-item">
-      <div class="stat-num">2</div>
-      <div class="stat-label">报告总数</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">每日</div>
-      <div class="stat-label">自动更新</div>
-    </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label">报告总数</div></div>
+    <div class="stat"><div class="stat-num">每日</div><div class="stat-label">自动更新</div></div>
   </div>
 </div>
 
-<div class="section-header">
-  <span class="icon">📚</span>
-  <span class="title">报告归档</span>
-  <span class="line"></span>
-  <span class="count">2 篇</span>
+<div class="container">
+  <a href="https://ts-dinglilu.github.io/" class="back-link">← 返回主页</a>
+
+  <div class="section">
+    <div class="section-label">Archive</div>
+    <h2 class="section-title">报告归档</h2>
+    <div class="report-list">
+      <a href="report_20260728.html" class="report-card">
+        <div class="card-date">2026-07-28<span class="latest-badge">LATEST</span></div>
+        <div class="card-weekday">星期二</div>
+        <div class="card-link">点击查看 →</div>
+      </a>
+      <a href="report_20260727.html" class="report-card">
+        <div class="card-date">2026-07-27</div>
+        <div class="card-weekday">星期一</div>
+        <div class="card-link">点击查看 →</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="comments-section">
+    <div class="comments-title">💬 评论区</div>
+    <div class="comments-desc">登录GitHub账号即可评论，支持Markdown和表情回应</div>
+    <script src="https://giscus.app/client.js"
+      data-repo="TS-dinglilu/TS-dinglilu.github.io"
+      data-repo-id="R_kgDOTjqaJQ"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOTjqaJc4DCIL1"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="dark_dimmed"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="https://ts-dinglilu.github.io/">主页</a>
+      <a href="https://github.com/TS-dinglilu">GitHub</a>
+    </div>
+    <p>// 小米汽车招聘日报 · 每日自动更新</p>
+  </footer>
 </div>
 
-        <a href="report_20260728.html" class="report-card latest">
-            <div class="card-glow"></div>
-            <div class="report-badge">最新</div>
-            <div class="report-icon">📄</div>
-            <div class="report-info">
-                <div class="report-date">2026-07-28</div>
-                <div class="report-weekday">星期一</div>
-            </div>
-            <div class="report-action">点击查看 →</div>
-        </a>
-        <a href="report_20260727.html" class="report-card">
-            <div class="card-glow"></div>
-            <div class="report-icon">📄</div>
-            <div class="report-info">
-                <div class="report-date">2026-07-27</div>
-                <div class="report-weekday">星期日</div>
-            </div>
-            <div class="report-action">查看 →</div>
-        </a>
-
-
-<div class="comments-section">
-  <div class="comments-title">💬 评论区</div>
-  <div class="comments-desc">欢迎在此交流讨论，分享你的看法和经验</div>
-  <script src="https://giscus.app/client.js"
-    data-repo="TS-dinglilu/TS-dinglilu.github.io"
-    data-repo-id="R_kgDOTjqaJQ"
-    data-category="Announcements"
-    data-category-id="DIC_kwDOTjqaJc4DCIL1"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="preferred_color_scheme"
-    data-lang="zh-CN"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-  </script>
-</div>
-
-<footer>
-  <span class="brand">// crafted with precision · powered by TRAE Automation</span><br>
-  © 2026 TS-dinglilu · Anhui University of Technology
-</footer>
-</div>
 </body>
 </html>
