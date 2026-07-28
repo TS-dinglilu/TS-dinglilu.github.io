@@ -15,8 +15,8 @@
   --border: rgba(0, 212, 255, 0.12);
   --border-hover: rgba(0, 212, 255, 0.4);
   --text: #e8eef5;
-  --text-dim: #d0dae8;
-  --text-faint: #c8d3e6;
+  --text-dim: #e0e8f2;
+  --text-faint: #d8e2f0;
   --accent: #00d4ff;
   --accent-warm: #ffb347;
   --accent-green: #22d3a0;
@@ -123,7 +123,7 @@ body::after {
   border-top: 3px solid rgba(0, 212, 255, 0.35);
   border-radius: 16px;
   padding: 28px 24px;
-  margin: 40px 0;
+  margin: 48px 0;
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
@@ -165,7 +165,7 @@ body::after {
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--accent);
-  margin: 48px 0 24px;
+  margin: 56px 0 28px;
   padding: 16px 20px;
   background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(20,28,48,0.5) 100%);
   border-left: 4px solid var(--accent);
@@ -409,6 +409,97 @@ footer a, div.footer a { color: var(--accent); text-decoration: none; }
   .header h1 { font-size: 1.4rem; }
   .container { padding: 0 16px 40px; }
 }
+
+/* SECTION DIVIDER - 渐变分割线增强视觉分隔 */
+.section-title {
+  position: relative;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  top: -28px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0,212,255,0.5) 15%, rgba(129,140,248,0.4) 50%, rgba(0,212,255,0.5) 85%, transparent 100%);
+  border-radius: 2px;
+  opacity: 0.7;
+}
+/* 第一个section-title不需要分隔线 */
+.section-title:first-of-type::after {
+  display: none;
+}
+
+
+/* SALARY GRID - 薪资网格 (补充定义确保文字可读) */
+.salary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0;
+}
+@media (max-width: 600px) {
+  .salary-grid { grid-template-columns: 1fr; }
+}
+.salary-item {
+  background: rgba(0,212,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  text-align: center;
+}
+.salary-item .level {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.salary-item .amount {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.salary-item .note {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+/* PILL - 小标签 (补充定义确保文字可读) */
+.pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+  margin: 2px;
+  font-weight: 500;
+  background: rgba(0,212,255,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(0,212,255,0.2);
+}
+.pill.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
+.pill.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
+.pill.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
+
+/* INFO ROW - 信息行 */
+.info-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin: 10px 0;
+}
+
+/* META BAR - 元数据栏 */
+.meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
 </style>
 <!-- cache-bust: 1785261118 -->
 </head>
@@ -518,7 +609,7 @@ footer a, div.footer a { color: var(--accent); text-decoration: none; }
 <a href="http://m.toutiao.com/group/7662308624034742826/" target="_blank" class="source-link">📎 校招分析原文</a>
 &nbsp;<a href="http://m.toutiao.com/group/7667035295862260243/" target="_blank" class="source-link">📎 深汕扩招原文</a>
 </div>
-<div style="margin-top:6px;font-size:0.8rem;color:#c8d3e6;">💡 深汕特别合作区基地正在大规模扩招，岗位总数超9000个，是当前最大招聘窗口。比亚迪按学校档次定薪，双非硕士年薪约16万+。</div>
+<div style="margin-top:6px;font-size:0.8rem;color:#d8e2f0;">💡 深汕特别合作区基地正在大规模扩招，岗位总数超9000个，是当前最大招聘窗口。比亚迪按学校档次定薪，双非硕士年薪约16万+。</div>
 </div>
 
 <!-- 奇瑞 -->
@@ -536,7 +627,7 @@ footer a, div.footer a { color: var(--accent); text-decoration: none; }
 <a href="https://m.liepin.com/job/1984390369.shtml" target="_blank" class="source-link">📎 新能源岗详情</a>
 &nbsp;<a href="https://www.zhaopin.com/jobdetail/CC420458980J40517969510.htm" target="_blank" class="source-link">📎 鄂尔多斯岗详情</a>
 </div>
-<div style="margin-top:6px;font-size:0.8rem;color:#c8d3e6;">💡 奇瑞正处于新能源转型期，技术研发岗薪资竞争力较强；芜湖工厂福利包含免费住宿、厂内食堂。</div>
+<div style="margin-top:6px;font-size:0.8rem;color:#d8e2f0;">💡 奇瑞正处于新能源转型期，技术研发岗薪资竞争力较强；芜湖工厂福利包含免费住宿、厂内食堂。</div>
 </div>
 
 <!-- 吉利 -->
@@ -554,7 +645,7 @@ footer a, div.footer a { color: var(--accent); text-decoration: none; }
 <a href="https://m.yingjiesheng.com/xuanjianghui/xjh_3987467" target="_blank" class="source-link">📎 校招宣讲会详情</a>
 &nbsp;<a href="https://www.zhipin.com/job_detail/45c26f7eb255bb8603x53dy4ElpW.html" target="_blank" class="source-link">📎 制造质量管理岗</a>
 </div>
-<div style="margin-top:6px;font-size:0.8rem;color:#c8d3e6;">💡 极氪侧重电驱/无人驾驶/算法；领克侧重制造质量体系、服务运营。投递渠道：吉利校园招聘官网及"吉利招聘"公众号。</div>
+<div style="margin-top:6px;font-size:0.8rem;color:#d8e2f0;">💡 极氪侧重电驱/无人驾驶/算法；领克侧重制造质量体系、服务运营。投递渠道：吉利校园招聘官网及"吉利招聘"公众号。</div>
 </div>
 
 <!-- 一汽 -->
@@ -572,7 +663,7 @@ footer a, div.footer a { color: var(--accent); text-decoration: none; }
 <a href="http://m.toutiao.com/group/7613936121482904107/" target="_blank" class="source-link">📎 2026春招启动</a>
 &nbsp;<a href="http://m.toutiao.com/group/7598805025703363123/" target="_blank" class="source-link">📎 校园招聘公告</a>
 </div>
-<div style="margin-top:6px;font-size:0.8rem;color:#c8d3e6;">💡 研发总院独立面向全球招聘，专业覆盖车辆工程、机械工程、材料等；红旗品牌为重点研发方向。</div>
+<div style="margin-top:6px;font-size:0.8rem;color:#d8e2f0;">💡 研发总院独立面向全球招聘，专业覆盖车辆工程、机械工程、材料等；红旗品牌为重点研发方向。</div>
 </div>
 
 <!-- 大众 -->
@@ -590,7 +681,7 @@ footer a, div.footer a { color: var(--accent); text-decoration: none; }
 <a href="http://m.toutiao.com/group/7614137866578412070/" target="_blank" class="source-link">📎 一汽-大众2026春招</a>
 &nbsp;<a href="https://hz.dazhonghr.com/jobfair/company?id=1541946&part=97359" target="_blank" class="source-link">📎 上汽大众招聘</a>
 </div>
-<div style="margin-top:6px;font-size:0.8rem;color:#c8d3e6;">💡 两家合资企业招聘通道独立，需分别投递。一汽-大众偏重长春基地，上汽大众偏重上海/杭州。</div>
+<div style="margin-top:6px;font-size:0.8rem;color:#d8e2f0;">💡 两家合资企业招聘通道独立，需分别投递。一汽-大众偏重长春基地，上汽大众偏重上海/杭州。</div>
 </div>
 
 <!-- 特斯拉 -->
@@ -608,14 +699,14 @@ footer a, div.footer a { color: var(--accent); text-decoration: none; }
 <a href="https://mmq.51job.com/i2173/co3101056/xiaozhao/" target="_blank" class="source-link">📎 2026校招主页</a>
 &nbsp;<a href="https://mhr.bjx.com.cn/jobs/920408.html" target="_blank" class="source-link">📎 电池质量工程师</a>
 </div>
-<div style="margin-top:6px;font-size:0.8rem;color:#c8d3e6;">💡 薪资特点：一线城市高于二三线；研发中心岗位于上海超级工厂；英语流利为研发岗硬性要求（需与美国团队沟通）。</div>
+<div style="margin-top:6px;font-size:0.8rem;color:#d8e2f0;">💡 薪资特点：一线城市高于二三线；研发中心岗位于上海超级工厂；英语流利为研发岗硬性要求（需与美国团队沟通）。</div>
 </div>
 </div>
 
 <!-- 岗位类型对比 -->
 <div class="section">
 <h2>📊 岗位类型对比</h2>
-<p style="font-size:0.82rem;color:#c8d3e6;margin-bottom:12px;">薪资数据多来自BOSS直聘社招岗位，应届硕士实际起薪需在此基础上向下修正约20-40%。</p>
+<p style="font-size:0.82rem;color:#d8e2f0;margin-bottom:12px;">薪资数据多来自BOSS直聘社招岗位，应届硕士实际起薪需在此基础上向下修正约20-40%。</p>
 
 <h3>研发类岗位</h3>
 <table>
@@ -950,7 +1041,7 @@ footer a, div.footer a { color: var(--accent); text-decoration: none; }
 <!-- 评论区 -->
 <div style="max-width:860px;margin:40px auto 0;padding:24px 20px;background:rgba(20,28,48,0.9);border-radius:12px;border:1px solid rgba(0, 212, 255, 0.12);">
 <h2 style="font-size:1.1rem;color:#e8eef5;margin-bottom:6px;">💬 评论区</h2>
-<p style="font-size:0.82rem;color:#c8d3e6;margin-bottom:20px;">登录GitHub账号即可评论，支持Markdown和表情回应。历史报告也可评论。</p>
+<p style="font-size:0.82rem;color:#d8e2f0;margin-bottom:20px;">登录GitHub账号即可评论，支持Markdown和表情回应。历史报告也可评论。</p>
 <script src="https://giscus.app/client.js" data-repo="TS-dinglilu/TS-dinglilu.github.io" data-repo-id="R_kgDOTjqaJQ" data-category="Announcements" data-category-id="DIC_kwDOTjqaJc4DCIL1" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark_dimmed" data-lang="zh-CN" crossorigin="anonymous" async></script>
 </div>
 
