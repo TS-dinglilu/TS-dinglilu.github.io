@@ -14,9 +14,9 @@
   --card-solid: rgba(20, 28, 48, 0.9);
   --border: rgba(0, 212, 255, 0.12);
   --border-hover: rgba(0, 212, 255, 0.4);
-  --text: #e2e8f0;
+  --text: #e8eef5;
   --text-dim: #c8d3e6;
-  --text-faint: #8b9bb5;
+  --text-faint: #b0bdd4;
   --accent: #00d4ff;
   --accent-warm: #ffb347;
   --accent-green: #22d3a0;
@@ -186,7 +186,6 @@ body::after {
 .report-card {
   display: flex;
   align-items: center;
-   align-items: center;
   text-decoration: none;
   color: inherit;
   background: var(--card);
@@ -197,6 +196,7 @@ body::after {
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
+  gap: 12px;
 }
 
 .report-card::before {
@@ -234,7 +234,7 @@ body::after {
 }
 
 
-.card-info { flex: 1; }
+.card-info { flex: 1; min-width: 0; }
 
 .report-card .card-link {
   display: flex;
@@ -242,8 +242,10 @@ body::after {
   gap: 4px;
   color: var(--accent);
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-left: auto;
+  flex-shrink: 0;
+  padding-left: 16px;
 }
 
 .report-card .latest-badge {
