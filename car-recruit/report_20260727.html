@@ -6,7 +6,15 @@
 <title>车企招聘日报 | 2026-07-27</title>
 <style>
 /* ============================================================
-   报告页统一CSS模板 - v7.0 暗色主题版
+   报告页统一CSS模板 - v8.0 暗色主题版
+   v8.0改进:
+   - 新增 .icon 系列样式 (.icon-blue/.icon-green 等)
+   - 新增 --success/--warning/--danger/--info CSS变量
+   - 新增 .priority-*/.match-* 状态指示器
+   - 新增 .card-grid 网格布局
+   - 新增大量工具类替代内联样式
+   - 新增 .timeline-item 时间线样式
+   - 新增 .count-badge/.highlight-text/.separator
    v7.0改进:
    - 修复class别名: .header/.date/.num 等与语义化类名对齐
    - 新增统计网格 .stats-grid/.stat-box 样式
@@ -39,6 +47,10 @@
   --accent-pink: #f87171;
   --accent-teal: #14b8a6;
   --accent-orange: #fb923c;
+  --success: #22d3a0;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #00d4ff;
   --grid-line: rgba(0, 212, 255, 0.04);
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
@@ -1079,6 +1091,284 @@ footer a:hover, .footer a:hover { color: var(--accent); }
   .scroll-top { bottom: 20px; right: 20px; width: 38px; height: 38px; }
 }
 
+/* ============================================================
+   Icons — colored emoji icons in section titles
+   ============================================================ */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.icon-blue, .icon.icon-blue {
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.icon-green, .icon.icon-green {
+  background: rgba(34, 211, 160, 0.15);
+  border: 1px solid rgba(34, 211, 160, 0.3);
+}
+
+.icon-orange, .icon.icon-orange {
+  background: rgba(251, 146, 60, 0.15);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.icon-purple, .icon.icon-purple {
+  background: rgba(129, 140, 248, 0.15);
+  border: 1px solid rgba(129, 140, 248, 0.3);
+}
+
+.icon-teal, .icon.icon-teal {
+  background: rgba(20, 184, 166, 0.15);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+}
+
+.icon-pink, .icon.icon-pink {
+  background: rgba(248, 113, 113, 0.15);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.icon-amber, .icon.icon-amber {
+  background: rgba(251, 191, 36, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+/* ============================================================
+   Emoji spans (standalone, not in .icon)
+   ============================================================ */
+.emoji {
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* ============================================================
+   Priority / Status indicators
+   ============================================================ */
+.priority-high, .priority-hot {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--accent-pink);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.priority-mid, .priority-medium {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(251, 146, 60, 0.15);
+  color: var(--accent-orange);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.priority-low, .priority-normal {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(34, 211, 160, 0.15);
+  color: var(--accent-green);
+  border: 1px solid rgba(34, 211, 160, 0.3);
+}
+
+/* ============================================================
+   Match score / compatibility indicators
+   ============================================================ */
+.match-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+
+/* ============================================================
+   Grid layouts for cards
+   ============================================================ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.card-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+
+/* ============================================================
+   Flexbox helpers (common inline style replacements)
+   ============================================================ */
+.flex-row { display: flex; flex-direction: row; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; align-items: flex-start; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 6px; }
+.gap-md { gap: 12px; }
+.gap-lg { gap: 20px; }
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+
+/* ============================================================
+   Text size helpers (common inline style replacements)
+   ============================================================ */
+.fs-xs { font-size: 0.75rem; }
+.fs-sm { font-size: 0.85rem; }
+.fs-md { font-size: 0.93rem; }
+.fs-lg { font-size: 1.1rem; }
+.fs-xl { font-size: 1.3rem; }
+.fs-2xl { font-size: 1.6rem; }
+
+/* ============================================================
+   Color helpers (replace inline color styles)
+   ============================================================ */
+.text-success { color: var(--accent-green) !important; }
+.text-warning { color: #fbbf24 !important; }
+.text-danger { color: var(--accent-pink) !important; }
+.text-info { color: var(--accent) !important; }
+.text-muted { color: var(--text-faint) !important; }
+.text-dimmer { color: var(--text-dim) !important; }
+.text-bright { color: var(--text) !important; }
+.text-accent-green { color: var(--accent-green) !important; }
+.text-accent-orange { color: var(--accent-orange) !important; }
+.text-accent-purple { color: #a5b4fc !important; }
+.text-accent-pink { color: var(--accent-pink) !important; }
+.text-accent-teal { color: var(--accent-teal) !important; }
+.text-white { color: #ffffff !important; }
+
+/* ============================================================
+   Margin/Padding helpers (replace inline margin styles)
+   ============================================================ */
+.mt-4 { margin-top: 32px; } .mt-5 { margin-top: 40px; } .mt-6 { margin-top: 48px; }
+.mb-4 { margin-bottom: 32px; } .mb-5 { margin-bottom: 40px; } .mb-6 { margin-bottom: 48px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.p-0 { padding: 0; } .p-2 { padding: 16px; } .p-3 { padding: 24px; }
+.py-2 { padding-top: 16px; padding-bottom: 16px; }
+.px-2 { padding-left: 16px; padding-right: 16px; }
+
+/* ============================================================
+   Misc component styles
+   ============================================================ */
+.timeline-item {
+  position: relative;
+  padding-left: 24px;
+  margin: 12px 0;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 20px;
+  bottom: -12px;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item:last-child::after { display: none; }
+
+/* Count badge (used in headers) */
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  color: #0a0e1a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Highlight text */
+mark, .highlight-text {
+  background: rgba(0, 212, 255, 0.15);
+  color: var(--accent);
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+/* Emoji list items */
+.emoji-list { list-style: none; padding-left: 0; }
+.emoji-list li { padding-left: 28px; position: relative; margin-bottom: 8px; }
+
+/* Separator line with gradient */
+.separator {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
+  margin: 32px 0;
+  border: none;
+}
+
+/* Badge variants for common use cases */
+.badge-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+
+/* Tag variants for common use cases */
+.tag-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+
 @media print {
   body { background: #ffffff; color: #000000; font-size: 12px; line-height: 1.6; }
   body::before, body::after { display: none !important; }
@@ -1109,6 +1399,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 </style>
 <!-- cache-bust: 1785261118 -->
   <!-- v7.0-1785291713 -->
+  <!-- v8.0-1785292710 -->
 </head>
 <body>
 <div class="container">
@@ -1216,7 +1507,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <a href="http://m.toutiao.com/group/7662308624034742826/" target="_blank" class="source-link">📎 校招分析原文</a>
 &nbsp;<a href="http://m.toutiao.com/group/7667035295862260243/" target="_blank" class="source-link">📎 深汕扩招原文</a>
 </div>
-<div style="margin-top:6px;font-size:0.8rem">💡 深汕特别合作区基地正在大规模扩招，岗位总数超9000个，是当前最大招聘窗口。比亚迪按学校档次定薪，双非硕士年薪约16万+。</div>
+<div >💡 深汕特别合作区基地正在大规模扩招，岗位总数超9000个，是当前最大招聘窗口。比亚迪按学校档次定薪，双非硕士年薪约16万+。</div>
 </div>
 
 <!-- 奇瑞 -->
@@ -1234,7 +1525,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <a href="https://m.liepin.com/job/1984390369.shtml" target="_blank" class="source-link">📎 新能源岗详情</a>
 &nbsp;<a href="https://www.zhaopin.com/jobdetail/CC420458980J40517969510.htm" target="_blank" class="source-link">📎 鄂尔多斯岗详情</a>
 </div>
-<div style="margin-top:6px;font-size:0.8rem">💡 奇瑞正处于新能源转型期，技术研发岗薪资竞争力较强；芜湖工厂福利包含免费住宿、厂内食堂。</div>
+<div >💡 奇瑞正处于新能源转型期，技术研发岗薪资竞争力较强；芜湖工厂福利包含免费住宿、厂内食堂。</div>
 </div>
 
 <!-- 吉利 -->
@@ -1252,7 +1543,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <a href="https://m.yingjiesheng.com/xuanjianghui/xjh_3987467" target="_blank" class="source-link">📎 校招宣讲会详情</a>
 &nbsp;<a href="https://www.zhipin.com/job_detail/45c26f7eb255bb8603x53dy4ElpW.html" target="_blank" class="source-link">📎 制造质量管理岗</a>
 </div>
-<div style="margin-top:6px;font-size:0.8rem">💡 极氪侧重电驱/无人驾驶/算法；领克侧重制造质量体系、服务运营。投递渠道：吉利校园招聘官网及"吉利招聘"公众号。</div>
+<div >💡 极氪侧重电驱/无人驾驶/算法；领克侧重制造质量体系、服务运营。投递渠道：吉利校园招聘官网及"吉利招聘"公众号。</div>
 </div>
 
 <!-- 一汽 -->
@@ -1270,7 +1561,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <a href="http://m.toutiao.com/group/7613936121482904107/" target="_blank" class="source-link">📎 2026春招启动</a>
 &nbsp;<a href="http://m.toutiao.com/group/7598805025703363123/" target="_blank" class="source-link">📎 校园招聘公告</a>
 </div>
-<div style="margin-top:6px;font-size:0.8rem">💡 研发总院独立面向全球招聘，专业覆盖车辆工程、机械工程、材料等；红旗品牌为重点研发方向。</div>
+<div >💡 研发总院独立面向全球招聘，专业覆盖车辆工程、机械工程、材料等；红旗品牌为重点研发方向。</div>
 </div>
 
 <!-- 大众 -->
@@ -1288,7 +1579,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <a href="http://m.toutiao.com/group/7614137866578412070/" target="_blank" class="source-link">📎 一汽-大众2026春招</a>
 &nbsp;<a href="https://hz.dazhonghr.com/jobfair/company?id=1541946&part=97359" target="_blank" class="source-link">📎 上汽大众招聘</a>
 </div>
-<div style="margin-top:6px;font-size:0.8rem">💡 两家合资企业招聘通道独立，需分别投递。一汽-大众偏重长春基地，上汽大众偏重上海/杭州。</div>
+<div >💡 两家合资企业招聘通道独立，需分别投递。一汽-大众偏重长春基地，上汽大众偏重上海/杭州。</div>
 </div>
 
 <!-- 特斯拉 -->
@@ -1306,14 +1597,14 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <a href="https://mmq.51job.com/i2173/co3101056/xiaozhao/" target="_blank" class="source-link">📎 2026校招主页</a>
 &nbsp;<a href="https://mhr.bjx.com.cn/jobs/920408.html" target="_blank" class="source-link">📎 电池质量工程师</a>
 </div>
-<div style="margin-top:6px;font-size:0.8rem">💡 薪资特点：一线城市高于二三线；研发中心岗位于上海超级工厂；英语流利为研发岗硬性要求（需与美国团队沟通）。</div>
+<div >💡 薪资特点：一线城市高于二三线；研发中心岗位于上海超级工厂；英语流利为研发岗硬性要求（需与美国团队沟通）。</div>
 </div>
 </div>
 
 <!-- 岗位类型对比 -->
 <div class="section">
 <h2>📊 岗位类型对比</h2>
-<p style="font-size:0.82rem;margin-bottom:12px">薪资数据多来自BOSS直聘社招岗位，应届硕士实际起薪需在此基础上向下修正约20-40%。</p>
+<p >薪资数据多来自BOSS直聘社招岗位，应届硕士实际起薪需在此基础上向下修正约20-40%。</p>
 
 <h3>研发类岗位</h3>
 <table>
@@ -1499,20 +1790,20 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 
 <h3>面试高频问题</h3>
 <div class="card">
-<h4 style="font-size:0.95rem;margin-bottom:8px">通用HR面</h4>
+<h4 >通用HR面</h4>
 <ul style="padding-left:18px;font-size:0.88rem;">
 <li>为什么选新能源汽车行业/为什么来比亚迪？</li>
 <li>你的职业规划是什么？</li>
 <li>如何处理工作中压力？/与领导意见不一致怎么处理？</li>
 <li>是否独生子女/家庭情况（比亚迪有国企味道）</li>
 </ul>
-<h4 style="font-size:0.95rem;margin:12px 0 8px">技术面（机械方向）</h4>
+<h4 >技术面（机械方向）</h4>
 <ul style="padding-left:18px;font-size:0.88rem;">
 <li>机械设计基础：材料力学、机械原理、公差配合、机构设计、传动系统</li>
 <li>现场操作CAD软件或解释以往项目设计思路</li>
 <li>专业英语术语</li>
 </ul>
-<h4 style="font-size:0.95rem;margin:12px 0 8px">比亚迪技术面实例（转码Java岗）</h4>
+<h4 >比亚迪技术面实例（转码Java岗）</h4>
 <ul style="padding-left:18px;font-size:0.88rem;">
 <li>Linux命令（chmod、netstat、ping）</li>
 <li>计算机网络OSI七层模型、HTTP/TCP</li>
@@ -1526,15 +1817,15 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <h3>双非硕士加分建议</h3>
 <div class="tip-box">
 <h4>📝 论文</h4>
-<p style="font-size:0.88rem;">杭电机械硕士靠<strong>一篇中文核心论文</strong>+导师项目成功入职比亚迪</p>
+<p >杭电机械硕士靠<strong>一篇中文核心论文</strong>+导师项目成功入职比亚迪</p>
 <h4 >🏆 竞赛</h4>
-<p style="font-size:0.88rem;">蓝桥杯、数学建模校赛均为加分项；<strong>FSAE中国大学生方程式汽车大赛</strong>（2026"吉利杯"已启动报名）—— 车企高度认可，直接对口</p>
+<p >蓝桥杯、数学建模校赛均为加分项；<strong>FSAE中国大学生方程式汽车大赛</strong>（2026"吉利杯"已启动报名）—— 车企高度认可，直接对口</p>
 <h4 >💼 实习与项目</h4>
-<p style="font-size:0.88rem;">导师实验室横向项目可替代实习经历；课程设计/毕设做扎实形成完整项目文档</p>
+<p >导师实验室横向项目可替代实习经历；课程设计/毕设做扎实形成完整项目文档</p>
 <h4 >🔧 技能补充</h4>
-<p style="font-size:0.88rem;">强化CAD/CAE软件（假期提升）；至少英语四级，优秀企业要求六级；补编程（C/C++/Python/Java）可切入车企软件/智驾周边岗</p>
+<p >强化CAD/CAE软件（假期提升）；至少英语四级，优秀企业要求六级；补编程（C/C++/Python/Java）可切入车企软件/智驾周边岗</p>
 <h4 >📌 其他</h4>
-<p style="font-size:0.88rem;">参加紧缺工种技能培训（如人工智能训练师），参训后平均薪资比未参训高18%；用好"1131"官方就业服务</p>
+<p >参加紧缺工种技能培训（如人工智能训练师），参训后平均薪资比未参训高18%；用好"1131"官方就业服务</p>
 </div>
 <a href="http://www.formulastudent.com.cn/news/7193.html" target="_blank" class="source-link">📎 FSAE 2026吉利杯</a>
 &nbsp;<a href="https://blog.csdn.net/bjweimengshu/article/details/134110493" target="_blank" class="source-link">📎 加分经验原文</a>
@@ -1639,7 +1930,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 </table>
 </div>
 
-<div style="text-align:center;padding:20px 0;font-size:0.78rem">
+<div >
 本报告由AI自动生成 | 数据截至2026年7月27日 | 仅供参考
 </div>
 
@@ -1648,7 +1939,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <!-- 评论区 -->
 <div style="max-width:860px;margin:40px auto 0;padding:24px 20px;background:rgba(20,28,48,0.9);border-radius:12px;border:1px solid rgba(0, 212, 255, 0.12);">
 <h2 style="font-size:1.1rem;margin-bottom:6px">💬 评论区</h2>
-<p style="font-size:0.82rem;margin-bottom:20px">登录GitHub账号即可评论，支持Markdown和表情回应。历史报告也可评论。</p>
+<p >登录GitHub账号即可评论，支持Markdown和表情回应。历史报告也可评论。</p>
 <script src="https://giscus.app/client.js" data-repo="TS-dinglilu/TS-dinglilu.github.io" data-repo-id="R_kgDOTjqaJQ" data-category="Announcements" data-category-id="DIC_kwDOTjqaJc4DCIL1" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark_dimmed" data-lang="zh-CN" crossorigin="anonymous" async></script>
 </div>
 
