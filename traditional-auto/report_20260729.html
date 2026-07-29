@@ -9,7 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   报告页统一CSS模板 - v7.0 暗色主题版
+   报告页统一CSS模板 - v8.0 暗色主题版
+   v8.0改进:
+   - 新增 .icon 系列样式 (.icon-blue/.icon-green 等)
+   - 新增 --success/--warning/--danger/--info CSS变量
+   - 新增 .priority-*/.match-* 状态指示器
+   - 新增 .card-grid 网格布局
+   - 新增大量工具类替代内联样式
+   - 新增 .timeline-item 时间线样式
+   - 新增 .count-badge/.highlight-text/.separator
    v7.0改进:
    - 修复class别名: .header/.date/.num 等与语义化类名对齐
    - 新增统计网格 .stats-grid/.stat-box 样式
@@ -42,6 +50,10 @@
   --accent-pink: #f87171;
   --accent-teal: #14b8a6;
   --accent-orange: #fb923c;
+  --success: #22d3a0;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #00d4ff;
   --grid-line: rgba(0, 212, 255, 0.04);
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
@@ -1082,6 +1094,284 @@ footer a:hover, .footer a:hover { color: var(--accent); }
   .scroll-top { bottom: 20px; right: 20px; width: 38px; height: 38px; }
 }
 
+/* ============================================================
+   Icons — colored emoji icons in section titles
+   ============================================================ */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.icon-blue, .icon.icon-blue {
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.icon-green, .icon.icon-green {
+  background: rgba(34, 211, 160, 0.15);
+  border: 1px solid rgba(34, 211, 160, 0.3);
+}
+
+.icon-orange, .icon.icon-orange {
+  background: rgba(251, 146, 60, 0.15);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.icon-purple, .icon.icon-purple {
+  background: rgba(129, 140, 248, 0.15);
+  border: 1px solid rgba(129, 140, 248, 0.3);
+}
+
+.icon-teal, .icon.icon-teal {
+  background: rgba(20, 184, 166, 0.15);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+}
+
+.icon-pink, .icon.icon-pink {
+  background: rgba(248, 113, 113, 0.15);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.icon-amber, .icon.icon-amber {
+  background: rgba(251, 191, 36, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+/* ============================================================
+   Emoji spans (standalone, not in .icon)
+   ============================================================ */
+.emoji {
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* ============================================================
+   Priority / Status indicators
+   ============================================================ */
+.priority-high, .priority-hot {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--accent-pink);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.priority-mid, .priority-medium {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(251, 146, 60, 0.15);
+  color: var(--accent-orange);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.priority-low, .priority-normal {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(34, 211, 160, 0.15);
+  color: var(--accent-green);
+  border: 1px solid rgba(34, 211, 160, 0.3);
+}
+
+/* ============================================================
+   Match score / compatibility indicators
+   ============================================================ */
+.match-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+
+/* ============================================================
+   Grid layouts for cards
+   ============================================================ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.card-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+
+/* ============================================================
+   Flexbox helpers (common inline style replacements)
+   ============================================================ */
+.flex-row { display: flex; flex-direction: row; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; align-items: flex-start; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 6px; }
+.gap-md { gap: 12px; }
+.gap-lg { gap: 20px; }
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+
+/* ============================================================
+   Text size helpers (common inline style replacements)
+   ============================================================ */
+.fs-xs { font-size: 0.75rem; }
+.fs-sm { font-size: 0.85rem; }
+.fs-md { font-size: 0.93rem; }
+.fs-lg { font-size: 1.1rem; }
+.fs-xl { font-size: 1.3rem; }
+.fs-2xl { font-size: 1.6rem; }
+
+/* ============================================================
+   Color helpers (replace inline color styles)
+   ============================================================ */
+.text-success { color: var(--accent-green) !important; }
+.text-warning { color: #fbbf24 !important; }
+.text-danger { color: var(--accent-pink) !important; }
+.text-info { color: var(--accent) !important; }
+.text-muted { color: var(--text-faint) !important; }
+.text-dimmer { color: var(--text-dim) !important; }
+.text-bright { color: var(--text) !important; }
+.text-accent-green { color: var(--accent-green) !important; }
+.text-accent-orange { color: var(--accent-orange) !important; }
+.text-accent-purple { color: #a5b4fc !important; }
+.text-accent-pink { color: var(--accent-pink) !important; }
+.text-accent-teal { color: var(--accent-teal) !important; }
+.text-white { color: #ffffff !important; }
+
+/* ============================================================
+   Margin/Padding helpers (replace inline margin styles)
+   ============================================================ */
+.mt-4 { margin-top: 32px; } .mt-5 { margin-top: 40px; } .mt-6 { margin-top: 48px; }
+.mb-4 { margin-bottom: 32px; } .mb-5 { margin-bottom: 40px; } .mb-6 { margin-bottom: 48px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.p-0 { padding: 0; } .p-2 { padding: 16px; } .p-3 { padding: 24px; }
+.py-2 { padding-top: 16px; padding-bottom: 16px; }
+.px-2 { padding-left: 16px; padding-right: 16px; }
+
+/* ============================================================
+   Misc component styles
+   ============================================================ */
+.timeline-item {
+  position: relative;
+  padding-left: 24px;
+  margin: 12px 0;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 20px;
+  bottom: -12px;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item:last-child::after { display: none; }
+
+/* Count badge (used in headers) */
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  color: #0a0e1a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Highlight text */
+mark, .highlight-text {
+  background: rgba(0, 212, 255, 0.15);
+  color: var(--accent);
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+/* Emoji list items */
+.emoji-list { list-style: none; padding-left: 0; }
+.emoji-list li { padding-left: 28px; position: relative; margin-bottom: 8px; }
+
+/* Separator line with gradient */
+.separator {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
+  margin: 32px 0;
+  border: none;
+}
+
+/* Badge variants for common use cases */
+.badge-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+
+/* Tag variants for common use cases */
+.tag-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+
 @media print {
   body { background: #ffffff; color: #000000; font-size: 12px; line-height: 1.6; }
   body::before, body::after { display: none !important; }
@@ -1111,6 +1401,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 
 </style>
   <!-- v7.0-1785291713 -->
+  <!-- v8.0-1785292713 -->
 </head>
 <body>
 
@@ -1239,7 +1530,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
   <h2 class="section-title"><span class="num">03</span> 40+在招岗位详情</h2>
   <p style="color:var(--text-secondary); margin-bottom:20px;">以下为六大传统车企最新在招岗位，涵盖校招、社招及实习生岗位，重点标注机械工程相关岗位。</p>
 
-  <h3 style="color:var(--accent); margin:20px 0 12px; font-size:1.1rem;">一汽集团在招岗位</h3>
+  <h3 >一汽集团在招岗位</h3>
   <div class="grid-2">
     <div class="job-card">
       <div class="job-title">新能源研发岗</div>
@@ -1291,7 +1582,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     </div>
   </div>
 
-  <h3 style="color:var(--accent); margin:24px 0 12px; font-size:1.1rem;">上汽集团在招岗位</h3>
+  <h3 >上汽集团在招岗位</h3>
   <div class="grid-2">
     <div class="job-card">
       <div class="job-title">泛亚-驱动系统类研发</div>
@@ -1359,7 +1650,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     </div>
   </div>
 
-  <h3 style="color:var(--accent); margin:24px 0 12px; font-size:1.1rem;">东风汽车在招岗位</h3>
+  <h3 >东风汽车在招岗位</h3>
   <div class="grid-2">
     <div class="job-card">
       <div class="job-title">机械车辆类研发（攀研者计划）</div>
@@ -1419,7 +1710,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     </div>
   </div>
 
-  <h3 style="color:var(--accent); margin:24px 0 12px; font-size:1.1rem;">长安汽车在招岗位</h3>
+  <h3 >长安汽车在招岗位</h3>
   <div class="grid-2">
     <div class="job-card">
       <div class="job-title">工艺工程师</div>
@@ -1471,7 +1762,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     </div>
   </div>
 
-  <h3 style="color:var(--accent); margin:24px 0 12px; font-size:1.1rem;">广汽集团在招岗位</h3>
+  <h3 >广汽集团在招岗位</h3>
   <div class="grid-2">
     <div class="job-card">
       <div class="job-title">商品性评价工程师</div>
@@ -1523,7 +1814,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     </div>
   </div>
 
-  <h3 style="color:var(--accent); margin:24px 0 12px; font-size:1.1rem;">北汽集团在招岗位</h3>
+  <h3 >北汽集团在招岗位</h3>
   <div class="grid-2">
     <div class="job-card">
       <div class="job-title">机械工程师</div>
@@ -1788,25 +2079,25 @@ footer a:hover, .footer a:hover { color: var(--accent); }
           <tr>
             <td>新势力</td>
             <td>理想汽车</td>
-            <td><strong style="color:var(--success)">88.26万元</strong></td>
+            <td><strong >88.26万元</strong></td>
             <td>剔除股权后65.18万</td>
           </tr>
           <tr>
             <td>新势力</td>
             <td>蔚来汽车</td>
-            <td><strong style="color:var(--success)">80.19万元</strong></td>
+            <td><strong >80.19万元</strong></td>
             <td>—</td>
           </tr>
           <tr>
             <td>新势力平均</td>
             <td>—</td>
-            <td><strong style="color:var(--success)">77.52万元</strong></td>
+            <td><strong >77.52万元</strong></td>
             <td>—</td>
           </tr>
           <tr>
             <td>传统车企平均</td>
             <td>—</td>
-            <td><strong style="color:var(--warning)">22.84万元</strong></td>
+            <td><strong >22.84万元</strong></td>
             <td>—</td>
           </tr>
           <tr>
@@ -1824,7 +2115,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
         </tbody>
       </table>
     </div>
-    <p ><strong>核心结论：</strong>新势力研发人员人均薪酬是传统车企的<strong style="color:var(--danger)">3-4倍</strong>，差距最大可达10倍。<a class="source-link" href="http://m.toutiao.com/group/7401079206089605651/" target="_blank">📎 查看原文</a></p>
+    <p ><strong>核心结论：</strong>新势力研发人员人均薪酬是传统车企的<strong >3-4倍</strong>，差距最大可达10倍。<a class="source-link" href="http://m.toutiao.com/group/7401079206089605651/" target="_blank">📎 查看原文</a></p>
   </div>
 
   <div class="grid-2">
@@ -1921,8 +2212,8 @@ footer a:hover, .footer a:hover { color: var(--accent); }
       <ul>
         <li>传统车企40%的软件人才薪酬达75分位</li>
         <li>仅16.7%的新势力软件人才达75分位</li>
-        <li>新势力新四化人才主动离职率：<strong style="color:var(--danger)">20.2%</strong></li>
-        <li>传统车企主动离职率：<strong style="color:var(--success)">15.9%</strong></li>
+        <li>新势力新四化人才主动离职率：<strong >20.2%</strong></li>
+        <li>传统车企主动离职率：<strong >15.9%</strong></li>
         <li>回流降薪幅度普遍在<strong>20%以内</strong></li>
         <li>2025年传统向新能源人才流动预计增长40%</li>
       </ul>
@@ -2175,7 +2466,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 
   <div class="recommend-card">
     <div class="match-score">⭐⭐⭐⭐⭐</div>
-    <h3 style="color:var(--accent);">TOP 1：东风研发总院 - 机械车辆类研发（攀研者计划）</h3>
+    <h3 >TOP 1：东风研发总院 - 机械车辆类研发（攀研者计划）</h3>
     <p><strong>匹配理由：</strong>直接面向机械工程、车辆工程专业，"攀研者"计划专门面向成绩优异的应届毕业生，七险二金福利最优。</p>
     <p><strong>薪资：</strong>10,000元以上/月 + 七险二金 + 安家费 + 政府人才公寓</p>
     <p><strong>地点：</strong>武汉/上海</p>
@@ -2184,7 +2475,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 
   <div class="recommend-card">
     <div class="match-score">⭐⭐⭐⭐⭐</div>
-    <h3 style="color:var(--accent);">TOP 2：一汽红旗研发总院 - 整车/总成开发</h3>
+    <h3 >TOP 2：一汽红旗研发总院 - 整车/总成开发</h3>
     <p><strong>匹配理由：</strong>车辆工程、机械工程专业完全对口，面试流程极快（当天发offer），博士安家费50万。硕士安家费5万。</p>
     <p><strong>薪资：</strong>面议 + 六险二金 + 安家费5万 + 政府购房补贴5万</p>
     <p><strong>地点：</strong>长春/北京/上海/大湾区</p>
@@ -2193,7 +2484,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 
   <div class="recommend-card">
     <div class="match-score">⭐⭐⭐⭐⭐</div>
-    <h3 style="color:var(--accent);">TOP 3：长安汽车 - 工程技术人员（重庆总部）</h3>
+    <h3 >TOP 3：长安汽车 - 工程技术人员（重庆总部）</h3>
     <p><strong>匹配理由：</strong>机械、汽车制造专业完全对口，"后10保障制度"提供极强稳定性，实打实双休。硕士年薪15-25万+安家费5-8万。</p>
     <p><strong>薪资：</strong>硕士15-25万/年 + 六险一金 + 安家费5-8万 + 年终奖3-6个月</p>
     <p><strong>地点：</strong>重庆江北区</p>
@@ -2202,7 +2493,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 
   <div class="recommend-card">
     <div class="match-score">⭐⭐⭐⭐</div>
-    <h3 style="color:var(--accent);">TOP 4：广汽集团 - 发动机缸体设计工程师</h3>
+    <h3 >TOP 4：广汽集团 - 发动机缸体设计工程师</h3>
     <p><strong>匹配理由：</strong>机械工程专业直接对口发动机设计方向，广州一线城市，16薪待遇优厚。</p>
     <p><strong>薪资：</strong>10-20K×13薪 + 五险一金+企业年金</p>
     <p><strong>地点：</strong>广州番禺</p>
@@ -2211,7 +2502,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 
   <div class="recommend-card">
     <div class="match-score">⭐⭐⭐⭐</div>
-    <h3 style="color:var(--accent);">TOP 5：上汽通用 - 泛亚驱动系统类研发</h3>
+    <h3 >TOP 5：上汽通用 - 泛亚驱动系统类研发</h3>
     <p><strong>匹配理由：</strong>机械类专业对口，泛亚技术中心是行业顶级研发平台，上海发展空间大。</p>
     <p><strong>薪资：</strong>12,000-15,000元/月 + 公积金12%（含奖金基数）</p>
     <p><strong>地点：</strong>上海浦东新区</p>
@@ -2220,7 +2511,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 
   <div class="recommend-card">
     <div class="match-score">⭐⭐⭐⭐</div>
-    <h3 style="color:var(--accent);">TOP 6：北汽集团 - 校招综合岗</h3>
+    <h3 >TOP 6：北汽集团 - 校招综合岗</h3>
     <p><strong>匹配理由：</strong>六大类1000+岗位，机械类全覆盖，16家单位可选，北京核心城市。3000人规模上岸概率大。</p>
     <p><strong>薪资：</strong>10,000-14,999元/月</p>
     <p><strong>地点：</strong>北京及全国</p>
