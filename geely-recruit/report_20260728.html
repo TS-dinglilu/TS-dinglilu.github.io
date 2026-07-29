@@ -6,7 +6,15 @@
 <title>吉利招聘日报 | 2026-07-28</title>
 <style>
 /* ============================================================
-   报告页统一CSS模板 - v7.0 暗色主题版
+   报告页统一CSS模板 - v8.0 暗色主题版
+   v8.0改进:
+   - 新增 .icon 系列样式 (.icon-blue/.icon-green 等)
+   - 新增 --success/--warning/--danger/--info CSS变量
+   - 新增 .priority-*/.match-* 状态指示器
+   - 新增 .card-grid 网格布局
+   - 新增大量工具类替代内联样式
+   - 新增 .timeline-item 时间线样式
+   - 新增 .count-badge/.highlight-text/.separator
    v7.0改进:
    - 修复class别名: .header/.date/.num 等与语义化类名对齐
    - 新增统计网格 .stats-grid/.stat-box 样式
@@ -39,6 +47,10 @@
   --accent-pink: #f87171;
   --accent-teal: #14b8a6;
   --accent-orange: #fb923c;
+  --success: #22d3a0;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #00d4ff;
   --grid-line: rgba(0, 212, 255, 0.04);
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
@@ -1079,6 +1091,284 @@ footer a:hover, .footer a:hover { color: var(--accent); }
   .scroll-top { bottom: 20px; right: 20px; width: 38px; height: 38px; }
 }
 
+/* ============================================================
+   Icons — colored emoji icons in section titles
+   ============================================================ */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.icon-blue, .icon.icon-blue {
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.icon-green, .icon.icon-green {
+  background: rgba(34, 211, 160, 0.15);
+  border: 1px solid rgba(34, 211, 160, 0.3);
+}
+
+.icon-orange, .icon.icon-orange {
+  background: rgba(251, 146, 60, 0.15);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.icon-purple, .icon.icon-purple {
+  background: rgba(129, 140, 248, 0.15);
+  border: 1px solid rgba(129, 140, 248, 0.3);
+}
+
+.icon-teal, .icon.icon-teal {
+  background: rgba(20, 184, 166, 0.15);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+}
+
+.icon-pink, .icon.icon-pink {
+  background: rgba(248, 113, 113, 0.15);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.icon-amber, .icon.icon-amber {
+  background: rgba(251, 191, 36, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+/* ============================================================
+   Emoji spans (standalone, not in .icon)
+   ============================================================ */
+.emoji {
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* ============================================================
+   Priority / Status indicators
+   ============================================================ */
+.priority-high, .priority-hot {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--accent-pink);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.priority-mid, .priority-medium {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(251, 146, 60, 0.15);
+  color: var(--accent-orange);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.priority-low, .priority-normal {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(34, 211, 160, 0.15);
+  color: var(--accent-green);
+  border: 1px solid rgba(34, 211, 160, 0.3);
+}
+
+/* ============================================================
+   Match score / compatibility indicators
+   ============================================================ */
+.match-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+
+/* ============================================================
+   Grid layouts for cards
+   ============================================================ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.card-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+
+/* ============================================================
+   Flexbox helpers (common inline style replacements)
+   ============================================================ */
+.flex-row { display: flex; flex-direction: row; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; align-items: flex-start; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 6px; }
+.gap-md { gap: 12px; }
+.gap-lg { gap: 20px; }
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+
+/* ============================================================
+   Text size helpers (common inline style replacements)
+   ============================================================ */
+.fs-xs { font-size: 0.75rem; }
+.fs-sm { font-size: 0.85rem; }
+.fs-md { font-size: 0.93rem; }
+.fs-lg { font-size: 1.1rem; }
+.fs-xl { font-size: 1.3rem; }
+.fs-2xl { font-size: 1.6rem; }
+
+/* ============================================================
+   Color helpers (replace inline color styles)
+   ============================================================ */
+.text-success { color: var(--accent-green) !important; }
+.text-warning { color: #fbbf24 !important; }
+.text-danger { color: var(--accent-pink) !important; }
+.text-info { color: var(--accent) !important; }
+.text-muted { color: var(--text-faint) !important; }
+.text-dimmer { color: var(--text-dim) !important; }
+.text-bright { color: var(--text) !important; }
+.text-accent-green { color: var(--accent-green) !important; }
+.text-accent-orange { color: var(--accent-orange) !important; }
+.text-accent-purple { color: #a5b4fc !important; }
+.text-accent-pink { color: var(--accent-pink) !important; }
+.text-accent-teal { color: var(--accent-teal) !important; }
+.text-white { color: #ffffff !important; }
+
+/* ============================================================
+   Margin/Padding helpers (replace inline margin styles)
+   ============================================================ */
+.mt-4 { margin-top: 32px; } .mt-5 { margin-top: 40px; } .mt-6 { margin-top: 48px; }
+.mb-4 { margin-bottom: 32px; } .mb-5 { margin-bottom: 40px; } .mb-6 { margin-bottom: 48px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.p-0 { padding: 0; } .p-2 { padding: 16px; } .p-3 { padding: 24px; }
+.py-2 { padding-top: 16px; padding-bottom: 16px; }
+.px-2 { padding-left: 16px; padding-right: 16px; }
+
+/* ============================================================
+   Misc component styles
+   ============================================================ */
+.timeline-item {
+  position: relative;
+  padding-left: 24px;
+  margin: 12px 0;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 20px;
+  bottom: -12px;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item:last-child::after { display: none; }
+
+/* Count badge (used in headers) */
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  color: #0a0e1a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Highlight text */
+mark, .highlight-text {
+  background: rgba(0, 212, 255, 0.15);
+  color: var(--accent);
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+/* Emoji list items */
+.emoji-list { list-style: none; padding-left: 0; }
+.emoji-list li { padding-left: 28px; position: relative; margin-bottom: 8px; }
+
+/* Separator line with gradient */
+.separator {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
+  margin: 32px 0;
+  border: none;
+}
+
+/* Badge variants for common use cases */
+.badge-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+
+/* Tag variants for common use cases */
+.tag-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+
 @media print {
   body { background: #ffffff; color: #000000; font-size: 12px; line-height: 1.6; }
   body::before, body::after { display: none !important; }
@@ -1109,6 +1399,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 </style>
 <!-- cache-bust: 1785261217 -->
   <!-- v7.0-1785291713 -->
+  <!-- v8.0-1785292712 -->
 </head>
 <body>
 
@@ -1510,7 +1801,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
       <strong>感受：</strong>整体流程高效，面试官态度友好。
     </div>
     <div class="exp-meta">来源：牛客网 | 2025年</div>
-    <a class="source-link" href="https://m.nowcoder.com/discuss/842445" target="_blank" style="margin-top:6px;display:inline-flex;">📎 查看原文</a>
+    <a class="source-link" href="https://m.nowcoder.com/discuss/842445" target="_blank" >📎 查看原文</a>
   </div>
 
   <div class="exp-card">
@@ -1524,7 +1815,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
       <strong>感受：</strong>面试流程规范，面试官有水平，能抓住回答模糊的点进一步挖掘，过程不会感到很有压力。
     </div>
     <div class="exp-meta">来源：CSDN | 2025年1月</div>
-    <a class="source-link" href="https://blog.csdn.net/offergoose/article/details/145111278" target="_blank" style="margin-top:6px;display:inline-flex;">📎 查看原文</a>
+    <a class="source-link" href="https://blog.csdn.net/offergoose/article/details/145111278" target="_blank" >📎 查看原文</a>
   </div>
 
   <div class="exp-card">
@@ -1538,7 +1829,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
       <strong>感受：</strong>技术深度要求高，需要扎实的算法基础和项目实践经验。
     </div>
     <div class="exp-meta">来源：知识星球 | 2025年</div>
-    <a class="source-link" href="https://wx.zsxq.com/group/555225242544/topic/8858282155454552" target="_blank" style="margin-top:6px;display:inline-flex;">📎 查看原文</a>
+    <a class="source-link" href="https://wx.zsxq.com/group/555225242544/topic/8858282155454552" target="_blank" >📎 查看原文</a>
   </div>
 
   <div class="exp-card">
@@ -1552,7 +1843,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
       <strong>感受：</strong>测评题量大，需提前练习SHL题库。面试聚焦行业认知与产品思维。
     </div>
     <div class="exp-meta">来源：牛客网 | 2025年10月</div>
-    <a class="source-link" href="https://m.nowcoder.com/feed/main/detail/ba18736349894cc78c0165e2bc80c4cf?urlSource=home-api" target="_blank" style="margin-top:6px;display:inline-flex;">📎 查看原文</a>
+    <a class="source-link" href="https://m.nowcoder.com/feed/main/detail/ba18736349894cc78c0165e2bc80c4cf?urlSource=home-api" target="_blank" >📎 查看原文</a>
   </div>
 
   <div class="exp-card">
@@ -1566,7 +1857,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
       <strong>感受：</strong>面试氛围轻松，注重沟通表达能力和品牌认同感。
     </div>
     <div class="exp-meta">来源：金锄头文库 | 2025年</div>
-    <a class="source-link" href="https://m.jinchutou.com/shtml/view-266358585.html" target="_blank" style="margin-top:6px;display:inline-flex;">📎 查看原文</a>
+    <a class="source-link" href="https://m.jinchutou.com/shtml/view-266358585.html" target="_blank" >📎 查看原文</a>
   </div>
 </div>
 
@@ -1686,42 +1977,42 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <span class="platform pf-toutiao">头条</span>
     <h4>极氪汽车（宁波）职场内幕：吉利光环下的内卷与挣扎</h4>
     <p>极氪管理层中华为帮占比很高，带来了华为式狼性文化。研发岗日均工时11小时起步，重点项目开启"9-10-6"模式。加班没有加班费，只有周末加班能算调休。薪资涨幅基本可以忽略，每年只有50块工龄补贴。不过SEA浩瀚架构技术积累扎实，回归吉利后有望共享资源。</p>
-    <a class="source-link" href="http://m.toutiao.com/group/7569205529722012211/" target="_blank" style="margin-top:6px;display:inline-flex;">📎 查看原帖</a>
+    <a class="source-link" href="http://m.toutiao.com/group/7569205529722012211/" target="_blank" >📎 查看原帖</a>
   </div>
 
   <div class="hot-card">
     <span class="platform pf-toutiao">头条</span>
     <h4>172亿！吉利收购极氪，大量职位薪酬曝光</h4>
     <p>吉利汽车计划全资收购极氪，总代价约172亿元。收购后极氪成为吉利100%控股全资子公司，预计降低采购成本3%、研发效率提升10%-20%、营销成本降低10%-20%。目前极氪在猎聘有100个汽车职位需求，门店普通岗位月薪10-15K，大区负责人20-30K，智驾岗位30-60K。</p>
-    <a class="source-link" href="http://m.toutiao.com/group/7527955929858310694/" target="_blank" style="margin-top:6px;display:inline-flex;">📎 查看原帖</a>
+    <a class="source-link" href="http://m.toutiao.com/group/7527955929858310694/" target="_blank" >📎 查看原帖</a>
   </div>
 
   <div class="hot-card">
     <span class="platform pf-toutiao">头条</span>
     <h4>本科毕业7年，吉利极氪7岗，研发岗，年薪40w，值得去吗？</h4>
     <p>网友热议极氪薪资水平。有人认为极氪薪水中等偏上，也有网友觉得偏低，"起码要到60或者80"。关于base是否偏低也有讨论。整体来看，极氪研发岗在宁波新能源行业属中等偏上水平。</p>
-    <a class="source-link" href="http://m.toutiao.com/group/7053793969381098018/" target="_blank" style="margin-top:6px;display:inline-flex;">📎 查看原帖</a>
+    <a class="source-link" href="http://m.toutiao.com/group/7053793969381098018/" target="_blank" >📎 查看原帖</a>
   </div>
 
   <div class="hot-card">
     <span class="platform pf-zhihu">知乎/牛客</span>
     <h4>吉利汽车工作一年多的感受（已离职）</h4>
     <p>极氪资源多、工资高但很卷；领克品牌年轻，主打性能和设计；吉利本品牌产品线丰富，星系列比较强。校招应届生统称"大雁"，需下门店历练。研发岗位值得去，尤其三电、座舱等核心岗位。公积金双边24%，社保基数偏低。整体节奏比互联网慢，有点养老的感觉。</p>
-    <a class="source-link" href="https://m.nowcoder.com/feed/main/detail/f7ead52216bd482789634442e9837add?urlSource=home-api" target="_blank" style="margin-top:6px;display:inline-flex;">📎 查看原帖</a>
+    <a class="source-link" href="https://m.nowcoder.com/feed/main/detail/f7ead52216bd482789634442e9837add?urlSource=home-api" target="_blank" >📎 查看原帖</a>
   </div>
 
   <div class="hot-card">
     <span class="platform pf-maimai">脉脉</span>
     <h4>极氪前员工跳槽后竟怀念"内卷"？</h4>
     <p>一位极氪前员工在脉脉分享：跳槽后新公司不卷也不累，领导也nice，但竟然开始怀念起极氪的"卷"来。这引发热议——有人认为是斯德哥尔摩综合征，也有人觉得高强度环境确实能快速成长。</p>
-    <a class="source-link" href="https://www.delitao.com/myp/53722/mypr/297" target="_blank" style="margin-top:6px;display:inline-flex;">📎 查看原帖</a>
+    <a class="source-link" href="https://www.delitao.com/myp/53722/mypr/297" target="_blank" >📎 查看原帖</a>
   </div>
 
   <div class="hot-card">
     <span class="platform pf-zhihu">牛客</span>
     <h4>吉利旗下极氪公司工作体验分享</h4>
     <p>薪资待遇方面：普通职员2500-5000，主管级5000-8000，经理级8000-15000。公司会根据员工能力和经验确定薪酬。福利方面有食堂、宿舍等基本保障。</p>
-    <a class="source-link" href="https://www.nowcoder.com/discuss/618401051950972928" target="_blank" style="margin-top:6px;display:inline-flex;">📎 查看原帖</a>
+    <a class="source-link" href="https://www.nowcoder.com/discuss/618401051950972928" target="_blank" >📎 查看原帖</a>
   </div>
 </div>
 
