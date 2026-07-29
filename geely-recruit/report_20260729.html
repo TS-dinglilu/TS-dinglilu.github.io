@@ -25,7 +25,15 @@
     </script>
     <style>
 /* ============================================================
-   报告页统一CSS模板 - v7.0 暗色主题版
+   报告页统一CSS模板 - v8.0 暗色主题版
+   v8.0改进:
+   - 新增 .icon 系列样式 (.icon-blue/.icon-green 等)
+   - 新增 --success/--warning/--danger/--info CSS变量
+   - 新增 .priority-*/.match-* 状态指示器
+   - 新增 .card-grid 网格布局
+   - 新增大量工具类替代内联样式
+   - 新增 .timeline-item 时间线样式
+   - 新增 .count-badge/.highlight-text/.separator
    v7.0改进:
    - 修复class别名: .header/.date/.num 等与语义化类名对齐
    - 新增统计网格 .stats-grid/.stat-box 样式
@@ -58,6 +66,10 @@
   --accent-pink: #f87171;
   --accent-teal: #14b8a6;
   --accent-orange: #fb923c;
+  --success: #22d3a0;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #00d4ff;
   --grid-line: rgba(0, 212, 255, 0.04);
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
@@ -1098,6 +1110,284 @@ footer a:hover, .footer a:hover { color: var(--accent); }
   .scroll-top { bottom: 20px; right: 20px; width: 38px; height: 38px; }
 }
 
+/* ============================================================
+   Icons — colored emoji icons in section titles
+   ============================================================ */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.icon-blue, .icon.icon-blue {
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.icon-green, .icon.icon-green {
+  background: rgba(34, 211, 160, 0.15);
+  border: 1px solid rgba(34, 211, 160, 0.3);
+}
+
+.icon-orange, .icon.icon-orange {
+  background: rgba(251, 146, 60, 0.15);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.icon-purple, .icon.icon-purple {
+  background: rgba(129, 140, 248, 0.15);
+  border: 1px solid rgba(129, 140, 248, 0.3);
+}
+
+.icon-teal, .icon.icon-teal {
+  background: rgba(20, 184, 166, 0.15);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+}
+
+.icon-pink, .icon.icon-pink {
+  background: rgba(248, 113, 113, 0.15);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.icon-amber, .icon.icon-amber {
+  background: rgba(251, 191, 36, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+/* ============================================================
+   Emoji spans (standalone, not in .icon)
+   ============================================================ */
+.emoji {
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* ============================================================
+   Priority / Status indicators
+   ============================================================ */
+.priority-high, .priority-hot {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--accent-pink);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.priority-mid, .priority-medium {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(251, 146, 60, 0.15);
+  color: var(--accent-orange);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.priority-low, .priority-normal {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(34, 211, 160, 0.15);
+  color: var(--accent-green);
+  border: 1px solid rgba(34, 211, 160, 0.3);
+}
+
+/* ============================================================
+   Match score / compatibility indicators
+   ============================================================ */
+.match-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+
+/* ============================================================
+   Grid layouts for cards
+   ============================================================ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.card-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+
+/* ============================================================
+   Flexbox helpers (common inline style replacements)
+   ============================================================ */
+.flex-row { display: flex; flex-direction: row; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; align-items: flex-start; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 6px; }
+.gap-md { gap: 12px; }
+.gap-lg { gap: 20px; }
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+
+/* ============================================================
+   Text size helpers (common inline style replacements)
+   ============================================================ */
+.fs-xs { font-size: 0.75rem; }
+.fs-sm { font-size: 0.85rem; }
+.fs-md { font-size: 0.93rem; }
+.fs-lg { font-size: 1.1rem; }
+.fs-xl { font-size: 1.3rem; }
+.fs-2xl { font-size: 1.6rem; }
+
+/* ============================================================
+   Color helpers (replace inline color styles)
+   ============================================================ */
+.text-success { color: var(--accent-green) !important; }
+.text-warning { color: #fbbf24 !important; }
+.text-danger { color: var(--accent-pink) !important; }
+.text-info { color: var(--accent) !important; }
+.text-muted { color: var(--text-faint) !important; }
+.text-dimmer { color: var(--text-dim) !important; }
+.text-bright { color: var(--text) !important; }
+.text-accent-green { color: var(--accent-green) !important; }
+.text-accent-orange { color: var(--accent-orange) !important; }
+.text-accent-purple { color: #a5b4fc !important; }
+.text-accent-pink { color: var(--accent-pink) !important; }
+.text-accent-teal { color: var(--accent-teal) !important; }
+.text-white { color: #ffffff !important; }
+
+/* ============================================================
+   Margin/Padding helpers (replace inline margin styles)
+   ============================================================ */
+.mt-4 { margin-top: 32px; } .mt-5 { margin-top: 40px; } .mt-6 { margin-top: 48px; }
+.mb-4 { margin-bottom: 32px; } .mb-5 { margin-bottom: 40px; } .mb-6 { margin-bottom: 48px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.p-0 { padding: 0; } .p-2 { padding: 16px; } .p-3 { padding: 24px; }
+.py-2 { padding-top: 16px; padding-bottom: 16px; }
+.px-2 { padding-left: 16px; padding-right: 16px; }
+
+/* ============================================================
+   Misc component styles
+   ============================================================ */
+.timeline-item {
+  position: relative;
+  padding-left: 24px;
+  margin: 12px 0;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 20px;
+  bottom: -12px;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item:last-child::after { display: none; }
+
+/* Count badge (used in headers) */
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  color: #0a0e1a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Highlight text */
+mark, .highlight-text {
+  background: rgba(0, 212, 255, 0.15);
+  color: var(--accent);
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+/* Emoji list items */
+.emoji-list { list-style: none; padding-left: 0; }
+.emoji-list li { padding-left: 28px; position: relative; margin-bottom: 8px; }
+
+/* Separator line with gradient */
+.separator {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
+  margin: 32px 0;
+  border: none;
+}
+
+/* Badge variants for common use cases */
+.badge-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+
+/* Tag variants for common use cases */
+.tag-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+
 @media print {
   body { background: #ffffff; color: #000000; font-size: 12px; line-height: 1.6; }
   body::before, body::after { display: none !important; }
@@ -1127,6 +1417,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 
 </style>
   <!-- v7.0-1785291713 -->
+  <!-- v8.0-1785292713 -->
 </head>
 <body>
 <div class="grid-bg"></div>
@@ -1556,7 +1847,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
         </div>
         <div class="card" style="background: linear-gradient(135deg, rgba(0,212,255,0.06) 0%, rgba(99,102,241,0.04) 100%); border-color: var(--card-hover-border);">
             <div class="card-content">
-                <p style="margin-bottom:12px;">基于您的背景：<strong>安徽工业大学 · 机械工程硕士研究生 · 2026届</strong>，结合吉利当前招聘需求，为您推荐以下高匹配度岗位：</p>
+                <p >基于您的背景：<strong>安徽工业大学 · 机械工程硕士研究生 · 2026届</strong>，结合吉利当前招聘需求，为您推荐以下高匹配度岗位：</p>
             </div>
         </div>
         <div class="recommend-card">
@@ -1624,24 +1915,24 @@ footer a:hover, .footer a:hover { color: var(--accent); }
                 <tbody>
                     <tr>
                         <td>薪资范围</td>
-                        <td style="color:var(--accent);font-weight:600;">15-25K</td>
+                        <td >15-25K</td>
                         <td>10-18K</td>
                         <td>7-15K+提成</td>
-                        <td style="color:var(--accent);font-weight:600;">30-60K</td>
+                        <td >30-60K</td>
                     </tr>
                     <tr>
                         <td>专业匹配度</td>
-                        <td style="color:var(--success);">★★★★★</td>
-                        <td style="color:var(--warning);">★★★☆☆</td>
-                        <td style="color:var(--danger);">★★☆☆☆</td>
-                        <td style="color:var(--warning);">★★★☆☆</td>
+                        <td >★★★★★</td>
+                        <td >★★★☆☆</td>
+                        <td >★★☆☆☆</td>
+                        <td >★★★☆☆</td>
                     </tr>
                     <tr>
                         <td>发展前景</td>
-                        <td style="color:var(--success);">★★★★★</td>
-                        <td style="color:var(--success);">★★★★☆</td>
-                        <td style="color:var(--warning);">★★★☆☆</td>
-                        <td style="color:var(--success);">★★★★★</td>
+                        <td >★★★★★</td>
+                        <td >★★★★☆</td>
+                        <td >★★★☆☆</td>
+                        <td >★★★★★</td>
                     </tr>
                     <tr>
                         <td>工作强度</td>
@@ -1696,7 +1987,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
         <div class="discussion-item">
             <div class="discussion-header">
                 <span class="platform-tag platform-maimai">脉脉</span>
-                <span style="font-size:13px;color:var(--text);">吉利汽车研究院（宁波）有限公司员工评价</span>
+                <span >吉利汽车研究院（宁波）有限公司员工评价</span>
             </div>
             <div class="card-content">
                 <p>"找工作我还是推荐大家进大厂，待遇丰厚管理人性化，毕竟厂子大，我也很推荐大家加入宁波吉利研究院。"——2026年7月24日脉脉员工动态</p>
@@ -1706,7 +1997,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
         <div class="discussion-item">
             <div class="discussion-header">
                 <span class="platform-tag platform-niuke">牛客网</span>
-                <span style="font-size:13px;color:var(--text);">吉利汽车工作一年多的感受（已离职）</span>
+                <span >吉利汽车工作一年多的感受（已离职）</span>
             </div>
             <div class="card-content">
                 <p>"吉利的待遇中规中矩，有些岗位还不错。公司挺看重学历和实习经历。薪资方面，和奇瑞、长城差不多。研发系统的薪资普遍高一些，销售序列也会多一些。办公环境还可以，总部有食堂、楼下有咖啡厅，交通位置不错。虽然有些地方可以吐槽，但吉利还是一家不错的公司。"</p>
@@ -1716,7 +2007,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
         <div class="discussion-item">
             <div class="discussion-header">
                 <span class="platform-tag platform-boss">BOSS直聘</span>
-                <span style="font-size:13px;color:var(--text);">吉利汽车员工真实工作体验</span>
+                <span >吉利汽车员工真实工作体验</span>
             </div>
             <div class="card-content">
                 <p>"1. 奋斗者文化，但不鼓励加班，鼓励高效率的奋斗。2. 学习型组织，有非常完善的培训体系。3. 兼容并包，鼓励创新。给年轻人机会，也重视专家意见。"</p>
@@ -1726,7 +2017,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
         <div class="discussion-item">
             <div class="discussion-header">
                 <span class="platform-tag platform-toutiao">今日头条</span>
-                <span style="font-size:13px;color:var(--text);">赛力斯跳槽吉利面试经验分享</span>
+                <span >赛力斯跳槽吉利面试经验分享</span>
             </div>
             <div class="card-content">
                 <p>"赛力斯员工面试吉利汽车，面试通过后在收薪阶段。收薪只是初步的，看你目前待遇、期望待遇，然后内部审批走流程，正式发offer才算稳。"</p>
@@ -1736,7 +2027,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
         <div class="discussion-item">
             <div class="discussion-header">
                 <span class="platform-tag platform-toutiao">今日头条</span>
-                <span style="font-size:13px;color:var(--text);">吉利招聘外卖骑手引发热议</span>
+                <span >吉利招聘外卖骑手引发热议</span>
             </div>
             <div class="card-content">
                 <p>"潮声丨送完这一单，就去吉利上班"——吉利控股集团联合芯位科技发起"跨时代实战专业能力培养计划"，首批公开招聘100名外卖骑手转岗，引发社会广泛讨论。</p>
@@ -1746,7 +2037,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
         <div class="discussion-item">
             <div class="discussion-header">
                 <span class="platform-tag platform-zhihu">知乎/职Q</span>
-                <span style="font-size:13px;color:var(--text);">吉利工作环境与晋升机制讨论</span>
+                <span >吉利工作环境与晋升机制讨论</span>
             </div>
             <div class="card-content">
                 <p>"吉利研究院环境还是不错的，但制造相关岗位工作环境不怎么好。吉利集团福利还可以，薪酬在制造业不错，但比不过金融、IT行业。工作压力大，加班繁多，无加班工资。事多人少，只能自愿加班，领导等级森严。过节福利很多，发京东卡。年终奖只有1-2个月。"</p>
@@ -1756,7 +2047,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
         <div class="discussion-item">
             <div class="discussion-header">
                 <span class="platform-tag platform-niuke">牛客网</span>
-                <span style="font-size:13px;color:var(--text);">车企现在还值得去吗？</span>
+                <span >车企现在还值得去吗？</span>
             </div>
             <div class="card-content">
                 <p>在吉利机械工程师面试经验帖评论区，有网友追问"车企现在还值得去不？"——反映了当前应届生对汽车行业就业前景的关注与犹豫，尤其是新能源转型期传统车企的吸引力变化。</p>
