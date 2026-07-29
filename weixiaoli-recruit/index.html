@@ -14,9 +14,9 @@
   --card-solid: rgba(20, 28, 48, 0.9);
   --border: rgba(0, 212, 255, 0.12);
   --border-hover: rgba(0, 212, 255, 0.4);
-  --text: #e8eef5;
-  --text-dim: #e0e8f2;
-  --text-faint: #d8e2f0;
+  --text: #f0f4f8;
+  --text-dim: #e8eef5;
+  --text-faint: #e0e8f2;
   --accent: #00d4ff;
   --accent-warm: #ffb347;
   --accent-green: #22d3a0;
@@ -73,6 +73,7 @@ body::after {
   z-index: 1;
 }
 
+/* HEADER */
 .hero {
   padding: 56px 24px 40px;
   text-align: center;
@@ -137,6 +138,7 @@ body::after {
   border-radius: 50px;
 }
 
+/* STATS */
 .stats {
   display: flex;
   justify-content: center;
@@ -159,7 +161,8 @@ body::after {
   letter-spacing: 1px;
 }
 
-.section { padding: 32px 0; }
+/* SECTION */
+.section { padding: 36px 0; }
 
 .section-label {
   font-family: 'JetBrains Mono', monospace;
@@ -171,43 +174,13 @@ body::after {
 }
 .section-label::before { content: '## '; color: var(--text-faint); }
 .section-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin: 56px 0 28px;
-  padding: 16px 20px;
-  background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(20,28,48,0.5) 100%);
-  border-left: 4px solid var(--accent);
-  border-top: 1px solid rgba(0, 212, 255, 0.25);
-  border-bottom: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 0 12px 12px 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-}
-.section-title .emoji,
-.section-title .icon {
-  font-size: 1.3rem;
-  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
-}
-.section-title .num {
-  margin-left: auto;
-  font-size: 0.72rem;
-  color: var(--text-dim);
-  background: rgba(0,212,255,0.1);
-  padding: 3px 12px;
-  border-radius: 50px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  border: 1px solid var(--border);
-}
-.section-title > span:not(.num):not(.emoji):not(.icon) {
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--text);
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
 }
 
+/* REPORT CARDS */
 .report-list { display: flex; flex-direction: column; gap: 12px; }
 
 .report-card {
@@ -245,9 +218,7 @@ body::after {
 
 .report-card:hover::before { transform: scaleX(1); }
 
-.card-info { flex: 1; min-width: 0; }
-
-.card-info .card-date {
+.report-card .card-date {
   font-family: 'JetBrains Mono', monospace;
   font-size: 1.1rem;
   font-weight: 700;
@@ -256,24 +227,28 @@ body::after {
   flex-shrink: 0;
 }
 
-.card-info .card-weekday {
+.report-card .card-weekday {
   font-size: 0.8rem;
   color: var(--text-dim);
-  margin-bottom: 0;
+  margin-bottom: 8px;
 }
 
-.card-link {
+
+.card-info { flex: 1; min-width: 0; }
+
+.report-card .card-link {
   display: flex;
   align-items: center;
   gap: 4px;
   color: var(--accent);
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-left: auto;
   flex-shrink: 0;
+  padding-left: 16px;
 }
 
-.latest-badge {
+.report-card .latest-badge {
   display: inline-block;
   background: rgba(34, 211, 160, 0.15);
   color: var(--accent-green);
@@ -285,6 +260,7 @@ body::after {
   font-family: 'JetBrains Mono', monospace;
 }
 
+/* BACK LINK */
 .back-link {
   display: inline-flex;
   align-items: center;
@@ -298,6 +274,7 @@ body::after {
 }
 .back-link:hover { gap: 10px; }
 
+/* COMMENTS */
 .comments-section {
   margin-top: 40px;
   background: var(--card);
@@ -309,17 +286,17 @@ body::after {
 .comments-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--accent);
   margin-bottom: 6px;
 }
 .comments-desc {
   font-size: 0.82rem;
-  color: var(--text-dim);
+  color: var(--text);
   margin-bottom: 20px;
 }
 
+/* FOOTER */
 .footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 40px; }
-.footer p { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-faint); }
+.footer p { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); }
 .footer-links { display: flex; justify-content: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
 .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
 .footer-links a:hover { color: var(--accent); }
@@ -330,7 +307,7 @@ body::after {
   .stat-num { font-size: 1.3rem; }
 }
 
-/* SECTION DIVIDER */
+/* SECTION DIVIDER - 渐变分割线增强视觉分隔 */
 .section-title {
   position: relative;
 }
@@ -345,11 +322,13 @@ body::after {
   border-radius: 2px;
   opacity: 0.7;
 }
+/* 第一个section-title不需要分隔线 */
 .section-title:first-of-type::after {
   display: none;
 }
 
 </style>
+<!-- cache-bust: 1785260564 -->
 </head>
 <body>
 
@@ -359,7 +338,7 @@ body::after {
   <p class="subtitle">蔚来/小鹏/理想招聘信息与薪资对比</p>
   <div class="update-time">最后更新: 2026-07-29</div>
   <div class="stats">
-    <div class="stat"><div class="stat-num">3</div><div class="stat-label">报告总数</div></div>
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label">报告总数</div></div>
     <div class="stat"><div class="stat-num">每日</div><div class="stat-label">自动更新</div></div>
   </div>
 </div>
@@ -371,25 +350,20 @@ body::after {
     <div class="section-label">Archive</div>
     <h2 class="section-title">报告归档</h2>
     <div class="report-list">
-        <a href="report_20260729.html" class="report-card latest">
-                        <div class="card-info">
-                <div class="card-date">2026-07-29<span class="latest-badge">LATEST</span></div>
-                <div class="card-weekday">星期三</div>
-            </div>
-            <div class="card-link">点击查看 →</div>
-        </a>        <a href="report_20260728.html" class="report-card">
-                        <div class="card-info">
-                <div class="card-date">2026-07-28<span class="latest-badge">LATEST</span></div>
-                <div class="card-weekday">星期二</div>
-            </div>
-            <div class="card-link">查看 →</div>
-        </a>        <a href="report_20260727.html" class="report-card">
-                        <div class="card-info">
-                <div class="card-date">2026-07-27<span class="latest-badge">LATEST</span></div>
-                <div class="card-weekday">星期一</div>
-            </div>
-            <div class="card-link">查看 →</div>
-        </a>
+      <a href="report_20260728.html" class="report-card">
+        <div class="card-info">
+        <div class="card-date">2026-07-28<span class="latest-badge">LATEST</span></div>
+        <div class="card-weekday">星期二</div>
+      </div>
+      <div class="card-link">点击查看 →</div>
+      </a>
+      <a href="report_20260727.html" class="report-card">
+        <div class="card-info">
+        <div class="card-date">2026-07-27</div>
+        <div class="card-weekday">星期一</div>
+      </div>
+      <div class="card-link">点击查看 →</div>
+      </a>
     </div>
   </div>
 
@@ -421,5 +395,6 @@ body::after {
     <p>// 蔚小理招聘日报 · 每日自动更新</p>
   </footer>
 </div>
+
 </body>
 </html>
