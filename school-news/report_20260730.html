@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="安徽工业大学机械工程硕士研究生 - 自动化日报系统，每日推送招聘、科研、校园资讯">
+<title>校园新闻日报 | 2026-07-30</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v9.0 圆润Q弹生动版
+   v9.0改进:
+   - 圆润: 增大border-radius, 全面弧形过渡
+   - Q弹: 弹性cubic-bezier缓动, 微缩放悬停效果
+   - 生动: 入场动画, 脉冲发光, 流动渐变边框
+   - 动态: 滚动渐入, 悬停弹跳, 光晕扩散
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --bg: #0a0e1a;
+  --bg-elev: #111726;
+  --card: rgba(20, 28, 48, 0.55);
+  --card-solid: rgba(20, 28, 48, 0.75);
+  --card-hover: rgba(20, 28, 48, 0.8);
+  --border: rgba(0, 212, 255, 0.12);
+  --border-hover: rgba(0, 212, 255, 0.4);
+  --text: #f0f4f8;
+  --text-dim: #c8d4e8;
+  --text-faint: #90a0c0;
+  --accent: #00d4ff;
+  --accent-warm: #ffb347;
+  --accent-green: #22d3a0;
+  --accent-purple: #818cf8;
+  --accent-pink: #f87171;
+  --accent-teal: #14b8a6;
+  --accent-orange: #fb923c;
+  --success: #22d3a0;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #00d4ff;
+  --grid-line: rgba(0, 212, 255, 0.04);
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.25);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.35);
+  --shadow-lg: 0 16px 56px rgba(0,0,0,0.45);
+  --shadow-glow: 0 0 24px rgba(0, 212, 255, 0.12);
+  --shadow-glow-hover: 0 0 40px rgba(0, 212, 255, 0.25);
+  --radius: 24px;
+  --radius-sm: 18px;
+  --radius-xs: 12px;
+  --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: rgba(0, 212, 255, 0.3); color: #ffffff; }
+
+p { margin-bottom: 12px; color: var(--text-dim); line-height: 1.8; }
+p:last-child { margin-bottom: 0; }
+strong, b { color: var(--accent); font-weight: 600; }
+a { color: var(--accent); text-decoration: none; transition: color 0.3s var(--smooth), opacity 0.3s var(--smooth); }
+a:hover { color: #5ee5ff; text-decoration: underline; text-underline-offset: 2px; }
+ul, ol { margin: 12px 0; padding-left: 22px; color: var(--text-dim); }
+li { margin-bottom: 6px; line-height: 1.8; }
+li::marker { color: var(--accent); }
+em, i { color: var(--text); font-style: italic; }
+small { color: var(--text-faint); font-size: 0.85em; }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.10) 0%, rgba(129, 140, 248, 0.05) 50%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(50px);
+  animation: floatOrb 20s ease-in-out infinite;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  33% { transform: translate(-40px, 30px) scale(1.05); opacity: 0.8; }
+  66% { transform: translate(30px, -20px) scale(0.95); opacity: 0.7; }
+}
+
+.container { max-width: 960px; margin: 0 auto; padding: 40px 28px 80px; position: relative; z-index: 1; }
+.container-wide { max-width: 1100px; }
+.container-narrow { max-width: 760px; }
+
+/* ============================================================
+   Header — 圆润渐变 + 入场动画
+   ============================================================ */
+.header, .report-header {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.14) 0%, rgba(129, 140, 248, 0.12) 50%, rgba(34, 211, 160, 0.10) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 44px 36px;
+  margin: 0 auto 48px;
+  max-width: 960px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+  animation: fadeInDown 0.8s var(--spring) both;
+}
+
+.header::before, .report-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-purple), var(--accent-green));
+  background-size: 200% 100%;
+  animation: gradientFlow 6s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.header h1, .report-header h1 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.03em;
+  margin-bottom: 14px;
+  text-shadow: 0 0 28px rgba(0, 212, 255, 0.5), 0 0 56px rgba(0, 212, 255, 0.25);
+  line-height: 1.3;
+}
+
+.header .subtitle, .report-header .subtitle {
+  color: var(--text-dim);
+  font-size: 1.02rem;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: 0.03em;
+}
+
+.header .date, .report-header .date,
+.header .date-badge, .report-header .date-badge {
+  display: inline-block;
+  background: rgba(0, 212, 255, 0.14);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  color: var(--accent);
+  padding: 8px 24px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.4s var(--bounce);
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.header .date:hover, .report-header .date:hover,
+.header .date-badge:hover, .report-header .date-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.2); }
+  50% { box-shadow: 0 0 16px 4px rgba(0, 212, 255, 0.15); }
+}
+
+.header .meta, .report-header .meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+.header .meta span, .report-header .meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header { text-align: center; }
+
+/* ============================================================
+   Back Links + Nav
+   ============================================================ */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  padding: 10px 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.4s var(--bounce);
+  backdrop-filter: blur(10px);
+}
+
+.back-link:hover {
+  color: var(--accent);
+  border-color: var(--border-hover);
+  background: var(--card-hover);
+  text-decoration: none;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.15);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 24px 0 40px;
+  padding: 14px 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(10px);
+}
+
+.nav-links a {
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.3s var(--bounce);
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+  background: rgba(0, 212, 255, 0.14);
+  border-color: var(--border-hover);
+  text-decoration: none;
+  transform: translateY(-1px) scale(1.05);
+}
+
+.nav-toc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  margin: 0 0 48px;
+  backdrop-filter: blur(10px);
+}
+
+.nav-toc .toc-title { color: var(--accent); font-size: 1rem; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.03em; }
+.nav-toc ol, .nav-toc ul { list-style: none; padding-left: 0; margin: 0; }
+.nav-toc li { padding: 4px 0; }
+.nav-toc a { color: var(--text-dim); font-size: 0.9rem; transition: all 0.3s var(--smooth); }
+.nav-toc a:hover { color: var(--accent); text-decoration: none; padding-left: 4px; }
+
+/* ============================================================
+   Section Titles — h2 / .section-title (Cyan) - 圆润+流动
+   ============================================================ */
+h2, .section-title {
+  color: #00d4ff;
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin: 0 0 24px;
+  padding: 14px 20px 14px 18px;
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 212, 255, 0.02) 100%);
+  border-left: 4px solid var(--accent);
+  border-top: 1px solid rgba(0, 212, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.25);
+  border-radius: 0 16px 16px 0;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  line-height: 1.4;
+  transition: all 0.4s var(--bounce);
+}
+
+h2:hover, .section-title:hover {
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.05) 100%);
+  transform: translateX(4px);
+  box-shadow: 0 4px 24px rgba(0, 212, 255, 0.15);
+}
+
+.section-title .emoji, h2 .emoji { font-size: 1.3rem; line-height: 1; flex-shrink: 0; }
+
+.section-title .num, h2 .num,
+.section-title .num-badge, h2 .num-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  background-size: 200% 200%;
+  color: #0a0e1a;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+  flex-shrink: 0;
+  margin-left: auto;
+  animation: gradientFlow 5s ease infinite;
+}
+
+.section-title a, h2 a { color: inherit; }
+.section-title a:hover { color: #5ee5ff; text-decoration: none; }
+
+/* ============================================================
+   Sections (.section) — with top gradient bar
+   ============================================================ */
+.section {
+  margin: 56px 0;
+  position: relative;
+  padding: 0;
+  scroll-margin-top: 24px;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 50%, var(--accent-green) 100%);
+  border-radius: 999px;
+  opacity: 0.85;
+}
+
+.section:first-of-type { margin-top: 0; }
+.section:first-of-type::before { display: none; }
+.section > h2:first-child, .section > .section-title:first-child { margin-top: 0; }
+
+/* ============================================================
+   H3 Sub-titles — Purple
+   ============================================================ */
+h3 {
+  color: #c4b5fd;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 36px 0 14px;
+  padding: 8px 0 8px 14px;
+  border-left: 3px solid #818cf8;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  transition: all 0.3s var(--bounce);
+}
+
+h3:hover { border-left-width: 5px; padding-left: 16px; color: #d4c5ff; }
+
+h3:first-child { margin-top: 0; }
+h3 a { color: inherit; }
+h3 a:hover { color: #c7d0ff; text-decoration: none; }
+
+/* ============================================================
+   H4 Minor Headings — Amber
+   ============================================================ */
+h4 {
+  color: #fcd34d;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 24px 0 10px;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  border: none;
+  transition: all 0.3s var(--bounce);
+}
+
+h4:hover { transform: translateX(3px); }
+
+h4:first-child { margin-top: 0; }
+h4 a { color: inherit; }
+h4 a:hover { color: #fde68a; text-decoration: none; }
+
+h5 { color: var(--text); font-size: 0.9rem; font-weight: 600; margin: 16px 0 8px; }
+h6 { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; margin: 14px 0 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ============================================================
+   Cards (.card) — Q弹悬停 + 入场动画
+   ============================================================ */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  margin: 16px 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.6s var(--spring) both;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: var(--card-hover);
+  border-color: var(--border-hover);
+  border-left-color: var(--accent);
+  box-shadow: var(--shadow-md), var(--shadow-glow-hover);
+}
+
+.card-title { color: var(--accent); font-size: 1.08rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 0.02em; line-height: 1.4; }
+.card-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.card-content { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+.card-content p { margin-bottom: 8px; }
+
+/* ============================================================
+   Job Cards (.job-card) — Green + Q弹
+   ============================================================ */
+.job-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-green);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  margin: 16px 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.6s var(--spring) both;
+}
+
+.job-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: var(--card-hover);
+  border-color: rgba(34, 211, 160, 0.4);
+  border-left-color: var(--accent-green);
+  box-shadow: var(--shadow-md), 0 0 40px rgba(34, 211, 160, 0.12);
+}
+
+.job-card .job-title { color: var(--accent-green); font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
+.job-card .job-title a { color: inherit; }
+.job-card .job-title a:hover { color: #4ee9b8; text-decoration: none; }
+.job-card .job-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.job-card .job-meta span { display: inline-flex; align-items: center; gap: 4px; }
+.job-card .job-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+
+/* ============================================================
+   News Items (.news-item) — Cyan + Q弹
+   ============================================================ */
+.news-item {
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 12px 0;
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.5s var(--spring) both;
+}
+
+.news-item:hover {
+  transform: translateY(-3px) scale(1.01);
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--border-hover);
+  border-left-color: var(--accent);
+  box-shadow: var(--shadow-sm), var(--shadow-glow-hover);
+}
+
+.news-item .news-title { color: var(--accent); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+.news-item .news-title a { color: inherit; }
+.news-item .news-title a:hover { color: #5ee5ff; text-decoration: none; }
+.news-item .news-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.news-item .news-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+.news-item .badge, .news-item .tag { margin-right: 6px; }
+
+/* ============================================================
+   Stats Grid (.stats-grid / .stat-box)
+   ============================================================ */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0 28px; }
+
+.stat-box {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(20, 28, 48, 0.6) 100%);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px 18px;
+  text-align: center;
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.5s var(--spring) both;
+}
+
+.stat-box:hover { transform: translateY(-5px) scale(1.03); box-shadow: var(--shadow-md), var(--shadow-glow-hover); }
+
+.stat-box .num { display: block; font-size: 1.8rem; font-weight: 800; color: var(--accent); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; text-shadow: 0 0 16px rgba(0, 212, 255, 0.3); }
+.stat-box .label { display: block; font-size: 0.88rem; color: var(--text-dim); font-weight: 500; margin-bottom: 4px; }
+.stat-box .sub { display: block; font-size: 0.78rem; color: var(--text-faint); }
+
+/* ============================================================
+   Tables
+   ============================================================ */
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); -webkit-overflow-scrolling: touch; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; overflow: hidden; }
+th { background: linear-gradient(135deg, rgba(0, 212, 255, 0.20) 0%, rgba(0, 212, 255, 0.08) 100%); color: var(--accent); font-weight: 700; text-align: left; padding: 14px 16px; border-bottom: 2px solid rgba(0, 212, 255, 0.3); letter-spacing: 0.03em; white-space: nowrap; }
+.table-wrapper { overflow-x: auto; margin: 20px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); -webkit-overflow-scrolling: touch; }
+td { padding: 12px 16px; color: var(--text-dim); border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); vertical-align: top; }
+td:last-child { border-right: none; }
+th { border-right: 1px solid rgba(0, 212, 255, 0.15); }
+th:last-child { border-right: none; }
+table tbody tr:nth-child(odd) td { background: rgba(0, 212, 255, 0.04); }
+table tbody tr:nth-child(even) td { background: rgba(0, 212, 255, 0.08); }
+table tbody tr { transition: background 0.3s var(--smooth); }
+table tbody tr:hover td { background: rgba(0, 212, 255, 0.16); color: var(--text); }
+table tbody tr:last-child td { border-bottom: none; }
+.salary-table th { background: linear-gradient(135deg, rgba(34, 211, 160, 0.18) 0%, rgba(34, 211, 160, 0.08) 100%); color: var(--accent-green); border-bottom-color: rgba(34, 211, 160, 0.3); }
+.salary-table td strong { color: var(--accent-green); }
+.summary-table th { background: linear-gradient(135deg, rgba(129, 140, 248, 0.18) 0%, rgba(129, 140, 248, 0.08) 100%); color: #a5b4fc; border-bottom-color: rgba(129, 140, 248, 0.3); }
+.summary-table td:first-child { color: var(--text); font-weight: 500; }
+
+/* ============================================================
+   Salary Grid
+   ============================================================ */
+.salary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+.salary-item { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent-green); border-radius: var(--radius-sm); padding: 14px 16px; transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth); position: relative; backdrop-filter: blur(8px); animation: fadeInUp 0.5s var(--spring) both; }
+.salary-item:hover { transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-md), 0 0 32px rgba(34, 211, 160, 0.12); border-color: rgba(34, 211, 160, 0.4); border-left-color: var(--accent-green); }
+.salary-item .level { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 6px; letter-spacing: 0.02em; }
+.salary-item .amount { font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 700; color: var(--accent-green); margin-bottom: 4px; line-height: 1.3; }
+.salary-item .note { font-size: 0.78rem; color: var(--text-faint); line-height: 1.4; }
+@media (max-width: 600px) { .salary-grid { grid-template-columns: 1fr; } .salary-item { padding: 12px 14px; } .salary-item .amount { font-size: 1.05rem; } }
+
+/* ============================================================
+   Badges
+   ============================================================ */
+.badge { display: inline-block; padding: 3px 10px; font-size: 0.78rem; font-weight: 600; border-radius: 999px; background: rgba(0, 212, 255, 0.12); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.3); letter-spacing: 0.03em; line-height: 1.5; vertical-align: middle; margin-right: 4px; transition: all 0.3s var(--bounce); }
+.badge:hover { transform: scale(1.08); }
+.badge.hot, .badge-hot { background: linear-gradient(135deg, rgba(248, 113, 113, 0.2), rgba(251, 146, 60, 0.2)); color: #fca5a5; border-color: rgba(248, 113, 113, 0.5); }
+.badge.new, .badge-new { background: rgba(34, 211, 160, 0.18); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.45); }
+.badge.warn, .badge-warn { background: rgba(251, 191, 36, 0.16); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-high { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+.badge-mid { background: rgba(251, 146, 60, 0.14); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.4); }
+.badge-low { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+.badge-purple { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.4); }
+
+/* ============================================================
+   Tags
+   ============================================================ */
+.tag { display: inline-block; padding: 3px 10px; font-size: 0.78rem; font-weight: 500; border-radius: 999px; background: rgba(168, 184, 208, 0.1); color: var(--text-dim); border: 1px solid var(--border); margin: 0 4px 4px 0; letter-spacing: 0.02em; line-height: 1.5; vertical-align: middle; transition: all 0.3s var(--bounce); }
+.tag:hover { transform: scale(1.06); }
+.tag.green, .tag-green { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag.purple, .tag-purple { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.3); }
+.tag.orange, .tag-orange { background: rgba(251, 146, 60, 0.14); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.3); }
+.tag.red, .tag-red { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag.pink, .tag-pink { background: rgba(248, 113, 113, 0.12); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag.teal, .tag-teal { background: rgba(20, 184, 166, 0.12); color: var(--accent-teal); border-color: rgba(20, 184, 166, 0.3); }
+.tag.amber, .tag-amber { background: rgba(251, 191, 36, 0.12); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag.accent, .tag-accent { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+.tag-byd { background: rgba(0, 153, 204, 0.18); color: #4dabf5; border-color: rgba(0, 153, 204, 0.35); }
+.tag-chery { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-geely { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.3); }
+.tag-faw { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-vw { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-tesla { background: rgba(248, 113, 113, 0.18); color: #fca5a5; border-color: rgba(248, 113, 113, 0.4); }
+.tag-other { background: rgba(168, 184, 208, 0.12); color: var(--text-dim); border-color: var(--border); }
+
+/* ============================================================
+   Pills
+   ============================================================ */
+.pill { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; font-size: 0.8rem; font-weight: 500; border-radius: 999px; background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.25); margin: 0 6px 6px 0; letter-spacing: 0.02em; line-height: 1.5; vertical-align: middle; transition: all 0.3s var(--bounce); }
+.pill:hover { transform: scale(1.05); }
+.pill-green { background: rgba(34, 211, 160, 0.1); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.25); }
+.pill-purple { background: rgba(129, 140, 248, 0.1); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.25); }
+.pill-orange { background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.25); }
+.pill-pink { background: rgba(248, 113, 113, 0.1); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.25); }
+.pill-amber { background: rgba(251, 191, 36, 0.1); color: #fbbf24; border-color: rgba(251, 191, 36, 0.25); }
+.pill-teal { background: rgba(20, 184, 166, 0.1); color: var(--accent-teal); border-color: rgba(20, 184, 166, 0.25); }
+.pill-gray { background: rgba(168, 184, 208, 0.1); color: var(--text-dim); border-color: var(--border); }
+.pill-location { background: rgba(0, 212, 255, 0.1); color: var(--accent); border-color: rgba(0, 212, 255, 0.25); }
+.pill-salary { background: rgba(34, 211, 160, 0.1); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.25); }
+.pill-edu { background: rgba(129, 140, 248, 0.1); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.25); }
+.pill-type { background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.25); }
+
+/* ============================================================
+   Source Links
+   ============================================================ */
+.source-link { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; font-size: 0.8rem; font-weight: 500; border-radius: 999px; background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.3); margin: 4px 0; transition: all 0.4s var(--bounce); letter-spacing: 0.02em; }
+.source-link:hover { background: var(--accent); color: #0a0e1a; border-color: var(--accent); text-decoration: none; box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); transform: scale(1.05); }
+.source-link::before { content: '🔗'; font-size: 0.85em; }
+
+/* ============================================================
+   Discussion Items — Orange + Q弹
+   ============================================================ */
+.discussion { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent-orange); border-radius: var(--radius-sm); padding: 16px 20px; margin: 14px 0; transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth); backdrop-filter: blur(8px); animation: fadeInUp 0.5s var(--spring) both; }
+.discussion:hover { transform: translateY(-3px) scale(1.01); background: var(--card-hover); border-color: rgba(251, 146, 60, 0.4); border-left-color: var(--accent-orange); box-shadow: var(--shadow-md), 0 0 36px rgba(251, 146, 60, 0.1); }
+.discussion .discussion-title { color: var(--accent-orange); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+.discussion .discussion-title a { color: inherit; }
+.discussion .discussion-title a:hover { color: #fdba74; text-decoration: none; }
+.discussion .discussion-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.discussion-item { background: rgba(251, 146, 60, 0.05); border: 1px solid var(--border); border-left: 3px solid var(--accent-orange); border-radius: var(--radius-sm); padding: 12px 16px; margin: 10px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; }
+.discussion-item .discussion-author { color: var(--accent-orange); font-weight: 600; }
+.discussion-item .discussion-time { color: var(--text-faint); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
+
+/* ============================================================
+   Tip/Warning/Highlight/Info/Note Boxes
+   ============================================================ */
+.tip-box { background: rgba(34, 211, 160, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-green); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.tip-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(34, 211, 160, 0.1); }
+.tip-box .tip-title, .tip-box h4 { color: var(--accent-green); font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.tip-box .tip-title::before { content: '💡'; }
+.tip-box p:last-child { margin-bottom: 0; }
+.tip-box ul { margin: 8px 0 0; }
+.tip-box li { margin-bottom: 4px; }
+
+.warning-box { background: rgba(248, 113, 113, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-pink); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.warning-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(248, 113, 113, 0.1); }
+.warning-box .warning-title { color: var(--accent-pink); font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.warning-box .warning-title::before { content: '⚠️'; }
+.warning-box p:last-child { margin-bottom: 0; }
+
+.highlight-box { background: rgba(129, 140, 248, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-purple); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.highlight-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(129, 140, 248, 0.1); }
+.highlight-box .highlight-title { color: #a5b4fc; font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.highlight-box .highlight-title::before { content: '✨'; }
+.highlight-box p:last-child { margin-bottom: 0; }
+
+.info-box { background: rgba(129, 140, 248, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-purple); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.info-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(129, 140, 248, 0.1); }
+.info-box .info-title { color: #a5b4fc; font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.info-box .info-title::before { content: 'ℹ️'; }
+.info-box p:last-child { margin-bottom: 0; }
+
+.note-box { background: rgba(0, 212, 255, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.note-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1); }
+.note-box .note-title { color: var(--accent); font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; }
+
+.progress-bar { width: 100%; height: 10px; background: rgba(0, 212, 255, 0.08); border-radius: 999px; overflow: hidden; margin: 8px 0; border: 1px solid var(--border); }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-purple)); border-radius: 999px; transition: width 0.5s var(--smooth); }
+.progress-fill.green { background: linear-gradient(90deg, var(--accent-green), var(--accent-teal)); }
+.progress-fill.orange { background: linear-gradient(90deg, var(--accent-orange), var(--accent-warm)); }
+.progress-fill.pink { background: linear-gradient(90deg, var(--accent-pink), var(--accent-orange)); }
+.progress-fill.purple { background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink)); }
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-accent { color: var(--accent); }
+.text-green { color: var(--accent-green); }
+.text-purple { color: #a5b4fc; }
+.text-orange { color: var(--accent-orange); }
+.text-pink { color: var(--accent-pink); }
+.text-amber { color: #fbbf24; }
+.text-teal { color: var(--accent-teal); }
+.text-dim { color: var(--text-dim); }
+.text-faint { color: var(--text-faint); }
+.text-white { color: #ffffff; }
+.text-sm { font-size: 0.85rem; }
+.text-lg { font-size: 1.1rem; }
+.text-xl { font-size: 1.3rem; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.mt-0 { margin-top: 0; } .mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 24px; }
+.mb-0 { margin-bottom: 0; } .mb-1 { margin-bottom: 8px; } .mb-2 { margin-bottom: 16px; } .mb-3 { margin-bottom: 24px; }
+.flex { display: flex; } .flex-wrap { flex-wrap: wrap; } .flex-center { display: flex; align-items: center; justify-content: center; }
+.gap-1 { gap: 8px; } .gap-2 { gap: 16px; }
+.hidden { display: none !important; } .block { display: block; } .inline-block { display: inline-block; }
+.divider { height: 1px; background: var(--border); margin: 24px 0; border: none; }
+.muted { color: var(--text-faint); }
+
+/* ============================================================
+   hr, blockquote, code, pre
+   ============================================================ */
+hr { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 32px 0; }
+blockquote { margin: 16px 0; padding: 12px 18px; background: rgba(0, 212, 255, 0.05); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--text-dim); font-style: italic; }
+blockquote p { margin-bottom: 0; }
+blockquote footer, blockquote cite { display: block; margin-top: 8px; font-size: 0.85rem; color: var(--text-faint); font-style: normal; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 0.88em; background: rgba(0, 212, 255, 0.1); color: var(--accent); padding: 2px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.15); }
+pre { background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; overflow-x: auto; margin: 16px 0; box-shadow: var(--shadow-sm); }
+pre code { background: transparent; color: var(--text-dim); padding: 0; border: none; font-size: 0.88em; line-height: 1.6; }
+
+/* ============================================================
+   Giscus / Comments
+   ============================================================ */
+.comments-section { margin: 56px 0 32px; padding: 28px 24px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); position: relative; backdrop-filter: blur(10px); }
+.comments-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent-purple), var(--accent), var(--accent-green)); background-size: 200% 100%; border-radius: var(--radius) var(--radius) 0 0; animation: gradientFlow 6s ease infinite; }
+.comments-title { color: #a5b4fc; font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
+.comments-desc { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 16px; }
+.giscus { margin-top: 16px; }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+footer, .footer { margin-top: 56px; padding: 28px 24px; text-align: center; color: var(--text-faint); font-size: 0.85rem; border-top: 1px solid var(--border); letter-spacing: 0.02em; }
+footer p, .footer p { margin-bottom: 8px; }
+footer a, .footer a { color: var(--text-dim); }
+footer a:hover, .footer a:hover { color: var(--accent); }
+.footer-meta { margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-faint); }
+
+/* ============================================================
+   Scroll-to-top button — Q弹
+   ============================================================ */
+.scroll-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: var(--card-solid); border: 1px solid var(--border-hover); border-radius: 50%; color: var(--accent); font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.3s var(--smooth), transform 0.4s var(--bounce), background 0.3s var(--smooth); backdrop-filter: blur(10px); }
+.scroll-top.visible { opacity: 1; pointer-events: auto; }
+.scroll-top:hover { background: var(--accent); color: #0a0e1a; transform: translateY(-4px) scale(1.1); box-shadow: 0 4px 24px rgba(0, 212, 255, 0.4); }
+.scroll-top:active { transform: translateY(-2px) scale(0.95); }
+
+/* ============================================================
+   Entrance Animations
+   ============================================================ */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 768px) { .nav-links { flex-direction: column; align-items: flex-start; } .stats-grid { grid-template-columns: 1fr 1fr; } }
+
+@media (max-width: 600px) {
+  body { font-size: 14px; line-height: 1.75; }
+  .container { padding: 24px 16px 60px; }
+  .header, .report-header { padding: 28px 20px; margin-bottom: 32px; border-radius: 20px; }
+  .header h1, .report-header h1 { font-size: 1.5rem; }
+  .header .subtitle, .report-header .subtitle { font-size: 0.9rem; }
+  h2, .section-title { font-size: 1.2rem; padding: 10px 14px 10px 12px; }
+  h3 { font-size: 1rem; }
+  h4 { font-size: 0.9rem; }
+  .section { margin: 40px 0; }
+  .card, .job-card, .news-item, .discussion, .tip-box, .warning-box, .highlight-box, .info-box, .note-box { padding: 14px 16px; border-radius: 14px; }
+  .card:hover, .job-card:hover, .news-item:hover, .discussion:hover { transform: none; }
+  th, td { padding: 9px 10px; font-size: 0.82rem; }
+  .nav-links { padding: 10px 12px; border-radius: 14px; }
+  .nav-links a { font-size: 0.8rem; padding: 5px 10px; }
+  .comments-section { padding: 20px 16px; border-radius: 20px; }
+  footer, .footer { padding: 20px 16px; }
+  .report-header .meta { gap: 10px; font-size: 0.8rem; }
+  .badge, .tag, .pill { font-size: 0.72rem; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-box .num { font-size: 1.5rem; }
+  .scroll-top { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+}
+
+/* ============================================================
+   Icons
+   ============================================================ */
+.icon { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 10px; font-size: 1.1rem; flex-shrink: 0; line-height: 1; }
+.icon-blue, .icon.icon-blue { background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.3); }
+.icon-green, .icon.icon-green { background: rgba(34, 211, 160, 0.15); border: 1px solid rgba(34, 211, 160, 0.3); }
+.icon-orange, .icon.icon-orange { background: rgba(251, 146, 60, 0.15); border: 1px solid rgba(251, 146, 60, 0.3); }
+.icon-purple, .icon.icon-purple { background: rgba(129, 140, 248, 0.15); border: 1px solid rgba(129, 140, 248, 0.3); }
+.icon-teal, .icon.icon-teal { background: rgba(20, 184, 166, 0.15); border: 1px solid rgba(20, 184, 166, 0.3); }
+.icon-pink, .icon.icon-pink { background: rgba(248, 113, 113, 0.15); border: 1px solid rgba(248, 113, 113, 0.3); }
+.icon-amber, .icon.icon-amber { background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.3); }
+.emoji { display: inline-block; font-size: 1.2rem; line-height: 1; vertical-align: middle; }
+
+/* ============================================================
+   Priority / Status indicators
+   ============================================================ */
+.priority-high, .priority-hot { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+.priority-mid, .priority-medium { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(251, 146, 60, 0.15); color: var(--accent-orange); border: 1px solid rgba(251, 146, 60, 0.3); }
+.priority-low, .priority-normal { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+
+.match-score { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+.match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+
+/* ============================================================
+   Grid layouts
+   ============================================================ */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 16px 0; }
+.card-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 16px 0; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+
+/* ============================================================
+   Flexbox helpers
+   ============================================================ */
+.flex-row { display: flex; flex-direction: row; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; align-items: flex-start; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 6px; } .gap-md { gap: 12px; } .gap-lg { gap: 20px; }
+.w-full { width: 100%; } .w-auto { width: auto; }
+
+/* ============================================================
+   Text size helpers
+   ============================================================ */
+.fs-xs { font-size: 0.75rem; } .fs-sm { font-size: 0.85rem; } .fs-md { font-size: 0.93rem; }
+.fs-lg { font-size: 1.1rem; } .fs-xl { font-size: 1.3rem; } .fs-2xl { font-size: 1.6rem; }
+
+/* ============================================================
+   Color helpers
+   ============================================================ */
+.text-success { color: var(--accent-green) !important; }
+.text-warning { color: #fbbf24 !important; }
+.text-danger { color: var(--accent-pink) !important; }
+.text-info { color: var(--accent) !important; }
+.text-muted { color: var(--text-faint) !important; }
+.text-dimmer { color: var(--text-dim) !important; }
+.text-bright { color: var(--text) !important; }
+.text-accent-green { color: var(--accent-green) !important; }
+.text-accent-orange { color: var(--accent-orange) !important; }
+.text-accent-purple { color: #a5b4fc !important; }
+.text-accent-pink { color: var(--accent-pink) !important; }
+.text-accent-teal { color: var(--accent-teal) !important; }
+
+/* ============================================================
+   Margin/Padding helpers
+   ============================================================ */
+.mt-4 { margin-top: 32px; } .mt-5 { margin-top: 40px; } .mt-6 { margin-top: 48px; }
+.mb-4 { margin-bottom: 32px; } .mb-5 { margin-bottom: 40px; } .mb-6 { margin-bottom: 48px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.p-0 { padding: 0; } .p-2 { padding: 16px; } .p-3 { padding: 24px; }
+.py-2 { padding-top: 16px; padding-bottom: 16px; }
+.px-2 { padding-left: 16px; padding-right: 16px; }
+
+/* ============================================================
+   Misc component styles
+   ============================================================ */
+.timeline-item { position: relative; padding-left: 24px; margin: 12px 0; }
+.timeline-item::before { content: ''; position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(0, 212, 255, 0.4); transition: transform 0.3s var(--bounce); }
+.timeline-item:hover::before { transform: scale(1.3); }
+.timeline-item::after { content: ''; position: absolute; left: 4px; top: 20px; bottom: -12px; width: 2px; background: var(--border); }
+.timeline-item:last-child::after { display: none; }
+
+.count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 8px; background: linear-gradient(135deg, var(--accent), var(--accent-purple)); color: #0a0e1a; font-size: 0.78rem; font-weight: 700; border-radius: 999px; font-family: 'JetBrains Mono', monospace; }
+
+mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent); padding: 1px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.2); }
+
+.emoji-list { list-style: none; padding-left: 0; }
+.emoji-list li { padding-left: 28px; position: relative; margin-bottom: 8px; }
+
+.separator { height: 2px; background: linear-gradient(90deg, transparent, var(--border-hover), transparent); margin: 32px 0; border: none; }
+
+.badge-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+
+.tag-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+
+@media print {
+  body { background: #ffffff; color: #000000; font-size: 12px; line-height: 1.6; }
+  body::before, body::after { display: none !important; }
+  .container { max-width: 100%; padding: 0; }
+  .header, .report-header { background: #f5f7fa; border: 1px solid #cccccc; box-shadow: none; break-inside: avoid; }
+  .header::before, .report-header::before { background: #006699; }
+  .header h1, .report-header h1 { color: #000000; text-shadow: none; }
+  .header .subtitle, .report-header .subtitle, .header .meta, .report-header .meta { color: #333333; }
+  .header .date, .report-header .date, .header .date-badge, .report-header .date-badge { background: #e0eef5; border-color: #006699; color: #006699; }
+  h2, .section-title { color: #006699; background: #e8f4fa; border-left-color: #006699; }
+  h3 { color: #4444aa; border-left-color: #6666cc; }
+  h4 { color: #aa6600; }
+  .section { margin: 24px 0; break-inside: avoid; }
+  .section::before { background: #006699; }
+  .card, .job-card, .news-item, .discussion, .tip-box, .warning-box, .highlight-box, .info-box, .note-box { background: #f9f9f9; border: 1px solid #cccccc; box-shadow: none; break-inside: avoid; }
+  .card:hover, .job-card:hover, .news-item:hover, .discussion:hover { transform: none; box-shadow: none; }
+  p, li, td, .card-content, .job-desc, .news-desc { color: #222222; }
+  a { color: #006699; text-decoration: underline; }
+  .source-link { background: #e0eef5; color: #006699; border-color: #006699; }
+  th { background: #e0eef5; color: #006699; border-bottom: 2px solid #006699; }
+  table tbody tr:nth-child(odd) td, table tbody tr:nth-child(even) td { background: #ffffff; }
+  table tbody tr:hover td { background: #f0f0f0; }
+  .back-link, .nav-links, .nav-toc, .comments-section, footer, .footer, .scroll-top { display: none; }
+  pre { background: #f5f5f5; border-color: #cccccc; }
+  pre code, code { color: #333333; background: #eeeeee; }
+}
+
+</style>
+  <!-- v9.0-1785358951 -->
+</head>
+<body>
+
+<div class="container">
+
+<!-- ==================== HEADER ==================== -->
+<div class="header">
+  <h1>校园新闻日报</h1>
+  <div class="subtitle">安徽工业大学 · 长春工程学院 · 徐州三中 · 大庙中心中学</div>
+  <div class="date">2026-07-30</div>
+</div>
+
+<a href="https://ts-dinglilu.github.io/school-news/" class="back-link" target="_blank">← 返回报告汇总</a>
+
+<!-- ==================== 概览统计 ==================== -->
+<div class="section">
+  <div class="section-title">
+    <span class="icon">📊</span>
+    <span>今日概览</span>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-box">
+      <div class="stat-num">4</div>
+      <div class="stat-label">关注学校/机构</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">17</div>
+      <div class="stat-label">新闻条目</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">10</div>
+      <div class="stat-label">全网热议</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">5</div>
+      <div class="stat-label">重点关注</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 安徽工业大学机械工程学院（重点关注） ==================== -->
+<div class="section">
+  <div class="section-title">
+    <span class="icon">🏭</span>
+    <span>安徽工业大学机械工程学院</span>
+    <span class="badge focus">重点关注</span>
+  </div>
+
+  <h2>🔧 机械工程学院最新动态</h2>
+
+  <div class="news-item">
+    <span class="badge focus">重点关注</span>
+    <span class="badge new">最新</span>
+    <h3>我院学子在第十九届"高教杯"全国大学生先进成图大赛中斩获13项大奖</h3>
+    <div class="card-meta">2026-07-28 | 来源：机械工程学院官网</div>
+    <p>7月23日，第十九届"高教杯"全国大学生先进成图技术与产品信息建模创新大赛在长江大学圆满落幕。作为图学领域最具影响力的<strong>国家级赛事</strong>，本届大赛规模创历史之最，吸引了全国1200余所高校的约<strong>53万名大学生</strong>参赛，最终约2.1万名选手晋级全国总决赛。</p>
+    <p>我校派出的机械类代表队和水利类代表队共斩获<strong>13项国家级奖项</strong>。其中，机械类代表队荣获全国团体二等奖（全国排名第181位）、数字化创新设计团体二等奖、增材制造赛道团体三等奖；高奕睿同学获个人全能二等奖，陈耀、薛浩等7名同学获个人全能三等奖。本次大赛首次加入"逆向工程与创新设计"等前沿赛道，全面考察学生的成图技术、创新设计及AI应用能力。</p>
+    <div class="highlight-box">💡 <strong>亮点提示：</strong>机械学子在全国图学领域最高级别赛事中斩获13项国家级大奖，充分展现了学院"以赛促学、以赛促教"的培养成效和学子勇于创新、追求卓越的精神风貌。</div>
+    <a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16245.htm" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="news-item">
+    <span class="badge focus">重点关注</span>
+    <h3>机械学院：多线志愿服务绘就为民服务青春答卷</h3>
+    <div class="card-meta">2026-07-22 | 来源：机械工程学院官网</div>
+    <p>7月9日至11日，机械工程学院青年志愿者协会分赴马鞍山市花山区桃源居民社会工作服务中心、景城社区、雨山区溪街夜市，同步开展<strong>青少年科普公益课堂、敬老帮扶、夜间秩序值守</strong>等志愿服务，构建多层次志愿服务矩阵。</p>
+    <p>科普支教累计服务社区少年儿童30余名，敬老帮扶走访慰问高龄独居老人12户，夜市值守累计疏导人流千余人次、劝阻不文明行为20余起。青年学子不惧闷热、坚守岗位，成为夜市里一道亮眼的青春风景线。</p>
+    <div class="highlight-box">💡 <strong>亮点提示：</strong>学院搭建覆盖青少年成长、老年关怀、城市治理的多层次志愿服务矩阵，把实事办到群众心坎上，展现了工科学生服务社会的责任担当。</div>
+    <a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16240.htm" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="news-item">
+    <span class="badge focus">重点关注</span>
+    <h3>深化产教融合 共育机械英才——与安徽日发纺织机械、三联泵业共建教学科研实践基地</h3>
+    <div class="card-meta">2026-07-14 | 来源：机械工程学院官网</div>
+    <p>近日，机械工程学院分别赴<strong>安徽日发纺织机械有限公司、三联泵业股份有限公司</strong>举行教学科研实践基地授牌仪式。学院师生团队走进企业生产车间、研发中心与检测实验室，实地观摩纺织智能装备、工业泵阀成套设备研发制造全流程。</p>
+    <p>双方围绕装备自动化、精密机械设计、生产线优化等关键技术难点开展座谈交流，探讨校企党建共建新模式。此次共建精准对接智能装备、泵阀装备两大区域优势制造产业，补齐专业实践教学资源短板。</p>
+    <div class="highlight-box">💡 <strong>亮点提示：</strong>学院与两家区域龙头企业共建实践基地，精准对接智能装备和泵阀装备产业，打通产教融合"最后一公里"，推动教育链、人才链与产业链、创新链有机衔接。</div>
+    <a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16236.htm" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="news-item">
+    <span class="badge focus">重点关注</span>
+    <h3>"采石·铸新—智能制造"研究生学术论坛（2026年第三期）顺利举办</h3>
+    <div class="card-meta">2026-07-10 | 来源：机械工程学院官网</div>
+    <p>7月10日上午，机械工程学院2026年第三期"采石·铸新—智能制造"研究生学术论坛在机械楼302会议室举办，由车辆工程系承办。6位研究生依次上台汇报，内容涉及<strong>数字孪生与智能故障诊断、新能源汽车能量管理策略、超声波聚焦测量技术、微结构表面动力学与传热、对比学习与故障诊断应用、自润滑轴承材料摩擦学性能</strong>等多个前沿方向。</p>
+    <p>论坛评选出3名"智汇之星"和3名"科研之星"，张兴权教授为研究生颁发专属奖品。该论坛是学院研究生科研育人的常态化举措，搭建"成果展示、同行交流、专家指导"三位一体交流平台。</p>
+    <div class="highlight-box">💡 <strong>亮点提示：</strong>6位研究生围绕数字孪生、新能源汽车等前沿方向汇报，学院常态化学术论坛持续赋能科研创新，为智能制造领域积蓄青年创新力量。</div>
+    <a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16226.htm" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="news-item">
+    <span class="badge focus">重点关注</span>
+    <h3>机械工程学院钢筋铁骨实践团赴马钢9号高炉开展红色研学实践</h3>
+    <div class="card-meta">2026-07-11 | 来源：机械工程学院官网</div>
+    <p>机械工程学院"钢筋铁骨"实践团赴马钢9号高炉开展红色研学实践活动，探寻中国钢铁工业的奋斗历程与工匠精神传承。通过实地研学，同学们深刻感受了产业工人在时代洪流中绽放的光芒。</p>
+    <a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16231.htm" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="news-item">
+    <span class="badge">学院动态</span>
+    <h3>机械工程学院召开本科专业人才培养方案修订推进会</h3>
+    <div class="card-meta">2026-07-22 | 来源：机械工程学院官网</div>
+    <p>机械工程学院召开本科专业人才培养方案修订推进会，旨在进一步优化专业课程体系，提升人才培养质量，对接工程教育专业认证要求，推动专业内涵式发展。</p>
+    <a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16244.htm" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="news-item">
+    <span class="badge">学院动态</span>
+    <h3>机械工程学院领导走访暑期留校学生宿舍</h3>
+    <div class="card-meta">2026-07-22 | 来源：机械工程学院官网</div>
+    <p>学院领导深入暑期留校学生宿舍走访慰问，详细了解留校学生的学习生活情况，叮嘱同学们注意防暑降温和用电安全，体现了学院对学生的人文关怀。</p>
+    <a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16243.htm" target="_blank">📎 查看原文</a>
+  </div>
+</div>
+
+<!-- ==================== 安徽工业大学（校级/暑期实践） ==================== -->
+<div class="section">
+  <div class="section-title">
+    <span class="icon">🏫</span>
+    <span>安徽工业大学</span>
+    <span class="num">校级要闻</span>
+  </div>
+
+  <h2>📚 暑期实践与校级动态</h2>
+
+  <div class="news-item">
+    <h3>"匠心传响"调研团探访上海工匠馆 采访资深机械工程师</h3>
+    <div class="card-meta">2026-07-06 | 来源：头条号</div>
+    <p>7月6日，安徽工业大学机械工程学院"匠心传响"产业工人职业发展调研团走进上海工匠馆，采访了资深机械工程师陈党辉，聆听他十九年的坚持奋斗历程。陈党辉分享了从传统制图到三维建模、从经验估量到数据仿真的技术跃迁经历，强调"数字工具解放了人手，却无法替代人脑对精度的想象与对手感的敬畏"。</p>
+    <p>调研团还了解到，当前机械行业高技能岗位缺口较大，一些关键岗位招聘周期平均达90天，青年就业者对县域就业意向率较低。陈党辉建议青年就业者注重自身能力提升，合理规划职业发展路径。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7527966926518108707/" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="news-item">
+    <h3>"智趣一夏 梦构启航"科普日活动走进佳山格林社区</h3>
+    <div class="card-meta">2026-07-02 | 来源：头条号</div>
+    <p>7月2日，机械工程学院联合马鞍山志愿服务联合会、博源社会工作服务中心、佳山格林社区，举办"智趣一夏 梦构启航"科普日活动。活动设置"拼图大挑战"和"科普知识竞答"两个探索区域，并设计了"彩虹水""气球动力车"等8个贴合儿童认知的实验，为孩子们开启一扇探索科学世界的大门。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7527966993715872294/" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="news-item">
+    <h3>校领导赴马鞍山市科技馆看望慰问暑期社会实践队</h3>
+    <div class="card-meta">2026-07-12 | 来源：头条号</div>
+    <p>7月12日下午，安徽工业大学校领导到马鞍山市科技馆看望慰问该校暑期大学生社会实践队，并就进一步加强"馆校合作"进行座谈交流，推动高校与地方科普资源深度对接。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7256713833664873020/" target="_blank">📎 查看原文</a>
+  </div>
+</div>
+
+<!-- ==================== 长春工程学院 ==================== -->
+<div class="section">
+  <div class="section-title">
+    <span class="icon">🔧</span>
+    <span>长春工程学院</span>
+    <span class="num">校园动态</span>
+  </div>
+
+  <h2>🏗️ 教学科研与校园活动</h2>
+
+  <div class="news-item">
+    <span class="badge new">最新</span>
+    <h3>能源动力工程学院暑期返乡社会实践活动启动</h3>
+    <div class="card-meta">2026-07-20至8月11日 | 来源：头条号</div>
+    <p>长春工程学院能源动力工程学院定于7月20日至8月11日期间组织学院30余名实践团成员回到各自家乡，开展"同心振乡，共心传承"暑期社会实践活动。通过了解家乡发展变化、走访地方企业、开展文化调研等方式，引导青年学子服务乡村振兴。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7130487293269492265/" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="news-item">
+    <h3>信息工程学院举行2026年暑期"三下乡"社会实践活动启动仪式</h3>
+    <div class="card-meta">2026-07-08 | 来源：头条号</div>
+    <p>7月8日，信息工程学院举行2026年暑期"三下乡"社会实践活动启动仪式。今年正值中国共产党成立105周年和红军长征胜利90周年，本次实践以"携青春赴红乡，以初心承薪火"为主题，引导青年学子深入红色地标，探寻红色足迹，活化本土红色文化。</p>
+    <p>团委副书记崔晓娟勉励实践队员筑牢信仰之基、活化红色文化、服务地方发展、严守安全底线，把青春书写在红色热土上，以实际行动向建党105周年献礼。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7667382134402859566/" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="news-item">
+    <h3>2026年成人高考报名工作即将启动</h3>
+    <div class="card-meta">2026-07 | 来源：头条号</div>
+    <p>长春工程学院2026年成人高考报名工作即将拉开序幕，为广大求学者提供提升学历、拓宽视野的平台。学校在电力基建、水利工程、岩土勘测等领域具有深厚的行业背景和办学特色。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7667850432089309736/" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="news-item">
+    <h3>2025届毕业生就业质量年度报告发布</h3>
+    <div class="card-meta">2026-01 | 来源：长春工程学院就业信息网</div>
+    <p>长春工程学院发布2025届毕业生就业质量年度报告，报告显示学校在电力、建筑、地质等传统优势行业就业渠道稳定，每年大量应届生通过校园招聘进入相关领域。</p>
+    <a class="source-link" href="http://job.ccit.edu.cn/" target="_blank">📎 查看原文</a>
+  </div>
+</div>
+
+<!-- ==================== 徐州市第三中学 ==================== -->
+<div class="section">
+  <div class="section-title">
+    <span class="icon">🎓</span>
+    <span>徐州市第三中学</span>
+    <span class="num">校园动态</span>
+  </div>
+
+  <h2>⚽ 教育活动与师生动态</h2>
+
+  <div class="news-item">
+    <span class="badge new">最新</span>
+    <h3>第10期"学长学姐返校日"活动在潇湘校区成功举办</h3>
+    <div class="card-meta">2026-07-21 | 来源：头条号</div>
+    <p>7月21日，徐州三中潇湘校区迎来第10期"学长学姐返校日"活动，这是潇湘校区自投入使用以来首次承办该项传统活动。来自全国<strong>17所高校的30名优秀毕业生</strong>跨越山海重返母校，以大学为单位组建生涯规划志愿者团队，为在校学弟学妹分享大学文化、王牌专业、学科特色及真实大学生活。</p>
+    <p>活动分为"大学及专业介绍""互动交流""给学弟学妹的建议"三个环节。学长学姐们结合自身经历，从高考备考经验到志愿填报策略、从专业选择到职业规划，真诚分享让在场同学受益匪浅。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7666506290692948531/" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="news-item">
+    <span class="badge hot">热点</span>
+    <h3>足球队征战第二届"援疆杯"六战全胜勇夺总冠军</h3>
+    <div class="card-meta">2026-07-17至23 | 来源：头条号</div>
+    <p>受江苏省教育厅委派，徐州三中足球队与苏州吴县高中足球队一同，和克州本土队员联合混编组成克州男子足球队，以东道主身份征战第二届"援疆杯"中学生校园足球总决赛。全队以<strong>六战全胜</strong>的完美战绩，稳稳拿下本届"援疆杯"男子组总冠军，全程攻入<strong>27粒进球</strong>。</p>
+    <p>从揭幕战5:0零封对手，到半决赛点球大战4:3险胜，再到决赛5:1大胜强敌，队员们历经六场高强度赛事洗礼。徐州三中教师彭冰荣获"优秀教练员"荣誉称号。潘峻峰副校长担任球队领队，13名优秀足球运动员全程参与赛事角逐。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7666663999978717722/" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="news-item">
+    <h3>1996届3班毕业三十周年返校盛会 捐赠"致远灵璧石"</h3>
+    <div class="card-meta">2026-07 | 来源：头条号</div>
+    <p>近日，徐州三中迎来1996届3班毕业三十周年返校盛会，校友跨越山海重返校园共赴青春之约。校党委书记孟彦代表学校致以热烈欢迎。班主任袁向萍老师登台发言，真挚动人的话语令全场潸然——"岁月苍老容颜，却铭记初心；三十年风雨，你们的名字依旧动听"。</p>
+    <p>全班学子前往潇湘校区，将代表深情厚意的"致远灵璧石"捐赠母校。校长牛含冰指出，石头定名"致远"与高三教学楼致远楼之名不谋而合，既是青春奋斗的见证，更是激励在校学子的精神地标。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7667171231204000294/" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="news-item">
+    <h3>66届校友毕业六十周年重返母校</h3>
+    <div class="card-meta">2026-07-03 | 来源：头条号</div>
+    <p>7月3日，徐州市第三中学迎来一场意义非凡的重逢，66届高三老校友跨越六十年光阴，从各地奔赴母校，举办毕业六十周年庆典。昔日风华少年如今已是耄耋长者，重返校园重温青春岁月。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7665933370764870170/" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="news-item">
+    <span class="badge">通知公告</span>
+    <h3>学生课桌椅及教师办公用品搬迁服务项目成交公告</h3>
+    <div class="card-meta">2026-07-27 | 来源：采招网</div>
+    <p>徐州市第三中学学生课桌椅及教师办公用品搬迁服务项目发布成交公告，中选报价8820.0元，为校区设施升级提供保障。</p>
+    <a class="source-link" href="https://m.bidcenter.com.cn/news-4-432731170.html" target="_blank">📎 查看原文</a>
+  </div>
+</div>
+
+<!-- ==================== 徐州市大庙中心中学 ==================== -->
+<div class="section">
+  <div class="section-title">
+    <span class="icon">📖</span>
+    <span>徐州市大庙中心中学</span>
+    <span class="num">校园动态</span>
+  </div>
+
+  <h2>🏫 学校相关新闻</h2>
+
+  <div class="news-item">
+    <span class="badge new">最新</span>
+    <h3>2026年大庙中学文化墙维修项目招标代理中选结果公告</h3>
+    <div class="card-meta">2026 | 来源：采招网</div>
+    <p>徐州市大庙初级中学校发布2026年文化墙维修项目招标代理中选结果公告，项目涉及校园文化墙维修改造，旨在改善校园文化环境，提升育人氛围。</p>
+    <a class="source-link" href="https://m.bidcenter.com.cn/news-4-432953919.html" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="news-item">
+    <h3>大庙中学参观徐州市阳光学校项目成交公告</h3>
+    <div class="card-meta">2026-01-16 | 来源：采招网</div>
+    <p>徐州市大庙中学发布参观徐州市阳光学校（经开区徐庄）项目成交公告，中选供应商为徐州宝芹校车服务有限公司，中选报价400.0元，为学校组织学生外出参观学习提供交通保障。</p>
+    <a class="source-link" href="https://m.yfbzb.com/winbid/detail/20260116_571079046.html" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="news-item">
+    <h3>2025-2026学年度全体学生情况调查表启动</h3>
+    <div class="card-meta">2025-2026学年 | 来源：问卷星</div>
+    <p>为更好帮助孩子健康成长、顺利完成初中学业，大庙中学对全体学生基本情况进行摸排，以利于学校根据学生实际情况做出更科学的帮扶安排，请家长认真如实填写调查表内容。</p>
+    <a class="source-link" href="https://www.wjx.cn/xz/328400717.aspx" target="_blank">📎 查看原文</a>
+  </div>
+</div>
+
+<!-- ==================== 全网热议 ==================== -->
+<div class="section">
+  <div class="section-title">
+    <span class="icon">🔥</span>
+    <span>全网热议</span>
+    <span class="badge hot">热议</span>
+  </div>
+
+  <h2>💬 知乎、微博等平台讨论精选</h2>
+
+  <div class="discussion">
+    <h3>1. CCTV14《新闻袋袋裤》报道第二届"援疆杯"校园足球赛</h3>
+    <div class="card-meta">来源：头条号 | 2026-07</div>
+    <p>央视少儿频道CCTV14《新闻袋袋裤》栏目对第二届新疆"援疆杯"中学生校园足球总决赛进行报道，徐州三中足球队与克州少年混编组队六战全胜夺冠的故事引发广泛关注，网友纷纷点赞"体育援疆、民族团结"的创新模式。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7668007452532556338/" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="discussion">
+    <h3>2. 新浪财经报道"援疆杯"：徐州与克州少年同场逐梦</h3>
+    <div class="card-meta">来源：新浪财经 | 2026-07-17</div>
+    <p>新浪财经发布报道，聚焦"祖国情·中华行"第二届自治区"援疆杯"中学生校园足球总决赛，绿茵场牵起两地少年缘分，同龄中场球员因足球相识相伴的故事感动众多读者。</p>
+    <a class="source-link" href="https://cj.sina.cn/article/norm_detail?froms=ttmp&url=https%3A%2F%2Ffinance.sina.com.cn%2Fwm%2F2026-07-17%2Fdoc-iniicqkw1482312.shtml%3Ffinpagefr=ttzz" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="discussion">
+    <h3>3. "1:1混编+强制研学"援疆杯模式引发讨论</h3>
+    <div class="card-meta">来源：头条号 | 2026-07</div>
+    <p>网友热议援疆杯赛事的核心规则：28支代表队实行对口援疆省市与新疆地州1:1混编组队，疆内和援疆省市球员各占50%。讨论认为这种模式不仅促进体育交流，更有力推动民族团结和青少年成长。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7661560508461351467/" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="discussion">
+    <h3>4. 安徽高校排名大调整：安徽工业大学位列全国195</h3>
+    <div class="card-meta">来源：头条号 | 2026-07</div>
+    <p>2026校友会中国大学榜单更新，安徽高校"梯队"引发热议。中科大、合工大稳居省内前两位，安徽大学、安徽工业大学分别位列全国81名和195名。网友讨论安工大在冶金、材料等传统工科领域的深厚底蕴。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7667392979140674086/" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="discussion">
+    <h3>5. 2026年安徽省本科投档线出炉，谁是最大黑马？</h3>
+    <div class="card-meta">来源：头条号 | 2026-07</div>
+    <p>2026年安徽省本科普通批投档线陆续公布，分数线整体上涨引发关注。网友对比分析各校起点变化，讨论安徽工业大学等省属高校的报考热度与录取趋势。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7667658206730142248/" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="discussion">
+    <h3>6. 安徽工业大学优势学科、学位点解析及升学就业指南</h3>
+    <div class="card-meta">来源：头条号 | 2026</div>
+    <p>网友发布安工大报考指南，指出学校以冶金、材料为顶尖学科，工科就业扎实，适合分数中等（一本线上50-70分）、明确职业导向的考生。建议理科生优选秀山校区工科专业组，关注ESI全球前1%学科。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7576538081877033487/" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="discussion">
+    <h3>7. 张雪峰评价长春工程学院：王牌专业是电气工程及其自动化</h3>
+    <div class="card-meta">来源：伊秀经验 | 2026</div>
+    <p>张雪峰点评长春工程学院，指出其王牌专业电气工程及其自动化在高考生心中认可度高，2025年在河北物理组分数线583分、超本科线124分。学校具有深厚建筑、水利、电力、地质等基础工业行业背景。</p>
+    <a class="source-link" href="https://m.yxlady.com/jingyan/3161233.shtml" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="discussion">
+    <h3>8. 长春工程学院全解析：王牌专业、毕业去向及分数线</h3>
+    <div class="card-meta">来源：头条号 | 2026-07</div>
+    <p>网友深度解析长春工程学院，指出这所由原电力、建筑、地质系统三所专科院校合并组建的省属本科院校，在电力基建、水利工程、岩土勘测领域积攒了数十年行业人脉，每年大量应届生通过校园招聘进入相关领域。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7665867065747685898/" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="discussion">
+    <h3>9. 新安晚报报道：安徽高校暑期实践新模式</h3>
+    <div class="card-meta">来源：新安晚报 | 2026-07-25</div>
+    <p>新安晚报报道安徽各大高校暑期社会实践活动，指出今年众多实践团队立足学科特色，将专业知识与基层需求紧密结合，不同于以往传统走访和短期支教。安徽工业大学等多所高校的社会实践模式受到关注。</p>
+    <a class="source-link" href="http://epaper.ahwang.cn/xawb/20260725/html/content_20260725005003.htm" target="_blank">📎 查看原文</a>
+  </div>
+
+  <div class="discussion">
+    <h3>10. 援疆杯赛事规模创新高：30队角逐、1.25万名球员参与</h3>
+    <div class="card-meta">来源：头条号 | 2026-07</div>
+    <p>网友讨论第二届"援疆杯"赛事规模：总决赛30支代表队角逐，覆盖预选赛阶段的487支队伍、1.25万名球员，在被誉为"百年足球之乡"的阿图什市举办。赛事以"石榴花开绿茵场，援疆同心向未来"为主题，引发广泛关注。</p>
+    <a class="source-link" href="http://m.toutiao.com/group/7661562082801762859/" target="_blank">📎 查看原文</a>
+  </div>
+</div>
+
+<!-- ==================== 信息来源汇总 ==================== -->
+<div class="section">
+  <div class="section-title">
+    <span class="icon">📋</span>
+    <span>信息来源汇总</span>
+  </div>
+
+  <div class="card">
+    <table class="source-table" style="width:100%;border-collapse:collapse;font-size:0.9rem;">
+      <thead>
+        <tr style="border-bottom:2px solid rgba(0,212,255,0.2);">
+          <th style="text-align:left;padding:10px 8px;color:#00d4ff;">来源名称</th>
+          <th style="text-align:left;padding:10px 8px;color:#00d4ff;">链接</th>
+          <th style="text-align:left;padding:10px 8px;color:#00d4ff;">日期</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">安工大机械工程学院官网</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16245.htm" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-07-28</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">安工大机械工程学院官网</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16240.htm" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-07-22</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">安工大机械工程学院官网</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16236.htm" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-07-14</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">安工大机械工程学院官网</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16226.htm" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-07-10</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">安工大机械工程学院官网</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16231.htm" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-07-11</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">头条号（匠心传响调研团）</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="http://m.toutiao.com/group/7527966926518108707/" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-07-06</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">头条号（智趣一夏科普日）</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="http://m.toutiao.com/group/7527966993715872294/" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-07-02</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">头条号（三下乡启动仪式）</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="http://m.toutiao.com/group/7667382134402859566/" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-07-08</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">头条号（能源动力暑期实践）</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="http://m.toutiao.com/group/7130487293269492265/" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-07-20</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">长春工程学院就业信息网</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="http://job.ccit.edu.cn/" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-01</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">头条号（学长学姐返校日）</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="http://m.toutiao.com/group/7666506290692948531/" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-07-21</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">头条号（援疆杯夺冠）</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="http://m.toutiao.com/group/7666663999978717722/" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-07-23</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">头条号（96届毕业30周年）</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="http://m.toutiao.com/group/7667171231204000294/" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-07</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">头条号（66届校友返校）</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="http://m.toutiao.com/group/7665933370764870170/" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-07-03</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">采招网（徐州三中搬迁公告）</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="https://m.bidcenter.com.cn/news-4-432731170.html" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-07-27</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">采招网（大庙中学文化墙维修）</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="https://m.bidcenter.com.cn/news-4-432953919.html" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">采招网（大庙中学参观阳光学校）</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="https://m.yfbzb.com/winbid/detail/20260116_571079046.html" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-01-16</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">新安晚报（安徽高校暑期实践）</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="http://epaper.ahwang.cn/xawb/20260725/html/content_20260725005003.htm" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-07-25</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">新浪财经（援疆杯报道）</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="https://cj.sina.cn/article/norm_detail?froms=ttmp&url=https%3A%2F%2Ffinance.sina.com.cn%2Fwm%2F2026-07-17%2Fdoc-iniicqkw1482312.shtml%3Ffinpagefr=ttzz" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-07-17</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(0,212,255,0.08);">
+          <td style="padding:10px 8px;">头条号（CCTV14援疆杯报道）</td>
+          <td style="padding:10px 8px;"><a class="source-link" href="http://m.toutiao.com/group/7668007452532556338/" target="_blank">📎 查看原文</a></td>
+          <td style="padding:10px 8px;">2026-07</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== 评论区（Giscus） ==================== -->
+<div style="max-width:860px;margin:40px auto 0;padding:24px 20px;background:rgba(20,28,48,0.9);border-radius:12px;border:1px solid rgba(0, 212, 255, 0.12);">
+<h2 style="font-size:1.1rem;margin-bottom:6px">💬 评论区</h2>
+<p>登录GitHub账号即可评论，支持Markdown和表情回应。历史报告也可评论。</p>
+<script src="https://giscus.app/client.js" data-repo="TS-dinglilu/TS-dinglilu.github.io" data-repo-id="R_kgDOTjqaJQ" data-category="Announcements" data-category-id="DIC_kwDOTjqaJc4DCIL1" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark_dimmed" data-lang="zh-CN" crossorigin="anonymous" async></script>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>校园新闻日报 · 自动化生成 · 数据来源于公开网络</p>
+  <p>在线访问：<a href="https://ts-dinglilu.github.io/school-news/" target="_blank">GitHub Pages</a> | 报告日期：2026-07-30</p>
+</div>
+
+</div>
+
+<!-- v9.0 generated at 2026-07-30 -->
+</body>
+</html>
