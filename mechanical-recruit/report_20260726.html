@@ -6,10 +6,16 @@
 <title>机械招聘日报 | 2026-07-26</title>
 <style>
 /* ============================================================
-   报告页统一CSS模板 - v3.0 暗色主题版
+   报告页统一CSS模板 - v5.0 暗色主题版
    适用于所有自动化任务的报告HTML
    配色方案: 深空蓝(#0a0e1a) + 青色强调(#00d4ff)
    字体: JetBrains Mono + Noto Sans SC
+   v5.0改进:
+   - 统一标题层级: section-title与h2视觉一致(青色)
+   - h3子标题白色+绿色左边框, h4灰色小标题
+   - 信息类型色彩区分: 卡片左框颜色编码
+   - 排版间距优化, 相邻板块一目了然
+   - 补全所有缺失CSS类, 确保任意HTML结构正常渲染
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
@@ -19,11 +25,14 @@
   --bg-elev: #111726;
   --card: rgba(20, 28, 48, 0.6);
   --card-solid: rgba(20, 28, 48, 0.75);
+  --card-hover: rgba(20, 28, 48, 0.85);
   --border: rgba(0, 212, 255, 0.12);
   --border-hover: rgba(0, 212, 255, 0.4);
+  /* 文本颜色 - 三级明显区分 */
   --text: #f0f4f8;
-  --text-dim: #e8eef5;
-  --text-faint: #e0e8f2;
+  --text-dim: #a8b8d0;
+  --text-faint: #7888a8;
+  /* 强调色 */
   --accent: #00d4ff;
   --accent-warm: #ffb347;
   --accent-green: #22d3a0;
@@ -31,6 +40,12 @@
   --accent-pink: #f87171;
   --accent-teal: #14b8a6;
   --accent-orange: #fb923c;
+  /* CSS变量别名 - 兼容旧代码 */
+  --text-secondary: #a8b8d0;
+  --success: #22d3a0;
+  --warning: #ffb347;
+  --info: #00d4ff;
+  --danger: #f87171;
   --grid-line: rgba(0, 212, 255, 0.04);
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
@@ -53,6 +68,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* 段落全局间距 */
+p { margin-bottom: 10px; }
+p:last-child { margin-bottom: 0; }
+
+/* 强调文字 */
+strong, b { color: var(--accent); font-weight: 600; }
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: #fff; text-decoration: underline; }
+
+/* 列表 */
+ul, ol { margin: 8px 0 12px 20px; }
+li { margin-bottom: 5px; color: var(--text); line-height: 1.75; }
+
 /* Decorative grid background */
 body::before {
   content: '';
@@ -66,7 +94,7 @@ body::before {
   z-index: 0;
 }
 
-/* Floating gradient orb with radial-gradient animation */
+/* Floating gradient orb */
 body::after {
   content: '';
   position: fixed;
@@ -92,7 +120,7 @@ body::after {
 }
 
 /* ============================================================
-   HEADER - 渐变标题栏 with glass-morphism
+   HEADER - 渐变标题栏
    ============================================================ */
 .header {
   background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(20,28,48,0.8) 40%, rgba(129,140,248,0.08) 100%);
@@ -142,7 +170,8 @@ body::after {
   position: relative;
   z-index: 1;
 }
-.header .date {
+.header .date,
+.header .date-badge {
   font-size: 0.8rem;
   color: var(--accent);
   background: rgba(0,212,255,0.1);
@@ -155,10 +184,169 @@ body::after {
   z-index: 1;
   font-family: 'JetBrains Mono', monospace;
 }
+.header .meta {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .meta span {
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  background: rgba(0,212,255,0.08);
+  backdrop-filter: blur(8px);
+  padding: 4px 12px;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+}
 
 /* ============================================================
-   SECTIONS - 卡片式内容区
-   相邻section间距56px，顶部3px渐变条+底部2px边框+明显视觉分隔
+   BACK LINK - 返回链接
+   ============================================================ */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 16px 0 8px;
+  transition: gap 0.2s;
+}
+.back-link:hover { gap: 10px; color: var(--accent); text-decoration: none; }
+
+/* ============================================================
+   NAV LINKS - 导航栏
+   ============================================================ */
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+  padding: 10px 14px;
+  background: rgba(0,212,255,0.05);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+}
+.nav-links a {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: rgba(0,212,255,0.05);
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.nav-links a:hover {
+  color: var(--accent);
+  background: rgba(0,212,255,0.15);
+  border-color: var(--border-hover);
+  text-decoration: none;
+}
+
+/* ============================================================
+   NAV TOC - 目录导航
+   ============================================================ */
+.nav-toc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  margin: 16px 0;
+}
+.nav-toc h4 {
+  font-size: 0.85rem;
+  color: var(--accent-purple);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.nav-toc ul { list-style: none; padding: 0; }
+.nav-toc li { padding: 4px 0; }
+.nav-toc a {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-toc a:hover { color: var(--accent); text-decoration: none; }
+
+/* ============================================================
+   ★★★ SECTION TITLE & H2 - 板块标题（统一样式）★★★
+   两者视觉完全一致: 青色(#00d4ff), 渐变背景, 左侧粗边框
+   确保 h2 和 .section-title 渲染结果相同
+   ============================================================ */
+.section-title,
+.section > h2,
+h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 48px 0 24px;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(20,28,48,0.5) 100%);
+  border-left: 4px solid var(--accent);
+  border-top: 1px solid rgba(0, 212, 255, 0.25);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 0 12px 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  line-height: 1.4;
+}
+/* 第一个section-title不需要顶部大间距 */
+.section > h2:first-child,
+.section-title:first-child {
+  margin-top: 0;
+}
+
+.section-title .emoji,
+.section-title .icon,
+h2 .icon,
+h2 .emoji {
+  font-size: 1.3rem;
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+  flex-shrink: 0;
+}
+.section-title .num,
+.section-title .number,
+h2 .num,
+h2 .number {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  background: rgba(0,212,255,0.1);
+  padding: 3px 12px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.section-title > span:not(.num):not(.number):not(.emoji):not(.icon),
+h2 > span:not(.num):not(.number):not(.emoji):not(.icon):not(.badge) {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* 图标颜色变体 */
+.icon-blue, .icon.icon-blue { color: var(--accent); }
+.icon-green, .icon.icon-green { color: var(--accent-green); }
+.icon-orange, .icon.icon-orange { color: var(--accent-warm); }
+.icon-purple, .icon.icon-purple { color: var(--accent-purple); }
+.icon-teal, .icon.icon-teal { color: var(--accent-teal); }
+.icon-pink, .icon.icon-pink { color: var(--accent-pink); }
+
+/* ============================================================
+   SECTION - 卡片式内容区
    ============================================================ */
 .section {
   background: var(--card);
@@ -166,66 +354,49 @@ body::after {
   -webkit-backdrop-filter: blur(8px);
   border-radius: var(--radius);
   padding: 28px 24px;
-  margin: 56px 0;
+  margin: 40px 0;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border);
-  border-top: 3px solid rgba(0, 212, 255, 0.4);
-  border-bottom: 3px solid rgba(0, 212, 255, 0.3);
   position: relative;
-  overflow: visible;
 }
 .section::before {
   content: '';
   position: absolute;
   top: 0; left: 0;
-  width: 100%; height: 4px;
+  width: 100%; height: 3px;
   background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 50%, var(--accent-green) 100%);
   border-radius: var(--radius) var(--radius) 0 0;
 }
-/* 板块间渐变分割线 - 明确视觉分隔 */
-.section + .section,
-.section:not(:first-child) {
-  margin-top: 56px;
-}
-.section-title {
-  position: relative;
-}
-.section-title::after {
-  content: '';
-  position: absolute;
-  top: -32px;
-  left: 10%;
-  right: 10%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, rgba(0,212,255,0.6) 20%, rgba(129,140,248,0.5) 50%, rgba(0,212,255,0.6) 80%, transparent 100%);
-  border-radius: 2px;
-  opacity: 0.8;
-}
-.section-title:first-of-type::after {
-  display: none;
-}
-.section h2 {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 20px;
-  padding-bottom: 14px;
-  border-bottom: 2px solid rgba(0, 212, 255, 0.4);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+
+/* ============================================================
+   ★★★ H3 - 子标题（白色 + 绿色左边框）★★★
+   与h2青色形成清晰层级区分
+   ============================================================ */
+h3,
 .section h3 {
-  font-size: 1.08rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  color: var(--accent);
-  margin: 20px 0 10px;
-  padding-left: 12px;
-  border-left: 3px solid var(--accent);
+  color: var(--text);
+  margin: 24px 0 12px;
+  padding-left: 14px;
+  border-left: 3px solid var(--accent-green);
+  line-height: 1.4;
+}
+h3:first-child { margin-top: 0; }
+
+/* ============================================================
+   H4 - 四级标题（灰色小标题）
+   ============================================================ */
+h4 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  margin: 16px 0 8px;
+  line-height: 1.4;
 }
 
 /* ============================================================
-   CARDS - 信息卡片 (间距16px，多层透明度)
+   CARDS - 通用信息卡片 (青色左边框)
    ============================================================ */
 .card {
   background: var(--card-solid);
@@ -238,6 +409,7 @@ body::after {
   position: relative;
 }
 .card:hover {
+  background: var(--card-hover);
   box-shadow: var(--shadow-md);
   transform: translateY(-1px);
   border-left-color: var(--accent);
@@ -251,26 +423,70 @@ body::after {
   display: flex;
   align-items: center;
   gap: 8px;
+  line-height: 1.4;
 }
 .card-meta {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--text-dim);
   margin-bottom: 10px;
   font-family: 'JetBrains Mono', monospace;
+  line-height: 1.6;
 }
 .card-content {
   font-size: 0.9rem;
   color: var(--text);
   line-height: 1.75;
 }
+.card-content p { margin-bottom: 8px; }
 .card p { color: var(--text); line-height: 1.75; margin-bottom: 8px; }
-.card-content strong {
-  color: var(--accent);
-  font-weight: 600;
-}
+.card-content strong { color: var(--accent); font-weight: 600; }
 
 /* ============================================================
-   NEWS ITEMS - 新闻条目
+   JOB CARD - 岗位卡片 (绿色左边框)
+   ============================================================ */
+.job-card {
+  background: var(--card-solid);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-green);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 16px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.job-card:hover {
+  background: var(--card-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-left-color: var(--accent-green);
+  border-color: var(--border-hover);
+}
+.job-title {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 1.02rem;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.job-meta {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.job-desc {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.job-card p { color: var(--text); line-height: 1.75; margin-bottom: 8px; }
+.job-card strong { color: var(--accent-green); font-weight: 600; }
+
+/* ============================================================
+   NEWS ITEMS - 新闻条目 (青色左侧条)
    ============================================================ */
 .news-item {
   background: var(--card);
@@ -289,7 +505,7 @@ body::after {
   position: absolute;
   top: 0; left: 0;
   width: 4px; height: 100%;
-  background: var(--border-hover);
+  background: var(--accent);
   transition: all 0.3s ease;
 }
 .news-item:hover {
@@ -298,16 +514,17 @@ body::after {
   transform: translateY(-2px);
 }
 .news-item:hover::before {
-  background: var(--accent);
+  background: var(--accent-green);
   width: 5px;
 }
 .news-item p { color: var(--text); line-height: 1.75; margin-bottom: 8px; }
+.news-item .card-title { margin-top: 0; }
 .news-item .badge {
   display: inline-flex;
   align-items: center;
   background: rgba(0,212,255,0.12);
   color: var(--accent);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   padding: 3px 12px;
   border-radius: 50px;
   margin-right: 8px;
@@ -327,7 +544,7 @@ body::after {
 }
 
 /* ============================================================
-   TABLES - 数据表格 (暗色背景，行交替色)
+   TABLES - 数据表格
    ============================================================ */
 table {
   width: 100%;
@@ -349,7 +566,7 @@ th {
   font-weight: 600;
   font-size: 0.8rem;
   letter-spacing: 0.3px;
-  border-bottom: 1px solid var(--border-hover);
+  border-bottom: 2px solid var(--border-hover);
 }
 td {
   padding: 10px;
@@ -360,25 +577,79 @@ td {
 tr:last-child td { border-bottom: none; }
 tr:nth-child(even) { background: rgba(0,0,0,0.15); }
 tr:hover { background: rgba(0,212,255,0.08); }
-tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 16px 0;
+  border-radius: var(--radius-sm);
+}
+.salary-table { font-size: 0.82rem; }
+.salary-table th { color: var(--accent-green); }
+.summary-table { font-size: 0.82rem; }
+.summary-table td:first-child {
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
 
 /* ============================================================
-   TAGS - 标签
+   TAGS & PILLS - 标签
    ============================================================ */
 .tag {
   display: inline-block;
   background: rgba(0,212,255,0.1);
   color: var(--accent);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   padding: 3px 10px;
   border-radius: 6px;
   margin: 2px;
   font-weight: 500;
   border: 1px solid rgba(0,212,255,0.2);
 }
-.tag.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
-.tag.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
-.tag.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
+.tag.green, .tag-green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
+.tag.orange, .tag-orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
+.tag.red, .tag-red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
+.tag.purple, .tag-purple { background: rgba(129,140,248,0.1); color: var(--accent-purple); border-color: rgba(129,140,248,0.25); }
+.tag.blue, .tag-blue { background: rgba(0,212,255,0.1); color: var(--accent); border-color: rgba(0,212,255,0.2); }
+
+.pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+  margin: 2px;
+  font-weight: 500;
+  background: rgba(0,212,255,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(0,212,255,0.2);
+}
+.pill.green, .pill-green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
+.pill.orange, .pill-orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
+.pill.red, .pill-red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
+.pill.purple, .pill-purple { background: rgba(129,140,248,0.1); color: var(--accent-purple); border-color: rgba(129,140,248,0.25); }
+.pill.accent, .pill-accent { background: rgba(0,212,255,0.1); color: var(--accent); border-color: rgba(0,212,255,0.2); }
+.pill.success, .pill-success { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
+.pill.warning, .pill-warning { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
+.pill-location { background: rgba(0,212,255,0.1); color: var(--accent); border: 1px solid rgba(0,212,255,0.2); }
+.pill-salary { background: rgba(34,211,160,0.1); color: var(--accent-green); border: 1px solid rgba(34,211,160,0.25); }
+.pill-edu { background: rgba(129,140,248,0.1); color: var(--accent-purple); border: 1px solid rgba(129,140,248,0.25); }
+.pill-type { background: rgba(255,179,71,0.1); color: var(--accent-warm); border: 1px solid rgba(255,179,71,0.25); }
+
+/* ============================================================
+   BADGE - 评估徽章
+   ============================================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.badge-high { background: rgba(34,211,160,0.15); color: var(--accent-green); border: 1px solid rgba(34,211,160,0.3); }
+.badge-mid { background: rgba(255,179,71,0.15); color: var(--accent-warm); border: 1px solid rgba(255,179,71,0.3); }
+.badge-low { background: rgba(248,113,113,0.15); color: var(--accent-pink); border: 1px solid rgba(248,113,113,0.3); }
 
 /* ============================================================
    SOURCE LINKS - 原文链接
@@ -396,6 +667,7 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
   background: rgba(0,212,255,0.1);
   border: 1px solid rgba(0,212,255,0.2);
   transition: all 0.2s;
+  margin-top: 8px;
 }
 .source-link:hover {
   background: var(--accent);
@@ -406,9 +678,9 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
 }
 
 /* ============================================================
-   DISCUSSION - 讨论区
+   DISCUSSION - 讨论区 (橙色左边框)
    ============================================================ */
-.discussion {
+.discussion, .discussion-item {
   background: rgba(255,179,71,0.08);
   border: 1px solid rgba(255,179,71,0.2);
   border-left: 4px solid var(--accent-warm);
@@ -417,24 +689,32 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
   margin: 16px 0;
   transition: all 0.3s;
 }
-.discussion:hover {
+.discussion:hover, .discussion-item:hover {
   box-shadow: var(--shadow-sm);
   transform: translateY(-1px);
 }
-.discussion .platform {
+.discussion .platform, .discussion-item .platform {
   display: inline-block;
   background: var(--accent-warm);
   color: var(--bg);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   padding: 3px 12px;
   border-radius: 50px;
   margin-bottom: 8px;
   font-weight: 600;
   letter-spacing: 0.3px;
 }
+.discussion-item .text {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.discussion-item .text strong { color: var(--accent); }
+.discussion-item .link { font-size: 0.82rem; }
 
 /* ============================================================
-   TIP BOX - 提示框
+   TIP BOX - 提示框 (绿色)
    ============================================================ */
 .tip-box {
   background: rgba(34,211,160,0.08);
@@ -452,6 +732,12 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
   width: 4px; height: 100%;
   background: var(--accent-green);
 }
+.tip-title {
+  color: var(--accent-green);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
 .tip-box h4 {
   color: var(--accent-green);
   font-size: 0.95rem;
@@ -460,10 +746,11 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
 }
 .tip-box ul { list-style: none; padding-left: 0; }
 .tip-box li {
-  padding: 5px 0 5px 24px;
+  padding: 6px 0 6px 24px;
   position: relative;
-  font-size: 0.88rem;
-  color: var(--text-dim);
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
 }
 .tip-box li::before {
   content: '✓';
@@ -471,11 +758,10 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
   left: 0;
   color: var(--accent-green);
   font-weight: 700;
-  font-size: 1rem;
 }
 
 /* ============================================================
-   WARNING BOX - 警告框
+   WARNING BOX - 警告框 (红色)
    ============================================================ */
 .warning-box {
   background: rgba(248,113,113,0.08);
@@ -501,18 +787,122 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
 }
 
 /* ============================================================
-   SUMMARY TABLE - 汇总表
+   HIGHLIGHT BOX - 高亮提示框 (青色)
    ============================================================ */
-.summary-table { font-size: 0.82rem; }
-.summary-table td:first-child {
-  font-weight: 600;
-  color: var(--accent);
-  white-space: nowrap;
+.highlight-box {
+  background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(129,140,248,0.05) 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text);
+  position: relative;
+  transition: all 0.3s;
+}
+.highlight-box:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+  border-color: var(--border-hover);
+}
+.highlight-box strong { color: var(--accent); font-weight: 600; }
+
+/* ============================================================
+   INFO BOX - 信息框 (紫色)
+   ============================================================ */
+.info-box {
+  background: rgba(129,140,248,0.08);
+  border: 1px solid rgba(129,140,248,0.2);
+  border-left: 4px solid var(--accent-purple);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text);
+}
+.info-box h4 {
+  color: var(--accent-purple);
+  margin-bottom: 8px;
+}
+.info-box strong { color: var(--accent-purple); }
+
+/* ============================================================
+   PROGRESS BAR - 进度条
+   ============================================================ */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(0,212,255,0.1);
+  border-radius: 50px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-green));
+  border-radius: 50px;
+  transition: width 0.5s ease;
 }
 
 /* ============================================================
-   GISCUS / COMMENTS - 评论区 (dark_dimmed 主题)
-   注意: HTML中giscus script需设置 data-theme="dark_dimmed"
+   MISC UTILITIES
+   ============================================================ */
+.text-center { text-align: center; }
+.text-accent { color: var(--accent); }
+.text-green { color: var(--accent-green); }
+.text-warm { color: var(--accent-warm); }
+.text-purple { color: var(--accent-purple); }
+.text-dim { color: var(--text-dim); }
+.text-faint { color: var(--text-faint); }
+.mt-0 { margin-top: 0 !important; }
+.mb-0 { margin-bottom: 0 !important; }
+.mt-2 { margin-top: 8px; }
+.mb-2 { margin-bottom: 8px; }
+.mt-4 { margin-top: 16px; }
+.mb-4 { margin-bottom: 16px; }
+
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 24px 0;
+}
+
+blockquote {
+  border-left: 3px solid var(--accent-purple);
+  padding-left: 16px;
+  margin: 16px 0;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+code {
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(0,212,255,0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  color: var(--accent);
+}
+pre {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  overflow-x: auto;
+  font-size: 0.82rem;
+}
+pre code {
+  background: none;
+  padding: 0;
+  color: var(--text);
+}
+
+/* ============================================================
+   GISCUS / COMMENTS - 评论区
    ============================================================ */
 .comments-section {
   margin-top: 40px;
@@ -553,425 +943,26 @@ footer {
 @media (max-width: 600px) {
   .header { padding: 32px 16px 24px; border-radius: 0 0 20px 20px; }
   .header h1 { font-size: 1.3rem; }
-  .section { padding: 18px 14px; margin: 48px 0; }
-  .card, .news-item { padding: 14px 16px; }
+  .section { padding: 18px 14px; margin: 32px 0; }
+  .section-title, h2 { font-size: 1.1rem; padding: 12px 16px; margin: 32px 0 20px; }
+  h3 { font-size: 0.95rem; }
+  .card, .news-item, .job-card { padding: 14px 16px; }
   table { font-size: 0.76rem; }
   th, td { padding: 7px 5px; }
   .container { padding: 0 12px 40px; }
+  .nav-links { padding: 8px 10px; }
+  .nav-links a { font-size: 0.72rem; padding: 3px 8px; }
 }
 
 /* ============================================================
-   SECTION TITLE - 带编号的板块标题
+   PRINT - 打印优化
    ============================================================ */
-.section-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin: 56px 0 28px;
-  padding: 16px 20px;
-  background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(20,28,48,0.5) 100%);
-  border-left: 4px solid var(--accent);
-  border-top: 1px solid rgba(0, 212, 255, 0.25);
-  border-bottom: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 0 12px 12px 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-}
-.section-title .emoji,
-.section-title .icon {
-  font-size: 1.3rem;
-  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
-}
-.section-title .num {
-  margin-left: auto;
-  font-size: 0.72rem;
-  color: var(--text-dim);
-  background: rgba(0,212,255,0.1);
-  padding: 3px 12px;
-  border-radius: 50px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  border: 1px solid var(--border);
-}
-.section-title > span:not(.num):not(.emoji):not(.icon) {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--text);
-}
-
-/* ============================================================
-   HIGHLIGHT BOX - 高亮提示框
-   ============================================================ */
-.highlight-box {
-  background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(129,140,248,0.05) 100%);
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--accent);
-  border-radius: var(--radius-sm);
-  padding: 16px 20px;
-  margin: 16px 0;
-  font-size: 0.9rem;
-  line-height: 1.75;
-  color: var(--text);
-  position: relative;
-  transition: all 0.3s;
-}
-.highlight-box:hover {
-  box-shadow: var(--shadow-sm);
-  transform: translateY(-1px);
-  border-color: var(--border-hover);
-}
-.highlight-box strong {
-  color: var(--accent);
-  font-weight: 600;
-}
-
-/* ============================================================
-   SKILL BAR - 技能进度条
-   ============================================================ */
-.skill-bar {
-  width: 100%;
-  height: 8px;
-  background: rgba(0,212,255,0.08);
-  border-radius: 50px;
-  margin: 6px 0 12px;
-  overflow: hidden;
-  position: relative;
-}
-.skill-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 100%);
-  border-radius: 50px;
-  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-}
-.skill-bar-fill::after {
-  content: '';
-  position: absolute;
-  top: 0; right: 0;
-  width: 20px; height: 100%;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 100%);
-  border-radius: 50px;
-}
-
-/* ============================================================
-   TAG VARIANTS - 标签变体
-   ============================================================ */
-.tag-blue { background: rgba(0,212,255,0.1); color: var(--accent); border: 1px solid rgba(0,212,255,0.2); }
-.tag-green, .tag.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border: 1px solid rgba(34,211,160,0.25); }
-.tag-purple { background: rgba(129,140,248,0.1); color: var(--accent-purple); border: 1px solid rgba(129,140,248,0.25); }
-.tag-red, .tag.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border: 1px solid rgba(248,113,113,0.25); }
-.tag-orange, .tag.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border: 1px solid rgba(255,179,71,0.25); }
-
-/* ============================================================
-   BADGE - 评估徽章 (独立使用，不限于news-item内)
-   ============================================================ */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.72rem;
-  padding: 3px 10px;
-  border-radius: 50px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
-.badge-high {
-  background: rgba(34,211,160,0.15);
-  color: var(--accent-green);
-  border: 1px solid rgba(34,211,160,0.3);
-}
-.badge-mid {
-  background: rgba(255,179,71,0.15);
-  color: var(--accent-warm);
-  border: 1px solid rgba(255,179,71,0.3);
-}
-.badge-low {
-  background: rgba(248,113,113,0.15);
-  color: var(--accent-pink);
-  border: 1px solid rgba(248,113,113,0.3);
-}
-
-/* ============================================================
-   HEADER META - 标题栏元数据
-   ============================================================ */
-.header .meta {
-  margin-top: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  position: relative;
-  z-index: 1;
-}
-.header .meta span {
-  font-size: 0.76rem;
-  color: var(--text-dim);
-  background: rgba(0,212,255,0.08);
-  backdrop-filter: blur(8px);
-  padding: 4px 12px;
-  border-radius: 50px;
-  border: 1px solid var(--border);
-}
-
-/* ============================================================
-   TIMELINE - 时间线
-   ============================================================ */
-.timeline {
-  position: relative;
-  padding-left: 24px;
-  margin: 16px 0;
-}
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 7px; top: 8px; bottom: 8px;
-  width: 2px;
-  background: linear-gradient(180deg, var(--accent) 0%, var(--border) 100%);
-  border-radius: 50px;
-}
-.timeline-item {
-  position: relative;
-  margin-bottom: 20px;
-  padding-left: 8px;
-}
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -21px; top: 6px;
-  width: 12px; height: 12px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 3px solid var(--accent);
-  box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
-  z-index: 1;
-}
-.timeline-item .time {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--accent);
-  margin-bottom: 6px;
-  font-family: 'JetBrains Mono', monospace;
-}
-.timeline-item .content {
-  background: var(--card-solid);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 14px 18px;
-  font-size: 0.88rem;
-  line-height: 1.75;
-  transition: all 0.3s;
-}
-.timeline-item .content:hover {
-  box-shadow: var(--shadow-sm);
-  transform: translateX(2px);
-  border-color: var(--border-hover);
-}
-.timeline-item .content p { margin-bottom: 4px; }
-.timeline-item .content strong { color: var(--accent); }
-
-/* ============================================================
-   DECISION GRID - 决策对比卡片
-   ============================================================ */
-.decision-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin: 16px 0;
-}
-@media (max-width: 600px) {
-  .decision-grid { grid-template-columns: 1fr; }
-}
-.decision-card {
-  border-radius: var(--radius-sm);
-  padding: 18px 20px;
-  font-size: 0.88rem;
-  line-height: 1.75;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-.decision-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-.decision-card h4 {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-.decision-card p { margin-bottom: 4px; }
-.decision-card strong { font-weight: 600; }
-.decision-yes {
-  background: rgba(34,211,160,0.08);
-  border: 1px solid rgba(34,211,160,0.2);
-  border-left: 4px solid var(--accent-green);
-}
-.decision-yes h4 { color: var(--accent-green); }
-.decision-yes strong { color: var(--accent-green); }
-.decision-no {
-  background: rgba(255,179,71,0.08);
-  border: 1px solid rgba(255,179,71,0.2);
-  border-left: 4px solid var(--accent-warm);
-}
-.decision-no h4 { color: var(--accent-warm); }
-.decision-no strong { color: var(--accent-warm); }
-
-/* ============================================================
-   DISCUSSION ITEM - 讨论条目
-   ============================================================ */
-.discussion-item {
-  background: rgba(255,179,71,0.08);
-  border: 1px solid rgba(255,179,71,0.2);
-  border-left: 4px solid var(--accent-warm);
-  border-radius: var(--radius-sm);
-  padding: 14px 18px;
-  margin: 12px 0;
-  transition: all 0.3s;
-}
-.discussion-item:hover {
-  box-shadow: var(--shadow-sm);
-  transform: translateY(-1px);
-}
-.discussion-item .platform {
-  display: inline-block;
-  background: var(--accent-warm);
-  color: var(--bg);
-  font-size: 0.72rem;
-  padding: 3px 12px;
-  border-radius: 50px;
-  margin-bottom: 8px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
-.discussion-item .text {
-  font-size: 0.88rem;
-  line-height: 1.75;
-  color: var(--text);
-  margin-bottom: 8px;
-}
-.discussion-item .text strong { color: var(--accent); }
-.discussion-item .link { font-size: 0.82rem; }
-
-/* ============================================================
-   GISCUS SECTION - 评论区别名 (dark_dimmed 主题)
-   注意: HTML中giscus script需设置 data-theme="dark_dimmed"
-   ============================================================ */
-.giscus-section {
-  margin-top: 40px;
-  background: var(--card-solid);
-  border-radius: var(--radius);
-  padding: 28px 24px;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-}
-.giscus-section h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 6px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* ============================================================
-   FOOTER (div version) - 页脚别名
-   ============================================================ */
-div.footer {
-  text-align: center;
-  margin-top: 40px;
-  padding: 24px 20px;
-  font-size: 0.78rem;
-  color: var(--text-faint);
-  border-top: 1px solid var(--border);
-  font-family: 'JetBrains Mono', monospace;
-}
-div.footer a { color: var(--accent); }
-div.footer a:hover { color: var(--accent-purple); }
-
-/* ============================================================
-   DECORATIVE ELEMENTS - 装饰元素 (隐藏，由body伪元素替代)
-   ============================================================ */
-.grid-bg { display: none; }
-.floating-ball { display: none; }
-
-/* ============================================================
-   UTILITY - 通用工具类
-   ============================================================ */
-a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
-a:hover { color: var(--accent-purple); text-decoration: underline; }
-strong { color: var(--text); font-weight: 700; }
-hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
-
-
-/* SALARY GRID - 薪资网格 (补充定义确保文字可读) */
-.salary-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin: 14px 0;
-}
-@media (max-width: 600px) {
-  .salary-grid { grid-template-columns: 1fr; }
-}
-.salary-item {
-  background: rgba(0,212,255,0.06);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  text-align: center;
-}
-.salary-item .level {
-  font-size: 0.78rem;
-  color: var(--text-dim);
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-.salary-item .amount {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 4px;
-  font-family: 'JetBrains Mono', monospace;
-}
-.salary-item .note {
-  font-size: 0.72rem;
-  color: var(--text-dim);
-}
-
-/* PILL - 小标签 (补充定义确保文字可读) */
-.pill {
-  display: inline-block;
-  font-size: 0.72rem;
-  padding: 3px 10px;
-  border-radius: 50px;
-  margin: 2px;
-  font-weight: 500;
-  background: rgba(0,212,255,0.1);
-  color: var(--accent);
-  border: 1px solid rgba(0,212,255,0.2);
-}
-.pill.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
-.pill.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
-.pill.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
-
-/* INFO ROW - 信息行 */
-.info-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-items: center;
-  margin: 10px 0;
-}
-
-/* META BAR - 元数据栏 */
-.meta-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  justify-content: center;
-  margin-top: 12px;
+@media print {
+  body { background: #fff; color: #000; }
+  body::before, body::after { display: none; }
+  .header { background: #f0f0f0; color: #000; border: 1px solid #ccc; }
+  .section { background: #fff; border: 1px solid #ccc; box-shadow: none; }
+  .card, .news-item, .job-card { background: #fff; border: 1px solid #ccc; }
 }
 
 </style>
@@ -1013,7 +1004,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
     <span class="salary-tag">1.1-1.9万·13薪</span>
   </div>
   <div class="job-desc">驻场中国商飞上海飞机设计研究所，熟练CATIA三维设计，国产大飞机金属支架设计。航空/汽车/船舶行业经验者优先。本科及以上，5-10年经验。</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://www.zhaopin.com/jobdetail/CCL1390849320J40637108101.htm" target="_blank" class="discussion-link">智联招聘 →</a></div>
+  <div class="job-meta" ><a href="https://www.zhaopin.com/jobdetail/CCL1390849320J40637108101.htm" target="_blank" class="discussion-link">智联招聘 →</a></div>
 </div>
 
 <div class="job-card high-match">
@@ -1024,7 +1015,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
     <span class="salary-tag">应届硕士</span>
   </div>
   <div class="job-desc">医疗器械设备机柜/传动/机电/罩壳设计，含机械/材料/热仿真。接受无经验，硕士应届。更新于2026-07-15。</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://www.zhipin.com/job_detail/06f3c2b9508a33ed1Hdy2dS6ElZW.html" target="_blank" class="discussion-link">BOSS直聘 →</a></div>
+  <div class="job-meta" ><a href="https://www.zhipin.com/job_detail/06f3c2b9508a33ed1Hdy2dS6ElZW.html" target="_blank" class="discussion-link">BOSS直聘 →</a></div>
 </div>
 
 <div class="job-card high-match">
@@ -1035,7 +1026,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
     <span class="salary-tag">本科起</span>
   </div>
   <div class="job-desc">航空发动机压气机强度计算，要求HyperMesh、Abaqus、Ansys、APDL、Nastran。1-3年经验。</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://www.zhipin.com/job_detail/e521c0595feda0c003x80ty6FFZX.html" target="_blank" class="discussion-link">BOSS直聘 →</a></div>
+  <div class="job-meta" ><a href="https://www.zhipin.com/job_detail/e521c0595feda0c003x80ty6FFZX.html" target="_blank" class="discussion-link">BOSS直聘 →</a></div>
 </div>
 
 <div class="job-card high-match">
@@ -1046,7 +1037,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
     <span class="salary-tag">1.5-2.5万</span>
   </div>
   <div class="job-desc">齿轮箱虚拟验证，结构强度分析、动力仿真。本科，3-5年经验。</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://www.zhaopin.com/jobdetail/CC387441310J40818432101.htm" target="_blank" class="discussion-link">智联招聘 →</a></div>
+  <div class="job-meta" ><a href="https://www.zhaopin.com/jobdetail/CC387441310J40818432101.htm" target="_blank" class="discussion-link">智联招聘 →</a></div>
 </div>
 
 <div class="job-card">
@@ -1057,7 +1048,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
     <span class="salary-tag">1.3-1.8万</span>
   </div>
   <div class="job-desc">汽车碰撞仿真、座椅仿真，乘用车/商用车/新能源车。要求ANSA、DYNA、强度耐久仿真。大专，3-5年。</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://www.zhaopin.com/jobdetail/CCL1511945340J40809083609.htm" target="_blank" class="discussion-link">智联招聘 →</a></div>
+  <div class="job-meta" ><a href="https://www.zhaopin.com/jobdetail/CCL1511945340J40809083609.htm" target="_blank" class="discussion-link">智联招聘 →</a></div>
 </div>
 
 <h3>江苏地区</h3>
@@ -1071,7 +1062,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
     <span class="salary-tag">1.5-2.5万</span>
   </div>
   <div class="job-desc">工业机器人本体机械方案设计，产品开发、老产品技术迭代。本科，1-3年经验。南京距马鞍山仅17分钟高铁。</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://m.zhaopin.com/jobs/CC243960110J40919003308.htm" target="_blank" class="discussion-link">智联招聘 →</a></div>
+  <div class="job-meta" ><a href="https://m.zhaopin.com/jobs/CC243960110J40919003308.htm" target="_blank" class="discussion-link">智联招聘 →</a></div>
 </div>
 
 <div class="job-card high-match">
@@ -1082,7 +1073,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
     <span class="salary-tag">1-1.5万</span>
   </div>
   <div class="job-desc">焊接工艺仿真（应力变形、温度场、熔池流动）+ 物流仿真（工厂布局、生产线离散仿真）。机械工程/焊接/自动化专业。国企，1000-9999人。</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://m.zhaopin.com/jobs/CC505395620J40556958903.htm" target="_blank" class="discussion-link">智联招聘 →</a></div>
+  <div class="job-meta" ><a href="https://m.zhaopin.com/jobs/CC505395620J40556958903.htm" target="_blank" class="discussion-link">智联招聘 →</a></div>
 </div>
 
 <div class="job-card">
@@ -1093,7 +1084,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
     <span class="salary-tag">2-3万·13薪</span>
   </div>
   <div class="job-desc">锂电PACK组装线研发设计，新能源方向。大专+，5年以上。Solidworks/CAD。</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://mhr.bjx.com.cn/jobs/897358.html" target="_blank" class="discussion-link">北极星招聘 →</a></div>
+  <div class="job-meta" ><a href="https://mhr.bjx.com.cn/jobs/897358.html" target="_blank" class="discussion-link">北极星招聘 →</a></div>
 </div>
 
 <div class="job-card">
@@ -1104,7 +1095,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
     <span class="salary-tag">本科应届</span>
   </div>
   <div class="job-desc">流体系统（微流体）设计和搭建。接受无经验。AutoCAD、SolidWorks。</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://www.zhipin.com/job_detail/60f5c39eeca91f5903N93d24ElpR.html" target="_blank" class="discussion-link">BOSS直聘 →</a></div>
+  <div class="job-meta" ><a href="https://www.zhipin.com/job_detail/60f5c39eeca91f5903N93d24ElpR.html" target="_blank" class="discussion-link">BOSS直聘 →</a></div>
 </div>
 
 <div class="job-card">
@@ -1115,7 +1106,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
     <span class="salary-tag">1.5-2.5万·14薪</span>
   </div>
   <div class="job-desc">本科，3-5年经验。工作环境好、团队氛围活跃。</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://www.zhaopin.com/jobdetail/CC166275810J40779279903.htm" target="_blank" class="discussion-link">智联招聘 →</a></div>
+  <div class="job-meta" ><a href="https://www.zhaopin.com/jobdetail/CC166275810J40779279903.htm" target="_blank" class="discussion-link">智联招聘 →</a></div>
 </div>
 
 <div class="job-card high-match">
@@ -1126,7 +1117,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
     <span class="salary-tag">10-15K·13薪</span>
   </div>
   <div class="job-desc">车辆安全性、车身耐久性和NVH属性目标。本科，3-5年。</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://www.zhipin.com/job_detail/2efe9392dbe0841203R52NS1GFBV.html" target="_blank" class="discussion-link">BOSS直聘 →</a></div>
+  <div class="job-meta" ><a href="https://www.zhipin.com/job_detail/2efe9392dbe0841203R52NS1GFBV.html" target="_blank" class="discussion-link">BOSS直聘 →</a></div>
 </div>
 
 <h3>浙江地区</h3>
@@ -1140,7 +1131,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
     <span class="salary-tag">15-25K·15薪</span>
   </div>
   <div class="job-desc">AGV机械结构设计（车体、驱动系统、转向机构），结构强度/刚度/动力学仿真分析。SolidWorks/UG/Pro/E。更新于2026-07-24（最新）。</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://www.zhipin.com/job_detail/178d52f76dfa505e03N63tm4F1ZS.html" target="_blank" class="discussion-link">BOSS直聘 →</a></div>
+  <div class="job-meta" ><a href="https://www.zhipin.com/job_detail/178d52f76dfa505e03N63tm4F1ZS.html" target="_blank" class="discussion-link">BOSS直聘 →</a></div>
 </div>
 
 <div class="job-card">
@@ -1151,7 +1142,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
     <span class="salary-tag">15-25K·15薪</span>
   </div>
   <div class="job-desc">设备改造和导入，产品研发/工艺改进/现场需求。Protel、CAD。本科，5-10年。</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://www.zhipin.com/job_detail/c72ad51a0677f1b01HV_09m1EFpV.html" target="_blank" class="discussion-link">BOSS直聘 →</a></div>
+  <div class="job-meta" ><a href="https://www.zhipin.com/job_detail/c72ad51a0677f1b01HV_09m1EFpV.html" target="_blank" class="discussion-link">BOSS直聘 →</a></div>
 </div>
 
 <div class="job-card">
@@ -1162,7 +1153,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
     <span class="salary-tag">1.5-2.5万</span>
   </div>
   <div class="job-desc">产品和解决方案售前支持，协助销售进行需求分析。本科，1-3年。</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://www.zhaopin.com/jobdetail/CC120975580J40918555015.htm" target="_blank" class="discussion-link">智联招聘 →</a></div>
+  <div class="job-meta" ><a href="https://www.zhaopin.com/jobdetail/CC120975580J40918555015.htm" target="_blank" class="discussion-link">智联招聘 →</a></div>
 </div>
 
 <div class="job-card">
@@ -1173,7 +1164,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
     <span class="salary-tag">面议</span>
   </div>
   <div class="job-desc">大专，3-5年经验。</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://www.liepin.com/s/zjjlkgjtjxgcsm8s6/pn6/" target="_blank" class="discussion-link">猎聘 →</a></div>
+  <div class="job-meta" ><a href="https://www.liepin.com/s/zjjlkgjtjxgcsm8s6/pn6/" target="_blank" class="discussion-link">猎聘 →</a></div>
 </div>
 
 <div class="job-card">
@@ -1184,7 +1175,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
     <span class="salary-tag">经验不限</span>
   </div>
   <div class="job-desc">汽车底盘绘制产品装配图及零部件图。本科，经验不限，要求英语。</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://m.zhipin.com/job_detail/261763d068be9a9903R53dy_FVdS.html" target="_blank" class="discussion-link">BOSS直聘 →</a></div>
+  <div class="job-meta" ><a href="https://m.zhipin.com/job_detail/261763d068be9a9903R53dy_FVdS.html" target="_blank" class="discussion-link">BOSS直聘 →</a></div>
 </div>
 </div>
 
@@ -1204,7 +1195,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
   <strong>专业要求：</strong>机械类、能动类、力学类、材料类、测控类<br>
   <strong>福利：</strong>六险三金、免费工作餐/通勤班车/宿舍、落户加分、临港人才购房政策<br>
   <strong>投递：</strong>zhuhy8@shanghai-electric.com</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://www.sohu.com/a/936314434_121124005" target="_blank" class="discussion-link">搜狐招聘详情 →</a></div>
+  <div class="job-meta" ><a href="https://www.sohu.com/a/936314434_121124005" target="_blank" class="discussion-link">搜狐招聘详情 →</a></div>
 </div>
 
 <h3>2. 中航商发（中国航发商用航空发动机）</h3>
@@ -1219,7 +1210,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
   <strong>学历：</strong>硕士及以上（博士优先），博士"心"计划额外补贴10万/年×5年<br>
   <strong>薪资：</strong>本科1.5-2万/月；福利含人才公寓、安家费、补充公积金<br>
   <strong>网申：</strong>aecccae.zhaopin.com（校招已截止，社招持续开放）</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://jy.xmu.edu.cn/campus/view/id/1000233" target="_blank" class="discussion-link">厦门大学就业网 →</a></div>
+  <div class="job-meta" ><a href="https://jy.xmu.edu.cn/campus/view/id/1000233" target="_blank" class="discussion-link">厦门大学就业网 →</a></div>
 </div>
 
 <h3>3. 埃斯顿机器人（埃斯顿自动化）</h3>
@@ -1234,7 +1225,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
   <strong>薪资：</strong>高级伺服算法工程师 2.5-4.5万/月（5-10年）<br>
   <strong>更新：</strong>2026年7月13日（活跃中）<br>
   <strong>优势：</strong>南京江宁区，距马鞍山17分钟高铁，国产工业机器人龙头</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://m.zhipin.com/gongsi/job/49918bade78993021nN509S5EQ~~.html" target="_blank" class="discussion-link">BOSS直聘全部职位 →</a></div>
+  <div class="job-meta" ><a href="https://m.zhipin.com/gongsi/job/49918bade78993021nN509S5EQ~~.html" target="_blank" class="discussion-link">BOSS直聘全部职位 →</a></div>
 </div>
 
 <h3>4. 博世中国（Bosch China）</h3>
@@ -1249,7 +1240,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
   <strong>总部：</strong>苏州（博世智能驾控XC事业部中国总部）<br>
   <strong>特点：</strong>外企更看重个人能力和面试表现，不严格限制学校层次<br>
   <strong>社招：</strong>持续开放，可关注苏州/上海研发中心仿真岗</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://www.nowcoder.com/enterprise/1751" target="_blank" class="discussion-link">牛客网校招页面 →</a></div>
+  <div class="job-meta" ><a href="https://www.nowcoder.com/enterprise/1751" target="_blank" class="discussion-link">牛客网校招页面 →</a></div>
 </div>
 
 <h3>5. 吉利集团（浙江吉利控股集团）</h3>
@@ -1265,7 +1256,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
   <strong>规模：</strong>2026届校招预计2000余人，数智化研发岗位占比近40%<br>
   <strong>薪资：</strong>智能网联工程师15-40k/月；ADAS驻厂8-13K·15薪<br>
   <strong>投递：</strong>campus.geely.com</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="http://career.bit.edu.cn/f/recruitmentFair/show?recruitmentFairId=f300e7bac1484a2e9773fad1d5cedc97" target="_blank" class="discussion-link">北理工就业网校招简章 →</a></div>
+  <div class="job-meta" ><a href="http://career.bit.edu.cn/f/recruitmentFair/show?recruitmentFairId=f300e7bac1484a2e9773fad1d5cedc97" target="_blank" class="discussion-link">北理工就业网校招简章 →</a></div>
 </div>
 
 <h3>6. 汇川技术（深圳市汇川技术）</h3>
@@ -1279,7 +1270,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
   <div class="job-desc"><strong>主要岗位：</strong>软件工程师/电机控制功能软件设计（苏州，硕士）、变频器硬件工程师（深圳，1-1.5万，本科）、26/27届见习生-海外技术服务<br>
   <strong>业务：</strong>变频器、伺服系统、控制系统、工业机器人、新能源汽车电驱<br>
   <strong>特点：</strong>苏州吴中区为主要研发生产基地，工控自动化龙头</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://mhr.bjx.com.cn/jobs/490012.html" target="_blank" class="discussion-link">北极星招聘软件工程师 →</a></div>
+  <div class="job-meta" ><a href="https://mhr.bjx.com.cn/jobs/490012.html" target="_blank" class="discussion-link">北极星招聘软件工程师 →</a></div>
 </div>
 
 <h3>7. 联影医疗（上海联影医疗）</h3>
@@ -1294,7 +1285,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
   <strong>薪资：</strong>专利工程师17-30K·14薪；SQE工程师15-22K·14薪；上海机械工程师18-30K·14薪<br>
   <strong>更新：</strong>2026年7月23日（活跃中）<br>
   <strong>优势：</strong>国内高端医疗影像设备龙头（CT/MR/MI/XR/RT），仿真岗集中</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://m.zhipin.com/gongsi/job/c101020100/7ef9f8aad51014241H1-29q8.html" target="_blank" class="discussion-link">BOSS直聘全部职位 →</a></div>
+  <div class="job-meta" ><a href="https://m.zhipin.com/gongsi/job/c101020100/7ef9f8aad51014241H1-29q8.html" target="_blank" class="discussion-link">BOSS直聘全部职位 →</a></div>
 </div>
 
 <h3>8. 徐工集团（徐工集团工程机械）</h3>
@@ -1310,7 +1301,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
   <strong>福利：</strong>六险二金、员工宿舍、免费班车、购房免息贷款、高温/高寒补贴<br>
   <strong>更新：</strong>社招7月9日更新（活跃中）<br>
   <strong>优势：</strong>世界500强国企，仿真方向与MATLAB/机械仿真高度匹配</div>
-  <div class="job-meta" style="margin-top:6px;"><a href="https://m.yingjiesheng.com/job-007-917-024.html" target="_blank" class="discussion-link">应届生网仿真岗详情 →</a></div>
+  <div class="job-meta" ><a href="https://m.yingjiesheng.com/job-007-917-024.html" target="_blank" class="discussion-link">应届生网仿真岗详情 →</a></div>
 </div>
 </div>
 
@@ -1871,5 +1862,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 机械招聘日报 | 自动生成于 2026-07-26 | GitHub Pages: ts-dinglilu.github.io/mechanical-recruit-news
 </div>
 
+
+<!-- v5.0 optimized at 2026-07-29 09:48:00 -->
 </body>
 </html>
