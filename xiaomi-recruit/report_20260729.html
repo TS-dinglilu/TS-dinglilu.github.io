@@ -9,7 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   报告页统一CSS模板 - v7.0 暗色主题版
+   报告页统一CSS模板 - v8.0 暗色主题版
+   v8.0改进:
+   - 新增 .icon 系列样式 (.icon-blue/.icon-green 等)
+   - 新增 --success/--warning/--danger/--info CSS变量
+   - 新增 .priority-*/.match-* 状态指示器
+   - 新增 .card-grid 网格布局
+   - 新增大量工具类替代内联样式
+   - 新增 .timeline-item 时间线样式
+   - 新增 .count-badge/.highlight-text/.separator
    v7.0改进:
    - 修复class别名: .header/.date/.num 等与语义化类名对齐
    - 新增统计网格 .stats-grid/.stat-box 样式
@@ -42,6 +50,10 @@
   --accent-pink: #f87171;
   --accent-teal: #14b8a6;
   --accent-orange: #fb923c;
+  --success: #22d3a0;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #00d4ff;
   --grid-line: rgba(0, 212, 255, 0.04);
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
@@ -1082,6 +1094,284 @@ footer a:hover, .footer a:hover { color: var(--accent); }
   .scroll-top { bottom: 20px; right: 20px; width: 38px; height: 38px; }
 }
 
+/* ============================================================
+   Icons — colored emoji icons in section titles
+   ============================================================ */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.icon-blue, .icon.icon-blue {
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.icon-green, .icon.icon-green {
+  background: rgba(34, 211, 160, 0.15);
+  border: 1px solid rgba(34, 211, 160, 0.3);
+}
+
+.icon-orange, .icon.icon-orange {
+  background: rgba(251, 146, 60, 0.15);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.icon-purple, .icon.icon-purple {
+  background: rgba(129, 140, 248, 0.15);
+  border: 1px solid rgba(129, 140, 248, 0.3);
+}
+
+.icon-teal, .icon.icon-teal {
+  background: rgba(20, 184, 166, 0.15);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+}
+
+.icon-pink, .icon.icon-pink {
+  background: rgba(248, 113, 113, 0.15);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.icon-amber, .icon.icon-amber {
+  background: rgba(251, 191, 36, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+/* ============================================================
+   Emoji spans (standalone, not in .icon)
+   ============================================================ */
+.emoji {
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* ============================================================
+   Priority / Status indicators
+   ============================================================ */
+.priority-high, .priority-hot {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--accent-pink);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.priority-mid, .priority-medium {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(251, 146, 60, 0.15);
+  color: var(--accent-orange);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.priority-low, .priority-normal {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(34, 211, 160, 0.15);
+  color: var(--accent-green);
+  border: 1px solid rgba(34, 211, 160, 0.3);
+}
+
+/* ============================================================
+   Match score / compatibility indicators
+   ============================================================ */
+.match-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+
+/* ============================================================
+   Grid layouts for cards
+   ============================================================ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.card-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+
+/* ============================================================
+   Flexbox helpers (common inline style replacements)
+   ============================================================ */
+.flex-row { display: flex; flex-direction: row; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; align-items: flex-start; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 6px; }
+.gap-md { gap: 12px; }
+.gap-lg { gap: 20px; }
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+
+/* ============================================================
+   Text size helpers (common inline style replacements)
+   ============================================================ */
+.fs-xs { font-size: 0.75rem; }
+.fs-sm { font-size: 0.85rem; }
+.fs-md { font-size: 0.93rem; }
+.fs-lg { font-size: 1.1rem; }
+.fs-xl { font-size: 1.3rem; }
+.fs-2xl { font-size: 1.6rem; }
+
+/* ============================================================
+   Color helpers (replace inline color styles)
+   ============================================================ */
+.text-success { color: var(--accent-green) !important; }
+.text-warning { color: #fbbf24 !important; }
+.text-danger { color: var(--accent-pink) !important; }
+.text-info { color: var(--accent) !important; }
+.text-muted { color: var(--text-faint) !important; }
+.text-dimmer { color: var(--text-dim) !important; }
+.text-bright { color: var(--text) !important; }
+.text-accent-green { color: var(--accent-green) !important; }
+.text-accent-orange { color: var(--accent-orange) !important; }
+.text-accent-purple { color: #a5b4fc !important; }
+.text-accent-pink { color: var(--accent-pink) !important; }
+.text-accent-teal { color: var(--accent-teal) !important; }
+.text-white { color: #ffffff !important; }
+
+/* ============================================================
+   Margin/Padding helpers (replace inline margin styles)
+   ============================================================ */
+.mt-4 { margin-top: 32px; } .mt-5 { margin-top: 40px; } .mt-6 { margin-top: 48px; }
+.mb-4 { margin-bottom: 32px; } .mb-5 { margin-bottom: 40px; } .mb-6 { margin-bottom: 48px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.p-0 { padding: 0; } .p-2 { padding: 16px; } .p-3 { padding: 24px; }
+.py-2 { padding-top: 16px; padding-bottom: 16px; }
+.px-2 { padding-left: 16px; padding-right: 16px; }
+
+/* ============================================================
+   Misc component styles
+   ============================================================ */
+.timeline-item {
+  position: relative;
+  padding-left: 24px;
+  margin: 12px 0;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 20px;
+  bottom: -12px;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item:last-child::after { display: none; }
+
+/* Count badge (used in headers) */
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  color: #0a0e1a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Highlight text */
+mark, .highlight-text {
+  background: rgba(0, 212, 255, 0.15);
+  color: var(--accent);
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+/* Emoji list items */
+.emoji-list { list-style: none; padding-left: 0; }
+.emoji-list li { padding-left: 28px; position: relative; margin-bottom: 8px; }
+
+/* Separator line with gradient */
+.separator {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
+  margin: 32px 0;
+  border: none;
+}
+
+/* Badge variants for common use cases */
+.badge-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+
+/* Tag variants for common use cases */
+.tag-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+
 @media print {
   body { background: #ffffff; color: #000000; font-size: 12px; line-height: 1.6; }
   body::before, body::after { display: none !important; }
@@ -1111,6 +1401,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 
 </style>
   <!-- v7.0-1785291713 -->
+  <!-- v8.0-1785292713 -->
 </head>
 <body>
 
@@ -1250,7 +1541,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <div class="section">
   <div class="section-title"><span class="num">3</span> 在招岗位详情（含10维度岗位卡片）</div>
 
-  <div class="job-card" style="margin-bottom:16px;">
+  <div class="job-card" >
     <div class="job-title">电驱系统机械集成工程师</div>
     <div class="job-info">
       <span class="job-salary">💰 20,000-40,000元/月</span>
@@ -1274,7 +1565,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <a class="source-link" href="https://bj.jrzp.com/job3302127.shtml" target="_blank">📎 查看原文</a>
   </div>
 
-  <div class="job-card" style="margin-bottom:16px;">
+  <div class="job-card" >
     <div class="job-title">电机控制器机械开发工程师</div>
     <div class="job-info">
       <span class="job-salary">💰 20,000-45,000元/月</span>
@@ -1298,7 +1589,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <a class="source-link" href="https://www.jrzp.com/job662789668.shtml" target="_blank">📎 查看原文</a>
   </div>
 
-  <div class="job-card" style="margin-bottom:16px;">
+  <div class="job-card" >
     <div class="job-title">门饰板开发工程师</div>
     <div class="job-info">
       <span class="job-salary">💰 20,000-40,000元/月</span>
@@ -1322,7 +1613,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <a class="source-link" href="https://bj.jrzp.com/job3926175.shtml" target="_blank">📎 查看原文</a>
   </div>
 
-  <div class="job-card" style="margin-bottom:16px;">
+  <div class="job-card" >
     <div class="job-title">电池系统结构设计开发工程师</div>
     <div class="job-info">
       <span class="job-salary">💰 面议</span>
@@ -1346,7 +1637,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <a class="source-link" href="https://m.zhipin.com/job_detail/adde831407383d791HJ6096_FFZT.html" target="_blank">📎 查看原文</a>
   </div>
 
-  <div class="job-card" style="margin-bottom:16px;">
+  <div class="job-card" >
     <div class="job-title">工业工程IE工程师</div>
     <div class="job-info">
       <span class="job-salary">💰 面议</span>
@@ -1370,7 +1661,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <a class="source-link" href="https://www.zhipin.com/job_detail/41391ed0689fff080nR739u6FVpU.html" target="_blank">📎 查看原文</a>
   </div>
 
-  <div class="job-card" style="margin-bottom:16px;">
+  <div class="job-card" >
     <div class="job-title">动力系统功能测试工程师</div>
     <div class="job-info">
       <span class="job-salary">💰 20,000-35,000元/月·15薪</span>
@@ -1394,7 +1685,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <a class="source-link" href="http://www.51testing.com/mobile/view.php?itemid=7807835" target="_blank">📎 查看原文</a>
   </div>
 
-  <div class="job-card" style="margin-bottom:16px;">
+  <div class="job-card" >
     <div class="job-title">自动驾驶算法工程师</div>
     <div class="job-info">
       <span class="job-salary">💰 40,000-70,000元/月</span>
@@ -1418,7 +1709,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <a class="source-link" href="https://m.zhipin.com/zhaopin/cd6ef0856285c7661nJ-3NS1FQ~~/" target="_blank">📎 查看原文</a>
   </div>
 
-  <div class="job-card" style="margin-bottom:16px;">
+  <div class="job-card" >
     <div class="job-title">智能座舱产品专家</div>
     <div class="job-info">
       <span class="job-salary">💰 面议</span>
@@ -1450,7 +1741,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <div class="section">
   <div class="section-title"><span class="num">4</span> 薪资待遇体系</div>
 
-  <div class="card" style="margin-bottom:16px;">
+  <div class="card" >
     <h3>职级体系总览（13级-22级）</h3>
     <p>小米采用数字职级序列，13级到22级共10个大档。校招入职一般为13级，社招根据经验定级。17级开始配股票，18级总包约135万。</p>
     <div class="table-wrap" >
@@ -1472,7 +1763,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <a class="source-link" href="http://m.toutiao.com/group/7654805098647863817/" target="_blank">📎 查看原文</a>
   </div>
 
-  <div class="card" style="margin-bottom:16px;">
+  <div class="card" >
     <h3>校招薪资范围（2025届参考）</h3>
     <div class="table-wrap" >
       <table>
@@ -1531,7 +1822,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <div class="section">
   <div class="section-title"><span class="num">5</span> 面试经验分享</div>
 
-  <div class="card" style="margin-bottom:16px;">
+  <div class="card" >
     <h3>面试流程</h3>
     <p>典型校招流程：网申/内推投递 → 在线测评（逻辑测验+性格测验） → 技术一面（30-60分钟） → 技术二面（45-60分钟） → 技术三面（视情况） → HR面 → 发Offer。产品岗SP候选人可达四到五轮业务面。</p>
   </div>
@@ -1646,7 +1937,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 
 <div class="section">
   <div class="section-title"><span class="num">7</span> 个性化岗位推荐（机械工程硕士专项）</div>
-  <p style="color:var(--text-muted);margin-bottom:24px;font-size:14px;">基于您的<strong style="color:var(--accent);">安徽工业大学机械工程硕士</strong>背景，结合小米汽车在招岗位需求，按匹配度排序推荐如下：</p>
+  <p style="color:var(--text-muted);margin-bottom:24px;font-size:14px;">基于您的<strong >安徽工业大学机械工程硕士</strong>背景，结合小米汽车在招岗位需求，按匹配度排序推荐如下：</p>
 
   <div class="rec-card">
     <div class="rec-rank">🥇 推荐排名 #1 · 匹配度 98%</div>
@@ -1831,7 +2122,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 
   <div class="card" >
     <h3>对比结论</h3>
-    <p>对于机械工程硕士而言，<strong style="color:var(--accent);">新能源电驱方向</strong>是性价比最高的选择：明确要求硕士学历、薪资较高（2-4.5万）、专业完全对口、属于小米汽车核心赛道。<strong style="color:var(--accent);">智能制造方向</strong>作为第二选择，入职门槛相对较低，适合积累经验后内部转岗。自动驾驶方向虽然薪资天花板最高，但对机械专业背景的匹配度较低，需额外补充算法/编程能力。</p>
+    <p>对于机械工程硕士而言，<strong >新能源电驱方向</strong>是性价比最高的选择：明确要求硕士学历、薪资较高（2-4.5万）、专业完全对口、属于小米汽车核心赛道。<strong >智能制造方向</strong>作为第二选择，入职门槛相对较低，适合积累经验后内部转岗。自动驾驶方向虽然薪资天花板最高，但对机械专业背景的匹配度较低，需额外补充算法/编程能力。</p>
   </div>
 </section>
 
@@ -1844,78 +2135,78 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 
   <div class="disc-card">
     <div class="disc-title">小米汽车员工自爆工资收入明细，网友说高得太猛了</div>
-    <div class="tags" style="margin-bottom:6px;"><span class="tag tag-blue">脉脉/知乎</span></div>
-    <p style="font-size:13px;color:var(--text-muted);">含校招15薪28.5-36万、社招高级工程师40K×15+百万期权、员工爆料9106加班等内部信息，引发热议。</p>
+    <div class="tags" ><span class="tag tag-blue">脉脉/知乎</span></div>
+    <p >含校招15薪28.5-36万、社招高级工程师40K×15+百万期权、员工爆料9106加班等内部信息，引发热议。</p>
     <a class="source-link" href="http://m.toutiao.com/group/7341767165529440795/" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="disc-card">
     <div class="disc-title">面试小米汽车，不想去，拒了offer</div>
-    <div class="tags" style="margin-bottom:6px;"><span class="tag tag-blue">脉脉</span></div>
-    <p style="font-size:13px;color:var(--text-muted);">内部同学现身说法"卷、不稳、不确定性高"，楼主权衡后拒offer选生活。引发"高薪vs生活"大讨论。</p>
+    <div class="tags" ><span class="tag tag-blue">脉脉</span></div>
+    <p >内部同学现身说法"卷、不稳、不确定性高"，楼主权衡后拒offer选生活。引发"高薪vs生活"大讨论。</p>
     <a class="source-link" href="http://m.toutiao.com/group/7426661197905101322/" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="disc-card">
     <div class="disc-title">在吉利干了一年刚上手，小米汽车给了涨薪40%的offer，稳定和涨薪怎么选</div>
-    <div class="tags" style="margin-bottom:6px;"><span class="tag tag-blue">今日头条</span></div>
-    <p style="font-size:13px;color:var(--text-muted);">经典跳槽困境讨论：传统车企稳定性vs小米汽车高薪+成长。评论区两派观点激烈交锋。</p>
+    <div class="tags" ><span class="tag tag-blue">今日头条</span></div>
+    <p >经典跳槽困境讨论：传统车企稳定性vs小米汽车高薪+成长。评论区两派观点激烈交锋。</p>
     <a class="source-link" href="http://m.toutiao.com/group/7643978818415378984/" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="disc-card">
     <div class="disc-title">小米汽车招人开到百万年薪，画图纸比写代码还贵</div>
-    <div class="tags" style="margin-bottom:6px;"><span class="tag tag-blue">今日头条</span></div>
-    <p style="font-size:13px;color:var(--text-muted);">同事从吉利20万年薪跳槽小米开到100万。机械岗位薪资逆袭，引发"机械人终于站起来了"讨论。</p>
+    <div class="tags" ><span class="tag tag-blue">今日头条</span></div>
+    <p >同事从吉利20万年薪跳槽小米开到100万。机械岗位薪资逆袭，引发"机械人终于站起来了"讨论。</p>
     <a class="source-link" href="http://m.toutiao.com/group/7637447142100992575/" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="disc-card">
     <div class="disc-title">特斯拉离职员工爆料：4年赚170万，后跳槽小米汽车</div>
-    <div class="tags" style="margin-bottom:6px;"><span class="tag tag-blue">今日头条</span></div>
-    <p style="font-size:13px;color:var(--text-muted);">爆料小米加班多、待遇开得多，但整体感觉一般。特斯拉vs小米汽车的工作体验对比引发关注。</p>
+    <div class="tags" ><span class="tag tag-blue">今日头条</span></div>
+    <p >爆料小米加班多、待遇开得多，但整体感觉一般。特斯拉vs小米汽车的工作体验对比引发关注。</p>
     <a class="source-link" href="http://m.toutiao.com/group/7487188328773583395/" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="disc-card">
     <div class="disc-title">小米员工平均工时11.5小时？雷军的"加班文化"引热议</div>
-    <div class="tags" style="margin-bottom:6px;"><span class="tag tag-blue">今日头条</span></div>
-    <p style="font-size:13px;color:var(--text-muted);">多部门证实日均11.5小时，有部门日均14-15小时。小米确认属实。引发全网对科技企业加班文化的大讨论。</p>
+    <div class="tags" ><span class="tag tag-blue">今日头条</span></div>
+    <p >多部门证实日均11.5小时，有部门日均14-15小时。小米确认属实。引发全网对科技企业加班文化的大讨论。</p>
     <a class="source-link" href="http://m.toutiao.com/group/7496893293260505637/" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="disc-card">
     <div class="disc-title">脉脉高聘：小米汽车人才招聘量超蔚来、小鹏，位列行业第四</div>
-    <div class="tags" style="margin-bottom:6px;"><span class="tag tag-blue">脉脉</span></div>
-    <p style="font-size:13px;color:var(--text-muted);">2023年比亚迪、吉利领衔，小米与理想、蔚来争人才。小米汽车人才吸引力跻身新势力前列。</p>
+    <div class="tags" ><span class="tag tag-blue">脉脉</span></div>
+    <p >2023年比亚迪、吉利领衔，小米与理想、蔚来争人才。小米汽车人才吸引力跻身新势力前列。</p>
     <a class="source-link" href="http://m.toutiao.com/group/7317600247176593931/" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="disc-card">
     <div class="disc-title">小米汽车离职员工爆料：待遇没极氪高，没极氪有人情味，工作节奏太快</div>
-    <div class="tags" style="margin-bottom:6px;"><span class="tag tag-blue">第一电动网</span></div>
-    <p style="font-size:13px;color:var(--text-muted);">薪资/工时/管理文化对比：小米追求产能效率，管理偏军事化；极氪更注重传统车企的人性化平衡。</p>
+    <div class="tags" ><span class="tag tag-blue">第一电动网</span></div>
+    <p >薪资/工时/管理文化对比：小米追求产能效率，管理偏军事化；极氪更注重传统车企的人性化平衡。</p>
     <a class="source-link" href="https://m.cehome.com/news/20250331/331653.shtml" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="disc-card">
     <div class="disc-title">要不要跳槽过去？小米汽车员工爆料超产奖加班费拿到手软</div>
-    <div class="tags" style="margin-bottom:6px;"><span class="tag tag-blue">第一电动网</span></div>
-    <p style="font-size:13px;color:var(--text-muted);">全面对比是否值得跳槽：超产奖约6000元、加班费平时34+元/小时周末46+元/小时。现实派"降薪刷履历"vs体验派"准时吃饭"。</p>
+    <div class="tags" ><span class="tag tag-blue">第一电动网</span></div>
+    <p >全面对比是否值得跳槽：超产奖约6000元、加班费平时34+元/小时周末46+元/小时。现实派"降薪刷履历"vs体验派"准时吃饭"。</p>
     <a class="source-link" href="https://m.cehome.com/news/20250908/353806.shtml" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="disc-card">
     <div class="disc-title">小米汽车工作强度和待遇如何</div>
-    <div class="tags" style="margin-bottom:6px;"><span class="tag tag-blue">ZOL问答</span></div>
-    <p style="font-size:13px;color:var(--text-muted);">"加班挺狠工资还行，年终奖看部门运气，建议看脉脉吐槽"。反映员工对小米汽车的普遍真实感受。</p>
+    <div class="tags" ><span class="tag tag-blue">ZOL问答</span></div>
+    <p >"加班挺狠工资还行，年终奖看部门运气，建议看脉脉吐槽"。反映员工对小米汽车的普遍真实感受。</p>
     <a class="source-link" href="https://wap.zol.com.cn/ask/x_29048349.html" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="disc-card">
     <div class="disc-title">BOSS直聘：在小米汽车工作怎么样 - 员工真实工作体验</div>
-    <div class="tags" style="margin-bottom:6px;"><span class="tag tag-blue">BOSS直聘</span></div>
-    <p style="font-size:13px;color:var(--text-muted);">运营经理1年内推评价：福利很好但加班常态，小米汽车作为新公司在雷军带领下未来可期。</p>
+    <div class="tags" ><span class="tag tag-blue">BOSS直聘</span></div>
+    <p >运营经理1年内推评价：福利很好但加班常态，小米汽车作为新公司在雷军带领下未来可期。</p>
     <a class="source-link" href="https://www.zhipin.com/gongsi/review/a8ea66da4b0d09821nB509m7FFA~.html" target="_blank">📎 查看原文</a>
   </div>
 </section>
@@ -1974,7 +2265,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <div class="section">
   <div class="section-title"><span class="num">11</span> 评论区</div>
   <div class="card">
-    <p style="margin-bottom:16px;">欢迎在下方评论区分享你的小米汽车求职经验、面试心得或薪资讨论：</p>
+    <p >欢迎在下方评论区分享你的小米汽车求职经验、面试心得或薪资讨论：</p>
     <div class="giscus-box">
       <script src="https://giscus.app/client.js"
         data-repo="TS-dinglilu/TS-dinglilu.github.io"
