@@ -21,9 +21,9 @@
   --card-solid: rgba(20, 28, 48, 0.75);
   --border: rgba(0, 212, 255, 0.12);
   --border-hover: rgba(0, 212, 255, 0.4);
-  --text: #e8eef5;
-  --text-dim: #e0e8f2;
-  --text-faint: #d8e2f0;
+  --text: #f0f4f8;
+  --text-dim: #e8eef5;
+  --text-faint: #e0e8f2;
   --accent: #00d4ff;
   --accent-warm: #ffb347;
   --accent-green: #22d3a0;
@@ -158,7 +158,7 @@ body::after {
 
 /* ============================================================
    SECTIONS - 卡片式内容区
-   相邻section间距28px，底部2px边框实现清晰视觉分隔
+   相邻section间距56px，顶部3px渐变条+底部2px边框+明显视觉分隔
    ============================================================ */
 .section {
   background: var(--card);
@@ -166,20 +166,43 @@ body::after {
   -webkit-backdrop-filter: blur(8px);
   border-radius: var(--radius);
   padding: 28px 24px;
-  margin: 48px 0;
+  margin: 56px 0;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border);
-  border-top: 2px solid rgba(0, 212, 255, 0.3);
-  border-bottom: 2px solid rgba(0, 212, 255, 0.25);
+  border-top: 3px solid rgba(0, 212, 255, 0.4);
+  border-bottom: 3px solid rgba(0, 212, 255, 0.3);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 .section::before {
   content: '';
   position: absolute;
   top: 0; left: 0;
-  width: 100%; height: 3px;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 50%, transparent 100%);
+  width: 100%; height: 4px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 50%, var(--accent-green) 100%);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+/* 板块间渐变分割线 - 明确视觉分隔 */
+.section + .section,
+.section:not(:first-child) {
+  margin-top: 56px;
+}
+.section-title {
+  position: relative;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  top: -32px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0,212,255,0.6) 20%, rgba(129,140,248,0.5) 50%, rgba(0,212,255,0.6) 80%, transparent 100%);
+  border-radius: 2px;
+  opacity: 0.8;
+}
+.section-title:first-of-type::after {
+  display: none;
 }
 .section h2 {
   font-size: 1.35rem;
