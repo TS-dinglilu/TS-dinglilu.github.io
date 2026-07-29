@@ -3,8 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <meta name="description" content="安工大校园日报 - 每日自动更新报告汇总">
+<meta property="og:title" content="安工大校园日报 - 报告汇总">
+<meta property="og:description" content="安徽工业大学校园信息 - 每日自动更新">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ts-dinglilu.github.io/ahut-campus/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128203;</text></svg>">
 <title>安工大校园日报 - 报告汇总</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
@@ -42,15 +48,18 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+*::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 body {
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.8;
   overflow-x: hidden;
   min-height: 100vh;
   position: relative;
+  letter-spacing: 0.01em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -91,6 +100,10 @@ body::after {
   66% { transform: translate(30px, -20px) scale(0.95); opacity: 0.7; }
 }
 
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes gradientFlow { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -120,11 +133,6 @@ body::after {
   animation: gradientFlow 6s ease infinite;
 }
 
-@keyframes gradientFlow {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
 .hero-tag {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
@@ -148,24 +156,22 @@ body::after {
 
 @keyframes pulse {
   0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 211, 160, 0.4); }
-  50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(34, 211, 160, 0); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(34, 211, 160, 0); }
 }
 
 .hero h1 {
-  font-size: 2.2rem;
-  font-weight: 900;
+  font-size: 2rem;
+  font-weight: 800;
   letter-spacing: -1px;
-  margin-bottom: 12px;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-green) 50%, var(--accent-purple) 100%);
-  background-size: 200% 200%;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-green) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: gradientFlow 8s ease infinite;
 }
 
 .hero .subtitle {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--text-dim);
   margin-bottom: 16px;
 }
@@ -175,39 +181,26 @@ body::after {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.78rem;
   color: var(--accent-warm);
-  background: rgba(255, 179, 71, 0.12);
-  border: 1px solid rgba(255, 179, 71, 0.25);
-  padding: 6px 18px;
-  border-radius: 999px;
-  transition: all 0.4s var(--bounce);
-  animation: pulseGlow 3s ease-in-out infinite;
-}
-
-.hero .update-time:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 179, 71, 0.3);
-}
-
-@keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 179, 71, 0.2); }
-  50% { box-shadow: 0 0 16px 4px rgba(255, 179, 71, 0.12); }
+  background: rgba(255,179, 71, 0.1);
+  border: 1px solid rgba(255, 179, 71, 0.2);
+  padding: 4px 14px;
+  border-radius: 50px;
 }
 
 .stats {
   display: flex;
   justify-content: center;
   gap: 32px;
-  margin-top: 28px;
+  margin-top: 24px;
   flex-wrap: wrap;
 }
 
 .stat { text-align: center; }
 .stat-num {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.8rem;
-  font-weight: 800;
+  font-size: 1.6rem;
+  font-weight: 700;
   color: var(--accent);
-  text-shadow: 0 0 16px rgba(0, 212, 255, 0.3);
 }
 .stat-label {
   font-size: 0.72rem;
@@ -216,33 +209,7 @@ body::after {
   letter-spacing: 1px;
 }
 
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text-dim);
-  font-size: 0.9rem;
-  margin: 24px 0;
-  padding: 10px 20px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  text-decoration: none;
-  transition: all 0.4s var(--bounce);
-  backdrop-filter: blur(10px);
-}
-.back-link:hover {
-  color: var(--accent);
-  border-color: var(--border-hover);
-  background: var(--card-hover);
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.15);
-}
-
-.section {
-  padding: 32px 0;
-  margin: 56px 0;
-}
+.section { padding: 32px 0; margin: 48px 0; border-top: 3px solid rgba(0, 212, 255, 0.4); border-bottom: 3px solid rgba(0, 212, 255, 0.3); border-radius: var(--radius); }
 
 .section-label {
   font-family: 'JetBrains Mono', monospace;
@@ -254,16 +221,16 @@ body::after {
 }
 .section-label::before { content: '## '; color: var(--text-faint); }
 .section-title {
-  font-size: 1.45rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--accent);
   margin: 0 0 28px;
   padding: 14px 20px 14px 18px;
-  background: linear-gradient(90deg, rgba(0,212,255,0.15) 0%, rgba(0,212,255,0.02) 100%);
+  background: linear-gradient(90deg, rgba(0,212,255,0.12) 0%, rgba(0,212,255,0.02) 100%);
   border-left: 4px solid var(--accent);
   border-top: 1px solid rgba(0, 212, 255, 0.2);
   border-bottom: 1px solid rgba(0, 212, 255, 0.25);
-  border-radius: 0 16px 16px 0;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -271,23 +238,12 @@ body::after {
   transition: all 0.4s var(--bounce);
 }
 .section-title:hover {
-  background: linear-gradient(90deg, rgba(0,212,255,0.2) 0%, rgba(0,212,255,0.05) 100%);
+  background: linear-gradient(90deg, rgba(0,212,255,0.18) 0%, rgba(0,212,255,0.04) 100%);
   transform: translateX(4px);
   box-shadow: 0 4px 24px rgba(0, 212, 255, 0.15);
 }
-.section-title .num {
-  margin-left: auto;
-  font-size: 0.72rem;
-  color: var(--text-dim);
-  background: rgba(0,212,255,0.1);
-  padding: 3px 12px;
-  border-radius: 999px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  border: 1px solid var(--border);
-}
 
-.report-list { display: flex; flex-direction: column; gap: 14px; }
+.report-list { display: flex; flex-direction: column; gap: 12px; }
 
 .report-card {
   display: flex;
@@ -298,7 +254,7 @@ body::after {
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 20px 22px;
-  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  transition: all 0.4s var(--bounce);
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
@@ -316,129 +272,143 @@ body::after {
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s var(--bounce);
-  border-radius: 999px;
 }
 
 .report-card:hover {
   border-color: var(--border-hover);
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: var(--shadow-md), var(--shadow-glow-hover);
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+  background: var(--card-hover);
 }
-.report-card:hover::before {
-  transform: scaleX(1);
-  animation: gradientFlow 3s ease infinite;
-}
+
+.report-card:hover::before { transform: scaleX(1); animation: gradientFlow 3s ease infinite; }
 
 .report-card.latest {
-  border-color: rgba(0, 212, 255, 0.3);
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(20, 28, 48, 0.6) 100%);
+  border-color: rgba(34, 211, 160, 0.3);
+  background: rgba(34, 211, 160, 0.06);
 }
 
-.card-info { flex: 1; }
+.report-card.latest:hover {
+  border-color: rgba(34, 211, 160, 0.5);
+  box-shadow: 0 8px 32px rgba(34, 211, 160, 0.12);
+}
 
-.card-date {
+.card-info { flex: 1; min-width: 0; }
+.card-info .card-date {
   font-family: 'JetBrains Mono', monospace;
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--text);
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  color: var(--accent);
+  margin-bottom: 4px;
+  flex-shrink: 0;
 }
-
-.latest-badge {
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: var(--accent-green);
-  background: rgba(34, 211, 160, 0.15);
-  border: 1px solid rgba(34, 211, 160, 0.3);
-  padding: 3px 10px;
-  border-radius: 999px;
-  letter-spacing: 1px;
-  animation: pulseGlow 2s ease-in-out infinite;
-}
-
-.card-weekday {
-  font-size: 0.82rem;
-  color: var(--text-faint);
-  margin-top: 4px;
+.card-info .card-weekday {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 0;
 }
 
 .card-link {
-  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
   color: var(--accent);
-  font-weight: 600;
-  white-space: nowrap;
+  font-size: 0.85rem;
+  font-weight: 500;
   margin-left: auto;
-  transition: all 0.3s var(--bounce);
+  flex-shrink: 0;
 }
-.report-card:hover .card-link {
-  transform: translateX(4px);
+
+.latest-badge {
+  display: inline-block;
+  background: rgba(34, 211, 160, 0.15);
+  color: var(--accent-green);
+  font-size: 0.7rem;
+  padding: 2px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+  margin-left: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 24px;
+  padding: 10px 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.4s var(--bounce);
+  backdrop-filter: blur(10px);
+}
+.back-link:hover {
+  color: var(--accent);
+  border-color: var(--border-hover);
+  background: var(--card-hover);
+  text-decoration: none;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.15);
 }
 
 .comments-section {
-  margin: 56px 0 32px;
-  padding: 28px 24px;
+  margin-top: 48px;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  position: relative;
+  padding: 28px 24px;
   backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
 }
-
 .comments-section::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--accent-purple), var(--accent), var(--accent-green));
   background-size: 200% 100%;
   border-radius: var(--radius) var(--radius) 0 0;
   animation: gradientFlow 6s ease infinite;
 }
-
 .comments-title {
-  color: #a5b4fc;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 700;
+  color: #a5b4fc;
   margin-bottom: 8px;
   letter-spacing: 0.02em;
 }
-
 .comments-desc {
+  font-size: 0.88rem;
   color: var(--text-dim);
-  font-size: 0.9rem;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
-.giscus { margin-top: 16px; }
+.footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 48px; }
+.footer p { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text-faint); letter-spacing: 0.02em; }
+.footer-links { display: flex; justify-content: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+.footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; transition: color 0.3s var(--smooth); }
+.footer-links a:hover { color: var(--accent); }
 
-footer, .footer {
-  margin-top: 56px;
-  padding: 28px 24px;
-  text-align: center;
-  color: var(--text-faint);
-  font-size: 0.85rem;
-  border-top: 1px solid var(--border);
-  letter-spacing: 0.02em;
+@media (max-width: 768px) {
+  .hero h1 { font-size: 1.5rem; }
+  .stats { gap: 20px; }
+  .stat-num { font-size: 1.3rem; }
+  .report-card { padding: 16px 18px; border-radius: var(--radius-sm); }
+  .comments-section { padding: 20px 16px; border-radius: var(--radius-sm); }
 }
-
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-
 @media (max-width: 600px) {
-  body { font-size: 14px; }
-  .hero { padding: 40px 20px 32px; border-radius: 0 0 24px 24px; }
-  .hero h1 { font-size: 1.6rem; }
-  .stats { gap: 16px; }
-  .stat-num { font-size: 1.4rem; }
-  .section { margin: 40px 0; padding: 24px 0; }
-  .section-title { font-size: 1.2rem; padding: 10px 14px 10px 12px; }
-  .report-card { padding: 16px 18px; border-radius: 14px; }
-  .comments-section { padding: 20px 16px; border-radius: 20px; }
-  footer, .footer { padding: 20px 16px; }
+  body { font-size: 14px; line-height: 1.75; }
+  .container { padding: 0 16px 40px; }
+  .hero { padding: 40px 16px 32px; }
+  .hero h1 { font-size: 1.3rem; }
+  .section-title { font-size: 1.15rem; padding: 10px 14px 10px 12px; }
 }
 
 </style>
@@ -446,22 +416,13 @@ footer, .footer {
 <body>
 
 <div class="hero">
-  <div class="hero-tag">
-    <span class="status-dot"></span>
-    每日自动更新
-  </div>
+  <div class="hero-tag">安工大校园日报<span class="status-dot"></span> 自动更新</div>
   <h1>安工大校园日报</h1>
-  <p class="subtitle">安工大校园生活信息与就业去向分析</p>
+  <p class="subtitle">安徽工业大学校园信息</p>
   <div class="update-time">最后更新: 2026-07-29</div>
   <div class="stats">
-    <div class="stat">
-      <div class="stat-num">4</div>
-      <div class="stat-label">报告总数</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">每日</div>
-      <div class="stat-label">自动更新</div>
-    </div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">报告总数</div></div>
+    <div class="stat"><div class="stat-num">每日</div><div class="stat-label">自动更新</div></div>
   </div>
 </div>
 
@@ -470,46 +431,43 @@ footer, .footer {
 
   <div class="section">
     <div class="section-label">Archive</div>
-    <h2 class="section-title">
-      <span>📚</span>
-      报告归档
-      <span class="num">4 篇</span>
-    </h2>
+    <h2 class="section-title">报告归档</h2>
     <div class="report-list">
         <a href="report_20260729.html" class="report-card latest">
             <div class="card-info">
                 <div class="card-date">2026-07-29<span class="latest-badge">LATEST</span></div>
-                <div class="card-weekday">星期二</div>
+                <div class="card-weekday">星期三</div>
             </div>
             <div class="card-link">点击查看 →</div>
         </a>
         <a href="report_20260728.html" class="report-card">
             <div class="card-info">
                 <div class="card-date">2026-07-28</div>
-                <div class="card-weekday">星期一</div>
+                <div class="card-weekday">星期二</div>
             </div>
             <div class="card-link">查看 →</div>
         </a>
         <a href="report_20260727.html" class="report-card">
             <div class="card-info">
                 <div class="card-date">2026-07-27</div>
-                <div class="card-weekday">星期日</div>
+                <div class="card-weekday">星期一</div>
             </div>
             <div class="card-link">查看 →</div>
         </a>
         <a href="report_20260726.html" class="report-card">
             <div class="card-info">
                 <div class="card-date">2026-07-26</div>
-                <div class="card-weekday">星期六</div>
+                <div class="card-weekday"></div>
             </div>
             <div class="card-link">查看 →</div>
         </a>
+
     </div>
   </div>
 
   <div class="comments-section">
     <div class="comments-title">💬 评论区</div>
-    <div class="comments-desc">欢迎在这里交流讨论，分享你的想法和建议。</div>
+    <div class="comments-desc">登录GitHub账号即可评论，支持Markdown和表情回应</div>
     <script src="https://giscus.app/client.js"
       data-repo="TS-dinglilu/TS-dinglilu.github.io"
       data-repo-id="R_kgDOTjqaJQ"
@@ -527,11 +485,13 @@ footer, .footer {
     </script>
   </div>
 
-  <footer>
-    <p>// crafted with precision · powered by TRAE Automation</p>
-    <p style="margin-top:4px;">© 2026 TS-dinglilu · Anhui University of Technology</p>
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="https://ts-dinglilu.github.io/">主页</a>
+      <a href="https://github.com/TS-dinglilu">GitHub</a>
+    </div>
+    <p>// 安工大校园日报 · 每日自动更新</p>
   </footer>
 </div>
-
 </body>
 </html>
