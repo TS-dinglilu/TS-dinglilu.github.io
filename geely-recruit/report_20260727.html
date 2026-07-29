@@ -6,7 +6,15 @@
 <title>吉利招聘日报 | 2026-07-27</title>
 <style>
 /* ============================================================
-   报告页统一CSS模板 - v7.0 暗色主题版
+   报告页统一CSS模板 - v8.0 暗色主题版
+   v8.0改进:
+   - 新增 .icon 系列样式 (.icon-blue/.icon-green 等)
+   - 新增 --success/--warning/--danger/--info CSS变量
+   - 新增 .priority-*/.match-* 状态指示器
+   - 新增 .card-grid 网格布局
+   - 新增大量工具类替代内联样式
+   - 新增 .timeline-item 时间线样式
+   - 新增 .count-badge/.highlight-text/.separator
    v7.0改进:
    - 修复class别名: .header/.date/.num 等与语义化类名对齐
    - 新增统计网格 .stats-grid/.stat-box 样式
@@ -39,6 +47,10 @@
   --accent-pink: #f87171;
   --accent-teal: #14b8a6;
   --accent-orange: #fb923c;
+  --success: #22d3a0;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #00d4ff;
   --grid-line: rgba(0, 212, 255, 0.04);
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
@@ -1079,6 +1091,284 @@ footer a:hover, .footer a:hover { color: var(--accent); }
   .scroll-top { bottom: 20px; right: 20px; width: 38px; height: 38px; }
 }
 
+/* ============================================================
+   Icons — colored emoji icons in section titles
+   ============================================================ */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.icon-blue, .icon.icon-blue {
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.icon-green, .icon.icon-green {
+  background: rgba(34, 211, 160, 0.15);
+  border: 1px solid rgba(34, 211, 160, 0.3);
+}
+
+.icon-orange, .icon.icon-orange {
+  background: rgba(251, 146, 60, 0.15);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.icon-purple, .icon.icon-purple {
+  background: rgba(129, 140, 248, 0.15);
+  border: 1px solid rgba(129, 140, 248, 0.3);
+}
+
+.icon-teal, .icon.icon-teal {
+  background: rgba(20, 184, 166, 0.15);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+}
+
+.icon-pink, .icon.icon-pink {
+  background: rgba(248, 113, 113, 0.15);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.icon-amber, .icon.icon-amber {
+  background: rgba(251, 191, 36, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+/* ============================================================
+   Emoji spans (standalone, not in .icon)
+   ============================================================ */
+.emoji {
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* ============================================================
+   Priority / Status indicators
+   ============================================================ */
+.priority-high, .priority-hot {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--accent-pink);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.priority-mid, .priority-medium {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(251, 146, 60, 0.15);
+  color: var(--accent-orange);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.priority-low, .priority-normal {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(34, 211, 160, 0.15);
+  color: var(--accent-green);
+  border: 1px solid rgba(34, 211, 160, 0.3);
+}
+
+/* ============================================================
+   Match score / compatibility indicators
+   ============================================================ */
+.match-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+
+/* ============================================================
+   Grid layouts for cards
+   ============================================================ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.card-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+
+/* ============================================================
+   Flexbox helpers (common inline style replacements)
+   ============================================================ */
+.flex-row { display: flex; flex-direction: row; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; align-items: flex-start; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 6px; }
+.gap-md { gap: 12px; }
+.gap-lg { gap: 20px; }
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+
+/* ============================================================
+   Text size helpers (common inline style replacements)
+   ============================================================ */
+.fs-xs { font-size: 0.75rem; }
+.fs-sm { font-size: 0.85rem; }
+.fs-md { font-size: 0.93rem; }
+.fs-lg { font-size: 1.1rem; }
+.fs-xl { font-size: 1.3rem; }
+.fs-2xl { font-size: 1.6rem; }
+
+/* ============================================================
+   Color helpers (replace inline color styles)
+   ============================================================ */
+.text-success { color: var(--accent-green) !important; }
+.text-warning { color: #fbbf24 !important; }
+.text-danger { color: var(--accent-pink) !important; }
+.text-info { color: var(--accent) !important; }
+.text-muted { color: var(--text-faint) !important; }
+.text-dimmer { color: var(--text-dim) !important; }
+.text-bright { color: var(--text) !important; }
+.text-accent-green { color: var(--accent-green) !important; }
+.text-accent-orange { color: var(--accent-orange) !important; }
+.text-accent-purple { color: #a5b4fc !important; }
+.text-accent-pink { color: var(--accent-pink) !important; }
+.text-accent-teal { color: var(--accent-teal) !important; }
+.text-white { color: #ffffff !important; }
+
+/* ============================================================
+   Margin/Padding helpers (replace inline margin styles)
+   ============================================================ */
+.mt-4 { margin-top: 32px; } .mt-5 { margin-top: 40px; } .mt-6 { margin-top: 48px; }
+.mb-4 { margin-bottom: 32px; } .mb-5 { margin-bottom: 40px; } .mb-6 { margin-bottom: 48px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.p-0 { padding: 0; } .p-2 { padding: 16px; } .p-3 { padding: 24px; }
+.py-2 { padding-top: 16px; padding-bottom: 16px; }
+.px-2 { padding-left: 16px; padding-right: 16px; }
+
+/* ============================================================
+   Misc component styles
+   ============================================================ */
+.timeline-item {
+  position: relative;
+  padding-left: 24px;
+  margin: 12px 0;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 20px;
+  bottom: -12px;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item:last-child::after { display: none; }
+
+/* Count badge (used in headers) */
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  color: #0a0e1a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Highlight text */
+mark, .highlight-text {
+  background: rgba(0, 212, 255, 0.15);
+  color: var(--accent);
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+/* Emoji list items */
+.emoji-list { list-style: none; padding-left: 0; }
+.emoji-list li { padding-left: 28px; position: relative; margin-bottom: 8px; }
+
+/* Separator line with gradient */
+.separator {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
+  margin: 32px 0;
+  border: none;
+}
+
+/* Badge variants for common use cases */
+.badge-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+
+/* Tag variants for common use cases */
+.tag-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+
 @media print {
   body { background: #ffffff; color: #000000; font-size: 12px; line-height: 1.6; }
   body::before, body::after { display: none !important; }
@@ -1109,6 +1399,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 </style>
 <!-- cache-bust: 1785261213 -->
   <!-- v7.0-1785291713 -->
+  <!-- v8.0-1785292712 -->
 </head>
 <body>
 
@@ -1219,7 +1510,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 </div>
 <div class="job-detail">极氪智能科技在多个城市招聘高级零售顾问，负责热情接待进店顾客，提供专业讲解，传递ZEEKR品牌理念与产品优势。合肥区域极氪伙伴/主管/店长岗位月薪<strong>1.2-1.8万</strong>，深圳提供<strong>六险一金</strong>。门店普通岗位月薪10-15K，大区负责人20-30K/月（14薪）。</div>
 <a href="https://www.zhipin.com/job_detail/bf3f979c94b14f3f03153tu7FFtR.html" target="_blank" class="source-link">📎 查看原文</a>
-<a href="https://www.zhaopin.com/jobdetail/CC453635220J40388831203.htm" target="_blank" class="source-link" style="margin-left:12px;">📎 智联招聘</a>
+<a href="https://www.zhaopin.com/jobdetail/CC453635220J40388831203.htm" target="_blank" class="source-link" >📎 智联招聘</a>
 </div>
 
 <div class="job-card">
@@ -1262,7 +1553,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 </div>
 <div class="job-detail">吉利银河新能源汽车销售岗位持续扩招。烟台地区薪资7K-11K/月，郑州地区8K-12K/月（五险）。4S店经验优先，一对一培训，覆盖新能源车线下销售。多家经销商门店同步招聘。</div>
 <a href="https://www.zhipin.com/job_detail/96ee05987de8e13b03Z83Nm_FlpW.html" target="_blank" class="source-link">📎 查看原文</a>
-<a href="https://www.zhipin.com/job_detail/9e1cee6b3fec2ca803x52N67ElJZ.html" target="_blank" class="source-link" style="margin-left:12px;">📎 郑州岗位</a>
+<a href="https://www.zhipin.com/job_detail/9e1cee6b3fec2ca803x52N67ElJZ.html" target="_blank" class="source-link" >📎 郑州岗位</a>
 </div>
 </div>
 
@@ -1413,7 +1704,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <div class="meta">来源：牛客网 ｜ 面试形式：线下面</div>
 <div class="process"><strong>面试流程：</strong>宣讲会当天接收简历并通知面试，当晚出结果。共两轮：第一轮HR综合面试，第二轮技术面，均为1v1。HR面结束后等5分钟通知第二轮。<strong>常见问题：</strong>"你了解我们招聘的岗位吗？"建议从岗位职责和对候选人的要求两方面回答。面试整体难度不大，但需提前了解用人单位信息。<strong>建议：</strong>详细阅读招聘信息，从多途径收集单位信息。</div>
 <span class="difficulty easy">难度：较低</span>
-<a href="https://m.nowcoder.com/discuss/842445" target="_blank" class="source-link" style="margin-left:12px;">📎 查看原文</a>
+<a href="https://m.nowcoder.com/discuss/842445" target="_blank" class="source-link" >📎 查看原文</a>
 </div>
 
 <div class="interview-card">
@@ -1421,7 +1712,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <div class="meta">来源：牛客网 ｜ 面试形式：腾讯会议群面</div>
 <div class="process"><strong>面试流程：</strong>腾讯会议线上群面，面试者三男一女。HR先自我介绍，介绍极氪销售管培生岗位及工作基本信息（薪资、休息制度等），然后统一问两大问题：<strong>1. 自我介绍</strong>（有无销售相关经验）；<strong>2. 情景模拟</strong>（如何应对客户异议等）。<strong>建议：</strong>提前准备自我介绍话术，突出销售相关经历，了解极氪品牌定位与产品线。</div>
 <span class="difficulty medium">难度：中等</span>
-<a href="https://m.nowcoder.com/discuss/1068834" target="_blank" class="source-link" style="margin-left:12px;">📎 查看原文</a>
+<a href="https://m.nowcoder.com/discuss/1068834" target="_blank" class="source-link" >📎 查看原文</a>
 </div>
 
 <div class="interview-card">
@@ -1429,7 +1720,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <div class="meta">来源：牛客网 ｜ 面试形式：电话约面+技术面</div>
 <div class="process"><strong>面试流程：</strong>先电话约面，一面全程写代码。<strong>技术问题包括：</strong>堆排序实现、向上调整/向下调整实现、汉诺塔实现、最长公共子序列实现、口述迪杰斯特拉算法、深挖项目经历。<strong>建议：</strong>重点复习数据结构与算法（排序、图论、动态规划），准备好项目深挖的细节。技术面侧重代码实现能力，需要手写完整代码。</div>
 <span class="difficulty hard">难度：较高</span>
-<a href="https://m.nowcoder.com/discuss/397773664056340480" target="_blank" class="source-link" style="margin-left:12px;">📎 查看原文</a>
+<a href="https://m.nowcoder.com/discuss/397773664056340480" target="_blank" class="source-link" >📎 查看原文</a>
 </div>
 
 <div class="interview-card">
@@ -1437,7 +1728,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <div class="meta">来源：牛客网 ｜ 面试形式：线上专业面（闪面APP）</div>
 <div class="process"><strong>面试流程：</strong>一面为专业面，需提前下载"闪面"APP并调试设备。面试官会提前5-10分钟进场。<strong>注意事项：</strong>提前调试摄像头角度，避免尴尬。面试官会问你"对极氪的期待是什么"等问题。<strong>建议：</strong>提前了解极氪品牌定位、财务状况及行业趋势，准备好对岗位的理解和职业规划。</div>
 <span class="difficulty medium">难度：中等</span>
-<a href="https://m.nowcoder.com/discuss/770572" target="_blank" class="source-link" style="margin-left:12px;">📎 查看原文</a>
+<a href="https://m.nowcoder.com/discuss/770572" target="_blank" class="source-link" >📎 查看原文</a>
 </div>
 
 <!-- 薪资待遇分析 -->
