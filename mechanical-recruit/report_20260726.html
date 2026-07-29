@@ -6,7 +6,15 @@
 <title>机械招聘日报 | 2026-07-26</title>
 <style>
 /* ============================================================
-   报告页统一CSS模板 - v7.0 暗色主题版
+   报告页统一CSS模板 - v8.0 暗色主题版
+   v8.0改进:
+   - 新增 .icon 系列样式 (.icon-blue/.icon-green 等)
+   - 新增 --success/--warning/--danger/--info CSS变量
+   - 新增 .priority-*/.match-* 状态指示器
+   - 新增 .card-grid 网格布局
+   - 新增大量工具类替代内联样式
+   - 新增 .timeline-item 时间线样式
+   - 新增 .count-badge/.highlight-text/.separator
    v7.0改进:
    - 修复class别名: .header/.date/.num 等与语义化类名对齐
    - 新增统计网格 .stats-grid/.stat-box 样式
@@ -39,6 +47,10 @@
   --accent-pink: #f87171;
   --accent-teal: #14b8a6;
   --accent-orange: #fb923c;
+  --success: #22d3a0;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #00d4ff;
   --grid-line: rgba(0, 212, 255, 0.04);
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
@@ -1079,6 +1091,284 @@ footer a:hover, .footer a:hover { color: var(--accent); }
   .scroll-top { bottom: 20px; right: 20px; width: 38px; height: 38px; }
 }
 
+/* ============================================================
+   Icons — colored emoji icons in section titles
+   ============================================================ */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.icon-blue, .icon.icon-blue {
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.icon-green, .icon.icon-green {
+  background: rgba(34, 211, 160, 0.15);
+  border: 1px solid rgba(34, 211, 160, 0.3);
+}
+
+.icon-orange, .icon.icon-orange {
+  background: rgba(251, 146, 60, 0.15);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.icon-purple, .icon.icon-purple {
+  background: rgba(129, 140, 248, 0.15);
+  border: 1px solid rgba(129, 140, 248, 0.3);
+}
+
+.icon-teal, .icon.icon-teal {
+  background: rgba(20, 184, 166, 0.15);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+}
+
+.icon-pink, .icon.icon-pink {
+  background: rgba(248, 113, 113, 0.15);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.icon-amber, .icon.icon-amber {
+  background: rgba(251, 191, 36, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+/* ============================================================
+   Emoji spans (standalone, not in .icon)
+   ============================================================ */
+.emoji {
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* ============================================================
+   Priority / Status indicators
+   ============================================================ */
+.priority-high, .priority-hot {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--accent-pink);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.priority-mid, .priority-medium {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(251, 146, 60, 0.15);
+  color: var(--accent-orange);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.priority-low, .priority-normal {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(34, 211, 160, 0.15);
+  color: var(--accent-green);
+  border: 1px solid rgba(34, 211, 160, 0.3);
+}
+
+/* ============================================================
+   Match score / compatibility indicators
+   ============================================================ */
+.match-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+
+/* ============================================================
+   Grid layouts for cards
+   ============================================================ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.card-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+
+/* ============================================================
+   Flexbox helpers (common inline style replacements)
+   ============================================================ */
+.flex-row { display: flex; flex-direction: row; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; align-items: flex-start; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 6px; }
+.gap-md { gap: 12px; }
+.gap-lg { gap: 20px; }
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+
+/* ============================================================
+   Text size helpers (common inline style replacements)
+   ============================================================ */
+.fs-xs { font-size: 0.75rem; }
+.fs-sm { font-size: 0.85rem; }
+.fs-md { font-size: 0.93rem; }
+.fs-lg { font-size: 1.1rem; }
+.fs-xl { font-size: 1.3rem; }
+.fs-2xl { font-size: 1.6rem; }
+
+/* ============================================================
+   Color helpers (replace inline color styles)
+   ============================================================ */
+.text-success { color: var(--accent-green) !important; }
+.text-warning { color: #fbbf24 !important; }
+.text-danger { color: var(--accent-pink) !important; }
+.text-info { color: var(--accent) !important; }
+.text-muted { color: var(--text-faint) !important; }
+.text-dimmer { color: var(--text-dim) !important; }
+.text-bright { color: var(--text) !important; }
+.text-accent-green { color: var(--accent-green) !important; }
+.text-accent-orange { color: var(--accent-orange) !important; }
+.text-accent-purple { color: #a5b4fc !important; }
+.text-accent-pink { color: var(--accent-pink) !important; }
+.text-accent-teal { color: var(--accent-teal) !important; }
+.text-white { color: #ffffff !important; }
+
+/* ============================================================
+   Margin/Padding helpers (replace inline margin styles)
+   ============================================================ */
+.mt-4 { margin-top: 32px; } .mt-5 { margin-top: 40px; } .mt-6 { margin-top: 48px; }
+.mb-4 { margin-bottom: 32px; } .mb-5 { margin-bottom: 40px; } .mb-6 { margin-bottom: 48px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.p-0 { padding: 0; } .p-2 { padding: 16px; } .p-3 { padding: 24px; }
+.py-2 { padding-top: 16px; padding-bottom: 16px; }
+.px-2 { padding-left: 16px; padding-right: 16px; }
+
+/* ============================================================
+   Misc component styles
+   ============================================================ */
+.timeline-item {
+  position: relative;
+  padding-left: 24px;
+  margin: 12px 0;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 20px;
+  bottom: -12px;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item:last-child::after { display: none; }
+
+/* Count badge (used in headers) */
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  color: #0a0e1a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Highlight text */
+mark, .highlight-text {
+  background: rgba(0, 212, 255, 0.15);
+  color: var(--accent);
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+/* Emoji list items */
+.emoji-list { list-style: none; padding-left: 0; }
+.emoji-list li { padding-left: 28px; position: relative; margin-bottom: 8px; }
+
+/* Separator line with gradient */
+.separator {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
+  margin: 32px 0;
+  border: none;
+}
+
+/* Badge variants for common use cases */
+.badge-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+
+/* Tag variants for common use cases */
+.tag-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+
 @media print {
   body { background: #ffffff; color: #000000; font-size: 12px; line-height: 1.6; }
   body::before, body::after { display: none !important; }
@@ -1109,6 +1399,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 </style>
 <!-- cache-bust: 1785261127 -->
   <!-- v7.0-1785291713 -->
+  <!-- v8.0-1785292711 -->
 </head>
 <body>
 
@@ -1453,7 +1744,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 
 <div style="border-radius:10px;padding:16px;margin-bottom:20px;border:1px solid #9ae6b4">
 <h3 style="border-left:4px solid #48bb78;margin-top:0">用户技能匹配分析</h3>
-<p style="font-size:0.88rem;line-height:1.9">
+<p >
 <span class="skill-match">MATLAB仿真</span> → 适合：仿真工程师、CAE工程师、动力学仿真、控制系统仿真<br>
 <span class="skill-match">Python强化学习</span> → 适合：智能控制算法、机器人路径规划、自动驾驶算法<br>
 <span class="skill-match">四旋翼无人机开发</span> → 适合：无人机研发、飞控工程师、航空系统工程师<br>
@@ -1473,12 +1764,12 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <span class="match-badge match-high">匹配度：高</span>
   </div>
   <div class="job-desc">结构件轻量化/NVH振动噪声/机电液联合仿真/热管理仿真。硕士+机械类+英语六级。</div>
-  <p style="font-size:0.82rem;margin-top:8px">
+  <p >
     <strong>匹配技能：</strong>
     <span class="skill-match">MATLAB仿真</span>
     <span class="skill-match">机械工程硕士</span>
   </p>
-  <p style="font-size:0.82rem;margin-top:6px"><strong>推荐理由：</strong>国企稳定、仿真方向直接对口、明确接受双非、六险二金福利完善、购房免息贷款。</p>
+  <p ><strong>推荐理由：</strong>国企稳定、仿真方向直接对口、明确接受双非、六险二金福利完善、购房免息贷款。</p>
 </div>
 
 <div class="rec-card priority-1">
@@ -1490,13 +1781,13 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <span class="match-badge match-high">匹配度：高</span>
   </div>
   <div class="job-desc">真空X射线部件机械设计/热仿真/热力耦合仿真/有限元分析。硕士，3-5年经验（应届可投武汉岗）。</div>
-  <p style="font-size:0.82rem;margin-top:8px">
+  <p >
     <strong>匹配技能：</strong>
     <span class="skill-match">MATLAB仿真</span>
     <span class="skill-match">机械工程硕士</span>
     <span class="skill-match">CAE仿真</span>
   </p>
-  <p style="font-size:0.82rem;margin-top:6px"><strong>推荐理由：</strong>高端医疗器械龙头、仿真岗集中、上海嘉定薪资优厚、7月23日活跃更新、接受双非。</p>
+  <p ><strong>推荐理由：</strong>高端医疗器械龙头、仿真岗集中、上海嘉定薪资优厚、7月23日活跃更新、接受双非。</p>
 </div>
 
 <div class="rec-card priority-1">
@@ -1508,13 +1799,13 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <span class="match-badge match-high">匹配度：高</span>
   </div>
   <div class="job-desc">FOC/DTC/MTPA伺服算法、振动抑制、运动控制器开发、人形机器人步态规划。硕士。</div>
-  <p style="font-size:0.82rem;margin-top:8px">
+  <p >
     <strong>匹配技能：</strong>
     <span class="skill-match">MATLAB仿真</span>
     <span class="skill-match">Python强化学习</span>
     <span class="skill-match">四旋翼控制</span>
   </p>
-  <p style="font-size:0.82rem;margin-top:6px"><strong>推荐理由：</strong>南京距马鞍山17分钟高铁、国产机器人龙头、算法+控制高度对口、7月13日活跃更新。</p>
+  <p ><strong>推荐理由：</strong>南京距马鞍山17分钟高铁、国产机器人龙头、算法+控制高度对口、7月13日活跃更新。</p>
 </div>
 
 <div class="rec-card priority-1">
@@ -1526,13 +1817,13 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <span class="match-badge match-high">匹配度：高</span>
   </div>
   <div class="job-desc">AGV机械结构设计+结构强度/刚度/动力学仿真分析。SolidWorks/UG。更新于2026-07-24。</div>
-  <p style="font-size:0.82rem;margin-top:8px">
+  <p >
     <strong>匹配技能：</strong>
     <span class="skill-match">MATLAB仿真</span>
     <span class="skill-match">机械工程硕士</span>
     <span class="skill-match">机器人结构</span>
   </p>
-  <p style="font-size:0.82rem;margin-top:6px"><strong>推荐理由：</strong>最新更新（7/24）、15薪优厚、AGV方向含仿真分析、杭州智能制造重镇。</p>
+  <p ><strong>推荐理由：</strong>最新更新（7/24）、15薪优厚、AGV方向含仿真分析、杭州智能制造重镇。</p>
 </div>
 
 <div class="rec-card priority-1">
@@ -1544,13 +1835,13 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <span class="match-badge match-high">匹配度：高</span>
   </div>
   <div class="job-desc">底盘CAE/刚度强度/振动疲劳/虚拟路谱分析。本科+，3-5年经验（校招可投春招）。</div>
-  <p style="font-size:0.82rem;margin-top:8px">
+  <p >
     <strong>匹配技能：</strong>
     <span class="skill-match">MATLAB仿真</span>
     <span class="skill-match">CAE仿真</span>
     <span class="skill-match">机械工程硕士</span>
   </p>
-  <p style="font-size:0.82rem;margin-top:6px"><strong>推荐理由：</strong>CAE仿真直接对口、2026届校招2000+人需求大、明确接受双非、宁波生活成本低于上海。</p>
+  <p ><strong>推荐理由：</strong>CAE仿真直接对口、2026届校招2000+人需求大、明确接受双非、宁波生活成本低于上海。</p>
 </div>
 
 <h3>第二优先级：中匹配度岗位（江浙沪机械设计/自动化方向）</h3>
@@ -1564,13 +1855,13 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <span class="match-badge match-medium">匹配度：中</span>
   </div>
   <div class="job-desc">航空发动机结构强度分析、CFD气动传热仿真。硕士+（博士优先）。</div>
-  <p style="font-size:0.82rem;margin-top:8px">
+  <p >
     <strong>匹配技能：</strong>
     <span class="skill-match">MATLAB仿真</span>
     <span class="skill-match">CAE仿真</span>
     <span class="skill-match">航空系统</span>
   </p>
-  <p style="font-size:0.82rem;margin-top:6px"><strong>推荐理由：</strong>航空发动机仿真高度对口、国家战略产业。注意：博士"心"计划限双一流，但普通硕士岗未限制。</p>
+  <p ><strong>推荐理由：</strong>航空发动机仿真高度对口、国家战略产业。注意：博士"心"计划限双一流，但普通硕士岗未限制。</p>
 </div>
 
 <div class="rec-card priority-2">
@@ -1582,12 +1873,12 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <span class="match-badge match-medium">匹配度：中</span>
   </div>
   <div class="job-desc">汽车技术、ESP匹配、智能驾驶感知。本科+。外企注重个人能力。</div>
-  <p style="font-size:0.82rem;margin-top:8px">
+  <p >
     <strong>匹配技能：</strong>
     <span class="skill-match">Python强化学习</span>
     <span class="skill-match">机械工程硕士</span>
   </p>
-  <p style="font-size:0.82rem;margin-top:6px"><strong>推荐理由：</strong>外企福利好、不限制双非、苏州总部生活成本低。注意：27届实习已截止，关注社招。</p>
+  <p ><strong>推荐理由：</strong>外企福利好、不限制双非、苏州总部生活成本低。注意：27届实习已截止，关注社招。</p>
 </div>
 
 <div class="rec-card priority-2">
@@ -1599,12 +1890,12 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <span class="match-badge match-medium">匹配度：中</span>
   </div>
   <div class="job-desc">电机控制功能软件设计、工控变频器/伺服产品。硕士。</div>
-  <p style="font-size:0.82rem;margin-top:8px">
+  <p >
     <strong>匹配技能：</strong>
     <span class="skill-match">Python强化学习</span>
     <span class="skill-match">控制系统</span>
   </p>
-  <p style="font-size:0.82rem;margin-top:6px"><strong>推荐理由：</strong>工控自动化龙头、苏州研发基地、电机控制与控制理论相关。</p>
+  <p ><strong>推荐理由：</strong>工控自动化龙头、苏州研发基地、电机控制与控制理论相关。</p>
 </div>
 
 <div class="rec-card priority-2">
@@ -1616,12 +1907,12 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <span class="match-badge match-medium">匹配度：中</span>
   </div>
   <div class="job-desc">核电装备设计、智能制造。硕士+。机械类/能动类/力学类。</div>
-  <p style="font-size:0.82rem;margin-top:8px">
+  <p >
     <strong>匹配技能：</strong>
     <span class="skill-match">MATLAB仿真</span>
     <span class="skill-match">机械工程硕士</span>
   </p>
-  <p style="font-size:0.82rem;margin-top:6px"><strong>推荐理由：</strong>国企稳定、六险三金福利好、临港人才购房政策。注意：临港距市中心较远。</p>
+  <p ><strong>推荐理由：</strong>国企稳定、六险三金福利好、临港人才购房政策。注意：临港距市中心较远。</p>
 </div>
 
 <h3>第三优先级：备选岗位（全国范围，优质但竞争激烈）</h3>
@@ -1635,8 +1926,8 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <span class="match-badge match-low">匹配度：中（竞争激烈）</span>
   </div>
   <div class="job-desc">半导体设备机械工程师，硕士，招聘150人。硕士74.6%岗位拿20-50K。</div>
-  <p style="font-size:0.82rem;margin-top:8px"><strong>匹配技能：</strong><span class="skill-match">MATLAB仿真</span><span class="skill-match">机械工程硕士</span></p>
-  <p style="font-size:0.82rem;margin-top:6px"><strong>推荐理由：</strong>半导体设备龙头、薪资高。注意：头部企业通常偏好985/211，双非需简历突出对口技能。</p>
+  <p ><strong>匹配技能：</strong><span class="skill-match">MATLAB仿真</span><span class="skill-match">机械工程硕士</span></p>
+  <p ><strong>推荐理由：</strong>半导体设备龙头、薪资高。注意：头部企业通常偏好985/211，双非需简历突出对口技能。</p>
 </div>
 
 <div class="rec-card priority-3">
@@ -1648,8 +1939,8 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <span class="match-badge match-low">匹配度：中（竞争激烈）</span>
   </div>
   <div class="job-desc">医疗产品关键模块、传动/结构设计、可靠性验证。硕士，3-5年。</div>
-  <p style="font-size:0.82rem;margin-top:8px"><strong>匹配技能：</strong><span class="skill-match">MATLAB仿真</span><span class="skill-match">机械工程硕士</span></p>
-  <p style="font-size:0.82rem;margin-top:6px"><strong>推荐理由：</strong>医疗器械龙头、15薪优厚。注意：资深岗位需3-5年经验，应届可关注初级岗。</p>
+  <p ><strong>匹配技能：</strong><span class="skill-match">MATLAB仿真</span><span class="skill-match">机械工程硕士</span></p>
+  <p ><strong>推荐理由：</strong>医疗器械龙头、15薪优厚。注意：资深岗位需3-5年经验，应届可关注初级岗。</p>
 </div>
 
 <div class="rec-card priority-3">
@@ -1661,8 +1952,8 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <span class="match-badge match-low">匹配度：中（门槛高）</span>
   </div>
   <div class="job-desc">力学、机械工程、控制科学与工程。硕士及以上。</div>
-  <p style="font-size:0.82rem;margin-top:8px"><strong>匹配技能：</strong><span class="skill-match">MATLAB仿真</span><span class="skill-match">四旋翼控制</span><span class="skill-match">控制系统</span></p>
-  <p style="font-size:0.82rem;margin-top:6px"><strong>推荐理由：</strong>航空航天国家战略、无人机/控制方向高度对口。注意：院所通常偏好985/211，硕士岗多为"面议"。</p>
+  <p ><strong>匹配技能：</strong><span class="skill-match">MATLAB仿真</span><span class="skill-match">四旋翼控制</span><span class="skill-match">控制系统</span></p>
+  <p ><strong>推荐理由：</strong>航空航天国家战略、无人机/控制方向高度对口。注意：院所通常偏好985/211，硕士岗多为"面议"。</p>
 </div>
 </div>
 
@@ -1731,7 +2022,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 </tbody>
 </table>
 
-<div style="margin-top:16px;padding:14px;border-radius:8px;font-size:0.85rem">
+<div >
 <strong>趋势洞察：</strong>机械行业"传统饱和、高端紧缺"，对口就业率85-90%。五大黄金赛道：新能源汽车、工业机器人&智能制造、高端装备&精密制造、非标自动化、医疗器械。硕士普通12k-18k；头部新能源/机器人/航空18k-25k/月。
 </div>
 </div>
@@ -1827,7 +2118,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
   <div class="job-desc">管柱自动化设备产品设计升级、有限元分析、动力学分析。</div>
 </div>
 
-<p style="font-size:0.82rem;margin-top:12px">
+<p >
 <strong>双非接受度说明：</strong>多数院所及大厂校招公告未明确排除双非，但航天院所、半导体头部企业通常偏好985/211。双非硕士进新能源/机器人/非标自动化行业机会较多，需简历突出对口技能。
 </p>
 </div>
@@ -1839,9 +2130,9 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <div class="commute-card">
   <div>
     <div class="commute-city">南京</div>
-    <div style="font-size:0.82rem">埃斯顿/南瑞/中车浦镇</div>
+    <div >埃斯顿/南瑞/中车浦镇</div>
   </div>
-  <div style="text-align:right;">
+  <div >
     <div class="commute-time">高铁17分钟</div>
     <div class="commute-cost">月通勤约¥1500-2000</div>
   </div>
@@ -1850,9 +2141,9 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <div class="commute-card">
   <div>
     <div class="commute-city">苏州</div>
-    <div style="font-size:0.82rem">汇川/博世/半导体企业</div>
+    <div >汇川/博世/半导体企业</div>
   </div>
-  <div style="text-align:right;">
+  <div >
     <div class="commute-time">高铁约1.5小时</div>
     <div class="commute-cost">月通勤约¥3000-4000（建议租房）</div>
   </div>
@@ -1861,9 +2152,9 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <div class="commute-card">
   <div>
     <div class="commute-city">上海</div>
-    <div style="font-size:0.82rem">联影/中航商发/上海电气</div>
+    <div >联影/中航商发/上海电气</div>
   </div>
-  <div style="text-align:right;">
+  <div >
     <div class="commute-time">高铁约2小时</div>
     <div class="commute-cost">月通勤约¥4000-5000（建议租房）</div>
   </div>
@@ -1872,9 +2163,9 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <div class="commute-card">
   <div>
     <div class="commute-city">杭州</div>
-    <div style="font-size:0.82rem">海康威视/吉利</div>
+    <div >海康威视/吉利</div>
   </div>
-  <div style="text-align:right;">
+  <div >
     <div class="commute-time">高铁约2.5小时</div>
     <div class="commute-cost">月通勤约¥4000-5000（建议租房）</div>
   </div>
@@ -1883,15 +2174,15 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <div class="commute-card">
   <div>
     <div class="commute-city">宁波</div>
-    <div style="font-size:0.82rem">吉利研发/均胜电子</div>
+    <div >吉利研发/均胜电子</div>
   </div>
-  <div style="text-align:right;">
+  <div >
     <div class="commute-time">高铁约3小时</div>
     <div class="commute-cost">月通勤约¥5000+（建议租房）</div>
   </div>
 </div>
 
-<p style="font-size:0.85rem;margin-top:16px;padding:12px;border-radius:8px">
+<p >
 <strong>通勤建议：</strong>南京是唯一可实现每日通勤的城市（17分钟高铁），埃斯顿、南瑞等南京企业为首选。苏州/上海/杭州建议工作日租房、周末回家，月租房成本约2000-4000元。宁波及以远城市建议长期定居。
 </p>
 </div>
@@ -1985,7 +2276,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <p><strong>薪资数据来源：</strong></p>
 <p>职友集（jobui.com）| 牛客网网友爆料 | 招聘平台公开信息</p>
 <br>
-<p style="font-size:0.78rem;margin-top:12px">
+<p >
 声明：本报告信息来源于公开招聘平台和网络讨论，薪资数据仅供参考，实际以企业面试沟通为准。部分岗位标注"已关闭"仅作市场参考。报告每日更新，历史报告归档不删除。
 </p>
 </div>
@@ -1996,11 +2287,11 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 <!-- ==================== 评论区 ==================== -->
 <div style="max-width:860px;margin:40px auto 0;padding:24px 20px;background:rgba(20,28,48,0.9);border-radius:12px;border:1px solid rgba(0, 212, 255, 0.12);">
 <h2 style="font-size:1.1rem;margin-bottom:6px">💬 评论区</h2>
-<p style="font-size:0.82rem;margin-bottom:20px">登录GitHub账号即可评论，支持Markdown和表情回应。历史报告也可评论。</p>
+<p >登录GitHub账号即可评论，支持Markdown和表情回应。历史报告也可评论。</p>
 <script src="https://giscus.app/client.js" data-repo="TS-dinglilu/TS-dinglilu.github.io" data-repo-id="R_kgDOTjqaJQ" data-category="Announcements" data-category-id="DIC_kwDOTjqaJc4DCIL1" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark_dimmed" data-lang="zh-CN" crossorigin="anonymous" async></script>
 </div>
 
-<div style="text-align:center;padding:20px;font-size:0.78rem">
+<div >
 机械招聘日报 | 自动生成于 2026-07-26 | GitHub Pages: ts-dinglilu.github.io/mechanical-recruit-news
 </div>
 
