@@ -6,10 +6,16 @@
 <title>车企招聘日报 | 2026-07-27</title>
 <style>
 /* ============================================================
-   报告页统一CSS模板 - v3.0 暗色主题版
+   报告页统一CSS模板 - v5.0 暗色主题版
    适用于所有自动化任务的报告HTML
    配色方案: 深空蓝(#0a0e1a) + 青色强调(#00d4ff)
    字体: JetBrains Mono + Noto Sans SC
+   v5.0改进:
+   - 统一标题层级: section-title与h2视觉一致(青色)
+   - h3子标题白色+绿色左边框, h4灰色小标题
+   - 信息类型色彩区分: 卡片左框颜色编码
+   - 排版间距优化, 相邻板块一目了然
+   - 补全所有缺失CSS类, 确保任意HTML结构正常渲染
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
@@ -19,11 +25,14 @@
   --bg-elev: #111726;
   --card: rgba(20, 28, 48, 0.6);
   --card-solid: rgba(20, 28, 48, 0.75);
+  --card-hover: rgba(20, 28, 48, 0.85);
   --border: rgba(0, 212, 255, 0.12);
   --border-hover: rgba(0, 212, 255, 0.4);
+  /* 文本颜色 - 三级明显区分 */
   --text: #f0f4f8;
-  --text-dim: #e8eef5;
-  --text-faint: #e0e8f2;
+  --text-dim: #a8b8d0;
+  --text-faint: #7888a8;
+  /* 强调色 */
   --accent: #00d4ff;
   --accent-warm: #ffb347;
   --accent-green: #22d3a0;
@@ -31,6 +40,12 @@
   --accent-pink: #f87171;
   --accent-teal: #14b8a6;
   --accent-orange: #fb923c;
+  /* CSS变量别名 - 兼容旧代码 */
+  --text-secondary: #a8b8d0;
+  --success: #22d3a0;
+  --warning: #ffb347;
+  --info: #00d4ff;
+  --danger: #f87171;
   --grid-line: rgba(0, 212, 255, 0.04);
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
@@ -53,6 +68,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* 段落全局间距 */
+p { margin-bottom: 10px; }
+p:last-child { margin-bottom: 0; }
+
+/* 强调文字 */
+strong, b { color: var(--accent); font-weight: 600; }
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: #fff; text-decoration: underline; }
+
+/* 列表 */
+ul, ol { margin: 8px 0 12px 20px; }
+li { margin-bottom: 5px; color: var(--text); line-height: 1.75; }
+
 /* Decorative grid background */
 body::before {
   content: '';
@@ -66,7 +94,7 @@ body::before {
   z-index: 0;
 }
 
-/* Floating gradient orb with radial-gradient animation */
+/* Floating gradient orb */
 body::after {
   content: '';
   position: fixed;
@@ -92,7 +120,7 @@ body::after {
 }
 
 /* ============================================================
-   HEADER - 渐变标题栏 with glass-morphism
+   HEADER - 渐变标题栏
    ============================================================ */
 .header {
   background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(20,28,48,0.8) 40%, rgba(129,140,248,0.08) 100%);
@@ -142,7 +170,8 @@ body::after {
   position: relative;
   z-index: 1;
 }
-.header .date {
+.header .date,
+.header .date-badge {
   font-size: 0.8rem;
   color: var(--accent);
   background: rgba(0,212,255,0.1);
@@ -155,10 +184,169 @@ body::after {
   z-index: 1;
   font-family: 'JetBrains Mono', monospace;
 }
+.header .meta {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .meta span {
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  background: rgba(0,212,255,0.08);
+  backdrop-filter: blur(8px);
+  padding: 4px 12px;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+}
 
 /* ============================================================
-   SECTIONS - 卡片式内容区
-   相邻section间距56px，顶部3px渐变条+底部2px边框+明显视觉分隔
+   BACK LINK - 返回链接
+   ============================================================ */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 16px 0 8px;
+  transition: gap 0.2s;
+}
+.back-link:hover { gap: 10px; color: var(--accent); text-decoration: none; }
+
+/* ============================================================
+   NAV LINKS - 导航栏
+   ============================================================ */
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+  padding: 10px 14px;
+  background: rgba(0,212,255,0.05);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+}
+.nav-links a {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: rgba(0,212,255,0.05);
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.nav-links a:hover {
+  color: var(--accent);
+  background: rgba(0,212,255,0.15);
+  border-color: var(--border-hover);
+  text-decoration: none;
+}
+
+/* ============================================================
+   NAV TOC - 目录导航
+   ============================================================ */
+.nav-toc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  margin: 16px 0;
+}
+.nav-toc h4 {
+  font-size: 0.85rem;
+  color: var(--accent-purple);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.nav-toc ul { list-style: none; padding: 0; }
+.nav-toc li { padding: 4px 0; }
+.nav-toc a {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-toc a:hover { color: var(--accent); text-decoration: none; }
+
+/* ============================================================
+   ★★★ SECTION TITLE & H2 - 板块标题（统一样式）★★★
+   两者视觉完全一致: 青色(#00d4ff), 渐变背景, 左侧粗边框
+   确保 h2 和 .section-title 渲染结果相同
+   ============================================================ */
+.section-title,
+.section > h2,
+h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 48px 0 24px;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(20,28,48,0.5) 100%);
+  border-left: 4px solid var(--accent);
+  border-top: 1px solid rgba(0, 212, 255, 0.25);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 0 12px 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  line-height: 1.4;
+}
+/* 第一个section-title不需要顶部大间距 */
+.section > h2:first-child,
+.section-title:first-child {
+  margin-top: 0;
+}
+
+.section-title .emoji,
+.section-title .icon,
+h2 .icon,
+h2 .emoji {
+  font-size: 1.3rem;
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+  flex-shrink: 0;
+}
+.section-title .num,
+.section-title .number,
+h2 .num,
+h2 .number {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  background: rgba(0,212,255,0.1);
+  padding: 3px 12px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.section-title > span:not(.num):not(.number):not(.emoji):not(.icon),
+h2 > span:not(.num):not(.number):not(.emoji):not(.icon):not(.badge) {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* 图标颜色变体 */
+.icon-blue, .icon.icon-blue { color: var(--accent); }
+.icon-green, .icon.icon-green { color: var(--accent-green); }
+.icon-orange, .icon.icon-orange { color: var(--accent-warm); }
+.icon-purple, .icon.icon-purple { color: var(--accent-purple); }
+.icon-teal, .icon.icon-teal { color: var(--accent-teal); }
+.icon-pink, .icon.icon-pink { color: var(--accent-pink); }
+
+/* ============================================================
+   SECTION - 卡片式内容区
    ============================================================ */
 .section {
   background: var(--card);
@@ -166,66 +354,49 @@ body::after {
   -webkit-backdrop-filter: blur(8px);
   border-radius: var(--radius);
   padding: 28px 24px;
-  margin: 56px 0;
+  margin: 40px 0;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border);
-  border-top: 3px solid rgba(0, 212, 255, 0.4);
-  border-bottom: 3px solid rgba(0, 212, 255, 0.3);
   position: relative;
-  overflow: visible;
 }
 .section::before {
   content: '';
   position: absolute;
   top: 0; left: 0;
-  width: 100%; height: 4px;
+  width: 100%; height: 3px;
   background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 50%, var(--accent-green) 100%);
   border-radius: var(--radius) var(--radius) 0 0;
 }
-/* 板块间渐变分割线 - 明确视觉分隔 */
-.section + .section,
-.section:not(:first-child) {
-  margin-top: 56px;
-}
-.section-title {
-  position: relative;
-}
-.section-title::after {
-  content: '';
-  position: absolute;
-  top: -32px;
-  left: 10%;
-  right: 10%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, rgba(0,212,255,0.6) 20%, rgba(129,140,248,0.5) 50%, rgba(0,212,255,0.6) 80%, transparent 100%);
-  border-radius: 2px;
-  opacity: 0.8;
-}
-.section-title:first-of-type::after {
-  display: none;
-}
-.section h2 {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 20px;
-  padding-bottom: 14px;
-  border-bottom: 2px solid rgba(0, 212, 255, 0.4);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+
+/* ============================================================
+   ★★★ H3 - 子标题（白色 + 绿色左边框）★★★
+   与h2青色形成清晰层级区分
+   ============================================================ */
+h3,
 .section h3 {
-  font-size: 1.08rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  color: var(--accent);
-  margin: 20px 0 10px;
-  padding-left: 12px;
-  border-left: 3px solid var(--accent);
+  color: var(--text);
+  margin: 24px 0 12px;
+  padding-left: 14px;
+  border-left: 3px solid var(--accent-green);
+  line-height: 1.4;
+}
+h3:first-child { margin-top: 0; }
+
+/* ============================================================
+   H4 - 四级标题（灰色小标题）
+   ============================================================ */
+h4 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  margin: 16px 0 8px;
+  line-height: 1.4;
 }
 
 /* ============================================================
-   CARDS - 信息卡片 (间距16px，多层透明度)
+   CARDS - 通用信息卡片 (青色左边框)
    ============================================================ */
 .card {
   background: var(--card-solid);
@@ -238,6 +409,7 @@ body::after {
   position: relative;
 }
 .card:hover {
+  background: var(--card-hover);
   box-shadow: var(--shadow-md);
   transform: translateY(-1px);
   border-left-color: var(--accent);
@@ -251,26 +423,70 @@ body::after {
   display: flex;
   align-items: center;
   gap: 8px;
+  line-height: 1.4;
 }
 .card-meta {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--text-dim);
   margin-bottom: 10px;
   font-family: 'JetBrains Mono', monospace;
+  line-height: 1.6;
 }
 .card-content {
   font-size: 0.9rem;
   color: var(--text);
   line-height: 1.75;
 }
+.card-content p { margin-bottom: 8px; }
 .card p { color: var(--text); line-height: 1.75; margin-bottom: 8px; }
-.card-content strong {
-  color: var(--accent);
-  font-weight: 600;
-}
+.card-content strong { color: var(--accent); font-weight: 600; }
 
 /* ============================================================
-   NEWS ITEMS - 新闻条目
+   JOB CARD - 岗位卡片 (绿色左边框)
+   ============================================================ */
+.job-card {
+  background: var(--card-solid);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-green);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 16px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.job-card:hover {
+  background: var(--card-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-left-color: var(--accent-green);
+  border-color: var(--border-hover);
+}
+.job-title {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 1.02rem;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.job-meta {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.job-desc {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.job-card p { color: var(--text); line-height: 1.75; margin-bottom: 8px; }
+.job-card strong { color: var(--accent-green); font-weight: 600; }
+
+/* ============================================================
+   NEWS ITEMS - 新闻条目 (青色左侧条)
    ============================================================ */
 .news-item {
   background: var(--card);
@@ -289,7 +505,7 @@ body::after {
   position: absolute;
   top: 0; left: 0;
   width: 4px; height: 100%;
-  background: var(--border-hover);
+  background: var(--accent);
   transition: all 0.3s ease;
 }
 .news-item:hover {
@@ -298,16 +514,17 @@ body::after {
   transform: translateY(-2px);
 }
 .news-item:hover::before {
-  background: var(--accent);
+  background: var(--accent-green);
   width: 5px;
 }
 .news-item p { color: var(--text); line-height: 1.75; margin-bottom: 8px; }
+.news-item .card-title { margin-top: 0; }
 .news-item .badge {
   display: inline-flex;
   align-items: center;
   background: rgba(0,212,255,0.12);
   color: var(--accent);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   padding: 3px 12px;
   border-radius: 50px;
   margin-right: 8px;
@@ -327,7 +544,7 @@ body::after {
 }
 
 /* ============================================================
-   TABLES - 数据表格 (暗色背景，行交替色)
+   TABLES - 数据表格
    ============================================================ */
 table {
   width: 100%;
@@ -349,7 +566,7 @@ th {
   font-weight: 600;
   font-size: 0.8rem;
   letter-spacing: 0.3px;
-  border-bottom: 1px solid var(--border-hover);
+  border-bottom: 2px solid var(--border-hover);
 }
 td {
   padding: 10px;
@@ -360,25 +577,79 @@ td {
 tr:last-child td { border-bottom: none; }
 tr:nth-child(even) { background: rgba(0,0,0,0.15); }
 tr:hover { background: rgba(0,212,255,0.08); }
-tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 16px 0;
+  border-radius: var(--radius-sm);
+}
+.salary-table { font-size: 0.82rem; }
+.salary-table th { color: var(--accent-green); }
+.summary-table { font-size: 0.82rem; }
+.summary-table td:first-child {
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
 
 /* ============================================================
-   TAGS - 标签
+   TAGS & PILLS - 标签
    ============================================================ */
 .tag {
   display: inline-block;
   background: rgba(0,212,255,0.1);
   color: var(--accent);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   padding: 3px 10px;
   border-radius: 6px;
   margin: 2px;
   font-weight: 500;
   border: 1px solid rgba(0,212,255,0.2);
 }
-.tag.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
-.tag.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
-.tag.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
+.tag.green, .tag-green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
+.tag.orange, .tag-orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
+.tag.red, .tag-red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
+.tag.purple, .tag-purple { background: rgba(129,140,248,0.1); color: var(--accent-purple); border-color: rgba(129,140,248,0.25); }
+.tag.blue, .tag-blue { background: rgba(0,212,255,0.1); color: var(--accent); border-color: rgba(0,212,255,0.2); }
+
+.pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+  margin: 2px;
+  font-weight: 500;
+  background: rgba(0,212,255,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(0,212,255,0.2);
+}
+.pill.green, .pill-green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
+.pill.orange, .pill-orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
+.pill.red, .pill-red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
+.pill.purple, .pill-purple { background: rgba(129,140,248,0.1); color: var(--accent-purple); border-color: rgba(129,140,248,0.25); }
+.pill.accent, .pill-accent { background: rgba(0,212,255,0.1); color: var(--accent); border-color: rgba(0,212,255,0.2); }
+.pill.success, .pill-success { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
+.pill.warning, .pill-warning { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
+.pill-location { background: rgba(0,212,255,0.1); color: var(--accent); border: 1px solid rgba(0,212,255,0.2); }
+.pill-salary { background: rgba(34,211,160,0.1); color: var(--accent-green); border: 1px solid rgba(34,211,160,0.25); }
+.pill-edu { background: rgba(129,140,248,0.1); color: var(--accent-purple); border: 1px solid rgba(129,140,248,0.25); }
+.pill-type { background: rgba(255,179,71,0.1); color: var(--accent-warm); border: 1px solid rgba(255,179,71,0.25); }
+
+/* ============================================================
+   BADGE - 评估徽章
+   ============================================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.badge-high { background: rgba(34,211,160,0.15); color: var(--accent-green); border: 1px solid rgba(34,211,160,0.3); }
+.badge-mid { background: rgba(255,179,71,0.15); color: var(--accent-warm); border: 1px solid rgba(255,179,71,0.3); }
+.badge-low { background: rgba(248,113,113,0.15); color: var(--accent-pink); border: 1px solid rgba(248,113,113,0.3); }
 
 /* ============================================================
    SOURCE LINKS - 原文链接
@@ -396,6 +667,7 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
   background: rgba(0,212,255,0.1);
   border: 1px solid rgba(0,212,255,0.2);
   transition: all 0.2s;
+  margin-top: 8px;
 }
 .source-link:hover {
   background: var(--accent);
@@ -406,9 +678,9 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
 }
 
 /* ============================================================
-   DISCUSSION - 讨论区
+   DISCUSSION - 讨论区 (橙色左边框)
    ============================================================ */
-.discussion {
+.discussion, .discussion-item {
   background: rgba(255,179,71,0.08);
   border: 1px solid rgba(255,179,71,0.2);
   border-left: 4px solid var(--accent-warm);
@@ -417,24 +689,32 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
   margin: 16px 0;
   transition: all 0.3s;
 }
-.discussion:hover {
+.discussion:hover, .discussion-item:hover {
   box-shadow: var(--shadow-sm);
   transform: translateY(-1px);
 }
-.discussion .platform {
+.discussion .platform, .discussion-item .platform {
   display: inline-block;
   background: var(--accent-warm);
   color: var(--bg);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   padding: 3px 12px;
   border-radius: 50px;
   margin-bottom: 8px;
   font-weight: 600;
   letter-spacing: 0.3px;
 }
+.discussion-item .text {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.discussion-item .text strong { color: var(--accent); }
+.discussion-item .link { font-size: 0.82rem; }
 
 /* ============================================================
-   TIP BOX - 提示框
+   TIP BOX - 提示框 (绿色)
    ============================================================ */
 .tip-box {
   background: rgba(34,211,160,0.08);
@@ -452,6 +732,12 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
   width: 4px; height: 100%;
   background: var(--accent-green);
 }
+.tip-title {
+  color: var(--accent-green);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
 .tip-box h4 {
   color: var(--accent-green);
   font-size: 0.95rem;
@@ -460,10 +746,11 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
 }
 .tip-box ul { list-style: none; padding-left: 0; }
 .tip-box li {
-  padding: 5px 0 5px 24px;
+  padding: 6px 0 6px 24px;
   position: relative;
-  font-size: 0.88rem;
-  color: var(--text-dim);
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
 }
 .tip-box li::before {
   content: '✓';
@@ -471,11 +758,10 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
   left: 0;
   color: var(--accent-green);
   font-weight: 700;
-  font-size: 1rem;
 }
 
 /* ============================================================
-   WARNING BOX - 警告框
+   WARNING BOX - 警告框 (红色)
    ============================================================ */
 .warning-box {
   background: rgba(248,113,113,0.08);
@@ -501,18 +787,122 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
 }
 
 /* ============================================================
-   SUMMARY TABLE - 汇总表
+   HIGHLIGHT BOX - 高亮提示框 (青色)
    ============================================================ */
-.summary-table { font-size: 0.82rem; }
-.summary-table td:first-child {
-  font-weight: 600;
-  color: var(--accent);
-  white-space: nowrap;
+.highlight-box {
+  background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(129,140,248,0.05) 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text);
+  position: relative;
+  transition: all 0.3s;
+}
+.highlight-box:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+  border-color: var(--border-hover);
+}
+.highlight-box strong { color: var(--accent); font-weight: 600; }
+
+/* ============================================================
+   INFO BOX - 信息框 (紫色)
+   ============================================================ */
+.info-box {
+  background: rgba(129,140,248,0.08);
+  border: 1px solid rgba(129,140,248,0.2);
+  border-left: 4px solid var(--accent-purple);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text);
+}
+.info-box h4 {
+  color: var(--accent-purple);
+  margin-bottom: 8px;
+}
+.info-box strong { color: var(--accent-purple); }
+
+/* ============================================================
+   PROGRESS BAR - 进度条
+   ============================================================ */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(0,212,255,0.1);
+  border-radius: 50px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-green));
+  border-radius: 50px;
+  transition: width 0.5s ease;
 }
 
 /* ============================================================
-   GISCUS / COMMENTS - 评论区 (dark_dimmed 主题)
-   注意: HTML中giscus script需设置 data-theme="dark_dimmed"
+   MISC UTILITIES
+   ============================================================ */
+.text-center { text-align: center; }
+.text-accent { color: var(--accent); }
+.text-green { color: var(--accent-green); }
+.text-warm { color: var(--accent-warm); }
+.text-purple { color: var(--accent-purple); }
+.text-dim { color: var(--text-dim); }
+.text-faint { color: var(--text-faint); }
+.mt-0 { margin-top: 0 !important; }
+.mb-0 { margin-bottom: 0 !important; }
+.mt-2 { margin-top: 8px; }
+.mb-2 { margin-bottom: 8px; }
+.mt-4 { margin-top: 16px; }
+.mb-4 { margin-bottom: 16px; }
+
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 24px 0;
+}
+
+blockquote {
+  border-left: 3px solid var(--accent-purple);
+  padding-left: 16px;
+  margin: 16px 0;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+code {
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(0,212,255,0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  color: var(--accent);
+}
+pre {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  overflow-x: auto;
+  font-size: 0.82rem;
+}
+pre code {
+  background: none;
+  padding: 0;
+  color: var(--text);
+}
+
+/* ============================================================
+   GISCUS / COMMENTS - 评论区
    ============================================================ */
 .comments-section {
   margin-top: 40px;
@@ -553,425 +943,26 @@ footer {
 @media (max-width: 600px) {
   .header { padding: 32px 16px 24px; border-radius: 0 0 20px 20px; }
   .header h1 { font-size: 1.3rem; }
-  .section { padding: 18px 14px; margin: 48px 0; }
-  .card, .news-item { padding: 14px 16px; }
+  .section { padding: 18px 14px; margin: 32px 0; }
+  .section-title, h2 { font-size: 1.1rem; padding: 12px 16px; margin: 32px 0 20px; }
+  h3 { font-size: 0.95rem; }
+  .card, .news-item, .job-card { padding: 14px 16px; }
   table { font-size: 0.76rem; }
   th, td { padding: 7px 5px; }
   .container { padding: 0 12px 40px; }
+  .nav-links { padding: 8px 10px; }
+  .nav-links a { font-size: 0.72rem; padding: 3px 8px; }
 }
 
 /* ============================================================
-   SECTION TITLE - 带编号的板块标题
+   PRINT - 打印优化
    ============================================================ */
-.section-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin: 56px 0 28px;
-  padding: 16px 20px;
-  background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(20,28,48,0.5) 100%);
-  border-left: 4px solid var(--accent);
-  border-top: 1px solid rgba(0, 212, 255, 0.25);
-  border-bottom: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 0 12px 12px 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-}
-.section-title .emoji,
-.section-title .icon {
-  font-size: 1.3rem;
-  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
-}
-.section-title .num {
-  margin-left: auto;
-  font-size: 0.72rem;
-  color: var(--text-dim);
-  background: rgba(0,212,255,0.1);
-  padding: 3px 12px;
-  border-radius: 50px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  border: 1px solid var(--border);
-}
-.section-title > span:not(.num):not(.emoji):not(.icon) {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--text);
-}
-
-/* ============================================================
-   HIGHLIGHT BOX - 高亮提示框
-   ============================================================ */
-.highlight-box {
-  background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(129,140,248,0.05) 100%);
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--accent);
-  border-radius: var(--radius-sm);
-  padding: 16px 20px;
-  margin: 16px 0;
-  font-size: 0.9rem;
-  line-height: 1.75;
-  color: var(--text);
-  position: relative;
-  transition: all 0.3s;
-}
-.highlight-box:hover {
-  box-shadow: var(--shadow-sm);
-  transform: translateY(-1px);
-  border-color: var(--border-hover);
-}
-.highlight-box strong {
-  color: var(--accent);
-  font-weight: 600;
-}
-
-/* ============================================================
-   SKILL BAR - 技能进度条
-   ============================================================ */
-.skill-bar {
-  width: 100%;
-  height: 8px;
-  background: rgba(0,212,255,0.08);
-  border-radius: 50px;
-  margin: 6px 0 12px;
-  overflow: hidden;
-  position: relative;
-}
-.skill-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 100%);
-  border-radius: 50px;
-  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-}
-.skill-bar-fill::after {
-  content: '';
-  position: absolute;
-  top: 0; right: 0;
-  width: 20px; height: 100%;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 100%);
-  border-radius: 50px;
-}
-
-/* ============================================================
-   TAG VARIANTS - 标签变体
-   ============================================================ */
-.tag-blue { background: rgba(0,212,255,0.1); color: var(--accent); border: 1px solid rgba(0,212,255,0.2); }
-.tag-green, .tag.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border: 1px solid rgba(34,211,160,0.25); }
-.tag-purple { background: rgba(129,140,248,0.1); color: var(--accent-purple); border: 1px solid rgba(129,140,248,0.25); }
-.tag-red, .tag.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border: 1px solid rgba(248,113,113,0.25); }
-.tag-orange, .tag.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border: 1px solid rgba(255,179,71,0.25); }
-
-/* ============================================================
-   BADGE - 评估徽章 (独立使用，不限于news-item内)
-   ============================================================ */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.72rem;
-  padding: 3px 10px;
-  border-radius: 50px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
-.badge-high {
-  background: rgba(34,211,160,0.15);
-  color: var(--accent-green);
-  border: 1px solid rgba(34,211,160,0.3);
-}
-.badge-mid {
-  background: rgba(255,179,71,0.15);
-  color: var(--accent-warm);
-  border: 1px solid rgba(255,179,71,0.3);
-}
-.badge-low {
-  background: rgba(248,113,113,0.15);
-  color: var(--accent-pink);
-  border: 1px solid rgba(248,113,113,0.3);
-}
-
-/* ============================================================
-   HEADER META - 标题栏元数据
-   ============================================================ */
-.header .meta {
-  margin-top: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  position: relative;
-  z-index: 1;
-}
-.header .meta span {
-  font-size: 0.76rem;
-  color: var(--text-dim);
-  background: rgba(0,212,255,0.08);
-  backdrop-filter: blur(8px);
-  padding: 4px 12px;
-  border-radius: 50px;
-  border: 1px solid var(--border);
-}
-
-/* ============================================================
-   TIMELINE - 时间线
-   ============================================================ */
-.timeline {
-  position: relative;
-  padding-left: 24px;
-  margin: 16px 0;
-}
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 7px; top: 8px; bottom: 8px;
-  width: 2px;
-  background: linear-gradient(180deg, var(--accent) 0%, var(--border) 100%);
-  border-radius: 50px;
-}
-.timeline-item {
-  position: relative;
-  margin-bottom: 20px;
-  padding-left: 8px;
-}
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -21px; top: 6px;
-  width: 12px; height: 12px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 3px solid var(--accent);
-  box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
-  z-index: 1;
-}
-.timeline-item .time {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--accent);
-  margin-bottom: 6px;
-  font-family: 'JetBrains Mono', monospace;
-}
-.timeline-item .content {
-  background: var(--card-solid);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 14px 18px;
-  font-size: 0.88rem;
-  line-height: 1.75;
-  transition: all 0.3s;
-}
-.timeline-item .content:hover {
-  box-shadow: var(--shadow-sm);
-  transform: translateX(2px);
-  border-color: var(--border-hover);
-}
-.timeline-item .content p { margin-bottom: 4px; }
-.timeline-item .content strong { color: var(--accent); }
-
-/* ============================================================
-   DECISION GRID - 决策对比卡片
-   ============================================================ */
-.decision-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin: 16px 0;
-}
-@media (max-width: 600px) {
-  .decision-grid { grid-template-columns: 1fr; }
-}
-.decision-card {
-  border-radius: var(--radius-sm);
-  padding: 18px 20px;
-  font-size: 0.88rem;
-  line-height: 1.75;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-.decision-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-.decision-card h4 {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-.decision-card p { margin-bottom: 4px; }
-.decision-card strong { font-weight: 600; }
-.decision-yes {
-  background: rgba(34,211,160,0.08);
-  border: 1px solid rgba(34,211,160,0.2);
-  border-left: 4px solid var(--accent-green);
-}
-.decision-yes h4 { color: var(--accent-green); }
-.decision-yes strong { color: var(--accent-green); }
-.decision-no {
-  background: rgba(255,179,71,0.08);
-  border: 1px solid rgba(255,179,71,0.2);
-  border-left: 4px solid var(--accent-warm);
-}
-.decision-no h4 { color: var(--accent-warm); }
-.decision-no strong { color: var(--accent-warm); }
-
-/* ============================================================
-   DISCUSSION ITEM - 讨论条目
-   ============================================================ */
-.discussion-item {
-  background: rgba(255,179,71,0.08);
-  border: 1px solid rgba(255,179,71,0.2);
-  border-left: 4px solid var(--accent-warm);
-  border-radius: var(--radius-sm);
-  padding: 14px 18px;
-  margin: 12px 0;
-  transition: all 0.3s;
-}
-.discussion-item:hover {
-  box-shadow: var(--shadow-sm);
-  transform: translateY(-1px);
-}
-.discussion-item .platform {
-  display: inline-block;
-  background: var(--accent-warm);
-  color: var(--bg);
-  font-size: 0.72rem;
-  padding: 3px 12px;
-  border-radius: 50px;
-  margin-bottom: 8px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
-.discussion-item .text {
-  font-size: 0.88rem;
-  line-height: 1.75;
-  color: var(--text);
-  margin-bottom: 8px;
-}
-.discussion-item .text strong { color: var(--accent); }
-.discussion-item .link { font-size: 0.82rem; }
-
-/* ============================================================
-   GISCUS SECTION - 评论区别名 (dark_dimmed 主题)
-   注意: HTML中giscus script需设置 data-theme="dark_dimmed"
-   ============================================================ */
-.giscus-section {
-  margin-top: 40px;
-  background: var(--card-solid);
-  border-radius: var(--radius);
-  padding: 28px 24px;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-}
-.giscus-section h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 6px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* ============================================================
-   FOOTER (div version) - 页脚别名
-   ============================================================ */
-div.footer {
-  text-align: center;
-  margin-top: 40px;
-  padding: 24px 20px;
-  font-size: 0.78rem;
-  color: var(--text-faint);
-  border-top: 1px solid var(--border);
-  font-family: 'JetBrains Mono', monospace;
-}
-div.footer a { color: var(--accent); }
-div.footer a:hover { color: var(--accent-purple); }
-
-/* ============================================================
-   DECORATIVE ELEMENTS - 装饰元素 (隐藏，由body伪元素替代)
-   ============================================================ */
-.grid-bg { display: none; }
-.floating-ball { display: none; }
-
-/* ============================================================
-   UTILITY - 通用工具类
-   ============================================================ */
-a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
-a:hover { color: var(--accent-purple); text-decoration: underline; }
-strong { color: var(--text); font-weight: 700; }
-hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
-
-
-/* SALARY GRID - 薪资网格 (补充定义确保文字可读) */
-.salary-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin: 14px 0;
-}
-@media (max-width: 600px) {
-  .salary-grid { grid-template-columns: 1fr; }
-}
-.salary-item {
-  background: rgba(0,212,255,0.06);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  text-align: center;
-}
-.salary-item .level {
-  font-size: 0.78rem;
-  color: var(--text-dim);
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-.salary-item .amount {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 4px;
-  font-family: 'JetBrains Mono', monospace;
-}
-.salary-item .note {
-  font-size: 0.72rem;
-  color: var(--text-dim);
-}
-
-/* PILL - 小标签 (补充定义确保文字可读) */
-.pill {
-  display: inline-block;
-  font-size: 0.72rem;
-  padding: 3px 10px;
-  border-radius: 50px;
-  margin: 2px;
-  font-weight: 500;
-  background: rgba(0,212,255,0.1);
-  color: var(--accent);
-  border: 1px solid rgba(0,212,255,0.2);
-}
-.pill.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
-.pill.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
-.pill.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
-
-/* INFO ROW - 信息行 */
-.info-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-items: center;
-  margin: 10px 0;
-}
-
-/* META BAR - 元数据栏 */
-.meta-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  justify-content: center;
-  margin-top: 12px;
+@media print {
+  body { background: #fff; color: #000; }
+  body::before, body::after { display: none; }
+  .header { background: #f0f0f0; color: #000; border: 1px solid #ccc; }
+  .section { background: #fff; border: 1px solid #ccc; box-shadow: none; }
+  .card, .news-item, .job-card { background: #fff; border: 1px solid #ccc; }
 }
 
 </style>
@@ -1079,7 +1070,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 <tr><td style="font-weight:600;color:#e8eef5;">薪资范围</td><td>设备工程师6-10K（西安）；工厂操作工7000-9000元（常州）；深汕基地大规模扩招超9000岗位</td></tr>
 <tr><td style="font-weight:600;color:#e8eef5;">申请截止</td><td>校招通常为每年8月-11月；社招常年滚动</td></tr>
 </table>
-<div style="margin-top:8px;">
+<div >
 <a href="http://m.toutiao.com/group/7662308624034742826/" target="_blank" class="source-link">📎 校招分析原文</a>
 &nbsp;<a href="http://m.toutiao.com/group/7667035295862260243/" target="_blank" class="source-link">📎 深汕扩招原文</a>
 </div>
@@ -1097,7 +1088,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 <tr><td style="font-weight:600;color:#e8eef5;">薪资范围</td><td>新能源能源管理开发：20-35K·15薪（芜湖）；工厂正式工：7000-8000元（鄂尔多斯）</td></tr>
 <tr><td style="font-weight:600;color:#e8eef5;">申请截止</td><td>社招常年滚动</td></tr>
 </table>
-<div style="margin-top:8px;">
+<div >
 <a href="https://m.liepin.com/job/1984390369.shtml" target="_blank" class="source-link">📎 新能源岗详情</a>
 &nbsp;<a href="https://www.zhaopin.com/jobdetail/CC420458980J40517969510.htm" target="_blank" class="source-link">📎 鄂尔多斯岗详情</a>
 </div>
@@ -1115,7 +1106,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 <tr><td style="font-weight:600;color:#e8eef5;">薪资范围</td><td>校招薪资未公开披露；G-top专项计划顶尖博士百万年薪</td></tr>
 <tr><td style="font-weight:600;color:#e8eef5;">申请截止</td><td>网申8月1日-11月10日，宣讲会9月-11月，面试8月-11月</td></tr>
 </table>
-<div style="margin-top:8px;">
+<div >
 <a href="https://m.yingjiesheng.com/xuanjianghui/xjh_3987467" target="_blank" class="source-link">📎 校招宣讲会详情</a>
 &nbsp;<a href="https://www.zhipin.com/job_detail/45c26f7eb255bb8603x53dy4ElpW.html" target="_blank" class="source-link">📎 制造质量管理岗</a>
 </div>
@@ -1133,7 +1124,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 <tr><td style="font-weight:600;color:#e8eef5;">薪资范围</td><td>公开信息未明确披露</td></tr>
 <tr><td style="font-weight:600;color:#e8eef5;">申请截止</td><td>2026春季校园招聘已启动；投递渠道：中国一汽招聘官网</td></tr>
 </table>
-<div style="margin-top:8px;">
+<div >
 <a href="http://m.toutiao.com/group/7613936121482904107/" target="_blank" class="source-link">📎 2026春招启动</a>
 &nbsp;<a href="http://m.toutiao.com/group/7598805025703363123/" target="_blank" class="source-link">📎 校园招聘公告</a>
 </div>
@@ -1151,7 +1142,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 <tr><td style="font-weight:600;color:#e8eef5;">薪资范围</td><td>公开信息未明确披露（需参考官网）</td></tr>
 <tr><td style="font-weight:600;color:#e8eef5;">申请截止</td><td>一汽-大众2026春季校招已启动；上汽大众管培生2027届招聘中（页面更新2026-7-22）</td></tr>
 </table>
-<div style="margin-top:8px;">
+<div >
 <a href="http://m.toutiao.com/group/7614137866578412070/" target="_blank" class="source-link">📎 一汽-大众2026春招</a>
 &nbsp;<a href="https://hz.dazhonghr.com/jobfair/company?id=1541946&part=97359" target="_blank" class="source-link">📎 上汽大众招聘</a>
 </div>
@@ -1169,7 +1160,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 <tr><td style="font-weight:600;color:#e8eef5;">薪资范围</td><td>实习生170-200元/天；服务专家1.2-1.8万/月；电池质量工程师2.5-2.8万/月（社招）</td></tr>
 <tr><td style="font-weight:600;color:#e8eef5;">申请截止</td><td>校招和社招常年滚动；2027届校招岗位已上线</td></tr>
 </table>
-<div style="margin-top:8px;">
+<div >
 <a href="https://mmq.51job.com/i2173/co3101056/xiaozhao/" target="_blank" class="source-link">📎 2026校招主页</a>
 &nbsp;<a href="https://mhr.bjx.com.cn/jobs/920408.html" target="_blank" class="source-link">📎 电池质量工程师</a>
 </div>
@@ -1394,13 +1385,13 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 <div class="tip-box">
 <h4>📝 论文</h4>
 <p style="font-size:0.88rem;">杭电机械硕士靠<strong>一篇中文核心论文</strong>+导师项目成功入职比亚迪</p>
-<h4 style="margin-top:10px;">🏆 竞赛</h4>
+<h4 >🏆 竞赛</h4>
 <p style="font-size:0.88rem;">蓝桥杯、数学建模校赛均为加分项；<strong>FSAE中国大学生方程式汽车大赛</strong>（2026"吉利杯"已启动报名）—— 车企高度认可，直接对口</p>
-<h4 style="margin-top:10px;">💼 实习与项目</h4>
+<h4 >💼 实习与项目</h4>
 <p style="font-size:0.88rem;">导师实验室横向项目可替代实习经历；课程设计/毕设做扎实形成完整项目文档</p>
-<h4 style="margin-top:10px;">🔧 技能补充</h4>
+<h4 >🔧 技能补充</h4>
 <p style="font-size:0.88rem;">强化CAD/CAE软件（假期提升）；至少英语四级，优秀企业要求六级；补编程（C/C++/Python/Java）可切入车企软件/智驾周边岗</p>
-<h4 style="margin-top:10px;">📌 其他</h4>
+<h4 >📌 其他</h4>
 <p style="font-size:0.88rem;">参加紧缺工种技能培训（如人工智能训练师），参训后平均薪资比未参训高18%；用好"1131"官方就业服务</p>
 </div>
 <a href="http://www.formulastudent.com.cn/news/7193.html" target="_blank" class="source-link">📎 FSAE 2026吉利杯</a>
@@ -1466,43 +1457,43 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 <h2>📋 来源汇总表</h2>
 <table class="summary-table">
 <tr><th>来源名称</th><th>链接</th><th>日期</th></tr>
-<tr><td>财联社汽车早报（特斯拉南美招聘）</td><td><a href="http://m.toutiao.com/group/7667006797370212905/" target="_blank" style="color:#00d4ff;">toutiao.com/...7667006797370212905</a></td><td>2026-07-27</td></tr>
-<tr><td>网易/实习僧（宁德时代招聘公告）</td><td><a href="https://www.163.com/dy/article/L2HP8I2L0516DVCH.html" target="_blank" style="color:#00d4ff;">163.com/...L2HP8I2L0516DVCH</a></td><td>2026-07-23</td></tr>
-<tr><td>今日头条（比亚迪深汕扩招9000岗）</td><td><a href="http://m.toutiao.com/group/7665255571116917299/" target="_blank" style="color:#00d4ff;">toutiao.com/...7665255571116917299</a></td><td>2026-07</td></tr>
-<tr><td>封面新闻（多家车企2026届校招）</td><td><a href="http://m.toutiao.com/group/7564605437102916147/" target="_blank" style="color:#00d4ff;">toutiao.com/...7564605437102916147</a></td><td>2026</td></tr>
-<tr><td>今日头条（车企扩招测试岗65%）</td><td><a href="http://m.toutiao.com/group/7658118767989408299/" target="_blank" style="color:#00d4ff;">toutiao.com/...7658118767989408299</a></td><td>2026</td></tr>
-<tr><td>今日头条（2026车企待遇改革）</td><td><a href="http://m.toutiao.com/group/7592875312183886346/" target="_blank" style="color:#00d4ff;">toutiao.com/...7592875312183886346</a></td><td>2026-01</td></tr>
-<tr><td>掘金（智能网联人才缺口超30万）</td><td><a href="https://juejin.cn/post/7662887553267941428" target="_blank" style="color:#00d4ff;">juejin.cn/post/7662887553267941428</a></td><td>2026</td></tr>
-<tr><td>BOSS直聘（华为车BU实习招聘）</td><td><a href="https://www.zhipin.com/job_detail/96ad749540812c8303d-3NW4FFVW.html" target="_blank" style="color:#00d4ff;">zhipin.com/...96ad749540812c8303d</a></td><td>2026</td></tr>
-<tr><td>就业信息网（理想汽车2026秋招）</td><td><a href="http://jy.zisu.edu.cn/campus/view/id/1054163" target="_blank" style="color:#00d4ff;">zisu.edu.cn/...1054163</a></td><td>2026</td></tr>
-<tr><td>今日头条（比亚迪校招分析）</td><td><a href="http://m.toutiao.com/group/7662308624034742826/" target="_blank" style="color:#00d4ff;">toutiao.com/...7662308624034742826</a></td><td>2026-07</td></tr>
-<tr><td>猎聘（奇瑞新能源岗）</td><td><a href="https://m.liepin.com/job/1984390369.shtml" target="_blank" style="color:#00d4ff;">liepin.com/job/1984390369</a></td><td>2026</td></tr>
-<tr><td>智联招聘（奇瑞鄂尔多斯岗）</td><td><a href="https://www.zhaopin.com/jobdetail/CC420458980J40517969510.htm" target="_blank" style="color:#00d4ff;">zhaopin.com/...CC420458980J40517969510</a></td><td>2026</td></tr>
-<tr><td>应届生求职网（吉利校招宣讲会）</td><td><a href="https://m.yingjiesheng.com/xuanjianghui/xjh_3987467" target="_blank" style="color:#00d4ff;">yingjiesheng.com/...xjh_3987467</a></td><td>2026</td></tr>
-<tr><td>今日头条（一汽2026春招启动）</td><td><a href="http://m.toutiao.com/group/7613936121482904107/" target="_blank" style="color:#00d4ff;">toutiao.com/...7613936121482904107</a></td><td>2026</td></tr>
-<tr><td>今日头条（一汽校园招聘公告）</td><td><a href="http://m.toutiao.com/group/7598805025703363123/" target="_blank" style="color:#00d4ff;">toutiao.com/...7598805025703363123</a></td><td>2026</td></tr>
-<tr><td>今日头条（一汽-大众2026春招）</td><td><a href="http://m.toutiao.com/group/7614137866578412070/" target="_blank" style="color:#00d4ff;">toutiao.com/...7614137866578412070</a></td><td>2026</td></tr>
-<tr><td>大众人才网（上汽大众招聘）</td><td><a href="https://hz.dazhonghr.com/jobfair/company?id=1541946&part=97359" target="_blank" style="color:#00d4ff;">dazhonghr.com/...1541946</a></td><td>2026-07-22</td></tr>
-<tr><td>51job（特斯拉2026校招主页）</td><td><a href="https://mmq.51job.com/i2173/co3101056/xiaozhao/" target="_blank" style="color:#00d4ff;">51job.com/...co3101056/xiaozhao</a></td><td>2026</td></tr>
-<tr><td>北极星招聘（特斯拉电池质量工程师）</td><td><a href="https://mhr.bjx.com.cn/jobs/920408.html" target="_blank" style="color:#00d4ff;">bjx.com.cn/jobs/920408</a></td><td>2026</td></tr>
-<tr><td>牛客网（小鹏秋招面试吐槽）</td><td><a href="https://m.nowcoder.com/feed/main/detail/4f842aa7a4454bbe95f5ade9c9cc59ff" target="_blank" style="color:#00d4ff;">nowcoder.com/...4f842aa7a4454bbe95f5ade9c9cc59ff</a></td><td>2026</td></tr>
-<tr><td>牛客网（小鹏内推+面试分享）</td><td><a href="https://www.nowcoder.com/discuss/353159029805490176" target="_blank" style="color:#00d4ff;">nowcoder.com/discuss/353159029805490176</a></td><td>2026</td></tr>
-<tr><td>今日头条（比亚迪7年研发跳槽42万）</td><td><a href="http://m.toutiao.com/group/7598740443337081344/" target="_blank" style="color:#00d4ff;">toutiao.com/...7598740443337081344</a></td><td>2026-01</td></tr>
-<tr><td>今日头条（比亚迪待改进不要走）</td><td><a href="http://m.toutiao.com/group/7667076750995784211/" target="_blank" style="color:#00d4ff;">toutiao.com/...7667076750995784211</a></td><td>2026-07</td></tr>
-<tr><td>搜狐网（理想汽车2026校招薪资）</td><td><a href="https://m.sohu.com/a/926946378_121123897/" target="_blank" style="color:#00d4ff;">sohu.com/a/926946378</a></td><td>2026</td></tr>
-<tr><td>搜狐网（比亚迪双非硕士年薪16万）</td><td><a href="https://m.sohu.com/a/931968561_120650791/" target="_blank" style="color:#00d4ff;">sohu.com/a/931968561</a></td><td>2026</td></tr>
-<tr><td>牛客网（双非机械硕士薪资讨论）</td><td><a href="https://m.nowcoder.com/discuss/679420207181443072" target="_blank" style="color:#00d4ff;">nowcoder.com/discuss/679420207181443072</a></td><td>2026</td></tr>
-<tr><td>今日头条（太原科大机械硕士案例）</td><td><a href="http://m.toutiao.com/group/7636648778644079138/" target="_blank" style="color:#00d4ff;">toutiao.com/...7636648778644079138</a></td><td>2026</td></tr>
-<tr><td>人人文档（燕山大学就业去向）</td><td><a href="https://m.renrendoc.com/paper/264628284.html" target="_blank" style="color:#00d4ff;">renrendoc.com/paper/264628284</a></td><td>2026</td></tr>
-<tr><td>今日头条（合工大机械硕士江淮20万）</td><td><a href="http://m.toutiao.com/group/7337527025047110196/" target="_blank" style="color:#00d4ff;">toutiao.com/...7337527025047110196</a></td><td>2026</td></tr>
-<tr><td>牛客网（合工大211硕士江淮讨论）</td><td><a href="https://m.nowcoder.com/feed/main/detail/e80848139fc64335826c0ba3208f91f2" target="_blank" style="color:#00d4ff;">nowcoder.com/...e80848139fc64335826c0ba3208f91f2</a></td><td>2026</td></tr>
-<tr><td>今日头条（安徽工程大学42%进奇瑞江淮）</td><td><a href="http://m.toutiao.com/group/7584824789924135464/" target="_blank" style="color:#00d4ff;">toutiao.com/...7584824789924135464</a></td><td>2026</td></tr>
-<tr><td>今日头条（双非强校推荐12-18K）</td><td><a href="http://m.toutiao.com/group/7604365557470741042/" target="_blank" style="color:#00d4ff;">toutiao.com/...7604365557470741042</a></td><td>2026</td></tr>
-<tr><td>今日头条（985硕士后悔没去比亚迪）</td><td><a href="http://m.toutiao.com/group/7666892463344271908/" target="_blank" style="color:#00d4ff;">toutiao.com/...7666892463344271908</a></td><td>2026</td></tr>
-<tr><td>今日头条（就业攻略时间节点）</td><td><a href="http://m.toutiao.com/group/7666629115524629033/" target="_blank" style="color:#00d4ff;">toutiao.com/...7666629115524629033</a></td><td>2026</td></tr>
-<tr><td>超级简历（简历准备要点）</td><td><a href="https://m.wondercv.com/blog/BHkx51vT.html" target="_blank" style="color:#00d4ff;">wondercv.com/blog/BHkx51vT</a></td><td>2026</td></tr>
-<tr><td>CSDN（比亚迪入职面试经验）</td><td><a href="https://blog.csdn.net/bjweimengshu/article/details/134110493" target="_blank" style="color:#00d4ff;">blog.csdn.net/...134110493</a></td><td>2026</td></tr>
-<tr><td>FSAE官网（2026吉利杯报名）</td><td><a href="http://www.formulastudent.com.cn/news/7193.html" target="_blank" style="color:#00d4ff;">formulastudent.com.cn/news/7193</a></td><td>2026</td></tr>
+<tr><td>财联社汽车早报（特斯拉南美招聘）</td><td><a href="http://m.toutiao.com/group/7667006797370212905/" target="_blank" >toutiao.com/...7667006797370212905</a></td><td>2026-07-27</td></tr>
+<tr><td>网易/实习僧（宁德时代招聘公告）</td><td><a href="https://www.163.com/dy/article/L2HP8I2L0516DVCH.html" target="_blank" >163.com/...L2HP8I2L0516DVCH</a></td><td>2026-07-23</td></tr>
+<tr><td>今日头条（比亚迪深汕扩招9000岗）</td><td><a href="http://m.toutiao.com/group/7665255571116917299/" target="_blank" >toutiao.com/...7665255571116917299</a></td><td>2026-07</td></tr>
+<tr><td>封面新闻（多家车企2026届校招）</td><td><a href="http://m.toutiao.com/group/7564605437102916147/" target="_blank" >toutiao.com/...7564605437102916147</a></td><td>2026</td></tr>
+<tr><td>今日头条（车企扩招测试岗65%）</td><td><a href="http://m.toutiao.com/group/7658118767989408299/" target="_blank" >toutiao.com/...7658118767989408299</a></td><td>2026</td></tr>
+<tr><td>今日头条（2026车企待遇改革）</td><td><a href="http://m.toutiao.com/group/7592875312183886346/" target="_blank" >toutiao.com/...7592875312183886346</a></td><td>2026-01</td></tr>
+<tr><td>掘金（智能网联人才缺口超30万）</td><td><a href="https://juejin.cn/post/7662887553267941428" target="_blank" >juejin.cn/post/7662887553267941428</a></td><td>2026</td></tr>
+<tr><td>BOSS直聘（华为车BU实习招聘）</td><td><a href="https://www.zhipin.com/job_detail/96ad749540812c8303d-3NW4FFVW.html" target="_blank" >zhipin.com/...96ad749540812c8303d</a></td><td>2026</td></tr>
+<tr><td>就业信息网（理想汽车2026秋招）</td><td><a href="http://jy.zisu.edu.cn/campus/view/id/1054163" target="_blank" >zisu.edu.cn/...1054163</a></td><td>2026</td></tr>
+<tr><td>今日头条（比亚迪校招分析）</td><td><a href="http://m.toutiao.com/group/7662308624034742826/" target="_blank" >toutiao.com/...7662308624034742826</a></td><td>2026-07</td></tr>
+<tr><td>猎聘（奇瑞新能源岗）</td><td><a href="https://m.liepin.com/job/1984390369.shtml" target="_blank" >liepin.com/job/1984390369</a></td><td>2026</td></tr>
+<tr><td>智联招聘（奇瑞鄂尔多斯岗）</td><td><a href="https://www.zhaopin.com/jobdetail/CC420458980J40517969510.htm" target="_blank" >zhaopin.com/...CC420458980J40517969510</a></td><td>2026</td></tr>
+<tr><td>应届生求职网（吉利校招宣讲会）</td><td><a href="https://m.yingjiesheng.com/xuanjianghui/xjh_3987467" target="_blank" >yingjiesheng.com/...xjh_3987467</a></td><td>2026</td></tr>
+<tr><td>今日头条（一汽2026春招启动）</td><td><a href="http://m.toutiao.com/group/7613936121482904107/" target="_blank" >toutiao.com/...7613936121482904107</a></td><td>2026</td></tr>
+<tr><td>今日头条（一汽校园招聘公告）</td><td><a href="http://m.toutiao.com/group/7598805025703363123/" target="_blank" >toutiao.com/...7598805025703363123</a></td><td>2026</td></tr>
+<tr><td>今日头条（一汽-大众2026春招）</td><td><a href="http://m.toutiao.com/group/7614137866578412070/" target="_blank" >toutiao.com/...7614137866578412070</a></td><td>2026</td></tr>
+<tr><td>大众人才网（上汽大众招聘）</td><td><a href="https://hz.dazhonghr.com/jobfair/company?id=1541946&part=97359" target="_blank" >dazhonghr.com/...1541946</a></td><td>2026-07-22</td></tr>
+<tr><td>51job（特斯拉2026校招主页）</td><td><a href="https://mmq.51job.com/i2173/co3101056/xiaozhao/" target="_blank" >51job.com/...co3101056/xiaozhao</a></td><td>2026</td></tr>
+<tr><td>北极星招聘（特斯拉电池质量工程师）</td><td><a href="https://mhr.bjx.com.cn/jobs/920408.html" target="_blank" >bjx.com.cn/jobs/920408</a></td><td>2026</td></tr>
+<tr><td>牛客网（小鹏秋招面试吐槽）</td><td><a href="https://m.nowcoder.com/feed/main/detail/4f842aa7a4454bbe95f5ade9c9cc59ff" target="_blank" >nowcoder.com/...4f842aa7a4454bbe95f5ade9c9cc59ff</a></td><td>2026</td></tr>
+<tr><td>牛客网（小鹏内推+面试分享）</td><td><a href="https://www.nowcoder.com/discuss/353159029805490176" target="_blank" >nowcoder.com/discuss/353159029805490176</a></td><td>2026</td></tr>
+<tr><td>今日头条（比亚迪7年研发跳槽42万）</td><td><a href="http://m.toutiao.com/group/7598740443337081344/" target="_blank" >toutiao.com/...7598740443337081344</a></td><td>2026-01</td></tr>
+<tr><td>今日头条（比亚迪待改进不要走）</td><td><a href="http://m.toutiao.com/group/7667076750995784211/" target="_blank" >toutiao.com/...7667076750995784211</a></td><td>2026-07</td></tr>
+<tr><td>搜狐网（理想汽车2026校招薪资）</td><td><a href="https://m.sohu.com/a/926946378_121123897/" target="_blank" >sohu.com/a/926946378</a></td><td>2026</td></tr>
+<tr><td>搜狐网（比亚迪双非硕士年薪16万）</td><td><a href="https://m.sohu.com/a/931968561_120650791/" target="_blank" >sohu.com/a/931968561</a></td><td>2026</td></tr>
+<tr><td>牛客网（双非机械硕士薪资讨论）</td><td><a href="https://m.nowcoder.com/discuss/679420207181443072" target="_blank" >nowcoder.com/discuss/679420207181443072</a></td><td>2026</td></tr>
+<tr><td>今日头条（太原科大机械硕士案例）</td><td><a href="http://m.toutiao.com/group/7636648778644079138/" target="_blank" >toutiao.com/...7636648778644079138</a></td><td>2026</td></tr>
+<tr><td>人人文档（燕山大学就业去向）</td><td><a href="https://m.renrendoc.com/paper/264628284.html" target="_blank" >renrendoc.com/paper/264628284</a></td><td>2026</td></tr>
+<tr><td>今日头条（合工大机械硕士江淮20万）</td><td><a href="http://m.toutiao.com/group/7337527025047110196/" target="_blank" >toutiao.com/...7337527025047110196</a></td><td>2026</td></tr>
+<tr><td>牛客网（合工大211硕士江淮讨论）</td><td><a href="https://m.nowcoder.com/feed/main/detail/e80848139fc64335826c0ba3208f91f2" target="_blank" >nowcoder.com/...e80848139fc64335826c0ba3208f91f2</a></td><td>2026</td></tr>
+<tr><td>今日头条（安徽工程大学42%进奇瑞江淮）</td><td><a href="http://m.toutiao.com/group/7584824789924135464/" target="_blank" >toutiao.com/...7584824789924135464</a></td><td>2026</td></tr>
+<tr><td>今日头条（双非强校推荐12-18K）</td><td><a href="http://m.toutiao.com/group/7604365557470741042/" target="_blank" >toutiao.com/...7604365557470741042</a></td><td>2026</td></tr>
+<tr><td>今日头条（985硕士后悔没去比亚迪）</td><td><a href="http://m.toutiao.com/group/7666892463344271908/" target="_blank" >toutiao.com/...7666892463344271908</a></td><td>2026</td></tr>
+<tr><td>今日头条（就业攻略时间节点）</td><td><a href="http://m.toutiao.com/group/7666629115524629033/" target="_blank" >toutiao.com/...7666629115524629033</a></td><td>2026</td></tr>
+<tr><td>超级简历（简历准备要点）</td><td><a href="https://m.wondercv.com/blog/BHkx51vT.html" target="_blank" >wondercv.com/blog/BHkx51vT</a></td><td>2026</td></tr>
+<tr><td>CSDN（比亚迪入职面试经验）</td><td><a href="https://blog.csdn.net/bjweimengshu/article/details/134110493" target="_blank" >blog.csdn.net/...134110493</a></td><td>2026</td></tr>
+<tr><td>FSAE官网（2026吉利杯报名）</td><td><a href="http://www.formulastudent.com.cn/news/7193.html" target="_blank" >formulastudent.com.cn/news/7193</a></td><td>2026</td></tr>
 </table>
 </div>
 
@@ -1519,5 +1510,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 <script src="https://giscus.app/client.js" data-repo="TS-dinglilu/TS-dinglilu.github.io" data-repo-id="R_kgDOTjqaJQ" data-category="Announcements" data-category-id="DIC_kwDOTjqaJc4DCIL1" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark_dimmed" data-lang="zh-CN" crossorigin="anonymous" async></script>
 </div>
 
+
+<!-- v5.0 optimized at 2026-07-29 09:48:00 -->
 </body>
 </html>
