@@ -63,10 +63,12 @@
 
 - 背景: `#0a0e1a`（深空蓝）
 - 强调色: `#00d4ff`（青色）
-- 正文: `#f0f4f8`（明亮）
-- 次要文字: `#e8eef5`（明亮）
-- 辅助文字: `#e0e8f2`（明亮）
+- 主文字: `#f0f4f8`（最亮 - 标题、重要内容）
+- 次要文字: `#c8d4e8`（中等 - 正文、段落）
+- 辅助文字: `#90a0c0`（较暗 - 元数据、时间戳）
 - 字体: JetBrains Mono + Noto Sans SC
+
+> 三种页面类型（主页/报告汇总/报告页）使用统一的CSS变量，确保视觉一致性。
 
 ## 评论系统
 
@@ -93,17 +95,21 @@
 - HTML报告中所有链接必须使用HTML `<a>`标签格式，严禁使用Markdown链接格式
 - 报告文件命名：`report_YYYYMMDD.html`
 - 部署脚本内置重试机制，自动验证上传成功
+- 部署脚本使用动态临时目录，执行完毕自动清理
 - 所有历史报告归档保留（不删除）
 - 自动化任务运行时间：每天早上5点（北京时间）
+- 所有页面包含 `<link rel="preconnect">` 优化字体加载
+- 所有页面包含 `<meta name="description">` SEO描述
 
 ## 项目文件说明
 
 | 文件 | 说明 |
 |------|------|
-| `deploy_github_pages.ps1` | 统一部署脚本（上传报告+生成索引+配置评论区） |
-| `report_css_template.css` | 报告页统一CSS模板 |
+| `deploy_github_pages.ps1` | 统一部署脚本v3.0（上传报告+生成索引+配置评论区+动态临时目录） |
+| `report_css_template.css` | 报告页统一CSS模板 v8.0 |
 | `replace_css.py` | CSS模板替换工具（部署脚本调用） |
 | `homepage_index.html` | 主页源文件 |
 | `export_trae_memory.ps1` | TRAE记忆导出脚本 |
 | `export_trae_tasks.ps1` | TRAE任务导出脚本 |
+| `export_trae_tasks.py` | TRAE任务导出Python后端 |
 | `future-planning/future_planning_config.txt` | 未来规划任务配置文件 |
