@@ -7,7 +7,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   报告页统一CSS模板 - v7.0 暗色主题版
+   报告页统一CSS模板 - v8.0 暗色主题版
+   v8.0改进:
+   - 新增 .icon 系列样式 (.icon-blue/.icon-green 等)
+   - 新增 --success/--warning/--danger/--info CSS变量
+   - 新增 .priority-*/.match-* 状态指示器
+   - 新增 .card-grid 网格布局
+   - 新增大量工具类替代内联样式
+   - 新增 .timeline-item 时间线样式
+   - 新增 .count-badge/.highlight-text/.separator
    v7.0改进:
    - 修复class别名: .header/.date/.num 等与语义化类名对齐
    - 新增统计网格 .stats-grid/.stat-box 样式
@@ -40,6 +48,10 @@
   --accent-pink: #f87171;
   --accent-teal: #14b8a6;
   --accent-orange: #fb923c;
+  --success: #22d3a0;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #00d4ff;
   --grid-line: rgba(0, 212, 255, 0.04);
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
@@ -1080,6 +1092,284 @@ footer a:hover, .footer a:hover { color: var(--accent); }
   .scroll-top { bottom: 20px; right: 20px; width: 38px; height: 38px; }
 }
 
+/* ============================================================
+   Icons — colored emoji icons in section titles
+   ============================================================ */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.icon-blue, .icon.icon-blue {
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.icon-green, .icon.icon-green {
+  background: rgba(34, 211, 160, 0.15);
+  border: 1px solid rgba(34, 211, 160, 0.3);
+}
+
+.icon-orange, .icon.icon-orange {
+  background: rgba(251, 146, 60, 0.15);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.icon-purple, .icon.icon-purple {
+  background: rgba(129, 140, 248, 0.15);
+  border: 1px solid rgba(129, 140, 248, 0.3);
+}
+
+.icon-teal, .icon.icon-teal {
+  background: rgba(20, 184, 166, 0.15);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+}
+
+.icon-pink, .icon.icon-pink {
+  background: rgba(248, 113, 113, 0.15);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.icon-amber, .icon.icon-amber {
+  background: rgba(251, 191, 36, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+/* ============================================================
+   Emoji spans (standalone, not in .icon)
+   ============================================================ */
+.emoji {
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* ============================================================
+   Priority / Status indicators
+   ============================================================ */
+.priority-high, .priority-hot {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--accent-pink);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.priority-mid, .priority-medium {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(251, 146, 60, 0.15);
+  color: var(--accent-orange);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.priority-low, .priority-normal {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(34, 211, 160, 0.15);
+  color: var(--accent-green);
+  border: 1px solid rgba(34, 211, 160, 0.3);
+}
+
+/* ============================================================
+   Match score / compatibility indicators
+   ============================================================ */
+.match-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+
+/* ============================================================
+   Grid layouts for cards
+   ============================================================ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.card-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+
+/* ============================================================
+   Flexbox helpers (common inline style replacements)
+   ============================================================ */
+.flex-row { display: flex; flex-direction: row; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; align-items: flex-start; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 6px; }
+.gap-md { gap: 12px; }
+.gap-lg { gap: 20px; }
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+
+/* ============================================================
+   Text size helpers (common inline style replacements)
+   ============================================================ */
+.fs-xs { font-size: 0.75rem; }
+.fs-sm { font-size: 0.85rem; }
+.fs-md { font-size: 0.93rem; }
+.fs-lg { font-size: 1.1rem; }
+.fs-xl { font-size: 1.3rem; }
+.fs-2xl { font-size: 1.6rem; }
+
+/* ============================================================
+   Color helpers (replace inline color styles)
+   ============================================================ */
+.text-success { color: var(--accent-green) !important; }
+.text-warning { color: #fbbf24 !important; }
+.text-danger { color: var(--accent-pink) !important; }
+.text-info { color: var(--accent) !important; }
+.text-muted { color: var(--text-faint) !important; }
+.text-dimmer { color: var(--text-dim) !important; }
+.text-bright { color: var(--text) !important; }
+.text-accent-green { color: var(--accent-green) !important; }
+.text-accent-orange { color: var(--accent-orange) !important; }
+.text-accent-purple { color: #a5b4fc !important; }
+.text-accent-pink { color: var(--accent-pink) !important; }
+.text-accent-teal { color: var(--accent-teal) !important; }
+.text-white { color: #ffffff !important; }
+
+/* ============================================================
+   Margin/Padding helpers (replace inline margin styles)
+   ============================================================ */
+.mt-4 { margin-top: 32px; } .mt-5 { margin-top: 40px; } .mt-6 { margin-top: 48px; }
+.mb-4 { margin-bottom: 32px; } .mb-5 { margin-bottom: 40px; } .mb-6 { margin-bottom: 48px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.p-0 { padding: 0; } .p-2 { padding: 16px; } .p-3 { padding: 24px; }
+.py-2 { padding-top: 16px; padding-bottom: 16px; }
+.px-2 { padding-left: 16px; padding-right: 16px; }
+
+/* ============================================================
+   Misc component styles
+   ============================================================ */
+.timeline-item {
+  position: relative;
+  padding-left: 24px;
+  margin: 12px 0;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 20px;
+  bottom: -12px;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item:last-child::after { display: none; }
+
+/* Count badge (used in headers) */
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  color: #0a0e1a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Highlight text */
+mark, .highlight-text {
+  background: rgba(0, 212, 255, 0.15);
+  color: var(--accent);
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+/* Emoji list items */
+.emoji-list { list-style: none; padding-left: 0; }
+.emoji-list li { padding-left: 28px; position: relative; margin-bottom: 8px; }
+
+/* Separator line with gradient */
+.separator {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
+  margin: 32px 0;
+  border: none;
+}
+
+/* Badge variants for common use cases */
+.badge-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+
+/* Tag variants for common use cases */
+.tag-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+
 @media print {
   body { background: #ffffff; color: #000000; font-size: 12px; line-height: 1.6; }
   body::before, body::after { display: none !important; }
@@ -1109,6 +1399,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 
 </style>
   <!-- v7.0-1785291713 -->
+  <!-- v8.0-1785292712 -->
 </head>
 <body>
 
@@ -1146,7 +1437,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <div class="card">
       <h3>2023届毕业生整体就业概况</h3>
       <p>安徽工业大学2023届毕业生共7404人，其中男生4902人（66.21%），女生2502人（33.79%），研究生1343人（18.14%），本科生5915人（79.89%）。生源主要来自安徽省，占78.78%。</p>
-      <p>截至2023年8月31日，毕业去向落实率<strong style="color:var(--accent-green)">95.99%</strong>，其中研究生落实率95.83%，本科生落实率95.93%。毕业生以签订协议和劳动合同就业为主，占56.75%，升学（含出国出境）占20.88%。<a class="source-link" href="https://m.sohu.com/a/785462223_121931941/" target="_blank">📎 查看原文</a></p>
+      <p>截至2023年8月31日，毕业去向落实率<strong >95.99%</strong>，其中研究生落实率95.83%，本科生落实率95.93%。毕业生以签订协议和劳动合同就业为主，占56.75%，升学（含出国出境）占20.88%。<a class="source-link" href="https://m.sohu.com/a/785462223_121931941/" target="_blank">📎 查看原文</a></p>
       <div class="meta">数据来源：安徽工业大学2023届毕业生就业质量报告</div>
     </div>
 
@@ -1157,13 +1448,13 @@ footer a:hover, .footer a:hover { color: var(--accent); }
           <tr><th>行业排名</th><th>行业名称</th><th>人数</th><th>占比</th></tr>
         </thead>
         <tbody>
-          <tr><td>1</td><td>制造业</td><td>1407人</td><td><strong style="color:var(--accent)">40.17%</strong></td></tr>
+          <tr><td>1</td><td>制造业</td><td>1407人</td><td><strong >40.17%</strong></td></tr>
           <tr><td>2</td><td>建筑业</td><td>521人</td><td>14.87%</td></tr>
           <tr><td>3</td><td>信息传输、软件和信息技术服务业</td><td>451人</td><td>12.87%</td></tr>
           <tr><td>4</td><td>其他行业</td><td>—</td><td>32.09%</td></tr>
         </tbody>
       </table>
-      <p>本科生就业单位行业分布呈现明显特点，以<strong style="color:var(--accent)">制造业和建筑业为主</strong>，这与安工大工科为主的学科特色高度匹配。制造业占比40.17%远超其他行业，体现了学校在冶金、材料、机械等传统工科领域的深厚积累。<a class="source-link" href="https://m.sohu.com/a/785462223_121931941/" target="_blank">📎 查看原文</a></p>
+      <p>本科生就业单位行业分布呈现明显特点，以<strong >制造业和建筑业为主</strong>，这与安工大工科为主的学科特色高度匹配。制造业占比40.17%远超其他行业，体现了学校在冶金、材料、机械等传统工科领域的深厚积累。<a class="source-link" href="https://m.sohu.com/a/785462223_121931941/" target="_blank">📎 查看原文</a></p>
     </div>
 
     <div class="card">
@@ -1307,8 +1598,8 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 
     <div class="card">
       <h3>第十九届"挑战杯"竞赛斩获佳绩</h3>
-      <p>安徽工业大学在第十九届"挑战杯"全国大学生课外学术科技作品竞赛2025年度中国青年科技创新"揭榜挂帅"擂台赛全国总决赛上，<strong style="color:var(--accent)">斩获特等奖1项、二等奖2项、三等奖1项</strong>，获奖等次及数量均取得新突破。</p>
-      <p>化学与化工学院研究生穆佳雨负责的项目《高硫工业木质素解聚新路径》荣获学生赛道<strong style="color:var(--accent-green)">特等奖</strong>。《海风熵盾—海上风电轴承激光熔覆高熵合金涂层技术》《数据驱动下高端数控机床几何误差跨域协同控制研究》获二等奖，《智能踝关节康复装置与人机交互系统开发与研究》获三等奖。<a class="source-link" href="https://www.ah.chinanews.com/news/2025/1023/337419.shtml" target="_blank">📎 查看原文</a></p>
+      <p>安徽工业大学在第十九届"挑战杯"全国大学生课外学术科技作品竞赛2025年度中国青年科技创新"揭榜挂帅"擂台赛全国总决赛上，<strong >斩获特等奖1项、二等奖2项、三等奖1项</strong>，获奖等次及数量均取得新突破。</p>
+      <p>化学与化工学院研究生穆佳雨负责的项目《高硫工业木质素解聚新路径》荣获学生赛道<strong >特等奖</strong>。《海风熵盾—海上风电轴承激光熔覆高熵合金涂层技术》《数据驱动下高端数控机床几何误差跨域协同控制研究》获二等奖，《智能踝关节康复装置与人机交互系统开发与研究》获三等奖。<a class="source-link" href="https://www.ah.chinanews.com/news/2025/1023/337419.shtml" target="_blank">📎 查看原文</a></p>
       <div >
         <span class="pill pill-green">特等奖×1</span>
         <span class="pill pill-blue">二等奖×2</span>
@@ -1318,7 +1609,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 
     <div class="card">
       <h3>"互联网+"大赛与AIGC专项赛</h3>
-      <p>安工大在"互联网+"大学生创新创业大赛省赛金奖获奖数<strong style="color:var(--accent)">稳居安徽省高校前三</strong>。在第十一届"挑战杯"安徽省AIGC视觉模型应用创新专项赛决赛中，艺术与设计学院师生团队荣获二等奖。<a class="source-link" href="https://news.ahut.edu.cn/info/1003/67307.htm" target="_blank">📎 查看原文</a></p>
+      <p>安工大在"互联网+"大学生创新创业大赛省赛金奖获奖数<strong >稳居安徽省高校前三</strong>。在第十一届"挑战杯"安徽省AIGC视觉模型应用创新专项赛决赛中，艺术与设计学院师生团队荣获二等奖。<a class="source-link" href="https://news.ahut.edu.cn/info/1003/67307.htm" target="_blank">📎 查看原文</a></p>
       <p>近年来学生年均参与学科竞赛超3万项，获国家级奖项1862项。<a class="source-link" href="https://zs.ahut.edu.cn/info/5971/2742.htm" target="_blank">📎 查看原文</a></p>
     </div>
   </div>
@@ -1378,11 +1669,11 @@ footer a:hover, .footer a:hover { color: var(--accent); }
         </div>
         <div class="timeline-item">
           <div class="time">政府科研补贴</div>
-          <div class="content">企业所在市政府按照全日制博士<strong style="color:var(--accent)">不低于5000元/月/生</strong>设置政府奖学金或科研实践补贴，按一年12个月分次发放，年补贴超6万元</div>
+          <div class="content">企业所在市政府按照全日制博士<strong >不低于5000元/月/生</strong>设置政府奖学金或科研实践补贴，按一年12个月分次发放，年补贴超6万元</div>
         </div>
         <div class="timeline-item">
           <div class="time">入企住宿</div>
-          <div class="content">全日制博士入企期间由企业<strong style="color:var(--accent-green)">免费提供住宿</strong>，原则上一人一间</div>
+          <div class="content">全日制博士入企期间由企业<strong >免费提供住宿</strong>，原则上一人一间</div>
         </div>
         <div class="timeline-item">
           <div class="time">人才专项政策</div>
@@ -1390,7 +1681,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
         </div>
         <div class="timeline-item">
           <div class="time">入职购房补贴</div>
-          <div class="content">博士入职教师享<strong style="color:var(--accent-pink)">50万购房补贴</strong>（仅限机械、计算机等5个学科）</div>
+          <div class="content">博士入职教师享<strong >50万购房补贴</strong>（仅限机械、计算机等5个学科）</div>
         </div>
       </div>
       <a class="source-link" href="https://graduate.ahut.edu.cn/info/1133/8697.htm" target="_blank">📎 查看原文</a>
