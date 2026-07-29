@@ -6,7 +6,15 @@
 <title>奇瑞招聘日报 | 2026-07-28</title>
 <style>
 /* ============================================================
-   报告页统一CSS模板 - v7.0 暗色主题版
+   报告页统一CSS模板 - v8.0 暗色主题版
+   v8.0改进:
+   - 新增 .icon 系列样式 (.icon-blue/.icon-green 等)
+   - 新增 --success/--warning/--danger/--info CSS变量
+   - 新增 .priority-*/.match-* 状态指示器
+   - 新增 .card-grid 网格布局
+   - 新增大量工具类替代内联样式
+   - 新增 .timeline-item 时间线样式
+   - 新增 .count-badge/.highlight-text/.separator
    v7.0改进:
    - 修复class别名: .header/.date/.num 等与语义化类名对齐
    - 新增统计网格 .stats-grid/.stat-box 样式
@@ -39,6 +47,10 @@
   --accent-pink: #f87171;
   --accent-teal: #14b8a6;
   --accent-orange: #fb923c;
+  --success: #22d3a0;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #00d4ff;
   --grid-line: rgba(0, 212, 255, 0.04);
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
@@ -1079,6 +1091,284 @@ footer a:hover, .footer a:hover { color: var(--accent); }
   .scroll-top { bottom: 20px; right: 20px; width: 38px; height: 38px; }
 }
 
+/* ============================================================
+   Icons — colored emoji icons in section titles
+   ============================================================ */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.icon-blue, .icon.icon-blue {
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.icon-green, .icon.icon-green {
+  background: rgba(34, 211, 160, 0.15);
+  border: 1px solid rgba(34, 211, 160, 0.3);
+}
+
+.icon-orange, .icon.icon-orange {
+  background: rgba(251, 146, 60, 0.15);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.icon-purple, .icon.icon-purple {
+  background: rgba(129, 140, 248, 0.15);
+  border: 1px solid rgba(129, 140, 248, 0.3);
+}
+
+.icon-teal, .icon.icon-teal {
+  background: rgba(20, 184, 166, 0.15);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+}
+
+.icon-pink, .icon.icon-pink {
+  background: rgba(248, 113, 113, 0.15);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.icon-amber, .icon.icon-amber {
+  background: rgba(251, 191, 36, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+/* ============================================================
+   Emoji spans (standalone, not in .icon)
+   ============================================================ */
+.emoji {
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* ============================================================
+   Priority / Status indicators
+   ============================================================ */
+.priority-high, .priority-hot {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--accent-pink);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.priority-mid, .priority-medium {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(251, 146, 60, 0.15);
+  color: var(--accent-orange);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+.priority-low, .priority-normal {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  background: rgba(34, 211, 160, 0.15);
+  color: var(--accent-green);
+  border: 1px solid rgba(34, 211, 160, 0.3);
+}
+
+/* ============================================================
+   Match score / compatibility indicators
+   ============================================================ */
+.match-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+
+/* ============================================================
+   Grid layouts for cards
+   ============================================================ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.card-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+
+/* ============================================================
+   Flexbox helpers (common inline style replacements)
+   ============================================================ */
+.flex-row { display: flex; flex-direction: row; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; align-items: flex-start; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 6px; }
+.gap-md { gap: 12px; }
+.gap-lg { gap: 20px; }
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+
+/* ============================================================
+   Text size helpers (common inline style replacements)
+   ============================================================ */
+.fs-xs { font-size: 0.75rem; }
+.fs-sm { font-size: 0.85rem; }
+.fs-md { font-size: 0.93rem; }
+.fs-lg { font-size: 1.1rem; }
+.fs-xl { font-size: 1.3rem; }
+.fs-2xl { font-size: 1.6rem; }
+
+/* ============================================================
+   Color helpers (replace inline color styles)
+   ============================================================ */
+.text-success { color: var(--accent-green) !important; }
+.text-warning { color: #fbbf24 !important; }
+.text-danger { color: var(--accent-pink) !important; }
+.text-info { color: var(--accent) !important; }
+.text-muted { color: var(--text-faint) !important; }
+.text-dimmer { color: var(--text-dim) !important; }
+.text-bright { color: var(--text) !important; }
+.text-accent-green { color: var(--accent-green) !important; }
+.text-accent-orange { color: var(--accent-orange) !important; }
+.text-accent-purple { color: #a5b4fc !important; }
+.text-accent-pink { color: var(--accent-pink) !important; }
+.text-accent-teal { color: var(--accent-teal) !important; }
+.text-white { color: #ffffff !important; }
+
+/* ============================================================
+   Margin/Padding helpers (replace inline margin styles)
+   ============================================================ */
+.mt-4 { margin-top: 32px; } .mt-5 { margin-top: 40px; } .mt-6 { margin-top: 48px; }
+.mb-4 { margin-bottom: 32px; } .mb-5 { margin-bottom: 40px; } .mb-6 { margin-bottom: 48px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.p-0 { padding: 0; } .p-2 { padding: 16px; } .p-3 { padding: 24px; }
+.py-2 { padding-top: 16px; padding-bottom: 16px; }
+.px-2 { padding-left: 16px; padding-right: 16px; }
+
+/* ============================================================
+   Misc component styles
+   ============================================================ */
+.timeline-item {
+  position: relative;
+  padding-left: 24px;
+  margin: 12px 0;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 20px;
+  bottom: -12px;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item:last-child::after { display: none; }
+
+/* Count badge (used in headers) */
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  color: #0a0e1a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Highlight text */
+mark, .highlight-text {
+  background: rgba(0, 212, 255, 0.15);
+  color: var(--accent);
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+/* Emoji list items */
+.emoji-list { list-style: none; padding-left: 0; }
+.emoji-list li { padding-left: 28px; position: relative; margin-bottom: 8px; }
+
+/* Separator line with gradient */
+.separator {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
+  margin: 32px 0;
+  border: none;
+}
+
+/* Badge variants for common use cases */
+.badge-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+
+/* Tag variants for common use cases */
+.tag-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+
 @media print {
   body { background: #ffffff; color: #000000; font-size: 12px; line-height: 1.6; }
   body::before, body::after { display: none !important; }
@@ -1109,6 +1399,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 </style>
 <!-- cache-bust: 1785261208 -->
   <!-- v7.0-1785291713 -->
+  <!-- v8.0-1785292712 -->
 </head>
 <body>
 <header class="hero">
@@ -1670,31 +1961,31 @@ footer a:hover, .footer a:hover { color: var(--accent); }
   <div class="overseas-card">
     <h4>🌐 国际汽车销售（驻墨西哥等）</h4>
     <p>负责中南美、亚太、俄罗斯、阿联酋、中东等市场的营销作战。根据年度经营计划拟定营销作战地图与商务政策，分解至季度与月度。要求有海外市场经验，熟悉汽车销售业务。</p>
-    <a href="https://m.zhipin.com/job_detail/6efcdb4b4a67752c03J80968E1JR.html" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原文</a>
+    <a href="https://m.zhipin.com/job_detail/6efcdb4b4a67752c03J80968E1JR.html" class="job-source" target="_blank" >📎 查看原文</a>
   </div>
 
   <div class="overseas-card">
     <h4>🌐 汽车项目管理经理（出差俄罗斯等）</h4>
     <p>负责海外汽车项目管理，出差俄罗斯、英国、德国、巴西、阿联酋等地。要求有欧盟、中东、中南美、独联体等地出国工作或出差经验；本科及以上学历5年以上经验，或硕士及以上学历3年以上经验。</p>
-    <a href="https://www.zhipin.com/job_detail/5a8e6b4e7ad4ce3b03153tS0GFpT.html" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原文</a>
+    <a href="https://www.zhipin.com/job_detail/5a8e6b4e7ad4ce3b03153tS0GFpT.html" class="job-source" target="_blank" >📎 查看原文</a>
   </div>
 
   <div class="overseas-card">
     <h4>🌐 海外人力负责人（出差俄罗斯）</h4>
     <p>负责海外子公司HR制度体系及组织能力建设，将集团HR战略本地化，制定适合子公司的招聘、薪酬、绩效、员工关系等政策。要求有人力资源管理经验，熟悉海外劳动法规。</p>
-    <a href="https://www.zhipin.com/job_detail/e56c48651c9342f303N_2dm5EVNT.html" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原文</a>
+    <a href="https://www.zhipin.com/job_detail/e56c48651c9342f303N_2dm5EVNT.html" class="job-source" target="_blank" >📎 查看原文</a>
   </div>
 
   <div class="overseas-card">
     <h4>🌐 海外采购总监（驻俄罗斯）</h4>
     <p>具有8年及以上汽车主机厂采购工作经验，常驻海外。熟悉汽车内外饰、发动机、电器采购等相关知识，熟悉汽车制造供应链管理。负责海外采购体系搭建与供应商管理。</p>
-    <a href="https://www.zhipin.com/job_detail/cf614d7b7f6e81060ndy3d-6EldR.html" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原文</a>
+    <a href="https://www.zhipin.com/job_detail/cf614d7b7f6e81060ndy3d-6EldR.html" class="job-source" target="_blank" >📎 查看原文</a>
   </div>
 
   <div class="overseas-card">
     <h4>🌐 国际贸易/外贸业务员</h4>
     <p>负责新能源相关产品的外贸业务开发，使用Facebook、WhatsApp等工具进行客户开发。要求英语能力良好，学习公司提供的产品专业知识、外贸实务流程、国际业务开发技巧及商务沟通。薪资3000-6000元，有年终奖金、五险、周末双休。</p>
-    <a href="https://www.zhaopin.com/zhaopin/18b2a69ec1274045b0732fdde404233d/" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原文</a>
+    <a href="https://www.zhaopin.com/zhaopin/18b2a69ec1274045b0732fdde404233d/" class="job-source" target="_blank" >📎 查看原文</a>
   </div>
 
   <!-- 全网热议 -->
@@ -1711,7 +2002,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <div class="discussion-summary">
       认证为"奇瑞员工"的脉脉网友发帖称，奇瑞汽车内部存在强制加班行为，"896"是标配，销售前线人员更是需要"007"。如此大的强度却没有加班费，仅对加班超过3小时的员工发放10元餐补。为掩盖加班事实，公司会将所有员工的下班打卡时间统一显示成5点。多位奇瑞员工证实该描述属实。
     </div>
-    <a href="http://m.toutiao.com/group/7388144121552159284/" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原帖</a>
+    <a href="http://m.toutiao.com/group/7388144121552159284/" class="job-source" target="_blank" >📎 查看原帖</a>
   </div>
 
   <div class="discussion-card">
@@ -1720,7 +2011,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <div class="discussion-summary">
       又一奇瑞员工提离职，领导告知要启动竞业协议，现在进退两难。奇瑞汽车的白领员工岗，竞业协议和保密协议在入职时基本都签了，这也是车企常见操作。不过，奇瑞的竞业协议在汽车行业来说，员工离职启动的并不是很多。
     </div>
-    <a href="http://m.toutiao.com/group/7667254777645990440/" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原帖</a>
+    <a href="http://m.toutiao.com/group/7667254777645990440/" class="job-source" target="_blank" >📎 查看原帖</a>
   </div>
 
   <div class="discussion-card">
@@ -1729,7 +2020,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <div class="discussion-summary">
       一位在奇瑞年薪25万的员工面试理想汽车时，HR问期望薪资，他不知道该怎么报——怕报高了没戏，报低了又吃亏。引发网友热议，讨论车企跳槽时的薪资谈判策略。
     </div>
-    <a href="http://m.toutiao.com/group/7636920548890575412/" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原帖</a>
+    <a href="http://m.toutiao.com/group/7636920548890575412/" class="job-source" target="_blank" >📎 查看原帖</a>
   </div>
 
   <div class="discussion-card">
@@ -1738,7 +2029,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <div class="discussion-summary">
       一位38岁的长城汽车员工收到奇瑞30万年薪offer，按14薪发放，涨幅不到30%。现单位越来越卷且降薪，生活压力更大，家和孩子都在老家。网友讨论中年跳槽车企的利弊。
     </div>
-    <a href="http://m.toutiao.com/group/7419228699419165194/" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原帖</a>
+    <a href="http://m.toutiao.com/group/7419228699419165194/" class="job-source" target="_blank" >📎 查看原帖</a>
   </div>
 
   <div class="discussion-card">
@@ -1747,7 +2038,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <div class="discussion-summary">
       前车企HR分享2024年奇瑞汽车校招待遇情况，这两年好像也没有涨，参考性很大。校招薪资待遇主要受学校层级（C9、985、211、双非、海外）和学历的影响。提供了详细的薪资对照表。
     </div>
-    <a href="http://m.toutiao.com/group/7651794567143719476/" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原帖</a>
+    <a href="http://m.toutiao.com/group/7651794567143719476/" class="job-source" target="_blank" >📎 查看原帖</a>
   </div>
 
   <div class="discussion-card">
@@ -1756,7 +2047,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
     <div class="discussion-summary">
       工作环境好、同事很nice、还有免费班车。新人培训做得相当到位，只要你愿意学，能学到不少汽车行业的知识。公司氛围活跃，大家都很友好。不过基本上是单休，周六还得上班，薪资在一线城市相比偏低。面试难度适中，不算太难。
     </div>
-    <a href="https://m.nowcoder.com/discuss/1426490" class="job-source" target="_blank" style="margin-top: 8px; display: inline-flex;">📎 查看原帖</a>
+    <a href="https://m.nowcoder.com/discuss/1426490" class="job-source" target="_blank" >📎 查看原帖</a>
   </div>
 
   <!-- 求职攻略 -->
@@ -1827,92 +2118,92 @@ footer a:hover, .footer a:hover { color: var(--accent); }
       <tbody>
         <tr>
           <td>猎聘-奇瑞招聘</td>
-          <td><a href="https://m.liepin.com/zpqiruiqiche/" target="_blank" style="color:var(--accent);">m.liepin.com/zpqiruiqiche</a></td>
+          <td><a href="https://m.liepin.com/zpqiruiqiche/" target="_blank" >m.liepin.com/zpqiruiqiche</a></td>
           <td>2026-07-28</td>
         </tr>
         <tr>
           <td>前程无忧-2026春招</td>
-          <td><a href="https://jobs.51job.com/campus/caBmVWMVQ2DjUHYlY0.html" target="_blank" style="color:var(--accent);">jobs.51job.com/campus</a></td>
+          <td><a href="https://jobs.51job.com/campus/caBmVWMVQ2DjUHYlY0.html" target="_blank" >jobs.51job.com/campus</a></td>
           <td>2026-07-28</td>
         </tr>
         <tr>
           <td>BOSS直聘-管培生</td>
-          <td><a href="https://www.zhipin.com/job_detail/2782d8fe6c185d6403J52dq1GFBV.html" target="_blank" style="color:var(--accent);">zhipin.com/job_detail/2782d8</a></td>
+          <td><a href="https://www.zhipin.com/job_detail/2782d8fe6c185d6403J52dq1GFBV.html" target="_blank" >zhipin.com/job_detail/2782d8</a></td>
           <td>2026-07-28</td>
         </tr>
         <tr>
           <td>猎聘-热管理工程师</td>
-          <td><a href="https://m.liepin.com/job/1980856939.shtml" target="_blank" style="color:var(--accent);">m.liepin.com/job/1980856939</a></td>
+          <td><a href="https://m.liepin.com/job/1980856939.shtml" target="_blank" >m.liepin.com/job/1980856939</a></td>
           <td>2026-07-28</td>
         </tr>
         <tr>
           <td>BOSS直聘-2026校招研发</td>
-          <td><a href="https://www.zhipin.com/job_detail/27882b560276c40703140ti1GFBT.html" target="_blank" style="color:var(--accent);">zhipin.com/job_detail/27882b</a></td>
+          <td><a href="https://www.zhipin.com/job_detail/27882b560276c40703140ti1GFBT.html" target="_blank" >zhipin.com/job_detail/27882b</a></td>
           <td>2026-07-28</td>
         </tr>
         <tr>
           <td>BOSS直聘-普工/操作工</td>
-          <td><a href="https://www.zhipin.com/job_detail/000198a7c618084a03F609q9ElBT.html" target="_blank" style="color:var(--accent);">zhipin.com/job_detail/000198a</a></td>
+          <td><a href="https://www.zhipin.com/job_detail/000198a7c618084a03F609q9ElBT.html" target="_blank" >zhipin.com/job_detail/000198a</a></td>
           <td>2026-07-28</td>
         </tr>
         <tr>
           <td>BOSS直聘-奇瑞直营</td>
-          <td><a href="https://www.zhipin.com/job_detail/cffafe8cd95b82e30ndy3dS8FVdV.html" target="_blank" style="color:var(--accent);">zhipin.com/job_detail/cffafe8</a></td>
+          <td><a href="https://www.zhipin.com/job_detail/cffafe8cd95b82e30ndy3dS8FVdV.html" target="_blank" >zhipin.com/job_detail/cffafe8</a></td>
           <td>2026-07-28</td>
         </tr>
         <tr>
           <td>牛客网-面试经验</td>
-          <td><a href="https://www.nowcoder.com/feed/main/detail/69ae23153ac34d4dae2c31d96008a74c" target="_blank" style="color:var(--accent);">nowcoder.com/feed/detail/69ae23</a></td>
+          <td><a href="https://www.nowcoder.com/feed/main/detail/69ae23153ac34d4dae2c31d96008a74c" target="_blank" >nowcoder.com/feed/detail/69ae23</a></td>
           <td>2026-07-28</td>
         </tr>
         <tr>
           <td>牛客网-底盘面试</td>
-          <td><a href="https://m.nowcoder.com/feed/main/detail/9fe5c9a2b1d1486b88821c0b1013a6ee" target="_blank" style="color:var(--accent);">m.nowcoder.com/feed/detail/9fe5c9a</a></td>
+          <td><a href="https://m.nowcoder.com/feed/main/detail/9fe5c9a2b1d1486b88821c0b1013a6ee" target="_blank" >m.nowcoder.com/feed/detail/9fe5c9a</a></td>
           <td>2026-07-28</td>
         </tr>
         <tr>
           <td>牛客网-工作体验</td>
-          <td><a href="https://ac.nowcoder.com/discuss/1438703" target="_blank" style="color:var(--accent);">ac.nowcoder.com/discuss/1438703</a></td>
+          <td><a href="https://ac.nowcoder.com/discuss/1438703" target="_blank" >ac.nowcoder.com/discuss/1438703</a></td>
           <td>2026-07-28</td>
         </tr>
         <tr>
           <td>牛客网-工作体验2</td>
-          <td><a href="https://m.nowcoder.com/discuss/1426490" target="_blank" style="color:var(--accent);">m.nowcoder.com/discuss/1426490</a></td>
+          <td><a href="https://m.nowcoder.com/discuss/1426490" target="_blank" >m.nowcoder.com/discuss/1426490</a></td>
           <td>2026-07-28</td>
         </tr>
         <tr>
           <td>今日头条-加班争议</td>
-          <td><a href="http://m.toutiao.com/group/7388144121552159284/" target="_blank" style="color:var(--accent);">m.toutiao.com/group/7388144</a></td>
+          <td><a href="http://m.toutiao.com/group/7388144121552159284/" target="_blank" >m.toutiao.com/group/7388144</a></td>
           <td>2026-07-28</td>
         </tr>
         <tr>
           <td>今日头条-竞业协议</td>
-          <td><a href="http://m.toutiao.com/group/7667254777645990440/" target="_blank" style="color:var(--accent);">m.toutiao.com/group/7667254</a></td>
+          <td><a href="http://m.toutiao.com/group/7667254777645990440/" target="_blank" >m.toutiao.com/group/7667254</a></td>
           <td>2026-07-28</td>
         </tr>
         <tr>
           <td>今日头条-校招待遇</td>
-          <td><a href="http://m.toutiao.com/group/7651794567143719476/" target="_blank" style="color:var(--accent);">m.toutiao.com/group/7651794</a></td>
+          <td><a href="http://m.toutiao.com/group/7651794567143719476/" target="_blank" >m.toutiao.com/group/7651794</a></td>
           <td>2026-07-28</td>
         </tr>
         <tr>
           <td>职友集-薪资数据</td>
-          <td><a href="https://m.jobui.com/company/15428320/salary/j/fanyi/wuhu/" target="_blank" style="color:var(--accent);">m.jobui.com/company/15428320</a></td>
+          <td><a href="https://m.jobui.com/company/15428320/salary/j/fanyi/wuhu/" target="_blank" >m.jobui.com/company/15428320</a></td>
           <td>2026-07-28</td>
         </tr>
         <tr>
           <td>牛客网-2026校招</td>
-          <td><a href="https://www.nowcoder.com/enterprise/5244" target="_blank" style="color:var(--accent);">nowcoder.com/enterprise/5244</a></td>
+          <td><a href="https://www.nowcoder.com/enterprise/5244" target="_blank" >nowcoder.com/enterprise/5244</a></td>
           <td>2026-07-28</td>
         </tr>
         <tr>
           <td>BOSS直聘-国际销售</td>
-          <td><a href="https://m.zhipin.com/job_detail/6efcdb4b4a67752c03J80968E1JR.html" target="_blank" style="color:var(--accent);">m.zhipin.com/job_detail/6efcdb4</a></td>
+          <td><a href="https://m.zhipin.com/job_detail/6efcdb4b4a67752c03J80968E1JR.html" target="_blank" >m.zhipin.com/job_detail/6efcdb4</a></td>
           <td>2026-07-28</td>
         </tr>
         <tr>
           <td>BOSS直聘-海外采购总监</td>
-          <td><a href="https://www.zhipin.com/job_detail/cf614d7b7f6e81060ndy3d-6EldR.html" target="_blank" style="color:var(--accent);">zhipin.com/job_detail/cf614d7</a></td>
+          <td><a href="https://www.zhipin.com/job_detail/cf614d7b7f6e81060ndy3d-6EldR.html" target="_blank" >zhipin.com/job_detail/cf614d7</a></td>
           <td>2026-07-28</td>
         </tr>
       </tbody>
