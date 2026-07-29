@@ -6,10 +6,16 @@
 <title>校园新闻日报 | 2026-07-29</title>
 <style>
 /* ============================================================
-   报告页统一CSS模板 - v3.0 暗色主题版
+   报告页统一CSS模板 - v5.0 暗色主题版
    适用于所有自动化任务的报告HTML
    配色方案: 深空蓝(#0a0e1a) + 青色强调(#00d4ff)
    字体: JetBrains Mono + Noto Sans SC
+   v5.0改进:
+   - 统一标题层级: section-title与h2视觉一致(青色)
+   - h3子标题白色+绿色左边框, h4灰色小标题
+   - 信息类型色彩区分: 卡片左框颜色编码
+   - 排版间距优化, 相邻板块一目了然
+   - 补全所有缺失CSS类, 确保任意HTML结构正常渲染
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
@@ -19,11 +25,14 @@
   --bg-elev: #111726;
   --card: rgba(20, 28, 48, 0.6);
   --card-solid: rgba(20, 28, 48, 0.75);
+  --card-hover: rgba(20, 28, 48, 0.85);
   --border: rgba(0, 212, 255, 0.12);
   --border-hover: rgba(0, 212, 255, 0.4);
+  /* 文本颜色 - 三级明显区分 */
   --text: #f0f4f8;
-  --text-dim: #e8eef5;
-  --text-faint: #e0e8f2;
+  --text-dim: #a8b8d0;
+  --text-faint: #7888a8;
+  /* 强调色 */
   --accent: #00d4ff;
   --accent-warm: #ffb347;
   --accent-green: #22d3a0;
@@ -31,6 +40,12 @@
   --accent-pink: #f87171;
   --accent-teal: #14b8a6;
   --accent-orange: #fb923c;
+  /* CSS变量别名 - 兼容旧代码 */
+  --text-secondary: #a8b8d0;
+  --success: #22d3a0;
+  --warning: #ffb347;
+  --info: #00d4ff;
+  --danger: #f87171;
   --grid-line: rgba(0, 212, 255, 0.04);
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
@@ -53,6 +68,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* 段落全局间距 */
+p { margin-bottom: 10px; }
+p:last-child { margin-bottom: 0; }
+
+/* 强调文字 */
+strong, b { color: var(--accent); font-weight: 600; }
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: #fff; text-decoration: underline; }
+
+/* 列表 */
+ul, ol { margin: 8px 0 12px 20px; }
+li { margin-bottom: 5px; color: var(--text); line-height: 1.75; }
+
 /* Decorative grid background */
 body::before {
   content: '';
@@ -66,7 +94,7 @@ body::before {
   z-index: 0;
 }
 
-/* Floating gradient orb with radial-gradient animation */
+/* Floating gradient orb */
 body::after {
   content: '';
   position: fixed;
@@ -92,7 +120,7 @@ body::after {
 }
 
 /* ============================================================
-   HEADER - 渐变标题栏 with glass-morphism
+   HEADER - 渐变标题栏
    ============================================================ */
 .header {
   background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(20,28,48,0.8) 40%, rgba(129,140,248,0.08) 100%);
@@ -142,7 +170,8 @@ body::after {
   position: relative;
   z-index: 1;
 }
-.header .date {
+.header .date,
+.header .date-badge {
   font-size: 0.8rem;
   color: var(--accent);
   background: rgba(0,212,255,0.1);
@@ -155,10 +184,169 @@ body::after {
   z-index: 1;
   font-family: 'JetBrains Mono', monospace;
 }
+.header .meta {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+.header .meta span {
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  background: rgba(0,212,255,0.08);
+  backdrop-filter: blur(8px);
+  padding: 4px 12px;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+}
 
 /* ============================================================
-   SECTIONS - 卡片式内容区
-   相邻section间距56px，顶部3px渐变条+底部2px边框+明显视觉分隔
+   BACK LINK - 返回链接
+   ============================================================ */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 16px 0 8px;
+  transition: gap 0.2s;
+}
+.back-link:hover { gap: 10px; color: var(--accent); text-decoration: none; }
+
+/* ============================================================
+   NAV LINKS - 导航栏
+   ============================================================ */
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+  padding: 10px 14px;
+  background: rgba(0,212,255,0.05);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+}
+.nav-links a {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: rgba(0,212,255,0.05);
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.nav-links a:hover {
+  color: var(--accent);
+  background: rgba(0,212,255,0.15);
+  border-color: var(--border-hover);
+  text-decoration: none;
+}
+
+/* ============================================================
+   NAV TOC - 目录导航
+   ============================================================ */
+.nav-toc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  margin: 16px 0;
+}
+.nav-toc h4 {
+  font-size: 0.85rem;
+  color: var(--accent-purple);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.nav-toc ul { list-style: none; padding: 0; }
+.nav-toc li { padding: 4px 0; }
+.nav-toc a {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-toc a:hover { color: var(--accent); text-decoration: none; }
+
+/* ============================================================
+   ★★★ SECTION TITLE & H2 - 板块标题（统一样式）★★★
+   两者视觉完全一致: 青色(#00d4ff), 渐变背景, 左侧粗边框
+   确保 h2 和 .section-title 渲染结果相同
+   ============================================================ */
+.section-title,
+.section > h2,
+h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 48px 0 24px;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(20,28,48,0.5) 100%);
+  border-left: 4px solid var(--accent);
+  border-top: 1px solid rgba(0, 212, 255, 0.25);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 0 12px 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  line-height: 1.4;
+}
+/* 第一个section-title不需要顶部大间距 */
+.section > h2:first-child,
+.section-title:first-child {
+  margin-top: 0;
+}
+
+.section-title .emoji,
+.section-title .icon,
+h2 .icon,
+h2 .emoji {
+  font-size: 1.3rem;
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+  flex-shrink: 0;
+}
+.section-title .num,
+.section-title .number,
+h2 .num,
+h2 .number {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  background: rgba(0,212,255,0.1);
+  padding: 3px 12px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.section-title > span:not(.num):not(.number):not(.emoji):not(.icon),
+h2 > span:not(.num):not(.number):not(.emoji):not(.icon):not(.badge) {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* 图标颜色变体 */
+.icon-blue, .icon.icon-blue { color: var(--accent); }
+.icon-green, .icon.icon-green { color: var(--accent-green); }
+.icon-orange, .icon.icon-orange { color: var(--accent-warm); }
+.icon-purple, .icon.icon-purple { color: var(--accent-purple); }
+.icon-teal, .icon.icon-teal { color: var(--accent-teal); }
+.icon-pink, .icon.icon-pink { color: var(--accent-pink); }
+
+/* ============================================================
+   SECTION - 卡片式内容区
    ============================================================ */
 .section {
   background: var(--card);
@@ -166,66 +354,49 @@ body::after {
   -webkit-backdrop-filter: blur(8px);
   border-radius: var(--radius);
   padding: 28px 24px;
-  margin: 56px 0;
+  margin: 40px 0;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border);
-  border-top: 3px solid rgba(0, 212, 255, 0.4);
-  border-bottom: 3px solid rgba(0, 212, 255, 0.3);
   position: relative;
-  overflow: visible;
 }
 .section::before {
   content: '';
   position: absolute;
   top: 0; left: 0;
-  width: 100%; height: 4px;
+  width: 100%; height: 3px;
   background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 50%, var(--accent-green) 100%);
   border-radius: var(--radius) var(--radius) 0 0;
 }
-/* 板块间渐变分割线 - 明确视觉分隔 */
-.section + .section,
-.section:not(:first-child) {
-  margin-top: 56px;
-}
-.section-title {
-  position: relative;
-}
-.section-title::after {
-  content: '';
-  position: absolute;
-  top: -32px;
-  left: 10%;
-  right: 10%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, rgba(0,212,255,0.6) 20%, rgba(129,140,248,0.5) 50%, rgba(0,212,255,0.6) 80%, transparent 100%);
-  border-radius: 2px;
-  opacity: 0.8;
-}
-.section-title:first-of-type::after {
-  display: none;
-}
-.section h2 {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 20px;
-  padding-bottom: 14px;
-  border-bottom: 2px solid rgba(0, 212, 255, 0.4);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+
+/* ============================================================
+   ★★★ H3 - 子标题（白色 + 绿色左边框）★★★
+   与h2青色形成清晰层级区分
+   ============================================================ */
+h3,
 .section h3 {
-  font-size: 1.08rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  color: var(--accent);
-  margin: 20px 0 10px;
-  padding-left: 12px;
-  border-left: 3px solid var(--accent);
+  color: var(--text);
+  margin: 24px 0 12px;
+  padding-left: 14px;
+  border-left: 3px solid var(--accent-green);
+  line-height: 1.4;
+}
+h3:first-child { margin-top: 0; }
+
+/* ============================================================
+   H4 - 四级标题（灰色小标题）
+   ============================================================ */
+h4 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  margin: 16px 0 8px;
+  line-height: 1.4;
 }
 
 /* ============================================================
-   CARDS - 信息卡片 (间距16px，多层透明度)
+   CARDS - 通用信息卡片 (青色左边框)
    ============================================================ */
 .card {
   background: var(--card-solid);
@@ -238,6 +409,7 @@ body::after {
   position: relative;
 }
 .card:hover {
+  background: var(--card-hover);
   box-shadow: var(--shadow-md);
   transform: translateY(-1px);
   border-left-color: var(--accent);
@@ -251,26 +423,70 @@ body::after {
   display: flex;
   align-items: center;
   gap: 8px;
+  line-height: 1.4;
 }
 .card-meta {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--text-dim);
   margin-bottom: 10px;
   font-family: 'JetBrains Mono', monospace;
+  line-height: 1.6;
 }
 .card-content {
   font-size: 0.9rem;
   color: var(--text);
   line-height: 1.75;
 }
+.card-content p { margin-bottom: 8px; }
 .card p { color: var(--text); line-height: 1.75; margin-bottom: 8px; }
-.card-content strong {
-  color: var(--accent);
-  font-weight: 600;
-}
+.card-content strong { color: var(--accent); font-weight: 600; }
 
 /* ============================================================
-   NEWS ITEMS - 新闻条目
+   JOB CARD - 岗位卡片 (绿色左边框)
+   ============================================================ */
+.job-card {
+  background: var(--card-solid);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-green);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 16px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.job-card:hover {
+  background: var(--card-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-left-color: var(--accent-green);
+  border-color: var(--border-hover);
+}
+.job-title {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 1.02rem;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.job-meta {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.job-desc {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.job-card p { color: var(--text); line-height: 1.75; margin-bottom: 8px; }
+.job-card strong { color: var(--accent-green); font-weight: 600; }
+
+/* ============================================================
+   NEWS ITEMS - 新闻条目 (青色左侧条)
    ============================================================ */
 .news-item {
   background: var(--card);
@@ -289,7 +505,7 @@ body::after {
   position: absolute;
   top: 0; left: 0;
   width: 4px; height: 100%;
-  background: var(--border-hover);
+  background: var(--accent);
   transition: all 0.3s ease;
 }
 .news-item:hover {
@@ -298,16 +514,17 @@ body::after {
   transform: translateY(-2px);
 }
 .news-item:hover::before {
-  background: var(--accent);
+  background: var(--accent-green);
   width: 5px;
 }
 .news-item p { color: var(--text); line-height: 1.75; margin-bottom: 8px; }
+.news-item .card-title { margin-top: 0; }
 .news-item .badge {
   display: inline-flex;
   align-items: center;
   background: rgba(0,212,255,0.12);
   color: var(--accent);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   padding: 3px 12px;
   border-radius: 50px;
   margin-right: 8px;
@@ -327,7 +544,7 @@ body::after {
 }
 
 /* ============================================================
-   TABLES - 数据表格 (暗色背景，行交替色)
+   TABLES - 数据表格
    ============================================================ */
 table {
   width: 100%;
@@ -349,7 +566,7 @@ th {
   font-weight: 600;
   font-size: 0.8rem;
   letter-spacing: 0.3px;
-  border-bottom: 1px solid var(--border-hover);
+  border-bottom: 2px solid var(--border-hover);
 }
 td {
   padding: 10px;
@@ -360,25 +577,79 @@ td {
 tr:last-child td { border-bottom: none; }
 tr:nth-child(even) { background: rgba(0,0,0,0.15); }
 tr:hover { background: rgba(0,212,255,0.08); }
-tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 16px 0;
+  border-radius: var(--radius-sm);
+}
+.salary-table { font-size: 0.82rem; }
+.salary-table th { color: var(--accent-green); }
+.summary-table { font-size: 0.82rem; }
+.summary-table td:first-child {
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
 
 /* ============================================================
-   TAGS - 标签
+   TAGS & PILLS - 标签
    ============================================================ */
 .tag {
   display: inline-block;
   background: rgba(0,212,255,0.1);
   color: var(--accent);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   padding: 3px 10px;
   border-radius: 6px;
   margin: 2px;
   font-weight: 500;
   border: 1px solid rgba(0,212,255,0.2);
 }
-.tag.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
-.tag.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
-.tag.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
+.tag.green, .tag-green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
+.tag.orange, .tag-orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
+.tag.red, .tag-red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
+.tag.purple, .tag-purple { background: rgba(129,140,248,0.1); color: var(--accent-purple); border-color: rgba(129,140,248,0.25); }
+.tag.blue, .tag-blue { background: rgba(0,212,255,0.1); color: var(--accent); border-color: rgba(0,212,255,0.2); }
+
+.pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+  margin: 2px;
+  font-weight: 500;
+  background: rgba(0,212,255,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(0,212,255,0.2);
+}
+.pill.green, .pill-green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
+.pill.orange, .pill-orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
+.pill.red, .pill-red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
+.pill.purple, .pill-purple { background: rgba(129,140,248,0.1); color: var(--accent-purple); border-color: rgba(129,140,248,0.25); }
+.pill.accent, .pill-accent { background: rgba(0,212,255,0.1); color: var(--accent); border-color: rgba(0,212,255,0.2); }
+.pill.success, .pill-success { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
+.pill.warning, .pill-warning { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
+.pill-location { background: rgba(0,212,255,0.1); color: var(--accent); border: 1px solid rgba(0,212,255,0.2); }
+.pill-salary { background: rgba(34,211,160,0.1); color: var(--accent-green); border: 1px solid rgba(34,211,160,0.25); }
+.pill-edu { background: rgba(129,140,248,0.1); color: var(--accent-purple); border: 1px solid rgba(129,140,248,0.25); }
+.pill-type { background: rgba(255,179,71,0.1); color: var(--accent-warm); border: 1px solid rgba(255,179,71,0.25); }
+
+/* ============================================================
+   BADGE - 评估徽章
+   ============================================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.badge-high { background: rgba(34,211,160,0.15); color: var(--accent-green); border: 1px solid rgba(34,211,160,0.3); }
+.badge-mid { background: rgba(255,179,71,0.15); color: var(--accent-warm); border: 1px solid rgba(255,179,71,0.3); }
+.badge-low { background: rgba(248,113,113,0.15); color: var(--accent-pink); border: 1px solid rgba(248,113,113,0.3); }
 
 /* ============================================================
    SOURCE LINKS - 原文链接
@@ -396,6 +667,7 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
   background: rgba(0,212,255,0.1);
   border: 1px solid rgba(0,212,255,0.2);
   transition: all 0.2s;
+  margin-top: 8px;
 }
 .source-link:hover {
   background: var(--accent);
@@ -406,9 +678,9 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
 }
 
 /* ============================================================
-   DISCUSSION - 讨论区
+   DISCUSSION - 讨论区 (橙色左边框)
    ============================================================ */
-.discussion {
+.discussion, .discussion-item {
   background: rgba(255,179,71,0.08);
   border: 1px solid rgba(255,179,71,0.2);
   border-left: 4px solid var(--accent-warm);
@@ -417,24 +689,32 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
   margin: 16px 0;
   transition: all 0.3s;
 }
-.discussion:hover {
+.discussion:hover, .discussion-item:hover {
   box-shadow: var(--shadow-sm);
   transform: translateY(-1px);
 }
-.discussion .platform {
+.discussion .platform, .discussion-item .platform {
   display: inline-block;
   background: var(--accent-warm);
   color: var(--bg);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   padding: 3px 12px;
   border-radius: 50px;
   margin-bottom: 8px;
   font-weight: 600;
   letter-spacing: 0.3px;
 }
+.discussion-item .text {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.discussion-item .text strong { color: var(--accent); }
+.discussion-item .link { font-size: 0.82rem; }
 
 /* ============================================================
-   TIP BOX - 提示框
+   TIP BOX - 提示框 (绿色)
    ============================================================ */
 .tip-box {
   background: rgba(34,211,160,0.08);
@@ -452,6 +732,12 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
   width: 4px; height: 100%;
   background: var(--accent-green);
 }
+.tip-title {
+  color: var(--accent-green);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
 .tip-box h4 {
   color: var(--accent-green);
   font-size: 0.95rem;
@@ -460,10 +746,11 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
 }
 .tip-box ul { list-style: none; padding-left: 0; }
 .tip-box li {
-  padding: 5px 0 5px 24px;
+  padding: 6px 0 6px 24px;
   position: relative;
-  font-size: 0.88rem;
-  color: var(--text-dim);
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
 }
 .tip-box li::before {
   content: '✓';
@@ -471,11 +758,10 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
   left: 0;
   color: var(--accent-green);
   font-weight: 700;
-  font-size: 1rem;
 }
 
 /* ============================================================
-   WARNING BOX - 警告框
+   WARNING BOX - 警告框 (红色)
    ============================================================ */
 .warning-box {
   background: rgba(248,113,113,0.08);
@@ -501,18 +787,122 @@ tr:nth-child(even):hover { background: rgba(0,212,255,0.1); }
 }
 
 /* ============================================================
-   SUMMARY TABLE - 汇总表
+   HIGHLIGHT BOX - 高亮提示框 (青色)
    ============================================================ */
-.summary-table { font-size: 0.82rem; }
-.summary-table td:first-child {
-  font-weight: 600;
-  color: var(--accent);
-  white-space: nowrap;
+.highlight-box {
+  background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(129,140,248,0.05) 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text);
+  position: relative;
+  transition: all 0.3s;
+}
+.highlight-box:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+  border-color: var(--border-hover);
+}
+.highlight-box strong { color: var(--accent); font-weight: 600; }
+
+/* ============================================================
+   INFO BOX - 信息框 (紫色)
+   ============================================================ */
+.info-box {
+  background: rgba(129,140,248,0.08);
+  border: 1px solid rgba(129,140,248,0.2);
+  border-left: 4px solid var(--accent-purple);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text);
+}
+.info-box h4 {
+  color: var(--accent-purple);
+  margin-bottom: 8px;
+}
+.info-box strong { color: var(--accent-purple); }
+
+/* ============================================================
+   PROGRESS BAR - 进度条
+   ============================================================ */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(0,212,255,0.1);
+  border-radius: 50px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-green));
+  border-radius: 50px;
+  transition: width 0.5s ease;
 }
 
 /* ============================================================
-   GISCUS / COMMENTS - 评论区 (dark_dimmed 主题)
-   注意: HTML中giscus script需设置 data-theme="dark_dimmed"
+   MISC UTILITIES
+   ============================================================ */
+.text-center { text-align: center; }
+.text-accent { color: var(--accent); }
+.text-green { color: var(--accent-green); }
+.text-warm { color: var(--accent-warm); }
+.text-purple { color: var(--accent-purple); }
+.text-dim { color: var(--text-dim); }
+.text-faint { color: var(--text-faint); }
+.mt-0 { margin-top: 0 !important; }
+.mb-0 { margin-bottom: 0 !important; }
+.mt-2 { margin-top: 8px; }
+.mb-2 { margin-bottom: 8px; }
+.mt-4 { margin-top: 16px; }
+.mb-4 { margin-bottom: 16px; }
+
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 24px 0;
+}
+
+blockquote {
+  border-left: 3px solid var(--accent-purple);
+  padding-left: 16px;
+  margin: 16px 0;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+code {
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(0,212,255,0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  color: var(--accent);
+}
+pre {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  overflow-x: auto;
+  font-size: 0.82rem;
+}
+pre code {
+  background: none;
+  padding: 0;
+  color: var(--text);
+}
+
+/* ============================================================
+   GISCUS / COMMENTS - 评论区
    ============================================================ */
 .comments-section {
   margin-top: 40px;
@@ -553,425 +943,26 @@ footer {
 @media (max-width: 600px) {
   .header { padding: 32px 16px 24px; border-radius: 0 0 20px 20px; }
   .header h1 { font-size: 1.3rem; }
-  .section { padding: 18px 14px; margin: 48px 0; }
-  .card, .news-item { padding: 14px 16px; }
+  .section { padding: 18px 14px; margin: 32px 0; }
+  .section-title, h2 { font-size: 1.1rem; padding: 12px 16px; margin: 32px 0 20px; }
+  h3 { font-size: 0.95rem; }
+  .card, .news-item, .job-card { padding: 14px 16px; }
   table { font-size: 0.76rem; }
   th, td { padding: 7px 5px; }
   .container { padding: 0 12px 40px; }
+  .nav-links { padding: 8px 10px; }
+  .nav-links a { font-size: 0.72rem; padding: 3px 8px; }
 }
 
 /* ============================================================
-   SECTION TITLE - 带编号的板块标题
+   PRINT - 打印优化
    ============================================================ */
-.section-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin: 56px 0 28px;
-  padding: 16px 20px;
-  background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(20,28,48,0.5) 100%);
-  border-left: 4px solid var(--accent);
-  border-top: 1px solid rgba(0, 212, 255, 0.25);
-  border-bottom: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 0 12px 12px 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-}
-.section-title .emoji,
-.section-title .icon {
-  font-size: 1.3rem;
-  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
-}
-.section-title .num {
-  margin-left: auto;
-  font-size: 0.72rem;
-  color: var(--text-dim);
-  background: rgba(0,212,255,0.1);
-  padding: 3px 12px;
-  border-radius: 50px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  border: 1px solid var(--border);
-}
-.section-title > span:not(.num):not(.emoji):not(.icon) {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--text);
-}
-
-/* ============================================================
-   HIGHLIGHT BOX - 高亮提示框
-   ============================================================ */
-.highlight-box {
-  background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(129,140,248,0.05) 100%);
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--accent);
-  border-radius: var(--radius-sm);
-  padding: 16px 20px;
-  margin: 16px 0;
-  font-size: 0.9rem;
-  line-height: 1.75;
-  color: var(--text);
-  position: relative;
-  transition: all 0.3s;
-}
-.highlight-box:hover {
-  box-shadow: var(--shadow-sm);
-  transform: translateY(-1px);
-  border-color: var(--border-hover);
-}
-.highlight-box strong {
-  color: var(--accent);
-  font-weight: 600;
-}
-
-/* ============================================================
-   SKILL BAR - 技能进度条
-   ============================================================ */
-.skill-bar {
-  width: 100%;
-  height: 8px;
-  background: rgba(0,212,255,0.08);
-  border-radius: 50px;
-  margin: 6px 0 12px;
-  overflow: hidden;
-  position: relative;
-}
-.skill-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 100%);
-  border-radius: 50px;
-  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-}
-.skill-bar-fill::after {
-  content: '';
-  position: absolute;
-  top: 0; right: 0;
-  width: 20px; height: 100%;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 100%);
-  border-radius: 50px;
-}
-
-/* ============================================================
-   TAG VARIANTS - 标签变体
-   ============================================================ */
-.tag-blue { background: rgba(0,212,255,0.1); color: var(--accent); border: 1px solid rgba(0,212,255,0.2); }
-.tag-green, .tag.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border: 1px solid rgba(34,211,160,0.25); }
-.tag-purple { background: rgba(129,140,248,0.1); color: var(--accent-purple); border: 1px solid rgba(129,140,248,0.25); }
-.tag-red, .tag.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border: 1px solid rgba(248,113,113,0.25); }
-.tag-orange, .tag.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border: 1px solid rgba(255,179,71,0.25); }
-
-/* ============================================================
-   BADGE - 评估徽章 (独立使用，不限于news-item内)
-   ============================================================ */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.72rem;
-  padding: 3px 10px;
-  border-radius: 50px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
-.badge-high {
-  background: rgba(34,211,160,0.15);
-  color: var(--accent-green);
-  border: 1px solid rgba(34,211,160,0.3);
-}
-.badge-mid {
-  background: rgba(255,179,71,0.15);
-  color: var(--accent-warm);
-  border: 1px solid rgba(255,179,71,0.3);
-}
-.badge-low {
-  background: rgba(248,113,113,0.15);
-  color: var(--accent-pink);
-  border: 1px solid rgba(248,113,113,0.3);
-}
-
-/* ============================================================
-   HEADER META - 标题栏元数据
-   ============================================================ */
-.header .meta {
-  margin-top: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  position: relative;
-  z-index: 1;
-}
-.header .meta span {
-  font-size: 0.76rem;
-  color: var(--text-dim);
-  background: rgba(0,212,255,0.08);
-  backdrop-filter: blur(8px);
-  padding: 4px 12px;
-  border-radius: 50px;
-  border: 1px solid var(--border);
-}
-
-/* ============================================================
-   TIMELINE - 时间线
-   ============================================================ */
-.timeline {
-  position: relative;
-  padding-left: 24px;
-  margin: 16px 0;
-}
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 7px; top: 8px; bottom: 8px;
-  width: 2px;
-  background: linear-gradient(180deg, var(--accent) 0%, var(--border) 100%);
-  border-radius: 50px;
-}
-.timeline-item {
-  position: relative;
-  margin-bottom: 20px;
-  padding-left: 8px;
-}
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -21px; top: 6px;
-  width: 12px; height: 12px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 3px solid var(--accent);
-  box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
-  z-index: 1;
-}
-.timeline-item .time {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--accent);
-  margin-bottom: 6px;
-  font-family: 'JetBrains Mono', monospace;
-}
-.timeline-item .content {
-  background: var(--card-solid);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 14px 18px;
-  font-size: 0.88rem;
-  line-height: 1.75;
-  transition: all 0.3s;
-}
-.timeline-item .content:hover {
-  box-shadow: var(--shadow-sm);
-  transform: translateX(2px);
-  border-color: var(--border-hover);
-}
-.timeline-item .content p { margin-bottom: 4px; }
-.timeline-item .content strong { color: var(--accent); }
-
-/* ============================================================
-   DECISION GRID - 决策对比卡片
-   ============================================================ */
-.decision-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin: 16px 0;
-}
-@media (max-width: 600px) {
-  .decision-grid { grid-template-columns: 1fr; }
-}
-.decision-card {
-  border-radius: var(--radius-sm);
-  padding: 18px 20px;
-  font-size: 0.88rem;
-  line-height: 1.75;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-.decision-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-.decision-card h4 {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-.decision-card p { margin-bottom: 4px; }
-.decision-card strong { font-weight: 600; }
-.decision-yes {
-  background: rgba(34,211,160,0.08);
-  border: 1px solid rgba(34,211,160,0.2);
-  border-left: 4px solid var(--accent-green);
-}
-.decision-yes h4 { color: var(--accent-green); }
-.decision-yes strong { color: var(--accent-green); }
-.decision-no {
-  background: rgba(255,179,71,0.08);
-  border: 1px solid rgba(255,179,71,0.2);
-  border-left: 4px solid var(--accent-warm);
-}
-.decision-no h4 { color: var(--accent-warm); }
-.decision-no strong { color: var(--accent-warm); }
-
-/* ============================================================
-   DISCUSSION ITEM - 讨论条目
-   ============================================================ */
-.discussion-item {
-  background: rgba(255,179,71,0.08);
-  border: 1px solid rgba(255,179,71,0.2);
-  border-left: 4px solid var(--accent-warm);
-  border-radius: var(--radius-sm);
-  padding: 14px 18px;
-  margin: 12px 0;
-  transition: all 0.3s;
-}
-.discussion-item:hover {
-  box-shadow: var(--shadow-sm);
-  transform: translateY(-1px);
-}
-.discussion-item .platform {
-  display: inline-block;
-  background: var(--accent-warm);
-  color: var(--bg);
-  font-size: 0.72rem;
-  padding: 3px 12px;
-  border-radius: 50px;
-  margin-bottom: 8px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
-.discussion-item .text {
-  font-size: 0.88rem;
-  line-height: 1.75;
-  color: var(--text);
-  margin-bottom: 8px;
-}
-.discussion-item .text strong { color: var(--accent); }
-.discussion-item .link { font-size: 0.82rem; }
-
-/* ============================================================
-   GISCUS SECTION - 评论区别名 (dark_dimmed 主题)
-   注意: HTML中giscus script需设置 data-theme="dark_dimmed"
-   ============================================================ */
-.giscus-section {
-  margin-top: 40px;
-  background: var(--card-solid);
-  border-radius: var(--radius);
-  padding: 28px 24px;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-}
-.giscus-section h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 6px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* ============================================================
-   FOOTER (div version) - 页脚别名
-   ============================================================ */
-div.footer {
-  text-align: center;
-  margin-top: 40px;
-  padding: 24px 20px;
-  font-size: 0.78rem;
-  color: var(--text-faint);
-  border-top: 1px solid var(--border);
-  font-family: 'JetBrains Mono', monospace;
-}
-div.footer a { color: var(--accent); }
-div.footer a:hover { color: var(--accent-purple); }
-
-/* ============================================================
-   DECORATIVE ELEMENTS - 装饰元素 (隐藏，由body伪元素替代)
-   ============================================================ */
-.grid-bg { display: none; }
-.floating-ball { display: none; }
-
-/* ============================================================
-   UTILITY - 通用工具类
-   ============================================================ */
-a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
-a:hover { color: var(--accent-purple); text-decoration: underline; }
-strong { color: var(--text); font-weight: 700; }
-hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
-
-
-/* SALARY GRID - 薪资网格 (补充定义确保文字可读) */
-.salary-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin: 14px 0;
-}
-@media (max-width: 600px) {
-  .salary-grid { grid-template-columns: 1fr; }
-}
-.salary-item {
-  background: rgba(0,212,255,0.06);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  text-align: center;
-}
-.salary-item .level {
-  font-size: 0.78rem;
-  color: var(--text-dim);
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-.salary-item .amount {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 4px;
-  font-family: 'JetBrains Mono', monospace;
-}
-.salary-item .note {
-  font-size: 0.72rem;
-  color: var(--text-dim);
-}
-
-/* PILL - 小标签 (补充定义确保文字可读) */
-.pill {
-  display: inline-block;
-  font-size: 0.72rem;
-  padding: 3px 10px;
-  border-radius: 50px;
-  margin: 2px;
-  font-weight: 500;
-  background: rgba(0,212,255,0.1);
-  color: var(--accent);
-  border: 1px solid rgba(0,212,255,0.2);
-}
-.pill.green { background: rgba(34,211,160,0.1); color: var(--accent-green); border-color: rgba(34,211,160,0.25); }
-.pill.orange { background: rgba(255,179,71,0.1); color: var(--accent-warm); border-color: rgba(255,179,71,0.25); }
-.pill.red { background: rgba(248,113,113,0.1); color: var(--accent-pink); border-color: rgba(248,113,113,0.25); }
-
-/* INFO ROW - 信息行 */
-.info-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-items: center;
-  margin: 10px 0;
-}
-
-/* META BAR - 元数据栏 */
-.meta-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  justify-content: center;
-  margin-top: 12px;
+@media print {
+  body { background: #fff; color: #000; }
+  body::before, body::after { display: none; }
+  .header { background: #f0f0f0; color: #000; border: 1px solid #ccc; }
+  .section { background: #fff; border: 1px solid #ccc; box-shadow: none; }
+  .card, .news-item, .job-card { background: #fff; border: 1px solid #ccc; }
 }
 
 </style>
@@ -990,10 +981,12 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 <a href="https://ts-dinglilu.github.io/school-news/" class="back-link" target="_blank">← 返回报告汇总</a>
 
 <!-- ==================== 安徽工业大学机械工程学院（重点关注） ==================== -->
+<div class="section">
 <div class="section-title">
   <span class="icon">🏭</span>
   <span>安徽工业大学机械工程学院</span>
   <span class="badge focus" style="margin-left:auto;font-size:0.72rem;padding:3px 12px;border-radius:50px;background:rgba(255,179,71,0.12);color:var(--accent-warm);border:1px solid rgba(255,179,71,0.25);font-weight:600;">重点关注</span>
+</div>
 </div>
 
 <div class="section">
@@ -1002,7 +995,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
   <div class="news-item">
     <span class="badge focus">重点关注</span>
     <span class="badge new">最新</span>
-    <h3 style="margin-top:10px;">我院学子在第十九届"高教杯"全国大学生先进成图大赛中斩获13项大奖</h3>
+    <h3 >我院学子在第十九届"高教杯"全国大学生先进成图大赛中斩获13项大奖</h3>
     <div class="card-meta">2026-07-28 | 来源：机械工程学院</div>
     <p>7月23日，第十九届"高教杯"全国大学生先进成图技术与产品信息建模创新大赛在长江大学圆满落幕。作为图学领域最具影响力的<strong>国家级赛事</strong>，本届大赛规模创历史之最，吸引了全国1200余所高校的约<strong>53万名大学生</strong>参赛，最终约2.1万名选手晋级全国总决赛。</p>
     <p>我校派出的机械类代表队和水利类代表队共斩获<strong>13项国家级奖项</strong>。其中，机械类代表队荣获全国团体二等奖（全国排名第181位）、数字化创新设计团体二等奖、增材制造赛道团体三等奖；高奕睿同学获个人全能二等奖，陈耀、薛浩等7名同学获个人全能三等奖。</p>
@@ -1012,7 +1005,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 
   <div class="news-item">
     <span class="badge focus">重点关注</span>
-    <h3 style="margin-top:10px;">机械学院：多线志愿服务绘就为民服务青春答卷</h3>
+    <h3 >机械学院：多线志愿服务绘就为民服务青春答卷</h3>
     <div class="card-meta">2026-07-22 | 来源：机械工程学院</div>
     <p>7月9日至11日，机械工程学院青年志愿者协会分赴马鞍山市花山区桃源居民社会工作服务中心、桃源路街道景城社区、雨山区溪街夜市，同步开展<strong>青少年科普公益课堂、敬老帮扶、夜间秩序值守</strong>等志愿服务。</p>
     <p>科普支教累计服务社区少年儿童30余名，敬老帮扶走访慰问高龄独居老人12户，夜市值守累计疏导人流千余人次。用实干书写新时代大学生为民服务的青春答卷。</p>
@@ -1022,7 +1015,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 
   <div class="news-item">
     <span class="badge focus">重点关注</span>
-    <h3 style="margin-top:10px;">机械工程学院召开本科专业人才培养方案修订推进会</h3>
+    <h3 >机械工程学院召开本科专业人才培养方案修订推进会</h3>
     <div class="card-meta">2026-07-22 | 来源：机械工程学院</div>
     <p>机械工程学院召开本科专业人才培养方案修订推进会，旨在进一步优化专业课程体系，提升人才培养质量，对接工程教育专业认证要求。</p>
     <a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16244.htm" target="_blank">📎 查看原文</a>
@@ -1030,7 +1023,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 
   <div class="news-item">
     <span class="badge focus">重点关注</span>
-    <h3 style="margin-top:10px;">机械工程学院领导走访暑期留校学生宿舍</h3>
+    <h3 >机械工程学院领导走访暑期留校学生宿舍</h3>
     <div class="card-meta">2026-07-22 | 来源：机械工程学院</div>
     <p>学院领导深入暑期留校学生宿舍走访慰问，详细了解留校学生的学习生活情况，叮嘱同学们注意防暑降温和用电安全，体现了学院对学生的人文关怀。</p>
     <a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16243.htm" target="_blank">📎 查看原文</a>
@@ -1038,7 +1031,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 
   <div class="news-item">
     <span class="badge">通知公告</span>
-    <h3 style="margin-top:10px;">2026年全国设备监测诊断与维护学术会议将在安工大举办</h3>
+    <h3 >2026年全国设备监测诊断与维护学术会议将在安工大举办</h3>
     <div class="card-meta">2026-07-21 | 来源：机械工程学院</div>
     <p>机械工程学院发布通知，将承办<strong>2026年全国设备监测诊断与维护学术会议</strong>，该会议是设备工程领域的重要学术交流平台。</p>
     <a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2598/16238.htm" target="_blank">📎 查看原文</a>
@@ -1057,35 +1050,35 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 
   <div class="news-item">
     <span class="badge new">最新</span>
-    <h3 style="margin-top:10px;">校领导现场指导"西门子杯"中国智能制造挑战赛</h3>
+    <h3 >校领导现场指导"西门子杯"中国智能制造挑战赛</h3>
     <div class="card-meta">2026-07-27 | 来源：安徽工业大学新闻网</div>
     <p>7月21日上午，校党委副书记王俊到第20届"西门子杯"中国智能制造挑战赛（安徽省赛暨华东第三分赛区）比赛现场，看望慰问参赛师生。2026年该赛事由安徽省教育厅主办，我校联合安徽工程大学等高校共同承办，负责流程行业自动化、离散行业自动化两大赛道。</p>
     <a class="source-link" href="https://news.ahut.edu.cn/info/1130/69017.htm" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="news-item">
-    <h3 style="margin-top:10px;">学校实现国家级重大工程和原创探索延续资助项目双突破</h3>
+    <h3 >学校实现国家级重大工程和原创探索延续资助项目双突破</h3>
     <div class="card-meta">2026-07-23 | 来源：安徽工业大学新闻网</div>
     <p>郑军教授团队申报的"GXLF项目高Z金属层批量化沉积组件"中标<strong>国家级重大科学工程项目</strong>（经费931万元）。肖赛君副教授申报的"熔盐电泳沉积制备涂层"项目获批国家自然科学基金<strong>原创探索计划项目延续资助</strong>（200万元），为我校首次获批该类项目。</p>
     <a class="source-link" href="https://news.ahut.edu.cn/info/1130/69008.htm" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="news-item">
-    <h3 style="margin-top:10px;">我校荣获8项安徽省科学技术奖</h3>
+    <h3 >我校荣获8项安徽省科学技术奖</h3>
     <div class="card-meta">2026-07-21 | 来源：安徽工业大学新闻网</div>
     <p>7月20日，安徽省科技创新大会召开，表彰2024年度安徽省科学技术奖获奖成果。我校荣获<strong>8项</strong>安徽省科学技术奖，其中科技进步一等奖2项、二等奖4项、三等奖2项。张世宏教授团队主持完成的"极端环境多组元金属/陶瓷功能涂层及发电装备应用"荣获科技进步一等奖。</p>
     <a class="source-link" href="https://news.ahut.edu.cn/info/1130/69006.htm" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="news-item">
-    <h3 style="margin-top:10px;">我校学子荣获第24届全国大学生田径锦标赛银牌</h3>
+    <h3 >我校学子荣获第24届全国大学生田径锦标赛银牌</h3>
     <div class="card-meta">2026-07-25 | 来源：安徽工业大学新闻网</div>
     <p>我校学子在第24届全国大学生田径锦标赛中奋勇拼搏，荣获银牌，展现了安工大学子的体育风采。</p>
     <a class="source-link" href="https://news.ahut.edu.cn/info/1130/69015.htm" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="news-item">
-    <h3 style="margin-top:10px;">校领导调研指导2026年本科招生录取工作</h3>
+    <h3 >校领导调研指导2026年本科招生录取工作</h3>
     <div class="card-meta">2026-07-26 | 来源：安徽工业大学新闻网</div>
     <p>校领导前往招生录取现场调研指导2026年本科招生录取工作，详细了解各省份录取进度，强调要严格规范招生流程，确保录取工作公平公正。</p>
     <a class="source-link" href="https://news.ahut.edu.cn/info/1130/69016.htm" target="_blank">📎 查看原文</a>
@@ -1104,14 +1097,14 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 
   <div class="news-item">
     <span class="badge new">最新</span>
-    <h3 style="margin-top:10px;">农工民主党长春工程学院总支部委员会第六次党员代表大会召开</h3>
+    <h3 >农工民主党长春工程学院总支部委员会第六次党员代表大会召开</h3>
     <div class="card-meta">2026-07-13 | 来源：长春工程学院新闻网</div>
     <p>7月10日，农工民主党长春工程学院总支部委员会第六次党员代表大会在学校第三会议室举行。学校党委副书记宋国玉，农工民主党长春市委专职副主委陈宁等参会，完成换届选举工作。</p>
     <a class="source-link" href="https://www.ccit.edu.cn/info/1007/10907.htm" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="news-item">
-    <h3 style="margin-top:10px;">学校召开假期校园安全与防汛工作专题工作会</h3>
+    <h3 >学校召开假期校园安全与防汛工作专题工作会</h3>
     <div class="card-meta">2026-07-11 | 来源：长春工程学院新闻网</div>
     <p>7月8日下午，学校召开假期校园安全与防汛工作专题工作会。副校长韩威主持会议，传达上级部门关于暑期校园安全暨防汛工作的最新要求，分析当前校园安全面临的形势及潜在风险，结合吉林省已进入防汛主汛期的实际情况进行部署。</p>
     <a class="source-link" href="https://www.ccit.edu.cn/info/1007/10906.htm" target="_blank">📎 查看原文</a>
@@ -1119,7 +1112,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 
   <div class="news-item">
     <span class="tag green">党建</span>
-    <h3 style="margin-top:10px;">水利工程学院水利与水电教师党支部入选"全国党建工作样板支部"</h3>
+    <h3 >水利工程学院水利与水电教师党支部入选"全国党建工作样板支部"</h3>
     <div class="card-meta">2026-07-10 | 来源：长春工程学院新闻网</div>
     <p>教育部公布第五批新时代高校党建示范创建和质量创优工作遴选结果，我校水利工程学院水利与水电教师党支部入选<strong>"全国党建工作样板支部"</strong>培育创建单位。党支部现有党员19人，其中高级职称11人、博士9人。</p>
     <a class="source-link" href="https://www.ccit.edu.cn/info/1007/10905.htm" target="_blank">📎 查看原文</a>
@@ -1127,14 +1120,14 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 
   <div class="news-item">
     <span class="tag green">社会实践</span>
-    <h3 style="margin-top:10px;">乡村振兴订单生赴舒兰开展暑期社会实践活动</h3>
+    <h3 >乡村振兴订单生赴舒兰开展暑期社会实践活动</h3>
     <div class="card-meta">2026-07-08 | 来源：学习强国</div>
     <p>长春工程学院乡村振兴订单生走出校园"小课堂"，走进乡村"大课堂"，赴舒兰开展暑期社会实践活动，以实际行动助力乡村振兴。该活动获<strong>学习强国</strong>平台报道。</p>
     <a class="source-link" href="https://www.ccit.edu.cn/info/1081/10893.htm" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="news-item">
-    <h3 style="margin-top:10px;">学校举办处级领导干部集中培训</h3>
+    <h3 >学校举办处级领导干部集中培训</h3>
     <div class="card-meta">2026-07-07 | 来源：长春工程学院新闻网</div>
     <p>7月4日至7日，学校举办树立和践行正确政绩观学习教育暨"铸魂赋能 强基提质"处级领导干部培训班，以个人自学、集中学习、交流研讨等形式开展。党委书记宋立军作开班动员讲话。</p>
     <a class="source-link" href="https://www.ccit.edu.cn/info/1007/10891.htm" target="_blank">📎 查看原文</a>
@@ -1153,7 +1146,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 
   <div class="news-item">
     <span class="badge hot">热点</span>
-    <h3 style="margin-top:10px;">徐州三中足球队征战第二届"援疆杯"——六战全胜夺冠！</h3>
+    <h3 >徐州三中足球队征战第二届"援疆杯"——六战全胜夺冠！</h3>
     <div class="card-meta">2026-07-17 至 07-23 | 来源：徐州三中头条号</div>
     <p>"祖国情·中华行"第二届新疆维吾尔自治区"援疆杯"中学生校园足球总决赛于7月17日至23日在新疆克州阿图什市举办。受江苏省教育厅委派，<strong>徐州三中足球队</strong>与苏州吴县高中足球队联合克州本土队员混编组成克州男子足球队，以东道主身份征战。</p>
     <p>全队历经三场小组赛、一场交叉赛、一场半决赛、一场决赛，以<strong>六战全胜</strong>的完美战绩斩获男子组总冠军，全程攻入<strong>27粒进球</strong>。总决赛以5:1大胜沪喀梦之队。潘峻峰副校长担任球队领队，教师彭冰荣获"优秀教练员"称号。</p>
@@ -1162,21 +1155,21 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
   </div>
 
   <div class="news-item">
-    <h3 style="margin-top:10px;">第10期"学长学姐返校日"活动在潇湘校区成功举办</h3>
+    <h3 >第10期"学长学姐返校日"活动在潇湘校区成功举办</h3>
     <div class="card-meta">2026-07-21 | 来源：徐州三中头条号</div>
     <p>7月21日，徐州三中潇湘校区迎来第10期"学长学姐返校日"活动，这是潇湘校区自投入使用以来<strong>首次承办</strong>该项传统活动。来自全国17所高校的30名优秀毕业生重返母校，分组进入各年级进行大学及专业介绍、互动交流，为在校生分享高考备考经验、志愿填报策略和职业规划建议。</p>
     <a class="source-link" href="http://m.toutiao.com/group/7666506290692948531/" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="news-item">
-    <h3 style="margin-top:10px;">1996届3班毕业三十周年返校盛会</h3>
+    <h3 >1996届3班毕业三十周年返校盛会</h3>
     <div class="card-meta">2026-07 | 来源：徐州三中头条号</div>
     <p>近日，徐州三中迎来一场毕业三十周年返校盛会，1996届3班校友跨越山海重返校园，共赴青春之约。校党委书记孟彦代表学校对时隔三十载重回母校的全体校友致以热烈欢迎。</p>
     <a class="source-link" href="http://m.toutiao.com/group/7667171231204000294/" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="news-item">
-    <h3 style="margin-top:10px;">1966届校友毕业六十周年重返母校</h3>
+    <h3 >1966届校友毕业六十周年重返母校</h3>
     <div class="card-meta">2026-07-03 | 来源：徐州三中头条号</div>
     <p>7月3日，徐州市第三中学迎来一场意义非凡的重逢，66届高三老校友跨越六十年光阴，从各地奔赴母校，举办毕业六十周年庆典。昔日风华少年如今已是耄耋长者，重返校园感慨万千。</p>
     <a class="source-link" href="http://m.toutiao.com/group/7665933370764870170/" target="_blank">📎 查看原文</a>
@@ -1195,21 +1188,21 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 
   <div class="news-item">
     <span class="badge new">最新</span>
-    <h3 style="margin-top:10px;">2025-2026学年度第二学期全体学生情况调查</h3>
+    <h3 >2025-2026学年度第二学期全体学生情况调查</h3>
     <div class="card-meta">2026-07 | 来源：问卷星</div>
     <p>为更好帮助孩子健康成长，顺利完成初中学业，徐州市大庙中学开展2025-2026学年度第二学期全体学生基本情况摸排调查，以利于学校根据学生实际情况做出更科学的帮扶安排。</p>
     <a class="source-link" href="https://www.wjx.cn/xz/351231388.aspx" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="news-item">
-    <h3 style="margin-top:10px;">经开区教育系统2025年校舍维修项目（大庙中学）</h3>
+    <h3 >经开区教育系统2025年校舍维修项目（大庙中学）</h3>
     <div class="card-meta">2025-07-03 | 来源：中国政府采购网</div>
     <p>徐州市大庙中学经开区教育系统2025年校舍维修项目发布竞争性磋商公告，采购内容为房屋修缮，旨在改善学校基础设施条件，为师生提供更好的教学环境。</p>
     <a class="source-link" href="http://www.ccgp.gov.cn/cggg/dfgg/jzxcs/202507/t20250703_24898203.htm" target="_blank">📎 查看原文</a>
   </div>
 
   <div class="news-item">
-    <h3 style="margin-top:10px;">大庙街道汽车促消费专场活动在大庙文化广场举行</h3>
+    <h3 >大庙街道汽车促消费专场活动在大庙文化广场举行</h3>
     <div class="card-meta">2026-07-10 | 来源：头条号</div>
     <p>7月10日，由大庙街道办事处主办的2026年汽车促消费"进社区"专场活动在大庙文化广场隆重举行，政企银联动助力区域消费活力提升。</p>
     <a class="source-link" href="http://m.toutiao.com/group/7660797288055095823/" target="_blank">📎 查看原文</a>
@@ -1490,9 +1483,11 @@ hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 <!-- Footer -->
 <div class="footer">
   <p>校园新闻日报 · 自动化生成 · 数据来源于公开网络</p>
-  <p style="margin-top:6px;">在线访问：<a href="https://ts-dinglilu.github.io/school-news/" target="_blank">GitHub Pages</a> | 报告日期：2026-07-29</p>
+  <p >在线访问：<a href="https://ts-dinglilu.github.io/school-news/" target="_blank">GitHub Pages</a> | 报告日期：2026-07-29</p>
 </div>
 
 </div>
+
+<!-- v5.0 optimized at 2026-07-29 09:48:00 -->
 </body>
 </html>
