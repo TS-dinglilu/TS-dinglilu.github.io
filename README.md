@@ -77,3 +77,33 @@
 - 分类ID: `DIC_kwDOTjqaJc4DCIL1`
 - 映射方式: pathname
 - 主题: dark_dimmed
+
+## 设计规范
+
+报告CSS使用统一模板（`report_css_template.css`），部署脚本自动应用。
+
+- 配色方案：深空蓝(#0a0e1a)背景 + 青色(#00d4ff)强调色
+- 不同板块间使用渐变分割线清晰分隔，确保相邻板块一目了然
+- 所有文字颜色需高对比度，确保在暗色背景上清晰可读
+- 报告标题统一使用"XX日报"格式
+- 报告汇总页面的"点击查看"链接位于卡片右侧
+
+## 重要约定
+
+- HTML报告中所有链接必须使用HTML `<a>`标签格式，严禁使用Markdown链接格式
+- 报告文件命名：`report_YYYYMMDD.html`
+- 部署脚本内置重试机制，自动验证上传成功
+- 所有历史报告归档保留（不删除）
+- 自动化任务运行时间：每天早上5点（北京时间）
+
+## 项目文件说明
+
+| 文件 | 说明 |
+|------|------|
+| `deploy_github_pages.ps1` | 统一部署脚本（上传报告+生成索引+配置评论区） |
+| `report_css_template.css` | 报告页统一CSS模板 |
+| `replace_css.py` | CSS模板替换工具（部署脚本调用） |
+| `homepage_index.html` | 主页源文件 |
+| `export_trae_memory.ps1` | TRAE记忆导出脚本 |
+| `export_trae_tasks.ps1` | TRAE任务导出脚本 |
+| `future-planning/future_planning_config.txt` | 未来规划任务配置文件 |
