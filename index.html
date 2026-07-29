@@ -3,10 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="安徽工业大学机械工程硕士研究生 - 13个自动化日报系统，每日推送招聘、科研、校园资讯">
 <title>TS-dinglilu · 机械工程 / 无人机研究 / 自动化开发</title>
 <style>
 /* ============================================================
-   报告页统一CSS模板 - v6.0 暗色主题版
+   报告页统一CSS模板 - v8.0 暗色主题版
    v6.0改进:
    - 标题层级色彩区分: h2青色/h3紫色/h4琥珀色
    - 板块间距增大至56px, 相邻板块更清晰
@@ -28,9 +31,9 @@
   --card-hover: rgba(20, 28, 48, 0.85);
   --border: rgba(0, 212, 255, 0.12);
   --border-hover: rgba(0, 212, 255, 0.4);
-  --text: #e8eef5;
-  --text-dim: #c0cee0;
-  --text-faint: #8898b8;
+  --text: #f0f4f8;
+  --text-dim: #c8d4e8;
+  --text-faint: #90a0c0;
   --accent: #00d4ff;
   --accent-warm: #ffb347;
   --accent-green: #22d3a0;
@@ -763,6 +766,69 @@ table tbody tr:last-child td {
   background: linear-gradient(135deg, rgba(129, 140, 248, 0.18) 0%, rgba(129, 140, 248, 0.08) 100%);
   color: #a5b4fc;
   border-bottom-color: rgba(129, 140, 248, 0.3);
+}
+
+
+/* ============================================================
+   Salary Grid — structured salary comparison cards
+   ============================================================ */
+.salary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.salary-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-green);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+}
+
+.salary-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(34, 211, 160, 0.4);
+  border-left-color: var(--accent-green);
+}
+
+.salary-item .level {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.salary-item .amount {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent-green);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.salary-item .note {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .salary-grid {
+    grid-template-columns: 1fr;
+  }
+  .salary-item {
+    padding: 12px 14px;
+  }
+  .salary-item .amount {
+    font-size: 1.05rem;
+  }
 }
 
 .summary-table td:first-child {
@@ -2171,9 +2237,9 @@ footer a:hover, .footer a:hover {
     </p>
     <div class="hero-stats">
       <div class="stat"><div class="stat-num">13</div><div class="stat-label">自动化系统</div></div>
-      <div class="stat"><div class="stat-num">1+13</div><div class="stat-label">主仓库·子站</div></div>
-      <div class="stat"><div class="stat-num">20+</div><div class="stat-label">已生成日报</div></div>
-      <div class="stat"><div class="stat-num">05/09</div><div class="stat-label">每日定时</div></div>
+      <div class="stat"><div class="stat-num">45+</div><div class="stat-label">已生成日报</div></div>
+      <div class="stat"><div class="stat-num">05:00</div><div class="stat-label">每日定时</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">自动运行</div></div>
     </div>
   </div>
   <div class="scroll-hint">SCROLL</div>
@@ -2208,7 +2274,7 @@ footer a:hover, .footer a:hover {
         <p>比亚迪、奇瑞、吉利、一汽、大众、特斯拉等车企招聘动态，含岗位对比、研究生去向、进车企攻略及全网热议。</p>
         <div class="auto-meta">
           <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
+          <span class="auto-badge daily">每日 05:00</span>
           <span class="auto-link">访问 →</span>
         </div>
       </a>
@@ -2219,7 +2285,7 @@ footer a:hover, .footer a:hover {
         <p>江浙沪三地机械工程招聘新闻，8家重点企业详情，基于个人技能的个性化岗位推荐矩阵，含通勤分析。</p>
         <div class="auto-meta">
           <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
+          <span class="auto-badge daily">每日 05:00</span>
           <span class="auto-link">访问 →</span>
         </div>
       </a>
@@ -2230,7 +2296,7 @@ footer a:hover, .footer a:hover {
         <p>安徽工业大学（机械院）、长春工程学院、徐州三中、大庙中学最新新闻，含全网热议讨论。</p>
         <div class="auto-meta">
           <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
+          <span class="auto-badge daily">每日 05:00</span>
           <span class="auto-link">访问 →</span>
         </div>
       </a>
@@ -2241,7 +2307,7 @@ footer a:hover, .footer a:hover {
         <p>arXiv 无人机论文热点、自动驾驶前沿、IEEE 期刊动态，含写作参考建议与全网技术讨论。</p>
         <div class="auto-meta">
           <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
+          <span class="auto-badge daily">每日 05:00</span>
           <span class="auto-link">访问 →</span>
         </div>
       </a>
@@ -2252,7 +2318,7 @@ footer a:hover, .footer a:hover {
         <p>师兄师姐就业去向与薪资分析、学校政策通知、奖助学金竞赛信息、读博升学指南、研二时间节点规划。</p>
         <div class="auto-meta">
           <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
+          <span class="auto-badge daily">每日 05:00</span>
           <span class="auto-link">访问 →</span>
         </div>
       </a>
@@ -2263,7 +2329,7 @@ footer a:hover, .footer a:hover {
         <p>比亚迪全集团招聘信息：技术研发、生产制造、供应链、销售管理等岗位详情，含深圳/西安/合肥/长沙基地薪资待遇、面试经验与入职攻略。</p>
         <div class="auto-meta">
           <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
+          <span class="auto-badge daily">每日 05:00</span>
           <span class="auto-link">访问 →</span>
         </div>
       </a>
@@ -2274,7 +2340,7 @@ footer a:hover, .footer a:hover {
         <p>奇瑞汽车及星途/捷途/风云等子品牌招聘：芜湖/上海/常熟基地岗位，含新能源研发、海外营销、智能制造等方向，面试流程与薪酬体系详解。</p>
         <div class="auto-meta">
           <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
+          <span class="auto-badge daily">每日 05:00</span>
           <span class="auto-link">访问 →</span>
         </div>
       </a>
@@ -2285,7 +2351,7 @@ footer a:hover, .footer a:hover {
         <p>吉利汽车及领克/极氪/银河/极星等品牌招聘：杭州/宁波/上海/成都基地，含整车研发、三电系统、智能驾驶等岗位，校招/社招通道与福利待遇。</p>
         <div class="auto-meta">
           <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
+          <span class="auto-badge daily">每日 05:00</span>
           <span class="auto-link">访问 →</span>
         </div>
       </a>
@@ -2296,7 +2362,7 @@ footer a:hover, .footer a:hover {
         <p>小米汽车SU7/YU7相关招聘：北京/上海/武汉/西安基地，含智能座舱、自动驾驶、电机电控、整车制造等岗位，互联网+制造业跨界人才需求分析。</p>
         <div class="auto-meta">
           <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
+          <span class="auto-badge daily">每日 05:00</span>
           <span class="auto-link">访问 →</span>
         </div>
       </a>
@@ -2307,7 +2373,7 @@ footer a:hover, .footer a:hover {
         <p>蔚来/小鹏/理想三大新势力招聘：上海/广州/合肥/常州基地，含换电技术、智能驾驶、增程系统、用户体验等方向，薪资竞争力与期权激励对比。</p>
         <div class="auto-meta">
           <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
+          <span class="auto-badge daily">每日 05:00</span>
           <span class="auto-link">访问 →</span>
         </div>
       </a>
@@ -2318,7 +2384,7 @@ footer a:hover, .footer a:hover {
         <p>一汽/上汽/长安/长城/广汽/东风等传统车企招聘：长春/上海/重庆/保定/广州基地，含整车研发、发动机、变速箱、底盘等岗位，国企福利体系与转岗机制。</p>
         <div class="auto-meta">
           <span class="auto-badge active">运行中</span>
-          <span class="auto-badge daily">每日 09:00</span>
+          <span class="auto-badge daily">每日 05:00</span>
           <span class="auto-link">访问 →</span>
         </div>
       </a>
@@ -2518,6 +2584,6 @@ function filterCards() {
 </script>
 
 
-<!-- v6.0 optimized at 2026-07-29 10:04:12 -->
+<!-- v8.0 optimized at 2026-07-29 -->
 </body>
 </html>
