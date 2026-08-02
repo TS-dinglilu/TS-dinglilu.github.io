@@ -7,10 +7,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <meta name="description" content="蔚小理招聘日报 - 每日自动更新报告汇总">
 <meta property="og:title" content="蔚小理招聘日报 - 报告汇总">
-<meta property="og:description" content="蔚来/小鹏/理想招聘信息 - 每日自动更新">
+<meta property="og:description" content="蔚来/小鹏/理想招聘信息与薪资对比 - 每日自动更新">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ts-dinglilu.github.io/weixiaoli-recruit/">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128203;</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
 <title>蔚小理招聘日报 - 报告汇总</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
@@ -181,7 +181,7 @@ body::after {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.78rem;
   color: var(--accent-warm);
-  background: rgba(255,179, 71, 0.1);
+  background: rgba(255, 179, 71, 0.1);
   border: 1px solid rgba(255, 179, 71, 0.2);
   padding: 4px 14px;
   border-radius: 50px;
@@ -242,6 +242,27 @@ body::after {
   transform: translateX(4px);
   box-shadow: 0 4px 24px rgba(0, 212, 255, 0.15);
 }
+.section-title .emoji,
+.section-title .icon {
+  font-size: 1.3rem;
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+}
+.section-title .num {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  background: rgba(0,212,255,0.1);
+  padding: 3px 12px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: 1px solid var(--border);
+}
+.section-title > span:not(.num):not(.emoji):not(.icon) {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+}
 
 .report-list { display: flex; flex-direction: column; gap: 12px; }
 
@@ -294,6 +315,7 @@ body::after {
 }
 
 .card-info { flex: 1; min-width: 0; }
+
 .card-info .card-date {
   font-family: 'JetBrains Mono', monospace;
   font-size: 1.1rem;
@@ -302,6 +324,7 @@ body::after {
   margin-bottom: 4px;
   flex-shrink: 0;
 }
+
 .card-info .card-weekday {
   font-size: 0.8rem;
   color: var(--text-dim);
@@ -411,6 +434,25 @@ body::after {
   .section-title { font-size: 1.15rem; padding: 10px 14px 10px 12px; }
 }
 
+/* SECTION DIVIDER */
+.section-title {
+  position: relative;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  top: -28px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0,212,255,0.5) 15%, rgba(129,140,248,0.4) 50%, rgba(0,212,255,0.5) 85%, transparent 100%);
+  border-radius: 2px;
+  opacity: 0.7;
+}
+.section-title:first-of-type::after {
+  display: none;
+}
+
 </style>
 </head>
 <body>
@@ -418,10 +460,10 @@ body::after {
 <div class="hero">
   <div class="hero-tag">蔚小理招聘日报<span class="status-dot"></span> 自动更新</div>
   <h1>蔚小理招聘日报</h1>
-  <p class="subtitle">蔚来/小鹏/理想招聘信息</p>
-  <div class="update-time">最后更新: 2026-07-29</div>
+  <p class="subtitle">蔚来/小鹏/理想招聘信息与薪资对比</p>
+  <div class="update-time">最后更新: 2026-08-03</div>
   <div class="stats">
-    <div class="stat"><div class="stat-num">3</div><div class="stat-label">报告总数</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">报告总数</div></div>
     <div class="stat"><div class="stat-num">每日</div><div class="stat-label">自动更新</div></div>
   </div>
 </div>
@@ -433,28 +475,31 @@ body::after {
     <div class="section-label">Archive</div>
     <h2 class="section-title">报告归档</h2>
     <div class="report-list">
-        <a href="report_20260729.html" class="report-card latest">
+        <a href="report_20260803.html" class="report-card latest">
             <div class="card-info">
-                <div class="card-date">2026-07-29<span class="latest-badge">LATEST</span></div>
-                <div class="card-weekday">星期三</div>
+                <div class="card-date">2026-08-03<span class="latest-badge">LATEST</span></div>
+                <div class="card-weekday">星期一</div>
             </div>
             <div class="card-link">点击查看 →</div>
-        </a>
-        <a href="report_20260728.html" class="report-card">
+        </a>        <a href="report_20260729.html" class="report-card">
+            <div class="card-info">
+                <div class="card-date">2026-07-29</div>
+                <div class="card-weekday">星期三</div>
+            </div>
+            <div class="card-link">查看 →</div>
+        </a>        <a href="report_20260728.html" class="report-card">
             <div class="card-info">
                 <div class="card-date">2026-07-28</div>
                 <div class="card-weekday">星期二</div>
             </div>
             <div class="card-link">查看 →</div>
-        </a>
-        <a href="report_20260727.html" class="report-card">
+        </a>        <a href="report_20260727.html" class="report-card">
             <div class="card-info">
                 <div class="card-date">2026-07-27</div>
                 <div class="card-weekday">星期一</div>
             </div>
             <div class="card-link">查看 →</div>
         </a>
-
     </div>
   </div>
 
