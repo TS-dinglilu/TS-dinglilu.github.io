@@ -3,15 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<meta name="description" content="校园新闻日报 - 每日自动更新报告汇总">
-<meta property="og:title" content="校园新闻日报 - 报告汇总">
-<meta property="og:description" content="安徽工业大学等学校最新新闻与讨论 - 每日自动更新">
+<meta name="description" content="学校新闻日报 - 每日自动更新报告汇总">
+<meta property="og:title" content="学校新闻日报 - 报告汇总">
+<meta property="og:description" content="安徽工业大学等学校最新新闻 - 每日自动更新">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ts-dinglilu.github.io/school-news/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
-<title>校园新闻日报 - 报告汇总</title>
+<title>学校新闻日报 - 报告汇总</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
 
@@ -19,7 +22,6 @@
   --bg: #0a0e1a;
   --bg-elev: #111726;
   --card: rgba(20, 28, 48, 0.55);
-  --card-solid: rgba(20, 28, 48, 0.75);
   --card-hover: rgba(20, 28, 48, 0.8);
   --border: rgba(0, 212, 255, 0.12);
   --border-hover: rgba(0, 212, 255, 0.4);
@@ -30,28 +32,19 @@
   --accent-warm: #ffb347;
   --accent-green: #22d3a0;
   --accent-purple: #818cf8;
-  --accent-pink: #f87171;
-  --accent-teal: #14b8a6;
-  --accent-orange: #fb923c;
   --grid-line: rgba(0, 212, 255, 0.04);
-  --shadow-sm: 0 2px 12px rgba(0,0,0,0.25);
   --shadow-md: 0 8px 32px rgba(0,0,0,0.35);
-  --shadow-lg: 0 16px 56px rgba(0,0,0,0.45);
   --shadow-glow: 0 0 24px rgba(0, 212, 255, 0.12);
-  --shadow-glow-hover: 0 0 40px rgba(0, 212, 255, 0.25);
   --radius: 24px;
   --radius-sm: 18px;
-  --radius-xs: 12px;
   --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --smooth: cubic-bezier(0.4, 0, 0.2, 1);
   --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-*::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html { scroll-behavior: smooth; }
 body {
-  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Noto Sans SC', -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
   font-size: 15px;
@@ -59,408 +52,85 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   position: relative;
-  letter-spacing: 0.01em;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
-
-::selection { background: rgba(0, 212, 255, 0.3); color: #ffffff; }
-
+::selection { background: rgba(0, 212, 255, 0.3); color: #fff; }
 body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 48px 48px;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.6;
+  content: ''; position: fixed; inset: 0;
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px; pointer-events: none; z-index: 0; opacity: 0.6;
 }
-
 body::after {
-  content: '';
-  position: fixed;
-  top: -20%;
-  right: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.10) 0%, rgba(129, 140, 248, 0.05) 50%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-  filter: blur(50px);
+  content: ''; position: fixed; top: -20%; right: -10%; width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,212,255,0.10) 0%, transparent 70%);
+  border-radius: 50%; pointer-events: none; z-index: 0; filter: blur(50px);
   animation: floatOrb 20s ease-in-out infinite;
 }
-
-@keyframes floatOrb {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-  33% { transform: translate(-40px, 30px) scale(1.05); opacity: 0.8; }
-  66% { transform: translate(30px, -20px) scale(0.95); opacity: 0.7; }
-}
-
+@keyframes floatOrb { 0%,100% { transform: translate(0,0) scale(1); opacity: 0.6; } 33% { transform: translate(-40px,30px) scale(1.05); opacity: 0.8; } 66% { transform: translate(30px,-20px) scale(0.95); opacity: 0.7; } }
 @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes gradientFlow { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@keyframes gradientFlow { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@keyframes pulse { 0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34,211,160,0.4); } 50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(34,211,160,0); } }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 24px 60px;
-  position: relative;
-  z-index: 1;
-}
-
+.container { max-width: 800px; margin: 0 auto; padding: 0 24px 60px; position: relative; z-index: 1; }
 .hero {
-  padding: 64px 24px 48px;
-  text-align: center;
-  border-radius: 0 0 32px 32px;
+  padding: 64px 24px 48px; text-align: center; border-radius: 0 0 32px 32px;
   background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(129,140,248,0.06) 50%, rgba(34,211,160,0.05) 100%);
-  border-bottom: 1px solid var(--border);
-  position: relative;
-  overflow: hidden;
+  border-bottom: 1px solid var(--border); position: relative; overflow: hidden;
   animation: fadeInDown 0.8s var(--spring) both;
 }
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-purple), var(--accent-green));
-  background-size: 200% 100%;
-  animation: gradientFlow 6s ease infinite;
-}
-
-.hero-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  color: var(--accent);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
-
-.hero-tag .status-dot {
-  display: inline-block;
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--accent-green);
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 211, 160, 0.4); }
-  50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(34, 211, 160, 0); }
-}
-
-.hero h1 {
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: -1px;
-  margin-bottom: 10px;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-green) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero .subtitle {
-  font-size: 0.95rem;
-  color: var(--text-dim);
-  margin-bottom: 16px;
-}
-
-.hero .update-time {
-  display: inline-block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78rem;
-  color: var(--accent-warm);
-  background: rgba(255, 179, 71, 0.1);
-  border: 1px solid rgba(255, 179, 71, 0.2);
-  padding: 4px 14px;
-  border-radius: 50px;
-}
-
-.stats {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  margin-top: 24px;
-  flex-wrap: wrap;
-}
-
+.hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-purple), var(--accent-green)); background-size: 200% 100%; animation: gradientFlow 6s ease infinite; }
+.hero-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; gap: 12px; }
+.hero-tag .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-green); animation: pulse 2s ease-in-out infinite; }
+.hero h1 { font-size: 2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 10px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-green) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero .subtitle { font-size: 0.95rem; color: var(--text-dim); margin-bottom: 16px; }
+.hero .update-time { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--accent-warm); background: rgba(255,179,71,0.1); border: 1px solid rgba(255,179,71,0.2); padding: 4px 14px; border-radius: 50px; }
+.stats { display: flex; justify-content: center; gap: 32px; margin-top: 24px; flex-wrap: wrap; }
 .stat { text-align: center; }
-.stat-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--accent);
-}
-.stat-label {
-  font-size: 0.72rem;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
+.stat-num { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 700; color: var(--accent); }
+.stat-label { font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
 
-.section { padding: 32px 0; margin: 48px 0; border-top: 3px solid rgba(0, 212, 255, 0.4); border-bottom: 3px solid rgba(0, 212, 255, 0.3); border-radius: var(--radius); }
-
-.section-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-  color: var(--accent);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
+.section { padding: 32px 0; margin: 48px 0; border-top: 3px solid rgba(0,212,255,0.4); border-bottom: 3px solid rgba(0,212,255,0.3); border-radius: var(--radius); }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
 .section-label::before { content: '## '; color: var(--text-faint); }
-.section-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin: 0 0 28px;
-  padding: 14px 20px 14px 18px;
-  background: linear-gradient(90deg, rgba(0,212,255,0.12) 0%, rgba(0,212,255,0.02) 100%);
-  border-left: 4px solid var(--accent);
-  border-top: 1px solid rgba(0, 212, 255, 0.2);
-  border-bottom: 1px solid rgba(0, 212, 255, 0.25);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-  transition: all 0.4s var(--bounce);
-}
-.section-title:hover {
-  background: linear-gradient(90deg, rgba(0,212,255,0.18) 0%, rgba(0,212,255,0.04) 100%);
-  transform: translateX(4px);
-  box-shadow: 0 4px 24px rgba(0, 212, 255, 0.15);
-}
-.section-title .emoji,
-.section-title .icon {
-  font-size: 1.3rem;
-  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
-}
-.section-title .num {
-  margin-left: auto;
-  font-size: 0.72rem;
-  color: var(--text-dim);
-  background: rgba(0,212,255,0.1);
-  padding: 3px 12px;
-  border-radius: 50px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  border: 1px solid var(--border);
-}
-.section-title > span:not(.num):not(.emoji):not(.icon) {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--text);
-}
+.section-title { font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 0 0 28px; padding: 14px 20px 14px 18px; background: linear-gradient(90deg, rgba(0,212,255,0.12) 0%, rgba(0,212,255,0.02) 100%); border-left: 4px solid var(--accent); border-top: 1px solid rgba(0,212,255,0.2); border-bottom: 1px solid rgba(0,212,255,0.25); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); transition: all 0.4s var(--bounce); }
+.section-title:hover { background: linear-gradient(90deg, rgba(0,212,255,0.18) 0%, rgba(0,212,255,0.04) 100%); transform: translateX(4px); box-shadow: 0 4px 24px rgba(0,212,255,0.15); }
+.section-title::after { content: ''; position: absolute; top: -28px; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent 0%, rgba(0,212,255,0.5) 15%, rgba(129,140,248,0.4) 50%, rgba(0,212,255,0.5) 85%, transparent 100%); border-radius: 2px; opacity: 0.7; }
+.section-title:first-of-type::after { display: none; }
 
 .report-list { display: flex; flex-direction: column; gap: 12px; }
-
-.report-card {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: inherit;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 20px 22px;
-  transition: all 0.4s var(--bounce);
-  backdrop-filter: blur(10px);
-  position: relative;
-  overflow: hidden;
-  gap: 12px;
-  animation: fadeInUp 0.6s var(--spring) both;
-}
-
-.report-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-purple), var(--accent-green));
-  background-size: 200% 100%;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s var(--bounce);
-}
-
-.report-card:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-3px) scale(1.01);
-  box-shadow: var(--shadow-md), var(--shadow-glow);
-  background: var(--card-hover);
-}
-
+.report-card { display: flex; align-items: center; text-decoration: none; color: inherit; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px 22px; transition: all 0.4s var(--bounce); backdrop-filter: blur(10px); position: relative; overflow: hidden; gap: 12px; animation: fadeInUp 0.6s var(--spring) both; }
+.report-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-purple), var(--accent-green)); background-size: 200% 100%; transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--bounce); }
+.report-card:hover { border-color: var(--border-hover); transform: translateY(-3px) scale(1.01); box-shadow: var(--shadow-md), var(--shadow-glow); background: var(--card-hover); }
 .report-card:hover::before { transform: scaleX(1); animation: gradientFlow 3s ease infinite; }
-
-.report-card.latest {
-  border-color: rgba(34, 211, 160, 0.3);
-  background: rgba(34, 211, 160, 0.06);
-}
-
-.report-card.latest:hover {
-  border-color: rgba(34, 211, 160, 0.5);
-  box-shadow: 0 8px 32px rgba(34, 211, 160, 0.12);
-}
-
+.report-card.latest { border-color: rgba(34,211,160,0.3); background: rgba(34,211,160,0.06); }
+.report-card.latest:hover { border-color: rgba(34,211,160,0.5); box-shadow: 0 8px 32px rgba(34,211,160,0.12); }
 .card-info { flex: 1; min-width: 0; }
-
-.card-info .card-date {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 4px;
-  flex-shrink: 0;
-}
-
-.card-info .card-weekday {
-  font-size: 0.8rem;
-  color: var(--text-dim);
-  margin-bottom: 0;
-}
-
-.card-link {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: var(--accent);
-  font-size: 0.85rem;
-  font-weight: 500;
-  margin-left: auto;
-  flex-shrink: 0;
-}
-
-.latest-badge {
-  display: inline-block;
-  background: rgba(34, 211, 160, 0.15);
-  color: var(--accent-green);
-  font-size: 0.7rem;
-  padding: 2px 10px;
-  border-radius: 50px;
-  font-weight: 600;
-  margin-left: 8px;
-  font-family: 'JetBrains Mono', monospace;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text-dim);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 24px;
-  padding: 10px 20px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  transition: all 0.4s var(--bounce);
-  backdrop-filter: blur(10px);
-}
-.back-link:hover {
-  color: var(--accent);
-  border-color: var(--border-hover);
-  background: var(--card-hover);
-  text-decoration: none;
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.15);
-}
-
-.comments-section {
-  margin-top: 48px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 28px 24px;
-  backdrop-filter: blur(10px);
-  position: relative;
-  overflow: hidden;
-}
-.comments-section::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent-purple), var(--accent), var(--accent-green));
-  background-size: 200% 100%;
-  border-radius: var(--radius) var(--radius) 0 0;
-  animation: gradientFlow 6s ease infinite;
-}
-.comments-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #a5b4fc;
-  margin-bottom: 8px;
-  letter-spacing: 0.02em;
-}
-.comments-desc {
-  font-size: 0.88rem;
-  color: var(--text-dim);
-  margin-bottom: 20px;
-}
-
+.card-info .card-date { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+.card-info .card-weekday { font-size: 0.8rem; color: var(--text-dim); }
+.card-link { display: flex; align-items: center; gap: 4px; color: var(--accent); font-size: 0.85rem; font-weight: 500; margin-left: auto; }
+.latest-badge { display: inline-block; background: rgba(34,211,160,0.15); color: var(--accent-green); font-size: 0.7rem; padding: 2px 10px; border-radius: 50px; font-weight: 600; margin-left: 8px; font-family: 'JetBrains Mono', monospace; animation: pulse 2s ease-in-out infinite; }
+.back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--text-dim); text-decoration: none; font-size: 0.9rem; font-weight: 500; margin-bottom: 24px; padding: 10px 20px; background: var(--card); border: 1px solid var(--border); border-radius: 999px; transition: all 0.4s var(--bounce); backdrop-filter: blur(10px); }
+.back-link:hover { color: var(--accent); border-color: var(--border-hover); background: var(--card-hover); transform: translateY(-2px) scale(1.02); box-shadow: 0 4px 20px rgba(0,212,255,0.15); }
+.comments-section { margin-top: 48px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 24px; backdrop-filter: blur(10px); position: relative; overflow: hidden; }
+.comments-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent-purple), var(--accent), var(--accent-green)); background-size: 200% 100%; border-radius: var(--radius) var(--radius) 0 0; animation: gradientFlow 6s ease infinite; }
+.comments-title { font-size: 1.15rem; font-weight: 700; color: #a5b4fc; margin-bottom: 8px; }
+.comments-desc { font-size: 0.88rem; color: var(--text-dim); margin-bottom: 20px; }
 .footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 48px; }
-.footer p { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text-faint); letter-spacing: 0.02em; }
+.footer p { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text-faint); }
 .footer-links { display: flex; justify-content: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
-.footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; transition: color 0.3s var(--smooth); }
+.footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
 .footer-links a:hover { color: var(--accent); }
-
-@media (max-width: 768px) {
-  .hero h1 { font-size: 1.5rem; }
-  .stats { gap: 20px; }
-  .stat-num { font-size: 1.3rem; }
-  .report-card { padding: 16px 18px; border-radius: var(--radius-sm); }
-  .comments-section { padding: 20px 16px; border-radius: var(--radius-sm); }
-}
-@media (max-width: 600px) {
-  body { font-size: 14px; line-height: 1.75; }
-  .container { padding: 0 16px 40px; }
-  .hero { padding: 40px 16px 32px; }
-  .hero h1 { font-size: 1.3rem; }
-  .section-title { font-size: 1.15rem; padding: 10px 14px 10px 12px; }
-}
-
-/* SECTION DIVIDER */
-.section-title {
-  position: relative;
-}
-.section-title::after {
-  content: '';
-  position: absolute;
-  top: -28px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, rgba(0,212,255,0.5) 15%, rgba(129,140,248,0.4) 50%, rgba(0,212,255,0.5) 85%, transparent 100%);
-  border-radius: 2px;
-  opacity: 0.7;
-}
-.section-title:first-of-type::after {
-  display: none;
-}
-
+@media (max-width: 768px) { .hero h1 { font-size: 1.5rem; } .stats { gap: 20px; } .report-card { padding: 16px 18px; } }
+@media (max-width: 600px) { body { font-size: 14px; } .container { padding: 0 16px 40px; } .hero { padding: 40px 16px 32px; } .hero h1 { font-size: 1.3rem; } .section-title { font-size: 1.15rem; padding: 10px 14px 10px 12px; } }
 </style>
 </head>
 <body>
 
 <div class="hero">
-  <div class="hero-tag">校园新闻日报<span class="status-dot"></span> 自动更新</div>
-  <h1>校园新闻日报</h1>
-  <p class="subtitle">安徽工业大学等学校最新新闻与讨论</p>
+  <div class="hero-tag">学校新闻日报<span class="status-dot"></span> 自动更新</div>
+  <h1>学校新闻日报</h1>
+  <p class="subtitle">安徽工业大学等学校最新新闻</p>
   <div class="update-time">最后更新: 2026-08-03</div>
   <div class="stats">
     <div class="stat"><div class="stat-num">7</div><div class="stat-label">报告总数</div></div>
@@ -470,57 +140,62 @@ body::after {
 
 <div class="container">
   <a href="https://ts-dinglilu.github.io/" class="back-link">← 返回主页</a>
-
   <div class="section">
     <div class="section-label">Archive</div>
     <h2 class="section-title">报告归档</h2>
     <div class="report-list">
-        <a href="report_20260803.html" class="report-card latest">
-            <div class="card-info">
-                <div class="card-date">2026-08-03<span class="latest-badge">LATEST</span></div>
-                <div class="card-weekday">星期一</div>
-            </div>
-            <div class="card-link">点击查看 →</div>
-        </a>        <a href="report_20260730.html" class="report-card">
-            <div class="card-info">
-                <div class="card-date">2026-07-30</div>
-                <div class="card-weekday">星期四</div>
-            </div>
-            <div class="card-link">查看 →</div>
-        </a>        <a href="report_20260729.html" class="report-card">
-            <div class="card-info">
-                <div class="card-date">2026-07-29</div>
-                <div class="card-weekday">星期三</div>
-            </div>
-            <div class="card-link">查看 →</div>
-        </a>        <a href="report_20260728.html" class="report-card">
-            <div class="card-info">
-                <div class="card-date">2026-07-28</div>
-                <div class="card-weekday">星期二</div>
-            </div>
-            <div class="card-link">查看 →</div>
-        </a>        <a href="report_20260727.html" class="report-card">
-            <div class="card-info">
-                <div class="card-date">2026-07-27</div>
-                <div class="card-weekday">星期一</div>
-            </div>
-            <div class="card-link">查看 →</div>
-        </a>        <a href="report_20260726.html" class="report-card">
-            <div class="card-info">
-                <div class="card-date">2026-07-26</div>
-                <div class="card-weekday">星期日</div>
-            </div>
-            <div class="card-link">查看 →</div>
-        </a>        <a href="report_20260725.html" class="report-card">
-            <div class="card-info">
-                <div class="card-date">2026-07-25</div>
-                <div class="card-weekday">星期六</div>
-            </div>
-            <div class="card-link">查看 →</div>
-        </a>
+            <a href="report_20260803.html" class="report-card latest">
+                <div class="card-info">
+                    <div class="card-date">2026-08-03<span class="latest-badge">LATEST</span></div>
+                    <div class="card-weekday">星期一</div>
+                </div>
+                <div class="card-link">点击查看 →</div>
+            </a>
+            <a href="report_20260730.html" class="report-card">
+                <div class="card-info">
+                    <div class="card-date">2026-07-30</div>
+                    <div class="card-weekday">星期四</div>
+                </div>
+                <div class="card-link">查看 →</div>
+            </a>
+            <a href="report_20260729.html" class="report-card">
+                <div class="card-info">
+                    <div class="card-date">2026-07-29</div>
+                    <div class="card-weekday">星期三</div>
+                </div>
+                <div class="card-link">查看 →</div>
+            </a>
+            <a href="report_20260728.html" class="report-card">
+                <div class="card-info">
+                    <div class="card-date">2026-07-28</div>
+                    <div class="card-weekday">星期二</div>
+                </div>
+                <div class="card-link">查看 →</div>
+            </a>
+            <a href="report_20260727.html" class="report-card">
+                <div class="card-info">
+                    <div class="card-date">2026-07-27</div>
+                    <div class="card-weekday">星期一</div>
+                </div>
+                <div class="card-link">查看 →</div>
+            </a>
+            <a href="report_20260726.html" class="report-card">
+                <div class="card-info">
+                    <div class="card-date">2026-07-26</div>
+                    <div class="card-weekday">星期日</div>
+                </div>
+                <div class="card-link">查看 →</div>
+            </a>
+            <a href="report_20260725.html" class="report-card">
+                <div class="card-info">
+                    <div class="card-date">2026-07-25</div>
+                    <div class="card-weekday">星期六</div>
+                </div>
+                <div class="card-link">查看 →</div>
+            </a>
+
     </div>
   </div>
-
   <div class="comments-section">
     <div class="comments-title">💬 评论区</div>
     <div class="comments-desc">登录GitHub账号即可评论，支持Markdown和表情回应</div>
@@ -540,13 +215,12 @@ body::after {
       async>
     </script>
   </div>
-
   <footer class="footer">
     <div class="footer-links">
       <a href="https://ts-dinglilu.github.io/">主页</a>
       <a href="https://github.com/TS-dinglilu">GitHub</a>
     </div>
-    <p>// 校园新闻日报 · 每日自动更新</p>
+    <p>// 学校新闻日报 · 每日自动更新</p>
   </footer>
 </div>
 </body>
