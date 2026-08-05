@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>校园新闻日报 2026-08-06</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v9.0 圆润Q弹生动版
+   v9.0改进:
+   - 圆润: 增大border-radius, 全面弧形过渡
+   - Q弹: 弹性cubic-bezier缓动, 微缩放悬停效果
+   - 生动: 入场动画, 脉冲发光, 流动渐变边框
+   - 动态: 滚动渐入, 悬停弹跳, 光晕扩散
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --bg: #0a0e1a;
+  --bg-elev: #111726;
+  --card: rgba(20, 28, 48, 0.55);
+  --card-solid: rgba(20, 28, 48, 0.75);
+  --card-hover: rgba(20, 28, 48, 0.8);
+  --border: rgba(0, 212, 255, 0.12);
+  --border-hover: rgba(0, 212, 255, 0.4);
+  --text: #f0f4f8;
+  --text-dim: #c8d4e8;
+  --text-faint: #90a0c0;
+  --accent: #00d4ff;
+  --accent-warm: #ffb347;
+  --accent-green: #22d3a0;
+  --accent-purple: #818cf8;
+  --accent-pink: #f87171;
+  --accent-teal: #14b8a6;
+  --accent-orange: #fb923c;
+  --success: #22d3a0;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #00d4ff;
+  --grid-line: rgba(0, 212, 255, 0.04);
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.25);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.35);
+  --shadow-lg: 0 16px 56px rgba(0,0,0,0.45);
+  --shadow-glow: 0 0 24px rgba(0, 212, 255, 0.12);
+  --shadow-glow-hover: 0 0 40px rgba(0, 212, 255, 0.25);
+  --radius: 24px;
+  --radius-sm: 18px;
+  --radius-xs: 12px;
+  --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: rgba(0, 212, 255, 0.3); color: #ffffff; }
+
+p { margin-bottom: 12px; color: var(--text-dim); line-height: 1.8; }
+p:last-child { margin-bottom: 0; }
+strong, b { color: var(--accent); font-weight: 600; }
+a { color: var(--accent); text-decoration: none; transition: color 0.3s var(--smooth), opacity 0.3s var(--smooth); }
+a:hover { color: #5ee5ff; text-decoration: underline; text-underline-offset: 2px; }
+ul, ol { margin: 12px 0; padding-left: 22px; color: var(--text-dim); }
+li { margin-bottom: 6px; line-height: 1.8; }
+li::marker { color: var(--accent); }
+em, i { color: var(--text); font-style: italic; }
+small { color: var(--text-faint); font-size: 0.85em; }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.10) 0%, rgba(129, 140, 248, 0.05) 50%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(50px);
+  animation: floatOrb 20s ease-in-out infinite;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  33% { transform: translate(-40px, 30px) scale(1.05); opacity: 0.8; }
+  66% { transform: translate(30px, -20px) scale(0.95); opacity: 0.7; }
+}
+
+.container { max-width: 960px; margin: 0 auto; padding: 40px 28px 80px; position: relative; z-index: 1; }
+.container-wide { max-width: 1100px; }
+.container-narrow { max-width: 760px; }
+
+/* ============================================================
+   Header — 圆润渐变 + 入场动画
+   ============================================================ */
+.header, .report-header {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.14) 0%, rgba(129, 140, 248, 0.12) 50%, rgba(34, 211, 160, 0.10) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 44px 36px;
+  margin: 0 auto 48px;
+  max-width: 960px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+  animation: fadeInDown 0.8s var(--spring) both;
+}
+
+.header::before, .report-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-purple), var(--accent-green));
+  background-size: 200% 100%;
+  animation: gradientFlow 6s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.header h1, .report-header h1 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.03em;
+  margin-bottom: 14px;
+  text-shadow: 0 0 28px rgba(0, 212, 255, 0.5), 0 0 56px rgba(0, 212, 255, 0.25);
+  line-height: 1.3;
+}
+
+.header .subtitle, .report-header .subtitle {
+  color: var(--text-dim);
+  font-size: 1.02rem;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: 0.03em;
+}
+
+.header .date, .report-header .date,
+.header .date-badge, .report-header .date-badge {
+  display: inline-block;
+  background: rgba(0, 212, 255, 0.14);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  color: var(--accent);
+  padding: 8px 24px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.4s var(--bounce);
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.header .date:hover, .report-header .date:hover,
+.header .date-badge:hover, .report-header .date-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.2); }
+  50% { box-shadow: 0 0 16px 4px rgba(0, 212, 255, 0.15); }
+}
+
+.header .meta, .report-header .meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+.header .meta span, .report-header .meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header { text-align: center; }
+
+/* ============================================================
+   Back Links + Nav
+   ============================================================ */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  padding: 10px 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.4s var(--bounce);
+  backdrop-filter: blur(10px);
+}
+
+.back-link:hover {
+  color: var(--accent);
+  border-color: var(--border-hover);
+  background: var(--card-hover);
+  text-decoration: none;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.15);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 24px 0 40px;
+  padding: 14px 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(10px);
+}
+
+.nav-links a {
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.3s var(--bounce);
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+  background: rgba(0, 212, 255, 0.14);
+  border-color: var(--border-hover);
+  text-decoration: none;
+  transform: translateY(-1px) scale(1.05);
+}
+
+.nav-toc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  margin: 0 0 48px;
+  backdrop-filter: blur(10px);
+}
+
+.nav-toc .toc-title { color: var(--accent); font-size: 1rem; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.03em; }
+.nav-toc ol, .nav-toc ul { list-style: none; padding-left: 0; margin: 0; }
+.nav-toc li { padding: 4px 0; }
+.nav-toc a { color: var(--text-dim); font-size: 0.9rem; transition: all 0.3s var(--smooth); }
+.nav-toc a:hover { color: var(--accent); text-decoration: none; padding-left: 4px; }
+
+/* ============================================================
+   Section Titles — h2 / .section-title (Cyan) - 圆润+流动
+   ============================================================ */
+h2, .section-title {
+  color: #00d4ff;
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin: 0 0 24px;
+  padding: 14px 20px 14px 18px;
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 212, 255, 0.02) 100%);
+  border-left: 4px solid var(--accent);
+  border-top: 1px solid rgba(0, 212, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.25);
+  border-radius: 0 16px 16px 0;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  line-height: 1.4;
+  transition: all 0.4s var(--bounce);
+}
+
+h2:hover, .section-title:hover {
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.05) 100%);
+  transform: translateX(4px);
+  box-shadow: 0 4px 24px rgba(0, 212, 255, 0.15);
+}
+
+.section-title .emoji, h2 .emoji { font-size: 1.3rem; line-height: 1; flex-shrink: 0; }
+
+.section-title .num, h2 .num,
+.section-title .num-badge, h2 .num-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  background-size: 200% 200%;
+  color: #0a0e1a;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+  flex-shrink: 0;
+  margin-left: auto;
+  animation: gradientFlow 5s ease infinite;
+}
+
+.section-title a, h2 a { color: inherit; }
+.section-title a:hover { color: #5ee5ff; text-decoration: none; }
+
+/* ============================================================
+   Sections (.section) — with top gradient bar
+   ============================================================ */
+.section {
+  margin: 56px 0;
+  position: relative;
+  padding: 0;
+  scroll-margin-top: 24px;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 50%, var(--accent-green) 100%);
+  border-radius: 999px;
+  opacity: 0.85;
+}
+
+.section:first-of-type { margin-top: 0; }
+.section:first-of-type::before { display: none; }
+.section > h2:first-child, .section > .section-title:first-child { margin-top: 0; }
+
+/* ============================================================
+   H3 Sub-titles — Purple
+   ============================================================ */
+h3 {
+  color: #c4b5fd;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 36px 0 14px;
+  padding: 8px 0 8px 14px;
+  border-left: 3px solid #818cf8;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  transition: all 0.3s var(--bounce);
+}
+
+h3:hover { border-left-width: 5px; padding-left: 16px; color: #d4c5ff; }
+
+h3:first-child { margin-top: 0; }
+h3 a { color: inherit; }
+h3 a:hover { color: #c7d0ff; text-decoration: none; }
+
+/* ============================================================
+   H4 Minor Headings — Amber
+   ============================================================ */
+h4 {
+  color: #fcd34d;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 24px 0 10px;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  border: none;
+  transition: all 0.3s var(--bounce);
+}
+
+h4:hover { transform: translateX(3px); }
+
+h4:first-child { margin-top: 0; }
+h4 a { color: inherit; }
+h4 a:hover { color: #fde68a; text-decoration: none; }
+
+h5 { color: var(--text); font-size: 0.9rem; font-weight: 600; margin: 16px 0 8px; }
+h6 { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; margin: 14px 0 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ============================================================
+   Cards (.card) — Q弹悬停 + 入场动画
+   ============================================================ */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  margin: 16px 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.6s var(--spring) both;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: var(--card-hover);
+  border-color: var(--border-hover);
+  border-left-color: var(--accent);
+  box-shadow: var(--shadow-md), var(--shadow-glow-hover);
+}
+
+.card-title { color: var(--accent); font-size: 1.08rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 0.02em; line-height: 1.4; }
+.card-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.card-content { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+.card-content p { margin-bottom: 8px; }
+
+/* ============================================================
+   Job Cards (.job-card) — Green + Q弹
+   ============================================================ */
+.job-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-green);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  margin: 16px 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.6s var(--spring) both;
+}
+
+.job-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: var(--card-hover);
+  border-color: rgba(34, 211, 160, 0.4);
+  border-left-color: var(--accent-green);
+  box-shadow: var(--shadow-md), 0 0 40px rgba(34, 211, 160, 0.12);
+}
+
+.job-card .job-title { color: var(--accent-green); font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
+.job-card .job-title a { color: inherit; }
+.job-card .job-title a:hover { color: #4ee9b8; text-decoration: none; }
+.job-card .job-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.job-card .job-meta span { display: inline-flex; align-items: center; gap: 4px; }
+.job-card .job-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+
+/* ============================================================
+   News Items (.news-item) — Cyan + Q弹
+   ============================================================ */
+.news-item {
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 12px 0;
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.5s var(--spring) both;
+}
+
+.news-item:hover {
+  transform: translateY(-3px) scale(1.01);
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--border-hover);
+  border-left-color: var(--accent);
+  box-shadow: var(--shadow-sm), var(--shadow-glow-hover);
+}
+
+.news-item .news-title { color: var(--accent); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+.news-item .news-title a { color: inherit; }
+.news-item .news-title a:hover { color: #5ee5ff; text-decoration: none; }
+.news-item .news-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.news-item .news-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+.news-item .badge, .news-item .tag { margin-right: 6px; }
+
+/* ============================================================
+   Stats Grid (.stats-grid / .stat-box)
+   ============================================================ */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0 28px; }
+
+.stat-box {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(20, 28, 48, 0.6) 100%);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px 18px;
+  text-align: center;
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.5s var(--spring) both;
+}
+
+.stat-box:hover { transform: translateY(-5px) scale(1.03); box-shadow: var(--shadow-md), var(--shadow-glow-hover); }
+
+.stat-box .num { display: block; font-size: 1.8rem; font-weight: 800; color: var(--accent); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; text-shadow: 0 0 16px rgba(0, 212, 255, 0.3); }
+.stat-box .label { display: block; font-size: 0.88rem; color: var(--text-dim); font-weight: 500; margin-bottom: 4px; }
+.stat-box .sub { display: block; font-size: 0.78rem; color: var(--text-faint); }
+
+/* ============================================================
+   Tables
+   ============================================================ */
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); -webkit-overflow-scrolling: touch; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; overflow: hidden; }
+th { background: linear-gradient(135deg, rgba(0, 212, 255, 0.20) 0%, rgba(0, 212, 255, 0.08) 100%); color: var(--accent); font-weight: 700; text-align: left; padding: 14px 16px; border-bottom: 2px solid rgba(0, 212, 255, 0.3); letter-spacing: 0.03em; white-space: nowrap; }
+.table-wrapper { overflow-x: auto; margin: 20px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); -webkit-overflow-scrolling: touch; }
+td { padding: 12px 16px; color: var(--text-dim); border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); vertical-align: top; }
+td:last-child { border-right: none; }
+th { border-right: 1px solid rgba(0, 212, 255, 0.15); }
+th:last-child { border-right: none; }
+table tbody tr:nth-child(odd) td { background: rgba(0, 212, 255, 0.04); }
+table tbody tr:nth-child(even) td { background: rgba(0, 212, 255, 0.08); }
+table tbody tr { transition: background 0.3s var(--smooth); }
+table tbody tr:hover td { background: rgba(0, 212, 255, 0.16); color: var(--text); }
+table tbody tr:last-child td { border-bottom: none; }
+.salary-table th { background: linear-gradient(135deg, rgba(34, 211, 160, 0.18) 0%, rgba(34, 211, 160, 0.08) 100%); color: var(--accent-green); border-bottom-color: rgba(34, 211, 160, 0.3); }
+.salary-table td strong { color: var(--accent-green); }
+.summary-table th { background: linear-gradient(135deg, rgba(129, 140, 248, 0.18) 0%, rgba(129, 140, 248, 0.08) 100%); color: #a5b4fc; border-bottom-color: rgba(129, 140, 248, 0.3); }
+.summary-table td:first-child { color: var(--text); font-weight: 500; }
+
+/* ============================================================
+   Salary Grid
+   ============================================================ */
+.salary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+.salary-item { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent-green); border-radius: var(--radius-sm); padding: 14px 16px; transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth); position: relative; backdrop-filter: blur(8px); animation: fadeInUp 0.5s var(--spring) both; }
+.salary-item:hover { transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-md), 0 0 32px rgba(34, 211, 160, 0.12); border-color: rgba(34, 211, 160, 0.4); border-left-color: var(--accent-green); }
+.salary-item .level { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 6px; letter-spacing: 0.02em; }
+.salary-item .amount { font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 700; color: var(--accent-green); margin-bottom: 4px; line-height: 1.3; }
+.salary-item .note { font-size: 0.78rem; color: var(--text-faint); line-height: 1.4; }
+@media (max-width: 600px) { .salary-grid { grid-template-columns: 1fr; } .salary-item { padding: 12px 14px; } .salary-item .amount { font-size: 1.05rem; } }
+
+/* ============================================================
+   Badges
+   ============================================================ */
+.badge { display: inline-block; padding: 3px 10px; font-size: 0.78rem; font-weight: 600; border-radius: 999px; background: rgba(0, 212, 255, 0.12); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.3); letter-spacing: 0.03em; line-height: 1.5; vertical-align: middle; margin-right: 4px; transition: all 0.3s var(--bounce); }
+.badge:hover { transform: scale(1.08); }
+.badge.hot, .badge-hot { background: linear-gradient(135deg, rgba(248, 113, 113, 0.2), rgba(251, 146, 60, 0.2)); color: #fca5a5; border-color: rgba(248, 113, 113, 0.5); }
+.badge.new, .badge-new { background: rgba(34, 211, 160, 0.18); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.45); }
+.badge.warn, .badge-warn { background: rgba(251, 191, 36, 0.16); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-high { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+.badge-mid { background: rgba(251, 146, 60, 0.14); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.4); }
+.badge-low { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+.badge-purple { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.4); }
+
+/* ============================================================
+   Tags
+   ============================================================ */
+.tag { display: inline-block; padding: 3px 10px; font-size: 0.78rem; font-weight: 500; border-radius: 999px; background: rgba(168, 184, 208, 0.1); color: var(--text-dim); border: 1px solid var(--border); margin: 0 4px 4px 0; letter-spacing: 0.02em; line-height: 1.5; vertical-align: middle; transition: all 0.3s var(--bounce); }
+.tag:hover { transform: scale(1.06); }
+.tag.green, .tag-green { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag.purple, .tag-purple { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.3); }
+.tag.orange, .tag-orange { background: rgba(251, 146, 60, 0.14); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.3); }
+.tag.red, .tag-red { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag.pink, .tag-pink { background: rgba(248, 113, 113, 0.12); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag.teal, .tag-teal { background: rgba(20, 184, 166, 0.12); color: var(--accent-teal); border-color: rgba(20, 184, 166, 0.3); }
+.tag.amber, .tag-amber { background: rgba(251, 191, 36, 0.12); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag.accent, .tag-accent { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+.tag-byd { background: rgba(0, 153, 204, 0.18); color: #4dabf5; border-color: rgba(0, 153, 204, 0.35); }
+.tag-chery { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-geely { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.3); }
+.tag-faw { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-vw { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-tesla { background: rgba(248, 113, 113, 0.18); color: #fca5a5; border-color: rgba(248, 113, 113, 0.4); }
+.tag-other { background: rgba(168, 184, 208, 0.12); color: var(--text-dim); border-color: var(--border); }
+
+/* ============================================================
+   Pills
+   ============================================================ */
+.pill { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; font-size: 0.8rem; font-weight: 500; border-radius: 999px; background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.25); margin: 0 6px 6px 0; letter-spacing: 0.02em; line-height: 1.5; vertical-align: middle; transition: all 0.3s var(--bounce); }
+.pill:hover { transform: scale(1.05); }
+.pill-green { background: rgba(34, 211, 160, 0.1); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.25); }
+.pill-purple { background: rgba(129, 140, 248, 0.1); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.25); }
+.pill-orange { background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.25); }
+.pill-pink { background: rgba(248, 113, 113, 0.1); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.25); }
+.pill-amber { background: rgba(251, 191, 36, 0.1); color: #fbbf24; border-color: rgba(251, 191, 36, 0.25); }
+.pill-teal { background: rgba(20, 184, 166, 0.1); color: var(--accent-teal); border-color: rgba(20, 184, 166, 0.25); }
+.pill-gray { background: rgba(168, 184, 208, 0.1); color: var(--text-dim); border-color: var(--border); }
+.pill-location { background: rgba(0, 212, 255, 0.1); color: var(--accent); border-color: rgba(0, 212, 255, 0.25); }
+.pill-salary { background: rgba(34, 211, 160, 0.1); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.25); }
+.pill-edu { background: rgba(129, 140, 248, 0.1); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.25); }
+.pill-type { background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.25); }
+
+/* ============================================================
+   Source Links
+   ============================================================ */
+.source-link { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; font-size: 0.8rem; font-weight: 500; border-radius: 999px; background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.3); margin: 4px 0; transition: all 0.4s var(--bounce); letter-spacing: 0.02em; }
+.source-link:hover { background: var(--accent); color: #0a0e1a; border-color: var(--accent); text-decoration: none; box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); transform: scale(1.05); }
+.source-link::before { content: '🔗'; font-size: 0.85em; }
+
+/* ============================================================
+   Discussion Items — Orange + Q弹
+   ============================================================ */
+.discussion { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent-orange); border-radius: var(--radius-sm); padding: 16px 20px; margin: 14px 0; transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth); backdrop-filter: blur(8px); animation: fadeInUp 0.5s var(--spring) both; }
+.discussion:hover { transform: translateY(-3px) scale(1.01); background: var(--card-hover); border-color: rgba(251, 146, 60, 0.4); border-left-color: var(--accent-orange); box-shadow: var(--shadow-md), 0 0 36px rgba(251, 146, 60, 0.1); }
+.discussion .discussion-title { color: var(--accent-orange); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+.discussion .discussion-title a { color: inherit; }
+.discussion .discussion-title a:hover { color: #fdba74; text-decoration: none; }
+.discussion .discussion-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.discussion-item { background: rgba(251, 146, 60, 0.05); border: 1px solid var(--border); border-left: 3px solid var(--accent-orange); border-radius: var(--radius-sm); padding: 12px 16px; margin: 10px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; }
+.discussion-item .discussion-author { color: var(--accent-orange); font-weight: 600; }
+.discussion-item .discussion-time { color: var(--text-faint); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
+
+/* ============================================================
+   Tip/Warning/Highlight/Info/Note Boxes
+   ============================================================ */
+.tip-box { background: rgba(34, 211, 160, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-green); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.tip-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(34, 211, 160, 0.1); }
+.tip-box .tip-title, .tip-box h4 { color: var(--accent-green); font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.tip-box .tip-title::before { content: '💡'; }
+.tip-box p:last-child { margin-bottom: 0; }
+.tip-box ul { margin: 8px 0 0; }
+.tip-box li { margin-bottom: 4px; }
+
+.warning-box { background: rgba(248, 113, 113, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-pink); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.warning-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(248, 113, 113, 0.1); }
+.warning-box .warning-title { color: var(--accent-pink); font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.warning-box .warning-title::before { content: '⚠️'; }
+.warning-box p:last-child { margin-bottom: 0; }
+
+.highlight-box { background: rgba(129, 140, 248, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-purple); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.highlight-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(129, 140, 248, 0.1); }
+.highlight-box .highlight-title { color: #a5b4fc; font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.highlight-box .highlight-title::before { content: '✨'; }
+.highlight-box p:last-child { margin-bottom: 0; }
+
+.info-box { background: rgba(129, 140, 248, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-purple); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.info-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(129, 140, 248, 0.1); }
+.info-box .info-title { color: #a5b4fc; font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.info-box .info-title::before { content: 'ℹ️'; }
+.info-box p:last-child { margin-bottom: 0; }
+
+.note-box { background: rgba(0, 212, 255, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.note-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1); }
+.note-box .note-title { color: var(--accent); font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; }
+
+.progress-bar { width: 100%; height: 10px; background: rgba(0, 212, 255, 0.08); border-radius: 999px; overflow: hidden; margin: 8px 0; border: 1px solid var(--border); }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-purple)); border-radius: 999px; transition: width 0.5s var(--smooth); }
+.progress-fill.green { background: linear-gradient(90deg, var(--accent-green), var(--accent-teal)); }
+.progress-fill.orange { background: linear-gradient(90deg, var(--accent-orange), var(--accent-warm)); }
+.progress-fill.pink { background: linear-gradient(90deg, var(--accent-pink), var(--accent-orange)); }
+.progress-fill.purple { background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink)); }
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-accent { color: var(--accent); }
+.text-green { color: var(--accent-green); }
+.text-purple { color: #a5b4fc; }
+.text-orange { color: var(--accent-orange); }
+.text-pink { color: var(--accent-pink); }
+.text-amber { color: #fbbf24; }
+.text-teal { color: var(--accent-teal); }
+.text-dim { color: var(--text-dim); }
+.text-faint { color: var(--text-faint); }
+.text-white { color: #ffffff; }
+.text-sm { font-size: 0.85rem; }
+.text-lg { font-size: 1.1rem; }
+.text-xl { font-size: 1.3rem; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.mt-0 { margin-top: 0; } .mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 24px; }
+.mb-0 { margin-bottom: 0; } .mb-1 { margin-bottom: 8px; } .mb-2 { margin-bottom: 16px; } .mb-3 { margin-bottom: 24px; }
+.flex { display: flex; } .flex-wrap { flex-wrap: wrap; } .flex-center { display: flex; align-items: center; justify-content: center; }
+.gap-1 { gap: 8px; } .gap-2 { gap: 16px; }
+.hidden { display: none !important; } .block { display: block; } .inline-block { display: inline-block; }
+.divider { height: 1px; background: var(--border); margin: 24px 0; border: none; }
+.muted { color: var(--text-faint); }
+
+/* ============================================================
+   hr, blockquote, code, pre
+   ============================================================ */
+hr { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 32px 0; }
+blockquote { margin: 16px 0; padding: 12px 18px; background: rgba(0, 212, 255, 0.05); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--text-dim); font-style: italic; }
+blockquote p { margin-bottom: 0; }
+blockquote footer, blockquote cite { display: block; margin-top: 8px; font-size: 0.85rem; color: var(--text-faint); font-style: normal; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 0.88em; background: rgba(0, 212, 255, 0.1); color: var(--accent); padding: 2px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.15); }
+pre { background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; overflow-x: auto; margin: 16px 0; box-shadow: var(--shadow-sm); }
+pre code { background: transparent; color: var(--text-dim); padding: 0; border: none; font-size: 0.88em; line-height: 1.6; }
+
+/* ============================================================
+   Giscus / Comments
+   ============================================================ */
+.comments-section { margin: 56px 0 32px; padding: 28px 24px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); position: relative; backdrop-filter: blur(10px); }
+.comments-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent-purple), var(--accent), var(--accent-green)); background-size: 200% 100%; border-radius: var(--radius) var(--radius) 0 0; animation: gradientFlow 6s ease infinite; }
+.comments-title { color: #a5b4fc; font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
+.comments-desc { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 16px; }
+.giscus { margin-top: 16px; }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+footer, .footer { margin-top: 56px; padding: 28px 24px; text-align: center; color: var(--text-faint); font-size: 0.85rem; border-top: 1px solid var(--border); letter-spacing: 0.02em; }
+footer p, .footer p { margin-bottom: 8px; }
+footer a, .footer a { color: var(--text-dim); }
+footer a:hover, .footer a:hover { color: var(--accent); }
+.footer-meta { margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-faint); }
+
+/* ============================================================
+   Scroll-to-top button — Q弹
+   ============================================================ */
+.scroll-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: var(--card-solid); border: 1px solid var(--border-hover); border-radius: 50%; color: var(--accent); font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.3s var(--smooth), transform 0.4s var(--bounce), background 0.3s var(--smooth); backdrop-filter: blur(10px); }
+.scroll-top.visible { opacity: 1; pointer-events: auto; }
+.scroll-top:hover { background: var(--accent); color: #0a0e1a; transform: translateY(-4px) scale(1.1); box-shadow: 0 4px 24px rgba(0, 212, 255, 0.4); }
+.scroll-top:active { transform: translateY(-2px) scale(0.95); }
+
+/* ============================================================
+   Entrance Animations
+   ============================================================ */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 768px) { .nav-links { flex-direction: column; align-items: flex-start; } .stats-grid { grid-template-columns: 1fr 1fr; } }
+
+@media (max-width: 600px) {
+  body { font-size: 14px; line-height: 1.75; }
+  .container { padding: 24px 16px 60px; }
+  .header, .report-header { padding: 28px 20px; margin-bottom: 32px; border-radius: 20px; }
+  .header h1, .report-header h1 { font-size: 1.5rem; }
+  .header .subtitle, .report-header .subtitle { font-size: 0.9rem; }
+  h2, .section-title { font-size: 1.2rem; padding: 10px 14px 10px 12px; }
+  h3 { font-size: 1rem; }
+  h4 { font-size: 0.9rem; }
+  .section { margin: 40px 0; }
+  .card, .job-card, .news-item, .discussion, .tip-box, .warning-box, .highlight-box, .info-box, .note-box { padding: 14px 16px; border-radius: 14px; }
+  .card:hover, .job-card:hover, .news-item:hover, .discussion:hover { transform: none; }
+  th, td { padding: 9px 10px; font-size: 0.82rem; }
+  .nav-links { padding: 10px 12px; border-radius: 14px; }
+  .nav-links a { font-size: 0.8rem; padding: 5px 10px; }
+  .comments-section { padding: 20px 16px; border-radius: 20px; }
+  footer, .footer { padding: 20px 16px; }
+  .report-header .meta { gap: 10px; font-size: 0.8rem; }
+  .badge, .tag, .pill { font-size: 0.72rem; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-box .num { font-size: 1.5rem; }
+  .scroll-top { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+}
+
+/* ============================================================
+   Icons
+   ============================================================ */
+.icon { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 10px; font-size: 1.1rem; flex-shrink: 0; line-height: 1; }
+.icon-blue, .icon.icon-blue { background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.3); }
+.icon-green, .icon.icon-green { background: rgba(34, 211, 160, 0.15); border: 1px solid rgba(34, 211, 160, 0.3); }
+.icon-orange, .icon.icon-orange { background: rgba(251, 146, 60, 0.15); border: 1px solid rgba(251, 146, 60, 0.3); }
+.icon-purple, .icon.icon-purple { background: rgba(129, 140, 248, 0.15); border: 1px solid rgba(129, 140, 248, 0.3); }
+.icon-teal, .icon.icon-teal { background: rgba(20, 184, 166, 0.15); border: 1px solid rgba(20, 184, 166, 0.3); }
+.icon-pink, .icon.icon-pink { background: rgba(248, 113, 113, 0.15); border: 1px solid rgba(248, 113, 113, 0.3); }
+.icon-amber, .icon.icon-amber { background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.3); }
+.emoji { display: inline-block; font-size: 1.2rem; line-height: 1; vertical-align: middle; }
+
+/* ============================================================
+   Priority / Status indicators
+   ============================================================ */
+.priority-high, .priority-hot { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+.priority-mid, .priority-medium { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(251, 146, 60, 0.15); color: var(--accent-orange); border: 1px solid rgba(251, 146, 60, 0.3); }
+.priority-low, .priority-normal { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+
+.match-score { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+.match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+
+/* ============================================================
+   Grid layouts
+   ============================================================ */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 16px 0; }
+.card-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 16px 0; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+
+/* ============================================================
+   Flexbox helpers
+   ============================================================ */
+.flex-row { display: flex; flex-direction: row; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; align-items: flex-start; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 6px; } .gap-md { gap: 12px; } .gap-lg { gap: 20px; }
+.w-full { width: 100%; } .w-auto { width: auto; }
+
+/* ============================================================
+   Text size helpers
+   ============================================================ */
+.fs-xs { font-size: 0.75rem; } .fs-sm { font-size: 0.85rem; } .fs-md { font-size: 0.93rem; }
+.fs-lg { font-size: 1.1rem; } .fs-xl { font-size: 1.3rem; } .fs-2xl { font-size: 1.6rem; }
+
+/* ============================================================
+   Color helpers
+   ============================================================ */
+.text-success { color: var(--accent-green) !important; }
+.text-warning { color: #fbbf24 !important; }
+.text-danger { color: var(--accent-pink) !important; }
+.text-info { color: var(--accent) !important; }
+.text-muted { color: var(--text-faint) !important; }
+.text-dimmer { color: var(--text-dim) !important; }
+.text-bright { color: var(--text) !important; }
+.text-accent-green { color: var(--accent-green) !important; }
+.text-accent-orange { color: var(--accent-orange) !important; }
+.text-accent-purple { color: #a5b4fc !important; }
+.text-accent-pink { color: var(--accent-pink) !important; }
+.text-accent-teal { color: var(--accent-teal) !important; }
+
+/* ============================================================
+   Margin/Padding helpers
+   ============================================================ */
+.mt-4 { margin-top: 32px; } .mt-5 { margin-top: 40px; } .mt-6 { margin-top: 48px; }
+.mb-4 { margin-bottom: 32px; } .mb-5 { margin-bottom: 40px; } .mb-6 { margin-bottom: 48px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.p-0 { padding: 0; } .p-2 { padding: 16px; } .p-3 { padding: 24px; }
+.py-2 { padding-top: 16px; padding-bottom: 16px; }
+.px-2 { padding-left: 16px; padding-right: 16px; }
+
+/* ============================================================
+   Misc component styles
+   ============================================================ */
+.timeline-item { position: relative; padding-left: 24px; margin: 12px 0; }
+.timeline-item::before { content: ''; position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(0, 212, 255, 0.4); transition: transform 0.3s var(--bounce); }
+.timeline-item:hover::before { transform: scale(1.3); }
+.timeline-item::after { content: ''; position: absolute; left: 4px; top: 20px; bottom: -12px; width: 2px; background: var(--border); }
+.timeline-item:last-child::after { display: none; }
+
+.count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 8px; background: linear-gradient(135deg, var(--accent), var(--accent-purple)); color: #0a0e1a; font-size: 0.78rem; font-weight: 700; border-radius: 999px; font-family: 'JetBrains Mono', monospace; }
+
+mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent); padding: 1px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.2); }
+
+.emoji-list { list-style: none; padding-left: 0; }
+.emoji-list li { padding-left: 28px; position: relative; margin-bottom: 8px; }
+
+.separator { height: 2px; background: linear-gradient(90deg, transparent, var(--border-hover), transparent); margin: 32px 0; border: none; }
+
+.badge-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+
+.tag-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+
+@media print {
+  body { background: #ffffff; color: #000000; font-size: 12px; line-height: 1.6; }
+  body::before, body::after { display: none !important; }
+  .container { max-width: 100%; padding: 0; }
+  .header, .report-header { background: #f5f7fa; border: 1px solid #cccccc; box-shadow: none; break-inside: avoid; }
+  .header::before, .report-header::before { background: #006699; }
+  .header h1, .report-header h1 { color: #000000; text-shadow: none; }
+  .header .subtitle, .report-header .subtitle, .header .meta, .report-header .meta { color: #333333; }
+  .header .date, .report-header .date, .header .date-badge, .report-header .date-badge { background: #e0eef5; border-color: #006699; color: #006699; }
+  h2, .section-title { color: #006699; background: #e8f4fa; border-left-color: #006699; }
+  h3 { color: #4444aa; border-left-color: #6666cc; }
+  h4 { color: #aa6600; }
+  .section { margin: 24px 0; break-inside: avoid; }
+  .section::before { background: #006699; }
+  .card, .job-card, .news-item, .discussion, .tip-box, .warning-box, .highlight-box, .info-box, .note-box { background: #f9f9f9; border: 1px solid #cccccc; box-shadow: none; break-inside: avoid; }
+  .card:hover, .job-card:hover, .news-item:hover, .discussion:hover { transform: none; box-shadow: none; }
+  p, li, td, .card-content, .job-desc, .news-desc { color: #222222; }
+  a { color: #006699; text-decoration: underline; }
+  .source-link { background: #e0eef5; color: #006699; border-color: #006699; }
+  th { background: #e0eef5; color: #006699; border-bottom: 2px solid #006699; }
+  table tbody tr:nth-child(odd) td, table tbody tr:nth-child(even) td { background: #ffffff; }
+  table tbody tr:hover td { background: #f0f0f0; }
+  .back-link, .nav-links, .nav-toc, .comments-section, footer, .footer, .scroll-top { display: none; }
+  pre { background: #f5f5f5; border-color: #cccccc; }
+  pre code, code { color: #333333; background: #eeeeee; }
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- 报告头部 -->
+<div class="report-header">
+<h1>校园新闻日报</h1>
+<p class="subtitle">安徽工业大学 · 长春工程学院 · 徐州三中 · 大庙中心中学</p>
+<div class="date-badge">2026年8月6日 星期四</div>
+</div>
+
+<!-- 统计概览 -->
+<div class="stats-grid">
+<div class="stat-box">
+<div class="stat-num">4</div>
+<div class="stat-label">所学校/机构</div>
+</div>
+<div class="stat-box">
+<div class="stat-num">18</div>
+<div class="stat-label">条校园新闻</div>
+</div>
+<div class="stat-box">
+<div class="stat-num">10</div>
+<div class="stat-label">条全网热议</div>
+</div>
+<div class="stat-box">
+<div class="stat-num">5</div>
+<div class="stat-label">条重点机械院新闻</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 板块一：安徽工业大学机械工程学院（重点关注） -->
+<!-- ============================================================ -->
+<div class="section">
+<div class="section-title">安徽工业大学机械工程学院 <span class="tag red">重点关注</span></div>
+<p>安徽工业大学机械工程学院近期在产教融合、学科竞赛、校地合作等方面持续发力，多项工作取得显著成效。以下为近一周及近期重点新闻汇总。</p>
+
+<div class="card">
+<span class="date-badge">2026-07-31</span>
+<span class="tag red">重点关注</span>
+<h3>校领导率队赴黄山市歙县开展校地合作交流并访企拓岗</h3>
+<p><strong>亮点提示：</strong>副校长张世宏率队赴歙县，聚焦精密制造和新材料主导产业，推动校地深度合作，为学生社会实践基地授牌。</p>
+<p>7月29日至30日，校党委常委、副校长张世宏率队赴黄山市歙县，开展校地合作对接交流暨访企拓岗促就业专项行动，并专程看望慰问在当地参加暑期社会实践的学生和黄山市校友会校友代表。歙县县委书记熊志伟会见张世宏一行。双方围绕深化政产学研融合、完善协同创新机制、加速科技成果落地转化及人才联合培养等议题展开深入探讨，并重点就"两山"转化创新平台的建设路径、功能定位和运营模式交换了意见。张世宏还出席了2026年歙县经开区新材料产业技能提升培训班开班仪式并致辞，并为安徽冠瑞工业有限公司大学生社会实践基地授牌。<a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16246.htm" target="_blank">📎 查看原文</a></p>
+</div>
+
+<div class="card">
+<span class="date-badge">2026-07-28</span>
+<span class="tag red">重点关注</span>
+<h3>我院学子在第十九届"高教杯"全国大学生先进成图大赛中斩获13项大奖</h3>
+<p><strong>亮点提示：</strong>1200余所高校约53万名大学生参赛，我校机械类代表队荣获全国团体二等奖，展现了扎实的专业功底和创新能力。</p>
+<p>7月23日，第十九届"高教杯"全国大学生先进成图技术与产品信息建模创新大赛在长江大学圆满落幕。本届大赛规模创历史之最，吸引了全国1200余所高校的约53万名大学生参赛，最终约2.1万名选手晋级全国总决赛。我校派出的机械类代表队和水利类代表队共斩获13项国家级奖项。其中，机械类代表队荣获全国团体二等奖（全国排名第181位）、数字化创新设计团体二等奖、增材制造赛道团体三等奖；高奕睿同学获个人全能二等奖，陈耀、薛浩等7名同学获个人全能三等奖。本次大赛首次加入"逆向工程与创新设计"等前沿赛道，全面考察学生的成图技术、创新设计及AI应用能力。<a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16245.htm" target="_blank">📎 查看原文</a></p>
+</div>
+
+<div class="card">
+<span class="date-badge">2026-07-22</span>
+<span class="tag purple">教学管理</span>
+<h3>机械工程学院召开本科专业人才培养方案修订推进会</h3>
+<p>为进一步优化人才培养体系，提升教育教学质量，机械工程学院召开本科专业人才培养方案修订推进会，围绕专业课程设置、实践教学环节、产教融合路径等方面进行深入研讨和修订完善。</p>
+<p><a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16244.htm" target="_blank">📎 查看原文</a></p>
+</div>
+
+<div class="card">
+<span class="date-badge">2026-07-14</span>
+<span class="tag green">产教融合</span>
+<h3>深化产教融合 共育机械英才——与安徽日发纺织机械、三联泵业共建教学科研实践基地</h3>
+<p><strong>亮点提示：</strong>精准对接智能装备、泵阀装备两大区域优势制造产业，打通教学科研与产业实践融合通道。</p>
+<p>近日，安徽工业大学机械工程学院分别赴安徽日发纺织机械有限公司、三联泵业股份有限公司举行教学科研实践基地授牌仪式。学院师生团队先后走进两家企业生产车间、研发中心与检测实验室，实地观摩纺织智能装备、工业泵阀成套设备研发制造全流程。企业负责人表示亟需兼具理论功底与实操能力的机械设计人才，希望依托高校师资、科研平台资源，联合开展实习实训、课题攻关。此次共建精准对接智能装备、泵阀装备两大区域优势制造产业，补齐专业实践教学资源短板。<a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16236.htm" target="_blank">📎 查看原文</a></p>
+</div>
+
+<div class="card">
+<span class="date-badge">2026-07-10</span>
+<span class="tag purple">学术活动</span>
+<h3>机械工程学院举办"采石·铸新—智能制造"研究生学术论坛（2026年第三期）</h3>
+<p>机械工程学院举办2026年第三期"采石·铸新—智能制造"研究生学术论坛，为研究生提供学术交流平台，促进智能制造领域的学术探讨与创新思维碰撞。</p>
+<p><a class="source-link" href="https://jxgcxy.ahut.edu.cn/info/2597/16226.htm" target="_blank">📎 查看原文</a></p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 板块二：安徽工业大学（校级新闻） -->
+<!-- ============================================================ -->
+<div class="section">
+<div class="section-title">安徽工业大学（校级要闻）</div>
+
+<div class="news-item">
+<span class="date-badge">2026-08-03</span>
+<h4>校领导率队赴歙县开展校地合作对接交流</h4>
+<p>校领导率队赴歙县开展校地合作对接交流，深化政产学研融合，推动科技成果落地转化。</p>
+<a class="source-link" href="https://www.ahut.edu.cn/info/1002/28677.htm" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="news-item">
+<span class="date-badge">2026-08-03</span>
+<h4>校领导率队赴南京访企拓岗</h4>
+<p>校领导带队赴南京开展访企拓岗促就业专项行动，拓展毕业生就业渠道。</p>
+<a class="source-link" href="https://www.ahut.edu.cn/info/1002/28676.htm" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="news-item">
+<span class="date-badge">2026-07-30</span>
+<h4>我校学子在第十九届全国大学生先进成图技术与产品信息建模创新大赛中获佳绩</h4>
+<p>学校学子在全国大学生先进成图技术与产品信息建模创新大赛中斩获多项大奖，充分展现了勇于创新、追求卓越的精神风貌。</p>
+<a class="source-link" href="https://www.ahut.edu.cn/info/1002/28659.htm" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="news-item">
+<span class="date-badge">2026-07-26</span>
+<h4>我校荣获8项安徽省科学技术奖</h4>
+<p>安徽工业大学在安徽省科学技术奖评选中荣获8项奖项，体现了学校在科技创新方面的强劲实力。</p>
+<a class="source-link" href="https://www.ahut.edu.cn/info/1002/28637.htm" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="news-item">
+<span class="date-badge">2026-07-23</span>
+<h4>学校实现国家级重大工程和原创探索延续资助项目双突破</h4>
+<p>安徽工业大学在国家级重大工程和原创探索延续资助项目方面实现双突破，标志着学校科研实力迈上新台阶。</p>
+<a class="source-link" href="https://www.ahut.edu.cn/info/1002/28640.htm" target="_blank">📎 查看原文</a>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 板块三：长春工程学院 -->
+<!-- ============================================================ -->
+<div class="section">
+<div class="section-title">长春工程学院</div>
+<p>长春工程学院近期在党建工作、校园安全、干部培训及暑期社会实践等方面有序推进各项工作。</p>
+
+<div class="card">
+<span class="date-badge">2026-07-13</span>
+<span class="tag purple">党建动态</span>
+<h3>农工民主党长春工程学院总支部委员会第六次党员代表大会召开</h3>
+<p>7月10日，农工民主党长春工程学院总支部委员会第六次党员代表大会在学校第三会议室举行。学校党委副书记宋国玉，农工民主党长春市委专职副主委陈宁等出席会议。会议完成了换届选举工作，选举产生了新一届总支部委员会领导班子。</p>
+<a class="source-link" href="https://www.ccit.edu.cn/info/1007/10907.htm" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="card">
+<span class="date-badge">2026-07-11</span>
+<span class="tag green">校园安全</span>
+<h3>学校召开假期校园安全与防汛工作专题工作会</h3>
+<p>为深入贯彻落实吉林省委、省政府及吉林省教育厅关于全省高校暑期校园安全暨防汛工作的部署要求，7月8日下午，学校召开假期校园安全与防汛工作专题工作会。副校长韩威主持会议并布置相关工作，传达了上级部门关于暑期校园安全暨防汛工作的最新要求，分析了当前校园安全面临的形势及潜在风险。</p>
+<a class="source-link" href="https://www.ccit.edu.cn/info/1007/10906.htm" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="card">
+<span class="date-badge">2026-07-10</span>
+<span class="tag red">国家级荣誉</span>
+<h3>水利工程学院水利与水电教师党支部入选第五批"全国党建工作样板支部"培育创建单位</h3>
+<p>近日，教育部公布第五批新时代高校党建示范创建和质量创优工作遴选结果，我校水利工程学院水利与水电教师党支部入选"全国党建工作样板支部"培育创建单位。党支部现有党员19人，其中高级职称11人、博士9人，高知高能的党员结构为党建工作提供了有力支撑。</p>
+<a class="source-link" href="https://www.ccit.edu.cn/info/1007/10905.htm" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="card">
+<span class="date-badge">2026-07-07</span>
+<span class="tag purple">干部培训</span>
+<h3>学校组织开展树立和践行正确政绩观学习教育暨处级领导干部集中培训</h3>
+<p>7月4日至7日，学校举办树立和践行正确政绩观学习教育暨"铸魂赋能 强基提质"处级领导干部培训班。本次培训以个人自学、集中学习、交流研讨等相结合的形式开展，党委书记宋立军作开班动员讲话。</p>
+<a class="source-link" href="https://www.ccit.edu.cn/info/1007/10891.htm" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="card">
+<span class="date-badge">2026-07</span>
+<span class="tag green">社会实践</span>
+<h3>【学习强国】乡村振兴订单生赴舒兰开展暑期社会实践活动</h3>
+<p>长春工程学院乡村振兴订单生走出校园"小课堂"，走进乡村"大课堂"，赴舒兰开展暑期社会实践活动，通过了解家乡发展变化，增强服务乡村振兴的使命感和责任感。此外，能源动力工程学院也于7月20日至8月11日期间组织30余名实践团成员开展"同心振乡，共心传承"暑期社会实践活动。</p>
+<a class="source-link" href="https://www.ccit.edu.cn/info/1081/10893.htm" target="_blank">📎 查看原文</a>
+<a class="source-link" href="http://m.toutiao.com/group/7130487293269492265/" target="_blank">📎 查看原文</a>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 板块四：徐州市第三中学 -->
+<!-- ============================================================ -->
+<div class="section">
+<div class="section-title">徐州市第三中学</div>
+<p>徐州三中近期在法治教育、媒体关注、学科竞赛及校园文化建设等方面亮点频现。</p>
+
+<div class="card">
+<span class="date-badge">2026年</span>
+<span class="tag green">法治教育</span>
+<h3>成长好课堂第53讲 | 法治副校长徐瑶瑶开讲，筑牢校园反霸凌防护墙</h3>
+<p>徐州三中开展"成长好课堂"第53讲活动，法治副校长徐瑶瑶为师生带来反霸凌主题讲座，通过案例分析和互动交流，筑牢校园反霸凌防护墙，营造安全和谐的校园环境。</p>
+<a class="source-link" href="https://xz3z.m.30edu.com.cn/" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="card">
+<span class="date-badge">2026年</span>
+<span class="tag purple">媒体关注</span>
+<h3>徐州日报专题报道 | 新三中，正青春："轻负担、高品质"开启高质量发展新征程</h3>
+<p>《徐州日报》专题报道徐州三中"轻负担、高品质"的办学理念，展示新三中在教育教学改革、师资队伍建设、校园文化培育等方面的探索与成就，展现学校高质量发展的新面貌。</p>
+<a class="source-link" href="https://xz3z.m.30edu.com.cn/Article/d0c61ca7-ba23-4b17-9e8f-8031a0203034.shtml" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="card">
+<span class="date-badge">2026年</span>
+<span class="tag red">学科竞赛</span>
+<h3>喜报——祝贺我校学生在2026年徐州市中小学生实验能力大赛中获奖</h3>
+<p>2026年徐州市中小学生实验能力大赛圆满结束，徐州三中学子踊跃参与并取得佳绩。丁峰老师指导的姜宇轩同学在物理实验能力大赛中获得市二等奖，李露老师指导的学生也获得优异成绩，展现了学校在实验教学和科技创新方面的成果。</p>
+<a class="source-link" href="http://m.toutiao.com/group/7670427511553131043/" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="card">
+<span class="date-badge">2026年</span>
+<span class="tag green">校园文化</span>
+<h3>三中小记者探校记 | 食在三中，舌尖上的三中，藏着最踏实的幸福</h3>
+<p>徐州三中小记者团队开展探校系列活动，从"学在三中"到"食在三中"，用学生视角记录校园生活的点滴美好，展现了书香为伴的学习氛围和温暖踏实的校园餐饮服务。</p>
+<a class="source-link" href="https://xz3z.m.30edu.com.cn/Article/80389529-8d8e-4b35-ab99-9b312f9d600a.shtml" target="_blank">📎 查看原文</a>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 板块五：徐州市大庙中心中学 -->
+<!-- ============================================================ -->
+<div class="section">
+<div class="section-title">徐州市大庙中心中学</div>
+<p>大庙中心中学近期在家校共育、学生情况摸排等方面开展相关工作，持续关注学生健康成长。</p>
+
+<div class="news-item">
+<span class="date-badge">2026年</span>
+<h4>2025-2026学年度第二学期全体学生情况调查表</h4>
+<p>为更好帮助孩子健康成长，顺利完成初中学业，学校对全体学生基本情况进行摸排，以利于学校根据学生实际情况做出更科学的帮扶安排，体现了学校因材施教、关爱每一位学生的教育理念。</p>
+<a class="source-link" href="https://www.wjx.cn/xz/351231388.aspx" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="news-item">
+<span class="date-badge">2026年</span>
+<h4>2026年春期开学"护苗行动"家校共育问卷调查</h4>
+<p>为促进家校共育工作，了解同学们的开学前状态，更好地帮助学生适应2026年春期在校学习与生活，学校组织"护苗行动"家校共育问卷调查，搭建家校沟通桥梁。</p>
+<a class="source-link" href="https://www.wjx.cn/xz/350746147.aspx" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="news-item">
+<span class="date-badge">持续关注</span>
+<h4>大庙中学规范办学行为持续推进</h4>
+<p>此前，大庙中心中学因"家委会"收取补课费事件引发社会广泛关注，被《政风热线》栏目报道并责令退费。学校持续加强规范办学行为，严格遵守教育部关于禁止有偿补课的规定，维护良好教育生态。</p>
+<a class="source-link" href="http://3g.163.com/dy/article/G1S05NSP0536RFS3.html" target="_blank">📎 查看原文</a>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 板块六：全网热议讨论 -->
+<!-- ============================================================ -->
+<div class="section">
+<div class="section-title">全网热议讨论</div>
+<p>以下是知乎、微博、头条等平台关于上述学校的讨论热点，涵盖招生录取、学校评价、校园建设等话题。</p>
+
+<div class="discussion">
+<span class="tag red">热议</span>
+<h4>安工大投档线最高跨度近6万位次，录取通知书已发出</h4>
+<p>2026年安工大安徽省普通本科批次录取分数区间公布后引发热议。物理类007专业组（含人工智能英才班、电气工程等热门专业）录取分数583-607分，而005不限组最低分仅541分，位次相差近6万名。网友讨论"同一所学校分差如此之大"的现象，提醒考生关注专业组打包逻辑而非只看最低投档线。</p>
+<a class="source-link" href="http://m.toutiao.com/group/7670596898780119558/" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="discussion">
+<span class="tag green">关注</span>
+<h4>2026级安徽工业大学录取通知书已全部寄出</h4>
+<p>安工大2026级普通本科及专升本新生录取通知书已全部寄出（除新疆内高班考生外），首批1461份已踏上寄递行程。新生报到时间定于9月5日，网友纷纷晒出录取通知书，分享喜悦。</p>
+<a class="source-link" href="http://m.toutiao.com/group/7670017962945954330/" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="discussion">
+<span class="tag purple">评价</span>
+<h4>安徽工业大学怎么样？2026年口碑评价综合实力排名</h4>
+<p>掌上高考平台显示，安徽工业大学2026年综合实力全国排名第193名，是一所公办理工类普通本科院校，共有一级博士点5个、一级硕士点19个。网友评价学校工科实力较强，在安徽省内认可度较高。</p>
+<a class="source-link" href="https://m.gaokao.cn/gk-mb/128/69" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="discussion">
+<span class="tag purple">讨论</span>
+<h4>千万别来安徽工业大学？附2026全国排名及录取分数线</h4>
+<p>高考100平台发布安工大2026年排名及录取分数线分析，引发网友关于学校实力与报考性价比的讨论。学校作为省重点、双万计划公办本科院校，教育实力在行业内获得认可。</p>
+<a class="source-link" href="https://m.gk100.com/read_2984123156501.htm" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="discussion">
+<span class="tag green">评价</span>
+<h4>张雪峰谈长春工程学院：和211的差距对比、热门专业推荐</h4>
+<p>张雪峰老师评价长春工程学院是位于吉林省长春的卓越工程师、双万计划大学，创建于1951年，距今已有74年办学历史。王牌专业是电气工程及其自动化，2025年在河北物理组分数线583分，超本科线124分。网友讨论其与211高校的差距及性价比。</p>
+<a class="source-link" href="https://m.6617.com/p_334264585.html" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="discussion">
+<span class="tag purple">口碑</span>
+<h4>长春工程学院怎么样？2026年口碑评价综合实力排名</h4>
+<p>掌上高考平台显示，长春工程学院2026年综合实力全国排名第349名。有学生评价"学校机制健全，管理严格"，但住宿条件有待改善。逸夫图书馆和七教是学校亮点。整体口碑在吉林省内本科院校中较为突出。</p>
+<a class="source-link" href="https://m.gaokao.cn/gk-mb/128/394" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="discussion">
+<span class="tag red">热议</span>
+<h4>大庙中学违规收费事件引发社会广泛讨论</h4>
+<p>此前大庙中心中学初三年级"家委会"收取360元补课费事件被《政风热线》栏目曝光，引发社会广泛关注。教育部三令五申明令禁止有偿补课，校方相关负责人被追责并责令退费。网友热议家委会角色定位与学校规范办学问题。</p>
+<a class="source-link" href="http://3g.163.com/dy/article/G1S05NSP0536RFS3.html" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="discussion">
+<span class="tag green">关注</span>
+<h4>徐州三中"钱学森班"等你来</h4>
+<p>徐州三中"钱学森班"于2023年10月正式落户，得到钱学森班工作委员会和徐州市教育局大力支持。2025年新增科技特长生计划，招收95人，涵盖"钱学森班""e学习班"及南京大学"雏鹰计划"项目，引发家长和考生关注。</p>
+<a class="source-link" href="https://m.sohu.com/a/781321578_594272/" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="discussion">
+<span class="tag green">关注</span>
+<h4>徐州三中新校区建设最新消息</h4>
+<p>备受徐州市民关注的徐州三中新校区建设传来最新消息，学校还发起新校区教学楼和道路命名活动，汇聚智慧共创特色校园。纪委书记、副校长周强表示新城区校区建设完工后将在新校区进行高一军训。</p>
+<a class="source-link" href="https://m.sohu.com/a/731528406_594272/" target="_blank">📎 查看原文</a>
+</div>
+
+<div class="discussion">
+<span class="tag purple">招生</span>
+<h4>安工大2026年硕士研究生招生简章发布，拟招1725名</h4>
+<p>安徽工业大学2026年拟招收1725名左右硕士研究生（含退役大学生士兵专项计划），实际招生人数以教育部下达的招生计划为准。网友讨论各专业招生方向及报考策略。</p>
+<a class="source-link" href="http://m.toutiao.com/group/7559880250189857330/" target="_blank">📎 查看原文</a>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 板块七：信息来源汇总 -->
+<!-- ============================================================ -->
+<div class="section">
+<div class="section-title">信息来源汇总</div>
+
+<table style="width:100%; border-collapse:collapse; margin-top:16px;">
+<thead>
+<tr style="border-bottom: 2px solid var(--accent);">
+<th style="text-align:left; padding:12px; color:var(--accent);">来源名称</th>
+<th style="text-align:left; padding:12px; color:var(--accent);">链接</th>
+<th style="text-align:left; padding:12px; color:var(--accent);">日期</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid var(--border);">
+<td style="padding:10px;">安徽工业大学机械工程学院</td>
+<td style="padding:10px;"><a class="source-link" href="https://jxgcxy.ahut.edu.cn/xyxw.htm" target="_blank">📎 查看原文</a></td>
+<td style="padding:10px;">2026-07-31</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border);">
+<td style="padding:10px;">安徽工业大学门户网站</td>
+<td style="padding:10px;"><a class="source-link" href="https://www.ahut.edu.cn/index.htm" target="_blank">📎 查看原文</a></td>
+<td style="padding:10px;">2026-08-03</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border);">
+<td style="padding:10px;">长春工程学院官网</td>
+<td style="padding:10px;"><a class="source-link" href="https://www.ccit.edu.cn/" target="_blank">📎 查看原文</a></td>
+<td style="padding:10px;">2026-07-13</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border);">
+<td style="padding:10px;">长春工程学院就业信息网</td>
+<td style="padding:10px;"><a class="source-link" href="http://job.ccit.edu.cn/" target="_blank">📎 查看原文</a></td>
+<td style="padding:10px;">2026-07</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border);">
+<td style="padding:10px;">徐州市第三中学网校</td>
+<td style="padding:10px;"><a class="source-link" href="https://xz3z.m.30edu.com.cn/" target="_blank">📎 查看原文</a></td>
+<td style="padding:10px;">2026年</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border);">
+<td style="padding:10px;">大庙中学问卷调查</td>
+<td style="padding:10px;"><a class="source-link" href="https://www.wjx.cn/xz/351231388.aspx" target="_blank">📎 查看原文</a></td>
+<td style="padding:10px;">2026年</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border);">
+<td style="padding:10px;">今日头条 - 安工大投档线讨论</td>
+<td style="padding:10px;"><a class="source-link" href="http://m.toutiao.com/group/7670596898780119558/" target="_blank">📎 查看原文</a></td>
+<td style="padding:10px;">2026-07-29</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border);">
+<td style="padding:10px;">掌上高考 - 安工大口碑评价</td>
+<td style="padding:10px;"><a class="source-link" href="https://m.gaokao.cn/gk-mb/128/69" target="_blank">📎 查看原文</a></td>
+<td style="padding:10px;">2026年</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border);">
+<td style="padding:10px;">张雪峰评价长春工程学院</td>
+<td style="padding:10px;"><a class="source-link" href="https://m.6617.com/p_334264585.html" target="_blank">📎 查看原文</a></td>
+<td style="padding:10px;">2026年</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border);">
+<td style="padding:10px;">网易新闻 - 大庙中学违规收费</td>
+<td style="padding:10px;"><a class="source-link" href="http://3g.163.com/dy/article/G1S05NSP0536RFS3.html" target="_blank">📎 查看原文</a></td>
+<td style="padding:10px;">2026年</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border);">
+<td style="padding:10px;">搜狐 - 徐州三中钱学森班</td>
+<td style="padding:10px;"><a class="source-link" href="https://m.sohu.com/a/781321578_594272/" target="_blank">📎 查看原文</a></td>
+<td style="padding:10px;">2026年</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border);">
+<td style="padding:10px;">今日头条 - 安工大研究生招生</td>
+<td style="padding:10px;"><a class="source-link" href="http://m.toutiao.com/group/7559880250189857330/" target="_blank">📎 查看原文</a></td>
+<td style="padding:10px;">2026年</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- 提示框 -->
+<div class="tip-box">
+<p><strong>温馨提示：</strong>本报告由自动化系统每日早上5点（北京时间）自动采集生成，新闻来源以各学校官网及主流媒体平台为准。如需查看历史报告，请访问归档索引页。如对内容有疑问或建议，欢迎在下方评论区留言交流。</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- Giscus 评论区 -->
+<!-- ============================================================ -->
+<div class="section">
+<div class="section-title">评论区</div>
+<div style="margin-top:24px;">
+<script src="https://giscus.app/client.js"
+  data-repo="TS-dinglilu/TS-dinglilu.github.io"
+  data-repo-id="R_kgDOTjqaJQ"
+  data-category="Announcements"
+  data-category-id="DIC_kwDOTjqaJc4DCIL1"
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="top"
+  data-theme="dark_dimmed"
+  data-lang="zh-CN"
+  data-loading="lazy"
+  crossorigin="anonymous"
+  async>
+</script>
+</div>
+</div>
+
+</div>
+</body>
+</html>
