@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="description" content="无人机科研日报 - arXiv无人机论文热点与自动驾驶前沿">
+<meta property="og:title" content="无人机科研日报 2026-08-07">
+<meta property="og:description" content="arXiv无人机论文热点、自动驾驶前沿、IEEE期刊动态与全网技术讨论">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚁</text></svg>">
+<title>无人机科研日报 2026-08-07</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v9.0 圆润Q弹生动版
+   v9.0改进:
+   - 圆润: 增大border-radius, 全面弧形过渡
+   - Q弹: 弹性cubic-bezier缓动, 微缩放悬停效果
+   - 生动: 入场动画, 脉冲发光, 流动渐变边框
+   - 动态: 滚动渐入, 悬停弹跳, 光晕扩散
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --bg: #0a0e1a;
+  --bg-elev: #111726;
+  --card: rgba(20, 28, 48, 0.55);
+  --card-solid: rgba(20, 28, 48, 0.75);
+  --card-hover: rgba(20, 28, 48, 0.8);
+  --border: rgba(0, 212, 255, 0.12);
+  --border-hover: rgba(0, 212, 255, 0.4);
+  --text: #f0f4f8;
+  --text-dim: #c8d4e8;
+  --text-faint: #90a0c0;
+  --accent: #00d4ff;
+  --accent-warm: #ffb347;
+  --accent-green: #22d3a0;
+  --accent-purple: #818cf8;
+  --accent-pink: #f87171;
+  --accent-teal: #14b8a6;
+  --accent-orange: #fb923c;
+  --success: #22d3a0;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #00d4ff;
+  --grid-line: rgba(0, 212, 255, 0.04);
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.25);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.35);
+  --shadow-lg: 0 16px 56px rgba(0,0,0,0.45);
+  --shadow-glow: 0 0 24px rgba(0, 212, 255, 0.12);
+  --shadow-glow-hover: 0 0 40px rgba(0, 212, 255, 0.25);
+  --radius: 24px;
+  --radius-sm: 18px;
+  --radius-xs: 12px;
+  --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: rgba(0, 212, 255, 0.3); color: #ffffff; }
+
+p { margin-bottom: 12px; color: var(--text-dim); line-height: 1.8; }
+p:last-child { margin-bottom: 0; }
+strong, b { color: var(--accent); font-weight: 600; }
+a { color: var(--accent); text-decoration: none; transition: color 0.3s var(--smooth), opacity 0.3s var(--smooth); }
+a:hover { color: #5ee5ff; text-decoration: underline; text-underline-offset: 2px; }
+ul, ol { margin: 12px 0; padding-left: 22px; color: var(--text-dim); }
+li { margin-bottom: 6px; line-height: 1.8; }
+li::marker { color: var(--accent); }
+em, i { color: var(--text); font-style: italic; }
+small { color: var(--text-faint); font-size: 0.85em; }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.10) 0%, rgba(129, 140, 248, 0.05) 50%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(50px);
+  animation: floatOrb 20s ease-in-out infinite;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  33% { transform: translate(-40px, 30px) scale(1.05); opacity: 0.8; }
+  66% { transform: translate(30px, -20px) scale(0.95); opacity: 0.7; }
+}
+
+.container { max-width: 960px; margin: 0 auto; padding: 40px 28px 80px; position: relative; z-index: 1; }
+.container-wide { max-width: 1100px; }
+.container-narrow { max-width: 760px; }
+
+/* ============================================================
+   Header — 圆润渐变 + 入场动画
+   ============================================================ */
+.header, .report-header {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.14) 0%, rgba(129, 140, 248, 0.12) 50%, rgba(34, 211, 160, 0.10) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 44px 36px;
+  margin: 0 auto 48px;
+  max-width: 960px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+  animation: fadeInDown 0.8s var(--spring) both;
+}
+
+.header::before, .report-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-purple), var(--accent-green));
+  background-size: 200% 100%;
+  animation: gradientFlow 6s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.header h1, .report-header h1 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.03em;
+  margin-bottom: 14px;
+  text-shadow: 0 0 28px rgba(0, 212, 255, 0.5), 0 0 56px rgba(0, 212, 255, 0.25);
+  line-height: 1.3;
+}
+
+.header .subtitle, .report-header .subtitle {
+  color: var(--text-dim);
+  font-size: 1.02rem;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: 0.03em;
+}
+
+.header .date, .report-header .date,
+.header .date-badge, .report-header .date-badge {
+  display: inline-block;
+  background: rgba(0, 212, 255, 0.14);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  color: var(--accent);
+  padding: 8px 24px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.4s var(--bounce);
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.header .date:hover, .report-header .date:hover,
+.header .date-badge:hover, .report-header .date-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.2); }
+  50% { box-shadow: 0 0 16px 4px rgba(0, 212, 255, 0.15); }
+}
+
+.header .meta, .report-header .meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+.header .meta span, .report-header .meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header { text-align: center; }
+
+/* ============================================================
+   Back Links + Nav
+   ============================================================ */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  padding: 10px 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.4s var(--bounce);
+  backdrop-filter: blur(10px);
+}
+
+.back-link:hover {
+  color: var(--accent);
+  border-color: var(--border-hover);
+  background: var(--card-hover);
+  text-decoration: none;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.15);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 24px 0 40px;
+  padding: 14px 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(10px);
+}
+
+.nav-links a {
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.3s var(--bounce);
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+  background: rgba(0, 212, 255, 0.14);
+  border-color: var(--border-hover);
+  text-decoration: none;
+  transform: translateY(-1px) scale(1.05);
+}
+
+.nav-toc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  margin: 0 0 48px;
+  backdrop-filter: blur(10px);
+}
+
+.nav-toc .toc-title { color: var(--accent); font-size: 1rem; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.03em; }
+.nav-toc ol, .nav-toc ul { list-style: none; padding-left: 0; margin: 0; }
+.nav-toc li { padding: 4px 0; }
+.nav-toc a { color: var(--text-dim); font-size: 0.9rem; transition: all 0.3s var(--smooth); }
+.nav-toc a:hover { color: var(--accent); text-decoration: none; padding-left: 4px; }
+
+/* ============================================================
+   Section Titles — h2 / .section-title (Cyan) - 圆润+流动
+   ============================================================ */
+h2, .section-title {
+  color: #00d4ff;
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin: 0 0 24px;
+  padding: 14px 20px 14px 18px;
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 212, 255, 0.02) 100%);
+  border-left: 4px solid var(--accent);
+  border-top: 1px solid rgba(0, 212, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.25);
+  border-radius: 0 16px 16px 0;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  line-height: 1.4;
+  transition: all 0.4s var(--bounce);
+}
+
+h2:hover, .section-title:hover {
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.05) 100%);
+  transform: translateX(4px);
+  box-shadow: 0 4px 24px rgba(0, 212, 255, 0.15);
+}
+
+.section-title .emoji, h2 .emoji { font-size: 1.3rem; line-height: 1; flex-shrink: 0; }
+
+.section-title .num, h2 .num,
+.section-title .num-badge, h2 .num-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  background-size: 200% 200%;
+  color: #0a0e1a;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+  flex-shrink: 0;
+  margin-left: auto;
+  animation: gradientFlow 5s ease infinite;
+}
+
+.section-title a, h2 a { color: inherit; }
+.section-title a:hover { color: #5ee5ff; text-decoration: none; }
+
+/* ============================================================
+   Sections (.section) — with top gradient bar
+   ============================================================ */
+.section {
+  margin: 56px 0;
+  position: relative;
+  padding: 0;
+  scroll-margin-top: 24px;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 50%, var(--accent-green) 100%);
+  border-radius: 999px;
+  opacity: 0.85;
+}
+
+.section:first-of-type { margin-top: 0; }
+.section:first-of-type::before { display: none; }
+.section > h2:first-child, .section > .section-title:first-child { margin-top: 0; }
+
+/* ============================================================
+   H3 Sub-titles — Purple
+   ============================================================ */
+h3 {
+  color: #c4b5fd;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 36px 0 14px;
+  padding: 8px 0 8px 14px;
+  border-left: 3px solid #818cf8;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  transition: all 0.3s var(--bounce);
+}
+
+h3:hover { border-left-width: 5px; padding-left: 16px; color: #d4c5ff; }
+
+h3:first-child { margin-top: 0; }
+h3 a { color: inherit; }
+h3 a:hover { color: #c7d0ff; text-decoration: none; }
+
+/* ============================================================
+   H4 Minor Headings — Amber
+   ============================================================ */
+h4 {
+  color: #fcd34d;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 24px 0 10px;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  border: none;
+  transition: all 0.3s var(--bounce);
+}
+
+h4:hover { transform: translateX(3px); }
+
+h4:first-child { margin-top: 0; }
+h4 a { color: inherit; }
+h4 a:hover { color: #fde68a; text-decoration: none; }
+
+h5 { color: var(--text); font-size: 0.9rem; font-weight: 600; margin: 16px 0 8px; }
+h6 { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; margin: 14px 0 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ============================================================
+   Cards (.card) — Q弹悬停 + 入场动画
+   ============================================================ */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  margin: 16px 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.6s var(--spring) both;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: var(--card-hover);
+  border-color: var(--border-hover);
+  border-left-color: var(--accent);
+  box-shadow: var(--shadow-md), var(--shadow-glow-hover);
+}
+
+.card-title { color: var(--accent); font-size: 1.08rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 0.02em; line-height: 1.4; }
+.card-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.card-content { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+.card-content p { margin-bottom: 8px; }
+
+/* ============================================================
+   Job Cards (.job-card) — Green + Q弹
+   ============================================================ */
+.job-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-green);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  margin: 16px 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.6s var(--spring) both;
+}
+
+.job-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: var(--card-hover);
+  border-color: rgba(34, 211, 160, 0.4);
+  border-left-color: var(--accent-green);
+  box-shadow: var(--shadow-md), 0 0 40px rgba(34, 211, 160, 0.12);
+}
+
+.job-card .job-title { color: var(--accent-green); font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
+.job-card .job-title a { color: inherit; }
+.job-card .job-title a:hover { color: #4ee9b8; text-decoration: none; }
+.job-card .job-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.job-card .job-meta span { display: inline-flex; align-items: center; gap: 4px; }
+.job-card .job-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+
+/* ============================================================
+   News Items (.news-item) — Cyan + Q弹
+   ============================================================ */
+.news-item {
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 12px 0;
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.5s var(--spring) both;
+}
+
+.news-item:hover {
+  transform: translateY(-3px) scale(1.01);
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--border-hover);
+  border-left-color: var(--accent);
+  box-shadow: var(--shadow-sm), var(--shadow-glow-hover);
+}
+
+.news-item .news-title { color: var(--accent); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+.news-item .news-title a { color: inherit; }
+.news-item .news-title a:hover { color: #5ee5ff; text-decoration: none; }
+.news-item .news-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.news-item .news-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+.news-item .badge, .news-item .tag { margin-right: 6px; }
+
+/* ============================================================
+   Stats Grid (.stats-grid / .stat-box)
+   ============================================================ */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0 28px; }
+
+.stat-box {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(20, 28, 48, 0.6) 100%);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px 18px;
+  text-align: center;
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.5s var(--spring) both;
+}
+
+.stat-box:hover { transform: translateY(-5px) scale(1.03); box-shadow: var(--shadow-md), var(--shadow-glow-hover); }
+
+.stat-box .num { display: block; font-size: 1.8rem; font-weight: 800; color: var(--accent); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; text-shadow: 0 0 16px rgba(0, 212, 255, 0.3); }
+.stat-box .label { display: block; font-size: 0.88rem; color: var(--text-dim); font-weight: 500; margin-bottom: 4px; }
+.stat-box .sub { display: block; font-size: 0.78rem; color: var(--text-faint); }
+
+/* ============================================================
+   Tables
+   ============================================================ */
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); -webkit-overflow-scrolling: touch; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; overflow: hidden; }
+th { background: linear-gradient(135deg, rgba(0, 212, 255, 0.20) 0%, rgba(0, 212, 255, 0.08) 100%); color: var(--accent); font-weight: 700; text-align: left; padding: 14px 16px; border-bottom: 2px solid rgba(0, 212, 255, 0.3); letter-spacing: 0.03em; white-space: nowrap; }
+.table-wrapper { overflow-x: auto; margin: 20px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); -webkit-overflow-scrolling: touch; }
+td { padding: 12px 16px; color: var(--text-dim); border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); vertical-align: top; }
+td:last-child { border-right: none; }
+th { border-right: 1px solid rgba(0, 212, 255, 0.15); }
+th:last-child { border-right: none; }
+table tbody tr:nth-child(odd) td { background: rgba(0, 212, 255, 0.04); }
+table tbody tr:nth-child(even) td { background: rgba(0, 212, 255, 0.08); }
+table tbody tr { transition: background 0.3s var(--smooth); }
+table tbody tr:hover td { background: rgba(0, 212, 255, 0.16); color: var(--text); }
+table tbody tr:last-child td { border-bottom: none; }
+.salary-table th { background: linear-gradient(135deg, rgba(34, 211, 160, 0.18) 0%, rgba(34, 211, 160, 0.08) 100%); color: var(--accent-green); border-bottom-color: rgba(34, 211, 160, 0.3); }
+.salary-table td strong { color: var(--accent-green); }
+.summary-table th { background: linear-gradient(135deg, rgba(129, 140, 248, 0.18) 0%, rgba(129, 140, 248, 0.08) 100%); color: #a5b4fc; border-bottom-color: rgba(129, 140, 248, 0.3); }
+.summary-table td:first-child { color: var(--text); font-weight: 500; }
+
+/* ============================================================
+   Salary Grid
+   ============================================================ */
+.salary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+.salary-item { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent-green); border-radius: var(--radius-sm); padding: 14px 16px; transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth); position: relative; backdrop-filter: blur(8px); animation: fadeInUp 0.5s var(--spring) both; }
+.salary-item:hover { transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-md), 0 0 32px rgba(34, 211, 160, 0.12); border-color: rgba(34, 211, 160, 0.4); border-left-color: var(--accent-green); }
+.salary-item .level { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 6px; letter-spacing: 0.02em; }
+.salary-item .amount { font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 700; color: var(--accent-green); margin-bottom: 4px; line-height: 1.3; }
+.salary-item .note { font-size: 0.78rem; color: var(--text-faint); line-height: 1.4; }
+@media (max-width: 600px) { .salary-grid { grid-template-columns: 1fr; } .salary-item { padding: 12px 14px; } .salary-item .amount { font-size: 1.05rem; } }
+
+/* ============================================================
+   Badges
+   ============================================================ */
+.badge { display: inline-block; padding: 3px 10px; font-size: 0.78rem; font-weight: 600; border-radius: 999px; background: rgba(0, 212, 255, 0.12); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.3); letter-spacing: 0.03em; line-height: 1.5; vertical-align: middle; margin-right: 4px; transition: all 0.3s var(--bounce); }
+.badge:hover { transform: scale(1.08); }
+.badge.hot, .badge-hot { background: linear-gradient(135deg, rgba(248, 113, 113, 0.2), rgba(251, 146, 60, 0.2)); color: #fca5a5; border-color: rgba(248, 113, 113, 0.5); }
+.badge.new, .badge-new { background: rgba(34, 211, 160, 0.18); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.45); }
+.badge.warn, .badge-warn { background: rgba(251, 191, 36, 0.16); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-high { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+.badge-mid { background: rgba(251, 146, 60, 0.14); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.4); }
+.badge-low { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+.badge-purple { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.4); }
+
+/* ============================================================
+   Tags
+   ============================================================ */
+.tag { display: inline-block; padding: 3px 10px; font-size: 0.78rem; font-weight: 500; border-radius: 999px; background: rgba(168, 184, 208, 0.1); color: var(--text-dim); border: 1px solid var(--border); margin: 0 4px 4px 0; letter-spacing: 0.02em; line-height: 1.5; vertical-align: middle; transition: all 0.3s var(--bounce); }
+.tag:hover { transform: scale(1.06); }
+.tag.green, .tag-green { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag.purple, .tag-purple { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.3); }
+.tag.orange, .tag-orange { background: rgba(251, 146, 60, 0.14); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.3); }
+.tag.red, .tag-red { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag.pink, .tag-pink { background: rgba(248, 113, 113, 0.12); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag.teal, .tag-teal { background: rgba(20, 184, 166, 0.12); color: var(--accent-teal); border-color: rgba(20, 184, 166, 0.3); }
+.tag.amber, .tag-amber { background: rgba(251, 191, 36, 0.12); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag.accent, .tag-accent { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+.tag-byd { background: rgba(0, 153, 204, 0.18); color: #4dabf5; border-color: rgba(0, 153, 204, 0.35); }
+.tag-chery { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-geely { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.3); }
+.tag-faw { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-vw { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-tesla { background: rgba(248, 113, 113, 0.18); color: #fca5a5; border-color: rgba(248, 113, 113, 0.4); }
+.tag-other { background: rgba(168, 184, 208, 0.12); color: var(--text-dim); border-color: var(--border); }
+
+/* ============================================================
+   Pills
+   ============================================================ */
+.pill { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; font-size: 0.8rem; font-weight: 500; border-radius: 999px; background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.25); margin: 0 6px 6px 0; letter-spacing: 0.02em; line-height: 1.5; vertical-align: middle; transition: all 0.3s var(--bounce); }
+.pill:hover { transform: scale(1.05); }
+.pill-green { background: rgba(34, 211, 160, 0.1); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.25); }
+.pill-purple { background: rgba(129, 140, 248, 0.1); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.25); }
+.pill-orange { background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.25); }
+.pill-pink { background: rgba(248, 113, 113, 0.1); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.25); }
+.pill-amber { background: rgba(251, 191, 36, 0.1); color: #fbbf24; border-color: rgba(251, 191, 36, 0.25); }
+.pill-teal { background: rgba(20, 184, 166, 0.1); color: var(--accent-teal); border-color: rgba(20, 184, 166, 0.25); }
+.pill-gray { background: rgba(168, 184, 208, 0.1); color: var(--text-dim); border-color: var(--border); }
+.pill-location { background: rgba(0, 212, 255, 0.1); color: var(--accent); border-color: rgba(0, 212, 255, 0.25); }
+.pill-salary { background: rgba(34, 211, 160, 0.1); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.25); }
+.pill-edu { background: rgba(129, 140, 248, 0.1); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.25); }
+.pill-type { background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.25); }
+
+/* ============================================================
+   Source Links
+   ============================================================ */
+.source-link { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; font-size: 0.8rem; font-weight: 500; border-radius: 999px; background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.3); margin: 4px 0; transition: all 0.4s var(--bounce); letter-spacing: 0.02em; }
+.source-link:hover { background: var(--accent); color: #0a0e1a; border-color: var(--accent); text-decoration: none; box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); transform: scale(1.05); }
+.source-link::before { content: '🔗'; font-size: 0.85em; }
+
+/* ============================================================
+   Discussion Items — Orange + Q弹
+   ============================================================ */
+.discussion { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent-orange); border-radius: var(--radius-sm); padding: 16px 20px; margin: 14px 0; transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth); backdrop-filter: blur(8px); animation: fadeInUp 0.5s var(--spring) both; }
+.discussion:hover { transform: translateY(-3px) scale(1.01); background: var(--card-hover); border-color: rgba(251, 146, 60, 0.4); border-left-color: var(--accent-orange); box-shadow: var(--shadow-md), 0 0 36px rgba(251, 146, 60, 0.1); }
+.discussion .discussion-title { color: var(--accent-orange); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+.discussion .discussion-title a { color: inherit; }
+.discussion .discussion-title a:hover { color: #fdba74; text-decoration: none; }
+.discussion .discussion-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.discussion-item { background: rgba(251, 146, 60, 0.05); border: 1px solid var(--border); border-left: 3px solid var(--accent-orange); border-radius: var(--radius-sm); padding: 12px 16px; margin: 10px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; }
+.discussion-item .discussion-author { color: var(--accent-orange); font-weight: 600; }
+.discussion-item .discussion-time { color: var(--text-faint); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
+
+/* ============================================================
+   Tip/Warning/Highlight/Info/Note Boxes
+   ============================================================ */
+.tip-box { background: rgba(34, 211, 160, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-green); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.tip-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(34, 211, 160, 0.1); }
+.tip-box .tip-title, .tip-box h4 { color: var(--accent-green); font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.tip-box .tip-title::before { content: '💡'; }
+.tip-box p:last-child { margin-bottom: 0; }
+.tip-box ul { margin: 8px 0 0; }
+.tip-box li { margin-bottom: 4px; }
+
+.warning-box { background: rgba(248, 113, 113, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-pink); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.warning-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(248, 113, 113, 0.1); }
+.warning-box .warning-title { color: var(--accent-pink); font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.warning-box .warning-title::before { content: '⚠️'; }
+.warning-box p:last-child { margin-bottom: 0; }
+
+.highlight-box { background: rgba(129, 140, 248, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-purple); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.highlight-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(129, 140, 248, 0.1); }
+.highlight-box .highlight-title { color: #a5b4fc; font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.highlight-box .highlight-title::before { content: '✨'; }
+.highlight-box p:last-child { margin-bottom: 0; }
+
+.info-box { background: rgba(129, 140, 248, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-purple); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.info-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(129, 140, 248, 0.1); }
+.info-box .info-title { color: #a5b4fc; font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.info-box .info-title::before { content: 'ℹ️'; }
+.info-box p:last-child { margin-bottom: 0; }
+
+.note-box { background: rgba(0, 212, 255, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.note-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1); }
+.note-box .note-title { color: var(--accent); font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; }
+
+.progress-bar { width: 100%; height: 10px; background: rgba(0, 212, 255, 0.08); border-radius: 999px; overflow: hidden; margin: 8px 0; border: 1px solid var(--border); }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-purple)); border-radius: 999px; transition: width 0.5s var(--smooth); }
+.progress-fill.green { background: linear-gradient(90deg, var(--accent-green), var(--accent-teal)); }
+.progress-fill.orange { background: linear-gradient(90deg, var(--accent-orange), var(--accent-warm)); }
+.progress-fill.pink { background: linear-gradient(90deg, var(--accent-pink), var(--accent-orange)); }
+.progress-fill.purple { background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink)); }
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-accent { color: var(--accent); }
+.text-green { color: var(--accent-green); }
+.text-purple { color: #a5b4fc; }
+.text-orange { color: var(--accent-orange); }
+.text-pink { color: var(--accent-pink); }
+.text-amber { color: #fbbf24; }
+.text-teal { color: var(--accent-teal); }
+.text-dim { color: var(--text-dim); }
+.text-faint { color: var(--text-faint); }
+.text-white { color: #ffffff; }
+.text-sm { font-size: 0.85rem; }
+.text-lg { font-size: 1.1rem; }
+.text-xl { font-size: 1.3rem; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.mt-0 { margin-top: 0; } .mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 24px; }
+.mb-0 { margin-bottom: 0; } .mb-1 { margin-bottom: 8px; } .mb-2 { margin-bottom: 16px; } .mb-3 { margin-bottom: 24px; }
+.flex { display: flex; } .flex-wrap { flex-wrap: wrap; } .flex-center { display: flex; align-items: center; justify-content: center; }
+.gap-1 { gap: 8px; } .gap-2 { gap: 16px; }
+.hidden { display: none !important; } .block { display: block; } .inline-block { display: inline-block; }
+.divider { height: 1px; background: var(--border); margin: 24px 0; border: none; }
+.muted { color: var(--text-faint); }
+
+/* ============================================================
+   hr, blockquote, code, pre
+   ============================================================ */
+hr { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 32px 0; }
+blockquote { margin: 16px 0; padding: 12px 18px; background: rgba(0, 212, 255, 0.05); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--text-dim); font-style: italic; }
+blockquote p { margin-bottom: 0; }
+blockquote footer, blockquote cite { display: block; margin-top: 8px; font-size: 0.85rem; color: var(--text-faint); font-style: normal; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 0.88em; background: rgba(0, 212, 255, 0.1); color: var(--accent); padding: 2px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.15); }
+pre { background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; overflow-x: auto; margin: 16px 0; box-shadow: var(--shadow-sm); }
+pre code { background: transparent; color: var(--text-dim); padding: 0; border: none; font-size: 0.88em; line-height: 1.6; }
+
+/* ============================================================
+   Giscus / Comments
+   ============================================================ */
+.comments-section { margin: 56px 0 32px; padding: 28px 24px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); position: relative; backdrop-filter: blur(10px); }
+.comments-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent-purple), var(--accent), var(--accent-green)); background-size: 200% 100%; border-radius: var(--radius) var(--radius) 0 0; animation: gradientFlow 6s ease infinite; }
+.comments-title { color: #a5b4fc; font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
+.comments-desc { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 16px; }
+.giscus { margin-top: 16px; }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+footer, .footer { margin-top: 56px; padding: 28px 24px; text-align: center; color: var(--text-faint); font-size: 0.85rem; border-top: 1px solid var(--border); letter-spacing: 0.02em; }
+footer p, .footer p { margin-bottom: 8px; }
+footer a, .footer a { color: var(--text-dim); }
+footer a:hover, .footer a:hover { color: var(--accent); }
+.footer-meta { margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-faint); }
+
+/* ============================================================
+   Scroll-to-top button — Q弹
+   ============================================================ */
+.scroll-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: var(--card-solid); border: 1px solid var(--border-hover); border-radius: 50%; color: var(--accent); font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.3s var(--smooth), transform 0.4s var(--bounce), background 0.3s var(--smooth); backdrop-filter: blur(10px); }
+.scroll-top.visible { opacity: 1; pointer-events: auto; }
+.scroll-top:hover { background: var(--accent); color: #0a0e1a; transform: translateY(-4px) scale(1.1); box-shadow: 0 4px 24px rgba(0, 212, 255, 0.4); }
+.scroll-top:active { transform: translateY(-2px) scale(0.95); }
+
+/* ============================================================
+   Entrance Animations
+   ============================================================ */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 768px) { .nav-links { flex-direction: column; align-items: flex-start; } .stats-grid { grid-template-columns: 1fr 1fr; } }
+
+@media (max-width: 600px) {
+  body { font-size: 14px; line-height: 1.75; }
+  .container { padding: 24px 16px 60px; }
+  .header, .report-header { padding: 28px 20px; margin-bottom: 32px; border-radius: 20px; }
+  .header h1, .report-header h1 { font-size: 1.5rem; }
+  .header .subtitle, .report-header .subtitle { font-size: 0.9rem; }
+  h2, .section-title { font-size: 1.2rem; padding: 10px 14px 10px 12px; }
+  h3 { font-size: 1rem; }
+  h4 { font-size: 0.9rem; }
+  .section { margin: 40px 0; }
+  .card, .job-card, .news-item, .discussion, .tip-box, .warning-box, .highlight-box, .info-box, .note-box { padding: 14px 16px; border-radius: 14px; }
+  .card:hover, .job-card:hover, .news-item:hover, .discussion:hover { transform: none; }
+  th, td { padding: 9px 10px; font-size: 0.82rem; }
+  .nav-links { padding: 10px 12px; border-radius: 14px; }
+  .nav-links a { font-size: 0.8rem; padding: 5px 10px; }
+  .comments-section { padding: 20px 16px; border-radius: 20px; }
+  footer, .footer { padding: 20px 16px; }
+  .report-header .meta { gap: 10px; font-size: 0.8rem; }
+  .badge, .tag, .pill { font-size: 0.72rem; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-box .num { font-size: 1.5rem; }
+  .scroll-top { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+}
+
+/* ============================================================
+   Icons
+   ============================================================ */
+.icon { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 10px; font-size: 1.1rem; flex-shrink: 0; line-height: 1; }
+.icon-blue, .icon.icon-blue { background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.3); }
+.icon-green, .icon.icon-green { background: rgba(34, 211, 160, 0.15); border: 1px solid rgba(34, 211, 160, 0.3); }
+.icon-orange, .icon.icon-orange { background: rgba(251, 146, 60, 0.15); border: 1px solid rgba(251, 146, 60, 0.3); }
+.icon-purple, .icon.icon-purple { background: rgba(129, 140, 248, 0.15); border: 1px solid rgba(129, 140, 248, 0.3); }
+.icon-teal, .icon.icon-teal { background: rgba(20, 184, 166, 0.15); border: 1px solid rgba(20, 184, 166, 0.3); }
+.icon-pink, .icon.icon-pink { background: rgba(248, 113, 113, 0.15); border: 1px solid rgba(248, 113, 113, 0.3); }
+.icon-amber, .icon.icon-amber { background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.3); }
+.emoji { display: inline-block; font-size: 1.2rem; line-height: 1; vertical-align: middle; }
+
+/* ============================================================
+   Priority / Status indicators
+   ============================================================ */
+.priority-high, .priority-hot { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+.priority-mid, .priority-medium { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(251, 146, 60, 0.15); color: var(--accent-orange); border: 1px solid rgba(251, 146, 60, 0.3); }
+.priority-low, .priority-normal { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+
+.match-score { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+.match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+
+/* ============================================================
+   Grid layouts
+   ============================================================ */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 16px 0; }
+.card-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 16px 0; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+
+/* ============================================================
+   Flexbox helpers
+   ============================================================ */
+.flex-row { display: flex; flex-direction: row; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; align-items: flex-start; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 6px; } .gap-md { gap: 12px; } .gap-lg { gap: 20px; }
+.w-full { width: 100%; } .w-auto { width: auto; }
+
+/* ============================================================
+   Text size helpers
+   ============================================================ */
+.fs-xs { font-size: 0.75rem; } .fs-sm { font-size: 0.85rem; } .fs-md { font-size: 0.93rem; }
+.fs-lg { font-size: 1.1rem; } .fs-xl { font-size: 1.3rem; } .fs-2xl { font-size: 1.6rem; }
+
+/* ============================================================
+   Color helpers
+   ============================================================ */
+.text-success { color: var(--accent-green) !important; }
+.text-warning { color: #fbbf24 !important; }
+.text-danger { color: var(--accent-pink) !important; }
+.text-info { color: var(--accent) !important; }
+.text-muted { color: var(--text-faint) !important; }
+.text-dimmer { color: var(--text-dim) !important; }
+.text-bright { color: var(--text) !important; }
+.text-accent-green { color: var(--accent-green) !important; }
+.text-accent-orange { color: var(--accent-orange) !important; }
+.text-accent-purple { color: #a5b4fc !important; }
+.text-accent-pink { color: var(--accent-pink) !important; }
+.text-accent-teal { color: var(--accent-teal) !important; }
+
+/* ============================================================
+   Margin/Padding helpers
+   ============================================================ */
+.mt-4 { margin-top: 32px; } .mt-5 { margin-top: 40px; } .mt-6 { margin-top: 48px; }
+.mb-4 { margin-bottom: 32px; } .mb-5 { margin-bottom: 40px; } .mb-6 { margin-bottom: 48px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.p-0 { padding: 0; } .p-2 { padding: 16px; } .p-3 { padding: 24px; }
+.py-2 { padding-top: 16px; padding-bottom: 16px; }
+.px-2 { padding-left: 16px; padding-right: 16px; }
+
+/* ============================================================
+   Misc component styles
+   ============================================================ */
+.timeline-item { position: relative; padding-left: 24px; margin: 12px 0; }
+.timeline-item::before { content: ''; position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(0, 212, 255, 0.4); transition: transform 0.3s var(--bounce); }
+.timeline-item:hover::before { transform: scale(1.3); }
+.timeline-item::after { content: ''; position: absolute; left: 4px; top: 20px; bottom: -12px; width: 2px; background: var(--border); }
+.timeline-item:last-child::after { display: none; }
+
+.count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 8px; background: linear-gradient(135deg, var(--accent), var(--accent-purple)); color: #0a0e1a; font-size: 0.78rem; font-weight: 700; border-radius: 999px; font-family: 'JetBrains Mono', monospace; }
+
+mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent); padding: 1px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.2); }
+
+.emoji-list { list-style: none; padding-left: 0; }
+.emoji-list li { padding-left: 28px; position: relative; margin-bottom: 8px; }
+
+.separator { height: 2px; background: linear-gradient(90deg, transparent, var(--border-hover), transparent); margin: 32px 0; border: none; }
+
+.badge-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+
+.tag-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+
+@media print {
+  body { background: #ffffff; color: #000000; font-size: 12px; line-height: 1.6; }
+  body::before, body::after { display: none !important; }
+  .container { max-width: 100%; padding: 0; }
+  .header, .report-header { background: #f5f7fa; border: 1px solid #cccccc; box-shadow: none; break-inside: avoid; }
+  .header::before, .report-header::before { background: #006699; }
+  .header h1, .report-header h1 { color: #000000; text-shadow: none; }
+  .header .subtitle, .report-header .subtitle, .header .meta, .report-header .meta { color: #333333; }
+  .header .date, .report-header .date, .header .date-badge, .report-header .date-badge { background: #e0eef5; border-color: #006699; color: #006699; }
+  h2, .section-title { color: #006699; background: #e8f4fa; border-left-color: #006699; }
+  h3 { color: #4444aa; border-left-color: #6666cc; }
+  h4 { color: #aa6600; }
+  .section { margin: 24px 0; break-inside: avoid; }
+  .section::before { background: #006699; }
+  .card, .job-card, .news-item, .discussion, .tip-box, .warning-box, .highlight-box, .info-box, .note-box { background: #f9f9f9; border: 1px solid #cccccc; box-shadow: none; break-inside: avoid; }
+  .card:hover, .job-card:hover, .news-item:hover, .discussion:hover { transform: none; box-shadow: none; }
+  p, li, td, .card-content, .job-desc, .news-desc { color: #222222; }
+  a { color: #006699; text-decoration: underline; }
+  .source-link { background: #e0eef5; color: #006699; border-color: #006699; }
+  th { background: #e0eef5; color: #006699; border-bottom: 2px solid #006699; }
+  table tbody tr:nth-child(odd) td, table tbody tr:nth-child(even) td { background: #ffffff; }
+  table tbody tr:hover td { background: #f0f0f0; }
+  .back-link, .nav-links, .nav-toc, .comments-section, footer, .footer, .scroll-top { display: none; }
+  pre { background: #f5f5f5; border-color: #cccccc; }
+  pre code, code { color: #333333; background: #eeeeee; }
+}
+
+</style>
+<style>
+/* custom overrides (preserved by replace_css.py - only first style block is replaced) */
+.nav-toc { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px 24px; margin: 24px 0 32px; backdrop-filter: blur(8px); }
+.nav-toc .toc-title { font-size: 1rem; font-weight: 700; color: var(--accent-purple); margin-bottom: 10px; }
+.nav-toc ol { margin: 0; padding-left: 20px; }
+.nav-toc ol li { margin-bottom: 6px; }
+.nav-toc ol li a { color: var(--text-dim); font-size: 0.9rem; transition: color 0.3s var(--smooth); }
+.nav-toc ol li a:hover { color: var(--accent); }
+.table-wrap { overflow-x: auto; margin: 16px 0; border-radius: var(--radius-sm); }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.summary-table th { background: rgba(0, 212, 255, 0.08); color: var(--accent); padding: 12px 14px; text-align: left; font-weight: 600; border-bottom: 2px solid rgba(0, 212, 255, 0.2); white-space: nowrap; }
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dim); vertical-align: middle; }
+.summary-table tr:hover td { background: rgba(0, 212, 255, 0.03); }
+.summary-table td a { font-size: 0.82rem; }
+.scroll-top { position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px; border-radius: 50%; background: var(--card-solid); border: 1px solid var(--border-hover); color: var(--accent); font-size: 1.2rem; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.4s var(--bounce); z-index: 100; backdrop-filter: blur(8px); }
+.scroll-top.visible { opacity: 1; visibility: visible; }
+.scroll-top:hover { transform: translateY(-4px) scale(1.1); box-shadow: var(--shadow-glow-hover); }
+.badge { display: inline-block; padding: 2px 10px; font-size: 0.75rem; font-weight: 600; border-radius: 999px; margin: 0 4px 4px 0; letter-spacing: 0.02em; }
+.badge.new { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.footer { margin-top: 48px; padding: 28px 0; text-align: center; border-top: 1px solid var(--border); }
+.footer p { font-size: 0.85rem; color: var(--text-faint); margin-bottom: 6px; }
+</style>
+</head>
+<body><body>
+
+<div class="report-header">
+  <h1>🚁 无人机科研日报</h1>
+  <p class="subtitle">arXiv无人机论文热点 · 自动驾驶前沿 · IEEE期刊动态 · 全网技术讨论</p>
+  <div class="date-badge">📅 2026-08-07 星期五</div>
+  <div class="meta">
+    <span>📂 arXiv cs.RO / cs.SY / cs.CV / cs.LG</span>
+    <span>🔄 每日自动更新</span>
+    <span>📡 覆盖7大方向</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <a href="https://ts-dinglilu.github.io/drone-research/" class="back-link">← 返回无人机科研日报汇总</a>
+  <a href="https://ts-dinglilu.github.io/" class="back-link" style="margin-left: 8px;">🏠 返回主页</a>
+
+  <div class="stats-grid">
+    <div class="stat-box">
+      <span class="num">8</span>
+      <span class="label">无人机论文</span>
+      <span class="sub">覆盖4大方向</span>
+    </div>
+    <div class="stat-box">
+      <span class="num">4</span>
+      <span class="label">自动驾驶论文</span>
+      <span class="sub">前沿研究</span>
+    </div>
+    <div class="stat-box">
+      <span class="num">7</span>
+      <span class="label">期刊会议动态</span>
+      <span class="sub">MDPI/IEEE/IROS</span>
+    </div>
+    <div class="stat-box">
+      <span class="num">8</span>
+      <span class="label">技术讨论</span>
+      <span class="sub">CSDN/头条/知乎</span>
+    </div>
+  </div>
+
+  <div class="nav-toc">
+    <div class="toc-title">📑 目录导航</div>
+    <ol>
+      <li><a href="#uav-papers">无人机论文热点（8篇）</a></li>
+      <li><a href="#auto-driving">自动驾驶前沿论文（4篇）</a></li>
+      <li><a href="#ieee-journals">IEEE期刊与会议动态（7条）</a></li>
+      <li><a href="#tech-discussions">全网技术讨论（8条）</a></li>
+      <li><a href="#writing-tips">写作参考建议</a></li>
+      <li><a href="#sources">信息来源汇总</a></li>
+    </ol>
+  </div>
+
+  <!-- ========== Section 1: UAV Papers ========== -->
+  <div class="section" id="uav-papers">
+    <h2 class="section-title"><span class="emoji">🚁</span> 无人机论文热点<span class="num">8篇</span></h2>
+
+    <p>本期精选arXiv上2026年8月1日至8月5日发布的8篇无人机相关论文，覆盖<strong>飞行控制</strong>、<strong>轨迹规划</strong>、<strong>导航定位</strong>、<strong>多机协同</strong>四大方向，多篇论文已被IROS 2026和IEEE RA-L接收，涵盖CBF安全避障、风洞扰动学习、世界-动作模型轨迹生成、声学感知协同等前沿主题。</p>
+
+    <h3>✈️ 飞行控制方向</h3>
+
+    <div class="card">
+      <div class="card-title">1. 毫米波RADAR感知与CBF控制实现无人机快速动态避障</div>
+      <div class="card-meta">
+        <span>📌 arXiv: 2608.01855</span>
+        <span>📅 2026-08-03</span>
+        <span>📂 cs.RO; eess.SY</span>
+      </div>
+      <div class="card-content">
+        <p><strong>标题：</strong>RADAR Perception for Dynamic Obstacle Avoidance onboard small-scale Quadrotor UAVs</p>
+        <p><strong>作者：</strong>Dnyandeep Mandaokar, Bernhard Rinner</p>
+        <p><strong>摘要：</strong>提出首个基于毫米波RADAR的感知与控制系统，用于无人机快速动态避障（DOA）。推导并分析了感知范围、相对速度和控制延迟之间的延迟与空间边界，给出成功避障的充分条件。系统采用基于交互多模型的轻量级跟踪器和基于控制屏障函数（CBF）的控制器，直接输出规避加速度。在300次实验中实现x/y/z方向位置误差分别小于0.15m、0.93m、0.87m，烟雾环境90次实验表现一致。在树莓派4B上实现端到端感知到指令延迟约14ms。代码和390次投掷数据集已开源。</p>
+        <p><span class="tag accent">飞行控制</span> <span class="tag purple">CBF安全约束</span> <span class="tag orange">毫米波RADAR</span> <span class="badge new">14ms延迟</span> <span class="badge new">390次实验开源</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2608.01855" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">2. 在线学习风洞气流整形赋能无人机被动翱翔飞行</div>
+      <div class="card-meta">
+        <span>📌 arXiv: 2608.03378</span>
+        <span>📅 2026-08-04</span>
+        <span>📂 cs.RO; cs.AI; eess.SY</span>
+      </div>
+      <div class="card-content">
+        <p><strong>标题：</strong>Shaping Wind-Tunnel Airflow for Unmanned Aerial Vehicles using Online Learning</p>
+        <p><strong>作者：</strong>Ghadeer Elmkaiel, Michael Muehlebach</p>
+        <p><strong>摘要：</strong>提出在线学习算法控制多风扇垂直风洞中的复杂气流场。方法结合简化物理模型与基于测量的迭代学习，实现样本高效的气流分布收敛。展示了生成均匀、高斯和抛物线等复杂气流剖面的能力，关键在于能够生成专为被动翱翔设计的气流剖面，大幅增强翱翔机器人的飞行性能。在风扇数量变化条件下验证了方法的鲁棒性和实用性。</p>
+        <p><span class="tag accent">飞行控制</span> <span class="tag green">在线学习</span> <span class="tag orange">风洞气流</span> <span class="badge new">被动翱翔</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2608.03378" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">3. 混合阻抗-导纳控制实现多关节无人机接触丰富表面滑动任务</div>
+      <div class="card-meta">
+        <span>📌 arXiv: 2608.01800</span>
+        <span>📅 2026-08-03</span>
+        <span>📂 cs.RO; eess.SY</span>
+      </div>
+      <div class="card-content">
+        <p><strong>标题：</strong>Hybrid Impedance-Admittance Control with Multi-Link Aerial Robot for Contact-Rich Surface Sliding Task</p>
+        <p><strong>作者：</strong>Zicheng Luo, Maolin Lei, Jinjie Li, Yicheng Chen, Zicen Xiong, Moju Zhao</p>
+        <p><strong>摘要：</strong>提出面向多关节空中机器人的混合阻抗-导纳控制策略。利用关节形态实现力与运动调节的功能分离：通过关节角度调节生成导纳行为增强自适应交互，通过旋翼推力调节实现阻抗行为控制滑动运动。结构协调使机器人同时利用两种控制范式的互补优势，在未知表面上实现稳健且自适应的滑动。实验验证了鲁棒且柔顺的滑动性能。</p>
+        <p><span class="tag accent">飞行控制</span> <span class="tag purple">阻抗-导纳混合</span> <span class="tag green">空中操作</span> <span class="badge new">表面滑动</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2608.01800" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <h3>🗺️ 轨迹规划方向</h3>
+
+    <div class="card">
+      <div class="card-title">4. FlowPilot：紧凑世界-动作模型实现无人机实时敏捷导航</div>
+      <div class="card-meta">
+        <span>📌 arXiv: 2608.00635</span>
+        <span>📅 2026-08-01</span>
+        <span>📂 cs.RO</span>
+      </div>
+      <div class="card-content">
+        <p><strong>标题：</strong>FlowPilot: Real-Time World-Action Modeling for Agile UAV Navigation</p>
+        <p><strong>作者：</strong>Runqing Wang, Ding Yu, Pengyuan Min, Xinhong Zhang, Wei Xiao, Yu Hu, Jie Chen, Fu Zhang, Gang Wang</p>
+        <p><strong>摘要：</strong>提出紧凑世界-动作模型FlowPilot，从深度信息实现无人机实时机载导航。与需要局部重建的"先建图再优化"流水线或缺乏显式场景预测的端到端策略不同，FlowPilot通过流匹配联合去噪未来深度观测和可执行轨迹。双流混合Transformer通过共享注意力耦合视频和动作专家，使未来场景预测和轨迹生成相互指导。动作参数化为7次Bernstein多项式，保证C²连续性。在Jetson Orin NX上全流水线运行低于18ms，在室内和森林环境中达到5.5m/s。已提交IEEE RA-L。</p>
+        <p><span class="tag accent">轨迹规划</span> <span class="tag purple">世界-动作模型</span> <span class="tag green">流匹配</span> <span class="badge new">18ms延迟</span> <span class="badge new">5.5m/s</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2608.00635" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <h3>🧭 导航定位方向</h3>
+
+    <div class="card">
+      <div class="card-title">5. DBFly：视觉引导空间推理实现无人机"看即达"导航</div>
+      <div class="card-meta">
+        <span>📌 arXiv: 2608.04825</span>
+        <span>📅 2026-08-05</span>
+        <span>📂 cs.RO</span>
+      </div>
+      <div class="card-content">
+        <p><strong>标题：</strong>Deliberate Before You Fly: Vision-Guided Spatial Deliberation for UAV See-and-Reach Navigation</p>
+        <p><strong>作者：</strong>Fanfu Xue, En Yu, Bohang Liu, Hongjun Wang, Yang Yang, Xindi Wang, Jiande Sun</p>
+        <p><strong>摘要：</strong>提出视觉-语言航点预测框架DBFly，在航点生成前引入显式视觉引导空间推理。具体包括空间机动决策链（逐步执行目标方向锚定、空间诊断和机动决策），构建隐式飞行走廊提供软几何引导，以及终端收敛感知停止策略（通过目标接近度和短时程运动收敛表征终端状态）。在已见、未见物体和未见场景测试集上，DBFly相比SOTA基线平均提升成功率25.07个百分点。</p>
+        <p><span class="tag accent">导航定位</span> <span class="tag purple">视觉语言导航</span> <span class="tag orange">空间推理</span> <span class="badge new">+25.07pp</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2608.04825" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">6. FreqNav：阶段感知频率路由实现无人机长航程视觉语言导航</div>
+      <div class="card-meta">
+        <span>📌 arXiv: 2608.00970</span>
+        <span>📅 2026-08-02</span>
+        <span>📂 cs.RO</span>
+      </div>
+      <div class="card-content">
+        <p><strong>标题：</strong>FreqNav: Stage-Wise Frequency Routing for Object-Oriented Aerial Vision-Language Navigation</p>
+        <p><strong>作者：</strong>Yin Tang, Jiawei Ma, Jiahao Li, Hao Zhang, Zhemin Sun, Jianqiao Sun, Deyu Zhang</p>
+        <p><strong>摘要：</strong>提出轻量级频率路由自适应感知框架FreqNav，将长航程导航建模为从空间结构到局部细节的频率偏好转移。在固定计算预算下，FreqNav根据当前导航阶段动态重分配视觉token的频率分量。频率Token路由器从双视角观测中选择阶段相关视觉表示，相位相关接地模块通过显式监督锚定视觉证据。扩散Transformer预测连续控制平滑轨迹。推理速度比强基线快约3倍，真实世界部署验证了有效性。</p>
+        <p><span class="tag accent">导航定位</span> <span class="tag purple">频率路由</span> <span class="tag green">视觉语言导航</span> <span class="badge new">3x加速</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2608.00970" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <h3>🤝 多机协同方向</h3>
+
+    <div class="card">
+      <div class="card-title">7. CoNav-UAV：Stackelberg博弈学习实现双高度无人机协同导航</div>
+      <div class="card-meta">
+        <span>📌 arXiv: 2608.01802</span>
+        <span>📅 2026-08-03</span>
+        <span>📂 cs.AI; cs.RO</span>
+      </div>
+      <div class="card-content">
+        <p><strong>标题：</strong>CoNav-UAV: Cooperative Dual-Altitude Aerial Navigation via Stackelberg Learning</p>
+        <p><strong>作者：</strong>Junru Song, Wenhao Zhang, Yang Yang, Xuekai Qiu, Feifei Wang, Weien Zhou, Tingsong Jiang, Ying Wen, Yang Li, Wen Yao</p>
+        <p><strong>摘要：</strong>将无人机视觉语言导航任务显式建模为高空领导者与低空跟随者之间的Stackelberg博弈，系统仅依赖机载视觉和语言输入。引入迭代Stackelberg学习：领导者通过基于记忆的上下文学习优化视觉语言推理，跟随者通过DAgger式专家蒸馏更新精确运动控制。交替驱动双智能体趋向Stackelberg均衡。在AerialVLN基准三个高保真城市场景中，学习场景成功率提升30.8分，跨场景迁移提升9.0分，仅需约1/3适配数据。</p>
+        <p><span class="tag accent">多机协同</span> <span class="tag purple">Stackelberg博弈</span> <span class="tag green">双高度导航</span> <span class="badge new">+30.8pp</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2608.01802" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">8. SonicFly：被动气动声学感知实现无人机间相对感知与追踪</div>
+      <div class="card-meta">
+        <span>📌 arXiv: 2608.00401</span>
+        <span>📅 2026-08-01</span>
+        <span>📂 cs.RO; eess.SP</span>
+      </div>
+      <div class="card-content">
+        <p><strong>标题：</strong>Embodied Passive Aeroacoustic Perception Enables Relative Sensing and Pursuit Between Aerial Robots</p>
+        <p><strong>作者：</strong>Yanbaihui Liu, Ravi Prakash, Li-Yu Lo, Nils Roede, Boyuan Chen</p>
+        <p><strong>摘要：</strong>提出具身被动气动声学感知范式，使无人机从另一架无人机的固有飞行声中推断可操作的相对状态信息，无需主动声学信号、机间通信、GPS共享或外部感知基础设施。SonicFly框架使用四麦克风阵列、旋翼声学表示、神经方位-距离估计器和置信度门控滤波器实现闭环飞行。户外追踪实验中，纯声学追踪平均距离保持误差1.34m。揭示了谐波结构、频谱可分离性和空间声学线索在设计中的关键作用。</p>
+        <p><span class="tag accent">多机协同</span> <span class="tag purple">声学感知</span> <span class="tag orange">被动追踪</span> <span class="badge new">1.34m误差</span> <span class="badge new">无需通信</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2608.00401" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Section 2: Autonomous Driving ========== -->
+  <div class="section" id="auto-driving">
+    <h2 class="section-title"><span class="emoji">🚗</span> 自动驾驶前沿论文<span class="num">4篇</span></h2>
+
+    <p>本期精选4篇自动驾驶前沿论文，涵盖<strong>长时程轨迹预测</strong>、<strong>轻量化3D目标检测</strong>、<strong>边缘端VLM推理</strong>和<strong>视觉-语言-动作策略</strong>方向，多篇文章已被IEEE RA-L和IEEE IMC 2026接收。</p>
+
+    <div class="card">
+      <div class="card-title">1. PCTP：枢轴中心轨迹预测通过动态引导桥接长时程预测</div>
+      <div class="card-meta">
+        <span>📌 arXiv: 2608.03521</span>
+        <span>📅 2026-08-04</span>
+        <span>📂 cs.RO; cs.AI</span>
+      </div>
+      <div class="card-content">
+        <p><strong>标题：</strong>Pivot-Centric Trajectory Prediction: Bridging Long Horizons via Dynamical Guidance</p>
+        <p><strong>作者：</strong>Xiucong Zhao, Jindong Tian, Hao Miao</p>
+        <p><strong>摘要：</strong>针对自动驾驶长时程轨迹预测难题，提出枢轴中心轨迹预测（PCTP）。通过引入"枢轴点"并将长时程预测分解为多尺度短时程子任务：枢轴预测过程利用全局地图上下文和智能体交互识别关键点，基于枢轴的轨迹精炼过程聚焦局部地图细节。相比现有方法提供更多中间指导同时减少累积误差。PCTP与QCNet结合在Argoverse II排行榜超越所有已发表的非集成方法。</p>
+        <p><span class="tag accent">自动驾驶</span> <span class="tag purple">轨迹预测</span> <span class="tag green">长时程</span> <span class="badge new">Argoverse SOTA</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2608.03521" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">2. 基于Mamba知识蒸馏的轻量化3D目标检测</div>
+      <div class="card-meta">
+        <span>📌 arXiv: 2608.03490</span>
+        <span>📅 2026-08-04</span>
+        <span>📂 cs.RO; cs.CV</span>
+      </div>
+      <div class="card-content">
+        <p><strong>标题：</strong>Lightweight 3D Object Detection via Mamba-Based Knowledge Distillation</p>
+        <p><strong>作者：</strong>Quoc Cuong Ninh, Huy Xuan Pham, Anh Tung Nguyen, Dinh Hoan Trinh</p>
+        <p><strong>摘要：</strong>提出知识蒸馏框架，通过选择性体素空间特征对齐将强教师模型的目标级体素表示迁移到轻量学生模型。利用Mamba线性时间序列模型设计多分支教师骨干和盒感知特征迁移机制。实验表明方法显著降低计算负载同时保持竞争力精度。<strong>已被IEEE Robotics and Automation Letters (RA-L) 2026接收。</strong></p>
+        <p><span class="tag accent">自动驾驶</span> <span class="tag purple">3D目标检测</span> <span class="tag green">知识蒸馏</span> <span class="badge new">IEEE RA-L 2026</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2608.03490" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">3. MoRAL：传感器接地BEV推理赋能边缘端自动驾驶VLM</div>
+      <div class="card-meta">
+        <span>📌 arXiv: 2608.02449</span>
+        <span>📅 2026-08-03</span>
+        <span>📂 cs.CV; cs.RO</span>
+      </div>
+      <div class="card-content">
+        <p><strong>标题：</strong>MoRAL: Sensor-Grounded BEV Reasoning for Compact VLMs toward Edge-Oriented Autonomous Driving</p>
+        <p><strong>作者：</strong>Ambarish Govindarajulu Kaliamurthi, Kaikai Liu</p>
+        <p><strong>摘要：</strong>提出两阶段微调流水线MoRAL，教Cosmos-Reason2-2B先读取物理编码的BEV表示（LiDAR距离色带、目标类别形态、雷达多普勒速度方向楔形叠加）再进行驾驶决策推理。Stage 1在6万条接地记录上微调视觉编码器；Stage 2用8B教师模型生成5.7万条思维链记录微调全模型（仅52M参数，2.4%）。紧急制动召回率从10.8%提升至47.8%，输出退化从94.1%降至20.8%，全流水线适配8GB消费级GPU。已被IEEE IMC 2026接收。</p>
+        <p><span class="tag accent">自动驾驶</span> <span class="tag purple">VLM推理</span> <span class="tag green">边缘部署</span> <span class="badge new">8GB GPU</span> <span class="badge new">IEEE IMC 2026</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2608.02449" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">4. ValueFormer：阶段感知标签因果Transformer价值函数用于半自主VLA策略</div>
+      <div class="card-meta">
+        <span>📌 arXiv: 2608.02958</span>
+        <span>📅 2026-08-03</span>
+        <span>📂 cs.RO; cs.AI</span>
+      </div>
+      <div class="card-content">
+        <p><strong>标题：</strong>ValueFormer: A Causal Transformer Value Function with Stage-Aware Labels for Semi-Autonomous Vision-Language-Action Policies</p>
+        <p><strong>作者：</strong>Inkyu Sa, Konstantin Stulov, Rajat Bhageria</p>
+        <p><strong>摘要：</strong>针对VLA策略行为克隆中的"静默失败"问题，提出ValueFormer——基于冻结DINOv3骨干的紧凑因果Transformer，一次前向传播输出两个逐帧信号：平滑蒙特卡洛价值V_mc（用于优势估计）和锐利二值价值（用于在线错误检测）。失败episode使用阶段感知的"成功后衰减"回报标注，错误检测从错误区间而非单一失败时间监督。在真实机器人双臂三明治装配任务（1427 episode）上，任务完成率从70%提升至85%。</p>
+        <p><span class="tag accent">自动驾驶</span> <span class="tag purple">VLA策略</span> <span class="tag orange">价值函数</span> <span class="badge new">70%→85%</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2608.02958" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Section 3: IEEE Journals ========== -->
+  <div class="section" id="ieee-journals">
+    <h2 class="section-title"><span class="emoji">📚</span> IEEE期刊与会议动态<span class="num">7条</span></h2>
+
+    <div class="news-item">
+      <div class="news-title">📋 IROS 2026：9月27日-10月1日美国匹兹堡召开</div>
+      <div class="news-meta"><span class="badge new">CCF-C</span> <span>📅 2026-09-27至10-01</span></div>
+      <div class="news-desc">IEEE/RSJ智能机器人与系统国际会议（IROS）是全球机器人领域历史最悠久的顶级会议之一。2026年将在美国匹兹堡举办，预计汇聚7000+机器人从业者。本期多篇arXiv论文已标注被IROS 2026接收，包括SHM-POMDP科学探索规划和无人机集群相关研究。<a class="source-link" href="https://iros2026.org/" target="_blank">📎 查看原文</a></div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-title">📋 IEEE RA-L 2026：多篇无人机与自动驾驶论文最新发表</div>
+      <div class="news-meta"><span class="badge info">SCI Q2</span> <span>📅 持续更新</span></div>
+      <div class="news-desc">IEEE Robotics and Automation Letters近期接收多篇相关论文：FlowPilot世界-动作模型敏捷导航（已提交）、Mamba知识蒸馏轻量化3D检测（DOI:10.1109/LRA.2026.3719203）。RA-L作为机器人领域重要短文期刊，审稿周期约3-4个月，接受率约30%。<a class="source-link" href="https://www.ieee-ras.org/publications/ra-l" target="_blank">📎 查看原文</a></div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-title">📋 MDPI Drones：2026年影响因子发布，集群智能协同特刊征稿中</div>
+      <div class="news-meta"><span class="badge new">SCI Q1</span> <span>📅 特刊截止2026-08-20</span></div>
+      <div class="news-desc">MDPI Drones期刊2026年度JCR影响因子已发布（全线增长趋势）。当前开放"无人机集群智能协同技术"特刊征稿，截止日期8月20日，涵盖集群编队、协同感知、分布式决策等主题。期刊覆盖地球科学、航空航天工程综合研究。<a class="source-link" href="https://www.mdpi.com/journal/drones" target="_blank">📎 查看原文</a></div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-title">📋 IFAC World Congress 2026：非凸空中走廊MPC规划论文被接收</div>
+      <div class="news-meta"><span class="badge info">IFAC</span> <span>📅 2026年韩国釜山</span></div>
+      <div class="news-desc">第23届IFAC世界大会将在韩国釜山举办。本期arXiv论文"非凸空中走廊无人机导航模型预测规划器"（2607.24369）已被接收，采用混合整数跟踪MPC在单一优化问题中强制走廊可行性和动力学一致性。<a class="source-link" href="https://arxiv.org/abs/2607.24369" target="_blank">📎 查看原文</a></div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-title">📋 IEEE SmartIoT 2026：8月21-24日中国沈阳</div>
+      <div class="news-meta"><span class="badge new">IEEE</span> <span>📅 2026-08-21至08-24</span></div>
+      <div class="news-desc">第10届IEEE智能物联网国际会议将在沈阳举办，涵盖物联网与无人机/机器人交叉领域，包括边缘智能、协同感知等主题，与无人机科研方向高度相关。<a class="source-link" href="https://www.ieee-smartiot.org/" target="_blank">📎 查看原文</a></div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-title">📋 AIAA AVIATION 2026：VLM赋能无人机灾害响应框架发表</div>
+      <div class="news-meta"><span class="badge info">AIAA</span> <span>📅 2026年</span></div>
+      <div class="news-desc">AIAA AVIATION 2026论坛发表了"视觉语言模型赋能无人机分类与灾害响应系统工程框架"（DOI:10.2514/6.2026-4010），将VLM嵌入人-无人机回路作为协调代理，7名参与者人因评估显示感知工作负荷降低。<a class="source-link" href="https://arxiv.org/abs/2607.27597" target="_blank">📎 查看原文</a></div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-title">📋 Journal of Field Robotics：8月新刊含无人机相关研究</div>
+      <div class="news-meta"><span class="badge new">SCI Q1</span> <span>📅 2026-08</span></div>
+      <div class="news-desc">Journal of Field Robotics 8月新刊持续发表无人机现场机器人研究，涵盖自主导航、环境感知、多机协同等方向。该期刊聚焦机器人在真实环境中的部署与应用验证，影响因子稳居机器人领域前列。<a class="source-link" href="https://onlinelibrary.wiley.com/journal/15564967" target="_blank">📎 查看原文</a></div>
+    </div>
+  </div>
+
+  <!-- ========== Section 4: Tech Discussions ========== -->
+  <div class="section" id="tech-discussions">
+    <h2 class="section-title"><span class="emoji">💬</span> 全网技术讨论<span class="num">8条</span></h2>
+
+    <p>本期精选CSDN、头条等平台关于无人机科研的最新技术讨论，涵盖视觉导航、集群协同、强化学习路径规划等热门话题。</p>
+
+    <div class="discussion">
+      <div class="news-title">🔥 RAPID：基于逆强化学习的无人机敏捷视觉导航规划器</div>
+      <div class="news-meta"><span class="tag accent">CSDN</span> <span>📅 2026-07</span></div>
+      <div class="news-desc">深入解析RAPID框架——基于逆强化学习的学习型视觉规划器，用于复杂环境中的敏捷无人机飞行。能在毫秒级生成无碰撞航点，无需单独的感知、建图和规划模块，可直接应用于现实场景。文章详细拆解了逆强化学习在视觉导航中的训练流程和sim-to-real迁移策略。<a class="source-link" href="https://blog.csdn.net/weixin_37990186/article/details/154213608" target="_blank">📎 查看原文</a></div>
+    </div>
+
+    <div class="discussion">
+      <div class="news-title">🔥 无人机视觉语言导航从入门到精通系列教程（持续更新中）</div>
+      <div class="news-meta"><span class="tag accent">CSDN</span> <span>📅 2026-07</span></div>
+      <div class="news-desc">系列教程系统介绍无人机视觉语言导航（VLN）技术栈，从视觉感知（目标检测、语义分割、实例分割）到强化学习在VLN中的应用（MDP建模、策略学习、奖励设计）。当前已更新至第十三期，覆盖VLN经典方法解析，是入门无人机VLN研究的优质资源。<a class="source-link" href="https://blog.csdn.net/weixin_52694742/article/details/156371555" target="_blank">📎 查看原文</a></div>
+    </div>
+
+    <div class="discussion">
+      <div class="news-title">🔥 南航SM-CERL：语义地图认知逃逸强化学习无人机视觉导航框架</div>
+      <div class="news-meta"><span class="tag accent">CSDN</span> <span>📅 2026-06</span></div>
+      <div class="news-desc">解读南京航空航天大学提出的SM-CERL框架，针对无人机视觉导航中的部分可观察性和局部最优陷阱问题，引入语义地图基础的认知逃逸强化学习。知识驱动方法显著提升导航性能，为解决VLN中的"死胡同"问题提供新思路。<a class="source-link" href="https://blog.csdn.net/weixin_37990186/article/details/148024577" target="_blank">📎 查看原文</a></div>
+    </div>
+
+    <div class="discussion">
+      <div class="news-title">🔥 无人机集群路径规划实战：多机避障与自组织网络构建</div>
+      <div class="news-meta"><span class="tag accent">CSDN</span> <span>📅 2026-07</span></div>
+      <div class="news-desc">实战教程详解无人机集群协同控制的关键技术：通过分布式算法实现多机信息共享与任务协调，涵盖通信技术、路径规划、碰撞避免和自组织网络构建。提供完整代码实现，适用于搜救、农业喷洒、编队飞行等应用场景。<a class="source-link" href="https://blog.csdn.net/StepLens/article/details/155445108" target="_blank">📎 查看原文</a></div>
+    </div>
+
+    <div class="discussion">
+      <div class="news-title">🔥 无人机集群协同控制的7个关键技术突破（高级飞控工程师私藏）</div>
+      <div class="news-meta"><span class="tag accent">CSDN</span> <span>📅 2026-07</span></div>
+      <div class="news-desc">从工程实践角度总结无人机集群协同控制的7个核心技术突破：分布式通信、状态同步、任务分配、碰撞避免、编队控制、容错机制和自适应重构。深入剖析每项技术的实现难点和解决方案，对集群系统开发者具有高参考价值。<a class="source-link" href="https://blog.csdn.net/QuickProceed/article/details/155445353" target="_blank">📎 查看原文</a></div>
+    </div>
+
+    <div class="discussion">
+      <div class="news-title">🔥 PSO粒子群优化多无人机编队轨迹规划</div>
+      <div class="news-meta"><span class="tag accent">CSDN</span> <span>📅 2026-07</span></div>
+      <div class="news-desc">详解基于粒子群优化（PSO）的多无人机编队轨迹规划方法，解决编队飞行中每架无人机轨迹满足动力学约束、避障要求和编队保持的多重技术瓶颈。提供Matlab代码实现，包含约束建模、优化目标设计和收敛性分析。<a class="source-link" href="https://blog.csdn.net/matlab_dingdang/article/details/156784161" target="_blank">📎 查看原文</a></div>
+    </div>
+
+    <div class="discussion">
+      <div class="news-title">🔥 深度强化学习多无人机辅助边缘计算路径规划</div>
+      <div class="news-meta"><span class="tag accent">CSDN</span> <span>📅 2026-07</span></div>
+      <div class="news-desc">分析传统路径规划方法（A*、RRT*）在处理动态任务与资源耦合约束时的局限性，展示DRL通过智能体与环境交互学习实现动态场景下自适应路径优化的优势。核心适配性体现在可将任务约束、能量约束和通信约束统一建模为MDP状态空间。<a class="source-link" href="https://blog.csdn.net/Matlab_jiqi/article/details/153461938" target="_blank">📎 查看原文</a></div>
+    </div>
+
+    <div class="discussion">
+      <div class="news-title">🔥 无人机群部署与轨迹优化：强化学习实现三维区域覆盖</div>
+      <div class="news-meta"><span class="tag accent">CSDN</span> <span>📅 2026-06</span></div>
+      <div class="news-desc">联合优化无人机群的动态部署和轨迹，将其表述为多目标优化问题（MOP），同时最小化无人机群和地面用户的能量消耗及传输延迟。文章详细推导了多目标强化学习的奖励函数设计和Pareto最优解搜索策略。<a class="source-link" href="https://blog.csdn.net/hao_wujing/article/details/151233590" target="_blank">📎 查看原文</a></div>
+    </div>
+  </div>
+
+  <!-- ========== Section 5: Writing Tips ========== -->
+  <div class="section" id="writing-tips">
+    <h2 class="section-title"><span class="emoji">✍️</span> 写作参考建议<span class="num">6条</span></h2>
+
+    <div class="tip-box">
+      <h4>1. CBF安全避障方向：感知-控制联合设计</h4>
+      <p>本期RADAR论文（2608.01855）展示了"感知延迟边界分析+CBF控制器"的完整框架，建议在论文中重点阐述<strong>延迟-空间充分条件</strong>的推导过程，这是理论贡献的核心。同时14ms端到端延迟和390次实验开源数据是可复现性的有力支撑，建议设置不同能见度（光照/烟雾）的消融实验，突出RADAR相比视觉传感器的全天候优势。</p>
+    </div>
+
+    <div class="tip-box">
+      <h4>2. 世界-动作模型方向：流匹配与多项式参数化</h4>
+      <p>FlowPilot（2608.00635）的<strong>双流混合Transformer+7次Bernstein多项式参数化</strong>是亮点。建议在写作中强调"联合去噪未来深度和轨迹"相比"先预测再规划"的信息论优势，并用C²连续性证明运动平滑性。对比实验应包含learning-based和optimization-based两类基线，在递增 clutter和速度设置下展示性能曲线。</p>
+    </div>
+
+    <div class="tip-box">
+      <h4>3. 视觉语言导航方向：空间推理决策链</h4>
+      <p>DBFly（2608.04825）的<strong>空间机动决策链（方向锚定→空间诊断→机动决策）</strong>提供了可解释的中间推理结构。建议在论文中用注意力可视化展示每步推理的语义对应关系，并将"隐式飞行走廊"的几何构造用图示清晰呈现。FreqNav（2608.00970）的频率偏好转移假说值得作为motivation，可设计频率分量消融实验验证。</p>
+    </div>
+
+    <div class="tip-box">
+      <h4>4. 多机协同方向：博弈论与被动感知</h4>
+      <p>CoNav-UAV（2608.01802）的<strong>Stackelberg博弈建模</strong>为领导者-跟随者任务提供了新范式，建议强调"交替优化趋向均衡"的收敛性证明。SonicFly（2608.00401）开辟了<strong>被动声学感知</strong>新方向，写作中应重点分析谐波结构和频谱可分离性对可观测性的影响，并与主动感知方法进行公平对比（相同任务、相同评估指标）。</p>
+    </div>
+
+    <div class="tip-box">
+      <h4>5. 自动驾驶方向：长时程预测与边缘部署</h4>
+      <p>PCTP（2608.03521）的<strong>枢轴分解策略</strong>可迁移到无人机长航程轨迹预测，建议设置不同预测时程（3s/5s/8s）的消融实验。MoRAL（2608.02449）的BEV物理编码方法值得借鉴——将LiDAR距离、雷达速度编码为图像输入，免除3D骨干网络。建议关注8GB GPU部署指标，在论文中报告推理延迟和内存占用。</p>
+    </div>
+
+    <div class="tip-box">
+      <h4>6. 跨领域迁移与可复现性</h4>
+      <p>FlowPilot的<strong>三级深度金字塔训练策略</strong>（高吞吐仿真→光真实感仿真→真实数据）可迁移到各类无人机学习任务。SonicFly的声学感知可应用于GPS拒止环境下的多机相对定位。建议所有论文提供开源代码和数据集链接，使用标准化基准（AerialVLN、Argoverse）进行评估，提升可复现性和可比性。</p>
+    </div>
+  </div>
+
+  <!-- ========== Section 6: Sources ========== -->
+  <div class="section" id="sources">
+    <h2 class="section-title"><span class="emoji">📎</span> 信息来源汇总</h2>
+
+    <div class="table-wrap">
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>来源名称</th>
+            <th>链接</th>
+            <th>日期</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>arXiv DBFly视觉引导无人机导航</td>
+            <td><a class="source-link" href="https://arxiv.org/abs/2608.04825" target="_blank">📎 查看原文</a></td>
+            <td>2026-08-05</td>
+          </tr>
+          <tr>
+            <td>arXiv RADAR感知CBF避障</td>
+            <td><a class="source-link" href="https://arxiv.org/abs/2608.01855" target="_blank">📎 查看原文</a></td>
+            <td>2026-08-03</td>
+          </tr>
+          <tr>
+            <td>arXiv 风洞气流在线学习</td>
+            <td><a class="source-link" href="https://arxiv.org/abs/2608.03378" target="_blank">📎 查看原文</a></td>
+            <td>2026-08-04</td>
+          </tr>
+          <tr>
+            <td>arXiv 混合阻抗导纳空中操作</td>
+            <td><a class="source-link" href="https://arxiv.org/abs/2608.01800" target="_blank">📎 查看原文</a></td>
+            <td>2026-08-03</td>
+          </tr>
+          <tr>
+            <td>arXiv FlowPilot世界-动作模型</td>
+            <td><a class="source-link" href="https://arxiv.org/abs/2608.00635" target="_blank">📎 查看原文</a></td>
+            <td>2026-08-01</td>
+          </tr>
+          <tr>
+            <td>arXiv FreqNav频率路由导航</td>
+            <td><a class="source-link" href="https://arxiv.org/abs/2608.00970" target="_blank">📎 查看原文</a></td>
+            <td>2026-08-02</td>
+          </tr>
+          <tr>
+            <td>arXiv CoNav-UAV协同双高度导航</td>
+            <td><a class="source-link" href="https://arxiv.org/abs/2608.01802" target="_blank">📎 查看原文</a></td>
+            <td>2026-08-03</td>
+          </tr>
+          <tr>
+            <td>arXiv SonicFly声学感知追踪</td>
+            <td><a class="source-link" href="https://arxiv.org/abs/2608.00401" target="_blank">📎 查看原文</a></td>
+            <td>2026-08-01</td>
+          </tr>
+          <tr>
+            <td>arXiv PCTP枢轴轨迹预测</td>
+            <td><a class="source-link" href="https://arxiv.org/abs/2608.03521" target="_blank">📎 查看原文</a></td>
+            <td>2026-08-04</td>
+          </tr>
+          <tr>
+            <td>arXiv Mamba知识蒸馏3D检测</td>
+            <td><a class="source-link" href="https://arxiv.org/abs/2608.03490" target="_blank">📎 查看原文</a></td>
+            <td>2026-08-04</td>
+          </tr>
+          <tr>
+            <td>arXiv MoRAL边缘端VLM推理</td>
+            <td><a class="source-link" href="https://arxiv.org/abs/2608.02449" target="_blank">📎 查看原文</a></td>
+            <td>2026-08-03</td>
+          </tr>
+          <tr>
+            <td>arXiv ValueFormer VLA策略</td>
+            <td><a class="source-link" href="https://arxiv.org/abs/2608.02958" target="_blank">📎 查看原文</a></td>
+            <td>2026-08-03</td>
+          </tr>
+          <tr>
+            <td>IROS 2026官网</td>
+            <td><a class="source-link" href="https://iros2026.org/" target="_blank">📎 查看原文</a></td>
+            <td>2026-09-27</td>
+          </tr>
+          <tr>
+            <td>IEEE RA-L期刊</td>
+            <td><a class="source-link" href="https://www.ieee-ras.org/publications/ra-l" target="_blank">📎 查看原文</a></td>
+            <td>持续更新</td>
+          </tr>
+          <tr>
+            <td>MDPI Drones期刊</td>
+            <td><a class="source-link" href="https://www.mdpi.com/journal/drones" target="_blank">📎 查看原文</a></td>
+            <td>持续更新</td>
+          </tr>
+          <tr>
+            <td>IEEE SmartIoT 2026</td>
+            <td><a class="source-link" href="https://www.ieee-smartiot.org/" target="_blank">📎 查看原文</a></td>
+            <td>2026-08-21</td>
+          </tr>
+          <tr>
+            <td>Journal of Field Robotics</td>
+            <td><a class="source-link" href="https://onlinelibrary.wiley.com/journal/15564967" target="_blank">📎 查看原文</a></td>
+            <td>2026-08</td>
+          </tr>
+          <tr>
+            <td>CSDN RAPID逆强化学习视觉导航</td>
+            <td><a class="source-link" href="https://blog.csdn.net/weixin_37990186/article/details/154213608" target="_blank">📎 查看原文</a></td>
+            <td>2026-07</td>
+          </tr>
+          <tr>
+            <td>CSDN 无人机视觉语言导航系列</td>
+            <td><a class="source-link" href="https://blog.csdn.net/weixin_52694742/article/details/156371555" target="_blank">📎 查看原文</a></td>
+            <td>2026-07</td>
+          </tr>
+          <tr>
+            <td>CSDN 南航SM-CERL视觉导航</td>
+            <td><a class="source-link" href="https://blog.csdn.net/weixin_37990186/article/details/148024577" target="_blank">📎 查看原文</a></td>
+            <td>2026-06</td>
+          </tr>
+          <tr>
+            <td>CSDN 无人机集群路径规划实战</td>
+            <td><a class="source-link" href="https://blog.csdn.net/StepLens/article/details/155445108" target="_blank">📎 查看原文</a></td>
+            <td>2026-07</td>
+          </tr>
+          <tr>
+            <td>CSDN 集群协同控制7个关键技术</td>
+            <td><a class="source-link" href="https://blog.csdn.net/QuickProceed/article/details/155445353" target="_blank">📎 查看原文</a></td>
+            <td>2026-07</td>
+          </tr>
+          <tr>
+            <td>CSDN PSO多无人机编队规划</td>
+            <td><a class="source-link" href="https://blog.csdn.net/matlab_dingdang/article/details/156784161" target="_blank">📎 查看原文</a></td>
+            <td>2026-07</td>
+          </tr>
+          <tr>
+            <td>CSDN DRL多无人机路径规划</td>
+            <td><a class="source-link" href="https://blog.csdn.net/Matlab_jiqi/article/details/153461938" target="_blank">📎 查看原文</a></td>
+            <td>2026-07</td>
+          </tr>
+          <tr>
+            <td>CSDN 无人机群部署轨迹优化</td>
+            <td><a class="source-link" href="https://blog.csdn.net/hao_wujing/article/details/151233590" target="_blank">📎 查看原文</a></td>
+            <td>2026-06</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ========== Giscus Comments ========== -->
+  <div class="comments-section">
+    <div class="comments-title">💬 评论区</div>
+    <div class="comments-desc">登录GitHub账号即可评论，支持Markdown和表情回应</div>
+    <script src="https://giscus.app/client.js"
+      data-repo="TS-dinglilu/TS-dinglilu.github.io"
+      data-repo-id="R_kgDOTjqaJQ"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOTjqaJc4DCIL1"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="dark_dimmed"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </div>
+
+  <footer class="footer">
+    <p>🚁 无人机科研日报 · 每日自动更新</p>
+    <div class="footer-meta">
+      <p>// 数据来源：arXiv · MDPI Drones · IEEE RA-L · CSDN · 头条 · 知乎</p>
+      <p>// 生成时间：2026-08-07 · 覆盖方向：飞行控制 / 轨迹规划 / 导航定位 / 多机协同 / 自动驾驶</p>
+    </div>
+  </footer>
+
+</div>
+
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
+<script>
+window.addEventListener('scroll', function() {
+  var btn = document.querySelector('.scroll-top');
+  if (window.scrollY > 400) { btn.classList.add('visible'); }
+  else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>
