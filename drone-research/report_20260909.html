@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="description" content="无人机科研日报 - arXiv无人机论文热点与自动驾驶前沿">
+<meta property="og:title" content="无人机科研日报 2026-09-09">
+<meta property="og:description" content="arXiv无人机论文热点、自动驾驶前沿、IEEE期刊动态与全网技术讨论">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚁</text></svg>">
+<title>🚁 无人机科研日报 | 2026-09-09</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v9.0 圆润Q弹生动版
+   v9.0改进:
+   - 圆润: 增大border-radius, 全面弧形过渡
+   - Q弹: 弹性cubic-bezier缓动, 微缩放悬停效果
+   - 生动: 入场动画, 脉冲发光, 流动渐变边框
+   - 动态: 滚动渐入, 悬停弹跳, 光晕扩散
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --bg: #0a0e1a;
+  --bg-elev: #111726;
+  --card: rgba(20, 28, 48, 0.55);
+  --card-solid: rgba(20, 28, 48, 0.75);
+  --card-hover: rgba(20, 28, 48, 0.8);
+  --border: rgba(0, 212, 255, 0.12);
+  --border-hover: rgba(0, 212, 255, 0.4);
+  --text: #f0f4f8;
+  --text-dim: #c8d4e8;
+  --text-faint: #90a0c0;
+  --accent: #00d4ff;
+  --accent-warm: #ffb347;
+  --accent-green: #22d3a0;
+  --accent-purple: #818cf8;
+  --accent-pink: #f87171;
+  --accent-teal: #14b8a6;
+  --accent-orange: #fb923c;
+  --success: #22d3a0;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #00d4ff;
+  --grid-line: rgba(0, 212, 255, 0.04);
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.25);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.35);
+  --shadow-lg: 0 16px 56px rgba(0,0,0,0.45);
+  --shadow-glow: 0 0 24px rgba(0, 212, 255, 0.12);
+  --shadow-glow-hover: 0 0 40px rgba(0, 212, 255, 0.25);
+  --radius: 24px;
+  --radius-sm: 18px;
+  --radius-xs: 12px;
+  --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: rgba(0, 212, 255, 0.3); color: #ffffff; }
+
+p { margin-bottom: 12px; color: var(--text-dim); line-height: 1.8; }
+p:last-child { margin-bottom: 0; }
+strong, b { color: var(--accent); font-weight: 600; }
+a { color: var(--accent); text-decoration: none; transition: color 0.3s var(--smooth), opacity 0.3s var(--smooth); }
+a:hover { color: #5ee5ff; text-decoration: underline; text-underline-offset: 2px; }
+ul, ol { margin: 12px 0; padding-left: 22px; color: var(--text-dim); }
+li { margin-bottom: 6px; line-height: 1.8; }
+li::marker { color: var(--accent); }
+em, i { color: var(--text); font-style: italic; }
+small { color: var(--text-faint); font-size: 0.85em; }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.10) 0%, rgba(129, 140, 248, 0.05) 50%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(50px);
+  animation: floatOrb 20s ease-in-out infinite;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  33% { transform: translate(-40px, 30px) scale(1.05); opacity: 0.8; }
+  66% { transform: translate(30px, -20px) scale(0.95); opacity: 0.7; }
+}
+
+.container { max-width: 960px; margin: 0 auto; padding: 40px 28px 80px; position: relative; z-index: 1; }
+.container-wide { max-width: 1100px; }
+.container-narrow { max-width: 760px; }
+
+/* ============================================================
+   Header — 圆润渐变 + 入场动画
+   ============================================================ */
+.header, .report-header {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.14) 0%, rgba(129, 140, 248, 0.12) 50%, rgba(34, 211, 160, 0.10) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 44px 36px;
+  margin: 0 auto 48px;
+  max-width: 960px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+  animation: fadeInDown 0.8s var(--spring) both;
+}
+
+.header::before, .report-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-purple), var(--accent-green));
+  background-size: 200% 100%;
+  animation: gradientFlow 6s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.header h1, .report-header h1 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.03em;
+  margin-bottom: 14px;
+  text-shadow: 0 0 28px rgba(0, 212, 255, 0.5), 0 0 56px rgba(0, 212, 255, 0.25);
+  line-height: 1.3;
+}
+
+.header .subtitle, .report-header .subtitle {
+  color: var(--text-dim);
+  font-size: 1.02rem;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: 0.03em;
+}
+
+.header .date, .report-header .date,
+.header .date-badge, .report-header .date-badge {
+  display: inline-block;
+  background: rgba(0, 212, 255, 0.14);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  color: var(--accent);
+  padding: 8px 24px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.4s var(--bounce);
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.header .date:hover, .report-header .date:hover,
+.header .date-badge:hover, .report-header .date-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.2); }
+  50% { box-shadow: 0 0 16px 4px rgba(0, 212, 255, 0.15); }
+}
+
+.header .meta, .report-header .meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+.header .meta span, .report-header .meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header { text-align: center; }
+
+/* ============================================================
+   Back Links + Nav
+   ============================================================ */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  padding: 10px 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.4s var(--bounce);
+  backdrop-filter: blur(10px);
+}
+
+.back-link:hover {
+  color: var(--accent);
+  border-color: var(--border-hover);
+  background: var(--card-hover);
+  text-decoration: none;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.15);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 24px 0 40px;
+  padding: 14px 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(10px);
+}
+
+.nav-links a {
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.3s var(--bounce);
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+  background: rgba(0, 212, 255, 0.14);
+  border-color: var(--border-hover);
+  text-decoration: none;
+  transform: translateY(-1px) scale(1.05);
+}
+
+.nav-toc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  margin: 0 0 48px;
+  backdrop-filter: blur(10px);
+}
+
+.nav-toc .toc-title { color: var(--accent); font-size: 1rem; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.03em; }
+.nav-toc ol, .nav-toc ul { list-style: none; padding-left: 0; margin: 0; }
+.nav-toc li { padding: 4px 0; }
+.nav-toc a { color: var(--text-dim); font-size: 0.9rem; transition: all 0.3s var(--smooth); }
+.nav-toc a:hover { color: var(--accent); text-decoration: none; padding-left: 4px; }
+
+/* ============================================================
+   Section Titles — h2 / .section-title (Cyan) - 圆润+流动
+   ============================================================ */
+h2, .section-title {
+  color: #00d4ff;
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin: 0 0 24px;
+  padding: 14px 20px 14px 18px;
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 212, 255, 0.02) 100%);
+  border-left: 4px solid var(--accent);
+  border-top: 1px solid rgba(0, 212, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.25);
+  border-radius: 0 16px 16px 0;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  line-height: 1.4;
+  transition: all 0.4s var(--bounce);
+}
+
+h2:hover, .section-title:hover {
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.05) 100%);
+  transform: translateX(4px);
+  box-shadow: 0 4px 24px rgba(0, 212, 255, 0.15);
+}
+
+.section-title .emoji, h2 .emoji { font-size: 1.3rem; line-height: 1; flex-shrink: 0; }
+
+.section-title .num, h2 .num,
+.section-title .num-badge, h2 .num-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  background-size: 200% 200%;
+  color: #0a0e1a;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+  flex-shrink: 0;
+  margin-left: auto;
+  animation: gradientFlow 5s ease infinite;
+}
+
+.section-title a, h2 a { color: inherit; }
+.section-title a:hover { color: #5ee5ff; text-decoration: none; }
+
+/* ============================================================
+   Sections (.section) — with top gradient bar
+   ============================================================ */
+.section {
+  margin: 56px 0;
+  position: relative;
+  padding: 0;
+  scroll-margin-top: 24px;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 50%, var(--accent-green) 100%);
+  border-radius: 999px;
+  opacity: 0.85;
+}
+
+.section:first-of-type { margin-top: 0; }
+.section:first-of-type::before { display: none; }
+.section > h2:first-child, .section > .section-title:first-child { margin-top: 0; }
+
+/* ============================================================
+   H3 Sub-titles — Purple
+   ============================================================ */
+h3 {
+  color: #c4b5fd;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 36px 0 14px;
+  padding: 8px 0 8px 14px;
+  border-left: 3px solid #818cf8;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  transition: all 0.3s var(--bounce);
+}
+
+h3:hover { border-left-width: 5px; padding-left: 16px; color: #d4c5ff; }
+
+h3:first-child { margin-top: 0; }
+h3 a { color: inherit; }
+h3 a:hover { color: #c7d0ff; text-decoration: none; }
+
+/* ============================================================
+   H4 Minor Headings — Amber
+   ============================================================ */
+h4 {
+  color: #fcd34d;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 24px 0 10px;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  border: none;
+  transition: all 0.3s var(--bounce);
+}
+
+h4:hover { transform: translateX(3px); }
+
+h4:first-child { margin-top: 0; }
+h4 a { color: inherit; }
+h4 a:hover { color: #fde68a; text-decoration: none; }
+
+h5 { color: var(--text); font-size: 0.9rem; font-weight: 600; margin: 16px 0 8px; }
+h6 { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; margin: 14px 0 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ============================================================
+   Cards (.card) — Q弹悬停 + 入场动画
+   ============================================================ */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  margin: 16px 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.6s var(--spring) both;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: var(--card-hover);
+  border-color: var(--border-hover);
+  border-left-color: var(--accent);
+  box-shadow: var(--shadow-md), var(--shadow-glow-hover);
+}
+
+.card-title { color: var(--accent); font-size: 1.08rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 0.02em; line-height: 1.4; }
+.card-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.card-content { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+.card-content p { margin-bottom: 8px; }
+
+/* ============================================================
+   Job Cards (.job-card) — Green + Q弹
+   ============================================================ */
+.job-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-green);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  margin: 16px 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.6s var(--spring) both;
+}
+
+.job-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: var(--card-hover);
+  border-color: rgba(34, 211, 160, 0.4);
+  border-left-color: var(--accent-green);
+  box-shadow: var(--shadow-md), 0 0 40px rgba(34, 211, 160, 0.12);
+}
+
+.job-card .job-title { color: var(--accent-green); font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
+.job-card .job-title a { color: inherit; }
+.job-card .job-title a:hover { color: #4ee9b8; text-decoration: none; }
+.job-card .job-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.job-card .job-meta span { display: inline-flex; align-items: center; gap: 4px; }
+.job-card .job-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+
+/* ============================================================
+   News Items (.news-item) — Cyan + Q弹
+   ============================================================ */
+.news-item {
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 12px 0;
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.5s var(--spring) both;
+}
+
+.news-item:hover {
+  transform: translateY(-3px) scale(1.01);
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--border-hover);
+  border-left-color: var(--accent);
+  box-shadow: var(--shadow-sm), var(--shadow-glow-hover);
+}
+
+.news-item .news-title { color: var(--accent); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+.news-item .news-title a { color: inherit; }
+.news-item .news-title a:hover { color: #5ee5ff; text-decoration: none; }
+.news-item .news-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.news-item .news-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+.news-item .badge, .news-item .tag { margin-right: 6px; }
+
+/* ============================================================
+   Stats Grid (.stats-grid / .stat-box)
+   ============================================================ */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0 28px; }
+
+.stat-box {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(20, 28, 48, 0.6) 100%);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px 18px;
+  text-align: center;
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.5s var(--spring) both;
+}
+
+.stat-box:hover { transform: translateY(-5px) scale(1.03); box-shadow: var(--shadow-md), var(--shadow-glow-hover); }
+
+.stat-box .num { display: block; font-size: 1.8rem; font-weight: 800; color: var(--accent); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; text-shadow: 0 0 16px rgba(0, 212, 255, 0.3); }
+.stat-box .label { display: block; font-size: 0.88rem; color: var(--text-dim); font-weight: 500; margin-bottom: 4px; }
+.stat-box .sub { display: block; font-size: 0.78rem; color: var(--text-faint); }
+
+/* ============================================================
+   Tables
+   ============================================================ */
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); -webkit-overflow-scrolling: touch; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; overflow: hidden; }
+th { background: linear-gradient(135deg, rgba(0, 212, 255, 0.20) 0%, rgba(0, 212, 255, 0.08) 100%); color: var(--accent); font-weight: 700; text-align: left; padding: 14px 16px; border-bottom: 2px solid rgba(0, 212, 255, 0.3); letter-spacing: 0.03em; white-space: nowrap; }
+.table-wrapper { overflow-x: auto; margin: 20px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); -webkit-overflow-scrolling: touch; }
+td { padding: 12px 16px; color: var(--text-dim); border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); vertical-align: top; }
+td:last-child { border-right: none; }
+th { border-right: 1px solid rgba(0, 212, 255, 0.15); }
+th:last-child { border-right: none; }
+table tbody tr:nth-child(odd) td { background: rgba(0, 212, 255, 0.04); }
+table tbody tr:nth-child(even) td { background: rgba(0, 212, 255, 0.08); }
+table tbody tr { transition: background 0.3s var(--smooth); }
+table tbody tr:hover td { background: rgba(0, 212, 255, 0.16); color: var(--text); }
+table tbody tr:last-child td { border-bottom: none; }
+.salary-table th { background: linear-gradient(135deg, rgba(34, 211, 160, 0.18) 0%, rgba(34, 211, 160, 0.08) 100%); color: var(--accent-green); border-bottom-color: rgba(34, 211, 160, 0.3); }
+.salary-table td strong { color: var(--accent-green); }
+.summary-table th { background: linear-gradient(135deg, rgba(129, 140, 248, 0.18) 0%, rgba(129, 140, 248, 0.08) 100%); color: #a5b4fc; border-bottom-color: rgba(129, 140, 248, 0.3); }
+.summary-table td:first-child { color: var(--text); font-weight: 500; }
+
+/* ============================================================
+   Salary Grid
+   ============================================================ */
+.salary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+.salary-item { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent-green); border-radius: var(--radius-sm); padding: 14px 16px; transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth); position: relative; backdrop-filter: blur(8px); animation: fadeInUp 0.5s var(--spring) both; }
+.salary-item:hover { transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-md), 0 0 32px rgba(34, 211, 160, 0.12); border-color: rgba(34, 211, 160, 0.4); border-left-color: var(--accent-green); }
+.salary-item .level { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 6px; letter-spacing: 0.02em; }
+.salary-item .amount { font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 700; color: var(--accent-green); margin-bottom: 4px; line-height: 1.3; }
+.salary-item .note { font-size: 0.78rem; color: var(--text-faint); line-height: 1.4; }
+@media (max-width: 600px) { .salary-grid { grid-template-columns: 1fr; } .salary-item { padding: 12px 14px; } .salary-item .amount { font-size: 1.05rem; } }
+
+/* ============================================================
+   Badges
+   ============================================================ */
+.badge { display: inline-block; padding: 3px 10px; font-size: 0.78rem; font-weight: 600; border-radius: 999px; background: rgba(0, 212, 255, 0.12); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.3); letter-spacing: 0.03em; line-height: 1.5; vertical-align: middle; margin-right: 4px; transition: all 0.3s var(--bounce); }
+.badge:hover { transform: scale(1.08); }
+.badge.hot, .badge-hot { background: linear-gradient(135deg, rgba(248, 113, 113, 0.2), rgba(251, 146, 60, 0.2)); color: #fca5a5; border-color: rgba(248, 113, 113, 0.5); }
+.badge.new, .badge-new { background: rgba(34, 211, 160, 0.18); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.45); }
+.badge.warn, .badge-warn { background: rgba(251, 191, 36, 0.16); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-high { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+.badge-mid { background: rgba(251, 146, 60, 0.14); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.4); }
+.badge-low { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+.badge-purple { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.4); }
+
+/* ============================================================
+   Tags
+   ============================================================ */
+.tag { display: inline-block; padding: 3px 10px; font-size: 0.78rem; font-weight: 500; border-radius: 999px; background: rgba(168, 184, 208, 0.1); color: var(--text-dim); border: 1px solid var(--border); margin: 0 4px 4px 0; letter-spacing: 0.02em; line-height: 1.5; vertical-align: middle; transition: all 0.3s var(--bounce); }
+.tag:hover { transform: scale(1.06); }
+.tag.green, .tag-green { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag.purple, .tag-purple { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.3); }
+.tag.orange, .tag-orange { background: rgba(251, 146, 60, 0.14); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.3); }
+.tag.red, .tag-red { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag.pink, .tag-pink { background: rgba(248, 113, 113, 0.12); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag.teal, .tag-teal { background: rgba(20, 184, 166, 0.12); color: var(--accent-teal); border-color: rgba(20, 184, 166, 0.3); }
+.tag.amber, .tag-amber { background: rgba(251, 191, 36, 0.12); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag.accent, .tag-accent { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+.tag-byd { background: rgba(0, 153, 204, 0.18); color: #4dabf5; border-color: rgba(0, 153, 204, 0.35); }
+.tag-chery { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-geely { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.3); }
+.tag-faw { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-vw { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-tesla { background: rgba(248, 113, 113, 0.18); color: #fca5a5; border-color: rgba(248, 113, 113, 0.4); }
+.tag-other { background: rgba(168, 184, 208, 0.12); color: var(--text-dim); border-color: var(--border); }
+
+/* ============================================================
+   Pills
+   ============================================================ */
+.pill { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; font-size: 0.8rem; font-weight: 500; border-radius: 999px; background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.25); margin: 0 6px 6px 0; letter-spacing: 0.02em; line-height: 1.5; vertical-align: middle; transition: all 0.3s var(--bounce); }
+.pill:hover { transform: scale(1.05); }
+.pill-green { background: rgba(34, 211, 160, 0.1); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.25); }
+.pill-purple { background: rgba(129, 140, 248, 0.1); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.25); }
+.pill-orange { background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.25); }
+.pill-pink { background: rgba(248, 113, 113, 0.1); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.25); }
+.pill-amber { background: rgba(251, 191, 36, 0.1); color: #fbbf24; border-color: rgba(251, 191, 36, 0.25); }
+.pill-teal { background: rgba(20, 184, 166, 0.1); color: var(--accent-teal); border-color: rgba(20, 184, 166, 0.25); }
+.pill-gray { background: rgba(168, 184, 208, 0.1); color: var(--text-dim); border-color: var(--border); }
+.pill-location { background: rgba(0, 212, 255, 0.1); color: var(--accent); border-color: rgba(0, 212, 255, 0.25); }
+.pill-salary { background: rgba(34, 211, 160, 0.1); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.25); }
+.pill-edu { background: rgba(129, 140, 248, 0.1); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.25); }
+.pill-type { background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.25); }
+
+/* ============================================================
+   Source Links
+   ============================================================ */
+.source-link { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; font-size: 0.8rem; font-weight: 500; border-radius: 999px; background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.3); margin: 4px 0; transition: all 0.4s var(--bounce); letter-spacing: 0.02em; }
+.source-link:hover { background: var(--accent); color: #0a0e1a; border-color: var(--accent); text-decoration: none; box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); transform: scale(1.05); }
+.source-link::before { content: '🔗'; font-size: 0.85em; }
+
+/* ============================================================
+   Discussion Items — Orange + Q弹
+   ============================================================ */
+.discussion { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent-orange); border-radius: var(--radius-sm); padding: 16px 20px; margin: 14px 0; transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth); backdrop-filter: blur(8px); animation: fadeInUp 0.5s var(--spring) both; }
+.discussion:hover { transform: translateY(-3px) scale(1.01); background: var(--card-hover); border-color: rgba(251, 146, 60, 0.4); border-left-color: var(--accent-orange); box-shadow: var(--shadow-md), 0 0 36px rgba(251, 146, 60, 0.1); }
+.discussion .discussion-title { color: var(--accent-orange); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+.discussion .discussion-title a { color: inherit; }
+.discussion .discussion-title a:hover { color: #fdba74; text-decoration: none; }
+.discussion .discussion-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.discussion-item { background: rgba(251, 146, 60, 0.05); border: 1px solid var(--border); border-left: 3px solid var(--accent-orange); border-radius: var(--radius-sm); padding: 12px 16px; margin: 10px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; }
+.discussion-item .discussion-author { color: var(--accent-orange); font-weight: 600; }
+.discussion-item .discussion-time { color: var(--text-faint); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
+
+/* ============================================================
+   Tip/Warning/Highlight/Info/Note Boxes
+   ============================================================ */
+.tip-box { background: rgba(34, 211, 160, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-green); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.tip-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(34, 211, 160, 0.1); }
+.tip-box .tip-title, .tip-box h4 { color: var(--accent-green); font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.tip-box .tip-title::before { content: '💡'; }
+.tip-box p:last-child { margin-bottom: 0; }
+.tip-box ul { margin: 8px 0 0; }
+.tip-box li { margin-bottom: 4px; }
+
+.warning-box { background: rgba(248, 113, 113, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-pink); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.warning-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(248, 113, 113, 0.1); }
+.warning-box .warning-title { color: var(--accent-pink); font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.warning-box .warning-title::before { content: '⚠️'; }
+.warning-box p:last-child { margin-bottom: 0; }
+
+.highlight-box { background: rgba(129, 140, 248, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-purple); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.highlight-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(129, 140, 248, 0.1); }
+.highlight-box .highlight-title { color: #a5b4fc; font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.highlight-box .highlight-title::before { content: '✨'; }
+.highlight-box p:last-child { margin-bottom: 0; }
+
+.info-box { background: rgba(129, 140, 248, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-purple); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.info-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(129, 140, 248, 0.1); }
+.info-box .info-title { color: #a5b4fc; font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.info-box .info-title::before { content: 'ℹ️'; }
+.info-box p:last-child { margin-bottom: 0; }
+
+.note-box { background: rgba(0, 212, 255, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.note-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1); }
+.note-box .note-title { color: var(--accent); font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; }
+
+.progress-bar { width: 100%; height: 10px; background: rgba(0, 212, 255, 0.08); border-radius: 999px; overflow: hidden; margin: 8px 0; border: 1px solid var(--border); }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-purple)); border-radius: 999px; transition: width 0.5s var(--smooth); }
+.progress-fill.green { background: linear-gradient(90deg, var(--accent-green), var(--accent-teal)); }
+.progress-fill.orange { background: linear-gradient(90deg, var(--accent-orange), var(--accent-warm)); }
+.progress-fill.pink { background: linear-gradient(90deg, var(--accent-pink), var(--accent-orange)); }
+.progress-fill.purple { background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink)); }
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-accent { color: var(--accent); }
+.text-green { color: var(--accent-green); }
+.text-purple { color: #a5b4fc; }
+.text-orange { color: var(--accent-orange); }
+.text-pink { color: var(--accent-pink); }
+.text-amber { color: #fbbf24; }
+.text-teal { color: var(--accent-teal); }
+.text-dim { color: var(--text-dim); }
+.text-faint { color: var(--text-faint); }
+.text-white { color: #ffffff; }
+.text-sm { font-size: 0.85rem; }
+.text-lg { font-size: 1.1rem; }
+.text-xl { font-size: 1.3rem; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.mt-0 { margin-top: 0; } .mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 24px; }
+.mb-0 { margin-bottom: 0; } .mb-1 { margin-bottom: 8px; } .mb-2 { margin-bottom: 16px; } .mb-3 { margin-bottom: 24px; }
+.flex { display: flex; } .flex-wrap { flex-wrap: wrap; } .flex-center { display: flex; align-items: center; justify-content: center; }
+.gap-1 { gap: 8px; } .gap-2 { gap: 16px; }
+.hidden { display: none !important; } .block { display: block; } .inline-block { display: inline-block; }
+.divider { height: 1px; background: var(--border); margin: 24px 0; border: none; }
+.muted { color: var(--text-faint); }
+
+/* ============================================================
+   hr, blockquote, code, pre
+   ============================================================ */
+hr { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 32px 0; }
+blockquote { margin: 16px 0; padding: 12px 18px; background: rgba(0, 212, 255, 0.05); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--text-dim); font-style: italic; }
+blockquote p { margin-bottom: 0; }
+blockquote footer, blockquote cite { display: block; margin-top: 8px; font-size: 0.85rem; color: var(--text-faint); font-style: normal; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 0.88em; background: rgba(0, 212, 255, 0.1); color: var(--accent); padding: 2px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.15); }
+pre { background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; overflow-x: auto; margin: 16px 0; box-shadow: var(--shadow-sm); }
+pre code { background: transparent; color: var(--text-dim); padding: 0; border: none; font-size: 0.88em; line-height: 1.6; }
+
+/* ============================================================
+   Giscus / Comments
+   ============================================================ */
+.comments-section { margin: 56px 0 32px; padding: 28px 24px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); position: relative; backdrop-filter: blur(10px); }
+.comments-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent-purple), var(--accent), var(--accent-green)); background-size: 200% 100%; border-radius: var(--radius) var(--radius) 0 0; animation: gradientFlow 6s ease infinite; }
+.comments-title { color: #a5b4fc; font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
+.comments-desc { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 16px; }
+.giscus { margin-top: 16px; }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+footer, .footer { margin-top: 56px; padding: 28px 24px; text-align: center; color: var(--text-faint); font-size: 0.85rem; border-top: 1px solid var(--border); letter-spacing: 0.02em; }
+footer p, .footer p { margin-bottom: 8px; }
+footer a, .footer a { color: var(--text-dim); }
+footer a:hover, .footer a:hover { color: var(--accent); }
+.footer-meta { margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-faint); }
+
+/* ============================================================
+   Scroll-to-top button — Q弹
+   ============================================================ */
+.scroll-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: var(--card-solid); border: 1px solid var(--border-hover); border-radius: 50%; color: var(--accent); font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.3s var(--smooth), transform 0.4s var(--bounce), background 0.3s var(--smooth); backdrop-filter: blur(10px); }
+.scroll-top.visible { opacity: 1; pointer-events: auto; }
+.scroll-top:hover { background: var(--accent); color: #0a0e1a; transform: translateY(-4px) scale(1.1); box-shadow: 0 4px 24px rgba(0, 212, 255, 0.4); }
+.scroll-top:active { transform: translateY(-2px) scale(0.95); }
+
+/* ============================================================
+   Entrance Animations
+   ============================================================ */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 768px) { .nav-links { flex-direction: column; align-items: flex-start; } .stats-grid { grid-template-columns: 1fr 1fr; } }
+
+@media (max-width: 600px) {
+  body { font-size: 14px; line-height: 1.75; }
+  .container { padding: 24px 16px 60px; }
+  .header, .report-header { padding: 28px 20px; margin-bottom: 32px; border-radius: 20px; }
+  .header h1, .report-header h1 { font-size: 1.5rem; }
+  .header .subtitle, .report-header .subtitle { font-size: 0.9rem; }
+  h2, .section-title { font-size: 1.2rem; padding: 10px 14px 10px 12px; }
+  h3 { font-size: 1rem; }
+  h4 { font-size: 0.9rem; }
+  .section { margin: 40px 0; }
+  .card, .job-card, .news-item, .discussion, .tip-box, .warning-box, .highlight-box, .info-box, .note-box { padding: 14px 16px; border-radius: 14px; }
+  .card:hover, .job-card:hover, .news-item:hover, .discussion:hover { transform: none; }
+  th, td { padding: 9px 10px; font-size: 0.82rem; }
+  .nav-links { padding: 10px 12px; border-radius: 14px; }
+  .nav-links a { font-size: 0.8rem; padding: 5px 10px; }
+  .comments-section { padding: 20px 16px; border-radius: 20px; }
+  footer, .footer { padding: 20px 16px; }
+  .report-header .meta { gap: 10px; font-size: 0.8rem; }
+  .badge, .tag, .pill { font-size: 0.72rem; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-box .num { font-size: 1.5rem; }
+  .scroll-top { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+}
+
+/* ============================================================
+   Icons
+   ============================================================ */
+.icon { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 10px; font-size: 1.1rem; flex-shrink: 0; line-height: 1; }
+.icon-blue, .icon.icon-blue { background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.3); }
+.icon-green, .icon.icon-green { background: rgba(34, 211, 160, 0.15); border: 1px solid rgba(34, 211, 160, 0.3); }
+.icon-orange, .icon.icon-orange { background: rgba(251, 146, 60, 0.15); border: 1px solid rgba(251, 146, 60, 0.3); }
+.icon-purple, .icon.icon-purple { background: rgba(129, 140, 248, 0.15); border: 1px solid rgba(129, 140, 248, 0.3); }
+.icon-teal, .icon.icon-teal { background: rgba(20, 184, 166, 0.15); border: 1px solid rgba(20, 184, 166, 0.3); }
+.icon-pink, .icon.icon-pink { background: rgba(248, 113, 113, 0.15); border: 1px solid rgba(248, 113, 113, 0.3); }
+.icon-amber, .icon.icon-amber { background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.3); }
+.emoji { display: inline-block; font-size: 1.2rem; line-height: 1; vertical-align: middle; }
+
+/* ============================================================
+   Priority / Status indicators
+   ============================================================ */
+.priority-high, .priority-hot { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+.priority-mid, .priority-medium { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(251, 146, 60, 0.15); color: var(--accent-orange); border: 1px solid rgba(251, 146, 60, 0.3); }
+.priority-low, .priority-normal { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+
+.match-score { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+.match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+
+/* ============================================================
+   Grid layouts
+   ============================================================ */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 16px 0; }
+.card-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 16px 0; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+
+/* ============================================================
+   Flexbox helpers
+   ============================================================ */
+.flex-row { display: flex; flex-direction: row; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; align-items: flex-start; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 6px; } .gap-md { gap: 12px; } .gap-lg { gap: 20px; }
+.w-full { width: 100%; } .w-auto { width: auto; }
+
+/* ============================================================
+   Text size helpers
+   ============================================================ */
+.fs-xs { font-size: 0.75rem; } .fs-sm { font-size: 0.85rem; } .fs-md { font-size: 0.93rem; }
+.fs-lg { font-size: 1.1rem; } .fs-xl { font-size: 1.3rem; } .fs-2xl { font-size: 1.6rem; }
+
+/* ============================================================
+   Color helpers
+   ============================================================ */
+.text-success { color: var(--accent-green) !important; }
+.text-warning { color: #fbbf24 !important; }
+.text-danger { color: var(--accent-pink) !important; }
+.text-info { color: var(--accent) !important; }
+.text-muted { color: var(--text-faint) !important; }
+.text-dimmer { color: var(--text-dim) !important; }
+.text-bright { color: var(--text) !important; }
+.text-accent-green { color: var(--accent-green) !important; }
+.text-accent-orange { color: var(--accent-orange) !important; }
+.text-accent-purple { color: #a5b4fc !important; }
+.text-accent-pink { color: var(--accent-pink) !important; }
+.text-accent-teal { color: var(--accent-teal) !important; }
+
+/* ============================================================
+   Margin/Padding helpers
+   ============================================================ */
+.mt-4 { margin-top: 32px; } .mt-5 { margin-top: 40px; } .mt-6 { margin-top: 48px; }
+.mb-4 { margin-bottom: 32px; } .mb-5 { margin-bottom: 40px; } .mb-6 { margin-bottom: 48px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.p-0 { padding: 0; } .p-2 { padding: 16px; } .p-3 { padding: 24px; }
+.py-2 { padding-top: 16px; padding-bottom: 16px; }
+.px-2 { padding-left: 16px; padding-right: 16px; }
+
+/* ============================================================
+   Misc component styles
+   ============================================================ */
+.timeline-item { position: relative; padding-left: 24px; margin: 12px 0; }
+.timeline-item::before { content: ''; position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(0, 212, 255, 0.4); transition: transform 0.3s var(--bounce); }
+.timeline-item:hover::before { transform: scale(1.3); }
+.timeline-item::after { content: ''; position: absolute; left: 4px; top: 20px; bottom: -12px; width: 2px; background: var(--border); }
+.timeline-item:last-child::after { display: none; }
+
+.count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 8px; background: linear-gradient(135deg, var(--accent), var(--accent-purple)); color: #0a0e1a; font-size: 0.78rem; font-weight: 700; border-radius: 999px; font-family: 'JetBrains Mono', monospace; }
+
+mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent); padding: 1px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.2); }
+
+.emoji-list { list-style: none; padding-left: 0; }
+.emoji-list li { padding-left: 28px; position: relative; margin-bottom: 8px; }
+
+.separator { height: 2px; background: linear-gradient(90deg, transparent, var(--border-hover), transparent); margin: 32px 0; border: none; }
+
+.badge-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+
+.tag-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+
+@media print {
+  body { background: #ffffff; color: #000000; font-size: 12px; line-height: 1.6; }
+  body::before, body::after { display: none !important; }
+  .container { max-width: 100%; padding: 0; }
+  .header, .report-header { background: #f5f7fa; border: 1px solid #cccccc; box-shadow: none; break-inside: avoid; }
+  .header::before, .report-header::before { background: #006699; }
+  .header h1, .report-header h1 { color: #000000; text-shadow: none; }
+  .header .subtitle, .report-header .subtitle, .header .meta, .report-header .meta { color: #333333; }
+  .header .date, .report-header .date, .header .date-badge, .report-header .date-badge { background: #e0eef5; border-color: #006699; color: #006699; }
+  h2, .section-title { color: #006699; background: #e8f4fa; border-left-color: #006699; }
+  h3 { color: #4444aa; border-left-color: #6666cc; }
+  h4 { color: #aa6600; }
+  .section { margin: 24px 0; break-inside: avoid; }
+  .section::before { background: #006699; }
+  .card, .job-card, .news-item, .discussion, .tip-box, .warning-box, .highlight-box, .info-box, .note-box { background: #f9f9f9; border: 1px solid #cccccc; box-shadow: none; break-inside: avoid; }
+  .card:hover, .job-card:hover, .news-item:hover, .discussion:hover { transform: none; box-shadow: none; }
+  p, li, td, .card-content, .job-desc, .news-desc { color: #222222; }
+  a { color: #006699; text-decoration: underline; }
+  .source-link { background: #e0eef5; color: #006699; border-color: #006699; }
+  th { background: #e0eef5; color: #006699; border-bottom: 2px solid #006699; }
+  table tbody tr:nth-child(odd) td, table tbody tr:nth-child(even) td { background: #ffffff; }
+  table tbody tr:hover td { background: #f0f0f0; }
+  .back-link, .nav-links, .nav-toc, .comments-section, footer, .footer, .scroll-top { display: none; }
+  pre { background: #f5f5f5; border-color: #cccccc; }
+  pre code, code { color: #333333; background: #eeeeee; }
+}
+
+</style>
+<style>
+/* custom overrides (preserved by replace_css.py - only first style block is replaced) */
+.nav-toc { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px 24px; margin: 24px 0 32px; backdrop-filter: blur(8px); }
+.nav-toc .toc-title { font-size: 1rem; font-weight: 700; color: var(--accent-purple); margin-bottom: 10px; }
+.nav-toc ol { margin: 0; padding-left: 20px; }
+.nav-toc ol li { margin-bottom: 6px; }
+.nav-toc ol li a { color: var(--text-dim); font-size: 0.9rem; transition: color 0.3s var(--smooth); }
+.nav-toc ol li a:hover { color: var(--accent); }
+.table-wrap { overflow-x: auto; margin: 16px 0; border-radius: var(--radius-sm); }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.summary-table th { background: rgba(0, 212, 255, 0.08); color: var(--accent); padding: 12px 14px; text-align: left; font-weight: 600; border-bottom: 2px solid rgba(0, 212, 255, 0.2); white-space: nowrap; }
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dim); vertical-align: middle; }
+.summary-table tr:hover td { background: rgba(0, 212, 255, 0.03); }
+.summary-table td a { font-size: 0.82rem; }
+.scroll-top { position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px; border-radius: 50%; background: var(--card-solid); border: 1px solid var(--border-hover); color: var(--accent); font-size: 1.2rem; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.4s var(--bounce); z-index: 100; backdrop-filter: blur(8px); }
+.scroll-top.visible { opacity: 1; visibility: visible; }
+.scroll-top:hover { transform: translateY(-4px) scale(1.1); box-shadow: var(--shadow-glow-hover); }
+.badge { display: inline-block; padding: 2px 10px; font-size: 0.75rem; font-weight: 600; border-radius: 999px; margin: 0 4px 4px 0; letter-spacing: 0.02em; }
+.badge.new { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.footer { margin-top: 48px; padding: 28px 0; text-align: center; border-top: 1px solid var(--border); }
+.footer p { font-size: 0.85rem; color: var(--text-faint); margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<div class="report-header">
+  <h1>🚁 无人机科研日报</h1>
+  <p class="subtitle">arXiv无人机论文热点 · 自动驾驶前沿 · IEEE期刊动态 · 全网技术讨论</p>
+  <div class="date-badge">📅 2026-09-09 星期三</div>
+  <div class="meta">
+    <span>📂 arXiv cs.RO / cs.SY / cs.CV / cs.LG</span>
+    <span>🔄 每日自动更新</span>
+    <span>📡 覆盖7大方向</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <a href="https://ts-dinglilu.github.io/drone-research/" class="back-link">← 返回无人机科研日报汇总</a>
+  <a href="https://ts-dinglilu.github.io/" class="back-link" style="margin-left: 8px;">🏠 返回主页</a>
+
+  
+<div class="stats-grid">
+    <div class="stat-box"><span class="num">7</span><span class="label">无人机论文</span><span class="sub">arXiv 2608-2609</span></div>
+    <div class="stat-box"><span class="num">3</span><span class="label">自动驾驶前沿</span><span class="sub">VLA / 世界模型</span></div>
+    <div class="stat-box"><span class="num">5</span><span class="label">期刊会议动态</span><span class="sub">RA-L/IROS/低空经济</span></div>
+    <div class="stat-box"><span class="num">4</span><span class="label">技术讨论</span><span class="sub">CSDN/智源/评审</span></div>
+  </div>
+
+  <div class="nav-toc">
+    <div class="toc-title">📑 目录导航</div>
+    <ol>
+      <li><a href="#uav-papers">无人机论文热点（7篇）</a></li>
+      <li><a href="#auto-driving">自动驾驶前沿论文（3篇）</a></li>
+      <li><a href="#ieee-journals">IEEE期刊与会议动态（5条）</a></li>
+      <li><a href="#tech-discussions">全网技术讨论（4条）</a></li>
+      <li><a href="#writing-tips">写作参考建议</a></li>
+      <li><a href="#sources">信息来源汇总</a></li>
+    </ol>
+  </div>
+
+  <div class="section" id="uav-papers">
+    <h2 class="section-title"><span class="emoji">🚁</span> 无人机论文热点<span class="num">7篇</span></h2>
+
+    <p>本期精选 arXiv 上 <strong>2026年8月27日—9月5日</strong>发布的 <strong>7 篇</strong>无人机论文。其中 <strong>2 篇</strong>直接针对四旋翼底层控制，<strong>2 篇</strong>是安全强化学习，与"MATLAB/Simulink + Python 强化学习"技术栈高度契合。</p>
+
+    <h3>✈️ 飞行控制方向</h3>
+
+    <div class="card">
+      <div class="card-title">1. 泰勒展开驱动的预测代价自适应控制（PCAC）+ 在线重力配平</div>
+      <div class="card-meta"><span>📌 arXiv: 2609.03351</span><span>📅 2026-09-03</span><span>📂 eess.SY</span></div>
+      <div class="card-content">
+        <p>Taylor-Informed Predictive Cost Adaptive Control for Quadrotors with Online Gravity-Trim Adaptation（Tam W. Nguyen）。对非线性动力学在标称悬停点做<strong>一/二/三阶</strong>泰勒展开，构造稀疏采样数据字典，用变速率遗忘的行递推最小二乘辨识；每步在当前状态线性化预测器并在预测时域内固定雅可比。辨识出的垂向动力学<strong>同时估计机体质量与重力配平输入</strong>，消除固定标称重力补偿。突变载荷与激进螺旋线跟踪上，高阶预测器显著改善预测与跟踪性能。</p>
+        <p><span class="tag accent">飞行控制</span> <span class="tag purple">自适应MPC</span> <span class="tag green">在线质量辨识</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2609.03351" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">2. 执行器动力学感知的四旋翼端到端 DRL（Simulink Level-2 S-Function）</div>
+      <div class="card-meta"><span>📌 arXiv: 2607.25985</span><span>📅 2026-07，本月持续被引</span><span>📂 cs.RO</span></div>
+      <div class="card-content">
+        <p>Physics-Aware End-to-End Deep RL for Quadcopter Control with Actuator Dynamics。四旋翼是典型<strong>欠驱动系统</strong>（4 输入支配 6 自由度）。智能体直接输出底层机体输入（总推力与三轴力矩 T, τx, τy, τz），在<strong>高保真 Simulink 环境</strong>闭环。仿真器集成 <strong>12 状态刚体模型（MATLAB Level-2 S-Function）</strong>，含基于推力/阻力系数矩阵 <strong>Moore-Penrose 伪逆</strong>的 Action2RPM 分配、每电机一阶执行器动力学（<strong>Tm = 0.076 s</strong>）与旋翼陀螺耦合。奖励由指数位置势阱、姿态惩罚与速度二次代价构成，两阶段评估（S1 仅推力悬停；S2 带俯仰力矩与目标平移）。</p>
+        <p><strong>结论：</strong>SAC 与 TD3 在稳定性与探索效率上最优，PPO 样本效率偏低；核心贡献是<strong>建模执行器滞后与气动力矩对底层控制稳定性至关重要</strong>。</p>
+        <p><span class="tag accent">飞行控制</span> <span class="tag purple">端到端DRL</span> <span class="tag green">Simulink</span> <span class="badge new">Tm=0.076s</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2607.25985" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <h3>🛡️ 安全强化学习方向</h3>
+
+    <div class="card">
+      <div class="card-title">3. 降低保守性的安全 RL：无人机穿越峡谷真机验证</div>
+      <div class="card-meta"><span>📌 arXiv: 2608.26852</span><span>📅 2026-08-27</span><span>📂 eess.SY</span></div>
+      <div class="card-content">
+        <p>Towards Safe RL with Reduced Conservativeness: A Case Study on Drone Flight Control（Hadjiloizou, Welle, Yin, Kragic）。用在线采集数据<strong>精化扰动模型</strong>以降低形式化方法的保守性，并用计算高效的 <strong>zonotopic 可达性分析</strong>评估学习型控制器安全性，支持实时实现。在真实无人机穿越峡谷飞行中验证——受未知外部扰动时，框架需<strong>在线学习扰动并相应调整安全保证</strong>。结果表明可在不牺牲安全性的前提下实现更少约束的在线训练。</p>
+        <p><span class="tag accent">安全RL</span> <span class="tag purple">可达性分析</span> <span class="badge new">真机峡谷飞行</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2608.26852" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">4. 信息引导安全 RL 实现 sUAS 自主气体源定位（RCBF 兜底）</div>
+      <div class="card-meta"><span>📌 arXiv: 2609.05569</span><span>📅 2026-09-04</span><span>📂 cs.RO（投 IEEE CDC 2026）</span></div>
+      <div class="card-content">
+        <p>Information-Guided Safe RL for Autonomous Gas Source Localization using sUAS（Giri, Zhao, Huynh, Chen）。湍流边界层中浓度场高度间歇，经典梯度导航失效。在自建 <strong>GPU 加速 3D 仿真</strong>（欧拉风场 + 拉格朗日烟团扩散）中，作者发现确定性信息寻优规划器存在 <strong>Gramian 偏差</strong>——基于有缺陷的早期估计贪婪行动，使估计器丧失空间多样性。为此把<strong>经验可观测 Gramian（EMGR）规划器</strong>与学习式 SAC 探索策略结合，元监督器用 <strong>KL 散度</strong>监测估计器可靠性、动态混合利用与探索，并由<strong>鲁棒控制屏障函数（RCBF）</strong>严格保障安全。</p>
+        <p><strong>结果：</strong>复杂移动源定位成功率接近 <strong>80%</strong>，远超经典基线的约 <strong>30%</strong>，且<strong>零安全违规</strong>。</p>
+        <p><span class="tag accent">安全RL</span> <span class="tag purple">RCBF</span> <span class="tag green">信息论探索</span> <span class="badge new">80%</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2609.05569" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">5. 多无人机容错协同控制：区间观测器增强 RL（Pattern Recognition 已刊）</div>
+      <div class="card-meta"><span>📌 DOI: 10.1016/j.patcog.2026.114007</span><span>📅 2026-08-18</span><span>📂 Vol.180 Part A</span></div>
+      <div class="card-content">
+        <p>Fault tolerant cooperative control for multi-UAVs via interval observer-augmented RL。针对未知扰动与执行器故障下的<strong>容错编队控制</strong>，设计<strong>扰动区间观测器（DIOB）</strong>，相比依赖扰动上界的常用方法显著放松对控制输入的约束；用神经网络估计执行器故障以摆脱精确故障模型依赖；提出 <strong>actor-critic RL + 滑模控制（SMC）</strong>的优化策略，且自适应参数训练<strong>无需持续激励条件</strong>。实时飞行对比实验验证有效性。</p>
+        <p><span class="tag accent">容错控制</span> <span class="tag purple">区间观测器</span> <span class="tag green">RL+SMC</span></p>
+        <a class="source-link" href="https://dl.acm.org/doi/10.1016/j.patcog.2026.114007" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <h3>🤖 强化学习与模仿学习</h3>
+
+    <div class="card">
+      <div class="card-title">6. AgilePE：自博弈 RL 无人机追逃（CTBR 端到端 + 双机零样本真机）</div>
+      <div class="card-meta"><span>📌 智源社区论文库</span><span>📅 2026-08-14</span><span>📂 cs.RO</span></div>
+      <div class="card-content">
+        <p>AgilePE: Autonomous UAV Pursuit-Evasion via Self-Play RL（唐文浩、高飞、于超等）。策略直接把机载观测映射为<strong>集体推力与机体角速率（CTBR）</strong>指令，无需中间轨迹规划器或航点控制器。训练采用<strong>优先级虚构自博弈（PFSP）</strong>并构建多样化对手策略池以抑制策略振荡；部署侧设计<strong>硬件对齐仿真流水线</strong>，精确建模执行器响应、通信延迟与域随机化。策略<strong>无需任何任务特定调优</strong>即可零样本迁移真机，并<strong>首次实现双机交互式、零样本真实场景部署</strong>。</p>
+        <p><span class="tag accent">自博弈</span> <span class="tag purple">CTBR</span> <span class="tag green">sim-to-real</span></p>
+        <a class="source-link" href="https://hub.baai.ac.cn/paper/5ed899d6-eb37-46b0-ab45-614ad2f77757" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <h3>🗺️ 多机协同</h3>
+
+    <div class="card">
+      <div class="card-title">7. TriSAR：5 机灾害响应任务协调与避碰（2×2 因子设计）</div>
+      <div class="card-meta"><span>📌 arXiv: 2609.01731</span><span>📅 2026-09-01</span><span>📂 cs.RO</span></div>
+      <div class="card-content">
+        <p>TriSAR: Task Coordination and Collision Avoidance for Aerial Robot Teams in Disaster Response。在 <strong>Gazebo 地震损毁城市场景</strong>中评估 5 机系统，采用 <strong>2×2 因子设计</strong>：两种任务分配（遗传算法 vs. 贪婪）× 反应式避碰开/关，每种配置 <strong>30 个随机回合</strong>，场景固定为 5 机 8 目标。结果：贪婪分配下启用排斥项完全消除碰撞阈值违规（Mann-Whitney U = 885, p = 4.03×10⁻¹²）；GA 分配下同样确认。任务效率上，<strong>启用排斥时 GA 相对贪婪无可检测优势</strong>，关闭排斥时 GA 显著更优（Welch 检验 |g| 在 0.92–1.76）——结论诚实且有统计支撑。</p>
+        <p><span class="tag accent">多机协同</span> <span class="tag purple">任务分配</span> <span class="badge new">30回合×4配置</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2609.01731" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="auto-driving">
+    <h2 class="section-title"><span class="emoji">🚗</span> 自动驾驶前沿论文<span class="num">3篇</span></h2>
+
+    <p>本期 <strong>3 篇</strong>集中出现在 <strong>9月3日—5日</strong>，主题高度一致——<strong>世界模型</strong>与<strong>视觉-语言-动作（VLA）</strong>，与无人机"世界-动作模型"正收敛到同一套方法论。</p>
+
+    <div class="card">
+      <div class="card-title">1. LaPla：潜空间对齐规划，把离散推理桥接到连续动作</div>
+      <div class="card-meta"><span>📌 arXiv: 2609.04070</span><span>📅 2026-09-03</span><span>📂 cs.CV</span></div>
+      <div class="card-content">
+        <p>基于<strong>残差 VQ-VAE</strong>设计动作分词器，但不做离散码本查表（会引入量化误差），而是把该表示复用为<strong>物理先验</strong>弥合模态鸿沟。并发动作查询在<strong>单次前向传播</strong>中把隐状态投影到预训练 VQ-VAE 潜空间，冻结解码器再译为动作——既消除量化误差、保证物理可行，又绕开自回归生成。nuScenes 长时程 L2 误差降低 <strong>15.52%</strong>；AlpaSim 闭环成功率<strong>提升 33.34 个百分点</strong>。</p>
+        <p><span class="tag accent">VLA</span> <span class="tag purple">VQ-VAE</span> <span class="badge new">L2 -15.52%</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2609.04070" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">2. DriveZero：超越人类演示的端到端驾驶（无人类轨迹监督）</div>
+      <div class="card-meta"><span>📌 arXiv: 2609.06055</span><span>📅 2026-09-05</span><span>📂 cs.CV</span></div>
+      <div class="card-content">
+        <p>把驾驶拆为<strong>感知模型 + 动作模型</strong>分别预训练再合并。动作侧 DriveRL 把真实驾驶日志转为<strong>可交互世界</strong>，用 PPO 闭环 rollout 训练特权教师；感知侧 DriveVFM 把 DINOv3、SigLIP2、SAM、Depth Anything V2 等冻结基础模型整合进单一骨干，<strong>无需任务特定标注</strong>。nuPlan 上 Val14 / Test14-hard / Test14-random 三 split 平均分 <strong>93.57</strong>，均超 Log-Replay 专家；NAVSIMv1/v2 与 HUGSIM 上取得 SOTA。</p>
+        <p><span class="tag accent">闭环RL</span> <span class="tag purple">基础模型融合</span> <span class="badge new">nuPlan 93.57</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2609.06055" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">3. StyleDrive：长时程一致 + 交互解耦 + GRPO 多风格世界模型</div>
+      <div class="card-meta"><span>📌 arXiv: 2609.03225</span><span>📅 2026-09-03</span><span>📂 cs.RO</span></div>
+      <div class="card-content">
+        <p>① <strong>时间一致性正则</strong>：用门控交叉注意力整合历史潜状态，抑制长时程 rollout 误差累积；② <strong>显式状态解耦</strong>：分离"与自车相关/无关"的交互状态；③ 用 <strong>GRPO（组相对策略优化）</strong>以轨迹级相对优势替代逐步奖励，降低方差且<strong>无需重训</strong>即可支持多种风格。Bench2Drive 驾驶得分 <strong>88.44</strong>（<strong>+17.08</strong>）、成功率 <strong>66.82</strong>（<strong>+16.58</strong>），并部署于真实 AGV 验证 sim-to-real。</p>
+        <p><span class="tag accent">世界模型</span> <span class="tag purple">GRPO</span> <span class="badge new">+17.08</span></p>
+        <a class="source-link" href="https://arxiv.org/abs/2609.03225" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+
+  <div class="section" id="ieee-journals">
+    <h2 class="section-title"><span class="emoji">📚</span> IEEE期刊与会议动态<span class="num">5条</span></h2>
+
+    <div class="card">
+      <div class="card-title"><span class="badge hot">重点</span> IROS 2026：9月27日—10月1日 · 美国匹兹堡</div>
+      <div class="card-content">
+        <p>IROS 2026（第 <strong>35 届</strong>）于 <strong>9月27日至10月1日</strong>在匹兹堡 <strong>David L. Lawrence 会议中心</strong>举行，大会主席为 CMU 的 <strong>Howie Choset</strong>。官网显示论文投稿 <strong>1400+ 篇</strong>、预计参会 <strong>4723+ 人</strong>、来自 <strong>64+ 个国家/地区</strong>；注册早鸟价会员 <strong>920 美元</strong>、学生会员 <strong>460 美元</strong>、非会员 <strong>1150 美元</strong>。参考数据：IROS 2025 收到 <strong>4306 篇</strong>投稿、录用 <strong>1991 篇</strong>，录用率 <strong>46.2%</strong>。</p>
+        <p><span class="tag accent">会议</span> <span class="tag purple">机器人旗舰</span> <span class="badge new">9/27-10/1</span></p>
+        <a class="source-link" href="https://2026.ieee-iros.org/" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">IEEE RA-L 早期访问：AeroDiffusion——条件扩散做四旋翼实时轨迹规划</div>
+      <div class="card-content">
+        <p>作者：Haowen Wang, Shuting Zhang, Xin Meng, Guangchen Li（北京大学电子学院）。把条件扩散从"一次性轨迹生成器"改造为<strong>机载滚动时域规划器</strong>：时间深度状态条件化建模多模态未来 3D 轨迹，偏好引导的批量选择把模态转为可执行安全轨迹，<strong>热启动去噪</strong>复用上一周期规划以满足实时重规划延迟。仿真与室内飞行实验验证了避障与实时机载重规划。发表日期 <strong>2026年8月28日</strong>，DOI <strong>10.1109/LRA.2026.3728285</strong>。</p>
+        <p><span class="tag accent">RA-L</span> <span class="tag purple">扩散规划</span> <span class="badge new">热启动去噪</span></p>
+        <a class="source-link" href="https://xplorestaging.ieee.org/document/11669954/authors" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="badge hot">政策</span> G60 九城市首次联合发布低空安全行动倡议</div>
+      <div class="card-content">
+        <p><strong>2026年9月3日至5日</strong>，2026 低空经济发展大会在<strong>芜湖</strong>举行，长三角 G60 科创走廊<strong>九城市</strong>（松江、杭州、苏州、合肥、芜湖、宣城、嘉兴、湖州、金华）首次共同发布《长三角G60科创走廊城市低空安全联合行动倡议》。倡议聚焦六方面：严守法规制度（实名登记、空域查询、飞行审批，<strong>坚决杜绝"黑飞"</strong>）、压实企业主体责任、强化科技赋能（接入低空监管平台）、规范城市场景飞行、多方协同共治、统筹安全与发展。G60 低空经济协同创新联盟已汇聚 <strong>300 余家</strong>单位。</p>
+        <p><span class="tag accent">低空经济</span> <span class="tag orange">政策</span> <span class="badge new">9/3-5 芜湖</span></p>
+        <a class="source-link" href="http://g60.chinadevelopment.com.cn/g60zx/2026/0909/2014498.shtml" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="badge new">政策</span> 地方低空经济方案密集落地：中山 / 深圳前海 / 临沂</div>
+      <div class="card-content">
+        <p><strong>中山市</strong>印发《低空经济高质量发展行动方案（2026-2028年）》，部署<strong>四大领域 17 项重点任务</strong>：到 <strong>2026 年底</strong>示范应用场景 <strong>10 个以上</strong>、无人机起降点 <strong>100 个</strong>、产业规模突破 <strong>50 亿元</strong>；到 <strong>2028 年</strong>突破 <strong>200 亿元</strong>。<strong>深圳前海</strong>《金融赋能低空经济产业高质量发展的十二条措施》<strong>9月1日</strong>起实施、有效期至 <strong>2028年12月31日</strong>，备案低空信贷不良净损失给予 <strong>50%</strong> 风险补偿（每家银行每年最高 <strong>50 万元</strong>）。<strong>临沂市</strong>适飞空域由 <strong>0.25 万平方公里增至 1.06 万平方公里</strong>，居全省第 1。</p>
+        <p><span class="tag accent">低空经济</span> <span class="tag orange">产业政策</span></p>
+        <a class="source-link" href="https://psc.zs.gov.cn/zcfg/zcjd/content/post_2648243.html" target="_blank">📎 中山</a>
+        <a class="source-link" href="https://www.gdjr.gov.cn/gdjr/jrzx/dfjr/content/post_45017.html" target="_blank">📎 前海</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="badge hot">产业</span> 大疆 9 月动作：SDR 图传 2、Matrice 400、FC200</div>
+      <div class="card-content">
+        <p><strong>9月7日</strong>发布收发一体多机协同图传 <strong>DJI SDR 图传 2</strong>，支持<strong>一发八控</strong>与自动信道 2.0，最远图传 <strong>4 公里</strong>（较前代提升 <strong>60%</strong>）；同期在柏林 IFA 2026 展出 Osmo 360 II 全景相机与即插即用阳台光伏系统。<strong>9月2日</strong>推出 <strong>Matrice 400</strong> 旗舰飞行平台。此前发布的 <strong>FlyCart 200（FC200）</strong>单机最大载重 <strong>200 千克</strong>、航程 <strong>36 千米</strong>、四机联吊达 <strong>600 千克</strong>，集成 <strong>11 个传感器</strong>与 <strong>8 个图传天线</strong>，46Ah 电池单电补能仅需 <strong>7–8 分钟</strong>；电压平台由 60V 升至 <strong>120V</strong>。</p>
+        <p><span class="tag accent">产业动态</span> <span class="tag orange">大疆</span> <span class="badge new">4公里图传</span></p>
+        <a class="source-link" href="https://new.qq.com/rain/a/20260908A0495700" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="tech-discussions">
+    <h2 class="section-title"><span class="emoji">💬</span> 全网技术讨论<span class="num">4条</span></h2>
+
+    <p>本期聚焦 <strong>MATLAB/Simulink 强化学习落地</strong>、<strong>PPO 集群控制</strong>、<strong>Q-learning 路径规划</strong>三个与你技术栈直接相关的方向。</p>
+
+    <div class="discussion-item">
+      <div class="discussion-title">基于 Flocking 和 PPO 深度强化学习的无人机群控制算法 MATLAB 仿真</div>
+      <div class="discussion-meta"><span class="discussion-author">CSDN 博客</span><span class="discussion-time">2026</span></div>
+      <p>完整给出"Flocking 三规则 → 可量化奖励"的转换路径：把<strong>分离、对齐、内聚</strong>转为加权求和的分项奖励。状态向量由自身位置速度 + 所有邻居相对位置/速度构成，<strong>不含全局坐标</strong>以保证分布式运行；为统一输入维度固定最大邻居数、无邻居位置补零。策略网络输出高斯分布均值与方差对应连续动作（速度增量）。文章还解释了 PPO-Clip 中"取未裁剪项与裁剪项较小值"的工程含义及<strong>策略熵正则项</strong>的作用。<a class="source-link" href="https://blog.csdn.net/ccsss22/article/details/164193272" target="_blank">📎 查看原文</a></p>
+    </div>
+
+    <div class="discussion-item">
+      <div class="discussion-title">飞控中的强化学习基础：Q-learning 与 DQN —— 从一次炸机调试说起</div>
+      <div class="discussion-meta"><span class="discussion-author">CSDN（飞控算法从入门到精通 第146篇）</span><span class="discussion-time">2026</span></div>
+      <p>从"PID 调了三天、风场扰动下依然抖得像筛糠"的痛点切入，指出 RL 能补上传统控制器短板的具体场景：<strong>非线性、时变、模型不确定的工况</strong>。给出四旋翼强风定位任务的形式化模板——状态（位置误差、速度、姿态角）、动作（电机 PWM 增量）、奖励（离目标越近越高）。同时坦言代价："训练过程可能炸几百次虚拟飞机"。核心观点：<strong>飞控工程师不必成为 RL 理论家，但必须理解"什么时候该用 RL、怎么用才不会炸机"</strong>。<a class="source-link" href="https://blog.csdn.net/2401_88858637/article/details/163509508" target="_blank">📎 查看原文</a></p>
+    </div>
+
+    <div class="discussion-item">
+      <div class="discussion-title">MATLAB/Simulink 强化学习：从环境建模到 DDPG 智能体部署实战</div>
+      <div class="discussion-meta"><span class="discussion-author">技术社区</span><span class="discussion-time">2026</span></div>
+      <p>三条工程教训：<strong>① 观测归一化</strong>——关节角度 [-π, π] 与角速度几十 rad/s 混在一起、不做归一化，训练三天后智能体"表现得像喝醉的水手"；推荐 <strong>(x − mean) / (3 × std)</strong>。<strong>② 奖励"三层蛋糕法则"</strong>——基础层（任务核心目标）+ 引导层（阶段性引导）+ 修饰层（平滑项）。<strong>③ 反面案例</strong>："离障碍越远奖励越高"导致 AGV 直接躺平在角落——静止虽奖励增长慢但永不撞墙，反而成了"最优策略"。<a class="source-link" href="http://www.hqwc.cn/a/1849766.html" target="_blank">📎 查看原文</a></p>
+    </div>
+
+    <div class="discussion-item">
+      <div class="discussion-title">AgilePE 引发的争论：端到端 RL 直出 CTBR 是否该取代分层控制？</div>
+      <div class="discussion-meta"><span class="discussion-author">智源社区论文库</span><span class="discussion-time">2026-08-14</span></div>
+      <p>AgilePE 把机载观测直接映射为 <strong>CTBR</strong> 指令，跳过轨迹规划器与航点控制器。争议焦点：这种端到端在<strong>敏捷对抗</strong>场景优势明显（零样本真机、双机交互），但<strong>可解释性与安全认证</strong>不如分层方案。折中观点是保留底层控制器做安全兜底（RCBF/CBF）、上层用 RL 出指令——也正是 arXiv:2609.05569 与 2608.26852 的选择。<a class="source-link" href="https://hub.baai.ac.cn/paper/5ed899d6-eb37-46b0-ab45-614ad2f77757" target="_blank">📎 查看原文</a></p>
+    </div>
+
+
+  <div class="section" id="writing-tips">
+    <h2 class="section-title"><span class="emoji">✍️</span> 写作参考建议</h2>
+
+    <div class="card">
+      <div class="card-title">1. 把"执行器动力学"写进贡献点，是低成本高收益的差异化</div>
+      <div class="card-content">
+        <p>arXiv:2607.25985 与 AgilePE 都把"精确建模执行器响应/电机滞后"作为明确贡献。若你的 Simulink 模型目前用理想推力模型，可考虑补一节：<strong>一阶电机滞后（Tm 约 0.076 s）+ Moore-Penrose 伪逆分配 + 旋翼陀螺耦合</strong>。这在审稿人眼里是"考虑工程实际"的直接证据，实现成本主要在改 S-Function，无需新的理论推导。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">2. 安全 RL：用"降低保守性"切入，比单纯"加一个 CBF"更新</div>
+      <div class="card-content">
+        <p>本期两篇安全 RL 选择同一叙事：<strong>形式化方法太保守 → 用在线数据精化扰动/误差模型 → 在保持安全前提下恢复探索能力</strong>。写作可直接复用三段式：现有安全过滤器保守 → 本文用 XX 在线收紧界 → 实验证明安全违规为 0 且性能提升 XX%。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">3. 奖励函数写"三层蛋糕法则"，并主动暴露一个失败案例</div>
+      <div class="card-content">
+        <p>把奖励拆成<strong>基础层（任务目标）+ 引导层（阶段性引导）+ 修饰层（平滑/能耗惩罚）</strong>三层，比堆一串加权项清晰得多。更重要的是<strong>主动写出一个失败的奖励设计及其现象</strong>——审稿人普遍认为这类负结果比又一组成功曲线更能体现对问题的理解。</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">4. 时间节点：IROS 2026 还有 18 天开幕</div>
+      <div class="card-content">
+        <p>建议现在把官网 Late-Breaking Results（终稿已于 <strong>8月21日</strong>截止）与正式论文列表过一遍，按<strong>四旋翼控制 / 多机协同 / 安全RL</strong>筛出 20–30 篇作为 Related Work 更新来源。同时关注同期 <strong>ROSCon Global 2026（9月22-24日，多伦多）</strong>，议题覆盖 aerial robotics 与仿真。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sources">
+    <div class="section-title"><span class="emoji">📎</span> 信息来源汇总</div>
+    <div class="table-wrap">
+      <table class="summary-table">
+        <thead><tr><th>来源标题</th><th>链接</th><th>时间</th></tr></thead>
+        <tbody>
+          <tr><td>PCAC 四旋翼在线重力配平（arXiv:2609.03351）</td><td><a class="source-link" href="https://arxiv.org/abs/2609.03351" target="_blank">📎 原文</a></td><td>2026-09-03</td></tr>
+          <tr><td>四旋翼端到端DRL含执行器动力学（arXiv:2607.25985）</td><td><a class="source-link" href="https://arxiv.org/abs/2607.25985" target="_blank">📎 原文</a></td><td>2026</td></tr>
+          <tr><td>降低保守性的安全RL（arXiv:2608.26852）</td><td><a class="source-link" href="https://arxiv.org/abs/2608.26852" target="_blank">📎 原文</a></td><td>2026-08-27</td></tr>
+          <tr><td>信息引导安全RL气体源定位（arXiv:2609.05569）</td><td><a class="source-link" href="https://arxiv.org/abs/2609.05569" target="_blank">📎 原文</a></td><td>2026-09-04</td></tr>
+          <tr><td>多无人机区间观测器增强RL（Pattern Recognition）</td><td><a class="source-link" href="https://dl.acm.org/doi/10.1016/j.patcog.2026.114007" target="_blank">📎 原文</a></td><td>2026-08-18</td></tr>
+          <tr><td>AgilePE 自博弈无人机追逃（智源社区）</td><td><a class="source-link" href="https://hub.baai.ac.cn/paper/5ed899d6-eb37-46b0-ab45-614ad2f77757" target="_blank">📎 原文</a></td><td>2026-08-14</td></tr>
+          <tr><td>TriSAR 多机任务协调与避碰（arXiv:2609.01731）</td><td><a class="source-link" href="https://arxiv.org/abs/2609.01731" target="_blank">📎 原文</a></td><td>2026-09-01</td></tr>
+          <tr><td>LaPla 潜空间对齐规划（arXiv:2609.04070）</td><td><a class="source-link" href="https://arxiv.org/abs/2609.04070" target="_blank">📎 原文</a></td><td>2026-09-03</td></tr>
+          <tr><td>DriveZero 超越人类演示（arXiv:2609.06055）</td><td><a class="source-link" href="https://arxiv.org/abs/2609.06055" target="_blank">📎 原文</a></td><td>2026-09-05</td></tr>
+          <tr><td>StyleDrive 世界模型驾驶（arXiv:2609.03225）</td><td><a class="source-link" href="https://arxiv.org/abs/2609.03225" target="_blank">📎 原文</a></td><td>2026-09-03</td></tr>
+          <tr><td>IROS 2026 官方网站</td><td><a class="source-link" href="https://2026.ieee-iros.org/" target="_blank">📎 原文</a></td><td>2026-09</td></tr>
+          <tr><td>AeroDiffusion（IEEE RA-L Early Access）</td><td><a class="source-link" href="https://xplorestaging.ieee.org/document/11669954/authors" target="_blank">📎 原文</a></td><td>2026-08-28</td></tr>
+          <tr><td>G60九城市低空安全联合行动倡议</td><td><a class="source-link" href="http://g60.chinadevelopment.com.cn/g60zx/2026/0909/2014498.shtml" target="_blank">📎 原文</a></td><td>2026-09-09</td></tr>
+          <tr><td>《中山市低空经济行动方案（2026-2028年）》解读</td><td><a class="source-link" href="https://psc.zs.gov.cn/zcfg/zcjd/content/post_2648243.html" target="_blank">📎 原文</a></td><td>2026-09</td></tr>
+          <tr><td>深圳前海金融赋能低空经济十二条措施</td><td><a class="source-link" href="https://www.gdjr.gov.cn/gdjr/jrzx/dfjr/content/post_45017.html" target="_blank">📎 原文</a></td><td>2026-09-01</td></tr>
+          <tr><td>临沂市适飞空域扩容提案答复</td><td><a class="source-link" href="https://tlmh.linyi.cn/info/1432/4532.htm" target="_blank">📎 原文</a></td><td>2026-09-08</td></tr>
+          <tr><td>大疆动态（9月7日-8日）</td><td><a class="source-link" href="https://new.qq.com/rain/a/20260908A0495700" target="_blank">📎 原文</a></td><td>2026-09-08</td></tr>
+          <tr><td>Flocking + PPO 无人机群控制 MATLAB 仿真（CSDN）</td><td><a class="source-link" href="https://blog.csdn.net/ccsss22/article/details/164193272" target="_blank">📎 原文</a></td><td>2026</td></tr>
+          <tr><td>飞控中的强化学习基础：Q-learning与DQN（CSDN）</td><td><a class="source-link" href="https://blog.csdn.net/2401_88858637/article/details/163509508" target="_blank">📎 原文</a></td><td>2026</td></tr>
+          <tr><td>MATLAB/Simulink 强化学习：DDPG 部署实战</td><td><a class="source-link" href="http://www.hqwc.cn/a/1849766.html" target="_blank">📎 原文</a></td><td>2026</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="giscus"></div>
+</div>
+</div>
+</div>
+
+
+<footer class="footer">
+  <p>🚁 无人机科研日报 | 安徽工业大学机械工程硕士研究生个性化推荐报告</p>
+  <p>报告日期：2026年9月9日 | 数据来源：公开网络信息整理</p>
+  <div class="footer-meta">Generated by WorkBuddy Automation | Powered by TS-dinglilu.github.io</div>
+</footer>
+
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button>
+
+<script>
+// Scroll-to-top button visibility
+window.addEventListener('scroll', function() {
+  var btn = document.querySelector('.scroll-top');
+  if (btn) {
+    if (window.scrollY > 400) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+  }
+});
+
+// Giscus configuration
+var giscusScript = document.createElement('script');
+giscusScript.src = 'https://giscus.app/client.js';
+giscusScript.setAttribute('data-repo', 'TS-dinglilu/TS-dinglilu.github.io');
+giscusScript.setAttribute('data-repo-id', 'R_kgDOTjqaJQ');
+giscusScript.setAttribute('data-category', 'Announcements');
+giscusScript.setAttribute('data-category-id', 'DIC_kwDOTjqaJc4DCIL1');
+giscusScript.setAttribute('data-mapping', 'pathname');
+giscusScript.setAttribute('data-strict', '0');
+giscusScript.setAttribute('data-reactions-enabled', '1');
+giscusScript.setAttribute('data-emit-metadata', '0');
+giscusScript.setAttribute('data-input-position', 'top');
+giscusScript.setAttribute('data-theme', 'dark_dimmed');
+giscusScript.setAttribute('data-lang', 'zh-CN');
+giscusScript.setAttribute('data-loading', 'lazy');
+giscusScript.crossOrigin = 'anonymous';
+giscusScript.async = true;
+var giscusBox = document.querySelector('.giscus');
+if (giscusBox) { giscusBox.appendChild(giscusScript); }
+</script>
+
+</body>
+</html>
