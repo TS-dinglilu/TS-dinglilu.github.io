@@ -10,8 +10,9 @@
   python scripts/set_giscus_category.py --name General --id DIC_kwDOxxxxxxxx --dry-run
   python scripts/set_giscus_category.py --name General --id DIC_kwDOxxxxxxxx
 
-ID 获取方式：打开 https://giscus.app/zh-CN ，填入仓库 TS-dinglilu/TS-dinglilu.github.io，
-在 "Discussion 分类" 选择 General，页面生成的配置代码里 data-category-id 即为所需 ID。
+ID 获取方式（公开接口，可直接查）：
+  curl -s "https://giscus.app/api/discussions/categories?repo=TS-dinglilu/TS-dinglilu.github.io"
+  返回 JSON 中 name 对应的 id 即为所需 ID。例如 General → DIC_kwDOTjqaJc4DCIL2。
 """
 import argparse
 import os
@@ -45,8 +46,11 @@ def main():
         s = open(path, encoding="utf-8").read()
         orig = s
         s = s.replace('data-category="%s"' % OLD_NAME, 'data-category="%s"' % args.name)
+        s = s.replace("data-category='%s'" % OLD_NAME, "data-category='%s'" % args.name)
+        s = s.replace("'data-category', '%s'" % OLD_NAME, "'data-category', '%s'" % args.name)
         s = s.replace("data-category-id='%s'" % OLD_ID, "data-category-id='%s'" % args.cat_id)
         s = s.replace('data-category-id="%s"' % OLD_ID, 'data-category-id="%s"' % args.cat_id)
+        s = s.replace("'data-category-id', '%s'" % OLD_ID, "'data-category-id', '%s'" % args.cat_id)
         s = s.replace("'%s'" % OLD_ID, "'%s'" % args.cat_id)
         if s != orig:
             changed.append(os.path.relpath(path, ROOT))
