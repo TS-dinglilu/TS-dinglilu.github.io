@@ -119,8 +119,19 @@ def push_via_exported_cred():
 
 
 def push_with_retry(attempts=3, base_sleep=20):
-    """带退避的推送：先常规推，失败后自动走凭据兜底通道。"""
+    """推送：Windows 下优先走凭据直连通道（凭据助手常挂起），再退回常规 git push。"""
     import time
+
+    # 1) 优先：凭据直连（实测 15 秒内完成；绕过会挂起的凭据助手）
+    fb = push_via_exported_cred()
+    if fb:
+        if fb.startswith("[OK]"):
+            return fb
+        print("[WARN] " + fb)
+    else:
+        print("[..] 非 Windows 或缺少导出脚本，走常规推送")
+
+    # 2) 常规推送（网络抖动重试）
     for i in range(attempts):
         try:
             r = subprocess.run(["git", "push", "origin", "main"], cwd=ROOT,
@@ -132,12 +143,9 @@ def push_with_retry(attempts=3, base_sleep=20):
             err = err[-1] if err else "unknown"
         except subprocess.TimeoutExpired:
             err = "凭据助手无响应（超时）"
-        print("[WARN] push 第 %d/%d 次失败: %s" % (i + 1, attempts, err[:130]))
+        print("[WARN] 常规 push 第 %d/%d 次失败: %s" % (i + 1, attempts, err[:130]))
         if i < attempts - 1:
             time.sleep(base_sleep * (i + 1))
-    fb = push_via_exported_cred()
-    if fb:
-        return fb
     return "[FAIL] 推送失败（本地提交已保留，网络恢复后运行 git push origin main 即可）"
 
 
