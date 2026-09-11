@@ -67,7 +67,7 @@ def push_via_exported_cred():
     ps1 = os.path.join(HERE, "export_git_cred.ps1")
     if not os.path.exists(ps1):
         return None
-    print("[..] 常规推送失败，尝试凭据兜底通道…")
+    print("[..] 走凭据直连通道推送…")
     # 脚本原路径含中文，PowerShell -File 可能读取失败 → 复制到纯 ASCII 临时路径执行
     import shutil
     import tempfile

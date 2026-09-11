@@ -49,7 +49,11 @@ python scripts/publish_all.py --push
 ```
 该脚本会自动完成：内容校验（禁 Markdown 链接/必需板块/文档标签/长度）→ 批量构建 13 分类报告
 → 重建各分类归档索引 → 更新主页卡片（最新日期+累计期数）与总数统计 → git 提交推送。
-推送失败会自动退避重试 6 次。
+
+推送逻辑（针对本机环境定制）：**优先走"凭据直连通道"**（`scripts/export_git_cred.ps1`
+从 Windows 凭据管理器导出凭据 → 用 git store 助手推送，约 15 秒完成）；失败才退回常规
+`git push` 重试 3 次。原因是本机的 git 凭据助手（helper-selector → GCM）在非交互场景会挂起，
+常规 `git push` 可能几分钟无响应。
 
 只想构建不推送：去掉 `--push`。只更新主页：加 `--no-build`。
 
@@ -69,6 +73,8 @@ GitHub Pages 推送后 1–2 分钟生效，返回 200 即成功。
 | 现象 | 处理 |
 |---|---|
 | `git push` 报 `Failed to connect to github.com:443` | 国内网络问题。等几分钟重试；本地提交不会丢 |
+| `git push` 长时间无响应（不报错也不返回） | 凭据助手挂起。直接跑 `python scripts/publish_all.py --push`，会自动走凭据直连通道；或手动 `powershell -File scripts\export_git_cred.ps1` 拿到凭据文件后按脚本注释里的命令推送 |
 | 子代理报 429 频率限制 | 等额度重置，或改用 `model: lite` 的代理执行 |
 | 某分类构建报"找不到 `<main>` 区块" | 属正常（该分类用通用骨架），构建器会自动走通用路径 |
 | 主页卡片期数不更新 | 单独执行 `python scripts/update_homepage.py` |
+| 提示"最近 3 天缺失报告" | 说明有漏跑。为缺失日期补生成正文后，用 `build_report.py --date <缺失日期>` 单独构建，再统一推送 |

@@ -50,9 +50,10 @@ python scripts/publish_all.py --push
 
 | 脚本 | 作用 |
 |------|------|
-| `scripts/publish_all.py` | 一键发布：内容校验 → 批量构建 13 分类 → 更新主页 → 提交推送（带退避重试） |
+| `scripts/publish_all.py` | 一键发布：内容校验 → 批量构建 13 分类 → 更新主页 → 提交推送（凭据直连优先，常规 push 兜底） |
 | `scripts/build_report.py` | 单分类构建：以最新历史报告为模板替换正文/日期，写出 `report_YYYYMMDD.html`，重建该分类 `index.html` |
 | `scripts/update_homepage.py` | 扫描各分类期数与最新日期，写回主页卡片与统计区 |
+| `scripts/export_git_cred.ps1` | 从 Windows 凭据管理器导出 Git 凭据，供推送兜底通道使用（用完即删临时文件） |
 | `scripts/set_giscus_category.py` | 全站切换 giscus 评论分类（见下方"评论系统"） |
 | `scripts/report_css_v9.css` | 报告页 CSS 模板参考（实际 CSS 已内联在各页面中） |
 
@@ -87,12 +88,17 @@ python scripts/publish_all.py --push
   python scripts/set_giscus_category.py --name General --id DIC_kwDOxxxxxxxx
   ```
 
-## 网络注意事项
+## 网络与推送注意事项
 
-国内网络下 `github.com` 时常不可达（`api.github.com`、`*.github.io` 通常正常）。此时 `git push` 会失败：
-
-- 本地提交不会丢失，网络恢复后 `git push origin main` 即可
-- `publish_all.py` 内置 6 次退避重试，能扛过短时抖动
+- 国内网络下 `github.com` 时常不可达（`api.github.com`、`*.github.io` 通常正常）。此时 `git push` 会失败；本地提交不会丢失，网络恢复后 `git push origin main` 即可。
+- 本机 git 凭据助手（`helper-selector` → GCM）在非交互场景可能挂起，导致 `git push` 长时间无响应。
+  `publish_all.py` 因此**默认优先走凭据直连通道**（`export_git_cred.ps1` 导出凭据 → git store 助手推送，约 15 秒），
+  常规 `git push` 仅作兜底。手动推送遇到卡死时，可：
+  ```powershell
+  powershell -File scripts\export_git_cred.ps1     # 输出临时凭据文件路径
+  git -c credential.helper= -c "credential.helper=store --file=<上面的路径>" push origin main
+  ```
+  推送完成后删除该临时文件。凭据不会写入仓库。
 
 ## 目录结构
 
