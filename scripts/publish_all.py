@@ -59,20 +59,85 @@ def missing_dates(days=3):
     return out
 
 
-def push_with_retry(attempts=6, base_sleep=45):
-    """带退避的推送。国内网络下 github.com 时常不可达，退避重试能显著提高成功率。"""
+def push_via_exported_cred():
+    """兜底推送：凭据助手（helper-selector/GCM）挂起时，直接从 Windows 凭据管理器
+    导出凭据，用 git 的 store 助手完成一次推送。返回提示字符串，不适用时返回 None。"""
+    if os.name != "nt":
+        return None
+    ps1 = os.path.join(HERE, "export_git_cred.ps1")
+    if not os.path.exists(ps1):
+        return None
+    print("[..] 常规推送失败，尝试凭据兜底通道…")
+    # 脚本原路径含中文，PowerShell -File 可能读取失败 → 复制到纯 ASCII 临时路径执行
+    import shutil
+    import tempfile
+    tmpdir = tempfile.mkdtemp(prefix="wbcred_")
+    ps_tmp = os.path.join(tmpdir, "export_git_cred.ps1")
+    try:
+        # 以 utf-8-sig（带 BOM）落盘：Windows PowerShell 5.1 靠 BOM 判定 UTF-8，
+        # 否则含中文的脚本会按 GBK 解析报 ParserError
+        with open(ps1, encoding="utf-8") as f:
+            content = f.read()
+        with open(ps_tmp, "w", encoding="utf-8-sig") as f:
+            f.write(content)
+        r = subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ps_tmp],
+                           capture_output=True, timeout=120)
+    except Exception as e:  # noqa: BLE001
+        return "[FAIL] 凭据导出异常: %s" % e
+    finally:
+        shutil.rmtree(tmpdir, ignore_errors=True)
+    raw = (r.stdout or b"") + b"\n" + (r.stderr or b"")
+    text = ""
+    for enc in ("utf-8", "gbk", "mbcs", "latin-1"):
+        try:
+            text = raw.decode(enc)
+            break
+        except (UnicodeDecodeError, LookupError):
+            continue
+    lines = [l.strip() for l in text.splitlines() if l.strip()]
+    if not lines or not os.path.exists(lines[-1]):
+        return "[FAIL] 凭据导出失败: %s" % (" | ".join(lines[-2:])[:200] if lines else "(无输出)")
+    cred_file = lines[-1]
+    try:
+        # 注意：git config 会把反斜杠当转义字符，路径必须用正斜杠
+        p = subprocess.run(["git", "-c", "credential.helper=",
+                            "-c", "credential.helper=store --file=%s" % cred_file.replace("\\", "/"),
+                            "push", "origin", "main"],
+                           cwd=ROOT, capture_output=True, text=True, timeout=300,
+                           env=dict(os.environ, GIT_TERMINAL_PROMPT="0"))
+        msg = re.sub(r":[^:@\s]*@", ":***@", (p.stdout or p.stderr or "").strip())
+        if p.returncode == 0:
+            return "[OK] 已推送 GitHub Pages（凭据兜底通道）"
+        return "[FAIL] 兜底推送失败: " + msg[-200:]
+    except subprocess.TimeoutExpired:
+        return "[FAIL] 兜底推送超时"
+    finally:
+        try:
+            os.remove(cred_file)
+        except OSError:
+            pass
+
+
+def push_with_retry(attempts=3, base_sleep=20):
+    """带退避的推送：先常规推，失败后自动走凭据兜底通道。"""
     import time
     for i in range(attempts):
-        r = subprocess.run(["git", "push", "origin", "main"], cwd=ROOT,
-                           capture_output=True, text=True, timeout=180,
-                           env=dict(os.environ, GIT_TERMINAL_PROMPT="0"))
-        if r.returncode == 0:
-            return "[OK] 已推送 GitHub Pages"
-        err = (r.stderr or r.stdout).strip().splitlines()
-        err = err[-1] if err else "unknown"
+        try:
+            r = subprocess.run(["git", "push", "origin", "main"], cwd=ROOT,
+                               capture_output=True, text=True, timeout=60,
+                               env=dict(os.environ, GIT_TERMINAL_PROMPT="0"))
+            if r.returncode == 0:
+                return "[OK] 已推送 GitHub Pages"
+            err = (r.stderr or r.stdout).strip().splitlines()
+            err = err[-1] if err else "unknown"
+        except subprocess.TimeoutExpired:
+            err = "凭据助手无响应（超时）"
         print("[WARN] push 第 %d/%d 次失败: %s" % (i + 1, attempts, err[:130]))
         if i < attempts - 1:
             time.sleep(base_sleep * (i + 1))
+    fb = push_via_exported_cred()
+    if fb:
+        return fb
     return "[FAIL] 推送失败（本地提交已保留，网络恢复后运行 git push origin main 即可）"
 
 
