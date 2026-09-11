@@ -59,6 +59,23 @@ def missing_dates(days=3):
     return out
 
 
+def push_with_retry(attempts=6, base_sleep=45):
+    """带退避的推送。国内网络下 github.com 时常不可达，退避重试能显著提高成功率。"""
+    import time
+    for i in range(attempts):
+        r = subprocess.run(["git", "push", "origin", "main"], cwd=ROOT,
+                           capture_output=True, text=True, timeout=180,
+                           env=dict(os.environ, GIT_TERMINAL_PROMPT="0"))
+        if r.returncode == 0:
+            return "[OK] 已推送 GitHub Pages"
+        err = (r.stderr or r.stdout).strip().splitlines()
+        err = err[-1] if err else "unknown"
+        print("[WARN] push 第 %d/%d 次失败: %s" % (i + 1, attempts, err[:130]))
+        if i < attempts - 1:
+            time.sleep(base_sleep * (i + 1))
+    return "[FAIL] 推送失败（本地提交已保留，网络恢复后运行 git push origin main 即可）"
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--date", default=datetime.date.today().isoformat())
@@ -120,18 +137,7 @@ def main():
                             cwd=ROOT, capture_output=True, text=True)
         if st.returncode != 0:
             print("[WARN] commit: " + (st.stdout or st.stderr).strip()[:160])
-        ok = False
-        for i in range(3):
-            r = subprocess.run(["git", "push", "origin", "main"], cwd=ROOT,
-                               capture_output=True, text=True,
-                               env=dict(os.environ, GIT_TERMINAL_PROMPT="0"))
-            if r.returncode == 0:
-                print("[OK] 已推送 GitHub Pages")
-                ok = True
-                break
-            print("[WARN] push 第 %d 次失败" % (i + 1))
-        if not ok:
-            print("[FAIL] 推送失败，本地提交已保留，可稍后手动 git push")
+        print(push_with_retry())
 
     # 5) 汇总
     print("=" * 8, "汇总", "=" * 8)

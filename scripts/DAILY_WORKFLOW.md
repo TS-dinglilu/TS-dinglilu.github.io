@@ -1,7 +1,7 @@
 # 每日日报自动更新工作流
 
 > 本文档是每日自动化任务的执行手册。站点：https://ts-dinglilu.github.io/
-> 仓库本地路径：`D:\研二\github.auto\repo`（main 分支，直接 push）
+> 仓库：`D:\研二\github.auto\repo`（main 分支直推）｜正文草稿：`D:\研二\github.auto\content\`
 
 ## 13 个日报分类
 
@@ -23,43 +23,52 @@
 
 ## 每日执行步骤
 
-### 1. 准备
+### 1. 准备与漏跑自查
 ```bash
 cd D:\研二\github.auto\repo
-git pull origin main        # 同步远端（若有云端改动）
+git pull origin main                        # 同步远端（网络不通可跳过，不影响本地生成）
+python scripts/publish_all.py --no-build    # 快速自查：提示最近 3 天是否有缺失日期
 ```
-日期 = 今天（YYYY-MM-DD）。
+若提示有缺失日期（例如昨天没跑），**先补做缺失日期**：为缺失日期单独生成正文并构建
+`python scripts/build_report.py --category <分类> --date <缺失日期> --content ../content/<分类>.html`，
+再继续今天的流程。
 
 ### 2. 搜集素材 + 写正文
 - **写作规范必读**：`D:\研二\github.auto\content\STYLE_GUIDE.md`
-  （只输出 `<main>` 内部内容；链接一律 `<a class="source-link" href="..." target="_blank">📎 查看原文</a>`；
-  结尾必须有「信息来源汇总」表格 + `<div class="giscus"></div>`）
-- 对每个分类：先看上一份报告的板块结构（`<分类>/report_最新.html`），再用 WebSearch 搜集**当天/近期**真实资讯，
-  按同样板块结构写正文，保存到 `D:\研二\github.auto\content\<分类>.html`
-- 每份 8000–20000 字符；关键数据加粗；禁止 Markdown 链接；不得编造精确数字和假链接
-- 可用多个并行子代理分工（例如 4-5 个代理各负责 3-4 个分类），加快速度
+- 对每个分类：先看上一份报告的板块结构（`<分类>/report_最新.html`），再用 WebSearch 搜集
+  **当天及近日**真实资讯（重点 24–48 小时内），按同样板块结构写正文，
+  覆盖保存到 `D:\研二\github.auto\content\<分类>.html`
+- 每个分类至少搜 5–8 次，覆盖不同角度；每份 8000–20000 字符
+- 避免与上一期内容重复，聚焦最新进展
+- **可用多个并行子代理分工加速**（例如 5 个代理各负责 2–3 个分类）
 
-### 3. 构建报告 + 更新索引
+### 3. 一键发布
 ```bash
 cd D:\研二\github.auto\repo
-python scripts/build_report.py --category <分类> --date <YYYY-MM-DD> --content ../content/<分类>.html
+python scripts/publish_all.py --push
 ```
-对 13 个分类逐一执行。脚本会自动：以最新历史报告为模板 → 替换正文和日期 → 写 `report_YYYYMMDD.html` →
-重建该分类 `index.html` 归档列表/统计/最后更新时间 → 自动修复未闭合 div 和重复 body 标签。
+该脚本会自动完成：内容校验（禁 Markdown 链接/必需板块/文档标签/长度）→ 批量构建 13 分类报告
+→ 重建各分类归档索引 → 更新主页卡片（最新日期+累计期数）与总数统计 → git 提交推送。
+推送失败会自动退避重试 6 次。
 
-### 4. 更新主页统计（可选）
-`index.html` 中 `stat-num">NNN+` 为报告总数，可按实际总数更新。
+只想构建不推送：去掉 `--push`。只更新主页：加 `--no-build`。
 
-### 5. 提交推送
+### 4. 验证
 ```bash
-git add -A
-git commit -m "每日日报自动更新 <YYYY-MM-DD>"
-git push origin main
+curl -s -o /dev/null -w "%{http_code}\n" https://ts-dinglilu.github.io/car-recruit/report_<日期>.html
 ```
-push 失败时重试 3 次；仍失败则保留本地提交，报告给用户。
+GitHub Pages 推送后 1–2 分钟生效，返回 200 即成功。
 
 ## 质量红线
-- 所有链接必须真实可点击（来自搜索结果），严禁编造 URL
-- 网站部署在 GitHub Pages，push 后 1-2 分钟自动生效
+- 所有链接必须真实可点击（来自搜索结果），严禁编造 URL 和精确假数据
 - 历史报告只增不删
-- 若某个分类当天实在搜不到素材，可以写行业分析向内容，但必须在正文标注"今日动态较少，以下为近期梳理"
+- 若某分类当天确实无素材，写近期梳理并在正文标注"今日动态较少，以下为近期梳理"
+- 网络问题导致 push 失败时，本地提交会保留；网络恢复后 `git push origin main` 即可，不要重新生成
+
+## 常见问题
+| 现象 | 处理 |
+|---|---|
+| `git push` 报 `Failed to connect to github.com:443` | 国内网络问题。等几分钟重试；本地提交不会丢 |
+| 子代理报 429 频率限制 | 等额度重置，或改用 `model: lite` 的代理执行 |
+| 某分类构建报"找不到 `<main>` 区块" | 属正常（该分类用通用骨架），构建器会自动走通用路径 |
+| 主页卡片期数不更新 | 单独执行 `python scripts/update_homepage.py` |

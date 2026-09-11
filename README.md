@@ -1,115 +1,107 @@
-# TRAE 自动化日报系统
+# 自动化日报系统
 
-基于 GitHub Pages 的自动化日报系统，为安徽工业大学机械工程硕士研究生提供个性化招聘信息和行业资讯推荐。
+基于 GitHub Pages 的每日自动化日报系统，为安徽工业大学机械工程硕士研究生（张恒辰）提供个性化的招聘、科研与校园资讯。
 
-## 系统架构
-
-- **主仓库**: [TS-dinglilu/TS-dinglilu.github.io](https://github.com/TS-dinglilu/TS-dinglilu.github.io)
-- **在线访问**: [https://ts-dinglilu.github.io/](https://ts-dinglilu.github.io/)
-- **自动化时间**: 每天早上5点（北京时间）自动执行
-- **部署方式**: 统一部署到主仓库子目录，通过 `deploy_github_pages.ps1` 脚本管理
+- **在线访问**：https://ts-dinglilu.github.io/
+- **仓库**：TS-dinglilu/TS-dinglilu.github.io（main 分支直推，GitHub Pages 自动部署，约 1–2 分钟生效）
+- **自动化时间**：每天 05:00（北京时间），由 WorkBuddy 自动化任务驱动
+- **本地工作区**：`D:\研二\github.auto`（`repo/` = 本仓库克隆，`content/` = 每日正文草稿）
 
 ## 页面层级
 
-| 层级 | URL格式 | 说明 |
+| 层级 | URL 格式 | 说明 |
 |------|---------|------|
-| 主页 | `https://ts-dinglilu.github.io/` | 13个日报系统入口 |
-| 报告汇总 | `https://ts-dinglilu.github.io/car-recruit/` | 某个日报的归档列表 |
-| 报告 | `https://ts-dinglilu.github.io/car-recruit/report_20260728.html` | 具体某天的日报 |
+| 主页 | `https://ts-dinglilu.github.io/` | 13 个日报系统入口，卡片显示各分类最新日期与累计期数 |
+| 报告汇总 | `https://ts-dinglilu.github.io/car-recruit/` | 该日报的归档列表 |
+| 报告 | `https://ts-dinglilu.github.io/car-recruit/report_20260911.html` | 具体某天的日报 |
 
-## 13个日报系统
+## 13 个日报系统
 
-| 序号 | 子目录 | 日报名称 | 在线地址 |
-|------|--------|----------|----------|
-| 1 | car-recruit | 车企招聘日报 | https://ts-dinglilu.github.io/car-recruit/ |
-| 2 | mechanical-recruit | 机械招聘日报 | https://ts-dinglilu.github.io/mechanical-recruit/ |
-| 3 | school-news | 校园新闻日报 | https://ts-dinglilu.github.io/school-news/ |
-| 4 | drone-research | 无人机科研日报 | https://ts-dinglilu.github.io/drone-research/ |
-| 5 | ahut-campus | 安工大校园日报 | https://ts-dinglilu.github.io/ahut-campus/ |
-| 6 | byd-recruit | 比亚迪招聘日报 | https://ts-dinglilu.github.io/byd-recruit/ |
-| 7 | chery-recruit | 奇瑞招聘日报 | https://ts-dinglilu.github.io/chery-recruit/ |
-| 8 | geely-recruit | 吉利招聘日报 | https://ts-dinglilu.github.io/geely-recruit/ |
-| 9 | xiaomi-recruit | 小米汽车招聘日报 | https://ts-dinglilu.github.io/xiaomi-recruit/ |
-| 10 | weixiaoli-recruit | 蔚小理招聘日报 | https://ts-dinglilu.github.io/weixiaoli-recruit/ |
-| 11 | traditional-auto | 传统车企招聘日报 | https://ts-dinglilu.github.io/traditional-auto/ |
-| 12 | research-institute | 科研院所招聘日报 | https://ts-dinglilu.github.io/research-institute/ |
-| 13 | future-planning | 未来规划日报 | https://ts-dinglilu.github.io/future-planning/ |
+| 序号 | 子目录 | 日报名称 |
+|------|--------|----------|
+| 1 | car-recruit | 车企招聘日报 |
+| 2 | mechanical-recruit | 机械招聘日报 |
+| 3 | school-news | 校园新闻日报 |
+| 4 | drone-research | 无人机科研日报 |
+| 5 | ahut-campus | 安工大校园日报 |
+| 6 | byd-recruit | 比亚迪招聘日报 |
+| 7 | chery-recruit | 奇瑞招聘日报 |
+| 8 | geely-recruit | 吉利招聘日报 |
+| 9 | xiaomi-recruit | 小米汽车招聘日报 |
+| 10 | weixiaoli-recruit | 蔚小理招聘日报 |
+| 11 | traditional-auto | 传统车企招聘日报 |
+| 12 | research-institute | 科研院所招聘日报 |
+| 13 | future-planning | 未来规划日报 |
 
-## 部署脚本使用
+## 每日流程
 
-```powershell
-.\deploy_github_pages.ps1 -SubDir "car-recruit" -ReportFile "report_20260728.html" -ReportDate "2026-07-28" -SiteTitle "车企招聘日报" -SiteDesc "比亚迪/奇瑞/吉利等车企招聘信息与岗位分析"
+完整手册见 [`scripts/DAILY_WORKFLOW.md`](scripts/DAILY_WORKFLOW.md)。核心命令：
+
+```bash
+# 1) 为 13 个分类写正文（每个分类一个文件，规范见 content/STYLE_GUIDE.md）
+#    输出到 D:\研二\github.auto\content\<分类>.html
+
+# 2) 校验 + 构建 + 更新主页 + 推送，一条命令搞定
+cd D:\研二\github.auto\repo
+python scripts/publish_all.py --push
 ```
 
-### 参数说明
+### 脚本说明
 
-| 参数 | 说明 |
+| 脚本 | 作用 |
 |------|------|
-| `-SubDir` | 子目录名（如 car-recruit） |
-| `-ReportFile` | 本地报告HTML文件路径 |
-| `-ReportDate` | 报告日期 YYYY-MM-DD |
-| `-SiteTitle` | 站点标题（XX日报格式） |
-| `-SiteDesc` | 站点描述 |
+| `scripts/publish_all.py` | 一键发布：内容校验 → 批量构建 13 分类 → 更新主页 → 提交推送（带退避重试） |
+| `scripts/build_report.py` | 单分类构建：以最新历史报告为模板替换正文/日期，写出 `report_YYYYMMDD.html`，重建该分类 `index.html` |
+| `scripts/update_homepage.py` | 扫描各分类期数与最新日期，写回主页卡片与统计区 |
+| `scripts/set_giscus_category.py` | 全站切换 giscus 评论分类（见下方"评论系统"） |
+| `scripts/report_css_v9.css` | 报告页 CSS 模板参考（实际 CSS 已内联在各页面中） |
 
-## 统一工作流
+构建器兼容两种历史骨架：`<main>` 型（car-recruit）与 hero+container 型（其余 12 个），并会自动修复未闭合 `<div>`、重复 `<body>` 等历史瑕疵。
 
-1. 信息收集（WebSearch + WebFetch）
-2. 生成自包含HTML报告（使用统一CSS模板）
-3. 保存到本地 `d:\BaiduNetdiskDownload\trae自动化\<子目录>\report_YYYYMMDD.html`
-4. 使用 `deploy_github_pages.ps1` 部署到GitHub子目录
-5. 推送飞书摘要
+## 内容规范
 
-## 配色方案
+- 正文只输出 `<main>` 区域内内容，分类页头由构建脚本注入
+- 所有链接必须是 HTML `<a>` 标签：`<a class="source-link" href="..." target="_blank">📎 查看原文</a>`，**严禁 Markdown 链接**
+- 每份报告结尾必须包含「信息来源汇总」表格 + `<div class="giscus"></div>`
+- 报告命名：`report_YYYYMMDD.html`
+- 内容 8000–20000 字符，关键数据用 `<strong>` 高亮
+- **所有链接必须真实可点击，严禁编造 URL 与精确假数据**
+- 历史报告只增不删
 
-- 背景: `#0a0e1a`（深空蓝）
-- 强调色: `#00d4ff`（青色）
-- 主文字: `#f0f4f8`（最亮 - 标题、重要内容）
-- 次要文字: `#c8d4e8`（中等 - 正文、段落）
-- 辅助文字: `#90a0c0`（较暗 - 元数据、时间戳）
-- 字体: JetBrains Mono + Noto Sans SC
+## 配色与设计
 
-> 三种页面类型（主页/报告汇总/报告页）使用统一的CSS变量，确保视觉一致性。
+- 背景 `#0a0e1a`（深空蓝）｜强调色 `#00d4ff`（青色）
+- 主文字 `#f0f4f8`｜正文 `#c8d4e8`｜辅助 `#90a0c0`
+- 字体：JetBrains Mono + Noto Sans SC
+- 13 个分类页面共用统一 CSS 变量，视觉一致
 
 ## 评论系统
 
-使用 Giscus 评论系统，配置如下：
-- 仓库: `TS-dinglilu/TS-dinglilu.github.io`
-- 仓库ID: `R_kgDOTjqaJQ`
-- 分类: Announcements
-- 分类ID: `DIC_kwDOTjqaJc4DCIL1`
-- 映射方式: pathname
-- 主题: dark_dimmed
+使用 Giscus，配置：
 
-## 设计规范
+- 仓库 `TS-dinglilu/TS-dinglilu.github.io`（repo-id `R_kgDOTjqaJQ`）
+- 映射方式 `pathname`，主题 `dark_dimmed`
+- ⚠️ **待修复**：当前分类为 `Announcements`（该分类仅维护者可发帖，访客评论实际不可用）。
+  需改为 `General` 或 `Q&A`。拿到新分类 ID 后执行：
+  ```bash
+  python scripts/set_giscus_category.py --name General --id DIC_kwDOxxxxxxxx
+  ```
 
-报告CSS使用统一模板（`report_css_template.css`），部署脚本自动应用。
+## 网络注意事项
 
-- 配色方案：深空蓝(#0a0e1a)背景 + 青色(#00d4ff)强调色
-- 不同板块间使用渐变分割线清晰分隔，确保相邻板块一目了然
-- 所有文字颜色需高对比度，确保在暗色背景上清晰可读
-- 报告标题统一使用"XX日报"格式
-- 报告汇总页面的"点击查看"链接位于卡片右侧
+国内网络下 `github.com` 时常不可达（`api.github.com`、`*.github.io` 通常正常）。此时 `git push` 会失败：
 
-## 重要约定
+- 本地提交不会丢失，网络恢复后 `git push origin main` 即可
+- `publish_all.py` 内置 6 次退避重试，能扛过短时抖动
 
-- HTML报告中所有链接必须使用HTML `<a>`标签格式，严禁使用Markdown链接格式
-- 报告文件命名：`report_YYYYMMDD.html`
-- 部署脚本内置重试机制，自动验证上传成功
-- 部署脚本使用动态临时目录，执行完毕自动清理
-- 所有历史报告归档保留（不删除）
-- 自动化任务运行时间：每天早上5点（北京时间）
-- 所有页面包含 `<link rel="preconnect">` 优化字体加载
-- 所有页面包含 `<meta name="description">` SEO描述
+## 目录结构
 
-## 项目文件说明
-
-| 文件 | 说明 |
-|------|------|
-| `deploy_github_pages.ps1` | 统一部署脚本v3.0（上传报告+生成索引+配置评论区+动态临时目录） |
-| `report_css_template.css` | 报告页统一CSS模板 v8.0 |
-| `replace_css.py` | CSS模板替换工具（部署脚本调用） |
-| `homepage_index.html` | 主页源文件 |
-| `export_trae_memory.ps1` | TRAE记忆导出脚本 |
-| `export_trae_tasks.ps1` | TRAE任务导出脚本 |
-| `export_trae_tasks.py` | TRAE任务导出Python后端 |
-| `future-planning/future_planning_config.txt` | 未来规划任务配置文件 |
+```
+D:\研二\github.auto\
+├─ content\          # 每日正文草稿（各分类一个 .html）+ STYLE_GUIDE.md
+├─ logs\             # 历史 TRAE 运行日志（归档，无功能作用）
+└─ repo\             # TS-dinglilu.github.io 的 git 克隆（本仓库）
+   ├─ scripts\       # 构建与发布脚本 + DAILY_WORKFLOW.md
+   ├─ index.html     # 主页
+   └─ <13 个分类目录>  # 每个目录含 index.html（归档）与 report_*.html（报告）
+```
