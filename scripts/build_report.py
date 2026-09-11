@@ -196,8 +196,15 @@ def rebuild_index(category):
     start = html.find('<div class="report-list">')
     if start == -1:
         die("index.html 中找不到 report-list: " + idx_path)
-    last_a = html.rfind("</a>", start)
-    end = html.find("</div>", last_a) + len("</div>")
+    # 只在"报告列表"区域内定位结尾，避免误吞后面的评论区 / 页脚
+    bounds = [p for p in (html.find('<div class="comments-section">', start),
+                          html.find('<footer', start)) if p > start]
+    bound = min(bounds) if bounds else len(html)
+    window = html[start:bound]
+    last_a = window.rfind("</a>")
+    if last_a == -1:
+        die("report-list 区域内找不到 </a>: " + idx_path)
+    end = start + window.find("</div>", last_a) + len("</div>")
     html = html[:start] + block + html[end:]
 
     html = re.sub(
