@@ -27,11 +27,25 @@
 ```bash
 cd D:\研二\github.auto\repo
 git pull origin main                        # 同步远端（网络不通可跳过，不影响本地生成）
-python scripts/publish_all.py --no-build    # 快速自查：提示最近 3 天是否有缺失日期
+python scripts/audit_site.py                # 全站体检：结构/死链/索引/主页/漏期
 ```
-若提示有缺失日期（例如昨天没跑），**先补做缺失日期**：为缺失日期单独生成正文并构建
-`python scripts/build_report.py --category <分类> --date <缺失日期> --content ../content/<分类>.html`，
-再继续今天的流程。
+体检报告里 `[ERROR] 漏期` 段会直接列出「哪天缺哪些分类」。**先补做缺失日期**，
+再继续今天的流程。补做用专用工具（自动校验正文 → 批量构建 → 重建索引）：
+
+```bash
+python scripts/build_backfill.py --date 2026-09-10 --dir ../content/backfill0910 --check  # 先校验
+python scripts/build_backfill.py --date 2026-09-10 --dir ../content/backfill0910          # 再构建
+```
+正文按 `<分类>.html` 命名放在 `--dir` 目录里；缺失的分类会被列出（需补写正文），
+已存在的报告默认跳过（加 `--force` 才覆盖）。`--push` 可一步完成构建 + 更新主页 + 推送。
+
+### 1.5 全站修复（出现结构/链接问题时）
+```bash
+python scripts/fix_site.py --dry-run        # 先看将要改什么
+python scripts/fix_site.py                  # 实际修复（幂等，可重复跑）
+```
+自动修掉：指向不存在路径的死链、残留的旧品牌名、缺失的 giscus 评论区、
+重复 `<body>` 标签、指向已归档页面的返回链接。
 
 ### 2. 搜集素材 + 写正文
 - **写作规范必读**：`D:\研二\github.auto\content\STYLE_GUIDE.md`
@@ -48,7 +62,8 @@ cd D:\研二\github.auto\repo
 python scripts/publish_all.py --push
 ```
 该脚本会自动完成：内容校验（禁 Markdown 链接/必需板块/文档标签/长度）→ 批量构建 13 分类报告
-→ 重建各分类归档索引 → 更新主页卡片（最新日期+累计期数）与总数统计 → git 提交推送。
+→ 重建各分类归档索引 → 更新主页卡片（最新日期+累计期数）与总数统计 → **全站自查**
+→ git 提交推送。自查失败会打出 `[WARN]` 但仍继续推送，收工前请按提示修掉。
 
 推送逻辑（针对本机环境定制）：**优先走"凭据直连通道"**（`scripts/export_git_cred.ps1`
 从 Windows 凭据管理器导出凭据 → 用 git store 助手推送，约 15 秒完成）；失败才退回常规
@@ -59,6 +74,7 @@ python scripts/publish_all.py --push
 
 ### 4. 验证
 ```bash
+python scripts/audit_site.py                                             # 本地全站体检，应输出「全部通过 ✓」
 curl -s -o /dev/null -w "%{http_code}\n" https://ts-dinglilu.github.io/car-recruit/report_<日期>.html
 ```
 GitHub Pages 推送后 1–2 分钟生效，返回 200 即成功。
@@ -78,4 +94,7 @@ GitHub Pages 推送后 1–2 分钟生效，返回 200 即成功。
 | Bash/Terminal 全线报 `command not found`（`dirname`/`ls`/`git` 都不识别） | 本机偶发 PATH 损坏。命令前先 `export PATH="/c/Users/dingliu/.workbuddy/binaries/PortableGit/versions/1.2.0/usr/bin:/c/Users/dingliu/.workbuddy/binaries/PortableGit/versions/1.2.0/mingw64/bin:/c/Windows/System32:/c/Windows:$PATH"`，Python 用绝对路径 `C:/Users/dingliu/.workbuddy/binaries/python/versions/3.13.12/python.exe` |
 | 某分类构建报"找不到 `<main>` 区块" | 属正常（该分类用通用骨架），构建器会自动走通用路径 |
 | 主页卡片「最新日期/累计期数」与「已生成日报」总数不更新 | 主页 index.html 若被设计编辑器改写，元素会带 `data-page-node-id` 等自定义属性，老版 `update_homepage.py` 的精确字符串匹配（`<div class="stat-num">` 等）会失效。2026-09-14 已改为「前缀 + 任意属性」正则，重跑 `python scripts/update_homepage.py` 即恢复。若仍不更新，先确认 `class="stat-num"` / `class="auto-meta"` / `class="auto-updated"` 的 class 名是否被改掉 |
-| 提示"最近 3 天缺失报告" | 说明有漏跑。为缺失日期补生成正文后，用 `build_report.py --date <缺失日期>` 单独构建，再统一推送 |
+| 提示某某日期缺失报告（漏跑） | 说明自动化当天没跑（机器/应用离线不会补跑）。为缺失日期写好正文放到一个目录（如 `content/backfill0910/`），再 `python scripts/build_backfill.py --date 2026-09-10 --dir ../content/backfill0910` 批量补构建；缺的分类会被列出 |
+| 想批量清理历史报告的坏链接 / 缺评论区 | `python scripts/fix_site.py --dry-run` 先看清单，去掉 `--dry-run` 执行。幂等，重复跑不会重复改 |
+| 想快速知道站点哪里坏了 | `python scripts/audit_site.py`（加 `--quiet` 只输出问题；退出码非 0 表示有 ERROR） |
+| 主页出现两份 `index.html` / `homepage_index.html` | 后者是个人主页的旧版本，已被 `index.html` 取代，已归档到 `logs/archive/`。不要再往 repo 里放第二份主页，否则 `update_homepage.py` 只改 `index.html`，两份会逐渐不一致 |

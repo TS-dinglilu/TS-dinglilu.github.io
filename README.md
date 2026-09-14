@@ -38,11 +38,15 @@
 完整手册见 [`scripts/DAILY_WORKFLOW.md`](scripts/DAILY_WORKFLOW.md)。核心命令：
 
 ```bash
+cd D:\研二\github.auto\repo
+
+# 0) 先体检（可选但推荐）：确认没有漏跑的日期、坏链接或索引不一致
+python scripts/audit_site.py
+
 # 1) 为 13 个分类写正文（每个分类一个文件，规范见 content/STYLE_GUIDE.md）
 #    输出到 D:\研二\github.auto\content\<分类>.html
 
-# 2) 校验 + 构建 + 更新主页 + 推送，一条命令搞定
-cd D:\研二\github.auto\repo
+# 2) 校验 + 构建 + 更新主页 + 全站自查 + 推送，一条命令搞定
 python scripts/publish_all.py --push
 ```
 
@@ -50,14 +54,23 @@ python scripts/publish_all.py --push
 
 | 脚本 | 作用 |
 |------|------|
-| `scripts/publish_all.py` | 一键发布：内容校验 → 批量构建 13 分类 → 更新主页 → 提交推送（凭据直连优先，常规 push 兜底） |
+| `scripts/publish_all.py` | 一键发布：内容校验 → 批量构建 13 分类 → 更新主页 → 全站自查 → 提交推送（凭据直连优先，常规 push 兜底） |
 | `scripts/build_report.py` | 单分类构建：以最新历史报告为模板替换正文/日期，写出 `report_YYYYMMDD.html`，重建该分类 `index.html` |
+| `scripts/build_backfill.py` | 补做漏跑日期：从指定正文目录批量构建某历史日期的报告，缺失分类会列出 |
+| `scripts/audit_site.py` | 全站体检：结构完整性 / 评论区 / 死链 / 索引一致性 / 主页数字 / 漏期检测 |
+| `scripts/fix_site.py` | 全站修复（幂等）：坏链接、旧品牌名、缺失评论区、重复 `<body>`、废弃页引用 |
 | `scripts/update_homepage.py` | 扫描各分类期数与最新日期，写回主页卡片与统计区 |
 | `scripts/export_git_cred.ps1` | 从 Windows 凭据管理器导出 Git 凭据，供推送兜底通道使用（用完即删临时文件） |
 | `scripts/set_giscus_category.py` | 全站切换 giscus 评论分类（见下方"评论系统"） |
 | `scripts/report_css_v9.css` | 报告页 CSS 模板参考（实际 CSS 已内联在各页面中） |
 
 构建器兼容两种历史骨架：`<main>` 型（car-recruit）与 hero+container 型（其余 12 个），并会自动修复未闭合 `<div>`、重复 `<body>` 等历史瑕疵。
+
+发布后想单独体检或排障：
+```bash
+python scripts/audit_site.py          # 应输出「全部通过 ✓」，退出码 0
+python scripts/fix_site.py --dry-run  # 出现结构/链接问题时，先看将要改什么
+```
 
 ## 内容规范
 
@@ -81,12 +94,15 @@ python scripts/publish_all.py --push
 使用 Giscus，配置：
 
 - 仓库 `TS-dinglilu/TS-dinglilu.github.io`（repo-id `R_kgDOTjqaJQ`）
+- 分类 `General`（category-id `DIC_kwDOTjqaJc4DCIL2`）—— 访客可正常评论
 - 映射方式 `pathname`，主题 `dark_dimmed`
-- ⚠️ **待修复**：当前分类为 `Announcements`（该分类仅维护者可发帖，访客评论实际不可用）。
-  需改为 `General` 或 `Q&A`。拿到新分类 ID 后执行：
-  ```bash
-  python scripts/set_giscus_category.py --name General --id DIC_kwDOxxxxxxxx
-  ```
+
+> 2026-09-11 已从 `Announcements` 切换到 `General`：`Announcements` 分类只有维护者能发帖，
+> 访客评论实际不可用。如需再次切换：
+> ```bash
+> python scripts/set_giscus_category.py --name General --id DIC_kwDOxxxxxxxx
+> ```
+> 查分类 ID 的公开接口：`curl -s "https://giscus.app/api/discussions/categories?repo=TS-dinglilu/TS-dinglilu.github.io"`
 
 ## 网络与推送注意事项
 
@@ -104,10 +120,14 @@ python scripts/publish_all.py --push
 
 ```
 D:\研二\github.auto\
-├─ content\          # 每日正文草稿（各分类一个 .html）+ STYLE_GUIDE.md
-├─ logs\             # 历史 TRAE 运行日志（归档，无功能作用）
-└─ repo\             # TS-dinglilu.github.io 的 git 克隆（本仓库）
-   ├─ scripts\       # 构建与发布脚本 + DAILY_WORKFLOW.md
-   ├─ index.html     # 主页
-   └─ <13 个分类目录>  # 每个目录含 index.html（归档）与 report_*.html（报告）
+├─ content\              # 每日正文草稿（各分类一个 .html）+ STYLE_GUIDE.md
+│  └─ backfill<MMDD>\    # 漏跑日期的补做正文（按 <分类>.html 命名，供 build_backfill.py 消费）
+├─ logs\                 # 运行日志 + 已归档的废弃文件（archive\）
+└─ repo\                 # TS-dinglilu.github.io 的 git 克隆（本仓库）
+   ├─ scripts\           # 构建、发布、体检、修复脚本 + DAILY_WORKFLOW.md
+   ├─ index.html         # 站点主页（个人主页 + 13 日报入口）
+   └─ <13 个分类目录>      # 每个目录含 index.html（归档）与 report_*.html（报告）
 ```
+
+> 注意：站点主页只有 `repo/index.html` 一份。历史遗留的 `homepage_index.html` 已归档到
+> `logs/archive/`，不要再放第二份主页，否则 `update_homepage.py` 只更新 `index.html`，两份会不一致。

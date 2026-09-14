@@ -200,6 +200,16 @@ def main():
     print("=" * 8, "更新主页", "=" * 8)
     subprocess.run([sys.executable, os.path.join(HERE, "update_homepage.py")], cwd=ROOT)
 
+    # 3.5) 发布前自查：结构/链接/索引/主页/漏期 全站体检
+    print("=" * 8, "站点自查", "=" * 8)
+    audit = subprocess.run([sys.executable, os.path.join(HERE, "audit_site.py"), "--quiet"],
+                           cwd=ROOT, capture_output=True, text=True)
+    if audit.returncode != 0:
+        print(audit.stdout.strip())
+        print("[WARN] 站点自查发现问题（见上）。已继续发布，但建议尽快修复。")
+    else:
+        print("[OK] 站点自查通过")
+
     # 4) 提交推送
     if args.push:
         print("=" * 8, "提交推送", "=" * 8)
