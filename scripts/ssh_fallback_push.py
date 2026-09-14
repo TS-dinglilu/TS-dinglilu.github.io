@@ -55,6 +55,49 @@ def _log(msg):
     print(msg, flush=True)
 
 
+# 本机偶发 PATH 损坏（git/ssh/ssh-keygen 全部 command not found），
+# 这里做一次可执行文件定位兜底，避免兜底脚本本身因 PATH 问题失效。
+_GITBIN = r"C:\Users\dingliu\.workbuddy\binaries\PortableGit\versions\1.2.0"
+_FALLBACK_DIRS = [
+    os.path.join(_GITBIN, "cmd"),
+    os.path.join(_GITBIN, "usr", "bin"),
+    os.path.join(_GITBIN, "mingw64", "bin"),
+    r"C:\Windows\System32\WindowsPowerShell\v1.0",
+    r"C:\Windows\System32",
+]
+
+
+def _tool(name):
+    """定位可执行文件：优先 PATH，找不到则回退到已知目录。"""
+    found = shutil.which(name)
+    if found:
+        return found
+    exe = name + (".exe" if os.name == "nt" else "")
+    for d in _FALLBACK_DIRS:
+        cand = os.path.join(d, exe)
+        if os.path.exists(cand):
+            return cand
+    return name
+
+
+def _child_env(extra=None):
+    """子进程环境：把 PortableGit / 系统目录前置到 PATH。
+
+    光「定位到 git.exe」不够 —— git 运行时还需要自己目录里的 DLL 与 helper 在 PATH 上，
+    所以这里直接前置目录，抵御本机偶发的 PATH 损坏。
+    """
+    parts = [d for d in _FALLBACK_DIRS]
+    cur = os.environ.get("PATH", "")
+    if cur:
+        parts.append(cur)
+    e = dict(os.environ)
+    e["PATH"] = os.pathsep.join(parts)
+    e["GIT_TERMINAL_PROMPT"] = "0"
+    if extra:
+        e.update(extra)
+    return e
+
+
 def tcp_open(host, port, timeout=8):
     """TCP 连通性探测（不依赖 DNS 之外的东西，失败一律返回 False）。"""
     try:
@@ -65,10 +108,12 @@ def tcp_open(host, port, timeout=8):
 
 
 def repo_slug():
-    """从 origin 远端地址解析出 owner/repo。"""
+    """从 origin 远端地址解析出 owner/repo；失败返回 None。"""
     try:
-        url = subprocess.run(["git", "config", "--get", "remote.origin.url"],
-                             cwd=ROOT, capture_output=True, text=True, timeout=30).stdout.strip()
+        r = subprocess.run([_tool("git"), "config", "--get", "remote.origin.url"],
+                           cwd=ROOT, capture_output=True, text=True, timeout=30,
+                           env=_child_env())
+        url = r.stdout.strip()
     except Exception:  # noqa: BLE001
         url = ""
     m = re.search(r"[:/]([^/:]+)/([^/]+?)(?:\.git)?/?$", url)
@@ -93,8 +138,8 @@ def export_cred_file():
     with open(ps_tmp, "w", encoding="utf-8-sig") as f:
         f.write(content)
     try:
-        r = subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ps_tmp],
-                           capture_output=True, timeout=120)
+        r = subprocess.run([_tool("powershell"), "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ps_tmp],
+                           capture_output=True, timeout=120, env=_child_env())
     finally:
         shutil.rmtree(tmpdir, ignore_errors=True)
     raw = (r.stdout or b"") + b"\n" + (r.stderr or b"")
@@ -170,18 +215,15 @@ def remote_head(token, slug):
 # 主流程
 # --------------------------------------------------------------------------- #
 def _git(args, timeout=60, env=None):
-    e = dict(os.environ, GIT_TERMINAL_PROMPT="0")
-    if env:
-        e.update(env)
-    return subprocess.run(["git"] + args, cwd=ROOT, capture_output=True, text=True,
-                          env=e, timeout=timeout)
+    return subprocess.run([_tool("git")] + args, cwd=ROOT, capture_output=True, text=True,
+                          env=_child_env(env), timeout=timeout)
 
 
 def _ssh_env(key_path, known_hosts):
-    cmd = ('ssh -i "%s" -o IdentitiesOnly=yes -o StrictHostKeyChecking=no '
+    cmd = ('"%s" -i "%s" -o IdentitiesOnly=yes -o StrictHostKeyChecking=no '
            '-o UserKnownHostsFile="%s" -o BatchMode=yes -o ConnectTimeout=25 -p %d'
-           % (key_path, known_hosts, SSH_PORT))
-    return dict(os.environ, GIT_TERMINAL_PROMPT="0", GIT_SSH_COMMAND=cmd)
+           % (_tool("ssh"), key_path, known_hosts, SSH_PORT))
+    return {"GIT_SSH_COMMAND": cmd}
 
 
 def ssh_fallback_push(branch="main", force=False, quiet=False):
@@ -208,9 +250,9 @@ def ssh_fallback_push(branch="main", force=False, quiet=False):
     try:
         key_path = os.path.join(keydir, "id_ed25519")
         known_hosts = os.path.join(keydir, "known_hosts")
-        kg = subprocess.run(["ssh-keygen", "-t", "ed25519", "-N", "", "-C",
+        kg = subprocess.run([_tool("ssh-keygen"), "-t", "ed25519", "-N", "", "-C",
                              "temp-deploy-%d@workbuddy" % int(time.time()), "-f", key_path],
-                            capture_output=True, text=True, timeout=60)
+                            capture_output=True, text=True, timeout=60, env=_child_env())
         if kg.returncode != 0 or not os.path.exists(key_path):
             return "[FAIL] 生成临时密钥失败: %s" % (kg.stderr or "")[:150]
         pubkey = open(key_path + ".pub", encoding="utf-8").read().strip()
@@ -224,10 +266,10 @@ def ssh_fallback_push(branch="main", force=False, quiet=False):
 
         # SSH 认证自检，早失败早退出（避免无谓的 push 尝试）
         chk = subprocess.run(
-            ["ssh", "-i", key_path, "-o", "IdentitiesOnly=yes", "-o", "StrictHostKeyChecking=no",
+            [_tool("ssh"), "-i", key_path, "-o", "IdentitiesOnly=yes", "-o", "StrictHostKeyChecking=no",
              "-o", "UserKnownHostsFile=" + known_hosts, "-o", "BatchMode=yes",
              "-o", "ConnectTimeout=25", "-p", str(SSH_PORT), "-T", "git@" + SSH_HOST],
-            capture_output=True, text=True, timeout=90)
+            capture_output=True, text=True, timeout=90, env=_child_env())
         if "successfully authenticated" not in (chk.stdout + chk.stderr):
             return "[FAIL] SSH 认证未通过: %s" % (chk.stdout + chk.stderr).strip()[:160]
 
@@ -267,6 +309,9 @@ def ssh_fallback_push(branch="main", force=False, quiet=False):
 def selftest():
     """自检：不推送，只验证「取凭据 → 注册密钥 → SSH 认证 → 撤销」全链路。"""
     slug = repo_slug()
+    if not slug:
+        _log("[FAIL] 无法解析 origin 仓库地址（git 取不到 remote.origin.url）")
+        return 1
     _log("仓库        : %s" % slug)
     _log("api.github.com   : %s" % ("通" if tcp_open("api.github.com", 443) else "不通"))
     _log("github.com:443   : %s" % ("通" if tcp_open("github.com", 443, 6) else "不通"))
@@ -276,8 +321,8 @@ def selftest():
     try:
         key_path = os.path.join(keydir, "id_ed25519")
         known_hosts = os.path.join(keydir, "known_hosts")
-        subprocess.run(["ssh-keygen", "-t", "ed25519", "-N", "", "-f", key_path],
-                       capture_output=True, text=True, timeout=60, check=True)
+        subprocess.run([_tool("ssh-keygen"), "-t", "ed25519", "-N", "", "-f", key_path],
+                       capture_output=True, text=True, timeout=60, check=True, env=_child_env())
         cred_file = export_cred_file()
         user, token = read_token(cred_file)
         _log("凭据        : 已导出 (user=%s)" % user)
@@ -285,9 +330,9 @@ def selftest():
                                 "selftest-%d-workbuddy" % int(time.time()))
         _log("部署密钥    : 已注册 id=%s" % key_id)
         chk = subprocess.run(
-            ["ssh", "-i", key_path, "-o", "IdentitiesOnly=yes", "-o", "StrictHostKeyChecking=no",
+            [_tool("ssh"), "-i", key_path, "-o", "IdentitiesOnly=yes", "-o", "StrictHostKeyChecking=no",
              "-o", "UserKnownHostsFile=" + known_hosts, "-o", "BatchMode=yes", "-p", str(SSH_PORT),
-             "-T", "git@" + SSH_HOST], capture_output=True, text=True, timeout=90)
+             "-T", "git@" + SSH_HOST], capture_output=True, text=True, timeout=90, env=_child_env())
         auth_out = chk.stdout + chk.stderr
         msg = [l for l in auth_out.strip().splitlines() if "authenticated" in l or "denied" in l.lower()]
         _log("SSH 认证    : %s" % (msg[-1] if msg else (auth_out.strip().splitlines() or ["(无输出)"])[-1]))
