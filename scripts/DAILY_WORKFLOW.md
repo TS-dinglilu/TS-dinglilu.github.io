@@ -47,6 +47,20 @@ python scripts/fix_site.py                  # 实际修复（幂等，可重复�
 自动修掉：指向不存在路径的死链、残留的旧品牌名、缺失的 giscus 评论区、
 重复 `<body>` 标签、指向已归档页面的返回链接。
 
+### 1.6 全站视觉统一（尾部结构不一致时）
+```bash
+python scripts/unify_style.py --dry-run      # 预演：列出每份文件的替换判断
+python scripts/unify_style.py                # 执行（幂等，重复跑不改动已统一的文件）
+python scripts/unify_style.py --show car-recruit/report_20260914.html   # 预览单份替换后的尾部
+```
+把所有历史报告的**结尾区块**统一成标准结构（评论区卡片 + 页脚 + 返回顶部按钮 + giscus 脚本）。
+标准尾部定义在 `scripts/tail_template.py`，是**唯一真源**，`build_report.py`（每日新建）也用它，
+因此新老报告天然一致。要点：
+- 只认「注释 / 容器 class / 页脚标签」这类可靠标记，**不会**把正文里的「评论区」字样当标记；
+- 区间内若含真实「信息来源汇总」板块，会原样保留（若外层是页脚标签则降级为 `<div class="section">`，避免双页脚）；
+- 替换前会清掉区间**之外**残留的旧评论区与内联 giscus 脚本（含被误放进 `<head>` 的）；
+- 逐份校验 `<div>` 配平 / 单一 `</body>`、`</html>` / 结尾 `</html>` / 含 giscus，不通过则跳过不写。
+
 ### 2. 搜集素材 + 写正文
 - **写作规范必读**：`D:\研二\github.auto\content\STYLE_GUIDE.md`
 - 对每个分类：先看上一份报告的板块结构（`<分类>/report_最新.html`），再用 WebSearch 搜集
@@ -96,5 +110,6 @@ GitHub Pages 推送后 1–2 分钟生效，返回 200 即成功。
 | 主页卡片「最新日期/累计期数」与「已生成日报」总数不更新 | 主页 index.html 若被设计编辑器改写，元素会带 `data-page-node-id` 等自定义属性，老版 `update_homepage.py` 的精确字符串匹配（`<div class="stat-num">` 等）会失效。2026-09-14 已改为「前缀 + 任意属性」正则，重跑 `python scripts/update_homepage.py` 即恢复。若仍不更新，先确认 `class="stat-num"` / `class="auto-meta"` / `class="auto-updated"` 的 class 名是否被改掉 |
 | 提示某某日期缺失报告（漏跑） | 说明自动化当天没跑（机器/应用离线不会补跑）。为缺失日期写好正文放到一个目录（如 `content/backfill0910/`），再 `python scripts/build_backfill.py --date 2026-09-10 --dir ../content/backfill0910` 批量补构建；缺的分类会被列出 |
 | 想批量清理历史报告的坏链接 / 缺评论区 | `python scripts/fix_site.py --dry-run` 先看清单，去掉 `--dry-run` 执行。幂等，重复跑不会重复改 |
+| 历史报告尾部样式不统一（评论区/页脚五花八门） | `python scripts/unify_style.py --dry-run` 先看清单，再去掉 `--dry-run` 执行。标准尾部由 `scripts/tail_template.py` 定义，`build_report.py` 共用同一真源 |
 | 想快速知道站点哪里坏了 | `python scripts/audit_site.py`（加 `--quiet` 只输出问题；退出码非 0 表示有 ERROR） |
 | 主页出现两份 `index.html` / `homepage_index.html` | 后者是个人主页的旧版本，已被 `index.html` 取代，已归档到 `logs/archive/`。不要再往 repo 里放第二份主页，否则 `update_homepage.py` 只改 `index.html`，两份会逐渐不一致 |
