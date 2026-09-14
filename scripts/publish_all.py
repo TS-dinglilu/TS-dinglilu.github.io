@@ -118,8 +118,9 @@ def push_via_exported_cred():
             pass
 
 
-def push_with_retry(attempts=3, base_sleep=20):
-    """推送：Windows 下优先走凭据直连通道（凭据助手常挂起），再退回常规 git push。"""
+def push_with_retry(attempts=3, base_sleep=20, ssh_fallback=True):
+    """推送：Windows 下优先走凭据直连通道（凭据助手常挂起），再退回常规 git push，
+    最后在 github.com:443 整段不可达时走临时部署密钥 + SSH over 443 兜底。"""
     import time
 
     # 1) 优先：凭据直连（实测 15 秒内完成；绕过会挂起的凭据助手）
@@ -146,6 +147,22 @@ def push_with_retry(attempts=3, base_sleep=20):
         print("[WARN] 常规 push 第 %d/%d 次失败: %s" % (i + 1, attempts, err[:130]))
         if i < attempts - 1:
             time.sleep(base_sleep * (i + 1))
+
+    # 3) 兜底：github.com:443 被阻断时，临时部署密钥 + SSH over 443
+    #    该函数自带开关：github.com 可达就直接跳过，不会平白注册密钥；密钥用后必撤销。
+    if ssh_fallback:
+        try:
+            import ssh_fallback_push
+            fb2 = ssh_fallback_push.ssh_fallback_push()
+            if fb2:
+                print(fb2)
+                if fb2.startswith("[OK]"):
+                    return fb2
+        except Exception as e:  # noqa: BLE001 兜底失败不能带崩主流程
+            print("[WARN] SSH 兜底通道异常: %s: %s" % (type(e).__name__, e))
+    else:
+        print("[SKIP] --no-ssh-fallback")
+
     return "[FAIL] 推送失败（本地提交已保留，网络恢复后运行 git push origin main 即可）"
 
 
@@ -155,6 +172,8 @@ def main():
     ap.add_argument("--categories", help="逗号分隔，默认全部 13 个")
     ap.add_argument("--push", action="store_true")
     ap.add_argument("--no-build", action="store_true", help="跳过构建，只更新主页并推送")
+    ap.add_argument("--no-ssh-fallback", action="store_true",
+                    help="禁用 github.com 不通时的 SSH 兜底通道（临时部署密钥）")
     args = ap.parse_args()
 
     cats = [c.strip() for c in args.categories.split(",")] if args.categories else CATEGORIES
@@ -220,7 +239,7 @@ def main():
                             cwd=ROOT, capture_output=True, text=True)
         if st.returncode != 0:
             print("[WARN] commit: " + (st.stdout or st.stderr).strip()[:160])
-        print(push_with_retry())
+        print(push_with_retry(ssh_fallback=not args.no_ssh_fallback))
 
     # 5) 汇总
     print("=" * 8, "汇总", "=" * 8)

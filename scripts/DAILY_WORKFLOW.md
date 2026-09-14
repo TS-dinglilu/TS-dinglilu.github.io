@@ -61,6 +61,25 @@ python scripts/unify_style.py --show car-recruit/report_20260914.html   # 预览
 - 替换前会清掉区间**之外**残留的旧评论区与内联 giscus 脚本（含被误放进 `<head>` 的）；
 - 逐份校验 `<div>` 配平 / 单一 `</body>`、`</html>` / 结尾 `</html>` / 含 giscus，不通过则跳过不写。
 
+### 1.7 推送兜底：github.com:443 整段不可达时（SSH over 443）
+```bash
+python scripts/ssh_fallback_push.py --check     # 只探测各通道连通性
+python scripts/ssh_fallback_push.py --selftest  # 自检：取凭据→注册密钥→SSH 认证→撤销（不推送）
+python scripts/ssh_fallback_push.py             # 执行兜底推送（通道不适用会自动跳过）
+```
+国内网络下 `github.com:443` 会**直连和本地代理都到不了**（`curl` 走环境变量代理能通、`git` 不能，
+因为 git 全局配置里 `http.https://github.com.proxy` 是空值 = 显式禁用代理）。
+但 `ssh.github.com:443`、`github.com:22`、`api.github.com` 通常仍然可用，所以：
+
+`publish_all.py --push` 现在会自动兜底，常规通道全失败后会调 `ssh_fallback_push.py`：
+生成一次性 ed25519 密钥 → 用凭据里的 token 注册为**可写临时部署密钥** → 走
+`ssh://git@ssh.github.com:443/<owner>/<repo>.git` 快进推送 → **finally 里立即撤销密钥**并删除私钥/凭据文件。
+- 自带开关：先探测 `github.com:443`，**通了就直接跳过**，不会平白注册密钥；
+- 想禁用：`python scripts/publish_all.py --push --no-ssh-fallback`；
+- 密钥只存活数秒，脚本会打印撤销结果（HTTP 204）；收尾可 `--selftest` 或查仓库 Deploy keys 确认无残留。
+- **注意**：GitHub REST API 虽然通，但**不能用来推这个仓库** —— 一次改动动辄 17MB+/197 文件，
+  `push_files` 的内容要由模型当参数传入（量级不可行），且无法指定提交者/时间，会造出不同 SHA 产生分叉。
+
 ### 2. 搜集素材 + 写正文
 - **写作规范必读**：`D:\研二\github.auto\content\STYLE_GUIDE.md`
 - 对每个分类：先看上一份报告的板块结构（`<分类>/report_最新.html`），再用 WebSearch 搜集
@@ -102,7 +121,7 @@ GitHub Pages 推送后 1–2 分钟生效，返回 200 即成功。
 ## 常见问题
 | 现象 | 处理 |
 |---|---|
-| `git push` 报 `Failed to connect to github.com:443` | 国内网络问题。等几分钟重试；本地提交不会丢 |
+| `git push` 报 `Failed to connect to github.com:443` | 国内网络问题。跑 `python scripts/publish_all.py --push` 会自动兜底（临时部署密钥 + SSH over 443，见 §1.7）；也可先 `python scripts/ssh_fallback_push.py --check` 看哪条通道通。本地提交不会丢 |
 | `git push` 长时间无响应（不报错也不返回） | 凭据助手挂起。直接跑 `python scripts/publish_all.py --push`，会自动走凭据直连通道；或手动 `powershell -File scripts\export_git_cred.ps1` 拿到凭据文件后按脚本注释里的命令推送 |
 | 子代理报 429 频率限制 | 等额度重置，或改用 `model: lite` 的代理执行（实测 `lite` 可立即绕过） |
 | Bash/Terminal 全线报 `command not found`（`dirname`/`ls`/`git` 都不识别） | 本机偶发 PATH 损坏。命令前先 `export PATH="/c/Users/dingliu/.workbuddy/binaries/PortableGit/versions/1.2.0/usr/bin:/c/Users/dingliu/.workbuddy/binaries/PortableGit/versions/1.2.0/mingw64/bin:/c/Windows/System32:/c/Windows:$PATH"`，Python 用绝对路径 `C:/Users/dingliu/.workbuddy/binaries/python/versions/3.13.12/python.exe` |
