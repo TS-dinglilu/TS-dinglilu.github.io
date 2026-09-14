@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="description" content="无人机科研日报 - arXiv无人机论文热点与自动驾驶前沿">
+<meta property="og:title" content="无人机科研日报 2026-09-13">
+<meta property="og:description" content="arXiv无人机论文热点、自动驾驶前沿、IEEE期刊动态与全网技术讨论">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚁</text></svg>">
+<title>🚁 无人机科研日报 | 2026-09-13</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v9.0 圆润Q弹生动版
+   v9.0改进:
+   - 圆润: 增大border-radius, 全面弧形过渡
+   - Q弹: 弹性cubic-bezier缓动, 微缩放悬停效果
+   - 生动: 入场动画, 脉冲发光, 流动渐变边框
+   - 动态: 滚动渐入, 悬停弹跳, 光晕扩散
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --bg: #0a0e1a;
+  --bg-elev: #111726;
+  --card: rgba(20, 28, 48, 0.55);
+  --card-solid: rgba(20, 28, 48, 0.75);
+  --card-hover: rgba(20, 28, 48, 0.8);
+  --border: rgba(0, 212, 255, 0.12);
+  --border-hover: rgba(0, 212, 255, 0.4);
+  --text: #f0f4f8;
+  --text-dim: #c8d4e8;
+  --text-faint: #90a0c0;
+  --accent: #00d4ff;
+  --accent-warm: #ffb347;
+  --accent-green: #22d3a0;
+  --accent-purple: #818cf8;
+  --accent-pink: #f87171;
+  --accent-teal: #14b8a6;
+  --accent-orange: #fb923c;
+  --success: #22d3a0;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #00d4ff;
+  --grid-line: rgba(0, 212, 255, 0.04);
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.25);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.35);
+  --shadow-lg: 0 16px 56px rgba(0,0,0,0.45);
+  --shadow-glow: 0 0 24px rgba(0, 212, 255, 0.12);
+  --shadow-glow-hover: 0 0 40px rgba(0, 212, 255, 0.25);
+  --radius: 24px;
+  --radius-sm: 18px;
+  --radius-xs: 12px;
+  --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: rgba(0, 212, 255, 0.3); color: #ffffff; }
+
+p { margin-bottom: 12px; color: var(--text-dim); line-height: 1.8; }
+p:last-child { margin-bottom: 0; }
+strong, b { color: var(--accent); font-weight: 600; }
+a { color: var(--accent); text-decoration: none; transition: color 0.3s var(--smooth), opacity 0.3s var(--smooth); }
+a:hover { color: #5ee5ff; text-decoration: underline; text-underline-offset: 2px; }
+ul, ol { margin: 12px 0; padding-left: 22px; color: var(--text-dim); }
+li { margin-bottom: 6px; line-height: 1.8; }
+li::marker { color: var(--accent); }
+em, i { color: var(--text); font-style: italic; }
+small { color: var(--text-faint); font-size: 0.85em; }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.10) 0%, rgba(129, 140, 248, 0.05) 50%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(50px);
+  animation: floatOrb 20s ease-in-out infinite;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  33% { transform: translate(-40px, 30px) scale(1.05); opacity: 0.8; }
+  66% { transform: translate(30px, -20px) scale(0.95); opacity: 0.7; }
+}
+
+.container { max-width: 960px; margin: 0 auto; padding: 40px 28px 80px; position: relative; z-index: 1; }
+.container-wide { max-width: 1100px; }
+.container-narrow { max-width: 760px; }
+
+/* ============================================================
+   Header — 圆润渐变 + 入场动画
+   ============================================================ */
+.header, .report-header {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.14) 0%, rgba(129, 140, 248, 0.12) 50%, rgba(34, 211, 160, 0.10) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 44px 36px;
+  margin: 0 auto 48px;
+  max-width: 960px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+  animation: fadeInDown 0.8s var(--spring) both;
+}
+
+.header::before, .report-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-purple), var(--accent-green));
+  background-size: 200% 100%;
+  animation: gradientFlow 6s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.header h1, .report-header h1 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.03em;
+  margin-bottom: 14px;
+  text-shadow: 0 0 28px rgba(0, 212, 255, 0.5), 0 0 56px rgba(0, 212, 255, 0.25);
+  line-height: 1.3;
+}
+
+.header .subtitle, .report-header .subtitle {
+  color: var(--text-dim);
+  font-size: 1.02rem;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: 0.03em;
+}
+
+.header .date, .report-header .date,
+.header .date-badge, .report-header .date-badge {
+  display: inline-block;
+  background: rgba(0, 212, 255, 0.14);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  color: var(--accent);
+  padding: 8px 24px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.4s var(--bounce);
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.header .date:hover, .report-header .date:hover,
+.header .date-badge:hover, .report-header .date-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.2); }
+  50% { box-shadow: 0 0 16px 4px rgba(0, 212, 255, 0.15); }
+}
+
+.header .meta, .report-header .meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+.header .meta span, .report-header .meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header { text-align: center; }
+
+/* ============================================================
+   Back Links + Nav
+   ============================================================ */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  padding: 10px 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.4s var(--bounce);
+  backdrop-filter: blur(10px);
+}
+
+.back-link:hover {
+  color: var(--accent);
+  border-color: var(--border-hover);
+  background: var(--card-hover);
+  text-decoration: none;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.15);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 24px 0 40px;
+  padding: 14px 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(10px);
+}
+
+.nav-links a {
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.3s var(--bounce);
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+  background: rgba(0, 212, 255, 0.14);
+  border-color: var(--border-hover);
+  text-decoration: none;
+  transform: translateY(-1px) scale(1.05);
+}
+
+.nav-toc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  margin: 0 0 48px;
+  backdrop-filter: blur(10px);
+}
+
+.nav-toc .toc-title { color: var(--accent); font-size: 1rem; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.03em; }
+.nav-toc ol, .nav-toc ul { list-style: none; padding-left: 0; margin: 0; }
+.nav-toc li { padding: 4px 0; }
+.nav-toc a { color: var(--text-dim); font-size: 0.9rem; transition: all 0.3s var(--smooth); }
+.nav-toc a:hover { color: var(--accent); text-decoration: none; padding-left: 4px; }
+
+/* ============================================================
+   Section Titles — h2 / .section-title (Cyan) - 圆润+流动
+   ============================================================ */
+h2, .section-title {
+  color: #00d4ff;
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin: 0 0 24px;
+  padding: 14px 20px 14px 18px;
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 212, 255, 0.02) 100%);
+  border-left: 4px solid var(--accent);
+  border-top: 1px solid rgba(0, 212, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.25);
+  border-radius: 0 16px 16px 0;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  line-height: 1.4;
+  transition: all 0.4s var(--bounce);
+}
+
+h2:hover, .section-title:hover {
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.05) 100%);
+  transform: translateX(4px);
+  box-shadow: 0 4px 24px rgba(0, 212, 255, 0.15);
+}
+
+.section-title .emoji, h2 .emoji { font-size: 1.3rem; line-height: 1; flex-shrink: 0; }
+
+.section-title .num, h2 .num,
+.section-title .num-badge, h2 .num-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  background-size: 200% 200%;
+  color: #0a0e1a;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+  flex-shrink: 0;
+  margin-left: auto;
+  animation: gradientFlow 5s ease infinite;
+}
+
+.section-title a, h2 a { color: inherit; }
+.section-title a:hover { color: #5ee5ff; text-decoration: none; }
+
+/* ============================================================
+   Sections (.section) — with top gradient bar
+   ============================================================ */
+.section {
+  margin: 56px 0;
+  position: relative;
+  padding: 0;
+  scroll-margin-top: 24px;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 50%, var(--accent-green) 100%);
+  border-radius: 999px;
+  opacity: 0.85;
+}
+
+.section:first-of-type { margin-top: 0; }
+.section:first-of-type::before { display: none; }
+.section > h2:first-child, .section > .section-title:first-child { margin-top: 0; }
+
+/* ============================================================
+   H3 Sub-titles — Purple
+   ============================================================ */
+h3 {
+  color: #c4b5fd;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 36px 0 14px;
+  padding: 8px 0 8px 14px;
+  border-left: 3px solid #818cf8;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  transition: all 0.3s var(--bounce);
+}
+
+h3:hover { border-left-width: 5px; padding-left: 16px; color: #d4c5ff; }
+
+h3:first-child { margin-top: 0; }
+h3 a { color: inherit; }
+h3 a:hover { color: #c7d0ff; text-decoration: none; }
+
+/* ============================================================
+   H4 Minor Headings — Amber
+   ============================================================ */
+h4 {
+  color: #fcd34d;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 24px 0 10px;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  border: none;
+  transition: all 0.3s var(--bounce);
+}
+
+h4:hover { transform: translateX(3px); }
+
+h4:first-child { margin-top: 0; }
+h4 a { color: inherit; }
+h4 a:hover { color: #fde68a; text-decoration: none; }
+
+h5 { color: var(--text); font-size: 0.9rem; font-weight: 600; margin: 16px 0 8px; }
+h6 { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; margin: 14px 0 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ============================================================
+   Cards (.card) — Q弹悬停 + 入场动画
+   ============================================================ */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  margin: 16px 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.6s var(--spring) both;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: var(--card-hover);
+  border-color: var(--border-hover);
+  border-left-color: var(--accent);
+  box-shadow: var(--shadow-md), var(--shadow-glow-hover);
+}
+
+.card-title { color: var(--accent); font-size: 1.08rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 0.02em; line-height: 1.4; }
+.card-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.card-content { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+.card-content p { margin-bottom: 8px; }
+
+/* ============================================================
+   Job Cards (.job-card) — Green + Q弹
+   ============================================================ */
+.job-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-green);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  margin: 16px 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.6s var(--spring) both;
+}
+
+.job-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: var(--card-hover);
+  border-color: rgba(34, 211, 160, 0.4);
+  border-left-color: var(--accent-green);
+  box-shadow: var(--shadow-md), 0 0 40px rgba(34, 211, 160, 0.12);
+}
+
+.job-card .job-title { color: var(--accent-green); font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
+.job-card .job-title a { color: inherit; }
+.job-card .job-title a:hover { color: #4ee9b8; text-decoration: none; }
+.job-card .job-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.job-card .job-meta span { display: inline-flex; align-items: center; gap: 4px; }
+.job-card .job-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+
+/* ============================================================
+   News Items (.news-item) — Cyan + Q弹
+   ============================================================ */
+.news-item {
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 12px 0;
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.5s var(--spring) both;
+}
+
+.news-item:hover {
+  transform: translateY(-3px) scale(1.01);
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--border-hover);
+  border-left-color: var(--accent);
+  box-shadow: var(--shadow-sm), var(--shadow-glow-hover);
+}
+
+.news-item .news-title { color: var(--accent); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+.news-item .news-title a { color: inherit; }
+.news-item .news-title a:hover { color: #5ee5ff; text-decoration: none; }
+.news-item .news-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.news-item .news-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+.news-item .badge, .news-item .tag { margin-right: 6px; }
+
+/* ============================================================
+   Stats Grid (.stats-grid / .stat-box)
+   ============================================================ */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0 28px; }
+
+.stat-box {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(20, 28, 48, 0.6) 100%);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px 18px;
+  text-align: center;
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.5s var(--spring) both;
+}
+
+.stat-box:hover { transform: translateY(-5px) scale(1.03); box-shadow: var(--shadow-md), var(--shadow-glow-hover); }
+
+.stat-box .num { display: block; font-size: 1.8rem; font-weight: 800; color: var(--accent); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; text-shadow: 0 0 16px rgba(0, 212, 255, 0.3); }
+.stat-box .label { display: block; font-size: 0.88rem; color: var(--text-dim); font-weight: 500; margin-bottom: 4px; }
+.stat-box .sub { display: block; font-size: 0.78rem; color: var(--text-faint); }
+
+/* ============================================================
+   Tables
+   ============================================================ */
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); -webkit-overflow-scrolling: touch; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; overflow: hidden; }
+th { background: linear-gradient(135deg, rgba(0, 212, 255, 0.20) 0%, rgba(0, 212, 255, 0.08) 100%); color: var(--accent); font-weight: 700; text-align: left; padding: 14px 16px; border-bottom: 2px solid rgba(0, 212, 255, 0.3); letter-spacing: 0.03em; white-space: nowrap; }
+.table-wrapper { overflow-x: auto; margin: 20px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); -webkit-overflow-scrolling: touch; }
+td { padding: 12px 16px; color: var(--text-dim); border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); vertical-align: top; }
+td:last-child { border-right: none; }
+th { border-right: 1px solid rgba(0, 212, 255, 0.15); }
+th:last-child { border-right: none; }
+table tbody tr:nth-child(odd) td { background: rgba(0, 212, 255, 0.04); }
+table tbody tr:nth-child(even) td { background: rgba(0, 212, 255, 0.08); }
+table tbody tr { transition: background 0.3s var(--smooth); }
+table tbody tr:hover td { background: rgba(0, 212, 255, 0.16); color: var(--text); }
+table tbody tr:last-child td { border-bottom: none; }
+.salary-table th { background: linear-gradient(135deg, rgba(34, 211, 160, 0.18) 0%, rgba(34, 211, 160, 0.08) 100%); color: var(--accent-green); border-bottom-color: rgba(34, 211, 160, 0.3); }
+.salary-table td strong { color: var(--accent-green); }
+.summary-table th { background: linear-gradient(135deg, rgba(129, 140, 248, 0.18) 0%, rgba(129, 140, 248, 0.08) 100%); color: #a5b4fc; border-bottom-color: rgba(129, 140, 248, 0.3); }
+.summary-table td:first-child { color: var(--text); font-weight: 500; }
+
+/* ============================================================
+   Salary Grid
+   ============================================================ */
+.salary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+.salary-item { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent-green); border-radius: var(--radius-sm); padding: 14px 16px; transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth); position: relative; backdrop-filter: blur(8px); animation: fadeInUp 0.5s var(--spring) both; }
+.salary-item:hover { transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-md), 0 0 32px rgba(34, 211, 160, 0.12); border-color: rgba(34, 211, 160, 0.4); border-left-color: var(--accent-green); }
+.salary-item .level { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 6px; letter-spacing: 0.02em; }
+.salary-item .amount { font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 700; color: var(--accent-green); margin-bottom: 4px; line-height: 1.3; }
+.salary-item .note { font-size: 0.78rem; color: var(--text-faint); line-height: 1.4; }
+@media (max-width: 600px) { .salary-grid { grid-template-columns: 1fr; } .salary-item { padding: 12px 14px; } .salary-item .amount { font-size: 1.05rem; } }
+
+/* ============================================================
+   Badges
+   ============================================================ */
+.badge { display: inline-block; padding: 3px 10px; font-size: 0.78rem; font-weight: 600; border-radius: 999px; background: rgba(0, 212, 255, 0.12); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.3); letter-spacing: 0.03em; line-height: 1.5; vertical-align: middle; margin-right: 4px; transition: all 0.3s var(--bounce); }
+.badge:hover { transform: scale(1.08); }
+.badge.hot, .badge-hot { background: linear-gradient(135deg, rgba(248, 113, 113, 0.2), rgba(251, 146, 60, 0.2)); color: #fca5a5; border-color: rgba(248, 113, 113, 0.5); }
+.badge.new, .badge-new { background: rgba(34, 211, 160, 0.18); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.45); }
+.badge.warn, .badge-warn { background: rgba(251, 191, 36, 0.16); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-high { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+.badge-mid { background: rgba(251, 146, 60, 0.14); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.4); }
+.badge-low { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+.badge-purple { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.4); }
+
+/* ============================================================
+   Tags
+   ============================================================ */
+.tag { display: inline-block; padding: 3px 10px; font-size: 0.78rem; font-weight: 500; border-radius: 999px; background: rgba(168, 184, 208, 0.1); color: var(--text-dim); border: 1px solid var(--border); margin: 0 4px 4px 0; letter-spacing: 0.02em; line-height: 1.5; vertical-align: middle; transition: all 0.3s var(--bounce); }
+.tag:hover { transform: scale(1.06); }
+.tag.green, .tag-green { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag.purple, .tag-purple { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.3); }
+.tag.orange, .tag-orange { background: rgba(251, 146, 60, 0.14); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.3); }
+.tag.red, .tag-red { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag.pink, .tag-pink { background: rgba(248, 113, 113, 0.12); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag.teal, .tag-teal { background: rgba(20, 184, 166, 0.12); color: var(--accent-teal); border-color: rgba(20, 184, 166, 0.3); }
+.tag.amber, .tag-amber { background: rgba(251, 191, 36, 0.12); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag.accent, .tag-accent { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+.tag-byd { background: rgba(0, 153, 204, 0.18); color: #4dabf5; border-color: rgba(0, 153, 204, 0.35); }
+.tag-chery { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-geely { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.3); }
+.tag-faw { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-vw { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-tesla { background: rgba(248, 113, 113, 0.18); color: #fca5a5; border-color: rgba(248, 113, 113, 0.4); }
+.tag-other { background: rgba(168, 184, 208, 0.12); color: var(--text-dim); border-color: var(--border); }
+
+/* ============================================================
+   Pills
+   ============================================================ */
+.pill { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; font-size: 0.8rem; font-weight: 500; border-radius: 999px; background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.25); margin: 0 6px 6px 0; letter-spacing: 0.02em; line-height: 1.5; vertical-align: middle; transition: all 0.3s var(--bounce); }
+.pill:hover { transform: scale(1.05); }
+.pill-green { background: rgba(34, 211, 160, 0.1); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.25); }
+.pill-purple { background: rgba(129, 140, 248, 0.1); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.25); }
+.pill-orange { background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.25); }
+.pill-pink { background: rgba(248, 113, 113, 0.1); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.25); }
+.pill-amber { background: rgba(251, 191, 36, 0.1); color: #fbbf24; border-color: rgba(251, 191, 36, 0.25); }
+.pill-teal { background: rgba(20, 184, 166, 0.1); color: var(--accent-teal); border-color: rgba(20, 184, 166, 0.25); }
+.pill-gray { background: rgba(168, 184, 208, 0.1); color: var(--text-dim); border-color: var(--border); }
+.pill-location { background: rgba(0, 212, 255, 0.1); color: var(--accent); border-color: rgba(0, 212, 255, 0.25); }
+.pill-salary { background: rgba(34, 211, 160, 0.1); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.25); }
+.pill-edu { background: rgba(129, 140, 248, 0.1); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.25); }
+.pill-type { background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.25); }
+
+/* ============================================================
+   Source Links
+   ============================================================ */
+.source-link { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; font-size: 0.8rem; font-weight: 500; border-radius: 999px; background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.3); margin: 4px 0; transition: all 0.4s var(--bounce); letter-spacing: 0.02em; }
+.source-link:hover { background: var(--accent); color: #0a0e1a; border-color: var(--accent); text-decoration: none; box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); transform: scale(1.05); }
+.source-link::before { content: '🔗'; font-size: 0.85em; }
+
+/* ============================================================
+   Discussion Items — Orange + Q弹
+   ============================================================ */
+.discussion { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent-orange); border-radius: var(--radius-sm); padding: 16px 20px; margin: 14px 0; transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth); backdrop-filter: blur(8px); animation: fadeInUp 0.5s var(--spring) both; }
+.discussion:hover { transform: translateY(-3px) scale(1.01); background: var(--card-hover); border-color: rgba(251, 146, 60, 0.4); border-left-color: var(--accent-orange); box-shadow: var(--shadow-md), 0 0 36px rgba(251, 146, 60, 0.1); }
+.discussion .discussion-title { color: var(--accent-orange); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+.discussion .discussion-title a { color: inherit; }
+.discussion .discussion-title a:hover { color: #fdba74; text-decoration: none; }
+.discussion .discussion-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.discussion-item { background: rgba(251, 146, 60, 0.05); border: 1px solid var(--border); border-left: 3px solid var(--accent-orange); border-radius: var(--radius-sm); padding: 12px 16px; margin: 10px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; }
+.discussion-item .discussion-author { color: var(--accent-orange); font-weight: 600; }
+.discussion-item .discussion-time { color: var(--text-faint); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
+
+/* ============================================================
+   Tip/Warning/Highlight/Info/Note Boxes
+   ============================================================ */
+.tip-box { background: rgba(34, 211, 160, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-green); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.tip-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(34, 211, 160, 0.1); }
+.tip-box .tip-title, .tip-box h4 { color: var(--accent-green); font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.tip-box .tip-title::before { content: '💡'; }
+.tip-box p:last-child { margin-bottom: 0; }
+.tip-box ul { margin: 8px 0 0; }
+.tip-box li { margin-bottom: 4px; }
+
+.warning-box { background: rgba(248, 113, 113, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-pink); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.warning-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(248, 113, 113, 0.1); }
+.warning-box .warning-title { color: var(--accent-pink); font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.warning-box .warning-title::before { content: '⚠️'; }
+.warning-box p:last-child { margin-bottom: 0; }
+
+.highlight-box { background: rgba(129, 140, 248, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-purple); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.highlight-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(129, 140, 248, 0.1); }
+.highlight-box .highlight-title { color: #a5b4fc; font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.highlight-box .highlight-title::before { content: '✨'; }
+.highlight-box p:last-child { margin-bottom: 0; }
+
+.info-box { background: rgba(129, 140, 248, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-purple); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.info-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(129, 140, 248, 0.1); }
+.info-box .info-title { color: #a5b4fc; font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.info-box .info-title::before { content: 'ℹ️'; }
+.info-box p:last-child { margin-bottom: 0; }
+
+.note-box { background: rgba(0, 212, 255, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.note-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1); }
+.note-box .note-title { color: var(--accent); font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; }
+
+.progress-bar { width: 100%; height: 10px; background: rgba(0, 212, 255, 0.08); border-radius: 999px; overflow: hidden; margin: 8px 0; border: 1px solid var(--border); }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-purple)); border-radius: 999px; transition: width 0.5s var(--smooth); }
+.progress-fill.green { background: linear-gradient(90deg, var(--accent-green), var(--accent-teal)); }
+.progress-fill.orange { background: linear-gradient(90deg, var(--accent-orange), var(--accent-warm)); }
+.progress-fill.pink { background: linear-gradient(90deg, var(--accent-pink), var(--accent-orange)); }
+.progress-fill.purple { background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink)); }
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-accent { color: var(--accent); }
+.text-green { color: var(--accent-green); }
+.text-purple { color: #a5b4fc; }
+.text-orange { color: var(--accent-orange); }
+.text-pink { color: var(--accent-pink); }
+.text-amber { color: #fbbf24; }
+.text-teal { color: var(--accent-teal); }
+.text-dim { color: var(--text-dim); }
+.text-faint { color: var(--text-faint); }
+.text-white { color: #ffffff; }
+.text-sm { font-size: 0.85rem; }
+.text-lg { font-size: 1.1rem; }
+.text-xl { font-size: 1.3rem; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.mt-0 { margin-top: 0; } .mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 24px; }
+.mb-0 { margin-bottom: 0; } .mb-1 { margin-bottom: 8px; } .mb-2 { margin-bottom: 16px; } .mb-3 { margin-bottom: 24px; }
+.flex { display: flex; } .flex-wrap { flex-wrap: wrap; } .flex-center { display: flex; align-items: center; justify-content: center; }
+.gap-1 { gap: 8px; } .gap-2 { gap: 16px; }
+.hidden { display: none !important; } .block { display: block; } .inline-block { display: inline-block; }
+.divider { height: 1px; background: var(--border); margin: 24px 0; border: none; }
+.muted { color: var(--text-faint); }
+
+/* ============================================================
+   hr, blockquote, code, pre
+   ============================================================ */
+hr { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 32px 0; }
+blockquote { margin: 16px 0; padding: 12px 18px; background: rgba(0, 212, 255, 0.05); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--text-dim); font-style: italic; }
+blockquote p { margin-bottom: 0; }
+blockquote footer, blockquote cite { display: block; margin-top: 8px; font-size: 0.85rem; color: var(--text-faint); font-style: normal; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 0.88em; background: rgba(0, 212, 255, 0.1); color: var(--accent); padding: 2px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.15); }
+pre { background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; overflow-x: auto; margin: 16px 0; box-shadow: var(--shadow-sm); }
+pre code { background: transparent; color: var(--text-dim); padding: 0; border: none; font-size: 0.88em; line-height: 1.6; }
+
+/* ============================================================
+   Giscus / Comments
+   ============================================================ */
+.comments-section { margin: 56px 0 32px; padding: 28px 24px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); position: relative; backdrop-filter: blur(10px); }
+.comments-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent-purple), var(--accent), var(--accent-green)); background-size: 200% 100%; border-radius: var(--radius) var(--radius) 0 0; animation: gradientFlow 6s ease infinite; }
+.comments-title { color: #a5b4fc; font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
+.comments-desc { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 16px; }
+.giscus { margin-top: 16px; }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+footer, .footer { margin-top: 56px; padding: 28px 24px; text-align: center; color: var(--text-faint); font-size: 0.85rem; border-top: 1px solid var(--border); letter-spacing: 0.02em; }
+footer p, .footer p { margin-bottom: 8px; }
+footer a, .footer a { color: var(--text-dim); }
+footer a:hover, .footer a:hover { color: var(--accent); }
+.footer-meta { margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-faint); }
+
+/* ============================================================
+   Scroll-to-top button — Q弹
+   ============================================================ */
+.scroll-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: var(--card-solid); border: 1px solid var(--border-hover); border-radius: 50%; color: var(--accent); font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.3s var(--smooth), transform 0.4s var(--bounce), background 0.3s var(--smooth); backdrop-filter: blur(10px); }
+.scroll-top.visible { opacity: 1; pointer-events: auto; }
+.scroll-top:hover { background: var(--accent); color: #0a0e1a; transform: translateY(-4px) scale(1.1); box-shadow: 0 4px 24px rgba(0, 212, 255, 0.4); }
+.scroll-top:active { transform: translateY(-2px) scale(0.95); }
+
+/* ============================================================
+   Entrance Animations
+   ============================================================ */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 768px) { .nav-links { flex-direction: column; align-items: flex-start; } .stats-grid { grid-template-columns: 1fr 1fr; } }
+
+@media (max-width: 600px) {
+  body { font-size: 14px; line-height: 1.75; }
+  .container { padding: 24px 16px 60px; }
+  .header, .report-header { padding: 28px 20px; margin-bottom: 32px; border-radius: 20px; }
+  .header h1, .report-header h1 { font-size: 1.5rem; }
+  .header .subtitle, .report-header .subtitle { font-size: 0.9rem; }
+  h2, .section-title { font-size: 1.2rem; padding: 10px 14px 10px 12px; }
+  h3 { font-size: 1rem; }
+  h4 { font-size: 0.9rem; }
+  .section { margin: 40px 0; }
+  .card, .job-card, .news-item, .discussion, .tip-box, .warning-box, .highlight-box, .info-box, .note-box { padding: 14px 16px; border-radius: 14px; }
+  .card:hover, .job-card:hover, .news-item:hover, .discussion:hover { transform: none; }
+  th, td { padding: 9px 10px; font-size: 0.82rem; }
+  .nav-links { padding: 10px 12px; border-radius: 14px; }
+  .nav-links a { font-size: 0.8rem; padding: 5px 10px; }
+  .comments-section { padding: 20px 16px; border-radius: 20px; }
+  footer, .footer { padding: 20px 16px; }
+  .report-header .meta { gap: 10px; font-size: 0.8rem; }
+  .badge, .tag, .pill { font-size: 0.72rem; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-box .num { font-size: 1.5rem; }
+  .scroll-top { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+}
+
+/* ============================================================
+   Icons
+   ============================================================ */
+.icon { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 10px; font-size: 1.1rem; flex-shrink: 0; line-height: 1; }
+.icon-blue, .icon.icon-blue { background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.3); }
+.icon-green, .icon.icon-green { background: rgba(34, 211, 160, 0.15); border: 1px solid rgba(34, 211, 160, 0.3); }
+.icon-orange, .icon.icon-orange { background: rgba(251, 146, 60, 0.15); border: 1px solid rgba(251, 146, 60, 0.3); }
+.icon-purple, .icon.icon-purple { background: rgba(129, 140, 248, 0.15); border: 1px solid rgba(129, 140, 248, 0.3); }
+.icon-teal, .icon.icon-teal { background: rgba(20, 184, 166, 0.15); border: 1px solid rgba(20, 184, 166, 0.3); }
+.icon-pink, .icon.icon-pink { background: rgba(248, 113, 113, 0.15); border: 1px solid rgba(248, 113, 113, 0.3); }
+.icon-amber, .icon.icon-amber { background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.3); }
+.emoji { display: inline-block; font-size: 1.2rem; line-height: 1; vertical-align: middle; }
+
+/* ============================================================
+   Priority / Status indicators
+   ============================================================ */
+.priority-high, .priority-hot { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+.priority-mid, .priority-medium { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(251, 146, 60, 0.15); color: var(--accent-orange); border: 1px solid rgba(251, 146, 60, 0.3); }
+.priority-low, .priority-normal { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+
+.match-score { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+.match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+
+/* ============================================================
+   Grid layouts
+   ============================================================ */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 16px 0; }
+.card-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 16px 0; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+
+/* ============================================================
+   Flexbox helpers
+   ============================================================ */
+.flex-row { display: flex; flex-direction: row; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; align-items: flex-start; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 6px; } .gap-md { gap: 12px; } .gap-lg { gap: 20px; }
+.w-full { width: 100%; } .w-auto { width: auto; }
+
+/* ============================================================
+   Text size helpers
+   ============================================================ */
+.fs-xs { font-size: 0.75rem; } .fs-sm { font-size: 0.85rem; } .fs-md { font-size: 0.93rem; }
+.fs-lg { font-size: 1.1rem; } .fs-xl { font-size: 1.3rem; } .fs-2xl { font-size: 1.6rem; }
+
+/* ============================================================
+   Color helpers
+   ============================================================ */
+.text-success { color: var(--accent-green) !important; }
+.text-warning { color: #fbbf24 !important; }
+.text-danger { color: var(--accent-pink) !important; }
+.text-info { color: var(--accent) !important; }
+.text-muted { color: var(--text-faint) !important; }
+.text-dimmer { color: var(--text-dim) !important; }
+.text-bright { color: var(--text) !important; }
+.text-accent-green { color: var(--accent-green) !important; }
+.text-accent-orange { color: var(--accent-orange) !important; }
+.text-accent-purple { color: #a5b4fc !important; }
+.text-accent-pink { color: var(--accent-pink) !important; }
+.text-accent-teal { color: var(--accent-teal) !important; }
+
+/* ============================================================
+   Margin/Padding helpers
+   ============================================================ */
+.mt-4 { margin-top: 32px; } .mt-5 { margin-top: 40px; } .mt-6 { margin-top: 48px; }
+.mb-4 { margin-bottom: 32px; } .mb-5 { margin-bottom: 40px; } .mb-6 { margin-bottom: 48px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.p-0 { padding: 0; } .p-2 { padding: 16px; } .p-3 { padding: 24px; }
+.py-2 { padding-top: 16px; padding-bottom: 16px; }
+.px-2 { padding-left: 16px; padding-right: 16px; }
+
+/* ============================================================
+   Misc component styles
+   ============================================================ */
+.timeline-item { position: relative; padding-left: 24px; margin: 12px 0; }
+.timeline-item::before { content: ''; position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(0, 212, 255, 0.4); transition: transform 0.3s var(--bounce); }
+.timeline-item:hover::before { transform: scale(1.3); }
+.timeline-item::after { content: ''; position: absolute; left: 4px; top: 20px; bottom: -12px; width: 2px; background: var(--border); }
+.timeline-item:last-child::after { display: none; }
+
+.count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 8px; background: linear-gradient(135deg, var(--accent), var(--accent-purple)); color: #0a0e1a; font-size: 0.78rem; font-weight: 700; border-radius: 999px; font-family: 'JetBrains Mono', monospace; }
+
+mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent); padding: 1px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.2); }
+
+.emoji-list { list-style: none; padding-left: 0; }
+.emoji-list li { padding-left: 28px; position: relative; margin-bottom: 8px; }
+
+.separator { height: 2px; background: linear-gradient(90deg, transparent, var(--border-hover), transparent); margin: 32px 0; border: none; }
+
+.badge-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+
+.tag-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+
+@media print {
+  body { background: #ffffff; color: #000000; font-size: 12px; line-height: 1.6; }
+  body::before, body::after { display: none !important; }
+  .container { max-width: 100%; padding: 0; }
+  .header, .report-header { background: #f5f7fa; border: 1px solid #cccccc; box-shadow: none; break-inside: avoid; }
+  .header::before, .report-header::before { background: #006699; }
+  .header h1, .report-header h1 { color: #000000; text-shadow: none; }
+  .header .subtitle, .report-header .subtitle, .header .meta, .report-header .meta { color: #333333; }
+  .header .date, .report-header .date, .header .date-badge, .report-header .date-badge { background: #e0eef5; border-color: #006699; color: #006699; }
+  h2, .section-title { color: #006699; background: #e8f4fa; border-left-color: #006699; }
+  h3 { color: #4444aa; border-left-color: #6666cc; }
+  h4 { color: #aa6600; }
+  .section { margin: 24px 0; break-inside: avoid; }
+  .section::before { background: #006699; }
+  .card, .job-card, .news-item, .discussion, .tip-box, .warning-box, .highlight-box, .info-box, .note-box { background: #f9f9f9; border: 1px solid #cccccc; box-shadow: none; break-inside: avoid; }
+  .card:hover, .job-card:hover, .news-item:hover, .discussion:hover { transform: none; box-shadow: none; }
+  p, li, td, .card-content, .job-desc, .news-desc { color: #222222; }
+  a { color: #006699; text-decoration: underline; }
+  .source-link { background: #e0eef5; color: #006699; border-color: #006699; }
+  th { background: #e0eef5; color: #006699; border-bottom: 2px solid #006699; }
+  table tbody tr:nth-child(odd) td, table tbody tr:nth-child(even) td { background: #ffffff; }
+  table tbody tr:hover td { background: #f0f0f0; }
+  .back-link, .nav-links, .nav-toc, .comments-section, footer, .footer, .scroll-top { display: none; }
+  pre { background: #f5f5f5; border-color: #cccccc; }
+  pre code, code { color: #333333; background: #eeeeee; }
+}
+
+</style>
+<style>
+/* custom overrides (preserved by replace_css.py - only first style block is replaced) */
+.nav-toc { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px 24px; margin: 24px 0 32px; backdrop-filter: blur(8px); }
+.nav-toc .toc-title { font-size: 1rem; font-weight: 700; color: var(--accent-purple); margin-bottom: 10px; }
+.nav-toc ol { margin: 0; padding-left: 20px; }
+.nav-toc ol li { margin-bottom: 6px; }
+.nav-toc ol li a { color: var(--text-dim); font-size: 0.9rem; transition: color 0.3s var(--smooth); }
+.nav-toc ol li a:hover { color: var(--accent); }
+.table-wrap { overflow-x: auto; margin: 16px 0; border-radius: var(--radius-sm); }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.summary-table th { background: rgba(0, 212, 255, 0.08); color: var(--accent); padding: 12px 14px; text-align: left; font-weight: 600; border-bottom: 2px solid rgba(0, 212, 255, 0.2); white-space: nowrap; }
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dim); vertical-align: middle; }
+.summary-table tr:hover td { background: rgba(0, 212, 255, 0.03); }
+.summary-table td a { font-size: 0.82rem; }
+.scroll-top { position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px; border-radius: 50%; background: var(--card-solid); border: 1px solid var(--border-hover); color: var(--accent); font-size: 1.2rem; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.4s var(--bounce); z-index: 100; backdrop-filter: blur(8px); }
+.scroll-top.visible { opacity: 1; visibility: visible; }
+.scroll-top:hover { transform: translateY(-4px) scale(1.1); box-shadow: var(--shadow-glow-hover); }
+.badge { display: inline-block; padding: 2px 10px; font-size: 0.75rem; font-weight: 600; border-radius: 999px; margin: 0 4px 4px 0; letter-spacing: 0.02em; }
+.badge.new { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.footer { margin-top: 48px; padding: 28px 0; text-align: center; border-top: 1px solid var(--border); }
+.footer p { font-size: 0.85rem; color: var(--text-faint); margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<div class="report-header">
+  <h1>🚁 无人机科研日报</h1>
+  <p class="subtitle">arXiv无人机论文热点 · 自动驾驶前沿 · IEEE期刊动态 · 全网技术讨论</p>
+  <div class="date-badge">📅 2026-09-13 星期日</div>
+  <div class="meta">
+    <span>📂 arXiv cs.RO / cs.SY / cs.CV / cs.LG</span>
+    <span>🔄 每日自动更新</span>
+    <span>📡 覆盖7大方向</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <a href="https://ts-dinglilu.github.io/drone-research/" class="back-link">← 返回无人机科研日报汇总</a>
+  <a href="https://ts-dinglilu.github.io/" class="back-link" style="margin-left: 8px;">🏠 返回主页</a>
+
+  
+
+
+
+<div class="section">
+  <div class="section-title">编者按 · 面向四旋翼飞控与强化学习读者的本期导读</div>
+  <div class="highlight-box">
+    <div class="highlight-title">💡 本期视角</div>
+    <p>读者张恒辰研究方向为<strong>四旋翼无人机飞行控制与仿真</strong>（MATLAB/Simulink + Python 强化学习）。本期聚焦 <strong>2026 年 8 月底至 9 月 13 日</strong>的 arXiv 新作，并补少量与工具链相关的基础/综述作延伸。全篇 <strong>8 板块、26 条</strong>，实时期论文置前并标日期。重点推荐：<strong>接触感知增量 MPC（2609.11661）</strong>、<strong>视觉伺服 RL（2609.09234）</strong>、<strong>真实世界敏捷飞行自适应（2602.10111）</strong>与<strong>仿真器综述（2311.02296）</strong>，文末给「本周必读 Top3」与选题建议。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块一 · 四旋翼控制新进展（MPC / 自适应 / 非线性 / 鲁棒）</div>
+  <div class="card">
+    <h3>接触感知增量 MPC：欠驱动 aerial manipulator 的力位协同</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">MPC</span><span class="badge new">新论文</span><span>arXiv:2609.11661</span><span>2026-09-10</span></div>
+      <p>Darwin Liu、Keviczky、Sihao Sun 提出<strong>接触感知增量非线性 MPC</strong>，以 NMPC 跟踪末端位置与法向力，叠加 <strong>INDI</strong> 抑制接触摩擦与气动扰动。四旋翼+单自由度臂仿真与实机证明<strong>无需全驱平台或专用力传感器</strong>即可五自由度位姿与接触力同步跟踪，INDI+NMPC 架构值得借鉴。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.11661" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">GP-MPC</span><span class="badge hot">鲁棒保证</span><span>arXiv:2507.02098</span><span>ETH / Imperial</span></div>
+      <p>ETH 与帝国理工给出<strong>基于高斯过程（GP）的鲁棒自适应 MPC</strong>：用<strong>收缩度量</strong>推导 GP 模型鲁棒预测，在线学习未知动力学并高概率保证递归可行性与约束满足。以<strong>平面四旋翼地效扰动</strong>验证，适合你用 Python 做 GP 建模再与 Simulink 闭环对照。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2507.02098" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">扰动观测</span><span class="badge-info">实机验证</span><span>arXiv:2408.15019</span><span>天津大学</span></div>
+      <p>天津大学提出<strong>固定时间扰动观测器（FxTDO）+ MPC</strong>：FxTDO 使估计误差在<strong>与初值无关的固定时间内收敛</strong>，再驱动 MPC 抑制集总扰动，给出仿真与<strong>真实飞行实验</strong>。风扰/未知载荷下的鲁棒飞控基准，建议 Simulink 以 S-Function 实现对比。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2408.15019" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">终端滑模</span><span class="badge-info">有限时间</span><span>arXiv:2407.01275</span><span>Carleton</span></div>
+      <p>卡尔顿大学提出<strong>四元数自适应反步（ABC）+ 快速终端滑模（AFTSMC）</strong>：四元数避免欧拉角奇异性，AFTSMC 抑制参数不确定、避免奇异并<strong>显著降低抖振</strong>（抖振致致动器失效）。大姿态机动时的稳替代路线。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2407.01275" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-teal">反步滑模</span><span class="badge-info">MATLAB</span><span>arXiv:2506.14195</span><span>2026</span></div>
+      <p>Thien Nhan Vo 提出<strong>基于反步的滑模控制</strong>，首次把四旋翼非完整约束纳入状态空间并综合气动阻力、陀螺效应给出新 Lyapunov 函数，<strong>全部仿真在 MATLAB 完成</strong>。可复现的建模—控制—跟踪流程，是你搭 Simulink 被控对象模型的模板。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2506.14195" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块二 · 强化学习 / 学习控制</div>
+  <div class="card">
+    <h3>紧凑目标中心表征 + 课程学习：稳定视觉伺服 RL</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">视觉 RL</span><span class="badge new">新论文</span><span>arXiv:2609.09234</span><span>2026-09-07</span></div>
+      <p>IIT Bombay 的 Jamwal、Chebrolu 研究<strong>长时程 UAV 视觉伺服</strong>：轻量分割给出图像偏移与相对深度，拼成<strong>12 维紧凑观测</strong>，对比 Direct PPO 与三类课程策略。消融表明本体感知关键、<strong>显式深度非必需</strong>，策略比经典视觉伺服更鲁棒，「轻感知+低维观测+课程」范式适合你快速起步。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.09234" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">安全 RL</span><span class="badge new">新论文</span><span>arXiv:2608.26852</span><span>2026-08-27</span></div>
+      <p>Hadjiloizou 等（Kragic 组）提出<strong>降低保守性的安全 RL</strong>：在线数据精化扰动模型，以<strong>zonotope 可达性分析</strong>做实时安全评估；实机穿越峡谷中在线学习外扰并动态收紧/放宽保证，<strong>不牺牲安全性即减少探索限制</strong>，可作你「RL+安全约束」的实用路线。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2608.26852" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">Sim-to-Real</span><span class="badge hot">实机自适应</span><span>arXiv:2602.10111</span><span>2026-02</span></div>
+      <p>Yunfan Ren 等提出<strong>自适应的真实世界敏捷飞行框架</strong>：<strong>ATS</strong> 探索平台物理极限，在线残差学习增强标称模型，配合 <strong>RASH-BPTT</strong> 在飞更新。实机峰值速度由 <strong>1.9–2.0 m/s 提升到 7.3 m/s（约 100 秒）</strong>，强风巡检耗时降 <strong>42%</strong>，绕开精确系统辨识瓶颈。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2602.10111" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">传感器运动</span><span class="badge-info">端到端</span><span>arXiv:2604.05828</span><span>2026-04</span></div>
+      <p>该文<strong>传感器运动策略学习</strong>将 RL 与策略蒸馏结合于 Sim-to-Real，仅用机载视觉+本体感知实现精确激进机动；微分平坦动力学生成开环轨迹引导探索。实机可穿越方位变化达 <strong>90°</strong> 的缝隙，是你设计「视觉→低层指令」端到端策略的范本。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2604.05828" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-teal">端到端 RL</span><span class="badge-info">竞速</span><span>arXiv:2311.16948</span><span>TU Delft</span></div>
+      <p>代尔夫特理工与欧空局提出<strong>端到端 RL 时间最优飞行</strong>：网络直出电机指令，残差模型+自适应补偿推力/力矩误差。相比 SOTA（给 INDI 内环）仿真快 <strong>1.39 s</strong>、实机快 <strong>0.17 s</strong>，但实机掉点提示仍需补偿现实差距，可作你对比「分层 vs 端到端」的基线。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2311.16948" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块三 · 自主导航与避障</div>
+  <div class="card">
+    <h3>全向多旋翼的六维动态窗口法（6D-DWA）</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">局部规划</span><span class="badge new">新论文</span><span>arXiv:2609.03630</span><span>2026-09-03</span></div>
+      <p>代尔夫特理工、MBZUAI、NYU 阿布扎比联合提出 omnicopter 的<strong>实时局部避障模块（6D-DWA）</strong>，经地图体素化、球体几何近似与 6D 自适应采样实现实时性，引入<strong>「敏捷模式」</strong>在线调权重。控制环 <strong><0.2 s</strong>、横向误差 <strong><0.1 m</strong>，未知障碍规避成功率偏离中心 <strong>79.3%</strong>、正中心 <strong>41.4%</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.03630" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">避障 RL</span><span class="badge new">新修订</span><span>arXiv:2605.14810</span><span>修订 09-05</span></div>
+      <p>CMRL 针对<strong>多尺度障碍导航</strong>：碰撞感知潜表示提升对小障碍敏感度，时序记忆缓解大障碍遮挡的部分可观测。v2 于 9 月 5 日更新，超小/超大障碍成功率提升 <strong>0.47 与 0.29</strong>，已开源。你在 RL 中遇「小障碍漏检/大障碍遮挡」时值得移植。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2605.14810" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">单目 SLAM</span><span class="badge-info">基准</span><span>arXiv:2608.18632</span><span>2026-08</span></div>
+      <p>斯洛文尼亚团队在<strong>高空正射 UAV 影像</strong>上评测 5 种单目 SLAM（不提供惯导/GNSS）：MASt3R-SLAM 水平 MAE 最低（<strong>0.53%</strong>），DROID-SLAM 总体最佳（平均 <strong>2.88%</strong>）。结论：单目 SLAM 单独用于可靠纯视觉空中导航<strong>仍不足够</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2608.18632" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">探索建图</span><span class="badge-info">开源</span><span>arXiv:2511.17299</span><span>CTU</span></div>
+      <p>捷克技术大学（Saska 组）<strong>MonoSpheres</strong> 用单目 SLAM 前端实现<strong>大规模 3D 自主探索</strong>：映射过采样自由空间并跟踪障碍不确定度，规划以快速重规划应对，据称<strong>首个真实户外单目 3D 探索</strong>，已开源，对轻量纯视觉自主无人机值得对照。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2511.17299" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块四 · 集群与协同</div>
+  <div class="card">
+    <h3>保平坦残差学习：实时紧密编队飞行</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">编队</span><span class="badge hot">低计算</span><span>arXiv:2607.12275</span><span>2026-07-15</span></div>
+      <p>宾大 GRASP 提出<strong>物理信息残差动力学学习</strong>，补偿四旋翼间湍流（如下洗）交互同时保证联合系统<strong>微分平坦</strong>，用平坦性设计高效反馈线性化前馈补偿。实机误差比标称降 <strong>31%</strong>，以<strong>低一数量级计算量</strong>匹配 NMPC，<strong>不到 30 秒数据、5 ms 环</strong>即稳定编队。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2607.12275" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">多智能体 RL</span><span class="badge-info">零样本</span><span>arXiv:2606.02107</span><span>2026-06</span></div>
+      <p>开罗德国大学与斯图加特大学提出<strong>网络分布式多智能体 RL（ND-MARL）</strong>：通信图嵌入决策，2-邻居拓扑下每智能体仅观测两邻居；高层 MASAC 训练一致性规划器，低层接跟踪器。在 <strong>3 智能体</strong>训练的策略可<strong>零样本扩展到 250 智能体</strong>，是你多机协同 RL 的好切口。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2606.02107" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块五 · eVTOL 与低空经济</div>
+  <div class="card">
+    <h3>驯服倾斜：转型 eVTOL 的统一飞行员控制概念</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">eVTOL</span><span class="badge new">新论文</span><span>arXiv:2608.20300</span><span>2026-08-20</span></div>
+      <p>Milz 等提出<strong>倾转翼 eVTOL 统一飞行员控制概念</strong>，在串联倾转翼全动模拟器（主动力反馈侧杆）上验证，特定阶段提供触觉反馈实现多阶段无缝过渡。主动侧杆使<strong>操纵活动量降低 30% 以上</strong>，是低空经济飞控范例。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2608.20300" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">城市空运</span><span class="badge-info">轨迹</span><span>arXiv:2607.15690</span><span>2026-07-17</span></div>
+      <p>Devkar 等提出<strong>城市空运（UAM）障碍感知四维轨迹设计</strong>：IRIS 凸多边形填充自由区，GCS 规划器选低耗时序列，OCP 生成爬升/巡航/下降全程最短时轨迹并纳入风与非线性动力学。纽约市路线可处理<strong>多达 250 栋建筑障碍</strong>，忽略现实约束低估飞行时间 <strong>20%</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2607.15690" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块六 · 自动驾驶交叉（感知 / 规划 / 端到端）</div>
+  <div class="card">
+    <h3>面向规划的端到端自动驾驶：架构、评测与新兴范式</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">综述</span><span class="badge-info">端到端</span><span>arXiv:2608.20111</span><span>2026-08</span></div>
+      <p>综述梳理端到端自动驾驶向<strong>面向规划的系统</strong>演进：行为克隆、条件模仿、特权蒸馏、BEV/矢量化规划、统一感知-预测-规划、世界模型与 VLA。强调<strong>开环位移指标不足以证明安全驾驶</strong>，需转闭环/长尾/人偏好评测，可直接迁移到你的无人机端到端控制。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2608.20111" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">不确定性</span><span class="badge-info">扩散</span><span>arXiv:2506.00560</span><span>NTNU</span></div>
+      <p>挪威科大 <strong>EnDfuser</strong> 用扩散模型作轨迹规划器，<strong>集成扩散</strong>从单帧感知生成 128 条候选轨迹分布提供可解释不确定性，以简单安全规则在 LAV 提升 <strong>1.7%</strong>。「用轨迹分布刻画不确定性」对你 RL 策略的安全量化可直接借鉴，与板块二 zonotope 互补。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2506.00560" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">纯视觉</span><span class="badge-info">高效</span><span>arXiv:2507.17596</span><span>KTH</span></div>
+      <p>KTH <strong>PRIX</strong> 仅相机、无需 BEV/LiDAR，视觉特征+生成式规划头从原始像素预测安全轨迹；核心 <strong>CaRT</strong> 增强多级视觉特征，在 NavSim-v2 与 nuScenes 达 SOTA 且更小更快，对机载视觉自主无人机是算力受限场景的重要参照。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2507.17596" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">CVPR 2026</span><span class="badge hot">地平线</span><span>arXiv:2510.08562</span><span>2026</span></div>
+      <p>地平线 <strong>ResAD</strong>（CVPR 2026）提出归一化残差轨迹建模：恒速模型生成惯性参考，学习预测残差偏差，PRNorm 与 IRP 解决时空不平衡与安全关键微调。「<strong>残差建模 + 多模态轨迹排序</strong>」思想对你「标称飞控 + 学习残差补偿」分层 RL 有启发。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2510.08562" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块七 · 仿真平台与工具链（贴合 MATLAB/Simulink + Gazebo）</div>
+  <div class="card">
+    <h3>飞行器仿真器系统综述：Gazebo / AirSim / MATLAB UAV Toolbox 横评</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">仿真综述</span><span class="badge-info">选型</span><span>arXiv:2311.02296</span><span>常更</span></div>
+      <p>《Survey of Simulators for Aerial Robots》对 <strong>Gazebo、AirSim、Isaac Sim/Gym、Webots、CoppeliaSim、MuJoCo、MATLAB UAV Toolbox、RflySim、gym-pybullet-drones、safe-control-gym</strong> 做系统对比。<strong>MATLAB UAV Toolbox</strong> 支持「模型→代码」V 型开发；<strong>Gazebo+ROS</strong> 适多机/控制与 SITL；<strong>AirSim</strong> 视觉最逼真，建议「Simulink 设计 + Gazebo 测试」组合。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2311.02296" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">多仿真</span><span class="badge-info">Gazebo</span><span>arXiv:2502.10218</span><span>2025</span></div>
+      <p>该文把 Parrot Sphinx（Anafi）无人机镜像进 Gazebo 桥接两类仿真器，并设计<strong>累积误差态 MPC</strong>显著优于内置 PID。你在 Simulink 训好的控制器想接入 Gazebo/PX4 生态做联合验证时，这类「镜像实例 + 跨仿真数据桥」思路可复用。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2502.10218" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块八 · 本周必读 Top3 与选题建议</div>
+  <div class="card">
+    <div class="highlight-box">
+      <div class="highlight-title">🏆 本周必读 Top3</div>
+      <div class="news-item">
+        <div class="news-meta"><span class="badge badge-high">Top 1</span><span>arXiv:2609.11661</span></div>
+        <p><strong>接触感知增量 MPC（INDI+NMPC）</strong>：力位统一且无需力传感器，是「四旋翼飞控+物理交互」标杆新作，建议精读 INDI 扰动抑制结构。</p>
+        <a class="source-link" href="https://arxiv.org/abs/2609.11661" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="news-item">
+        <div class="news-meta"><span class="badge badge-high">Top 2</span><span>arXiv:2602.10111</span></div>
+        <p><strong>真实世界敏捷飞行在线自适应（ATS + RASH-BPTT）</strong>：免精确系统辨识、在飞 100 秒内提速到 7.3 m/s，对「RL 实机迁移」最具冲击力。</p>
+        <a class="source-link" href="https://arxiv.org/abs/2602.10111" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="news-item">
+        <div class="news-meta"><span class="badge badge-high">Top 3</span><span>arXiv:2609.09234</span></div>
+        <p><strong>紧凑目标中心表征的视觉伺服 RL</strong>：12 维低维观测+课程学习，证明「显式深度非必需、本体感知最关键」，是你快速搭视觉 RL 基线的最优起点。</p>
+        <a class="source-link" href="https://arxiv.org/abs/2609.09234" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+    <div class="info-box">
+      <div class="info-title">ℹ️ 对张恒辰的选题建议</div>
+      <p>① <strong>仿真对照</strong>：用 Simulink 实现 FxTDO-MPC（2408.15019）或四元数 AFTSMC（2407.01275）作标称飞控，再接 Gazebo 做 SITL，复刻综述（2311.02296）选型组合。</p>
+      <p>② <strong>RL 主线</strong>：以 2609.09234「轻感知+低维观测」为基线，叠加 2608.26852 的 zonotope 安全可达性做约束，形成「安全视觉伺服 RL」切口。</p>
+      <p>③ <strong>进阶方向</strong>：参考 2607.12275「保平坦残差学习」做多机气动耦合补偿扩展，或借 2606.02107 分布式零样本扩展思路做多机协同 RL。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息来源汇总</div>
+  <div class="table-wrap">
+    <table class="summary-table">
+      <thead><tr><th>来源标题</th><th>链接</th><th>时间</th></tr></thead>
+      <tbody>
+        <tr><td>Contact-Aware Incremental MPC for an Underactuated Aerial Manipulator</td><td><a class="source-link" href="https://arxiv.org/abs/2609.11661" target="_blank">📎 查看原文</a></td><td>2026-09-10</td></tr>
+        <tr><td>A robust and adaptive MPC formulation for Gaussian process models</td><td><a class="source-link" href="https://arxiv.org/abs/2507.02098" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
+        <tr><td>Fixed-time Disturbance Observer-Based MPC Robust Trajectory Tracking of Quadrotor</td><td><a class="source-link" href="https://arxiv.org/abs/2408.15019" target="_blank">📎 查看原文</a></td><td>2024</td></tr>
+        <tr><td>Quaternion-based Adaptive Backstepping Fast Terminal SMC for Quadrotor UAVs</td><td><a class="source-link" href="https://arxiv.org/abs/2407.01275" target="_blank">📎 查看原文</a></td><td>2024</td></tr>
+        <tr><td>Nonlinear Control of a Quadrotor UAV Using Backstepping-Based Sliding Mode</td><td><a class="source-link" href="https://arxiv.org/abs/2506.14195" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
+        <tr><td>Learning to Fly: Stable Vision-Guided UAV Servoing with RL</td><td><a class="source-link" href="https://arxiv.org/abs/2609.09234" target="_blank">📎 查看原文</a></td><td>2026-09-07</td></tr>
+        <tr><td>Towards Safe RL with Reduced Conservativeness: Drone Flight Control</td><td><a class="source-link" href="https://arxiv.org/abs/2608.26852" target="_blank">📎 查看原文</a></td><td>2026-08-27</td></tr>
+        <tr><td>Learning Agile Quadrotor Flight in the Real World</td><td><a class="source-link" href="https://arxiv.org/abs/2602.10111" target="_blank">📎 查看原文</a></td><td>2026-02</td></tr>
+        <tr><td>Precise Aggressive Aerial Maneuvers with Sensorimotor Policies</td><td><a class="source-link" href="https://arxiv.org/abs/2604.05828" target="_blank">📎 查看原文</a></td><td>2026-04</td></tr>
+        <tr><td>End-to-end RL for Time-Optimal Quadcopter Flight</td><td><a class="source-link" href="https://arxiv.org/abs/2311.16948" target="_blank">📎 查看原文</a></td><td>2023</td></tr>
+        <tr><td>Local Path Planning and Obstacle Avoidance for an Omnicopter Platform</td><td><a class="source-link" href="https://arxiv.org/abs/2609.03630" target="_blank">📎 查看原文</a></td><td>2026-09-03</td></tr>
+        <tr><td>CMRL: Collision-Aware Memory-Enhanced RL for UAV Navigation</td><td><a class="source-link" href="https://arxiv.org/abs/2605.14810" target="_blank">📎 查看原文</a></td><td>修订 09-05</td></tr>
+        <tr><td>Evaluation of Monocular SLAM Systems on High-Altitude Nadir UAV Footage</td><td><a class="source-link" href="https://arxiv.org/abs/2608.18632" target="_blank">📎 查看原文</a></td><td>2026-08</td></tr>
+        <tr><td>MonoSpheres: Large-Scale Monocular SLAM-Based UAV Exploration</td><td><a class="source-link" href="https://arxiv.org/abs/2511.17299" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
+        <tr><td>Flatness-Preserving Residual Learning for Real-Time Tight Quadrotor Formation</td><td><a class="source-link" href="https://arxiv.org/abs/2607.12275" target="_blank">📎 查看原文</a></td><td>2026-07-15</td></tr>
+        <tr><td>Network Distributed MARL for Consensus Control of Quadcopters</td><td><a class="source-link" href="https://arxiv.org/abs/2606.02107" target="_blank">📎 查看原文</a></td><td>2026-06</td></tr>
+        <tr><td>Taming the Tilt: A Unified Pilot Control Concept for Transformational eVTOL</td><td><a class="source-link" href="https://arxiv.org/abs/2608.20300" target="_blank">📎 查看原文</a></td><td>2026-08-20</td></tr>
+        <tr><td>Obstacle-Aware Four-Dimensional Trajectory Design for Urban Air Mobility</td><td><a class="source-link" href="https://arxiv.org/abs/2607.15690" target="_blank">📎 查看原文</a></td><td>2026-07-17</td></tr>
+        <tr><td>Planning-Oriented End-to-End Autonomous Driving (Survey)</td><td><a class="source-link" href="https://arxiv.org/abs/2608.20111" target="_blank">📎 查看原文</a></td><td>2026-08</td></tr>
+        <tr><td>EnDfuser: Ensemble Diffusion for Uncertainty in E2E Autonomous Driving</td><td><a class="source-link" href="https://arxiv.org/abs/2506.00560" target="_blank">📎 查看原文</a></td><td>2025/2026</td></tr>
+        <tr><td>PRIX: Learning to Plan from Raw Pixels for E2E Autonomous Driving</td><td><a class="source-link" href="https://arxiv.org/abs/2507.17596" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
+        <tr><td>ResAD: Normalized Residual Trajectory Modeling for E2E AD (CVPR 2026)</td><td><a class="source-link" href="https://arxiv.org/abs/2510.08562" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
+        <tr><td>Survey of Simulators for Aerial Robots</td><td><a class="source-link" href="https://arxiv.org/abs/2311.02296" target="_blank">📎 查看原文</a></td><td>持续更新</td></tr>
+        <tr><td>A Multi-Simulation Approach with MPC for Anafi Drones</td><td><a class="source-link" href="https://arxiv.org/abs/2502.10218" target="_blank">📎 查看原文</a></td><td>2025</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="giscus"></div>
+</div>
+
+
+<footer class="footer">
+  <p>🚁 无人机科研日报 | 安徽工业大学机械工程硕士研究生个性化推荐报告</p>
+  <p>报告日期：2026年9月13日 | 数据来源：公开网络信息整理</p>
+  <div class="footer-meta">Generated by WorkBuddy Automation | Powered by TS-dinglilu.github.io</div>
+</footer>
+
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button>
+
+<script>
+// Scroll-to-top button visibility
+window.addEventListener('scroll', function() {
+  var btn = document.querySelector('.scroll-top');
+  if (btn) {
+    if (window.scrollY > 400) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+  }
+});
+
+// Giscus configuration
+var giscusScript = document.createElement('script');
+giscusScript.src = 'https://giscus.app/client.js';
+giscusScript.setAttribute('data-repo', 'TS-dinglilu/TS-dinglilu.github.io');
+giscusScript.setAttribute('data-repo-id', 'R_kgDOTjqaJQ');
+giscusScript.setAttribute('data-category', 'General');
+giscusScript.setAttribute('data-category-id', 'DIC_kwDOTjqaJc4DCIL2');
+giscusScript.setAttribute('data-mapping', 'pathname');
+giscusScript.setAttribute('data-strict', '0');
+giscusScript.setAttribute('data-reactions-enabled', '1');
+giscusScript.setAttribute('data-emit-metadata', '0');
+giscusScript.setAttribute('data-input-position', 'top');
+giscusScript.setAttribute('data-theme', 'dark_dimmed');
+giscusScript.setAttribute('data-lang', 'zh-CN');
+giscusScript.setAttribute('data-loading', 'lazy');
+giscusScript.crossOrigin = 'anonymous';
+giscusScript.async = true;
+var giscusBox = document.querySelector('.giscus');
+if (giscusBox) { giscusBox.appendChild(giscusScript); }
+</script>
+
+</body>
+</html>

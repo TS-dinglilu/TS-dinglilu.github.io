@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>机械招聘日报 | 2026-09-13</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v9.0 圆润Q弹生动版
+   v9.0改进:
+   - 圆润: 增大border-radius, 全面弧形过渡
+   - Q弹: 弹性cubic-bezier缓动, 微缩放悬停效果
+   - 生动: 入场动画, 脉冲发光, 流动渐变边框
+   - 动态: 滚动渐入, 悬停弹跳, 光晕扩散
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --bg: #0a0e1a;
+  --bg-elev: #111726;
+  --card: rgba(20, 28, 48, 0.55);
+  --card-solid: rgba(20, 28, 48, 0.75);
+  --card-hover: rgba(20, 28, 48, 0.8);
+  --border: rgba(0, 212, 255, 0.12);
+  --border-hover: rgba(0, 212, 255, 0.4);
+  --text: #f0f4f8;
+  --text-dim: #c8d4e8;
+  --text-faint: #90a0c0;
+  --accent: #00d4ff;
+  --accent-warm: #ffb347;
+  --accent-green: #22d3a0;
+  --accent-purple: #818cf8;
+  --accent-pink: #f87171;
+  --accent-teal: #14b8a6;
+  --accent-orange: #fb923c;
+  --success: #22d3a0;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #00d4ff;
+  --grid-line: rgba(0, 212, 255, 0.04);
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.25);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.35);
+  --shadow-lg: 0 16px 56px rgba(0,0,0,0.45);
+  --shadow-glow: 0 0 24px rgba(0, 212, 255, 0.12);
+  --shadow-glow-hover: 0 0 40px rgba(0, 212, 255, 0.25);
+  --radius: 24px;
+  --radius-sm: 18px;
+  --radius-xs: 12px;
+  --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: rgba(0, 212, 255, 0.3); color: #ffffff; }
+
+p { margin-bottom: 12px; color: var(--text-dim); line-height: 1.8; }
+p:last-child { margin-bottom: 0; }
+strong, b { color: var(--accent); font-weight: 600; }
+a { color: var(--accent); text-decoration: none; transition: color 0.3s var(--smooth), opacity 0.3s var(--smooth); }
+a:hover { color: #5ee5ff; text-decoration: underline; text-underline-offset: 2px; }
+ul, ol { margin: 12px 0; padding-left: 22px; color: var(--text-dim); }
+li { margin-bottom: 6px; line-height: 1.8; }
+li::marker { color: var(--accent); }
+em, i { color: var(--text); font-style: italic; }
+small { color: var(--text-faint); font-size: 0.85em; }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.10) 0%, rgba(129, 140, 248, 0.05) 50%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(50px);
+  animation: floatOrb 20s ease-in-out infinite;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  33% { transform: translate(-40px, 30px) scale(1.05); opacity: 0.8; }
+  66% { transform: translate(30px, -20px) scale(0.95); opacity: 0.7; }
+}
+
+.container { max-width: 960px; margin: 0 auto; padding: 40px 28px 80px; position: relative; z-index: 1; }
+.container-wide { max-width: 1100px; }
+.container-narrow { max-width: 760px; }
+
+/* ============================================================
+   Header — 圆润渐变 + 入场动画
+   ============================================================ */
+.header, .report-header {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.14) 0%, rgba(129, 140, 248, 0.12) 50%, rgba(34, 211, 160, 0.10) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 44px 36px;
+  margin: 0 auto 48px;
+  max-width: 960px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+  animation: fadeInDown 0.8s var(--spring) both;
+}
+
+.header::before, .report-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-purple), var(--accent-green));
+  background-size: 200% 100%;
+  animation: gradientFlow 6s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.header h1, .report-header h1 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.03em;
+  margin-bottom: 14px;
+  text-shadow: 0 0 28px rgba(0, 212, 255, 0.5), 0 0 56px rgba(0, 212, 255, 0.25);
+  line-height: 1.3;
+}
+
+.header .subtitle, .report-header .subtitle {
+  color: var(--text-dim);
+  font-size: 1.02rem;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: 0.03em;
+}
+
+.header .date, .report-header .date,
+.header .date-badge, .report-header .date-badge {
+  display: inline-block;
+  background: rgba(0, 212, 255, 0.14);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  color: var(--accent);
+  padding: 8px 24px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.4s var(--bounce);
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.header .date:hover, .report-header .date:hover,
+.header .date-badge:hover, .report-header .date-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.2); }
+  50% { box-shadow: 0 0 16px 4px rgba(0, 212, 255, 0.15); }
+}
+
+.header .meta, .report-header .meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+.header .meta span, .report-header .meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header { text-align: center; }
+
+/* ============================================================
+   Back Links + Nav
+   ============================================================ */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  padding: 10px 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.4s var(--bounce);
+  backdrop-filter: blur(10px);
+}
+
+.back-link:hover {
+  color: var(--accent);
+  border-color: var(--border-hover);
+  background: var(--card-hover);
+  text-decoration: none;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.15);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 24px 0 40px;
+  padding: 14px 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(10px);
+}
+
+.nav-links a {
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.3s var(--bounce);
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+  background: rgba(0, 212, 255, 0.14);
+  border-color: var(--border-hover);
+  text-decoration: none;
+  transform: translateY(-1px) scale(1.05);
+}
+
+.nav-toc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  margin: 0 0 48px;
+  backdrop-filter: blur(10px);
+}
+
+.nav-toc .toc-title { color: var(--accent); font-size: 1rem; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.03em; }
+.nav-toc ol, .nav-toc ul { list-style: none; padding-left: 0; margin: 0; }
+.nav-toc li { padding: 4px 0; }
+.nav-toc a { color: var(--text-dim); font-size: 0.9rem; transition: all 0.3s var(--smooth); }
+.nav-toc a:hover { color: var(--accent); text-decoration: none; padding-left: 4px; }
+
+/* ============================================================
+   Section Titles — h2 / .section-title (Cyan) - 圆润+流动
+   ============================================================ */
+h2, .section-title {
+  color: #00d4ff;
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin: 0 0 24px;
+  padding: 14px 20px 14px 18px;
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 212, 255, 0.02) 100%);
+  border-left: 4px solid var(--accent);
+  border-top: 1px solid rgba(0, 212, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.25);
+  border-radius: 0 16px 16px 0;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  line-height: 1.4;
+  transition: all 0.4s var(--bounce);
+}
+
+h2:hover, .section-title:hover {
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.05) 100%);
+  transform: translateX(4px);
+  box-shadow: 0 4px 24px rgba(0, 212, 255, 0.15);
+}
+
+.section-title .emoji, h2 .emoji { font-size: 1.3rem; line-height: 1; flex-shrink: 0; }
+
+.section-title .num, h2 .num,
+.section-title .num-badge, h2 .num-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  background-size: 200% 200%;
+  color: #0a0e1a;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+  flex-shrink: 0;
+  margin-left: auto;
+  animation: gradientFlow 5s ease infinite;
+}
+
+.section-title a, h2 a { color: inherit; }
+.section-title a:hover { color: #5ee5ff; text-decoration: none; }
+
+/* ============================================================
+   Sections (.section) — with top gradient bar
+   ============================================================ */
+.section {
+  margin: 56px 0;
+  position: relative;
+  padding: 0;
+  scroll-margin-top: 24px;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 50%, var(--accent-green) 100%);
+  border-radius: 999px;
+  opacity: 0.85;
+}
+
+.section:first-of-type { margin-top: 0; }
+.section:first-of-type::before { display: none; }
+.section > h2:first-child, .section > .section-title:first-child { margin-top: 0; }
+
+/* ============================================================
+   H3 Sub-titles — Purple
+   ============================================================ */
+h3 {
+  color: #c4b5fd;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 36px 0 14px;
+  padding: 8px 0 8px 14px;
+  border-left: 3px solid #818cf8;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  transition: all 0.3s var(--bounce);
+}
+
+h3:hover { border-left-width: 5px; padding-left: 16px; color: #d4c5ff; }
+
+h3:first-child { margin-top: 0; }
+h3 a { color: inherit; }
+h3 a:hover { color: #c7d0ff; text-decoration: none; }
+
+/* ============================================================
+   H4 Minor Headings — Amber
+   ============================================================ */
+h4 {
+  color: #fcd34d;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 24px 0 10px;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  border: none;
+  transition: all 0.3s var(--bounce);
+}
+
+h4:hover { transform: translateX(3px); }
+
+h4:first-child { margin-top: 0; }
+h4 a { color: inherit; }
+h4 a:hover { color: #fde68a; text-decoration: none; }
+
+h5 { color: var(--text); font-size: 0.9rem; font-weight: 600; margin: 16px 0 8px; }
+h6 { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; margin: 14px 0 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ============================================================
+   Cards (.card) — Q弹悬停 + 入场动画
+   ============================================================ */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  margin: 16px 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.6s var(--spring) both;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: var(--card-hover);
+  border-color: var(--border-hover);
+  border-left-color: var(--accent);
+  box-shadow: var(--shadow-md), var(--shadow-glow-hover);
+}
+
+.card-title { color: var(--accent); font-size: 1.08rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 0.02em; line-height: 1.4; }
+.card-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.card-content { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+.card-content p { margin-bottom: 8px; }
+
+/* ============================================================
+   Job Cards (.job-card) — Green + Q弹
+   ============================================================ */
+.job-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-green);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  margin: 16px 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.6s var(--spring) both;
+}
+
+.job-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: var(--card-hover);
+  border-color: rgba(34, 211, 160, 0.4);
+  border-left-color: var(--accent-green);
+  box-shadow: var(--shadow-md), 0 0 40px rgba(34, 211, 160, 0.12);
+}
+
+.job-card .job-title { color: var(--accent-green); font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
+.job-card .job-title a { color: inherit; }
+.job-card .job-title a:hover { color: #4ee9b8; text-decoration: none; }
+.job-card .job-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.job-card .job-meta span { display: inline-flex; align-items: center; gap: 4px; }
+.job-card .job-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+
+/* ============================================================
+   News Items (.news-item) — Cyan + Q弹
+   ============================================================ */
+.news-item {
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 12px 0;
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.5s var(--spring) both;
+}
+
+.news-item:hover {
+  transform: translateY(-3px) scale(1.01);
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--border-hover);
+  border-left-color: var(--accent);
+  box-shadow: var(--shadow-sm), var(--shadow-glow-hover);
+}
+
+.news-item .news-title { color: var(--accent); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+.news-item .news-title a { color: inherit; }
+.news-item .news-title a:hover { color: #5ee5ff; text-decoration: none; }
+.news-item .news-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.news-item .news-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+.news-item .badge, .news-item .tag { margin-right: 6px; }
+
+/* ============================================================
+   Stats Grid (.stats-grid / .stat-box)
+   ============================================================ */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0 28px; }
+
+.stat-box {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(20, 28, 48, 0.6) 100%);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px 18px;
+  text-align: center;
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.5s var(--spring) both;
+}
+
+.stat-box:hover { transform: translateY(-5px) scale(1.03); box-shadow: var(--shadow-md), var(--shadow-glow-hover); }
+
+.stat-box .num { display: block; font-size: 1.8rem; font-weight: 800; color: var(--accent); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; text-shadow: 0 0 16px rgba(0, 212, 255, 0.3); }
+.stat-box .label { display: block; font-size: 0.88rem; color: var(--text-dim); font-weight: 500; margin-bottom: 4px; }
+.stat-box .sub { display: block; font-size: 0.78rem; color: var(--text-faint); }
+
+/* ============================================================
+   Tables
+   ============================================================ */
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); -webkit-overflow-scrolling: touch; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; overflow: hidden; }
+th { background: linear-gradient(135deg, rgba(0, 212, 255, 0.20) 0%, rgba(0, 212, 255, 0.08) 100%); color: var(--accent); font-weight: 700; text-align: left; padding: 14px 16px; border-bottom: 2px solid rgba(0, 212, 255, 0.3); letter-spacing: 0.03em; white-space: nowrap; }
+.table-wrapper { overflow-x: auto; margin: 20px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); -webkit-overflow-scrolling: touch; }
+td { padding: 12px 16px; color: var(--text-dim); border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); vertical-align: top; }
+td:last-child { border-right: none; }
+th { border-right: 1px solid rgba(0, 212, 255, 0.15); }
+th:last-child { border-right: none; }
+table tbody tr:nth-child(odd) td { background: rgba(0, 212, 255, 0.04); }
+table tbody tr:nth-child(even) td { background: rgba(0, 212, 255, 0.08); }
+table tbody tr { transition: background 0.3s var(--smooth); }
+table tbody tr:hover td { background: rgba(0, 212, 255, 0.16); color: var(--text); }
+table tbody tr:last-child td { border-bottom: none; }
+.salary-table th { background: linear-gradient(135deg, rgba(34, 211, 160, 0.18) 0%, rgba(34, 211, 160, 0.08) 100%); color: var(--accent-green); border-bottom-color: rgba(34, 211, 160, 0.3); }
+.salary-table td strong { color: var(--accent-green); }
+.summary-table th { background: linear-gradient(135deg, rgba(129, 140, 248, 0.18) 0%, rgba(129, 140, 248, 0.08) 100%); color: #a5b4fc; border-bottom-color: rgba(129, 140, 248, 0.3); }
+.summary-table td:first-child { color: var(--text); font-weight: 500; }
+
+/* ============================================================
+   Salary Grid
+   ============================================================ */
+.salary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+.salary-item { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent-green); border-radius: var(--radius-sm); padding: 14px 16px; transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth); position: relative; backdrop-filter: blur(8px); animation: fadeInUp 0.5s var(--spring) both; }
+.salary-item:hover { transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-md), 0 0 32px rgba(34, 211, 160, 0.12); border-color: rgba(34, 211, 160, 0.4); border-left-color: var(--accent-green); }
+.salary-item .level { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 6px; letter-spacing: 0.02em; }
+.salary-item .amount { font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 700; color: var(--accent-green); margin-bottom: 4px; line-height: 1.3; }
+.salary-item .note { font-size: 0.78rem; color: var(--text-faint); line-height: 1.4; }
+@media (max-width: 600px) { .salary-grid { grid-template-columns: 1fr; } .salary-item { padding: 12px 14px; } .salary-item .amount { font-size: 1.05rem; } }
+
+/* ============================================================
+   Badges
+   ============================================================ */
+.badge { display: inline-block; padding: 3px 10px; font-size: 0.78rem; font-weight: 600; border-radius: 999px; background: rgba(0, 212, 255, 0.12); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.3); letter-spacing: 0.03em; line-height: 1.5; vertical-align: middle; margin-right: 4px; transition: all 0.3s var(--bounce); }
+.badge:hover { transform: scale(1.08); }
+.badge.hot, .badge-hot { background: linear-gradient(135deg, rgba(248, 113, 113, 0.2), rgba(251, 146, 60, 0.2)); color: #fca5a5; border-color: rgba(248, 113, 113, 0.5); }
+.badge.new, .badge-new { background: rgba(34, 211, 160, 0.18); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.45); }
+.badge.warn, .badge-warn { background: rgba(251, 191, 36, 0.16); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-high { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+.badge-mid { background: rgba(251, 146, 60, 0.14); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.4); }
+.badge-low { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+.badge-purple { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.4); }
+
+/* ============================================================
+   Tags
+   ============================================================ */
+.tag { display: inline-block; padding: 3px 10px; font-size: 0.78rem; font-weight: 500; border-radius: 999px; background: rgba(168, 184, 208, 0.1); color: var(--text-dim); border: 1px solid var(--border); margin: 0 4px 4px 0; letter-spacing: 0.02em; line-height: 1.5; vertical-align: middle; transition: all 0.3s var(--bounce); }
+.tag:hover { transform: scale(1.06); }
+.tag.green, .tag-green { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag.purple, .tag-purple { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.3); }
+.tag.orange, .tag-orange { background: rgba(251, 146, 60, 0.14); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.3); }
+.tag.red, .tag-red { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag.pink, .tag-pink { background: rgba(248, 113, 113, 0.12); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag.teal, .tag-teal { background: rgba(20, 184, 166, 0.12); color: var(--accent-teal); border-color: rgba(20, 184, 166, 0.3); }
+.tag.amber, .tag-amber { background: rgba(251, 191, 36, 0.12); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag.accent, .tag-accent { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+.tag-byd { background: rgba(0, 153, 204, 0.18); color: #4dabf5; border-color: rgba(0, 153, 204, 0.35); }
+.tag-chery { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-geely { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.3); }
+.tag-faw { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-vw { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-tesla { background: rgba(248, 113, 113, 0.18); color: #fca5a5; border-color: rgba(248, 113, 113, 0.4); }
+.tag-other { background: rgba(168, 184, 208, 0.12); color: var(--text-dim); border-color: var(--border); }
+
+/* ============================================================
+   Pills
+   ============================================================ */
+.pill { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; font-size: 0.8rem; font-weight: 500; border-radius: 999px; background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.25); margin: 0 6px 6px 0; letter-spacing: 0.02em; line-height: 1.5; vertical-align: middle; transition: all 0.3s var(--bounce); }
+.pill:hover { transform: scale(1.05); }
+.pill-green { background: rgba(34, 211, 160, 0.1); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.25); }
+.pill-purple { background: rgba(129, 140, 248, 0.1); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.25); }
+.pill-orange { background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.25); }
+.pill-pink { background: rgba(248, 113, 113, 0.1); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.25); }
+.pill-amber { background: rgba(251, 191, 36, 0.1); color: #fbbf24; border-color: rgba(251, 191, 36, 0.25); }
+.pill-teal { background: rgba(20, 184, 166, 0.1); color: var(--accent-teal); border-color: rgba(20, 184, 166, 0.25); }
+.pill-gray { background: rgba(168, 184, 208, 0.1); color: var(--text-dim); border-color: var(--border); }
+.pill-location { background: rgba(0, 212, 255, 0.1); color: var(--accent); border-color: rgba(0, 212, 255, 0.25); }
+.pill-salary { background: rgba(34, 211, 160, 0.1); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.25); }
+.pill-edu { background: rgba(129, 140, 248, 0.1); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.25); }
+.pill-type { background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.25); }
+
+/* ============================================================
+   Source Links
+   ============================================================ */
+.source-link { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; font-size: 0.8rem; font-weight: 500; border-radius: 999px; background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.3); margin: 4px 0; transition: all 0.4s var(--bounce); letter-spacing: 0.02em; }
+.source-link:hover { background: var(--accent); color: #0a0e1a; border-color: var(--accent); text-decoration: none; box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); transform: scale(1.05); }
+.source-link::before { content: '🔗'; font-size: 0.85em; }
+
+/* ============================================================
+   Discussion Items — Orange + Q弹
+   ============================================================ */
+.discussion { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent-orange); border-radius: var(--radius-sm); padding: 16px 20px; margin: 14px 0; transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth); backdrop-filter: blur(8px); animation: fadeInUp 0.5s var(--spring) both; }
+.discussion:hover { transform: translateY(-3px) scale(1.01); background: var(--card-hover); border-color: rgba(251, 146, 60, 0.4); border-left-color: var(--accent-orange); box-shadow: var(--shadow-md), 0 0 36px rgba(251, 146, 60, 0.1); }
+.discussion .discussion-title { color: var(--accent-orange); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+.discussion .discussion-title a { color: inherit; }
+.discussion .discussion-title a:hover { color: #fdba74; text-decoration: none; }
+.discussion .discussion-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.discussion-item { background: rgba(251, 146, 60, 0.05); border: 1px solid var(--border); border-left: 3px solid var(--accent-orange); border-radius: var(--radius-sm); padding: 12px 16px; margin: 10px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; }
+.discussion-item .discussion-author { color: var(--accent-orange); font-weight: 600; }
+.discussion-item .discussion-time { color: var(--text-faint); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
+
+/* ============================================================
+   Tip/Warning/Highlight/Info/Note Boxes
+   ============================================================ */
+.tip-box { background: rgba(34, 211, 160, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-green); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.tip-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(34, 211, 160, 0.1); }
+.tip-box .tip-title, .tip-box h4 { color: var(--accent-green); font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.tip-box .tip-title::before { content: '💡'; }
+.tip-box p:last-child { margin-bottom: 0; }
+.tip-box ul { margin: 8px 0 0; }
+.tip-box li { margin-bottom: 4px; }
+
+.warning-box { background: rgba(248, 113, 113, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-pink); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.warning-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(248, 113, 113, 0.1); }
+.warning-box .warning-title { color: var(--accent-pink); font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.warning-box .warning-title::before { content: '⚠️'; }
+.warning-box p:last-child { margin-bottom: 0; }
+
+.highlight-box { background: rgba(129, 140, 248, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-purple); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.highlight-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(129, 140, 248, 0.1); }
+.highlight-box .highlight-title { color: #a5b4fc; font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.highlight-box .highlight-title::before { content: '✨'; }
+.highlight-box p:last-child { margin-bottom: 0; }
+
+.info-box { background: rgba(129, 140, 248, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-purple); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.info-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(129, 140, 248, 0.1); }
+.info-box .info-title { color: #a5b4fc; font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.info-box .info-title::before { content: 'ℹ️'; }
+.info-box p:last-child { margin-bottom: 0; }
+
+.note-box { background: rgba(0, 212, 255, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.note-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1); }
+.note-box .note-title { color: var(--accent); font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; }
+
+.progress-bar { width: 100%; height: 10px; background: rgba(0, 212, 255, 0.08); border-radius: 999px; overflow: hidden; margin: 8px 0; border: 1px solid var(--border); }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-purple)); border-radius: 999px; transition: width 0.5s var(--smooth); }
+.progress-fill.green { background: linear-gradient(90deg, var(--accent-green), var(--accent-teal)); }
+.progress-fill.orange { background: linear-gradient(90deg, var(--accent-orange), var(--accent-warm)); }
+.progress-fill.pink { background: linear-gradient(90deg, var(--accent-pink), var(--accent-orange)); }
+.progress-fill.purple { background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink)); }
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-accent { color: var(--accent); }
+.text-green { color: var(--accent-green); }
+.text-purple { color: #a5b4fc; }
+.text-orange { color: var(--accent-orange); }
+.text-pink { color: var(--accent-pink); }
+.text-amber { color: #fbbf24; }
+.text-teal { color: var(--accent-teal); }
+.text-dim { color: var(--text-dim); }
+.text-faint { color: var(--text-faint); }
+.text-white { color: #ffffff; }
+.text-sm { font-size: 0.85rem; }
+.text-lg { font-size: 1.1rem; }
+.text-xl { font-size: 1.3rem; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.mt-0 { margin-top: 0; } .mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 24px; }
+.mb-0 { margin-bottom: 0; } .mb-1 { margin-bottom: 8px; } .mb-2 { margin-bottom: 16px; } .mb-3 { margin-bottom: 24px; }
+.flex { display: flex; } .flex-wrap { flex-wrap: wrap; } .flex-center { display: flex; align-items: center; justify-content: center; }
+.gap-1 { gap: 8px; } .gap-2 { gap: 16px; }
+.hidden { display: none !important; } .block { display: block; } .inline-block { display: inline-block; }
+.divider { height: 1px; background: var(--border); margin: 24px 0; border: none; }
+.muted { color: var(--text-faint); }
+
+/* ============================================================
+   hr, blockquote, code, pre
+   ============================================================ */
+hr { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 32px 0; }
+blockquote { margin: 16px 0; padding: 12px 18px; background: rgba(0, 212, 255, 0.05); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--text-dim); font-style: italic; }
+blockquote p { margin-bottom: 0; }
+blockquote footer, blockquote cite { display: block; margin-top: 8px; font-size: 0.85rem; color: var(--text-faint); font-style: normal; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 0.88em; background: rgba(0, 212, 255, 0.1); color: var(--accent); padding: 2px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.15); }
+pre { background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; overflow-x: auto; margin: 16px 0; box-shadow: var(--shadow-sm); }
+pre code { background: transparent; color: var(--text-dim); padding: 0; border: none; font-size: 0.88em; line-height: 1.6; }
+
+/* ============================================================
+   Giscus / Comments
+   ============================================================ */
+.comments-section { margin: 56px 0 32px; padding: 28px 24px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); position: relative; backdrop-filter: blur(10px); }
+.comments-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent-purple), var(--accent), var(--accent-green)); background-size: 200% 100%; border-radius: var(--radius) var(--radius) 0 0; animation: gradientFlow 6s ease infinite; }
+.comments-title { color: #a5b4fc; font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
+.comments-desc { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 16px; }
+.giscus { margin-top: 16px; }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+footer, .footer { margin-top: 56px; padding: 28px 24px; text-align: center; color: var(--text-faint); font-size: 0.85rem; border-top: 1px solid var(--border); letter-spacing: 0.02em; }
+footer p, .footer p { margin-bottom: 8px; }
+footer a, .footer a { color: var(--text-dim); }
+footer a:hover, .footer a:hover { color: var(--accent); }
+.footer-meta { margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-faint); }
+
+/* ============================================================
+   Scroll-to-top button — Q弹
+   ============================================================ */
+.scroll-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: var(--card-solid); border: 1px solid var(--border-hover); border-radius: 50%; color: var(--accent); font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.3s var(--smooth), transform 0.4s var(--bounce), background 0.3s var(--smooth); backdrop-filter: blur(10px); }
+.scroll-top.visible { opacity: 1; pointer-events: auto; }
+.scroll-top:hover { background: var(--accent); color: #0a0e1a; transform: translateY(-4px) scale(1.1); box-shadow: 0 4px 24px rgba(0, 212, 255, 0.4); }
+.scroll-top:active { transform: translateY(-2px) scale(0.95); }
+
+/* ============================================================
+   Entrance Animations
+   ============================================================ */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 768px) { .nav-links { flex-direction: column; align-items: flex-start; } .stats-grid { grid-template-columns: 1fr 1fr; } }
+
+@media (max-width: 600px) {
+  body { font-size: 14px; line-height: 1.75; }
+  .container { padding: 24px 16px 60px; }
+  .header, .report-header { padding: 28px 20px; margin-bottom: 32px; border-radius: 20px; }
+  .header h1, .report-header h1 { font-size: 1.5rem; }
+  .header .subtitle, .report-header .subtitle { font-size: 0.9rem; }
+  h2, .section-title { font-size: 1.2rem; padding: 10px 14px 10px 12px; }
+  h3 { font-size: 1rem; }
+  h4 { font-size: 0.9rem; }
+  .section { margin: 40px 0; }
+  .card, .job-card, .news-item, .discussion, .tip-box, .warning-box, .highlight-box, .info-box, .note-box { padding: 14px 16px; border-radius: 14px; }
+  .card:hover, .job-card:hover, .news-item:hover, .discussion:hover { transform: none; }
+  th, td { padding: 9px 10px; font-size: 0.82rem; }
+  .nav-links { padding: 10px 12px; border-radius: 14px; }
+  .nav-links a { font-size: 0.8rem; padding: 5px 10px; }
+  .comments-section { padding: 20px 16px; border-radius: 20px; }
+  footer, .footer { padding: 20px 16px; }
+  .report-header .meta { gap: 10px; font-size: 0.8rem; }
+  .badge, .tag, .pill { font-size: 0.72rem; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-box .num { font-size: 1.5rem; }
+  .scroll-top { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+}
+
+/* ============================================================
+   Icons
+   ============================================================ */
+.icon { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 10px; font-size: 1.1rem; flex-shrink: 0; line-height: 1; }
+.icon-blue, .icon.icon-blue { background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.3); }
+.icon-green, .icon.icon-green { background: rgba(34, 211, 160, 0.15); border: 1px solid rgba(34, 211, 160, 0.3); }
+.icon-orange, .icon.icon-orange { background: rgba(251, 146, 60, 0.15); border: 1px solid rgba(251, 146, 60, 0.3); }
+.icon-purple, .icon.icon-purple { background: rgba(129, 140, 248, 0.15); border: 1px solid rgba(129, 140, 248, 0.3); }
+.icon-teal, .icon.icon-teal { background: rgba(20, 184, 166, 0.15); border: 1px solid rgba(20, 184, 166, 0.3); }
+.icon-pink, .icon.icon-pink { background: rgba(248, 113, 113, 0.15); border: 1px solid rgba(248, 113, 113, 0.3); }
+.icon-amber, .icon.icon-amber { background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.3); }
+.emoji { display: inline-block; font-size: 1.2rem; line-height: 1; vertical-align: middle; }
+
+/* ============================================================
+   Priority / Status indicators
+   ============================================================ */
+.priority-high, .priority-hot { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+.priority-mid, .priority-medium { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(251, 146, 60, 0.15); color: var(--accent-orange); border: 1px solid rgba(251, 146, 60, 0.3); }
+.priority-low, .priority-normal { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+
+.match-score { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+.match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+
+/* ============================================================
+   Grid layouts
+   ============================================================ */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 16px 0; }
+.card-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 16px 0; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+
+/* ============================================================
+   Flexbox helpers
+   ============================================================ */
+.flex-row { display: flex; flex-direction: row; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; align-items: flex-start; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 6px; } .gap-md { gap: 12px; } .gap-lg { gap: 20px; }
+.w-full { width: 100%; } .w-auto { width: auto; }
+
+/* ============================================================
+   Text size helpers
+   ============================================================ */
+.fs-xs { font-size: 0.75rem; } .fs-sm { font-size: 0.85rem; } .fs-md { font-size: 0.93rem; }
+.fs-lg { font-size: 1.1rem; } .fs-xl { font-size: 1.3rem; } .fs-2xl { font-size: 1.6rem; }
+
+/* ============================================================
+   Color helpers
+   ============================================================ */
+.text-success { color: var(--accent-green) !important; }
+.text-warning { color: #fbbf24 !important; }
+.text-danger { color: var(--accent-pink) !important; }
+.text-info { color: var(--accent) !important; }
+.text-muted { color: var(--text-faint) !important; }
+.text-dimmer { color: var(--text-dim) !important; }
+.text-bright { color: var(--text) !important; }
+.text-accent-green { color: var(--accent-green) !important; }
+.text-accent-orange { color: var(--accent-orange) !important; }
+.text-accent-purple { color: #a5b4fc !important; }
+.text-accent-pink { color: var(--accent-pink) !important; }
+.text-accent-teal { color: var(--accent-teal) !important; }
+
+/* ============================================================
+   Margin/Padding helpers
+   ============================================================ */
+.mt-4 { margin-top: 32px; } .mt-5 { margin-top: 40px; } .mt-6 { margin-top: 48px; }
+.mb-4 { margin-bottom: 32px; } .mb-5 { margin-bottom: 40px; } .mb-6 { margin-bottom: 48px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.p-0 { padding: 0; } .p-2 { padding: 16px; } .p-3 { padding: 24px; }
+.py-2 { padding-top: 16px; padding-bottom: 16px; }
+.px-2 { padding-left: 16px; padding-right: 16px; }
+
+/* ============================================================
+   Misc component styles
+   ============================================================ */
+.timeline-item { position: relative; padding-left: 24px; margin: 12px 0; }
+.timeline-item::before { content: ''; position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(0, 212, 255, 0.4); transition: transform 0.3s var(--bounce); }
+.timeline-item:hover::before { transform: scale(1.3); }
+.timeline-item::after { content: ''; position: absolute; left: 4px; top: 20px; bottom: -12px; width: 2px; background: var(--border); }
+.timeline-item:last-child::after { display: none; }
+
+.count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 8px; background: linear-gradient(135deg, var(--accent), var(--accent-purple)); color: #0a0e1a; font-size: 0.78rem; font-weight: 700; border-radius: 999px; font-family: 'JetBrains Mono', monospace; }
+
+mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent); padding: 1px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.2); }
+
+.emoji-list { list-style: none; padding-left: 0; }
+.emoji-list li { padding-left: 28px; position: relative; margin-bottom: 8px; }
+
+.separator { height: 2px; background: linear-gradient(90deg, transparent, var(--border-hover), transparent); margin: 32px 0; border: none; }
+
+.badge-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+
+.tag-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+
+@media print {
+  body { background: #ffffff; color: #000000; font-size: 12px; line-height: 1.6; }
+  body::before, body::after { display: none !important; }
+  .container { max-width: 100%; padding: 0; }
+  .header, .report-header { background: #f5f7fa; border: 1px solid #cccccc; box-shadow: none; break-inside: avoid; }
+  .header::before, .report-header::before { background: #006699; }
+  .header h1, .report-header h1 { color: #000000; text-shadow: none; }
+  .header .subtitle, .report-header .subtitle, .header .meta, .report-header .meta { color: #333333; }
+  .header .date, .report-header .date, .header .date-badge, .report-header .date-badge { background: #e0eef5; border-color: #006699; color: #006699; }
+  h2, .section-title { color: #006699; background: #e8f4fa; border-left-color: #006699; }
+  h3 { color: #4444aa; border-left-color: #6666cc; }
+  h4 { color: #aa6600; }
+  .section { margin: 24px 0; break-inside: avoid; }
+  .section::before { background: #006699; }
+  .card, .job-card, .news-item, .discussion, .tip-box, .warning-box, .highlight-box, .info-box, .note-box { background: #f9f9f9; border: 1px solid #cccccc; box-shadow: none; break-inside: avoid; }
+  .card:hover, .job-card:hover, .news-item:hover, .discussion:hover { transform: none; box-shadow: none; }
+  p, li, td, .card-content, .job-desc, .news-desc { color: #222222; }
+  a { color: #006699; text-decoration: underline; }
+  .source-link { background: #e0eef5; color: #006699; border-color: #006699; }
+  th { background: #e0eef5; color: #006699; border-bottom: 2px solid #006699; }
+  table tbody tr:nth-child(odd) td, table tbody tr:nth-child(even) td { background: #ffffff; }
+  table tbody tr:hover td { background: #f0f0f0; }
+  .back-link, .nav-links, .nav-toc, .comments-section, footer, .footer, .scroll-top { display: none; }
+  pre { background: #f5f5f5; border-color: #cccccc; }
+  pre code, code { color: #333333; background: #eeeeee; }
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="report-header">
+  <h1>机械招聘日报</h1>
+  <p class="subtitle">江浙沪机械工程招聘新闻与个性化岗位推荐 | 安徽工业大学机械工程硕士专属</p>
+  <div class="date-badge">2026-09-13 周五</div>
+  <div class="meta">
+    <span>覆盖区域：江苏 / 浙江 / 上海</span>
+    <span>重点企业：8家</span>
+    <span>推荐岗位：Top 5</span>
+    <span>通勤优先：南京方向</span>
+  </div>
+</div>
+<div class="nav-toc">
+  <div class="toc-title">📑 今日目录</div>
+  <ol>
+    <li><a href="#jsz">一、江浙沪三地招聘动态</a></li>
+    <li><a href="#enterprises">二、8家重点企业招聘详情</a></li>
+    <li><a href="#top5">三、个性化推荐 Top 5（基于个人技能背景）</a></li>
+    <li><a href="#compare">四、岗位类型对比分析</a></li>
+    <li><a href="#national">五、全国推荐岗位</a></li>
+    <li><a href="#commute">六、通勤分析（马鞍山出发）</a></li>
+    <li><a href="#hot">七、全网热议讨论</a></li>
+    <li><a href="#comments">八、评论区（Giscus）</a></li>
+  </ol>
+</div>
+
+<div class="report-header">
+  <h1>机械招聘日报 · 江浙沪专场</h1>
+  <div class="subtitle">苏州 · 常州 · 无锡 · 杭州 · 宁波 · 上海 · 南京</div>
+  <div class="meta">
+    <span class="date-badge">2026年9月13日 星期日</span>
+    <span>📍 面向：安徽工业大学机械工程硕士（研二）· 四旋翼飞控与仿真</span>
+    <span>🎯 关键词：金九银十开闸 · 低空经济结构岗 · 马鞍山通勤圈</span>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <div class="highlight-title">💡 今日核心判断</div>
+  <p>进入 <strong>9 月第二周</strong>，江浙沪机械岗的"金九银十"已经实质性开闸，但结构分化比往年更明显：<strong>一条线是"通用机械设计"岗位在降价</strong>（常州紧缺人才调研显示技术研发类岗位年薪集中在 <strong>10-15 万</strong>，且企业普遍抱怨"简历合格、面试不达标"）；<strong>另一条线是"精密装备 + 机器人 + 低空经济"在加价</strong>（苏州机械工程师硕士近一年样本中 <strong>56.6%</strong> 的岗位开到 <strong>20-50K/月</strong>，南京无人机结构工程师普遍 <strong>15-30K·13-15 薪</strong>）。</p>
+  <p>对你个人而言，今天有三件事值得立刻做：<strong>第一</strong>，中车戚墅堰所 <strong>2027 届校招 9 月 3 日刚放榜</strong>（机械类 <strong>40 人</strong>、<strong>14 万/年</strong>、公积金 12% + 企业年金 8% + 住房补贴 15%），这类"六险两金一补贴"的央企子公司是本轮性价比最高的兜底选项；<strong>第二</strong>，你的四旋翼飞控仿真背景在<strong>无人机结构/总体设计岗</strong>上是稀缺项，苏州卓世航空、南京航天国器、浙大湖州研究院都在招，且明确写了"熟悉多旋翼架构 + 有限元模态分析"；<strong>第三</strong>，海天塑机"鲲鹏计划"<strong>100 人</strong>、研究生 <strong>18-30 万起</strong>，是宁波方向唯一给出公开高薪区间的大厂专项。</p>
+</div>
+
+
+<div class="report-header">
+  <h1>机械招聘日报 · 江浙沪专场</h1>
+  <div class="subtitle">南京 · 苏州 · 无锡 · 常州 · 上海 · 杭州 · 宁波</div>
+  <div class="meta">
+    <span class="date-badge">2026年9月13日 星期日</span>
+    <span>📍 面向：安徽工业大学机械工程硕士（研二）· 四旋翼飞控与仿真</span>
+    <span>🎯 关键词：9·20 十万岗位招聘会 · 具身智能机器人岗 · 事业编通道</span>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <div class="highlight-title">💡 今日核心判断（9月11日）</div>
+  <p>今天江浙沪机械岗有两条<strong>真正的新增变量</strong>，都值得今天就动手。<strong>第一，江苏省「9·20」人才招聘会第一批企业名单公布，明确口径是「10 万个岗位」</strong>，其中南京市第一批名单里已经能看到机械研发工程师（博士 <strong>25000-30000 元/月</strong>）、机械/工艺工程师（硕士 <strong>9000-13000 元/月</strong>）、仪器研发工程师（硕士 <strong>13000-23000 元/月</strong>）等硬数据；<strong>9月10日昆山专场</strong>更是把本科应届机械岗开到 <strong>6700-10000 元/月</strong>、机械工程师开到 <strong>12000-15000 元/月</strong>。<strong>第二，苏州「具身智能机器人」赛道继续加价</strong>——翼菲智能（上市）机械结构工程师-具身机器人 <strong>15-40K·14 薪</strong>、领世（苏州）机器人高级机械设计工程师 <strong>18-35K·14 薪</strong>、机器人-力控算法工程师 <strong>25-40K</strong>，全部集中在苏州工业园区与吴中区。</p>
+  <p>对你这套「四旋翼飞控 + 仿真」背景，我的判断是：<strong>①</strong> 你的稀缺性不在「通用机械设计」，而在<strong>结构 + 动力学 + 控制</strong>的复合能力，这正好是具身机器人本体（关节结构、传动、轻量化）和低空经济（eVTOL 结构、载荷校核）两条线的共同语言；<strong>②</strong> 应届起薪别按 20-40K 预期，苏州应届机械岗的现实起点是 <strong>12-18K·13-14 薪</strong>，20K+ 普遍要求 3-5 年；<strong>③</strong> 浙江这批<strong>事业编教师岗</strong>（台州技师学院、浙江经贸职院）名额只有 1-2 人，但要求「企业实践 6 个月 + 竞赛获奖/发明专利」，<strong>如果你有专利或省级竞赛奖，现在就该把材料整理成 PDF 备用</strong>。</p>
+</div>
+
+
+
+<div class="report-header">
+  <h1>江浙沪机械招聘日报 · 2026-09-13</h1>
+  <div class="subtitle">工程机械 / 工业自动化 / 智能装备 / 高端制造 — 江苏 · 浙江 · 上海校招与社招动态</div>
+  <div class="meta">
+    <span class="date-badge">2026-09-13 星期日</span>
+    <span class="text-muted">读者画像：机械工程硕士（四旋翼飞控仿真），坐标徐州，关注 CAE / 结构 / 液压 / 仿真岗</span>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <div class="highlight-title">💡 今日核心判断</div>
+  <p>秋招进入密集宣讲期，<strong>江苏本土工程机械龙头</strong>与<strong>工业自动化头部企业</strong>同步放量。徐工集团放出<strong>超 800 个</strong>岗位并给出徐州购房优惠，对家在徐州的读者最友好；三一集团研发岗规模达<strong>970 人</strong>、月薪<strong>15K–17K</strong>，研发技术岗明确含仿真 / 结构 / 液压方向；埃斯顿为南京本土工业机器人冠军，硕士研发岗开到<strong>25 万+</strong>/年。建议优先锁定<strong>徐州、南京、上海、合肥</strong>四地坐标，将飞控仿真背景切入结构仿真、NVH、运动控制岗位。</p>
+</div>
+
+<div class="stats-grid">
+  <div class="stat-box"><div class="count-badge">800+</div><div class="label">徐工集团秋招岗位数（徐州/南京/杭州）</div></div>
+  <div class="stat-box"><div class="count-badge">970</div><div class="label">三一集团研发技术岗招聘规模</div></div>
+  <div class="stat-box"><div class="count-badge">1500</div><div class="label">海康威视校招规模（含结构/CAE）</div></div>
+  <div class="stat-box"><div class="count-badge">25万+</div><div class="label">埃斯顿硕士研发工程师年薪</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块一 · 江苏本土工程机械龙头：徐工 / 三一 / 中联重科</div>
+
+  <div class="card">
+    <h3>徐工集团 27 届秋招：超 800 岗，徐州购房优惠 + 生活补贴</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-orange">徐工集团</span>
+        <span class="badge hot">🔥 徐州优先</span>
+        <span>2026-09-13</span>
+      </div>
+      <p>徐工集团秋招放出<strong>超 800 个</strong>岗位，工作地覆盖徐州、南京、杭州，岗位含结构设计、仿真技术、液压等方向，福利含六险二金、徐州购房优惠与生活补贴。东北大学已于<strong>9 月 10 日</strong>举办宣讲，安徽工业大学所在长三角线预计随后铺开。</p>
+      <a class="source-link" href="https://my.yingjiesheng.com/xjh-006-290-877.html" target="_blank">📎 查看原文</a>
+      <a class="source-link" href="https://career.smbu.edu.cn/detail/career?id=714476" target="_blank">📎 宣讲信息（SMBU）</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>三一集团研发技术岗：970 人规模，月薪 15K–17K，含仿真/结构/液压</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-teal">三一集团</span>
+        <span class="badge new">🆕 研发放量</span>
+        <span>2026-09-12</span>
+      </div>
+      <p>三一集团 2027 届校招研发技术岗招聘规模<strong>970 人</strong>，月薪区间<strong>15K–17K</strong>，工作地含上海、南京、杭州、常熟等，岗位方向明确含仿真、结构、液压等，网申截止<strong>11 月 30 日</strong>。多所高校就业网已发布专场信息，建议尽早投递研发技术类。</p>
+      <a class="source-link" href="https://job.xju.edu.cn/Web/Employ/NetEmployDetails?BDNd2Bvz7zdGB2mOT6tBLbT3R9rz1eYdEGvSlUGWj2s=.shtml" target="_blank">📎 查看原文（新大）</a>
+      <a class="source-link" href="http://career.ouc.edu.cn/zftal-web/zfjy!ykfw/zpztgl_cxWzZpxxNry.html?id=160954&&zd1=JG1003235&&zpdxdm=1" target="_blank">📎 中国海洋大学</a>
+      <a class="source-link" href="https://jy.hunau.edu.cn/detail/job?id=3229480" target="_blank">📎 湖南农大</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-teal">三一集团</span>
+        <span class="badge info">薪资参考</span>
+        <span>2026-09-12</span>
+      </div>
+      <p>第三方薪资汇总显示三一重机、泵送、重起等事业部研发岗普遍落在<strong>15K–17K/月</strong>，结构仿真与液压控制方向需求最旺，对机械硕士友好，可作谈薪基准。</p>
+      <a class="source-link" href="https://blog.gaodingoffer.cn/420e9345b414410387b60cc8192a1501" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>中联重科：机械类 500 人，结构 / CAE / 传动工程师（长沙/上海/芜湖）</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-purple">中联重科</span>
+        <span class="badge new">🆕 安徽线</span>
+        <span>2026-09-11</span>
+      </div>
+      <p>中联重科 2027 届机械类招聘约<strong>500 人</strong>，岗位含结构工程师、CAE 工程师、传动工程师，工作地含长沙、上海、芜湖（离合肥近）。机器人方向岗位同步开放，北大就业网已挂出机器人方向专项。</p>
+      <a class="source-link" href="https://m.yingjiesheng.com/xuanjianghui/xjh_5683684" target="_blank">📎 查看原文</a>
+      <a class="source-link" href="https://scc.pku.edu.cn/frontpage/pku/html/recruitmentinfoForm.html?&positionDetailId=aec49fa36876447e8b5ca964395da976" target="_blank">📎 机器人方向（北大）</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块二 · 工业自动化与运动控制：汇川技术 / 埃斯顿 / ABB 中国</div>
+
+  <div class="card">
+    <h3>汇川技术 2027 校招：机械设计（仿真/减速机/丝杠）、结构仿真、NVH</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-green">汇川技术</span>
+        <span class="badge hot">🔥 仿真岗</span>
+        <span>2026-09-13</span>
+      </div>
+      <p>汇川技术 2027 届校招工作地苏州、上海、北京，岗位含机械设计（仿真 / 减速机 / 滚珠丝杆）、结构仿真、NVH 等方向，网申通道 recruit.inovance.com。对飞控仿真背景同学，结构仿真与 NVH 是最直接的对口切入。</p>
+      <a class="source-link" href="https://career.hit.edu.cn/zhxy-xszyfzpt/zpxx/zczphxq?id=YWRkNmRhMzcwZjQ2NGU3NGFhMjMwMGMyZmU3ODU3NWQ=" target="_blank">📎 查看原文（哈工大）</a>
+      <a class="source-link" href="https://my.yingjiesheng.com/xjh-006-289-930.html" target="_blank">📎 福州大学</a>
+      <a class="source-link" href="https://aiqicha.baidu.com/details/ugknowledge?id=e469dcda30305161380915fe2ba6f265" target="_blank">📎 企业信息（爱企查）</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>埃斯顿：南京本土工业机器人冠军，硕士研发 25 万+/年</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-red">埃斯顿</span>
+        <span class="badge hot">🔥 南京坐标</span>
+        <span>2026-09-12</span>
+      </div>
+      <p>埃斯顿连续<strong>8 年</strong>国产工业机器人销量第一，南京本土企业。机械研发工程师硕士<strong>25 万+</strong>/年、博士<strong>45 万+</strong>/年，多校就业网已发布专场。对家在徐州、想在南京发展的读者是优选。</p>
+      <a class="source-link" href="https://job.nju.edu.cn/career/specifics/617389891826749441" target="_blank">📎 查看原文（南大）</a>
+      <a class="source-link" href="https://job.xjtu.edu.cn/f/recruitmentinfo/show?recruitmentId=b780eafeb8ea4dbda6a30711ce4f95d1" target="_blank">📎 西安交大</a>
+      <a class="source-link" href="https://m.yingjiesheng.com/xjh-006-276-154.html" target="_blank">📎 应届生</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>ABB 中国 2027 校招：机械设计工程师，上海/南京/合肥等地</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-accent">ABB中国</span>
+        <span class="badge new">🆕 合肥坐标</span>
+        <span>2026-09-13</span>
+      </div>
+      <p>ABB 中国 2027 校招工作地含上海、北京、南京、合肥、厦门、江门、大连、广州、武汉，岗位含机械设计工程师、机械设计工程师（开关柜结构设计），PC 端网申 xy.liepin.com/abb2027。合肥设点对安徽高校同学便利。</p>
+      <a class="source-link" href="https://www.upcv.tech/xiaozhao/cmto5b3qr00o3m9thb6a90c2w.html" target="_blank">📎 查看原文（UP简历）</a>
+      <a class="source-link" href="https://job.ncepu.edu.cn/zpgg/c5c3a8f30fb8479b8edc861f587d8ca4.htm" target="_blank">📎 华北电力大学</a>
+      <a class="source-link" href="http://job.njtu.edu.cn/f/recruitmentinfo/show?recruitmentId=679baf29564b44d5a4e52614612f30f7" target="_blank">📎 北京交大</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块三 · 智能装备与机器视觉：海康威视 / 大疆</div>
+
+  <div class="card">
+    <h3>海康威视 2027 校招：1500 人，硬件/结构类含 CAE/力学</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-info">海康威视</span>
+        <span class="badge hot">🔥 结构岗</span>
+        <span>2026-09-12</span>
+      </div>
+      <p>海康威视 2027 届校招规模<strong>1500 人</strong>，硬件类与结构类岗位含 CAE、力学方向，工作地杭州、上海、武汉、西安，年薪参考<strong>15 万</strong>级，网申 campushr.hikvision.com，截止<strong>10 月 25 日</strong>。</p>
+      <a class="source-link" href="https://job.xjtu.edu.cn/f/recruitmentinfo/show?recruitmentId=a891cddcc99b48b0bb50fce487a8e90b" target="_blank">📎 查看原文（西安交大）</a>
+      <a class="source-link" href="https://www.91job.org.cn/recruitment/jobDetails?dwid=676605&zpgwid=1000000000737997" target="_blank">📎 91job 岗位</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>大疆 2027「拓疆者」校招：1000 人，10–25K，深圳/上海/北京</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-amber">大疆DJI</span>
+        <span class="badge new">🆕 飞控对口</span>
+        <span>2026-09-11</span>
+      </div>
+      <p>大疆 2027 届「拓疆者」校招规模<strong>1000 人</strong>，月薪<strong>10K–25K</strong>，工作地深圳、上海、北京，官网 careers.dji.com。无人机飞控仿真背景与大疆最为对口，建议优先投递控制 / 结构 / 仿真类岗位。</p>
+      <a class="source-link" href="https://apply.careers.dji.com/campus-recruitment/dji/143359" target="_blank">📎 查看原文（官网）</a>
+      <a class="source-link" href="https://scut.ncss.cn/student/jobs/CZWwTqftQwt1i1uXEycYx9/detail.html" target="_blank">📎 华南理工</a>
+      <a class="source-link" href="https://czqgxy.91job.org.cn/recruitment/jobDetails?dwid=688816&zpgwid=1000000000729010" target="_blank">📎 91job 岗位</a>
+      <a class="source-link" href="https://careers.dji.com/zh-CN/campus/hot-jobs" target="_blank">📎 热门岗位</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块四 · 江苏 / 安徽高端制造与科研院所：一拖 / 威孚 / 南京机电 / 戚墅堰所</div>
+
+  <div class="card">
+    <h3>中国一拖（南京）：产品研发工程师，机械类</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-orange">中国一拖</span>
+        <span class="badge info">南京坐标</span>
+        <span>2026-09-12</span>
+      </div>
+      <p>中国一拖南京基地招聘产品研发工程师，要求机械类，适合农业装备与液压传动方向同学。专场已在中国农大就业网发布。</p>
+      <a class="source-link" href="https://scc.cau.edu.cn/f/recruitmentFair/show?recruitmentFairId=188892f0271f47b7a20cb90c6b40cd65" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>无锡威孚：结构设计 / 电机设计 / 仿真工程师（硕士，无锡）</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-green">无锡威孚</span>
+        <span class="badge hot">🔥 仿真岗</span>
+        <span>2026-09-12</span>
+      </div>
+      <p>无锡威孚高科招聘结构设计、电机设计、仿真工程师，要求硕士，工作地无锡。汽车核心零部件龙头，对结构仿真与 NVH 背景友好，苏南坐标值得关注。</p>
+      <a class="source-link" href="https://job.tju.edu.cn/recruitment/content/type/2/id/6253.html" target="_blank">📎 查看原文（天大）</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>航空工业南京机电：研发 / 工艺 60 人，机械类（南京）</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-red">南京机电</span>
+        <span class="badge info">航空制造</span>
+        <span>2026-09-11</span>
+      </div>
+      <p>航空工业南京机电（金城集团）招聘研发、工艺岗共<strong>60 人</strong>，要求机械类，工作地南京。航空液压、作动、环控方向与其飞控仿真背景强相关，央企稳定性高。</p>
+      <a class="source-link" href="https://career.buaa.edu.cn/f/recruitmentFair/show?recruitmentFairId=c46f2702da8642f5837afc152d09d37d" target="_blank">📎 查看原文（北航）</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>中车戚墅堰所：机械类，六险两金一补贴（常州）</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-teal">中车戚墅堰所</span>
+        <span class="badge info">常州坐标</span>
+        <span>2026-09-13</span>
+      </div>
+      <p>中车戚墅堰所（常州）招聘机械类岗位，福利含六险两金一补贴。轨道交通装备龙头，对结构、工艺、仿真方向机械硕士开放，苏南坐标通勤友好。</p>
+      <a class="source-link" href="https://www.upcv.tech/xiaozhao/cmto3wvmk00dxm9thw2a0hlou.html" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块五 · 机械 / 仿真 / 结构 / 液压岗热榜（读者对口度排序）</div>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <h3>① 飞控仿真 → 结构仿真 / NVH</h3>
+      <div class="news-item">
+        <div class="news-meta"><span class="tag tag-green">最对口</span><span>2026-09-13</span></div>
+        <p>汇川技术（结构仿真、NVH）、无锡威孚（仿真工程师）、海康威视（CAE/力学）直接承接动力学与振动仿真能力，建议作为首选投递梯队。</p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>② 飞控控制 → 运动控制 / 液压</h3>
+      <div class="news-item">
+        <div class="news-meta"><span class="tag tag-orange">强相关</span><span>2026-09-13</span></div>
+        <p>徐工（液压）、三一（液压/结构）、航空工业南京机电（液压作动）、中国一拖（液压传动）均需要控制与流体背景，可平移飞控控制算法经验。</p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>③ 机械结构 → 机器人本体设计</h3>
+      <div class="news-item">
+        <div class="news-meta"><span class="tag tag-red">高薪</span><span>2026-09-13</span></div>
+        <p>埃斯顿（南京，25万+/年）、大疆（无人机本体）、中联重科（机器人方向）对机械设计、本体结构需求大，薪资竞争力强。</p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>④ 坐标优先级建议</h3>
+      <div class="news-item">
+        <div class="news-meta"><span class="tag tag-accent">徐州优先</span><span>2026-09-13</span></div>
+        <p>第一梯队徐州（徐工购房优惠）、南京（埃斯顿/南京机电/汇川）、上海（三一/海康/ABB）、合肥（ABB设点/中联芜湖近），兼顾离家近与发展空间。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块六 · 投递日历与网申提醒</div>
+
+  <div class="card">
+    <h3>近一周宣讲 / 网申关键节点</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-info">截止提醒</span><span>2026-09-13</span></div>
+      <p><strong>三一集团</strong>网申截止 <strong>11 月 30 日</strong>；<strong>海康威视</strong>截止 <strong>10 月 25 日</strong>；徐工东北大学宣讲已于 <strong>9 月 10 日</strong>举办，安徽线预计跟进；大疆、汇川、埃斯顿、ABB 官网通道开放中，建议本周内完成首轮投递。</p>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-warn">避坑</span><span>2026-09-13</span></div>
+      <p>各企业以官网 / 校就业网为准，警惕非官方"内推付费"信息；汇川网申仅认 recruit.inovance.com，大疆仅认 careers.dji.com，ABB 仅认 xy.liepin.com/abb2027。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息来源汇总</div>
+  <div class="table-wrap">
+    <table class="summary-table">
+      <thead>
+        <tr><th>企业 / 机构</th><th>类别</th><th>来源链接</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>徐工集团</td><td>工程机械</td><td><a class="source-link" href="https://my.yingjiesheng.com/xjh-006-290-877.html" target="_blank">📎 应届生</a> / <a class="source-link" href="https://career.smbu.edu.cn/detail/career?id=714476" target="_blank">📎 SMBU</a></td></tr>
+        <tr><td>三一集团</td><td>工程机械</td><td><a class="source-link" href="https://job.xju.edu.cn/Web/Employ/NetEmployDetails?BDNd2Bvz7zdGB2mOT6tBLbT3R9rz1eYdEGvSlUGWj2s=.shtml" target="_blank">📎 新大</a> / <a class="source-link" href="http://career.ouc.edu.cn/zftal-web/zfjy!ykfw/zpztgl_cxWzZpxxNry.html?id=160954&&zd1=JG1003235&&zpdxdm=1" target="_blank">📎 中国海大</a> / <a class="source-link" href="https://jy.hunau.edu.cn/detail/job?id=3229480" target="_blank">📎 湖南农大</a> / <a class="source-link" href="https://blog.gaodingoffer.cn/420e9345b414410387b60cc8192a1501" target="_blank">📎 薪资汇总</a></td></tr>
+        <tr><td>中联重科</td><td>工程机械</td><td><a class="source-link" href="https://m.yingjiesheng.com/xuanjianghui/xjh_5683684" target="_blank">📎 应届生</a> / <a class="source-link" href="https://scc.pku.edu.cn/frontpage/pku/html/recruitmentinfoForm.html?&positionDetailId=aec49fa36876447e8b5ca964395da976" target="_blank">📎 北大</a></td></tr>
+        <tr><td>汇川技术</td><td>工业自动化</td><td><a class="source-link" href="https://career.hit.edu.cn/zhxy-xszyfzpt/zpxx/zczphxq?id=YWRkNmRhMzcwZjQ2NGU3NGFhMjMwMGMyZmU3ODU3NWQ=" target="_blank">📎 哈工大</a> / <a class="source-link" href="https://my.yingjiesheng.com/xjh-006-289-930.html" target="_blank">📎 福州大学</a> / <a class="source-link" href="https://aiqicha.baidu.com/details/ugknowledge?id=e469dcda30305161380915fe2ba6f265" target="_blank">📎 爱企查</a></td></tr>
+        <tr><td>埃斯顿</td><td>工业机器人</td><td><a class="source-link" href="https://job.nju.edu.cn/career/specifics/617389891826749441" target="_blank">📎 南大</a> / <a class="source-link" href="https://job.xjtu.edu.cn/f/recruitmentinfo/show?recruitmentId=b780eafeb8ea4dbda6a30711ce4f95d1" target="_blank">📎 西安交大</a> / <a class="source-link" href="https://m.yingjiesheng.com/xjh-006-276-154.html" target="_blank">📎 应届生</a></td></tr>
+        <tr><td>ABB 中国</td><td>电气自动化</td><td><a class="source-link" href="https://www.upcv.tech/xiaozhao/cmto5b3qr00o3m9thb6a90c2w.html" target="_blank">📎 UP简历</a> / <a class="source-link" href="https://job.ncepu.edu.cn/zpgg/c5c3a8f30fb8479b8edc861f587d8ca4.htm" target="_blank">📎 华北电力</a> / <a class="source-link" href="http://job.njtu.edu.cn/f/recruitmentinfo/show?recruitmentId=679baf29564b44d5a4e52614612f30f7" target="_blank">📎 北京交大</a></td></tr>
+        <tr><td>海康威视</td><td>智能装备</td><td><a class="source-link" href="https://job.xjtu.edu.cn/f/recruitmentinfo/show?recruitmentId=a891cddcc99b48b0bb50fce487a8e90b" target="_blank">📎 西安交大</a> / <a class="source-link" href="https://www.91job.org.cn/recruitment/jobDetails?dwid=676605&zpgwid=1000000000737997" target="_blank">📎 91job</a></td></tr>
+        <tr><td>大疆 DJI</td><td>无人机</td><td><a class="source-link" href="https://apply.careers.dji.com/campus-recruitment/dji/143359" target="_blank">📎 官网</a> / <a class="source-link" href="https://scut.ncss.cn/student/jobs/CZWwTqftQwt1i1uXEycYx9/detail.html" target="_blank">📎 华南理工</a> / <a class="source-link" href="https://czqgxy.91job.org.cn/recruitment/jobDetails?dwid=688816&zpgwid=1000000000729010" target="_blank">📎 91job</a> / <a class="source-link" href="https://careers.dji.com/zh-CN/campus/hot-jobs" target="_blank">📎 热门岗位</a></td></tr>
+        <tr><td>中国一拖</td><td>农业装备</td><td><a class="source-link" href="https://scc.cau.edu.cn/f/recruitmentFair/show?recruitmentFairId=188892f0271f47b7a20cb90c6b40cd65" target="_blank">📎 中国农大</a></td></tr>
+        <tr><td>无锡威孚</td><td>汽车零部件</td><td><a class="source-link" href="https://job.tju.edu.cn/recruitment/content/type/2/id/6253.html" target="_blank">📎 天大</a></td></tr>
+        <tr><td>航空工业南京机电</td><td>航空制造</td><td><a class="source-link" href="https://career.buaa.edu.cn/f/recruitmentFair/show?recruitmentFairId=c46f2702da8642f5837afc152d09d37d" target="_blank">📎 北航</a></td></tr>
+        <tr><td>中车戚墅堰所</td><td>轨道交通</td><td><a class="source-link" href="https://www.upcv.tech/xiaozhao/cmto3wvmk00dxm9thw2a0hlou.html" target="_blank">📎 UP简历</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="giscus"></div>
+</div>
+
+
+<footer class="footer">
+  <p>机械招聘日报 | 安徽工业大学机械工程硕士研究生个性化推荐报告</p>
+  <p>报告日期：2026年9月13日 | 数据来源：公开网络信息整理</p>
+  <div class="footer-meta">Generated by WorkBuddy Automation | Powered by TS-dinglilu.github.io</div>
+</footer>
+
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button>
+
+<script>
+// Scroll-to-top button visibility
+window.addEventListener('scroll', function() {
+  var btn = document.querySelector('.scroll-top');
+  if (btn) {
+    if (window.scrollY > 400) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+  }
+});
+
+// Giscus configuration
+var giscusScript = document.createElement('script');
+giscusScript.src = 'https://giscus.app/client.js';
+giscusScript.setAttribute('data-repo', 'TS-dinglilu/TS-dinglilu.github.io');
+giscusScript.setAttribute('data-repo-id', 'R_kgDOTjqaJQ');
+giscusScript.setAttribute('data-category', 'General');
+giscusScript.setAttribute('data-category-id', 'DIC_kwDOTjqaJc4DCIL2');
+giscusScript.setAttribute('data-mapping', 'pathname');
+giscusScript.setAttribute('data-strict', '0');
+giscusScript.setAttribute('data-reactions-enabled', '1');
+giscusScript.setAttribute('data-emit-metadata', '0');
+giscusScript.setAttribute('data-input-position', 'top');
+giscusScript.setAttribute('data-theme', 'dark_dimmed');
+giscusScript.setAttribute('data-lang', 'zh-CN');
+giscusScript.setAttribute('data-loading', 'lazy');
+giscusScript.crossOrigin = 'anonymous';
+giscusScript.async = true;
+var giscusBox = document.querySelector('.giscus');
+if (giscusBox) { giscusBox.appendChild(giscusScript); }
+</script>
+
+</body>
+</html>
