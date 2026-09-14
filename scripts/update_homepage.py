@@ -58,26 +58,33 @@ def main():
             continue
         card_end = html.find("</a>", pos)
         card = html[pos:card_end]
-        meta_pos = card.find('<div class="auto-meta">')
-        if meta_pos == -1:
+        # 注意：主页可能被设计编辑器改写，元素上会附带自定义属性（如 data-page-node-id），
+        # 因此这里一律用"前缀 + 任意属性"的正则匹配，绝不能依赖精确的 `<div class="x">`。
+        meta_m = re.search(r'<div class="auto-meta"', card)
+        if not meta_m:
             print("[WARN] 卡片缺少 auto-meta: " + cat)
             continue
+        meta_pos = meta_m.start()
         if iso is None:
-            line = '<div class="auto-updated">⚠️ 暂无报告</div>'
+            inner = "⚠️ 暂无报告"
         else:
-            short = iso[5:]
-            line = '<div class="auto-updated">最新 <b>%s</b> · 累计 %d 期</div>' % (short, n)
-        if '<div class="auto-updated">' in card:
-            new_card = re.sub(r'<div class="auto-updated">.*?</div>', line, card, count=1, flags=re.S)
+            inner = "最新 <b>%s</b> · 累计 %d 期" % (iso[5:], n)
+        line = '<div class="auto-updated">%s</div>' % inner
+        upd_m = re.search(r'<div class="auto-updated"([^>]*)>.*?</div>', card, re.S)
+        if upd_m:
+            # 保留该元素原有的自定义属性，只更新内部文字
+            new_card = (card[:upd_m.start()]
+                        + '<div class="auto-updated"%s>%s</div>' % (upd_m.group(1), inner)
+                        + card[upd_m.end():])
         else:
             new_card = card[:meta_pos] + line + "\n        " + card[meta_pos:]
         if new_card != card:
             html = html[:pos] + new_card + html[card_end:]
             changed += 1
 
-    # 2) 统计区: 已生成日报总数
+    # 2) 统计区: 已生成日报总数（同样允许元素带自定义属性）
     total = sum(n for _, n in info.values())
-    html = re.sub(r'(<div class="stat-num">)\d+\+(</div>\s*<div class="stat-label">已生成日报</div>)',
+    html = re.sub(r'(<div class="stat-num"[^>]*>)\d+\+(</div>\s*<div class="stat-label"[^>]*>已生成日报</div>)',
                   lambda m: m.group(1) + "%d+" % total + m.group(2), html, count=1)
 
     # 3) 注入 .auto-updated 样式（幂等）
