@@ -74,7 +74,8 @@ GitHub Pages 推送后 1–2 分钟生效，返回 200 即成功。
 |---|---|
 | `git push` 报 `Failed to connect to github.com:443` | 国内网络问题。等几分钟重试；本地提交不会丢 |
 | `git push` 长时间无响应（不报错也不返回） | 凭据助手挂起。直接跑 `python scripts/publish_all.py --push`，会自动走凭据直连通道；或手动 `powershell -File scripts\export_git_cred.ps1` 拿到凭据文件后按脚本注释里的命令推送 |
-| 子代理报 429 频率限制 | 等额度重置，或改用 `model: lite` 的代理执行 |
+| 子代理报 429 频率限制 | 等额度重置，或改用 `model: lite` 的代理执行（实测 `lite` 可立即绕过） |
+| Bash/Terminal 全线报 `command not found`（`dirname`/`ls`/`git` 都不识别） | 本机偶发 PATH 损坏。命令前先 `export PATH="/c/Users/dingliu/.workbuddy/binaries/PortableGit/versions/1.2.0/usr/bin:/c/Users/dingliu/.workbuddy/binaries/PortableGit/versions/1.2.0/mingw64/bin:/c/Windows/System32:/c/Windows:$PATH"`，Python 用绝对路径 `C:/Users/dingliu/.workbuddy/binaries/python/versions/3.13.12/python.exe` |
 | 某分类构建报"找不到 `<main>` 区块" | 属正常（该分类用通用骨架），构建器会自动走通用路径 |
-| 主页卡片期数不更新 | 单独执行 `python scripts/update_homepage.py` |
+| 主页卡片「最新日期/累计期数」与「已生成日报」总数不更新 | 主页 index.html 若被设计编辑器改写，元素会带 `data-page-node-id` 等自定义属性，老版 `update_homepage.py` 的精确字符串匹配（`<div class="stat-num">` 等）会失效。2026-09-14 已改为「前缀 + 任意属性」正则，重跑 `python scripts/update_homepage.py` 即恢复。若仍不更新，先确认 `class="stat-num"` / `class="auto-meta"` / `class="auto-updated"` 的 class 名是否被改掉 |
 | 提示"最近 3 天缺失报告" | 说明有漏跑。为缺失日期补生成正文后，用 `build_report.py --date <缺失日期>` 单独构建，再统一推送 |
