@@ -26,7 +26,9 @@ CATEGORIES = ["car-recruit", "mechanical-recruit", "school-news", "drone-researc
               "ahut-campus", "byd-recruit", "chery-recruit", "geely-recruit",
               "xiaomi-recruit", "weixiaoli-recruit", "traditional-auto",
               "research-institute", "future-planning"]
-CONTENT_DIR = os.path.join(os.path.dirname(ROOT), "content")
+# 正文草稿目录：自 2026-09-15 起已迁入仓库内（repo/content），
+# 使整个工作流以仓库为唯一真源，换机器 clone 即可续接。
+CONTENT_DIR = os.path.join(ROOT, "content")
 
 
 def validate_content(path):

@@ -40,13 +40,16 @@
 ```bash
 cd D:\研二\github.auto\repo
 
-# 0) 先体检（可选但推荐）：确认没有漏跑的日期、坏链接或索引不一致
+# 0) 先同步仓库（仓库是唯一真源；网络不通可跳过，本地数据是完整的）
+git pull origin main
+
+# 1) 体检（可选但推荐）：确认没有漏跑的日期、坏链接或索引不一致
 python scripts/audit_site.py
 
-# 1) 为 13 个分类写正文（每个分类一个文件，规范见 content/STYLE_GUIDE.md）
-#    输出到 D:\研二\github.auto\content\<分类>.html
+# 2) 为 13 个分类写正文（每个分类一个文件，规范见 content/STYLE_GUIDE.md）
+#    输出到 content/<分类>.html（仓库内路径）
 
-# 2) 校验 + 构建 + 更新主页 + 全站自查 + 推送，一条命令搞定
+# 3) 校验 + 构建 + 更新主页 + 全站自查 + 推送，一条命令搞定
 python scripts/publish_all.py --push
 ```
 

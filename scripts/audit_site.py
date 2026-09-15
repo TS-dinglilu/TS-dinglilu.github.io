@@ -48,9 +48,22 @@ def rel(p):
     return os.path.relpath(p, ROOT).replace("\\", "/")
 
 
+# 注意：content/、logs/、.workbuddy/ 自 2026-09-15 起已并入仓库，
+# 但它们不是站点页面（content/ 存的是只有 <main> 内部内容的正文片段），
+# 因此 html_files() 必须排除这些目录，否则会把正文片段误判成"截断"。
+NON_SITE_DIRS = {"content", "logs", ".workbuddy", "scripts", ".git", "backups"}
+
+
 def html_files():
-    return sorted(set(glob.glob(os.path.join(ROOT, "*", "*.html"))
-                      + glob.glob(os.path.join(ROOT, "*.html"))))
+    files = glob.glob(os.path.join(ROOT, "*.html"))
+    for d in sorted(glob.glob(os.path.join(ROOT, "*"))):
+        if not os.path.isdir(d):
+            continue
+        name = os.path.basename(d)
+        if name in NON_SITE_DIRS or name.startswith("."):
+            continue
+        files += glob.glob(os.path.join(d, "*.html"))
+    return sorted(set(files))
 
 
 def check_structure():

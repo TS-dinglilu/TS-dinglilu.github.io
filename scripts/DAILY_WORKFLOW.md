@@ -1,7 +1,51 @@
 # 每日日报自动更新工作流
 
 > 本文档是每日自动化任务的执行手册。站点：https://ts-dinglilu.github.io/
-> 仓库：`D:\研二\github.auto\repo`（main 分支直推）｜正文草稿：`D:\研二\github.auto\content\`
+> 仓库：`D:\研二\github.auto\repo`（main 分支直推）｜正文草稿：`D:\研二\github.auto\repo\content\`
+
+## 0. 工作区与仓库的对应关系（2026-09-15 起）
+
+**仓库是唯一真源**：所有资产都在 git 里，换机器 clone 仓库即可完整续接工作流，
+不再依赖工作区根目录下散落的文件夹。
+
+```
+D:\研二\github.auto\        ← 工作区（本身不是仓库）
+├─ repo\                    ← git 仓库根 = 站点根 = GitHub Pages 发布源
+│  ├─ content\              ← 13 分类正文草稿 + STYLE_GUIDE.md（原工作区根的 content，已迁入）
+│  ├─ logs\                 ← 推送日志 / 审计记录 / 归档页（原工作区根的 logs，已迁入）
+│  ├─ .workbuddy\           ← 目录联接 → 工作区根的 .workbuddy（记忆与工作日志）
+│  ├─ scripts\              ← 构建 / 发布 / 体检脚本
+│  └─ <13 个分类目录>\      ← 已生成的日报
+└─ backups\                 ← 历史快照，体积大，不入 git（见 §0.1）
+```
+
+**所有命令一律在 `repo\` 目录下执行**，相对路径以仓库根为基准：
+
+| 用途 | 路径 |
+|---|---|
+| 写正文 | `content\<分类>.html` |
+| 写作规范 | `content\STYLE_GUIDE.md` |
+| 补漏正文 | `content\backfill<MMDD>\` |
+| 日志落盘 | `logs\push_YYYYMMDD.log` |
+
+### 0.1 backups\ 为什么不进仓库
+`backups\` 存的是历史快照（如 `20260914_2052_pre-visual-unify`），压缩后仍有 17MB，
+放进 git 会让每次 clone 都多下十几 MB，因此**不纳入版本库**，改用网盘归档。
+日常要恢复某份历史报告，直接用 git 历史即可，不必依赖 backups\：
+```bash
+git log --oneline -- car-recruit/report_20260914.html   # 找到那次提交
+git checkout <sha> -- car-recruit/report_20260914.html  # 取回该版本
+```
+
+### 0.2 换机器 / 重装后如何续接
+```bash
+git clone https://github.com/TS-dinglilu/TS-dinglilu.github.io.git repo
+cd repo
+python scripts/audit_site.py          # 确认站点完整
+python scripts/publish_all.py --push  # 照常跑当日流程（推送兜底见 §1.7）
+```
+记忆目录（`.workbuddy\`）是可选的：它是 WorkBuddy 的工作记忆，本地会重新积累，
+需要恢复时从仓库对应路径取回即可。
 
 ## 13 个日报分类
 
@@ -33,8 +77,8 @@ python scripts/audit_site.py                # 全站体检：结构/死链/索�
 再继续今天的流程。补做用专用工具（自动校验正文 → 批量构建 → 重建索引）：
 
 ```bash
-python scripts/build_backfill.py --date 2026-09-10 --dir ../content/backfill0910 --check  # 先校验
-python scripts/build_backfill.py --date 2026-09-10 --dir ../content/backfill0910          # 再构建
+python scripts/build_backfill.py --date 2026-09-10 --dir content/backfill0910 --check  # 先校验
+python scripts/build_backfill.py --date 2026-09-10 --dir content/backfill0910          # 再构建
 ```
 正文按 `<分类>.html` 命名放在 `--dir` 目录里；缺失的分类会被列出（需补写正文），
 已存在的报告默认跳过（加 `--force` 才覆盖）。`--push` 可一步完成构建 + 更新主页 + 推送。
@@ -81,10 +125,10 @@ python scripts/ssh_fallback_push.py             # 执行兜底推送（通道不
   `push_files` 的内容要由模型当参数传入（量级不可行），且无法指定提交者/时间，会造出不同 SHA 产生分叉。
 
 ### 2. 搜集素材 + 写正文
-- **写作规范必读**：`D:\研二\github.auto\content\STYLE_GUIDE.md`
+- **写作规范必读**：`content\STYLE_GUIDE.md`（仓库内，已随仓库同行）
 - 对每个分类：先看上一份报告的板块结构（`<分类>/report_最新.html`），再用 WebSearch 搜集
   **当天及近日**真实资讯（重点 24–48 小时内），按同样板块结构写正文，
-  覆盖保存到 `D:\研二\github.auto\content\<分类>.html`
+  覆盖保存到 `content\<分类>.html`
 - 每个分类至少搜 5–8 次，覆盖不同角度；每份 8000–20000 字符
 - 避免与上一期内容重复，聚焦最新进展
 - **可用多个并行子代理分工加速**（例如 5 个代理各负责 2–3 个分类）
@@ -138,11 +182,11 @@ arXiv 类链接可以直接验真：`curl -s -o /dev/null -w "%{http_code}" http
 | Bash/Terminal 全线报 `command not found`（`dirname`/`ls`/`git` 都不识别） | 本机偶发 PATH 损坏。命令前先 `export PATH="/c/Users/dingliu/.workbuddy/binaries/PortableGit/versions/1.2.0/usr/bin:/c/Users/dingliu/.workbuddy/binaries/PortableGit/versions/1.2.0/mingw64/bin:/c/Windows/System32:/c/Windows:$PATH"`，Python 用绝对路径 `C:/Users/dingliu/.workbuddy/binaries/python/versions/3.13.12/python.exe` |
 | 某分类构建报"找不到 `<main>` 区块" | 属正常（该分类用通用骨架），构建器会自动走通用路径 |
 | 主页卡片「最新日期/累计期数」与「已生成日报」总数不更新 | 主页 index.html 若被设计编辑器改写，元素会带 `data-page-node-id` 等自定义属性，老版 `update_homepage.py` 的精确字符串匹配（`<div class="stat-num">` 等）会失效。2026-09-14 已改为「前缀 + 任意属性」正则，重跑 `python scripts/update_homepage.py` 即恢复。若仍不更新，先确认 `class="stat-num"` / `class="auto-meta"` / `class="auto-updated"` 的 class 名是否被改掉 |
-| 提示某某日期缺失报告（漏跑） | 说明自动化当天没跑（机器/应用离线不会补跑）。为缺失日期写好正文放到一个目录（如 `content/backfill0910/`），再 `python scripts/build_backfill.py --date 2026-09-10 --dir ../content/backfill0910` 批量补构建；缺的分类会被列出 |
+| 提示某某日期缺失报告（漏跑） | 说明自动化当天没跑（机器/应用离线不会补跑）。为缺失日期写好正文放到一个目录（如 `content/backfill0910/`），再 `python scripts/build_backfill.py --date 2026-09-10 --dir content/backfill0910` 批量补构建；缺的分类会被列出 |
 | 想批量清理历史报告的坏链接 / 缺评论区 | `python scripts/fix_site.py --dry-run` 先看清单，去掉 `--dry-run` 执行。幂等，重复跑不会重复改 |
 | 历史报告尾部样式不统一（评论区/页脚五花八门） | `python scripts/unify_style.py --dry-run` 先看清单，再去掉 `--dry-run` 执行。标准尾部由 `scripts/tail_template.py` 定义，`build_report.py` 共用同一真源 |
 | 想快速知道站点哪里坏了 | `python scripts/audit_site.py`（加 `--quiet` 只输出问题；退出码非 0 表示有 ERROR） |
 | **Bash 里调 `powershell.exe` 被拒**（提示 bypasses PowerShell security checks） | 这是安全策略，不是脚本坏了。手动导出 git 凭据走不通，**直接用 `python scripts/publish_all.py --push`**（Python 子进程里调 ps1 是允许的），或改用 PowerShell 工具执行 `scripts/export_git_cred.ps1` |
-| 跑 `publish_all.py --push` 后**输出为空 / 看不出进度** | 不要 `\| tail`：管道缓冲 + 进程被 SIGTERM 时输出全丢，看起来像静默失败。改成重定向落盘：`python scripts/publish_all.py --push > ../logs/push_$(date +%Y%m%d).log 2>&1`，再读日志 |
+| 跑 `publish_all.py --push` 后**输出为空 / 看不出进度** | 不要 `\| tail`：管道缓冲 + 进程被 SIGTERM 时输出全丢，看起来像静默失败。改成重定向落盘：`python scripts/publish_all.py --push > logs/push_$(date +%Y%m%d).log 2>&1`，再读日志 |
 | 外链批量 curl 全部返回 `000`，但单独 curl 又正常 | URL 清单是 Windows CRLF，`while read` 带出尾部 `\r` 把 URL 弄坏了。读前 `tr -d '\r'` |
 | 主页出现两份 `index.html` / `homepage_index.html` | 后者是个人主页的旧版本，已被 `index.html` 取代，已归档到 `logs/archive/`。不要再往 repo 里放第二份主页，否则 `update_homepage.py` 只改 `index.html`，两份会逐渐不一致 |

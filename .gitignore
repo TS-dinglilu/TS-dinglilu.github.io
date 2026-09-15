@@ -20,3 +20,17 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
+
+# === 2026-09-15 工作区重组：仓库成为唯一真源 ===
+# 工作区与仓库的对应关系见 scripts/DAILY_WORKFLOW.md §0
+
+# 体积过大的历史备份不纳入 git（改用网盘归档），避免每次 clone 都多下十几 MB
+backups/
+pre_nesting_*/
+
+# 正文目录里的临时计数 / 中间产物（如 _c1.txt、_count.txt）
+content/_*.txt
+
+# logs/ 下的运行日志要进版本库（跨机器排查用），覆盖上面的 *.log 规则
+!logs/*.log
+!logs/**/*.log

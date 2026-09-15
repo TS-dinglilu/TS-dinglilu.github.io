@@ -7,9 +7,9 @@
 --dir 指向的目录里；缺失的分类会被跳过并列出，不会中断整体流程。
 
 用法:
-  python scripts/build_backfill.py --date 2026-09-10 --dir ../content/backfill0910
-  python scripts/build_backfill.py --date 2026-09-10 --dir ../content/backfill0910 --push
-  python scripts/build_backfill.py --date 2026-09-10 --dir ../content/backfill0910 --check
+  python scripts/build_backfill.py --date 2026-09-10 --dir content/backfill0910
+  python scripts/build_backfill.py --date 2026-09-10 --dir content/backfill0910 --push
+  python scripts/build_backfill.py --date 2026-09-10 --dir content/backfill0910 --check
 """
 import argparse
 import datetime

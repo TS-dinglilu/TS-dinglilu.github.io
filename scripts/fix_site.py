@@ -102,10 +102,19 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    files = sorted(set(
-        glob.glob(os.path.join(ROOT, "*", "*.html"))       # 各分类报告 + 分类索引
-        + glob.glob(os.path.join(ROOT, "*.html"))          # 站点主页等根级页面
-    ))
+    # content/、logs/、.workbuddy/ 自 2026-09-15 起并入仓库，但它们不是站点页面：
+    # content/ 存的是只有 <main> 内部内容的正文片段，按站点页面处理会误改。必须排除。
+    non_site = {"content", "logs", ".workbuddy", "scripts", ".git", "backups"}
+    files = []
+    for d in sorted(glob.glob(os.path.join(ROOT, "*"))):
+        if not os.path.isdir(d):
+            continue
+        name = os.path.basename(d)
+        if name in non_site or name.startswith("."):
+            continue
+        files += glob.glob(os.path.join(d, "*.html"))       # 各分类报告 + 分类索引
+    files += glob.glob(os.path.join(ROOT, "*.html"))        # 站点主页等根级页面
+    files = sorted(set(files))
 
     for f in files:
         if not os.path.exists(f):

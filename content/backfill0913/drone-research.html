@@ -1,0 +1,243 @@
+<div class="section">
+  <div class="section-title">编者按 · 面向四旋翼飞控与强化学习读者的本期导读</div>
+  <div class="highlight-box">
+    <div class="highlight-title">💡 本期视角</div>
+    <p>读者张恒辰研究方向为<strong>四旋翼无人机飞行控制与仿真</strong>（MATLAB/Simulink + Python 强化学习）。本期聚焦 <strong>2026 年 8 月底至 9 月 13 日</strong>的 arXiv 新作，并补少量与工具链相关的基础/综述作延伸。全篇 <strong>8 板块、26 条</strong>，实时期论文置前并标日期。重点推荐：<strong>接触感知增量 MPC（2609.11661）</strong>、<strong>视觉伺服 RL（2609.09234）</strong>、<strong>真实世界敏捷飞行自适应（2602.10111）</strong>与<strong>仿真器综述（2311.02296）</strong>，文末给「本周必读 Top3」与选题建议。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块一 · 四旋翼控制新进展（MPC / 自适应 / 非线性 / 鲁棒）</div>
+  <div class="card">
+    <h3>接触感知增量 MPC：欠驱动 aerial manipulator 的力位协同</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">MPC</span><span class="badge new">新论文</span><span>arXiv:2609.11661</span><span>2026-09-10</span></div>
+      <p>Darwin Liu、Keviczky、Sihao Sun 提出<strong>接触感知增量非线性 MPC</strong>，以 NMPC 跟踪末端位置与法向力，叠加 <strong>INDI</strong> 抑制接触摩擦与气动扰动。四旋翼+单自由度臂仿真与实机证明<strong>无需全驱平台或专用力传感器</strong>即可五自由度位姿与接触力同步跟踪，INDI+NMPC 架构值得借鉴。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.11661" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">GP-MPC</span><span class="badge hot">鲁棒保证</span><span>arXiv:2507.02098</span><span>ETH / Imperial</span></div>
+      <p>ETH 与帝国理工给出<strong>基于高斯过程（GP）的鲁棒自适应 MPC</strong>：用<strong>收缩度量</strong>推导 GP 模型鲁棒预测，在线学习未知动力学并高概率保证递归可行性与约束满足。以<strong>平面四旋翼地效扰动</strong>验证，适合你用 Python 做 GP 建模再与 Simulink 闭环对照。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2507.02098" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">扰动观测</span><span class="badge-info">实机验证</span><span>arXiv:2408.15019</span><span>天津大学</span></div>
+      <p>天津大学提出<strong>固定时间扰动观测器（FxTDO）+ MPC</strong>：FxTDO 使估计误差在<strong>与初值无关的固定时间内收敛</strong>，再驱动 MPC 抑制集总扰动，给出仿真与<strong>真实飞行实验</strong>。风扰/未知载荷下的鲁棒飞控基准，建议 Simulink 以 S-Function 实现对比。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2408.15019" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">终端滑模</span><span class="badge-info">有限时间</span><span>arXiv:2407.01275</span><span>Carleton</span></div>
+      <p>卡尔顿大学提出<strong>四元数自适应反步（ABC）+ 快速终端滑模（AFTSMC）</strong>：四元数避免欧拉角奇异性，AFTSMC 抑制参数不确定、避免奇异并<strong>显著降低抖振</strong>（抖振致致动器失效）。大姿态机动时的稳替代路线。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2407.01275" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-teal">反步滑模</span><span class="badge-info">MATLAB</span><span>arXiv:2506.14195</span><span>2026</span></div>
+      <p>Thien Nhan Vo 提出<strong>基于反步的滑模控制</strong>，首次把四旋翼非完整约束纳入状态空间并综合气动阻力、陀螺效应给出新 Lyapunov 函数，<strong>全部仿真在 MATLAB 完成</strong>。可复现的建模—控制—跟踪流程，是你搭 Simulink 被控对象模型的模板。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2506.14195" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块二 · 强化学习 / 学习控制</div>
+  <div class="card">
+    <h3>紧凑目标中心表征 + 课程学习：稳定视觉伺服 RL</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">视觉 RL</span><span class="badge new">新论文</span><span>arXiv:2609.09234</span><span>2026-09-07</span></div>
+      <p>IIT Bombay 的 Jamwal、Chebrolu 研究<strong>长时程 UAV 视觉伺服</strong>：轻量分割给出图像偏移与相对深度，拼成<strong>12 维紧凑观测</strong>，对比 Direct PPO 与三类课程策略。消融表明本体感知关键、<strong>显式深度非必需</strong>，策略比经典视觉伺服更鲁棒，「轻感知+低维观测+课程」范式适合你快速起步。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.09234" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">安全 RL</span><span class="badge new">新论文</span><span>arXiv:2608.26852</span><span>2026-08-27</span></div>
+      <p>Hadjiloizou 等（Kragic 组）提出<strong>降低保守性的安全 RL</strong>：在线数据精化扰动模型，以<strong>zonotope 可达性分析</strong>做实时安全评估；实机穿越峡谷中在线学习外扰并动态收紧/放宽保证，<strong>不牺牲安全性即减少探索限制</strong>，可作你「RL+安全约束」的实用路线。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2608.26852" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">Sim-to-Real</span><span class="badge hot">实机自适应</span><span>arXiv:2602.10111</span><span>2026-02</span></div>
+      <p>Yunfan Ren 等提出<strong>自适应的真实世界敏捷飞行框架</strong>：<strong>ATS</strong> 探索平台物理极限，在线残差学习增强标称模型，配合 <strong>RASH-BPTT</strong> 在飞更新。实机峰值速度由 <strong>1.9–2.0 m/s 提升到 7.3 m/s（约 100 秒）</strong>，强风巡检耗时降 <strong>42%</strong>，绕开精确系统辨识瓶颈。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2602.10111" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">传感器运动</span><span class="badge-info">端到端</span><span>arXiv:2604.05828</span><span>2026-04</span></div>
+      <p>该文<strong>传感器运动策略学习</strong>将 RL 与策略蒸馏结合于 Sim-to-Real，仅用机载视觉+本体感知实现精确激进机动；微分平坦动力学生成开环轨迹引导探索。实机可穿越方位变化达 <strong>90°</strong> 的缝隙，是你设计「视觉→低层指令」端到端策略的范本。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2604.05828" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-teal">端到端 RL</span><span class="badge-info">竞速</span><span>arXiv:2311.16948</span><span>TU Delft</span></div>
+      <p>代尔夫特理工与欧空局提出<strong>端到端 RL 时间最优飞行</strong>：网络直出电机指令，残差模型+自适应补偿推力/力矩误差。相比 SOTA（给 INDI 内环）仿真快 <strong>1.39 s</strong>、实机快 <strong>0.17 s</strong>，但实机掉点提示仍需补偿现实差距，可作你对比「分层 vs 端到端」的基线。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2311.16948" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块三 · 自主导航与避障</div>
+  <div class="card">
+    <h3>全向多旋翼的六维动态窗口法（6D-DWA）</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">局部规划</span><span class="badge new">新论文</span><span>arXiv:2609.03630</span><span>2026-09-03</span></div>
+      <p>代尔夫特理工、MBZUAI、NYU 阿布扎比联合提出 omnicopter 的<strong>实时局部避障模块（6D-DWA）</strong>，经地图体素化、球体几何近似与 6D 自适应采样实现实时性，引入<strong>「敏捷模式」</strong>在线调权重。控制环 <strong><0.2 s</strong>、横向误差 <strong><0.1 m</strong>，未知障碍规避成功率偏离中心 <strong>79.3%</strong>、正中心 <strong>41.4%</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.03630" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">避障 RL</span><span class="badge new">新修订</span><span>arXiv:2605.14810</span><span>修订 09-05</span></div>
+      <p>CMRL 针对<strong>多尺度障碍导航</strong>：碰撞感知潜表示提升对小障碍敏感度，时序记忆缓解大障碍遮挡的部分可观测。v2 于 9 月 5 日更新，超小/超大障碍成功率提升 <strong>0.47 与 0.29</strong>，已开源。你在 RL 中遇「小障碍漏检/大障碍遮挡」时值得移植。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2605.14810" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">单目 SLAM</span><span class="badge-info">基准</span><span>arXiv:2608.18632</span><span>2026-08</span></div>
+      <p>斯洛文尼亚团队在<strong>高空正射 UAV 影像</strong>上评测 5 种单目 SLAM（不提供惯导/GNSS）：MASt3R-SLAM 水平 MAE 最低（<strong>0.53%</strong>），DROID-SLAM 总体最佳（平均 <strong>2.88%</strong>）。结论：单目 SLAM 单独用于可靠纯视觉空中导航<strong>仍不足够</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2608.18632" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">探索建图</span><span class="badge-info">开源</span><span>arXiv:2511.17299</span><span>CTU</span></div>
+      <p>捷克技术大学（Saska 组）<strong>MonoSpheres</strong> 用单目 SLAM 前端实现<strong>大规模 3D 自主探索</strong>：映射过采样自由空间并跟踪障碍不确定度，规划以快速重规划应对，据称<strong>首个真实户外单目 3D 探索</strong>，已开源，对轻量纯视觉自主无人机值得对照。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2511.17299" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块四 · 集群与协同</div>
+  <div class="card">
+    <h3>保平坦残差学习：实时紧密编队飞行</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">编队</span><span class="badge hot">低计算</span><span>arXiv:2607.12275</span><span>2026-07-15</span></div>
+      <p>宾大 GRASP 提出<strong>物理信息残差动力学学习</strong>，补偿四旋翼间湍流（如下洗）交互同时保证联合系统<strong>微分平坦</strong>，用平坦性设计高效反馈线性化前馈补偿。实机误差比标称降 <strong>31%</strong>，以<strong>低一数量级计算量</strong>匹配 NMPC，<strong>不到 30 秒数据、5 ms 环</strong>即稳定编队。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2607.12275" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">多智能体 RL</span><span class="badge-info">零样本</span><span>arXiv:2606.02107</span><span>2026-06</span></div>
+      <p>开罗德国大学与斯图加特大学提出<strong>网络分布式多智能体 RL（ND-MARL）</strong>：通信图嵌入决策，2-邻居拓扑下每智能体仅观测两邻居；高层 MASAC 训练一致性规划器，低层接跟踪器。在 <strong>3 智能体</strong>训练的策略可<strong>零样本扩展到 250 智能体</strong>，是你多机协同 RL 的好切口。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2606.02107" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块五 · eVTOL 与低空经济</div>
+  <div class="card">
+    <h3>驯服倾斜：转型 eVTOL 的统一飞行员控制概念</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">eVTOL</span><span class="badge new">新论文</span><span>arXiv:2608.20300</span><span>2026-08-20</span></div>
+      <p>Milz 等提出<strong>倾转翼 eVTOL 统一飞行员控制概念</strong>，在串联倾转翼全动模拟器（主动力反馈侧杆）上验证，特定阶段提供触觉反馈实现多阶段无缝过渡。主动侧杆使<strong>操纵活动量降低 30% 以上</strong>，是低空经济飞控范例。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2608.20300" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">城市空运</span><span class="badge-info">轨迹</span><span>arXiv:2607.15690</span><span>2026-07-17</span></div>
+      <p>Devkar 等提出<strong>城市空运（UAM）障碍感知四维轨迹设计</strong>：IRIS 凸多边形填充自由区，GCS 规划器选低耗时序列，OCP 生成爬升/巡航/下降全程最短时轨迹并纳入风与非线性动力学。纽约市路线可处理<strong>多达 250 栋建筑障碍</strong>，忽略现实约束低估飞行时间 <strong>20%</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2607.15690" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块六 · 自动驾驶交叉（感知 / 规划 / 端到端）</div>
+  <div class="card">
+    <h3>面向规划的端到端自动驾驶：架构、评测与新兴范式</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">综述</span><span class="badge-info">端到端</span><span>arXiv:2608.20111</span><span>2026-08</span></div>
+      <p>综述梳理端到端自动驾驶向<strong>面向规划的系统</strong>演进：行为克隆、条件模仿、特权蒸馏、BEV/矢量化规划、统一感知-预测-规划、世界模型与 VLA。强调<strong>开环位移指标不足以证明安全驾驶</strong>，需转闭环/长尾/人偏好评测，可直接迁移到你的无人机端到端控制。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2608.20111" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">不确定性</span><span class="badge-info">扩散</span><span>arXiv:2506.00560</span><span>NTNU</span></div>
+      <p>挪威科大 <strong>EnDfuser</strong> 用扩散模型作轨迹规划器，<strong>集成扩散</strong>从单帧感知生成 128 条候选轨迹分布提供可解释不确定性，以简单安全规则在 LAV 提升 <strong>1.7%</strong>。「用轨迹分布刻画不确定性」对你 RL 策略的安全量化可直接借鉴，与板块二 zonotope 互补。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2506.00560" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">纯视觉</span><span class="badge-info">高效</span><span>arXiv:2507.17596</span><span>KTH</span></div>
+      <p>KTH <strong>PRIX</strong> 仅相机、无需 BEV/LiDAR，视觉特征+生成式规划头从原始像素预测安全轨迹；核心 <strong>CaRT</strong> 增强多级视觉特征，在 NavSim-v2 与 nuScenes 达 SOTA 且更小更快，对机载视觉自主无人机是算力受限场景的重要参照。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2507.17596" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">CVPR 2026</span><span class="badge hot">地平线</span><span>arXiv:2510.08562</span><span>2026</span></div>
+      <p>地平线 <strong>ResAD</strong>（CVPR 2026）提出归一化残差轨迹建模：恒速模型生成惯性参考，学习预测残差偏差，PRNorm 与 IRP 解决时空不平衡与安全关键微调。「<strong>残差建模 + 多模态轨迹排序</strong>」思想对你「标称飞控 + 学习残差补偿」分层 RL 有启发。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2510.08562" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块七 · 仿真平台与工具链（贴合 MATLAB/Simulink + Gazebo）</div>
+  <div class="card">
+    <h3>飞行器仿真器系统综述：Gazebo / AirSim / MATLAB UAV Toolbox 横评</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">仿真综述</span><span class="badge-info">选型</span><span>arXiv:2311.02296</span><span>常更</span></div>
+      <p>《Survey of Simulators for Aerial Robots》对 <strong>Gazebo、AirSim、Isaac Sim/Gym、Webots、CoppeliaSim、MuJoCo、MATLAB UAV Toolbox、RflySim、gym-pybullet-drones、safe-control-gym</strong> 做系统对比。<strong>MATLAB UAV Toolbox</strong> 支持「模型→代码」V 型开发；<strong>Gazebo+ROS</strong> 适多机/控制与 SITL；<strong>AirSim</strong> 视觉最逼真，建议「Simulink 设计 + Gazebo 测试」组合。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2311.02296" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">多仿真</span><span class="badge-info">Gazebo</span><span>arXiv:2502.10218</span><span>2025</span></div>
+      <p>该文把 Parrot Sphinx（Anafi）无人机镜像进 Gazebo 桥接两类仿真器，并设计<strong>累积误差态 MPC</strong>显著优于内置 PID。你在 Simulink 训好的控制器想接入 Gazebo/PX4 生态做联合验证时，这类「镜像实例 + 跨仿真数据桥」思路可复用。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2502.10218" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块八 · 本周必读 Top3 与选题建议</div>
+  <div class="card">
+    <div class="highlight-box">
+      <div class="highlight-title">🏆 本周必读 Top3</div>
+      <div class="news-item">
+        <div class="news-meta"><span class="badge badge-high">Top 1</span><span>arXiv:2609.11661</span></div>
+        <p><strong>接触感知增量 MPC（INDI+NMPC）</strong>：力位统一且无需力传感器，是「四旋翼飞控+物理交互」标杆新作，建议精读 INDI 扰动抑制结构。</p>
+        <a class="source-link" href="https://arxiv.org/abs/2609.11661" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="news-item">
+        <div class="news-meta"><span class="badge badge-high">Top 2</span><span>arXiv:2602.10111</span></div>
+        <p><strong>真实世界敏捷飞行在线自适应（ATS + RASH-BPTT）</strong>：免精确系统辨识、在飞 100 秒内提速到 7.3 m/s，对「RL 实机迁移」最具冲击力。</p>
+        <a class="source-link" href="https://arxiv.org/abs/2602.10111" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="news-item">
+        <div class="news-meta"><span class="badge badge-high">Top 3</span><span>arXiv:2609.09234</span></div>
+        <p><strong>紧凑目标中心表征的视觉伺服 RL</strong>：12 维低维观测+课程学习，证明「显式深度非必需、本体感知最关键」，是你快速搭视觉 RL 基线的最优起点。</p>
+        <a class="source-link" href="https://arxiv.org/abs/2609.09234" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+    <div class="info-box">
+      <div class="info-title">ℹ️ 对张恒辰的选题建议</div>
+      <p>① <strong>仿真对照</strong>：用 Simulink 实现 FxTDO-MPC（2408.15019）或四元数 AFTSMC（2407.01275）作标称飞控，再接 Gazebo 做 SITL，复刻综述（2311.02296）选型组合。</p>
+      <p>② <strong>RL 主线</strong>：以 2609.09234「轻感知+低维观测」为基线，叠加 2608.26852 的 zonotope 安全可达性做约束，形成「安全视觉伺服 RL」切口。</p>
+      <p>③ <strong>进阶方向</strong>：参考 2607.12275「保平坦残差学习」做多机气动耦合补偿扩展，或借 2606.02107 分布式零样本扩展思路做多机协同 RL。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息来源汇总</div>
+  <div class="table-wrap">
+    <table class="summary-table">
+      <thead><tr><th>来源标题</th><th>链接</th><th>时间</th></tr></thead>
+      <tbody>
+        <tr><td>Contact-Aware Incremental MPC for an Underactuated Aerial Manipulator</td><td><a class="source-link" href="https://arxiv.org/abs/2609.11661" target="_blank">📎 查看原文</a></td><td>2026-09-10</td></tr>
+        <tr><td>A robust and adaptive MPC formulation for Gaussian process models</td><td><a class="source-link" href="https://arxiv.org/abs/2507.02098" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
+        <tr><td>Fixed-time Disturbance Observer-Based MPC Robust Trajectory Tracking of Quadrotor</td><td><a class="source-link" href="https://arxiv.org/abs/2408.15019" target="_blank">📎 查看原文</a></td><td>2024</td></tr>
+        <tr><td>Quaternion-based Adaptive Backstepping Fast Terminal SMC for Quadrotor UAVs</td><td><a class="source-link" href="https://arxiv.org/abs/2407.01275" target="_blank">📎 查看原文</a></td><td>2024</td></tr>
+        <tr><td>Nonlinear Control of a Quadrotor UAV Using Backstepping-Based Sliding Mode</td><td><a class="source-link" href="https://arxiv.org/abs/2506.14195" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
+        <tr><td>Learning to Fly: Stable Vision-Guided UAV Servoing with RL</td><td><a class="source-link" href="https://arxiv.org/abs/2609.09234" target="_blank">📎 查看原文</a></td><td>2026-09-07</td></tr>
+        <tr><td>Towards Safe RL with Reduced Conservativeness: Drone Flight Control</td><td><a class="source-link" href="https://arxiv.org/abs/2608.26852" target="_blank">📎 查看原文</a></td><td>2026-08-27</td></tr>
+        <tr><td>Learning Agile Quadrotor Flight in the Real World</td><td><a class="source-link" href="https://arxiv.org/abs/2602.10111" target="_blank">📎 查看原文</a></td><td>2026-02</td></tr>
+        <tr><td>Precise Aggressive Aerial Maneuvers with Sensorimotor Policies</td><td><a class="source-link" href="https://arxiv.org/abs/2604.05828" target="_blank">📎 查看原文</a></td><td>2026-04</td></tr>
+        <tr><td>End-to-end RL for Time-Optimal Quadcopter Flight</td><td><a class="source-link" href="https://arxiv.org/abs/2311.16948" target="_blank">📎 查看原文</a></td><td>2023</td></tr>
+        <tr><td>Local Path Planning and Obstacle Avoidance for an Omnicopter Platform</td><td><a class="source-link" href="https://arxiv.org/abs/2609.03630" target="_blank">📎 查看原文</a></td><td>2026-09-03</td></tr>
+        <tr><td>CMRL: Collision-Aware Memory-Enhanced RL for UAV Navigation</td><td><a class="source-link" href="https://arxiv.org/abs/2605.14810" target="_blank">📎 查看原文</a></td><td>修订 09-05</td></tr>
+        <tr><td>Evaluation of Monocular SLAM Systems on High-Altitude Nadir UAV Footage</td><td><a class="source-link" href="https://arxiv.org/abs/2608.18632" target="_blank">📎 查看原文</a></td><td>2026-08</td></tr>
+        <tr><td>MonoSpheres: Large-Scale Monocular SLAM-Based UAV Exploration</td><td><a class="source-link" href="https://arxiv.org/abs/2511.17299" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
+        <tr><td>Flatness-Preserving Residual Learning for Real-Time Tight Quadrotor Formation</td><td><a class="source-link" href="https://arxiv.org/abs/2607.12275" target="_blank">📎 查看原文</a></td><td>2026-07-15</td></tr>
+        <tr><td>Network Distributed MARL for Consensus Control of Quadcopters</td><td><a class="source-link" href="https://arxiv.org/abs/2606.02107" target="_blank">📎 查看原文</a></td><td>2026-06</td></tr>
+        <tr><td>Taming the Tilt: A Unified Pilot Control Concept for Transformational eVTOL</td><td><a class="source-link" href="https://arxiv.org/abs/2608.20300" target="_blank">📎 查看原文</a></td><td>2026-08-20</td></tr>
+        <tr><td>Obstacle-Aware Four-Dimensional Trajectory Design for Urban Air Mobility</td><td><a class="source-link" href="https://arxiv.org/abs/2607.15690" target="_blank">📎 查看原文</a></td><td>2026-07-17</td></tr>
+        <tr><td>Planning-Oriented End-to-End Autonomous Driving (Survey)</td><td><a class="source-link" href="https://arxiv.org/abs/2608.20111" target="_blank">📎 查看原文</a></td><td>2026-08</td></tr>
+        <tr><td>EnDfuser: Ensemble Diffusion for Uncertainty in E2E Autonomous Driving</td><td><a class="source-link" href="https://arxiv.org/abs/2506.00560" target="_blank">📎 查看原文</a></td><td>2025/2026</td></tr>
+        <tr><td>PRIX: Learning to Plan from Raw Pixels for E2E Autonomous Driving</td><td><a class="source-link" href="https://arxiv.org/abs/2507.17596" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
+        <tr><td>ResAD: Normalized Residual Trajectory Modeling for E2E AD (CVPR 2026)</td><td><a class="source-link" href="https://arxiv.org/abs/2510.08562" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
+        <tr><td>Survey of Simulators for Aerial Robots</td><td><a class="source-link" href="https://arxiv.org/abs/2311.02296" target="_blank">📎 查看原文</a></td><td>持续更新</td></tr>
+        <tr><td>A Multi-Simulation Approach with MPC for Anafi Drones</td><td><a class="source-link" href="https://arxiv.org/abs/2502.10218" target="_blank">📎 查看原文</a></td><td>2025</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="giscus"></div>

@@ -1,0 +1,19 @@
+项目优化修复：补全 09-10 漏跑日报 + 全站缺陷修复 + 新增运维脚本
+
+【内容】
+- 补做 2026-09-10 全部 13 分类日报（11 份为既有补做正文，2 份为本次补写）
+
+【修复】
+- 清除 9 处指向不存在路径的死链（car-recruit-news / mechanical-recruit-news /
+  drone-research-daily / ahut-campus-info / research-institute-recruit 等历史错误域名）
+- 3 份老报告补上 giscus 评论区，1 份修复重复 <body> 标签
+- 14 处 TRAE Automation 旧品牌名统一为 WorkBuddy Automation
+- 2 处指向已归档页面的返回链接改回 ../index.html
+
+【工程】
+- 新增 scripts/audit_site.py：全站体检（结构完整性/评论区/死链/索引一致性/主页数字/漏期检测）
+- 新增 scripts/fix_site.py：幂等批量修复上述历史缺陷
+- 新增 scripts/build_backfill.py：补做漏跑日期的正式工具
+- scripts/publish_all.py：发布流程加入「发布前站点自查」环节
+- 新增 .gitignore；归档冗余的个人主页旧版本 homepage_index.html
+- 更新 README.md（更正过时的 giscus 分类说明）与 DAILY_WORKFLOW.md

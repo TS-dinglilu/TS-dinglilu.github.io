@@ -1,0 +1,246 @@
+<div class="section">
+  <div class="section-title">编者按 · 本期导读</div>
+  <div class="highlight-box">
+    <div class="highlight-title">💡 本期视角</div>
+    <p>本期覆盖 <strong>2026 年 9 月 11 日—15 日</strong>的 arXiv 新提交，并补入 <strong>2026 年 1—7 月</strong>若干高相关、上期未覆盖的硬核工作，共 <strong>8 板块、23 条</strong>，与 09-14 期（AccelMPC、UNIQUE、SwarmNxt 等）零重复。主线为四条新线索：<strong>嵌入式 MPC 的数值—算法协同</strong>、<strong>抗扰与 RL 的混合外环控制</strong>、<strong>通信受限下的集群探索与共识</strong>、<strong>eVTOL 四维轨迹与起降场调度</strong>。带摘要的论文（2602.21583、2603.27576、2604.13505、2605.16015、2606.02107、2607.25754、2601.13657、2601.21316、2607.15690）均给出了真实性能数据，仅列标题的条目不做精确数字臆造。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块一 · 四旋翼控制新进展（嵌入式 MPC / 抗扰 / 级联稳定性）</div>
+  <div class="card">
+    <h3>嵌入式 MPC 的算法—数值再突破</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">嵌入式 MPC</span><span class="badge new">🆕 最新</span><span>arXiv:2609.12992</span><span>2026-09-14</span></div>
+      <p>《An Adaptive Multi-Parameter ADMM Algorithm for Embedded MPC》提出<strong>多参数自适应的 ADMM 求解器</strong>，面向机载算力受限场景。它把 MPC 的在线求解拆成可流水线化的简单算子，并自适应调节惩罚项与步长，缓解固定参数 ADMM 在无人机紧约束下收敛慢、易振荡的问题。对张恒辰的启发：可与 09-14 期的 AccelMPC（定点 FPGA 加速）形成对照——<strong>AccelMPC 解决“硬件怎么跑”，本文解决“算法怎么调参更快收敛”</strong>，二者都可在 Simulink 中用 <code>nlmpc</code> + 自写 ADMM 做消融。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.12992" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-teal">电池感知</span><span class="badge new">🆕 最新</span><span>arXiv:2609.12188</span><span>2026-09-13</span></div>
+      <p>《Battery-Aware Predictive Trajectory Planning and Control for Multirotors Under Disturbances》把<strong>电池能耗模型嵌入预测轨迹规划</strong>，在扰动存在下联合优化“飞得稳”与“飞得久”。多旋翼的 MPC 通常只优化跟踪误差与输入，本文额外把剩余电量、放电率作为约束，避免高速机动把电池拖垮。启发：做四旋翼飞控仿真时，<strong>把电池模型接进 Simulink 动力学回路</strong>，是低成本 yet 高区分度的创新切口。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.12188" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">级联 MPC</span><span class="badge-info">稳定性证明</span><span>arXiv:2603.27576</span><span>2026-03</span></div>
+      <p>《MPC-Based Trajectory Tracking for a Quadrotor UAV with Uniform Semi-Global Asymptotic Stability Guarantees》采用<strong>外环 MPC 生成虚拟推力与期望姿态、内环混合几何控制器</strong>的级联结构。外环平移动力学被建模为带时变输入约束的约束 MPC 并给出一致全局渐近稳定保证，内环姿态用混合几何控制达到半全局指数跟踪，最终证明整体级联系统半全局渐近稳定。这是把“实时 MPC + 稳定证明”落到四旋翼的标准范本，<strong>适合作为 Simulink 级联 MPC 的实验基线</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2603.27576" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">RL+PID 抗扰</span><span class="badge hot">真机验证</span><span>arXiv:2604.13505</span><span>2026-04（v2 05）</span></div>
+      <p>《Cascaded TD3-PID Hybrid Controller for Quadrotor Trajectory Tracking in Wind Disturbance Environments》指出：高度/姿态通道快且结构化、适合 PID，而水平位置受耦合与扰动最强、更适合学习控制。方案用<strong>多 Q 网络的 TD3 智能体增强水平位置控制</strong>，并在高度/姿态回路嵌入<strong>混合扰动观测器（HDOB，低通 + 指数滑动平均）</strong>。数值仿真与<strong>真机风扰飞行测试</strong>均显示比基线更准更稳，消融实验验证了 TD3 增强的有效性。对强化学习主线的直接样板。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2604.13505" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块二 · 强化学习 / 学习控制（Sim-to-Real / 安全 RL）</div>
+  <div class="card">
+    <h3>把“仿真到现实”做成可学习的估计器</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">自适应 RL</span><span class="badge new">🆕 最新视角</span><span>arXiv:2605.16015</span><span>2026-05</span></div>
+      <p>《Adaptive Outer-Loop Control of Quadrotors via Reinforcement Learning》针对传统域随机化（DR）被迫学“最坏情形保守策略”、牺牲标称敏捷性的问题，提出<strong>残差动力学预测器（RDP）</strong>：一个循环神经网络，仅凭<strong>过去状态与控制指令的短时历史</strong>就隐式估计 6 维外力/外力矩，相当于把“环境扰动”显式算出来。再接一个<strong>轻量线性校准层</strong>，用极少真实数据把仿真潜空间映射到物理现实，省去重训。架构受足式机器人的 RMA 启发，直接回答“RL 外环如何动态 Bridging sim-to-real gap”。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2605.16015" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">过驱动倾转</span><span class="badge-info">零样本部署</span><span>arXiv:2602.21583</span><span>2026-02</span></div>
+      <p>《Learning Agile and Robust Omnidirectional Aerial Motion on Overactuated Tiltable-Quadrotors》研究倾转旋翼（tilt-rotor）全向飞行：关节—旋翼强耦合让模型控制在扰动下退化。方案给出<strong>学习式控制框架</strong>，把系统辨识与“最小且物理一致的域随机化”结合，实现可靠 sim-to-real。相比 SOTA 的 NMPC，该方法达到<strong>相当的六自由度位姿跟踪精度</strong>，且在多任务上鲁棒性与泛化更优，已<strong>零样本部署到真实硬件</strong>。对做“RL vs MPC”对比的张恒辰，这是难得的同平台对照材。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2602.21583" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">安全 RL</span><span class="badge new">🆕 最新</span><span>arXiv:2609.11815</span><span>2026-09-11</span></div>
+      <p>《Predefined-Time Resilient Integral Reinforcement Learning for Input-Constrained Unknown Nonlinear Systems Under FDI Attacks and Disturbances》把<strong>预定时间（predefined-time）弹性积分 RL</strong>用于输入受限未知非线性系统，同时面对虚假数据注入（FDI）攻击与外部扰动，且完全数据驱动。对无人机集群而言，对抗鲁棒性是上线硬指标，该文提供了一条“无需精确模型也能在特定时间内恢复”的路线。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.11815" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">现实鸿沟量化</span><span class="badge-info">方法论文</span><span>arXiv:2609.11121</span><span>2026-09-11</span></div>
+      <p>《Quantifying the Reality Gap for RL-Based UAV Placement at mmWave and Sub-THz》专门量化<strong>RL 无人机部署中仿真与现实的鸿沟（reality gap）</strong>。mmWave/太赫兹信道对位置极敏感，RL 训出的布站策略一上真实信道就掉点。该文给出量化框架，可作为张恒辰评估自己 RL 策略“训得好不好、迁得稳不稳”的度量工具，避免只报成功率。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.11121" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块三 · 自主导航、感知与避障（LiDAR-惯导 / 覆盖规划 / VLA 导航）</div>
+  <div class="card">
+    <h3>低空飞行的感知底座更扎实了</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">LiDAR-惯导</span><span class="badge new">🆕 最新</span><span>arXiv:2609.12837</span><span>2026-09-14</span></div>
+      <p>《Parameter Sensitivity Analysis for Aerial LiDAR-Inertial Odometries in low-altitude flights》对<strong>低空飞行下的机载 LiDAR-惯性里程计做参数敏感性分析</strong>。低空贴近建筑/植被时点云稀疏、退化严重，本文系统排查哪些参数主导定位漂移，给出调参经验。对想做“感知—控制闭环”的张恒辰，这是把 LIO 接进仿真前的必读，能少走大量标定弯路。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.12837" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">覆盖规划</span><span class="badge new">🆕 最新</span><span>arXiv:2609.12595</span><span>2026-09-13</span></div>
+      <p>《A Hierarchical Coverage Path Planning Algorithm for Unknown Environments》提出<strong>分层覆盖路径规划</strong>，面向未知环境下的完整勘探。相比单层规划易陷入局部重复扫描，分层结构先粗后细、兼顾完整性与效率。可视为 09-14 期 CAVEAT（无地图扩散探索）的工程化补充——一个偏“怎么不走回头路”，一个偏“怎么不依赖全局地图”。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.12595" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">VLA 导航</span><span class="badge new">🆕 最新</span><span>arXiv:2609.12285</span><span>2026-09-13</span></div>
+      <p>《AnchorVLN: Geometry-Anchored Vision-Language Grounding Reasoning for Open-Vocabulary Navigation》把<strong>几何锚定</strong>引入视觉—语言导航，支持开放词汇指令（如“去那个红色箱子旁边”）。延续 09-14 期 DroneCATS 的“大模型进控制环”议题，但本文聚焦<strong>几何一致性</strong>，缓解大模型“说得到飞不到”的动作协议问题，与 DroneCATS“失败在动作协议”的结论互相印证。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.12285" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">ROS 2 导航</span><span class="badge-info">经验实证</span><span>arXiv:2609.12971</span><span>2026-09-14</span></div>
+      <p>《Tuning ROS 2 for Energy-Efficient Navigation: Empirical Insights from Costmap 2D Configurations》用<strong>实测数据</strong>给出 ROS 2 Nav2 中 Costmap 2D 各参数对能耗的影响，直击“导航栈怎么配最省电”。对张恒辰的仿真工具链板块极实用：<strong>Gazebo/ROS 2 跑 SITL 时，Costmap 配置直接决定 CPU 占用与续航仿真可信度</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.12971" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块四 · 集群与协同（通信受限探索 / 多智能体 DRL / 共识控制）</div>
+  <div class="card">
+    <h3>通信受限下，集群如何既探索又不撞</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">通信受限</span><span class="badge new">🆕 最新</span><span>arXiv:2609.12502</span><span>2026-09-14</span></div>
+      <p>《Communication-Constrained Multi-Robot Exploration With Adaptive Communication Windows》提出<strong>自适应通信窗口</strong>机制：多机在通信受限时按需开窗交换地图/状态，平时静默探索，兼顾覆盖效率与带宽。与 09-14 期 SwarmNxt（开源硬件平台）互补——SwarmNxt 解决“怎么搭”，本文解决“通信断了怎么办”。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.12502" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">多智能体 DRL</span><span class="badge hot">零样本泛化</span><span>arXiv:2607.25754</span><span>2026-07</span></div>
+      <p>《Cooperative Multi-UAV Navigation in Complex Environments via Systematic Multi-Agent Deep Reinforcement Learning》系统化解多 UAV 协同导航的<strong>局部最优陷阱、稀疏奖励、学习失衡、跨场景泛化</strong>四大难题：用“已访问状态记忆 + 方向新颖性 + 惩罚回传”逃局部最优；用<strong>分层协同演示缓冲 + 差异化行为克隆</strong>提升稀疏信号下的利用率；用<strong>安全感知双条件课程调度</strong>抑制灾难性遗忘；把局部几何特征抽象为域参数，经结构感知门控与混合专家实现零样本跨场景迁移，并在动静混合障碍下验证。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2607.25754" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">无通信集群</span><span class="badge-info">5 机真机</span><span>arXiv:2601.13657</span><span>2026-01</span></div>
+      <p>《Communication-Free Collective Navigation for a Swarm of UAVs via LiDAR-Based Deep Reinforcement Learning》提出通信拒止环境下的<strong>隐式领导—跟随框架</strong>：仅 leader 知目标，follower 仅用机载 LiDAR 学习稳健策略，无需任何机间通信或领导者识别。在 <strong>Nvidia Isaac Sim</strong> 训练，<strong>5 架无人机室内外真机实验</strong>成功完成集体导航，克服遮挡与有限视场。对张恒辰：这是“通信-free 也能成群”的最强实证之一。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2601.13657" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-teal">共识控制</span><span class="badge hot">零样本扩至 250 机</span><span>arXiv:2606.02107</span><span>2026-06</span></div>
+      <p>《Network Distributed Multi-Agent Reinforcement Learning for Consensus Control of Quadcopters》提出 <strong>ND-MARL</strong>：把集群通信图显式纳入决策，在 <strong>2-邻居拓扑</strong>下每机只看两个邻居就输出动作，高层用 <strong>MASAC</strong> 训练分布式共识规划器并嵌入级联栈。最大亮点是<strong>零样本可扩展性</strong>——3 机训出的策略直接部署到 <strong>最多 250 机</strong>无需重训，随规模增大稳态散布可控。IEEE MELECON 2026 接收。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2606.02107" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块五 · eVTOL 与低空经济（四维轨迹 / 起降场调度 / 空域优化）</div>
+  <div class="card">
+    <h3>从“怎么飞”到“怎么接入城市”</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">4D 轨迹</span><span class="badge new">🆕 纽约实测</span><span>arXiv:2607.15690</span><span>2026-07</span></div>
+      <p>《Obstacle-Aware Four-Dimensional Trajectory Design for Urban Air Mobility》针对 eVTOL 在密集城区的四维（空间 + 时间）轨迹：混合框架融合<strong>建筑障碍、风、eVTOL 飞行动力学与运行约束</strong>，先用凸多边形填充无障区，再用<strong>凸集图（Graph of Convex Sets）</strong>路径规划挑候选序列，最后用最优控制程序给出升—巡—降全段轨迹。在<strong>纽约市航线</strong>上可处理多达 <strong>250 栋建筑障碍</strong>，并证明忽略上述约束会让飞行时间被低估多达 <strong>20%</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2607.15690" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">起降场调度</span><span class="badge hot">出行时间 -34%</span><span>arXiv:2601.21316</span><span>2026-01</span></div>
+      <p>《Heterogeneous Vertiport Selection Optimization for On-Demand Air Taxi Services: A Deep Reinforcement Learning Approach》提出 <strong>UAGMC（统一空地出行协同）</strong>框架：用 V2X + 深度 RL（PPO）联合优化起降场选择与空出租车路线，把乘客完整门到门旅程（地面接驳 + 起降场排队 + 空中飞行）建为 MDP。最优变体 UAGMC-A 把平均总出行时间降到 <strong>46.63 分钟</strong>、平均等待 <strong>15.48 分钟</strong>，相比按比例分配基线<strong>降低约 34%</strong>。代码已开源（Traffic-Alpha/UAGMC）。启示：低空经济的瓶颈常在“排队”而非“飞行”。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2601.21316" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">轨迹优化</span><span class="badge new">🆕 最新</span><span>arXiv:2609.12248</span><span>2026-09-13</span></div>
+      <p>《Trajectory Bundle Method in SE(3) for Black-Box Fixed-Wing Aircraft Trajectory Optimization》把轨迹优化放在 <strong>SE(3) 流形</strong>上，面向黑盒飞行动力学做固定翼轨迹优化。虽是固定翼，但其“流形上的轨迹束”思路可直接迁移到四旋翼的 SE(3) 姿态—位置联合优化，是衔接 MPC 与微分平坦轨迹的一条数学工具线。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.12248" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块六 · 自动驾驶交叉（安全屏障 / MPC 规划）</div>
+  <div class="card">
+    <h3>控制屏障与 MPC 的跨界迁移</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">神经 CBF</span><span class="badge new">🆕 最新</span><span>arXiv:2609.12831</span><span>2026-09-14</span></div>
+      <p>《VertexCBF: Improving Neural Control Barrier Functions via Vertex-Restricted Control Search》提出<strong>顶点受限控制搜索</strong>来改进神经控制屏障函数（CBF），提升安全集近似精度。CBF 是给无人机“硬安全约束”的主流工具，本文让学习型 CBF 更可信，可直接用于四旋翼避障的安全滤波层。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.12831" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">极限赛车 MPC</span><span class="badge-info">规划控制融合</span><span>arXiv:2609.12660</span><span>2026-09-13</span></div>
+      <p>《Driving Context-guided Model Predictive Planning and Control for Autonomous Car Racing at the Limit and Beyond》用<strong>驾驶情境引导的 MPC 规划控制</strong>把赛车推到物理极限。其“情境感知 + MPC”范式与四旋翼敏捷飞行的极限控制同构：把赛道上下文换成风场/障碍上下文，即是一套可复用的极限跟踪框架。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.12660" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">全阶仿射 CBF</span><span class="badge new">🆕 最新</span><span>arXiv:2609.12990</span><span>2026-09-14</span></div>
+      <p>《Safe Stabilising Full-Order Affine Control Barrier Functions for Linear Systems》给出<strong>全阶仿射 CBF 的安全镇定</strong>方法，面向线性系统。对把“安全滤波器”接在 MPC/RL 外环之后的工程化实现有参考价值——先用稳定 CBF 兜底，再放飞学习策略。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.12990" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块七 · 仿真平台与工具链（贴合 Simulink + ROS 2 + Gazebo）</div>
+  <div class="card">
+    <h3>从“能飞”到“可复现、可比对”</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">ROS 2 调优</span><span class="badge-info">能耗实证</span><span>arXiv:2609.12971</span><span>2026-09-14</span></div>
+      <p>本期工具链重点落在 <strong>ROS 2 Nav2 的 Costmap 2D 能耗调优</strong>（见板块三）。对张恒辰的建议：在 Gazebo + ROS 2 的 SITL 中，把 Costmap 分辨率、膨胀半径、障碍物层更新频率设为实验变量，跑一组<strong>CPU 占用—续航</strong>对照表，本身就是一篇可发表的“工程基准”小节。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.12971" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">仿真信任</span><span class="badge-info">现实鸿沟</span><span>arXiv:2609.11121</span><span>2026-09-11</span></div>
+      <p>结合本期《Quantifying the Reality Gap》（2609.11121）与《Adaptive Outer-Loop RL》（2605.16015），工具链板块的命题是：<strong>Simulink/Isaac Lab 训出的策略，必须用“现实鸿沟量化 + 轻量校准”两道关</strong>才敢称 sim-to-real，否则只是“仿真里很能打”。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.11121" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">SE(3) 优化</span><span class="badge new">🆕 最新</span><span>arXiv:2609.12248</span><span>2026-09-13</span></div>
+      <p>《Trajectory Bundle Method in SE(3)》（2609.12248）提供黑盒动力学下的流形轨迹优化，可作为 Simulink 中“微分平坦轨迹生成”模块的替代/对照求解器，便于在 Gazebo 中做跟踪误差消融。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.12248" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块八 · 本周必读 Top3 与选题建议</div>
+  <div class="card">
+    <div class="highlight-box">
+      <div class="highlight-title">🏆 本周必读 Top3</div>
+      <div class="news-item">
+        <div class="news-meta"><span class="badge badge-high">Top 1</span><span>arXiv:2604.13505</span></div>
+        <p><strong>Cascaded TD3-PID + 混合扰动观测器</strong>。高度/姿态用 PID、水平位置用 TD3，再嵌 HDOB，且有<strong>真机风扰飞行</strong>。对“RL 能不能上真机”最有说服力的新证据，建议作为张恒辰 RL 主线的对标实验。</p>
+        <a class="source-link" href="https://arxiv.org/abs/2604.13505" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="news-item">
+        <div class="news-meta"><span class="badge badge-high">Top 2</span><span>arXiv:2605.16015</span></div>
+        <p><strong>Adaptive Outer-Loop RL（RDP + 轻量校准）</strong>。把 sim-to-real 做成“可学习的 6 维扰动估计器”，比暴力域随机化更省且更敏捷，是四旋翼学习控制最该复现的 2026 工作之一。</p>
+        <a class="source-link" href="https://arxiv.org/abs/2605.16015" target="_blank">📎 查看原文</a>
+      </div>
+      <div class="news-item">
+        <div class="news-meta"><span class="badge badge-high">Top 3</span><span>arXiv:2606.02107</span></div>
+        <p><strong>ND-MARL 共识控制</strong>。2-邻居拓扑、<strong>3 机训 250 机零样本部署</strong>，直接回答“集群怎么扩得大”，可与 SwarmNxt 平台组合做毕业设计。</p>
+        <a class="source-link" href="https://arxiv.org/abs/2606.02107" target="_blank">📎 查看原文</a>
+      </div>
+    </div>
+    <div class="info-box">
+      <div class="info-title">ℹ️ 对张恒辰的选题建议</div>
+      <p>① <strong>飞控主线</strong>：以 <strong>2603.27576（级联 MPC 稳定证明）</strong>为蓝本，在 Simulink 搭“外环 MPC + 内环几何控制”，再把 <strong>2609.12992（自适应 ADMM）</strong>的求解器替换进去做实时性消融，最后叠加 <strong>2604.13505 的 HDOB</strong> 抗风。</p>
+      <p>② <strong>RL 主线</strong>：优先复现 <strong>2605.16015（RDP 自适应外环）</strong>，用 Isaac Lab 训、Gazebo 验，再用 <strong>2609.11121（现实鸿沟量化）</strong>做上线前评估；过驱动平台可参考 <strong>2602.21583（倾转四旋翼）</strong>的“系统辨识 + 物理一致域随机化”。</p>
+      <p>③ <strong>集群与切口</strong>：用 <strong>2606.02107（ND-MARL）</strong>做零样本扩展实验，配合 <strong>2609.12502（自适应通信窗口）</strong>处理通信受限；低空经济交叉点选 <strong>2607.15690（4D 轨迹）</strong>与 <strong>2601.21316（起降场调度）</strong>。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息来源汇总</div>
+  <div class="table-wrap">
+    <table class="summary-table">
+      <thead><tr><th>来源标题</th><th>链接</th><th>时间</th></tr></thead>
+      <tbody>
+        <tr><td>An Adaptive Multi-Parameter ADMM Algorithm for Embedded MPC</td><td><a class="source-link" href="https://arxiv.org/abs/2609.12992" target="_blank">📎 查看原文</a></td><td>2026-09-14</td></tr>
+        <tr><td>Battery-Aware Predictive Trajectory Planning and Control for Multirotors Under Disturbances</td><td><a class="source-link" href="https://arxiv.org/abs/2609.12188" target="_blank">📎 查看原文</a></td><td>2026-09-13</td></tr>
+        <tr><td>MPC-Based Trajectory Tracking for a Quadrotor UAV with Uniform SGA Stability</td><td><a class="source-link" href="https://arxiv.org/abs/2603.27576" target="_blank">📎 查看原文</a></td><td>2026-03</td></tr>
+        <tr><td>Cascaded TD3-PID Hybrid Controller for Quadrotor under Wind Disturbance</td><td><a class="source-link" href="https://arxiv.org/abs/2604.13505" target="_blank">📎 查看原文</a></td><td>2026-04</td></tr>
+        <tr><td>Adaptive Outer-Loop Control of Quadrotors via Reinforcement Learning</td><td><a class="source-link" href="https://arxiv.org/abs/2605.16015" target="_blank">📎 查看原文</a></td><td>2026-05</td></tr>
+        <tr><td>Learning Agile Omnidirectional Aerial Motion on Overactuated Tiltable-Quadrotors</td><td><a class="source-link" href="https://arxiv.org/abs/2602.21583" target="_blank">📎 查看原文</a></td><td>2026-02</td></tr>
+        <tr><td>Predefined-Time Resilient Integral RL under FDI Attacks and Disturbances</td><td><a class="source-link" href="https://arxiv.org/abs/2609.11815" target="_blank">📎 查看原文</a></td><td>2026-09-11</td></tr>
+        <tr><td>Quantifying the Reality Gap for RL-Based UAV Placement at mmWave</td><td><a class="source-link" href="https://arxiv.org/abs/2609.11121" target="_blank">📎 查看原文</a></td><td>2026-09-11</td></tr>
+        <tr><td>Parameter Sensitivity Analysis for Aerial LiDAR-Inertial Odometries</td><td><a class="source-link" href="https://arxiv.org/abs/2609.12837" target="_blank">📎 查看原文</a></td><td>2026-09-14</td></tr>
+        <tr><td>A Hierarchical Coverage Path Planning Algorithm for Unknown Environments</td><td><a class="source-link" href="https://arxiv.org/abs/2609.12595" target="_blank">📎 查看原文</a></td><td>2026-09-13</td></tr>
+        <tr><td>AnchorVLN: Geometry-Anchored Vision-Language Navigation</td><td><a class="source-link" href="https://arxiv.org/abs/2609.12285" target="_blank">📎 查看原文</a></td><td>2026-09-13</td></tr>
+        <tr><td>Tuning ROS 2 for Energy-Efficient Navigation: Costmap 2D</td><td><a class="source-link" href="https://arxiv.org/abs/2609.12971" target="_blank">📎 查看原文</a></td><td>2026-09-14</td></tr>
+        <tr><td>Communication-Constrained Multi-Robot Exploration with Adaptive Windows</td><td><a class="source-link" href="https://arxiv.org/abs/2609.12502" target="_blank">📎 查看原文</a></td><td>2026-09-14</td></tr>
+        <tr><td>Cooperative Multi-UAV Navigation via Systematic Multi-Agent DRL</td><td><a class="source-link" href="https://arxiv.org/abs/2607.25754" target="_blank">📎 查看原文</a></td><td>2026-07</td></tr>
+        <tr><td>Communication-Free Collective Navigation for UAV Swarms via LiDAR DRL</td><td><a class="source-link" href="https://arxiv.org/abs/2601.13657" target="_blank">📎 查看原文</a></td><td>2026-01</td></tr>
+        <tr><td>Network Distributed MARL for Consensus Control of Quadcopters</td><td><a class="source-link" href="https://arxiv.org/abs/2606.02107" target="_blank">📎 查看原文</a></td><td>2026-06</td></tr>
+        <tr><td>Obstacle-Aware Four-Dimensional Trajectory Design for UAM</td><td><a class="source-link" href="https://arxiv.org/abs/2607.15690" target="_blank">📎 查看原文</a></td><td>2026-07</td></tr>
+        <tr><td>Heterogeneous Vertiport Selection Optimization (UAGMC)</td><td><a class="source-link" href="https://arxiv.org/abs/2601.21316" target="_blank">📎 查看原文</a></td><td>2026-01</td></tr>
+        <tr><td>Trajectory Bundle Method in SE(3) for Fixed-Wing Trajectory Optimization</td><td><a class="source-link" href="https://arxiv.org/abs/2609.12248" target="_blank">📎 查看原文</a></td><td>2026-09-13</td></tr>
+        <tr><td>VertexCBF: Improving Neural Control Barrier Functions</td><td><a class="source-link" href="https://arxiv.org/abs/2609.12831" target="_blank">📎 查看原文</a></td><td>2026-09-14</td></tr>
+        <tr><td>Driving Context-guided MPC Planning and Control for Racing</td><td><a class="source-link" href="https://arxiv.org/abs/2609.12660" target="_blank">📎 查看原文</a></td><td>2026-09-13</td></tr>
+        <tr><td>Safe Stabilising Full-Order Affine CBFs for Linear Systems</td><td><a class="source-link" href="https://arxiv.org/abs/2609.12990" target="_blank">📎 查看原文</a></td><td>2026-09-14</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="giscus"></div>

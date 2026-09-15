@@ -36,7 +36,10 @@ def main():
 
     targets = []
     for dirpath, dirnames, filenames in os.walk(ROOT):
-        dirnames[:] = [d for d in dirnames if d not in (".git", "node_modules")]
+        # content/、logs/、.workbuddy/ 自 2026-09-15 起并入仓库，但不是站点页面，跳过以免误改
+        dirnames[:] = [d for d in dirnames
+                       if d not in (".git", "node_modules", "content", "logs",
+                                    ".workbuddy", "backups")]
         for fn in filenames:
             if fn.endswith((".html", ".py", ".md")):
                 targets.append(os.path.join(dirpath, fn))
