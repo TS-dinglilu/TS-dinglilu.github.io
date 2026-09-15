@@ -2,14 +2,19 @@
 
 ## 每日自动化新闻系统（核心资产）
 - 线上：https://ts-dinglilu.github.io/ ，仓库 TS-dinglilu/TS-dinglilu.github.io（main 直推，GitHub Pages 自动部署，约 1-2 分钟生效）。
-- 本地仓库：`D:\研二\github.auto\repo`；正文草稿：`D:\研二\github.auto\content\`。
+- 本地仓库：`D:\研二\github.auto\repo`（**仓库 = 站点根 = GitHub Pages 发布源**）。
+- **工作区布局（2026-09-15 起：仓库成为唯一真源）**：正文草稿在 `repo/content/`、日志在 `repo/logs/`、
+  项目记忆在 `repo/.workbuddy/`（仓库内是**目录联接**，实体仍在工作区根 `.workbuddy`，WorkBuddy 靠固定路径读它）。
+  工作区根只剩 `repo/`、`backups/`（34MB，**不入 git**）、`.workbuddy/`。
+  **所有命令一律在 `repo/` 下执行**，相对路径以仓库根为基准。
+  换机器只需 `git clone` 即可拿到正文/日志/脚本/记忆，直接续接每日流程。
 - 13 个分类日报：car-recruit / mechanical-recruit / school-news / drone-research / ahut-campus / byd-recruit / chery-recruit / geely-recruit / xiaomi-recruit / weixiaoli-recruit / traditional-auto / research-institute / future-planning。
 - 每日流程手册：`repo/scripts/DAILY_WORKFLOW.md`；写作规范：`content/STYLE_GUIDE.md`。
 - **日常一条命令**：写完 `content/<分类>.html` 后跑 `python scripts/publish_all.py --push`（校验→构建13分类→更新主页→**发布前站点自查**→提交推送，自带漏跑自查与退避重试）。单分类构建仍可用 `scripts/build_report.py --category --date --content`。
 - **体检 / 修复 / 补漏 三件套**（2026-09-14 新增，都在 `repo/scripts/`）：
   `audit_site.py` 全站体检（结构完整性 / 评论区 / 死链 / 索引一致性 / 主页数字 / **漏期检测**，退出码非 0 = 有 ERROR）；
   `fix_site.py` 幂等批量修历史缺陷（先跑 `--dry-run` 看清单）；
-  `build_backfill.py --date <日期> --dir ../content/backfill<MMDD>` 补做漏跑日期（缺正文的分类会列出，已存在默认跳过）。
+  `build_backfill.py --date <日期> --dir content/backfill<MMDD>` 补做漏跑日期（缺正文的分类会列出，已存在默认跳过）。
   **改历史 HTML 前一律先跑 audit 定位真问题，不要对着几百个文件盲改。**
 - **尾部结构单一真源**（2026-09-14 新增）：`scripts/tail_template.py` 定义标准尾部（评论区卡片 + 页脚 + 回到顶部 + giscus），
   被 `build_report.py`（新建日报）与 `unify_style.py`（历史报告批量回溯）共同引用 —— **改尾部结构只改这一处**。
