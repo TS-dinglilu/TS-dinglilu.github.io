@@ -30,21 +30,8 @@ sys.path.insert(0, HERE)
 import build_report     # noqa: E402  GISCUS_SCRIPT
 import tail_template as TT  # noqa: E402  标准尾部唯一真源
 
-NAMES = {
-    "car-recruit": "车企招聘日报",
-    "mechanical-recruit": "机械招聘日报",
-    "school-news": "校园新闻日报",
-    "drone-research": "无人机科研日报",
-    "ahut-campus": "安工大校园日报",
-    "byd-recruit": "比亚迪招聘日报",
-    "chery-recruit": "奇瑞招聘日报",
-    "geely-recruit": "吉利招聘日报",
-    "xiaomi-recruit": "小米汽车招聘日报",
-    "weixiaoli-recruit": "蔚小理招聘日报",
-    "traditional-auto": "传统车企招聘日报",
-    "research-institute": "科研院所招聘日报",
-    "future-planning": "未来规划日报",
-}
+# 日报名统一取自 tail_template（全站唯一真源），避免两处定义不一致。
+NAMES = TT.CATEGORY_NAMES
 
 # 正文里出现的「评论区」字样属于内容，不作标记 —— 只用注释 / 容器 / 页脚标签。
 TAIL_MARKERS = TT.TAIL_MARKERS
@@ -273,7 +260,18 @@ def main():
                 print("  " + l)
         return 0
 
-    files = sorted(glob.glob(os.path.join(ROOT, "*", "report_*.html")))
+    # 排除 content/logs/.workbuddy 等非站点目录（2026-09-15 起这些目录已并入仓库），
+    # 只扫站点的一级分类目录，避免用通配把正文片段或归档页带进来。
+    non_site = {"content", "logs", ".workbuddy", "scripts", ".git", "backups"}
+    files = []
+    for d in sorted(glob.glob(os.path.join(ROOT, "*"))):
+        if not os.path.isdir(d):
+            continue
+        name = os.path.basename(d)
+        if name in non_site or name.startswith("."):
+            continue
+        files += glob.glob(os.path.join(d, "report_*.html"))
+    files = sorted(files)
     ok, skipped = [], []
     for f in files:
         cat = os.path.basename(os.path.dirname(f))

@@ -110,6 +110,27 @@ def strip_tags(s):
     return re.sub(r"<[^>]+>", "", s).strip()
 
 
+def normalize_footer_name(html, category):
+    """把页脚里的日报名换成标准名（唯一真源 tail_template.CATEGORY_NAMES）。
+
+    页脚形如：<p>日报名 | 安徽工业大学机械工程硕士研究生个性化推荐报告</p>
+    骨架 A（car-recruit）会整段保留模板的 footer，所以这里再兜一道，
+    用 TITLE_SUFFIX 作锚点、只处理最后一个 <footer> 之后的区间，避免误伤正文。
+    """
+    std = tail_template.CATEGORY_NAMES.get(category)
+    if not std:
+        return html
+    i = html.rfind("<footer")
+    if i < 0:
+        return html
+    head, seg = html[:i], html[i:]
+    new_seg, n = re.subn(
+        r"<p>[^<]*?\|\s*" + re.escape(tail_template.TITLE_SUFFIX),
+        "<p>" + std + " | " + tail_template.TITLE_SUFFIX,
+        seg, count=1)
+    return head + (new_seg if n else seg)
+
+
 def build_report(category, dt, content_path):
     target_name = "report_%s.html" % dt.strftime("%Y%m%d")
     tpl_path = pick_template(category, exclude_name=target_name)
@@ -145,6 +166,9 @@ def build_report(category, dt, content_path):
         head_part = fix_weekday(replace_dates(head_part, dt), dt)
         # 更新 <title>
         h1 = re.search(r"<h1[^>]*>(.*?)</h1>", head_part, re.S)
+        # <title> 沿用模板 <h1>：页面标题允许带 emoji / 用全称，属既有风格，历史报告一致。
+        # 页脚日报名则统一走 tail_template.CATEGORY_NAMES（见 normalize_footer_name），
+        # 因为页脚名是 unify_style 的统一对象，拿 <h1> 派生的名字会让两份工具每天打架。
         title = strip_tags(h1.group(1)) if h1 else category
         head_part = re.sub(r"<title>.*?</title>",
                            "<title>%s | %s</title>" % (title, dt.strftime("%Y-%m-%d")),
@@ -153,6 +177,9 @@ def build_report(category, dt, content_path):
         tail = tail_template.build_tail(title, dt.year, dt.month, dt.day,
                                         GISCUS_SCRIPT, has_main_close=False)
         out = autoclose_divs(head_part + "\n" + body) + "\n" + tail
+
+    # 兜底：页脚日报名统一为标准名（骨架 A / B 都覆盖）
+    out = normalize_footer_name(out, category)
 
     out_path = os.path.join(ROOT, category, target_name)
     open(out_path, "w", encoding="utf-8").write(out)

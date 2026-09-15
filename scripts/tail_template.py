@@ -29,6 +29,26 @@
 
 TITLE_SUFFIX = "安徽工业大学机械工程硕士研究生个性化推荐报告"
 
+# 各分类的标准日报名 —— 全站唯一真源。
+# 页脚（build_tail）、每日构建（build_report）与尾部统一（unify_style）都从这里取，
+# 不要再从模板报告的 <h1> 派生：h1 属于页面自己的标题（允许带 emoji 或全称），
+# 一旦拿它当页脚日报名，就会出现「构建出非标准名 → unify_style 修正 → 次日又漂移」的死循环。
+CATEGORY_NAMES = {
+    "car-recruit": "车企招聘日报",
+    "mechanical-recruit": "机械招聘日报",
+    "school-news": "校园新闻日报",
+    "drone-research": "无人机科研日报",
+    "ahut-campus": "安工大校园日报",
+    "byd-recruit": "比亚迪招聘日报",
+    "chery-recruit": "奇瑞招聘日报",
+    "geely-recruit": "吉利招聘日报",
+    "xiaomi-recruit": "小米汽车招聘日报",
+    "weixiaoli-recruit": "蔚小理招聘日报",
+    "traditional-auto": "传统车企招聘日报",
+    "research-institute": "科研院所招聘日报",
+    "future-planning": "未来规划日报",
+}
+
 COMMENTS_BLOCK = (
     '<div class="comments-section">\n'
     '  <div class="comments-title">💬 评论区</div>\n'

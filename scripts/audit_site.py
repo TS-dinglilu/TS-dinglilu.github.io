@@ -50,20 +50,37 @@ def rel(p):
 
 # 注意：content/、logs/、.workbuddy/ 自 2026-09-15 起已并入仓库，
 # 但它们不是站点页面（content/ 存的是只有 <main> 内部内容的正文片段），
-# 因此 html_files() 必须排除这些目录，否则会把正文片段误判成"截断"。
+# 因此站内文件扫描必须排除这些目录，否则会把正文片段误判成"截断"。
 NON_SITE_DIRS = {"content", "logs", ".workbuddy", "scripts", ".git", "backups"}
 
 
-def html_files():
-    files = glob.glob(os.path.join(ROOT, "*.html"))
+def site_dirs():
+    """仓库内属于站点的一级目录（排除 content/logs/.workbuddy/scripts 等非站点目录）。"""
+    out = []
     for d in sorted(glob.glob(os.path.join(ROOT, "*"))):
         if not os.path.isdir(d):
             continue
         name = os.path.basename(d)
         if name in NON_SITE_DIRS or name.startswith("."):
             continue
+        out.append(d)
+    return out
+
+
+def html_files():
+    files = glob.glob(os.path.join(ROOT, "*.html"))
+    for d in site_dirs():
         files += glob.glob(os.path.join(d, "*.html"))
     return sorted(set(files))
+
+
+def report_files():
+    """站点内的日报页面（各分类目录下的 report_*.html），同样排除非站点目录，
+    避免 content/ 或 logs/ 里万一出现同名文件被当成站点报告参与统计与检查。"""
+    files = []
+    for d in site_dirs():
+        files += glob.glob(os.path.join(d, "report_*.html"))
+    return sorted(files)
 
 
 def check_structure():
@@ -88,13 +105,13 @@ def check_structure():
 
 
 def check_comments():
-    for f in glob.glob(os.path.join(ROOT, "*", "report_*.html")):
+    for f in report_files():
         if "giscus.app" not in open(f, encoding="utf-8").read():
             err("评论区", rel(f), "未挂载 giscus")
 
 
 def check_links():
-    reports = glob.glob(os.path.join(ROOT, "*", "report_*.html"))
+    reports = report_files()
     indexes = [os.path.join(ROOT, c, "index.html") for c in CATEGORIES]
     for f in reports + indexes + [os.path.join(ROOT, "index.html")]:
         if not os.path.exists(f):
@@ -204,7 +221,7 @@ def main():
         print("=" * 68)
         print("站点健康检查  |  分类 %d  报告 %d  首页 %s"
               % (len(CATEGORIES),
-                 len(glob.glob(os.path.join(ROOT, "*", "report_*.html"))),
+                 len(report_files()),
                  "OK" if os.path.exists(os.path.join(ROOT, "index.html")) else "缺失"))
         print("=" * 68)
 
