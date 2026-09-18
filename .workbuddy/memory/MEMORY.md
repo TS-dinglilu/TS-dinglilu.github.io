@@ -42,6 +42,12 @@
 - 正文只含 `<main>` 内部 HTML；链接一律 `<a class="source-link" href="..." target="_blank">📎 查看原文</a>`，**禁 Markdown 链接**。
 - 结尾必须有「信息来源汇总」表格 + `<div class="giscus"></div>`。
 - **严禁编造 URL 与精确假数据**；历史报告只增不删。命名 `report_YYYYMMDD.html`；深色主题（#0a0e1a + #00d4ff）。
+- **正文超长的压缩优先级**（写手初稿常 22K–30K，超出 8000–20000 上限）：
+  ① 先删与专属分类重复的整块（如 car-recruit 的「新能源与新势力」与 weixiaoli/byd 大幅重叠）；
+  ② 再删汇总表同源冗余行；③ 最后删编辑说明框。**正文条目与链接尽量保住**，别靠删硬信息凑数；删完重排「板块N」编号。
+- 写手会在正文里塞 `<div class="report-header">`（读上一期报告时照抄）。**car-recruit 属 `<main>` 型骨架，必须保留**；
+  通用型骨架会与模板 header 叠加成重复标题块 —— 这是**站点既有现象**（mechanical/chery/school-news 历史上就有 2–4 对），
+  audit 不报，**不要为此做全站修复**。
 
 ## 6. 推送与网络
 - `github.com:443` 常不可达；`api.github.com`、`*.github.io` 通常正常。**push 失败本地提交不丢，勿重生成内容**。
@@ -61,6 +67,15 @@
 - ⚠️ REST API 不能推此仓库（单次 17MB+/200 文件，`push_files` 不可行，且会造分叉 SHA）。
 - 外链核验：部分中文站（`*.cas.cn`、`m.yingjiesheng.com`）**https 不通但 http 200**，href 应改 `http://`；
   `403/302` 多为反爬或正常跳转，**不算死链**。
+- **核验必须带浏览器 UA**（2026-09-18 实测）：`curl -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'`。
+  不带 UA 时 `news.qq.com` 全 501、`cnyouth.com` 报 404、`163/sohu` 报 403，**全是假死链**。
+  判据：**只有 `000` 且站点根也 `000` 才算不可达**（`www.gd.gov.cn`、`union.china.com.cn` 属此类，
+  后者经 WebFetch 证实真实存在）。不确定就 WebFetch 核页面，别直接判死。
+- **伪造外链判据**：**host 与内容语种/主题不符 → 直接判伪造，HTTP 200 也不算数**。
+  实例：`m.bricksite.com/kjdata/nyhedsbrev?live-blog-…`（丹麦博客平台 + 拼音乱码 slug），已删。
+- **并发防护**：同一自动化可能被两个会话并行跑（2026-09-18 撞出 3 个重复提交、两轮正文互相覆盖）。
+  开工先看 `git log -3` 最新提交时间、`logs/push_YYYYMMDD*.log` 是否已存在当天记录 ——
+  已存在说明当天跑过，**不要重复生成**；`publish_all.py` 内部 `git add -A`，会把手写串的成果一并带上。
 
 ## 7. 环境坑（Windows / Git Bash）
 - **Bash 偶发 PATH 损坏**（`dirname`/`ls`/`git`/`date` 全 not found）。前置：
