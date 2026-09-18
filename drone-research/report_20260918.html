@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="description" content="无人机科研日报 - arXiv无人机论文热点与自动驾驶前沿">
+<meta property="og:title" content="无人机科研日报 2026-09-18">
+<meta property="og:description" content="arXiv无人机论文热点、自动驾驶前沿、IEEE期刊动态与全网技术讨论">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚁</text></svg>">
+<title>🚁 无人机科研日报 | 2026-09-18</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v9.0 圆润Q弹生动版
+   v9.0改进:
+   - 圆润: 增大border-radius, 全面弧形过渡
+   - Q弹: 弹性cubic-bezier缓动, 微缩放悬停效果
+   - 生动: 入场动画, 脉冲发光, 流动渐变边框
+   - 动态: 滚动渐入, 悬停弹跳, 光晕扩散
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --bg: #0a0e1a;
+  --bg-elev: #111726;
+  --card: rgba(20, 28, 48, 0.55);
+  --card-solid: rgba(20, 28, 48, 0.75);
+  --card-hover: rgba(20, 28, 48, 0.8);
+  --border: rgba(0, 212, 255, 0.12);
+  --border-hover: rgba(0, 212, 255, 0.4);
+  --text: #f0f4f8;
+  --text-dim: #c8d4e8;
+  --text-faint: #90a0c0;
+  --accent: #00d4ff;
+  --accent-warm: #ffb347;
+  --accent-green: #22d3a0;
+  --accent-purple: #818cf8;
+  --accent-pink: #f87171;
+  --accent-teal: #14b8a6;
+  --accent-orange: #fb923c;
+  --success: #22d3a0;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #00d4ff;
+  --grid-line: rgba(0, 212, 255, 0.04);
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.25);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.35);
+  --shadow-lg: 0 16px 56px rgba(0,0,0,0.45);
+  --shadow-glow: 0 0 24px rgba(0, 212, 255, 0.12);
+  --shadow-glow-hover: 0 0 40px rgba(0, 212, 255, 0.25);
+  --radius: 24px;
+  --radius-sm: 18px;
+  --radius-xs: 12px;
+  --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: rgba(0, 212, 255, 0.3); color: #ffffff; }
+
+p { margin-bottom: 12px; color: var(--text-dim); line-height: 1.8; }
+p:last-child { margin-bottom: 0; }
+strong, b { color: var(--accent); font-weight: 600; }
+a { color: var(--accent); text-decoration: none; transition: color 0.3s var(--smooth), opacity 0.3s var(--smooth); }
+a:hover { color: #5ee5ff; text-decoration: underline; text-underline-offset: 2px; }
+ul, ol { margin: 12px 0; padding-left: 22px; color: var(--text-dim); }
+li { margin-bottom: 6px; line-height: 1.8; }
+li::marker { color: var(--accent); }
+em, i { color: var(--text); font-style: italic; }
+small { color: var(--text-faint); font-size: 0.85em; }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.10) 0%, rgba(129, 140, 248, 0.05) 50%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(50px);
+  animation: floatOrb 20s ease-in-out infinite;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  33% { transform: translate(-40px, 30px) scale(1.05); opacity: 0.8; }
+  66% { transform: translate(30px, -20px) scale(0.95); opacity: 0.7; }
+}
+
+.container { max-width: 960px; margin: 0 auto; padding: 40px 28px 80px; position: relative; z-index: 1; }
+.container-wide { max-width: 1100px; }
+.container-narrow { max-width: 760px; }
+
+/* ============================================================
+   Header — 圆润渐变 + 入场动画
+   ============================================================ */
+.header, .report-header {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.14) 0%, rgba(129, 140, 248, 0.12) 50%, rgba(34, 211, 160, 0.10) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 44px 36px;
+  margin: 0 auto 48px;
+  max-width: 960px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+  animation: fadeInDown 0.8s var(--spring) both;
+}
+
+.header::before, .report-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-purple), var(--accent-green));
+  background-size: 200% 100%;
+  animation: gradientFlow 6s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.header h1, .report-header h1 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.03em;
+  margin-bottom: 14px;
+  text-shadow: 0 0 28px rgba(0, 212, 255, 0.5), 0 0 56px rgba(0, 212, 255, 0.25);
+  line-height: 1.3;
+}
+
+.header .subtitle, .report-header .subtitle {
+  color: var(--text-dim);
+  font-size: 1.02rem;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: 0.03em;
+}
+
+.header .date, .report-header .date,
+.header .date-badge, .report-header .date-badge {
+  display: inline-block;
+  background: rgba(0, 212, 255, 0.14);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  color: var(--accent);
+  padding: 8px 24px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.4s var(--bounce);
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.header .date:hover, .report-header .date:hover,
+.header .date-badge:hover, .report-header .date-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.2); }
+  50% { box-shadow: 0 0 16px 4px rgba(0, 212, 255, 0.15); }
+}
+
+.header .meta, .report-header .meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+.header .meta span, .report-header .meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header { text-align: center; }
+
+/* ============================================================
+   Back Links + Nav
+   ============================================================ */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  padding: 10px 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.4s var(--bounce);
+  backdrop-filter: blur(10px);
+}
+
+.back-link:hover {
+  color: var(--accent);
+  border-color: var(--border-hover);
+  background: var(--card-hover);
+  text-decoration: none;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.15);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 24px 0 40px;
+  padding: 14px 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(10px);
+}
+
+.nav-links a {
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.3s var(--bounce);
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+  background: rgba(0, 212, 255, 0.14);
+  border-color: var(--border-hover);
+  text-decoration: none;
+  transform: translateY(-1px) scale(1.05);
+}
+
+.nav-toc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  margin: 0 0 48px;
+  backdrop-filter: blur(10px);
+}
+
+.nav-toc .toc-title { color: var(--accent); font-size: 1rem; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.03em; }
+.nav-toc ol, .nav-toc ul { list-style: none; padding-left: 0; margin: 0; }
+.nav-toc li { padding: 4px 0; }
+.nav-toc a { color: var(--text-dim); font-size: 0.9rem; transition: all 0.3s var(--smooth); }
+.nav-toc a:hover { color: var(--accent); text-decoration: none; padding-left: 4px; }
+
+/* ============================================================
+   Section Titles — h2 / .section-title (Cyan) - 圆润+流动
+   ============================================================ */
+h2, .section-title {
+  color: #00d4ff;
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin: 0 0 24px;
+  padding: 14px 20px 14px 18px;
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 212, 255, 0.02) 100%);
+  border-left: 4px solid var(--accent);
+  border-top: 1px solid rgba(0, 212, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.25);
+  border-radius: 0 16px 16px 0;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  line-height: 1.4;
+  transition: all 0.4s var(--bounce);
+}
+
+h2:hover, .section-title:hover {
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.05) 100%);
+  transform: translateX(4px);
+  box-shadow: 0 4px 24px rgba(0, 212, 255, 0.15);
+}
+
+.section-title .emoji, h2 .emoji { font-size: 1.3rem; line-height: 1; flex-shrink: 0; }
+
+.section-title .num, h2 .num,
+.section-title .num-badge, h2 .num-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  background-size: 200% 200%;
+  color: #0a0e1a;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+  flex-shrink: 0;
+  margin-left: auto;
+  animation: gradientFlow 5s ease infinite;
+}
+
+.section-title a, h2 a { color: inherit; }
+.section-title a:hover { color: #5ee5ff; text-decoration: none; }
+
+/* ============================================================
+   Sections (.section) — with top gradient bar
+   ============================================================ */
+.section {
+  margin: 56px 0;
+  position: relative;
+  padding: 0;
+  scroll-margin-top: 24px;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 50%, var(--accent-green) 100%);
+  border-radius: 999px;
+  opacity: 0.85;
+}
+
+.section:first-of-type { margin-top: 0; }
+.section:first-of-type::before { display: none; }
+.section > h2:first-child, .section > .section-title:first-child { margin-top: 0; }
+
+/* ============================================================
+   H3 Sub-titles — Purple
+   ============================================================ */
+h3 {
+  color: #c4b5fd;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 36px 0 14px;
+  padding: 8px 0 8px 14px;
+  border-left: 3px solid #818cf8;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  transition: all 0.3s var(--bounce);
+}
+
+h3:hover { border-left-width: 5px; padding-left: 16px; color: #d4c5ff; }
+
+h3:first-child { margin-top: 0; }
+h3 a { color: inherit; }
+h3 a:hover { color: #c7d0ff; text-decoration: none; }
+
+/* ============================================================
+   H4 Minor Headings — Amber
+   ============================================================ */
+h4 {
+  color: #fcd34d;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 24px 0 10px;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  border: none;
+  transition: all 0.3s var(--bounce);
+}
+
+h4:hover { transform: translateX(3px); }
+
+h4:first-child { margin-top: 0; }
+h4 a { color: inherit; }
+h4 a:hover { color: #fde68a; text-decoration: none; }
+
+h5 { color: var(--text); font-size: 0.9rem; font-weight: 600; margin: 16px 0 8px; }
+h6 { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; margin: 14px 0 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ============================================================
+   Cards (.card) — Q弹悬停 + 入场动画
+   ============================================================ */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  margin: 16px 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.6s var(--spring) both;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: var(--card-hover);
+  border-color: var(--border-hover);
+  border-left-color: var(--accent);
+  box-shadow: var(--shadow-md), var(--shadow-glow-hover);
+}
+
+.card-title { color: var(--accent); font-size: 1.08rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 0.02em; line-height: 1.4; }
+.card-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.card-content { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+.card-content p { margin-bottom: 8px; }
+
+/* ============================================================
+   Job Cards (.job-card) — Green + Q弹
+   ============================================================ */
+.job-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-green);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  margin: 16px 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.6s var(--spring) both;
+}
+
+.job-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: var(--card-hover);
+  border-color: rgba(34, 211, 160, 0.4);
+  border-left-color: var(--accent-green);
+  box-shadow: var(--shadow-md), 0 0 40px rgba(34, 211, 160, 0.12);
+}
+
+.job-card .job-title { color: var(--accent-green); font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
+.job-card .job-title a { color: inherit; }
+.job-card .job-title a:hover { color: #4ee9b8; text-decoration: none; }
+.job-card .job-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.job-card .job-meta span { display: inline-flex; align-items: center; gap: 4px; }
+.job-card .job-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+
+/* ============================================================
+   News Items (.news-item) — Cyan + Q弹
+   ============================================================ */
+.news-item {
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 12px 0;
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.5s var(--spring) both;
+}
+
+.news-item:hover {
+  transform: translateY(-3px) scale(1.01);
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--border-hover);
+  border-left-color: var(--accent);
+  box-shadow: var(--shadow-sm), var(--shadow-glow-hover);
+}
+
+.news-item .news-title { color: var(--accent); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+.news-item .news-title a { color: inherit; }
+.news-item .news-title a:hover { color: #5ee5ff; text-decoration: none; }
+.news-item .news-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.news-item .news-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+.news-item .badge, .news-item .tag { margin-right: 6px; }
+
+/* ============================================================
+   Stats Grid (.stats-grid / .stat-box)
+   ============================================================ */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0 28px; }
+
+.stat-box {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(20, 28, 48, 0.6) 100%);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px 18px;
+  text-align: center;
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.5s var(--spring) both;
+}
+
+.stat-box:hover { transform: translateY(-5px) scale(1.03); box-shadow: var(--shadow-md), var(--shadow-glow-hover); }
+
+.stat-box .num { display: block; font-size: 1.8rem; font-weight: 800; color: var(--accent); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; text-shadow: 0 0 16px rgba(0, 212, 255, 0.3); }
+.stat-box .label { display: block; font-size: 0.88rem; color: var(--text-dim); font-weight: 500; margin-bottom: 4px; }
+.stat-box .sub { display: block; font-size: 0.78rem; color: var(--text-faint); }
+
+/* ============================================================
+   Tables
+   ============================================================ */
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); -webkit-overflow-scrolling: touch; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; overflow: hidden; }
+th { background: linear-gradient(135deg, rgba(0, 212, 255, 0.20) 0%, rgba(0, 212, 255, 0.08) 100%); color: var(--accent); font-weight: 700; text-align: left; padding: 14px 16px; border-bottom: 2px solid rgba(0, 212, 255, 0.3); letter-spacing: 0.03em; white-space: nowrap; }
+.table-wrapper { overflow-x: auto; margin: 20px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); -webkit-overflow-scrolling: touch; }
+td { padding: 12px 16px; color: var(--text-dim); border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); vertical-align: top; }
+td:last-child { border-right: none; }
+th { border-right: 1px solid rgba(0, 212, 255, 0.15); }
+th:last-child { border-right: none; }
+table tbody tr:nth-child(odd) td { background: rgba(0, 212, 255, 0.04); }
+table tbody tr:nth-child(even) td { background: rgba(0, 212, 255, 0.08); }
+table tbody tr { transition: background 0.3s var(--smooth); }
+table tbody tr:hover td { background: rgba(0, 212, 255, 0.16); color: var(--text); }
+table tbody tr:last-child td { border-bottom: none; }
+.salary-table th { background: linear-gradient(135deg, rgba(34, 211, 160, 0.18) 0%, rgba(34, 211, 160, 0.08) 100%); color: var(--accent-green); border-bottom-color: rgba(34, 211, 160, 0.3); }
+.salary-table td strong { color: var(--accent-green); }
+.summary-table th { background: linear-gradient(135deg, rgba(129, 140, 248, 0.18) 0%, rgba(129, 140, 248, 0.08) 100%); color: #a5b4fc; border-bottom-color: rgba(129, 140, 248, 0.3); }
+.summary-table td:first-child { color: var(--text); font-weight: 500; }
+
+/* ============================================================
+   Salary Grid
+   ============================================================ */
+.salary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+.salary-item { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent-green); border-radius: var(--radius-sm); padding: 14px 16px; transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth); position: relative; backdrop-filter: blur(8px); animation: fadeInUp 0.5s var(--spring) both; }
+.salary-item:hover { transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-md), 0 0 32px rgba(34, 211, 160, 0.12); border-color: rgba(34, 211, 160, 0.4); border-left-color: var(--accent-green); }
+.salary-item .level { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 6px; letter-spacing: 0.02em; }
+.salary-item .amount { font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 700; color: var(--accent-green); margin-bottom: 4px; line-height: 1.3; }
+.salary-item .note { font-size: 0.78rem; color: var(--text-faint); line-height: 1.4; }
+@media (max-width: 600px) { .salary-grid { grid-template-columns: 1fr; } .salary-item { padding: 12px 14px; } .salary-item .amount { font-size: 1.05rem; } }
+
+/* ============================================================
+   Badges
+   ============================================================ */
+.badge { display: inline-block; padding: 3px 10px; font-size: 0.78rem; font-weight: 600; border-radius: 999px; background: rgba(0, 212, 255, 0.12); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.3); letter-spacing: 0.03em; line-height: 1.5; vertical-align: middle; margin-right: 4px; transition: all 0.3s var(--bounce); }
+.badge:hover { transform: scale(1.08); }
+.badge.hot, .badge-hot { background: linear-gradient(135deg, rgba(248, 113, 113, 0.2), rgba(251, 146, 60, 0.2)); color: #fca5a5; border-color: rgba(248, 113, 113, 0.5); }
+.badge.new, .badge-new { background: rgba(34, 211, 160, 0.18); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.45); }
+.badge.warn, .badge-warn { background: rgba(251, 191, 36, 0.16); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-high { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+.badge-mid { background: rgba(251, 146, 60, 0.14); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.4); }
+.badge-low { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+.badge-purple { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.4); }
+
+/* ============================================================
+   Tags
+   ============================================================ */
+.tag { display: inline-block; padding: 3px 10px; font-size: 0.78rem; font-weight: 500; border-radius: 999px; background: rgba(168, 184, 208, 0.1); color: var(--text-dim); border: 1px solid var(--border); margin: 0 4px 4px 0; letter-spacing: 0.02em; line-height: 1.5; vertical-align: middle; transition: all 0.3s var(--bounce); }
+.tag:hover { transform: scale(1.06); }
+.tag.green, .tag-green { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag.purple, .tag-purple { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.3); }
+.tag.orange, .tag-orange { background: rgba(251, 146, 60, 0.14); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.3); }
+.tag.red, .tag-red { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag.pink, .tag-pink { background: rgba(248, 113, 113, 0.12); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag.teal, .tag-teal { background: rgba(20, 184, 166, 0.12); color: var(--accent-teal); border-color: rgba(20, 184, 166, 0.3); }
+.tag.amber, .tag-amber { background: rgba(251, 191, 36, 0.12); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag.accent, .tag-accent { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+.tag-byd { background: rgba(0, 153, 204, 0.18); color: #4dabf5; border-color: rgba(0, 153, 204, 0.35); }
+.tag-chery { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-geely { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.3); }
+.tag-faw { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-vw { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-tesla { background: rgba(248, 113, 113, 0.18); color: #fca5a5; border-color: rgba(248, 113, 113, 0.4); }
+.tag-other { background: rgba(168, 184, 208, 0.12); color: var(--text-dim); border-color: var(--border); }
+
+/* ============================================================
+   Pills
+   ============================================================ */
+.pill { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; font-size: 0.8rem; font-weight: 500; border-radius: 999px; background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.25); margin: 0 6px 6px 0; letter-spacing: 0.02em; line-height: 1.5; vertical-align: middle; transition: all 0.3s var(--bounce); }
+.pill:hover { transform: scale(1.05); }
+.pill-green { background: rgba(34, 211, 160, 0.1); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.25); }
+.pill-purple { background: rgba(129, 140, 248, 0.1); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.25); }
+.pill-orange { background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.25); }
+.pill-pink { background: rgba(248, 113, 113, 0.1); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.25); }
+.pill-amber { background: rgba(251, 191, 36, 0.1); color: #fbbf24; border-color: rgba(251, 191, 36, 0.25); }
+.pill-teal { background: rgba(20, 184, 166, 0.1); color: var(--accent-teal); border-color: rgba(20, 184, 166, 0.25); }
+.pill-gray { background: rgba(168, 184, 208, 0.1); color: var(--text-dim); border-color: var(--border); }
+.pill-location { background: rgba(0, 212, 255, 0.1); color: var(--accent); border-color: rgba(0, 212, 255, 0.25); }
+.pill-salary { background: rgba(34, 211, 160, 0.1); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.25); }
+.pill-edu { background: rgba(129, 140, 248, 0.1); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.25); }
+.pill-type { background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.25); }
+
+/* ============================================================
+   Source Links
+   ============================================================ */
+.source-link { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; font-size: 0.8rem; font-weight: 500; border-radius: 999px; background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.3); margin: 4px 0; transition: all 0.4s var(--bounce); letter-spacing: 0.02em; }
+.source-link:hover { background: var(--accent); color: #0a0e1a; border-color: var(--accent); text-decoration: none; box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); transform: scale(1.05); }
+.source-link::before { content: '🔗'; font-size: 0.85em; }
+
+/* ============================================================
+   Discussion Items — Orange + Q弹
+   ============================================================ */
+.discussion { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent-orange); border-radius: var(--radius-sm); padding: 16px 20px; margin: 14px 0; transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth); backdrop-filter: blur(8px); animation: fadeInUp 0.5s var(--spring) both; }
+.discussion:hover { transform: translateY(-3px) scale(1.01); background: var(--card-hover); border-color: rgba(251, 146, 60, 0.4); border-left-color: var(--accent-orange); box-shadow: var(--shadow-md), 0 0 36px rgba(251, 146, 60, 0.1); }
+.discussion .discussion-title { color: var(--accent-orange); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+.discussion .discussion-title a { color: inherit; }
+.discussion .discussion-title a:hover { color: #fdba74; text-decoration: none; }
+.discussion .discussion-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.discussion-item { background: rgba(251, 146, 60, 0.05); border: 1px solid var(--border); border-left: 3px solid var(--accent-orange); border-radius: var(--radius-sm); padding: 12px 16px; margin: 10px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; }
+.discussion-item .discussion-author { color: var(--accent-orange); font-weight: 600; }
+.discussion-item .discussion-time { color: var(--text-faint); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
+
+/* ============================================================
+   Tip/Warning/Highlight/Info/Note Boxes
+   ============================================================ */
+.tip-box { background: rgba(34, 211, 160, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-green); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.tip-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(34, 211, 160, 0.1); }
+.tip-box .tip-title, .tip-box h4 { color: var(--accent-green); font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.tip-box .tip-title::before { content: '💡'; }
+.tip-box p:last-child { margin-bottom: 0; }
+.tip-box ul { margin: 8px 0 0; }
+.tip-box li { margin-bottom: 4px; }
+
+.warning-box { background: rgba(248, 113, 113, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-pink); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.warning-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(248, 113, 113, 0.1); }
+.warning-box .warning-title { color: var(--accent-pink); font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.warning-box .warning-title::before { content: '⚠️'; }
+.warning-box p:last-child { margin-bottom: 0; }
+
+.highlight-box { background: rgba(129, 140, 248, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-purple); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.highlight-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(129, 140, 248, 0.1); }
+.highlight-box .highlight-title { color: #a5b4fc; font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.highlight-box .highlight-title::before { content: '✨'; }
+.highlight-box p:last-child { margin-bottom: 0; }
+
+.info-box { background: rgba(129, 140, 248, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-purple); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.info-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(129, 140, 248, 0.1); }
+.info-box .info-title { color: #a5b4fc; font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.info-box .info-title::before { content: 'ℹ️'; }
+.info-box p:last-child { margin-bottom: 0; }
+
+.note-box { background: rgba(0, 212, 255, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.note-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1); }
+.note-box .note-title { color: var(--accent); font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; }
+
+.progress-bar { width: 100%; height: 10px; background: rgba(0, 212, 255, 0.08); border-radius: 999px; overflow: hidden; margin: 8px 0; border: 1px solid var(--border); }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-purple)); border-radius: 999px; transition: width 0.5s var(--smooth); }
+.progress-fill.green { background: linear-gradient(90deg, var(--accent-green), var(--accent-teal)); }
+.progress-fill.orange { background: linear-gradient(90deg, var(--accent-orange), var(--accent-warm)); }
+.progress-fill.pink { background: linear-gradient(90deg, var(--accent-pink), var(--accent-orange)); }
+.progress-fill.purple { background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink)); }
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-accent { color: var(--accent); }
+.text-green { color: var(--accent-green); }
+.text-purple { color: #a5b4fc; }
+.text-orange { color: var(--accent-orange); }
+.text-pink { color: var(--accent-pink); }
+.text-amber { color: #fbbf24; }
+.text-teal { color: var(--accent-teal); }
+.text-dim { color: var(--text-dim); }
+.text-faint { color: var(--text-faint); }
+.text-white { color: #ffffff; }
+.text-sm { font-size: 0.85rem; }
+.text-lg { font-size: 1.1rem; }
+.text-xl { font-size: 1.3rem; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.mt-0 { margin-top: 0; } .mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 24px; }
+.mb-0 { margin-bottom: 0; } .mb-1 { margin-bottom: 8px; } .mb-2 { margin-bottom: 16px; } .mb-3 { margin-bottom: 24px; }
+.flex { display: flex; } .flex-wrap { flex-wrap: wrap; } .flex-center { display: flex; align-items: center; justify-content: center; }
+.gap-1 { gap: 8px; } .gap-2 { gap: 16px; }
+.hidden { display: none !important; } .block { display: block; } .inline-block { display: inline-block; }
+.divider { height: 1px; background: var(--border); margin: 24px 0; border: none; }
+.muted { color: var(--text-faint); }
+
+/* ============================================================
+   hr, blockquote, code, pre
+   ============================================================ */
+hr { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 32px 0; }
+blockquote { margin: 16px 0; padding: 12px 18px; background: rgba(0, 212, 255, 0.05); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--text-dim); font-style: italic; }
+blockquote p { margin-bottom: 0; }
+blockquote footer, blockquote cite { display: block; margin-top: 8px; font-size: 0.85rem; color: var(--text-faint); font-style: normal; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 0.88em; background: rgba(0, 212, 255, 0.1); color: var(--accent); padding: 2px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.15); }
+pre { background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; overflow-x: auto; margin: 16px 0; box-shadow: var(--shadow-sm); }
+pre code { background: transparent; color: var(--text-dim); padding: 0; border: none; font-size: 0.88em; line-height: 1.6; }
+
+/* ============================================================
+   Giscus / Comments
+   ============================================================ */
+.comments-section { margin: 56px 0 32px; padding: 28px 24px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); position: relative; backdrop-filter: blur(10px); }
+.comments-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent-purple), var(--accent), var(--accent-green)); background-size: 200% 100%; border-radius: var(--radius) var(--radius) 0 0; animation: gradientFlow 6s ease infinite; }
+.comments-title { color: #a5b4fc; font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
+.comments-desc { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 16px; }
+.giscus { margin-top: 16px; }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+footer, .footer { margin-top: 56px; padding: 28px 24px; text-align: center; color: var(--text-faint); font-size: 0.85rem; border-top: 1px solid var(--border); letter-spacing: 0.02em; }
+footer p, .footer p { margin-bottom: 8px; }
+footer a, .footer a { color: var(--text-dim); }
+footer a:hover, .footer a:hover { color: var(--accent); }
+.footer-meta { margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-faint); }
+
+/* ============================================================
+   Scroll-to-top button — Q弹
+   ============================================================ */
+.scroll-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: var(--card-solid); border: 1px solid var(--border-hover); border-radius: 50%; color: var(--accent); font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.3s var(--smooth), transform 0.4s var(--bounce), background 0.3s var(--smooth); backdrop-filter: blur(10px); }
+.scroll-top.visible { opacity: 1; pointer-events: auto; }
+.scroll-top:hover { background: var(--accent); color: #0a0e1a; transform: translateY(-4px) scale(1.1); box-shadow: 0 4px 24px rgba(0, 212, 255, 0.4); }
+.scroll-top:active { transform: translateY(-2px) scale(0.95); }
+
+/* ============================================================
+   Entrance Animations
+   ============================================================ */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 768px) { .nav-links { flex-direction: column; align-items: flex-start; } .stats-grid { grid-template-columns: 1fr 1fr; } }
+
+@media (max-width: 600px) {
+  body { font-size: 14px; line-height: 1.75; }
+  .container { padding: 24px 16px 60px; }
+  .header, .report-header { padding: 28px 20px; margin-bottom: 32px; border-radius: 20px; }
+  .header h1, .report-header h1 { font-size: 1.5rem; }
+  .header .subtitle, .report-header .subtitle { font-size: 0.9rem; }
+  h2, .section-title { font-size: 1.2rem; padding: 10px 14px 10px 12px; }
+  h3 { font-size: 1rem; }
+  h4 { font-size: 0.9rem; }
+  .section { margin: 40px 0; }
+  .card, .job-card, .news-item, .discussion, .tip-box, .warning-box, .highlight-box, .info-box, .note-box { padding: 14px 16px; border-radius: 14px; }
+  .card:hover, .job-card:hover, .news-item:hover, .discussion:hover { transform: none; }
+  th, td { padding: 9px 10px; font-size: 0.82rem; }
+  .nav-links { padding: 10px 12px; border-radius: 14px; }
+  .nav-links a { font-size: 0.8rem; padding: 5px 10px; }
+  .comments-section { padding: 20px 16px; border-radius: 20px; }
+  footer, .footer { padding: 20px 16px; }
+  .report-header .meta { gap: 10px; font-size: 0.8rem; }
+  .badge, .tag, .pill { font-size: 0.72rem; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-box .num { font-size: 1.5rem; }
+  .scroll-top { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+}
+
+/* ============================================================
+   Icons
+   ============================================================ */
+.icon { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 10px; font-size: 1.1rem; flex-shrink: 0; line-height: 1; }
+.icon-blue, .icon.icon-blue { background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.3); }
+.icon-green, .icon.icon-green { background: rgba(34, 211, 160, 0.15); border: 1px solid rgba(34, 211, 160, 0.3); }
+.icon-orange, .icon.icon-orange { background: rgba(251, 146, 60, 0.15); border: 1px solid rgba(251, 146, 60, 0.3); }
+.icon-purple, .icon.icon-purple { background: rgba(129, 140, 248, 0.15); border: 1px solid rgba(129, 140, 248, 0.3); }
+.icon-teal, .icon.icon-teal { background: rgba(20, 184, 166, 0.15); border: 1px solid rgba(20, 184, 166, 0.3); }
+.icon-pink, .icon.icon-pink { background: rgba(248, 113, 113, 0.15); border: 1px solid rgba(248, 113, 113, 0.3); }
+.icon-amber, .icon.icon-amber { background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.3); }
+.emoji { display: inline-block; font-size: 1.2rem; line-height: 1; vertical-align: middle; }
+
+/* ============================================================
+   Priority / Status indicators
+   ============================================================ */
+.priority-high, .priority-hot { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+.priority-mid, .priority-medium { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(251, 146, 60, 0.15); color: var(--accent-orange); border: 1px solid rgba(251, 146, 60, 0.3); }
+.priority-low, .priority-normal { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+
+.match-score { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+.match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+
+/* ============================================================
+   Grid layouts
+   ============================================================ */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 16px 0; }
+.card-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 16px 0; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+
+/* ============================================================
+   Flexbox helpers
+   ============================================================ */
+.flex-row { display: flex; flex-direction: row; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; align-items: flex-start; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 6px; } .gap-md { gap: 12px; } .gap-lg { gap: 20px; }
+.w-full { width: 100%; } .w-auto { width: auto; }
+
+/* ============================================================
+   Text size helpers
+   ============================================================ */
+.fs-xs { font-size: 0.75rem; } .fs-sm { font-size: 0.85rem; } .fs-md { font-size: 0.93rem; }
+.fs-lg { font-size: 1.1rem; } .fs-xl { font-size: 1.3rem; } .fs-2xl { font-size: 1.6rem; }
+
+/* ============================================================
+   Color helpers
+   ============================================================ */
+.text-success { color: var(--accent-green) !important; }
+.text-warning { color: #fbbf24 !important; }
+.text-danger { color: var(--accent-pink) !important; }
+.text-info { color: var(--accent) !important; }
+.text-muted { color: var(--text-faint) !important; }
+.text-dimmer { color: var(--text-dim) !important; }
+.text-bright { color: var(--text) !important; }
+.text-accent-green { color: var(--accent-green) !important; }
+.text-accent-orange { color: var(--accent-orange) !important; }
+.text-accent-purple { color: #a5b4fc !important; }
+.text-accent-pink { color: var(--accent-pink) !important; }
+.text-accent-teal { color: var(--accent-teal) !important; }
+
+/* ============================================================
+   Margin/Padding helpers
+   ============================================================ */
+.mt-4 { margin-top: 32px; } .mt-5 { margin-top: 40px; } .mt-6 { margin-top: 48px; }
+.mb-4 { margin-bottom: 32px; } .mb-5 { margin-bottom: 40px; } .mb-6 { margin-bottom: 48px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.p-0 { padding: 0; } .p-2 { padding: 16px; } .p-3 { padding: 24px; }
+.py-2 { padding-top: 16px; padding-bottom: 16px; }
+.px-2 { padding-left: 16px; padding-right: 16px; }
+
+/* ============================================================
+   Misc component styles
+   ============================================================ */
+.timeline-item { position: relative; padding-left: 24px; margin: 12px 0; }
+.timeline-item::before { content: ''; position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(0, 212, 255, 0.4); transition: transform 0.3s var(--bounce); }
+.timeline-item:hover::before { transform: scale(1.3); }
+.timeline-item::after { content: ''; position: absolute; left: 4px; top: 20px; bottom: -12px; width: 2px; background: var(--border); }
+.timeline-item:last-child::after { display: none; }
+
+.count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 8px; background: linear-gradient(135deg, var(--accent), var(--accent-purple)); color: #0a0e1a; font-size: 0.78rem; font-weight: 700; border-radius: 999px; font-family: 'JetBrains Mono', monospace; }
+
+mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent); padding: 1px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.2); }
+
+.emoji-list { list-style: none; padding-left: 0; }
+.emoji-list li { padding-left: 28px; position: relative; margin-bottom: 8px; }
+
+.separator { height: 2px; background: linear-gradient(90deg, transparent, var(--border-hover), transparent); margin: 32px 0; border: none; }
+
+.badge-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+
+.tag-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+
+@media print {
+  body { background: #ffffff; color: #000000; font-size: 12px; line-height: 1.6; }
+  body::before, body::after { display: none !important; }
+  .container { max-width: 100%; padding: 0; }
+  .header, .report-header { background: #f5f7fa; border: 1px solid #cccccc; box-shadow: none; break-inside: avoid; }
+  .header::before, .report-header::before { background: #006699; }
+  .header h1, .report-header h1 { color: #000000; text-shadow: none; }
+  .header .subtitle, .report-header .subtitle, .header .meta, .report-header .meta { color: #333333; }
+  .header .date, .report-header .date, .header .date-badge, .report-header .date-badge { background: #e0eef5; border-color: #006699; color: #006699; }
+  h2, .section-title { color: #006699; background: #e8f4fa; border-left-color: #006699; }
+  h3 { color: #4444aa; border-left-color: #6666cc; }
+  h4 { color: #aa6600; }
+  .section { margin: 24px 0; break-inside: avoid; }
+  .section::before { background: #006699; }
+  .card, .job-card, .news-item, .discussion, .tip-box, .warning-box, .highlight-box, .info-box, .note-box { background: #f9f9f9; border: 1px solid #cccccc; box-shadow: none; break-inside: avoid; }
+  .card:hover, .job-card:hover, .news-item:hover, .discussion:hover { transform: none; box-shadow: none; }
+  p, li, td, .card-content, .job-desc, .news-desc { color: #222222; }
+  a { color: #006699; text-decoration: underline; }
+  .source-link { background: #e0eef5; color: #006699; border-color: #006699; }
+  th { background: #e0eef5; color: #006699; border-bottom: 2px solid #006699; }
+  table tbody tr:nth-child(odd) td, table tbody tr:nth-child(even) td { background: #ffffff; }
+  table tbody tr:hover td { background: #f0f0f0; }
+  .back-link, .nav-links, .nav-toc, .comments-section, footer, .footer, .scroll-top { display: none; }
+  pre { background: #f5f5f5; border-color: #cccccc; }
+  pre code, code { color: #333333; background: #eeeeee; }
+}
+
+</style>
+<style>
+/* custom overrides (preserved by replace_css.py - only first style block is replaced) */
+.nav-toc { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px 24px; margin: 24px 0 32px; backdrop-filter: blur(8px); }
+.nav-toc .toc-title { font-size: 1rem; font-weight: 700; color: var(--accent-purple); margin-bottom: 10px; }
+.nav-toc ol { margin: 0; padding-left: 20px; }
+.nav-toc ol li { margin-bottom: 6px; }
+.nav-toc ol li a { color: var(--text-dim); font-size: 0.9rem; transition: color 0.3s var(--smooth); }
+.nav-toc ol li a:hover { color: var(--accent); }
+.table-wrap { overflow-x: auto; margin: 16px 0; border-radius: var(--radius-sm); }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.summary-table th { background: rgba(0, 212, 255, 0.08); color: var(--accent); padding: 12px 14px; text-align: left; font-weight: 600; border-bottom: 2px solid rgba(0, 212, 255, 0.2); white-space: nowrap; }
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dim); vertical-align: middle; }
+.summary-table tr:hover td { background: rgba(0, 212, 255, 0.03); }
+.summary-table td a { font-size: 0.82rem; }
+.scroll-top { position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px; border-radius: 50%; background: var(--card-solid); border: 1px solid var(--border-hover); color: var(--accent); font-size: 1.2rem; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.4s var(--bounce); z-index: 100; backdrop-filter: blur(8px); }
+.scroll-top.visible { opacity: 1; visibility: visible; }
+.scroll-top:hover { transform: translateY(-4px) scale(1.1); box-shadow: var(--shadow-glow-hover); }
+.badge { display: inline-block; padding: 2px 10px; font-size: 0.75rem; font-weight: 600; border-radius: 999px; margin: 0 4px 4px 0; letter-spacing: 0.02em; }
+.badge.new { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.footer { margin-top: 48px; padding: 28px 0; text-align: center; border-top: 1px solid var(--border); }
+.footer p { font-size: 0.85rem; color: var(--text-faint); margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<div class="report-header">
+  <h1>🚁 无人机科研日报</h1>
+  <p class="subtitle">arXiv无人机论文热点 · 自动驾驶前沿 · IEEE期刊动态 · 全网技术讨论</p>
+  <div class="date-badge">📅 2026-09-18 星期五</div>
+  <div class="meta">
+    <span>📂 arXiv cs.RO / cs.SY / cs.CV / cs.LG</span>
+    <span>🔄 每日自动更新</span>
+    <span>📡 覆盖7大方向</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <a href="https://ts-dinglilu.github.io/drone-research/" class="back-link">← 返回无人机科研日报汇总</a>
+  <a href="https://ts-dinglilu.github.io/" class="back-link" style="margin-left: 8px;">🏠 返回主页</a>
+
+  
+
+
+
+
+
+
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-09-18</h1>
+  <div class="subtitle">arXiv 最新论文精选 · 四旋翼飞控 / 强化学习 / MPC / 自主导航 / 多智能体 · 面向飞控仿真方向研究生</div>
+  <div class="meta">
+    <span class="date-badge">2026-09-18 星期五</span>
+    <span class="text-muted">读者画像：机械工程硕士（四旋翼飞控仿真），坐标徐州、就读安徽工业大学（马鞍山），研究方向 MATLAB/Simulink + Python 强化学习，求职车企 / 机械 / 科研院所</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">编者按 · 本期导读</div>
+  <p>本期无人机科研日报聚焦 <strong>2026 年 9 月 18 日（周五）</strong> arXiv 在 <strong>cs.RO</strong> 与 <strong>cs.LG</strong> 板块集中发布的真实新论文（论文编号均为 <strong>2609.20xxx</strong> 段，与 09-17 期 32 篇 2609.17-19xxx 段零重复）。九月第三周正值 2027 届秋招启动与科研选题叠加期，我们刻意以「四旋翼飞控 / 仿真 / 强化学习 / MPC」为主线筛选，剔除与读者研究方向关联弱的纯机械臂、软体机器人条目。</p>
+  <p>三个最值得今天重点关注的信号：其一，<strong>微型无人机自主回收</strong>用 PPO 在 MuJoCo 物理仿真里训练、再零样本迁移到真机，成功率 99.55%，是「仿真到现实」飞控范式的范本；其二，<strong>PX4 固件级扩展</strong>开始覆盖空-海混合平台，说明开源飞控栈仍是飞控研究的最佳试验田；其三，<strong>强化学习 + MPC 融合</strong>在自动驾驶与无人机上的论文持续走高，与读者用 Python 强化学习做四旋翼控制的主线高度契合。下文按「飞控新进展 → 强化学习落地 → MPC 与规划 → 导航感知 → 多智能体 → 仿真与安全」六个板块展开，最后给出 Top5 必读与选题建议。</p>
+  <div class="highlight-box">
+    <div class="highlight-title">💡 今日阅读策略</div>
+    <p>优先读板块一与板块二（最贴合四旋翼飞控 + 强化学习），板块三的 MPC 与读者 Simulink 控制仿真互补，板块四的 SLAM/状态估计可直接迁移到无人机定位。每篇均附 arXiv 原文链接，建议先扫标题与摘要，再挑 2–3 篇精读方法章节。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块一 · 四旋翼与无人机飞控新进展（PX4 / 微型无人机回收 / 母子无人机协同）</div>
+
+  <div class="card">
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-accent">四旋翼/飞控</span>
+        <span class="badge hot">PX4 固件</span>
+        <span>cs.RO · 2026-09-17</span>
+      </div>
+      <h3>Custom PX4 firmware for autonomous hybrid aerial-marine missions</h3>
+      <p>作者 Andrea Capuozzo、Fabio Ruggiero、Vincenzo Lippiello。论文给出一套 <strong>PX4 固件扩展</strong>，让同一架「空-水两用无人机」在一次任务里同时执行飞行与水面航行：在标准 PX4 任务管线与 QGroundControl 界面之上，新增手动与自主两种「水面航行模式」，并支持区分空中航点与水面航点的统一规划执行。仿真案例验证了其能在静水与有浪条件下稳定水面航行，且保留原有飞行功能与安全机制。</p>
+      <p><strong>与读者研究的关系：</strong>读者在 Simulink 里搭的四旋翼动力学与控制器，本质上和 PX4 的「底层稳定 + 上层任务调度」分层架构同源。这篇是「如何把自定义任务模式干净地挂进真实飞控栈」的活教材，尤其适合借鉴其<strong>混合模态状态机</strong>设计——这正是四旋翼在切换悬停/轨迹跟踪/着陆时的痛点。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20691" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-purple">强化学习</span>
+        <span class="badge new">PPO + MuJoCo</span>
+        <span>cs.RO · 2026-09-17</span>
+      </div>
+      <h3>RTK-Vision PPO for Autonomous Micro UAV Recovery on an Airborne Carrier</h3>
+      <p>作者 Aashish Sahu、R Prasanth Kumar。这是本期与读者方向<strong>最贴合</strong>的一篇：子无人机被母机空中运输、空中起飞、独立执行任务、再返回母机当前位置并完成 redocking 下降。近回收阶段用一台朝下的相机 + fiducial 标记提供相对位姿，训练一个 <strong>PPO 策略</strong>掌管末端回收；训练在 <strong>MuJoCo 物理仿真</strong>里完成，显式建模传感器噪声、气动扰动代理与标记延迟随机化，再迁移到硬件。PX4 保留底层稳定，一个确定性安全门独立授权下降。</p>
+      <p><strong>结果相当硬核：</strong>PPO 检查点在 2000 个留出随机末端场景上成功率 <strong>99.55%</strong>，对照调好的 PD 基线仅 78.4%，中位平面末端误差 <strong>6.62 厘米</strong>；14 次户外试验中 13 次全任务成功（92.9%）。对读者而言，这是「<strong>Python 强化学习 + 物理仿真 + 真机迁移</strong>」完整闭环的标杆案例，其噪声/扰动随机化与「学习型策略 + 确定性安全门」的兜底思路，可直接套到四旋翼自主着陆研究。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20629" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-green">制导控制</span>
+        <span class="badge-info">UAV-UGV 协同</span>
+        <span>cs.RO · 2026-09-18</span>
+      </div>
+      <h3>Integrated Guidance and Control of a Mother-Child UAV-UGV System for Cooperative Missions</h3>
+      <p>作者 Aashish Sahu、R. Prasanth Kumar。提出母子无人机-无人车系统的<strong>一体化制导与控制（IGC）</strong>框架，把传统「先规划轨迹、再设计跟踪控制器」的两级结构合并为单一优化问题，减少级联误差。系统在协同侦察/投递等任务中验证。</p>
+      <p><strong>与读者研究的关系：</strong>IGC 思路对四旋翼很有启发——读者在 Simulink 里若能把轨迹优化与控制分配放在同一层求解，可显著提升机动轨迹的跟踪精度。论文把非线性制导与动力学耦合进一个控制器，是「端到端控制」在无人机上的务实版本，比纯端到端神经网络更可控、更适合工程落地。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20540" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块二 · 强化学习在控制与自动驾驶中的落地（sim-to-real / 端到端 / RL 理论）</div>
+
+  <div class="card">
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-purple">强化学习</span>
+        <span class="badge hot">Sim-to-Real</span>
+        <span>cs.RO/cs.LG · 2026-09-17</span>
+      </div>
+      <h3>MILER: Semantic Mid-Level Representation for Sim-to-Real Reinforcement Learning in Unstructured Autonomous Driving</h3>
+      <p>作者 Thomas Steinecker 等。提出 MILER：一个<strong>零样本仿真到现实迁移</strong>的端到端策略框架。离线训练时用一个自定义的「语义中层表征（MLR）」仿真器，以强化学习训练策略，控制输出直接作用于自行车模型；实车上用 BEVFusion 把相机与 LiDAR 处理成与仿真一致的鸟瞰语义表征，再用<strong>轨迹对齐策略</strong>实现感知与控制的零样本迁移。整套软件栈跑在 Jetson AGX Orin 上，在 3.0 公里测试赛道累计实车行驶 <strong>17.3 公里</strong>、最高时速 33.6 km/h、无人工干预。</p>
+      <p><strong>与读者研究的关系：</strong>「用中层语义表征打通仿真与现实域差」是飞控领域同样头疼的问题。读者用 Simulink 做四旋翼仿真、用 Python 强化学习做策略，最难的正是真机风扰与仿真不一致；MILER 的「仿真训练 + 真机对齐而非直接执行」值得借鉴，尤其是把策略输出当作<strong>轨迹级指令</strong>而非直接力矩，可大幅降低 sim-to-real 风险。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20747" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-purple">强化学习</span>
+        <span class="badge new">端到端驾驶</span>
+        <span>cs.RO · 2026-09-18</span>
+      </div>
+      <h3>OPTED: On-Policy Fine-Tuning for End-to-End Driving using a Render-Free Teacher</h3>
+      <p>作者 Damiano Da Col 等（含 Marco Pavone、Christos Sakaridis）。提出 OPTED：用一个<strong>无需渲染的「教师」模型</strong>对端到端自动驾驶策略做在线策略微调，绕开昂贵的仿真渲染，显著提升训练效率与策略质量。属于 on-policy 微调范式，强调在真实分布上持续校正策略。</p>
+      <p><strong>与读者研究的关系：</strong>读者做强化学习时若受困于「仿真渲染慢、样本效率低」，这篇的 render-free teacher 思路（用解析/轻量教师提供监督而非逐帧渲染）可直接迁移到四旋翼——用解析动力学作教师、RL 学生在线微调，能省下大量 GPU 仿真时间。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20756" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-purple">强化学习</span>
+        <span class="badge-info">RL 理论</span>
+        <span>cs.LG · 2026-09-18</span>
+      </div>
+      <h3>Score Centering Stabilizes Off-policy Reinforcement Learning</h3>
+      <p>作者 Martin Marek、Max Ryabinin。指出离屏（off-policy）强化学习中常见的训练不稳定，源于价值/分数估计的偏移，提出<strong>分数中心化（Score Centering）</strong>这一轻量技巧即可显著稳定训练。方法无需改动网络结构，是偏「工程可复现」的稳健性改进。</p>
+      <p><strong>与读者研究的关系：</strong>读者若用 SAC/DDPG 等 off-policy 算法训四旋翼控制器，常遇到回报尺度不稳、Q 值爆炸。这篇的中心化 trick 几乎零成本可加进现有训练 loop，建议作为 baseline 对照实验的必备改动。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20807" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-purple">强化学习</span>
+        <span class="badge-info">离线 RL</span>
+        <span>cs.LG · 2026-09-18</span>
+      </div>
+      <h3>Improving Generalization and Robustness in Offline Reinforcement Learning via Boundary-Aware Data Augmentation</h3>
+      <p>作者 Gong Gao 等。针对离线强化学习（只能用固定数据集训练、不能在线交互）的泛化与鲁棒性短板，提出<strong>边界感知的数据增强</strong>，在状态-动作分布的边界区域做针对性增广，缓解分布外动作的外推误差。</p>
+      <p><strong>与读者研究的关系：</strong>飞控很难在真机上大量试错，离线 RL 正适合「用仿真采集的数据集训策略、不在线冒险」。这篇的边界感知增广能帮助读者在安全包络附近获得更稳的策略，避免四旋翼飞出训练分布后失稳。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20300" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-purple">强化学习</span>
+        <span class="badge-info">在线 RL</span>
+        <span>cs.LG · 2026-09-18</span>
+      </div>
+      <h3>Improving Online Reinforcement Learning via Bidirectional Behavior Prior Distillation</h3>
+      <p>作者 Gong Gao 等。提出<strong>双向行为先验蒸馏</strong>，把已有策略/专家的行为先验以双向方式注入在线 RL，既利用先验加速探索，又不被先验锁死，兼顾样本效率与最终性能。</p>
+      <p><strong>与读者研究的关系：</strong>读者手头已有 PID/LQR 等经典控制器，这篇提供了「把传统控制器当行为先验、RL 在其附近高效探索」的规范路径，比从零随机探索的四旋翼训练快得多，也更易被导师/企业认可为「可控的 RL」。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20268" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块三 · 模型预测控制与运动规划（MPC / 采样 MPC / 安全避障）</div>
+
+  <div class="card">
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-green">MPC</span>
+        <span class="badge-info">模型融合预测控制</span>
+        <span>cs.RO · 2026-09-18</span>
+      </div>
+      <h3>Underwater Visual Target Tracking with Target-Specific Depth Estimation and Adaptive Model-Fusion Predictive Control</h3>
+      <p>作者 Yuheng Zhou 等。把<strong>自适应模型融合预测控制（Model-Fusion Predictive Control）</strong>用于水下视觉目标跟踪：融合多个动力学/观测模型以应对单一模型失配，配合目标专属深度估计提升跟踪鲁棒性。</p>
+      <p><strong>与读者研究的关系：</strong>「多模型融合 + MPC」是解决四旋翼在阵风/载荷变化下模型失配的成熟思路。读者在 Simulink 里若只放一个标称模型做 MPC，遇到扰动会偏保守；这篇的自适应模型融合值得在飞控 MPC 的扰动补偿模块里复现。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20731" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-green">MPC</span>
+        <span class="badge new">采样 MPC + 视觉策略</span>
+        <span>cs.RO · 2026-09-18</span>
+      </div>
+      <h3>Accelerating Visual Policy Learning with Sampling-Based Model Predictive Control</h3>
+      <p>作者 Yilang Liu 等。用<strong>基于采样的模型预测控制</strong>为视觉策略学习提供高效引导：MPC 在较短视野内给出高质量动作序列，作为 RL/模仿学习的指导信号，加速策略收敛并提升最终性能。</p>
+      <p><strong>与读者研究的关系：</strong>这正是「MPC 与强化学习分工协作」的典范——MPC 负责短期可靠滚动优化，RL 负责长期策略。读者可把 Simulink/MATLAB 里写好的四旋翼 MPC 控制器当作采样引导器，去加速 Python 端 RL 策略的训练，两者天然互补。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20575" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-green">运动规划</span>
+        <span class="badge-warn">安全避障</span>
+        <span>cs.RO · 2026-09-18</span>
+      </div>
+      <h3>Time-Efficient Iterative Learning Planning for Safety-Critical Dynamic Obstacle Avoidance</h3>
+      <p>作者 Zhiyi Chen 等。面向安全攸关的动态障碍规避，提出<strong>时间高效的迭代学习规划</strong>，在多次任务间累积避障经验、不断压缩规划耗时，同时保证安全边界。适用于无人机在密集动态环境中的快速重规划。</p>
+      <p><strong>与读者研究的关系：</strong>四旋翼在城市/室内环境自主飞行避障，核心是「快」与「稳」的矛盾。迭代学习让规划器越飞越聪明，与读者用强化学习做的自适应避障形成对照——可考虑把迭代学习作为 RL 策略的冷启动预热。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20435" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块四 · 自主导航、感知与状态估计（机载 VLN / SLAM 融合 / 导航 Agent）</div>
+
+  <div class="card">
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-accent">无人机导航</span>
+        <span class="badge new">机载视觉语言</span>
+        <span>cs.RO · 2026-09-18</span>
+      </div>
+      <h3>VLN on the Fly: An Onboard Vision-Language Navigation Stack for Aerial Robots</h3>
+      <p>作者 Marco S. Tayar 等。给出一套<strong>部署在机载端的视觉-语言导航（VLN）栈</strong>，让 aerial robot 能理解自然语言指令并在真实环境里自主导航，推理尽量在机载算力上完成，减少对地面站的依赖。</p>
+      <p><strong>与读者研究的关系：</strong>「自然语言指令 → 无人机自主飞抵目标」是具身智能与飞控的交叉热点。读者若想把四旋翼从「轨迹跟踪」升级到「语义指令飞行」，这篇的机载 VLN 栈架构（感知-语言-规划分层）是最好的参考蓝本，也契合车企智驾「语言化交互」的趋势。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20191" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-accent">状态估计</span>
+        <span class="badge-info">紧耦合 SLAM</span>
+        <span>cs.RO · 2026-09-18</span>
+      </div>
+      <h3>Implementation of Tightly-Coupled SLAM Fusion of GPS, IMU, and LiDAR for Autonomous Vehicles</h3>
+      <p>作者 Amr O. Elmehrath 等。实现 GPS、IMU、LiDAR 的<strong>紧耦合 SLAM 融合</strong>，在一个优化框架内联合处理多源观测，提升自动驾驶在 GNSS 拒止/城市峡谷场景下的定位鲁棒性。</p>
+      <p><strong>与读者研究的关系：</strong>四旋翼室内外切换飞行最怕 GPS 丢失。这篇的紧耦合融合思路（把 GNSS 松散观测与 IMU 高频、LiDAR 几何约束统一进一个因子图/滤波）可直接迁移到无人机定位模块，是飞控状态估计的必修内容。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20321" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-accent">导航</span>
+        <span class="badge-info">单目导航 Agent</span>
+        <span>cs.RO · 2026-09-18</span>
+      </div>
+      <h3>Navi-Agent: Unlocalized Monocular Navigation Agent</h3>
+      <p>作者 Wenyuan Xie 等。提出一个<strong>无需显式定位的单目导航 Agent</strong>：不依赖完整 SLAM 位姿，仅靠单目视觉与相对推理完成导航决策，降低对高精度定位的依赖。</p>
+      <p><strong>与读者研究的关系：</strong>对低成本四旋翼（无 RTK、无 LiDAR）极具参考价值——当定位不可靠时，能否仅靠视觉相对信息完成「大致飞抵」。这是轻量化飞控导航的一个务实方向，适合资源受限的嵌入式飞控。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20388" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-accent">导航</span>
+        <span class="badge-info">多目标导航</span>
+        <span>cs.RO · 2026-09-18</span>
+      </div>
+      <h3>Strategic Transformer for Resource-Constrained Multi-Object Navigation in Ultra-Large-Scale Environments</h3>
+      <p>作者 Daiki Iwata 等。用<strong>策略型 Transformer</strong>解决超大规模环境下的资源受限多目标导航：在有限步数/能耗预算下规划访问多个目标点的顺序与路径。</p>
+      <p><strong>与读者研究的关系：</strong>四旋翼巡航/巡检本质就是「多目标点 + 电量约束」的序列决策。这篇的 Transformer 全局规划 + 约束预算思路，可作为读者 RL 巡检策略的「上层调度」参考，下层仍由四旋翼 MPC 跟踪。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20227" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-accent">目标搜索</span>
+        <span class="badge-info">VLM + 探索</span>
+        <span>cs.RO · 2026-09-18</span>
+      </div>
+      <h3>Spatial-Semantic Uncertainty in VLM-Based Target Search: Balancing Exploration and Identification</h3>
+      <p>作者 Alkesh K. Srivastava 等（含 Vijay Kumar）。研究基于视觉语言模型（VLM）的目标搜索中<strong>空间-语义不确定性</strong>的建模，在「主动探索未知区域」与「确认识别目标」之间做权衡，提升搜索效率。</p>
+      <p><strong>与读者研究的关系：</strong>无人机搜救/巡检常要在「看清」与「飞遍」之间权衡。把不确定性量化进探索策略，是强化学习探索项设计的理论补充，也呼应读者用 RL 做自主决策的主线。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20443" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块五 · 多智能体协同与场景理解（高斯泼溅 / 多智能体搜索 / 协同在线学习）</div>
+
+  <div class="card">
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-teal">多智能体</span>
+        <span class="badge-info">协同场景理解</span>
+        <span>cs.RO · 2026-09-18</span>
+      </div>
+      <h3>CoRef-GS: Cooperative Referring Gaussian Splatting for Multi-Agent Scene Understanding</h3>
+      <p>作者 Zhikun Zhou 等。提出 <strong>协同指称高斯泼溅（CoRef-GS）</strong>，多个智能体协作构建并共享 Gaussian Splatting 场景表征，结合自然语言指称完成共同场景理解，提升多机协同下的环境建模效率与一致性。</p>
+      <p><strong>与读者研究的关系：</strong>多无人机协同建图/巡检是集群方向的前沿。这篇把 3D 高斯泼溅用作多机共享的隐式地图，可作为读者「四旋翼编队 + 协同感知」选题的感知底座参考，比传统点云更高效。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20586" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-teal">多智能体</span>
+        <span class="badge-info">个性化目标搜索</span>
+        <span>cs.RO · 2026-09-18</span>
+      </div>
+      <h3>RoboFind: Multi-Agent Personalized Object Search for People Who Are Blind or Have Low Vision</h3>
+      <p>作者 Ruiping Liu 等。构建<strong>多智能体个性化物体搜索</strong>系统，面向视障用户的个性化需求，多机/多模块协作定位目标物体，强调以人为本的交互与个性化偏好建模。</p>
+      <p><strong>与读者研究的关系：</strong>虽落地场景不同，但其「多智能体分工 + 个性化目标建模」框架，对四旋翼集群协同搜索（如多机分区域搜索特定目标）有方法借鉴价值，尤其任务分配与通信协同部分。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20330" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-teal">多智能体</span>
+        <span class="badge-info">协同在线学习</span>
+        <span>cs.LG/eess.SY · 2026-09-18</span>
+      </div>
+      <h3>COIN-GP: Cooperative Online Learning in Networked Distributed Systems with Partial Measurements via Gaussian Process Regression</h3>
+      <p>作者 Zewen Yang 等。提出 <strong>COIN-GP</strong>，在网络化分布式系统、仅部分可测的条件下，用高斯过程回归做<strong>协同在线学习</strong>，让节点共享互补观测、补齐缺失测量，适用于大规模分布式状态估计与控制。</p>
+      <p><strong>与读者研究的关系：</strong>四旋翼编队常面临「部分机载传感器失效 / 通信受限」。这篇的部分测量协同学习，直接对应编队里的分布式状态估计与容错——可作为读者做多机协同控制的算法储备，且属 eess.SY/控制正统方向，利于写论文。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20598" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块六 · 仿真平台、世界模型与安全验证（仿真器 / 世界动作模型 / 最坏情形轨迹）</div>
+
+  <div class="card">
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-accent">仿真平台</span>
+        <span class="badge-info">LLM 故障诊断</span>
+        <span>cs.RO · 2026-09-18</span>
+      </div>
+      <h3>A Simulation Platform for AUV Fault Recovery: Exploring LLM-Based Diagnostic Strategies</h3>
+      <p>作者 Khalid Halba 等。构建一个面向自主水下航行器（AUV）<strong>故障恢复仿真平台</strong>，并探索用大语言模型（LLM）做故障诊断策略，在仿真里系统评估不同诊断-恢复流程的有效性。</p>
+      <p><strong>与读者研究的关系：</strong>读者正是做「仿真」的人——这篇是「为特定载具搭专用仿真器 + 注入故障 + 评估恢复策略」的标准范式。可类比搭建四旋翼故障注入 Simulink 模型，再用 RL/LLM 学故障诊断，是很好的工程项目思路，也契合车企对「仿真测试」的强需求。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20620" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-purple">世界模型</span>
+        <span class="badge new">World Action Model</span>
+        <span>cs.RO · 2026-09-18</span>
+      </div>
+      <h3>MoWAM: Explicit Future Motion Prediction for Efficient World Action Models</h3>
+      <p>作者 Jiayu Wang 等。提出 MoWAM，通过<strong>显式未来运动预测</strong>提升世界-动作模型（World Action Model）的效率，让模型在预测未来世界状态的同时显式建模运动学，降低冗余计算。</p>
+      <p><strong>与读者研究的关系：</strong>世界模型 + 强化学习是当前飞控前沿（读者 RL 主线的升级方向）。MoWAM 的「显式运动先验」正好对应四旋翼刚体动力学——把动力学显式编进世界模型，比纯数据驱动更省样本、更可信，强烈建议跟踪。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20709" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-green">安全验证</span>
+        <span class="badge-warn">最坏情形轨迹</span>
+        <span>cs.RO · 2026-09-18</span>
+      </div>
+      <h3>Worst-Case Hidden-Vehicle Trajectory Search in Spatiotemporal Occlusion Regions</h3>
+      <p>作者 Ruichen Tan 等。研究时空遮挡区域中的<strong>最坏情形隐藏车辆轨迹搜索</strong>，主动构造最不利的交通参与者的可能轨迹，用于自动驾驶安全验证与压力测试（ECCV 自动驾驶研讨会最佳论文）。</p>
+      <p><strong>与读者研究的关系：</strong>飞控安全同样需要「最坏情形」压力测试。这篇的对抗性轨迹搜索方法论，可迁移到四旋翼避障的安全验证——在仿真里主动生成最危险的入侵轨迹，检验控制器鲁棒性，正是车企/院所看重的「安全左移」能力。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20480" target="_blank">📎 查看原文</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-purple">强化学习</span>
+        <span class="badge-info">联邦 Q-Learning</span>
+        <span>cs.LG/eess.SY · 2026-09-18</span>
+      </div>
+      <h3>Robust Federated Q-Learning with Almost No Communication (ACC 2026)</h3>
+      <p>作者 Sreejeet Maity、Aritra Mitra。已被 <strong>2026 American Control Conference (ACC)</strong> 录用。提出<strong>近乎零通信的鲁棒联邦 Q-Learning</strong>，多个智能体在极少通信下协同学习 Q 函数，兼顾通信效率与对抗/噪声鲁棒性。</p>
+      <p><strong>与读者研究的关系：</strong>这是控制正统会议（ACC）论文，含金量与认可度高。对四旋翼编队意味着：多机不必频繁回传数据也能协同学策略，适合通信受限的机群。读者若考虑投控制类会议，这篇是「RL + 多智能体 + 通信约束」的范式参考。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2609.20174" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块七 · 本周必读 Top5 与读者选题建议</div>
+
+  <div class="card">
+    <div class="news-item">
+      <h3>Top5 必读（按与四旋翼飞控/仿真/RL 相关度排序）</h3>
+      <p><strong>① 2609.20629（Micro UAV PPO 回收）：</strong>仿真训练 + 真机迁移 + 安全门的完整闭环，必精读方法章节。<br>
+      <strong>② 2609.20747（MILER sim-to-real RL）：</strong>中层表征打通仿真与现实域差，飞控可直接借鉴。<br>
+      <strong>③ 2609.20575（采样 MPC 加速视觉策略）：</strong>MPC 与 RL 分工协作的范本。<br>
+      <strong>④ 2609.20691（PX4 空-海固件扩展）：</strong>学真实飞控栈如何挂自定义任务模式。<br>
+      <strong>⑤ 2609.20174（联邦 Q-Learning，ACC 2026）：</strong>控制会议认可的 RL+多智能体范式。</p>
+    </div>
+
+    <div class="news-item">
+      <h3>给张恒辰的选题与求职衔接建议</h3>
+      <p>从今天 24 篇论文可提炼出三条与读者背景高度契合的<strong>可落地选题</strong>：其一，<strong>「四旋翼自主着陆/回收的 RL + 确定性安全门」</strong>——直接对标 2609.20629，用 Simulink 动力学作教师、Python PPO 作主策略，落点在真机/半实物；其二，<strong>「四旋翼 MPC 与 RL 分层协同控制」</strong>——MPC 做短期滚动优化、RL 做长期自适应，对标 2609.20575；其三，<strong>「通信受限下四旋翼编队的分布式容错状态估计」</strong>——对标 2609.20598/2609.20174，属 eess.SY 正统方向、易发论文。</p>
+      <p>这三条都同时覆盖读者的 <strong>MATLAB/Simulink 仿真</strong> 与 <strong>Python 强化学习</strong> 双技能，且车企智驾、机械院所、机器人公司均看重「仿真到现实」「安全验证」「多智能体协同」，建议把其中一条做成简历上的核心项目，秋招面试时以「我读过哪些最新论文、我的方法和它们的差异」开场，专业度立刻拉开差距。</p>
+    </div>
+
+    <div class="info-box">
+      <div class="info-title">ℹ️ 说明</div>
+      <p>本期所列 arXiv 编号均取自 2026-09-18 当天 cs.RO / cs.LG 列表页真实条目（2609.20xxx 段），其中 2609.20691、2609.20629、2609.20747 已逐条打开 abs 页抽验确认存在。所有论文均不在 09-17 期 32 篇收录范围内，做到零重复。若某链接未来因版本更新变更，请以 arXiv 检索标题为准。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息来源汇总</div>
+  <div class="table-wrap">
+    <table class="summary-table">
+      <thead><tr><th>来源标题</th><th>链接</th><th>时间</th></tr></thead>
+      <tbody>
+        <tr><td>Custom PX4 firmware for autonomous hybrid aerial-marine missions</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20691" target="_blank">📎 查看原文</a></td><td>2026-09-17</td></tr>
+        <tr><td>RTK-Vision PPO for Autonomous Micro UAV Recovery on an Airborne Carrier</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20629" target="_blank">📎 查看原文</a></td><td>2026-09-17</td></tr>
+        <tr><td>Integrated Guidance and Control of a Mother-Child UAV-UGV System</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20540" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>MILER: Semantic Mid-Level Representation for Sim-to-Real RL in Autonomous Driving</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20747" target="_blank">📎 查看原文</a></td><td>2026-09-17</td></tr>
+        <tr><td>OPTED: On-Policy Fine-Tuning for End-to-End Driving using a Render-Free Teacher</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20756" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>Score Centering Stabilizes Off-policy Reinforcement Learning</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20807" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>Improving Generalization and Robustness in Offline RL via Boundary-Aware Data Augmentation</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20300" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>Improving Online RL via Bidirectional Behavior Prior Distillation</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20268" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>Underwater Visual Target Tracking with Adaptive Model-Fusion Predictive Control</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20731" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>Accelerating Visual Policy Learning with Sampling-Based Model Predictive Control</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20575" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>Time-Efficient Iterative Learning Planning for Safety-Critical Dynamic Obstacle Avoidance</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20435" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>VLN on the Fly: An Onboard Vision-Language Navigation Stack for Aerial Robots</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20191" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>Tightly-Coupled SLAM Fusion of GPS, IMU, and LiDAR for Autonomous Vehicles</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20321" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>Navi-Agent: Unlocalized Monocular Navigation Agent</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20388" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>Strategic Transformer for Resource-Constrained Multi-Object Navigation</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20227" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>Spatial-Semantic Uncertainty in VLM-Based Target Search</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20443" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>CoRef-GS: Cooperative Referring Gaussian Splatting for Multi-Agent Scene Understanding</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20586" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>RoboFind: Multi-Agent Personalized Object Search</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20330" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>COIN-GP: Cooperative Online Learning via Gaussian Process Regression</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20598" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>A Simulation Platform for AUV Fault Recovery: Exploring LLM-Based Diagnostic Strategies</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20620" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>MoWAM: Explicit Future Motion Prediction for Efficient World Action Models</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20709" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>Worst-Case Hidden-Vehicle Trajectory Search in Spatiotemporal Occlusion Regions</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20480" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>Robust Federated Q-Learning with Almost No Communication (ACC 2026)</td><td><a class="source-link" href="https://arxiv.org/abs/2609.20174" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>arXiv cs.RO 近期列表页（2026-09-18 发布，133 篇）</td><td><a class="source-link" href="https://arxiv.org/list/cs.RO/recent" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+        <tr><td>arXiv cs.LG 近期列表页（2026-09-18 发布，198 篇）</td><td><a class="source-link" href="https://arxiv.org/list/cs.LG/recent" target="_blank">📎 查看原文</a></td><td>2026-09-18</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+</div>
+
+<div class="comments-section">
+  <div class="comments-title">💬 评论区</div>
+  <div class="comments-desc">登录 GitHub 账号即可评论，支持 Markdown 和表情回应。欢迎交流求职经验、分享面试心得！</div>
+  <div class="giscus"></div>
+</div>
+
+<footer class="footer">
+  <p>无人机科研日报 | 安徽工业大学机械工程硕士研究生个性化推荐报告</p>
+  <p>报告日期：2026年9月18日 | 数据来源：公开网络信息整理</p>
+  <div class="footer-meta">Generated by WorkBuddy Automation | Powered by TS-dinglilu.github.io</div>
+</footer>
+
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button>
+
+<script>
+// Scroll-to-top button visibility
+window.addEventListener('scroll', function() {
+  var btn = document.querySelector('.scroll-top');
+  if (btn) {
+    if (window.scrollY > 400) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+  }
+});
+
+// Giscus configuration
+var giscusScript = document.createElement('script');
+giscusScript.src = 'https://giscus.app/client.js';
+giscusScript.setAttribute('data-repo', 'TS-dinglilu/TS-dinglilu.github.io');
+giscusScript.setAttribute('data-repo-id', 'R_kgDOTjqaJQ');
+giscusScript.setAttribute('data-category', 'General');
+giscusScript.setAttribute('data-category-id', 'DIC_kwDOTjqaJc4DCIL2');
+giscusScript.setAttribute('data-mapping', 'pathname');
+giscusScript.setAttribute('data-strict', '0');
+giscusScript.setAttribute('data-reactions-enabled', '1');
+giscusScript.setAttribute('data-emit-metadata', '0');
+giscusScript.setAttribute('data-input-position', 'top');
+giscusScript.setAttribute('data-theme', 'dark_dimmed');
+giscusScript.setAttribute('data-lang', 'zh-CN');
+giscusScript.setAttribute('data-loading', 'lazy');
+giscusScript.crossOrigin = 'anonymous';
+giscusScript.async = true;
+var giscusBox = document.querySelector('.giscus');
+if (giscusBox) { giscusBox.appendChild(giscusScript); }
+</script>
+
+</body>
+</html>

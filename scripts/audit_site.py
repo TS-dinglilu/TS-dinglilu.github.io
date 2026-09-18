@@ -204,6 +204,18 @@ def check_dates():
             iso = "%s-%s-%s" % (d[:4], d[4:6], d[6:8])
             err("漏期", iso, "缺 %d 个分类: %s" % (len(miss), ", ".join(miss)))
 
+    # 全天缺失：某一天 13 个分类全都没有报告时，上面的循环没有参照物、查不出来
+    # （2026-09-16 就是这样被漏掉的）。这里用「已首报日期 → 昨天」的连续区间补一道检查。
+    if recent:
+        day = datetime.datetime.strptime(recent[0], "%Y%m%d").date() + datetime.timedelta(days=1)
+        today = datetime.date.today()
+        while day < today:
+            st = day.strftime("%Y%m%d")
+            if st not in all_days:
+                warn("漏期", day.isoformat(),
+                     "13 个分类全部没有该日报告（全天缺失）——请用 build_backfill.py 补做")
+            day += datetime.timedelta(days=1)
+
 
 def main():
     ap = argparse.ArgumentParser()
