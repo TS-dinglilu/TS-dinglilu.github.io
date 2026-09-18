@@ -18,7 +18,14 @@
 - **日常一条命令**：写完 `content/<分类>.html` → `python scripts/publish_all.py --push`
   （校验→构建 13 分类→更新主页→发布前自查→提交推送；自带漏跑自查、退避重试、三级推送）。
 - 单分类 `build_report.py --category --date --content`｜补漏 `build_backfill.py --date <日> --dir content/backfill<MMDD>`。
+- **外链核验一条命令**：`check_links_today.py`（`--fix` 自动把 https 不通的改写成 http）。
+  抽 `source-link` href → 去重 → 6 路并发探测 → 首轮不通自动复测 → 再回退 http。
+  ⚠️ 并发别调高（16 路会把 arXiv 打成超时、误报 32 条死链，单条复测全 200）。
+  `403/401/412` 算反爬不算死链；`xxx.edu.cn/info/<栏目>/<文章>.htm` 返回 404 = 编号是编的，
+  回该站栏目列表页找真号（2026-09-18 在安工大商学院就是这么修掉一条假新闻的）。
 - 体检三件套：`audit_site.py`（结构/评论区/死链/索引/主页数字/漏期；退出码非 0 = 有 ERROR）｜
+  **漏期分两级**：`[ERROR]` = 某天部分分类缺（跨分类比对）；`[WARN]` = 某天 **13 个分类全缺**
+  （2026-09-18 新加的连续区间扫描；此前 09-16 全天缺失被静默漏掉）｜
   `fix_site.py`（幂等修历史缺陷，先 `--dry-run`）｜`unify_style.py`（尾部回溯，`--dry-run` / `--show <路径>`）。
   **改历史 HTML 前先跑 audit，别对几百个文件盲改。**
 - `update_homepage.py` 主页卡片（幂等）｜`set_giscus_category.py --name <分类> --id DIC_...`。
@@ -46,6 +53,11 @@
 - **别用 `git status` 判断推送成败**：本机 `origin/main` 跟踪引用长期陈旧。验远端用
   `curl -s https://api.github.com/repos/TS-dinglilu/TS-dinglilu.github.io/commits/main`，或 curl 具体页面看 200。
   （`git update-ref` 对 packed-refs **无效**；需 `printf '<sha>\n' > .git/refs/remotes/origin/main` 写 loose ref。）
+- **开工第一件事要看 `git status`**：中断的会话可能已写好正文甚至构建好报告但**没提交**
+  （2026-09-17 整轮成果就这样滞留在本地、线上仍停在 09-15）。这种先 `git add -A` + commit + push 抢救，
+  **不要重写正文**（`publish_all.py` 内部是 `git add -A`，会自然带上）。
+- **Pages 部署有延迟**：推送后新文件可能比同批其它文件晚 1–3 分钟才 200（实测首查 404、约 2 分钟后 200）。
+  此时 `contents` API 已能查到文件 → **轮询重试即可，别重复推送**。
 - ⚠️ REST API 不能推此仓库（单次 17MB+/200 文件，`push_files` 不可行，且会造分叉 SHA）。
 - 外链核验：部分中文站（`*.cas.cn`、`m.yingjiesheng.com`）**https 不通但 http 200**，href 应改 `http://`；
   `403/302` 多为反爬或正常跳转，**不算死链**。

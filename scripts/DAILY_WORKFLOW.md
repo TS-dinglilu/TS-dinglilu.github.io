@@ -76,6 +76,14 @@ python scripts/audit_site.py                # 全站体检：结构/死链/索�
 体检报告里 `[ERROR] 漏期` 段会直接列出「哪天缺哪些分类」。**先补做缺失日期**，
 再继续今天的流程。补做用专用工具（自动校验正文 → 批量构建 → 重建索引）：
 
+> **全天缺失也要看 `[WARN] 漏期`**：`[ERROR] 漏期` 只能发现「某天部分分类缺」，
+> 如果某一天 **13 个分类全都没有报告**，就没有参照物、老逻辑查不出来
+> （2026-09-16 就是这样被静默漏掉的）。2026-09-18 起 `audit_site.py` 增加了连续区间检查，
+> 会以 `[WARN]` 打出「13 个分类全部没有该日报告（全天缺失）」。
+> 另外**开工前务必先看 `git status`**：中断的会话可能已经写好正文、甚至构建好报告但**没提交**
+> （2026-09-17 就是这种状态，报告在本地躺着、线上仍是 09-15）。
+> 这种情况先 `git add -A && git commit && git push` 抢救，**不要重写正文**。
+
 ```bash
 python scripts/build_backfill.py --date 2026-09-10 --dir content/backfill0910 --check  # 先校验
 python scripts/build_backfill.py --date 2026-09-10 --dir content/backfill0910          # 再构建
@@ -156,15 +164,26 @@ curl -s -o /dev/null -w "%{http_code}\n" https://ts-dinglilu.github.io/car-recru
 ```
 GitHub Pages 推送后 1–2 分钟生效，返回 200 即成功。
 
-**外链真实性核验（建议每轮做，约 2 分钟）**：把正文里所有 `class="source-link"` 的 href 抽出来去重后逐条 curl，
-返回 `200/302` 视为有效，`403/401` 多为反爬也算存在；**只有 `000`（不通）需要处理**。
-两个已知陷阱：
-- 部分中文站 **https 不可达但 http 可访问**（实测 `www.nssc.cas.cn`、`m.yingjiesheng.com`），
-  遇到就把 href 从 `https://` 改成 `http://`，否则读者点开是白屏；
-- 用 Python 写出的 URL 清单在 Windows 上是 **CRLF**，`while read` 读出来尾部带 `\r`，
-  curl 会对每条都返回 `000`（**别误判成网络全断**）。读取前先 `tr -d '\r'`。
+**外链真实性核验（每轮必做，一条命令）**：
+```bash
+python scripts/check_links_today.py          # 只报告
+python scripts/check_links_today.py --fix    # 顺带把 https 不通的链接改写成 http
+```
+它会抽取 `content/*.html` 里所有 `class="source-link"` 的 href、去重后并发探测，
+返回 `200/301/302/403/401` 视为有效（`403/401/412` 多为反爬，不算死链），
+**只有 `000` / `404` 才需要处理**；https 首轮不通的会自动复测一次，仍不通再试 http，
+http 可达的直接给出改写建议（`--fix` 会写回 `href`）。
+- ⚠️ **并发不要调高**：16 路并发会让 arXiv 等站点大面积超时、误报成「不通」
+  （实测 arXiv 单条复测全是 200）。脚本已固定为 6 路，别擅自加大。
+- ⚠️ 少数站点**整站对本机不可达**（实测 `www.nowcoder.com`，连站点根都是 `000`），
+  这属站点级屏蔽而非死链：用检索核验页面是否真实存在（如 `WebFetch` 打开一次）再决定去留。
+- 仍有个别中文站 **https 不可达但 http 可访问**（实测 `finance.people.com.cn`、`campus.nio.com`、
+  `24365.ah.smartedu.cn`、`m.yingjiesheng.com`、`www.nssc.cas.cn`），改 `http://` 即可。
 
 arXiv 类链接可以直接验真：`curl -s -o /dev/null -w "%{http_code}" https://arxiv.org/abs/<编号>`，200 = 编号真实存在。
+**注意**：搜索引擎/代理给出的编号也可能是模型顺推的假号，务必抽验若干条；
+某分类若引用 `xxx.edu.cn/info/<栏目>/<文章>.htm` 这类深链，`404` 就说明编号是编的 —— 
+去该站栏目列表页（如 `https://sxy.ahut.edu.cn/index/ltjz.htm`）找真实文章，或改为引用栏目列表页。
 
 
 ## 质量红线
@@ -188,5 +207,7 @@ arXiv 类链接可以直接验真：`curl -s -o /dev/null -w "%{http_code}" http
 | 想快速知道站点哪里坏了 | `python scripts/audit_site.py`（加 `--quiet` 只输出问题；退出码非 0 表示有 ERROR） |
 | **Bash 里调 `powershell.exe` 被拒**（提示 bypasses PowerShell security checks） | 这是安全策略，不是脚本坏了。手动导出 git 凭据走不通，**直接用 `python scripts/publish_all.py --push`**（Python 子进程里调 ps1 是允许的），或改用 PowerShell 工具执行 `scripts/export_git_cred.ps1` |
 | 跑 `publish_all.py --push` 后**输出为空 / 看不出进度** | 不要 `\| tail`：管道缓冲 + 进程被 SIGTERM 时输出全丢，看起来像静默失败。改成重定向落盘：`python scripts/publish_all.py --push > logs/push_$(date +%Y%m%d).log 2>&1`，再读日志 |
-| 外链批量 curl 全部返回 `000`，但单独 curl 又正常 | URL 清单是 Windows CRLF，`while read` 带出尾部 `\r` 把 URL 弄坏了。读前 `tr -d '\r'` |
+| 外链批量 curl 全部返回 `000`，但单独 curl 又正常 | 两种原因：① URL 清单是 Windows CRLF，`while read` 带出尾部 `\r` 把 URL 弄坏了 —— 读前 `tr -d '\r'`；② **并发过高**（16 路以上）把站点打成超时，看起来像全站断网。用 `python scripts/check_links_today.py`（已固定 6 路并发 + 自动复测）代替手写循环 |
+| 某一天的报告一个都没有，`audit_site.py` 却不报漏期 | 老逻辑只比对「其它分类有的日期」，全天缺失无参照物。2026-09-18 起已补上连续区间检查，会打 `[WARN] 漏期 …全天缺失`。补做方式同上（写 `content/backfill<MMDD>/` → `build_backfill.py`） |
+| 推送成功、`contents` API 也能查到文件，但线上页面 404 | GitHub Pages 部署有延迟，新文件可能比同批的其它文件晚 1–3 分钟生效。**轮询重试**即可（实测 `report_20260918.html` 首查 404、约 2 分钟后 200），不要因此重复推送 |
 | 主页出现两份 `index.html` / `homepage_index.html` | 后者是个人主页的旧版本，已被 `index.html` 取代，已归档到 `logs/archive/`。不要再往 repo 里放第二份主页，否则 `update_homepage.py` 只改 `index.html`，两份会逐渐不一致 |
