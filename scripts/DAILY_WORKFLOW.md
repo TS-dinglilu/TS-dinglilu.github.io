@@ -141,6 +141,22 @@ python scripts/ssh_fallback_push.py             # 执行兜底推送（通道不
 - 避免与上一期内容重复，聚焦最新进展
 - **可用多个并行子代理分工加速**（例如 5 个代理各负责 2–3 个分类）
 
+#### ⚠️ 「8000–20000 字符」是**字符数**，不是字节数（2026-09-19 踩坑）
+派写手的提示词里**千万别再写"文件字节数通常 18K–30K"** —— 写手会把字节数当目标，
+产出 3.5 万～4.3 万**字符**（`car-recruit` 冲到 43471），7/13 分类超标，事后还得整批压缩。
+- 口径统一写死：**"目标 12000–19000 字符，用 Python `len(open(p,encoding='utf-8').read())` 校验"**。
+  中文字符 ≈ 1.6 字节/字符，30K 字节 ≈ 19K 字符，别让写手自己换算。
+- **校验脚本一条命令**：`python scripts/strict_check.py`
+  （比 `publish_all.py` 自带的 3000 字符下限严格得多：查 8000–20000 区间 / Markdown 链接 /
+  文档标签 / 内联 style / giscus 是否末行 / 「信息来源」/ div 与 a 标签配平）。
+  **不合格文件数必须为 0 再进发布环节。**
+- 超标后的压缩优先级（**只删不增，不许改 URL**）：① 先删与其它专属分类重叠的整块
+  （car-recruit 的比亚迪/奇瑞/吉利/蔚小理卡 → 那 5 个是独立分类）；
+  ② 再删「信息来源汇总」表的同源冗余行（同一 URL 只留 1 行）；
+  ③ 最后删 info-box/tip-box/highlight-box 里的空话。**正文条目与真实链接尽量保住**；
+  删完重排「板块N」中文序号。**压缩用整份 Read + 整份 Write，不要对同一文件多次 Edit**
+  （会静默丢失改动）。
+
 ### 3. 一键发布
 ```bash
 cd D:\研二\github.auto\repo
@@ -209,5 +225,6 @@ arXiv 类链接可以直接验真：`curl -s -o /dev/null -w "%{http_code}" http
 | 跑 `publish_all.py --push` 后**输出为空 / 看不出进度** | 不要 `\| tail`：管道缓冲 + 进程被 SIGTERM 时输出全丢，看起来像静默失败。改成重定向落盘：`python scripts/publish_all.py --push > logs/push_$(date +%Y%m%d).log 2>&1`，再读日志 |
 | 外链批量 curl 全部返回 `000`，但单独 curl 又正常 | 两种原因：① URL 清单是 Windows CRLF，`while read` 带出尾部 `\r` 把 URL 弄坏了 —— 读前 `tr -d '\r'`；② **并发过高**（16 路以上）把站点打成超时，看起来像全站断网。用 `python scripts/check_links_today.py`（已固定 6 路并发 + 自动复测）代替手写循环 |
 | 某一天的报告一个都没有，`audit_site.py` 却不报漏期 | 老逻辑只比对「其它分类有的日期」，全天缺失无参照物。2026-09-18 起已补上连续区间检查，会打 `[WARN] 漏期 …全天缺失`。补做方式同上（写 `content/backfill<MMDD>/` → `build_backfill.py`） |
+| 写手产出的正文动辄 3–4 万字符，远超 2 万上限 | 提示词里把「字节数」误当成篇幅目标了。**统一写「目标 12000–19000 字符，用 `len()` 校验」**；发布前跑 `python scripts/strict_check.py`，不合格先压缩再发布（压缩优先级见 §2） |
 | 推送成功、`contents` API 也能查到文件，但线上页面 404 | GitHub Pages 部署有延迟，新文件可能比同批的其它文件晚 1–3 分钟生效。**轮询重试**即可（实测 `report_20260918.html` 首查 404、约 2 分钟后 200），不要因此重复推送 |
 | 主页出现两份 `index.html` / `homepage_index.html` | 后者是个人主页的旧版本，已被 `index.html` 取代，已归档到 `logs/archive/`。不要再往 repo 里放第二份主页，否则 `update_homepage.py` 只改 `index.html`，两份会逐渐不一致 |
