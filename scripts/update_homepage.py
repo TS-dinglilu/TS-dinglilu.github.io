@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-主页更新器：把 13 个分类的最新日期 / 累计期数写回 index.html 卡片和统计区。
+主页更新器：把 14 个分类的最新日期 / 累计期数写回 index.html 卡片和统计区。
 
 用法: python scripts/update_homepage.py
 """
