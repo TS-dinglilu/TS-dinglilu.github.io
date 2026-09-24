@@ -1,195 +1,163 @@
 <div class="report-header">
-  <h1>未来规划日报 · 2026-09-19</h1>
-  <div class="subtitle">面向机械/控制类硕士的生涯、求职与科研规划参考 · 低空经济 · 强化学习飞控前沿 · 开题方法论 · 秋招目标地图</div>
+  <h1>未来规划日报 · 2026-09-24</h1>
+  <div class="subtitle">面向机械/控制类硕士的生涯、求职与科研规划参考 · 具身智能「实干时代」 · 人形机器人标准密集落地 · 机械工程师数智转型路线 · 智驾秋招岗位地图</div>
   <div class="meta">
-    <span class="date-badge">2026-09-19 星期六</span>
-    <span class="text-muted">读者画像：机械工程硕士（四旋翼飞控仿真），坐标徐州、就读安徽工业大学（马鞍山），求职车企 / 机械 / 科研院所</span>
+    <span class="date-badge">2026-09-24 星期四</span>
+    <span class="text-muted">读者画像：机械工程硕士，求职车企 / 机械 / 机器人 / 科研院所，关注智能制造与具身智能方向</span>
   </div>
 </div>
 <div class="highlight-box">
   <div class="highlight-title">💡 今日核心判断</div>
-  <p>今天是 <strong>2026 年 9 月 19 日（星期六）</strong>。本期四线并行：① <strong>学术前沿</strong>——本周 arXiv 又出 5 篇四旋翼控制新论文，补上「安全约束」与「高速动态避障」两块拼图；② <strong>政策</strong>——中山、福建、前海三地同期落地低空新政；③ <strong>家乡</strong>——徐州「低空一张网」被新华日报系统报道，算法工程师短缺被写进报道；④ <strong>秋招</strong>——东风与北汽的 JD 里出现了 <strong>Sim2Real、线控底盘、MuJoCo</strong>。</p>
+  <p>今天是 <strong>2026 年 9 月 24 日（星期四）</strong>。本期四线并行：① <strong>行业趋势</strong>——具身智能从「能表演」跨进「能干活」，头部企业机器人进厂 7×24 常态化作业，商业部署规模突破千台；② <strong>政策标准</strong>——《国家人形机器人产业标准体系建设指南（2026 版）》征求意见于昨日截止，ITU 具身智能标准焦点组 10 月将在杭州开会，「标准话语权」正在成为新的岗位方向；③ <strong>职业转型</strong>——机械工程师的「设备层→产线层→系统层」三级升级路线与数据素养清单被系统梳理；④ <strong>秋招</strong>——智驾域控结构/热设计、控制算法、自动驾驶系统开发等岗位明确向机械硕士开放，卡特彼勒 JD 里出现了 World Model 与 Sim-to-Real。</p>
 </div>
 <div class="section">
-  <div class="section-title">🚁 01 学术前沿 · 本周 arXiv 五篇四旋翼控制新论文</div>
+  <div class="section-title">🤖 01 行业趋势 · 具身智能从「能表演」跨进「能干活」</div>
   <div class="card">
-    <h3>arXiv:2609.19362 高阶安全临界控制：推力方向正交时的「有效性塌陷」</h3>
+    <h3>环球时报：中国具身智能进入「实干时代」，机器人开始「打卡上班」</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-accent">arXiv</span><span class="badge hot">🔥 与你最相关</span><span>2026-09-16</span></div>
-      <p>论文研究<strong>有界输入下四旋翼编队的成对避碰约束</strong>，指出当相对位移与可用推力方向正交时，平方距离型障碍函数会失去推力有效性；即使单个障碍函数非奇异，在共享输入上界下仍可能联合不可行。作者用「成对有效性」与「聚合可行性」两个指标刻画这两种现象，并用<strong>力矩感知的动态扩展</strong>把姿态力矩暴露在四阶障碍函数中，再用高斯过程直接学习四阶 HOCBF 残差。价值在于把「安全」变成两个可量化指标。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2609.19362" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-red">行业趋势</span><span class="badge hot">🔥 量产验证期</span><span>2026-09-24</span></div>
+      <p>「实干」成为 2026 年中国具身智能产业的关键词。在宁德时代量产线上，银河通用重载人形机器人 Galbot S1 双臂抱起数十公斤料箱精准送达下一工位，自 3 月验收以来<strong>已 7×24 小时连续工作超 3 个月</strong>，仅靠纯视觉系统在复杂环境中自主行动——这是全球首次实现人形机器人在新能源智能制造场景的「常态化自主作业」，<strong>银河通用商业部署规模已突破千台</strong>，服务宁德时代、博世、丰田、上汽等头部制造企业。在江西南昌龙旗科技工厂，8 台智元精灵 G2 机器人承接平板质检全工段工作，<strong>效率达人类工人的 80% 到 90%，已连续运行超 3000 小时</strong>。快思研究院院长田丰的判断值得记住：当前是从「能表演」跨进「能干活」的验证期——<strong>表演让观众印象深刻，工作必须让生产经理满意</strong>。对求职者而言，「让生产经理满意」的能力（工艺理解、可靠性、现场问题闭环）正是机械背景的天然主场。</p>
+      <a class="source-link" href="https://www.toutiao.com/article/7688834498074526223/" target="_blank">📎 查看原文</a>
     </div>
   </div>
   <div class="card">
-    <h3>arXiv:2609.18191 OmniRisk：全向轨迹风险学习，实测遭遇速度 15 m/s</h3>
+    <h3>行业格局研判：类脑架构成主流，未来三年或收敛为「3-5 家平台龙头 + 垂直冠军」</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-purple">arXiv</span><span class="badge new">🆕 真机数据</span><span>2026-09-16</span></div>
-      <p>OmniRisk 用<strong>固定维度张量</strong>把 LiDAR 距离全景图、动态掩膜与笛卡尔表面速度联合表示，构造与障碍速度对齐的<strong>非对称风险场</strong>，并沿预测相对轨迹累积风险作为稠密监督；<strong>双分支圆形卷积网络</strong>在单次前向中预测候选本原的终端边界状态与风险，使风险推理成本与障碍数量无关。真机飞行实现连续规避，<strong>相对遭遇速度最高 15 m/s 且无需微调</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2609.18191" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-purple">格局分析</span><span class="badge-info">📋 数据截至 2026-09</span><span>2026-09</span></div>
+      <p>行业分析指出，具身智能正迈入类脑时代：五家独角兽领跑、四层梯队格局初定，<strong>五家 200 亿企业合计融资额占比超七成</strong>。三个趋势判断与择业直接相关：其一，<strong>技术路线加速收敛，类脑架构成为通用赛道主流</strong>，「大脑第一」逻辑取代「本体第一」；其二，<strong>量产能力成为新一轮竞争门槛，马太效应凸显</strong>，未来三年行业加速洗牌，或将形成 3-5 家通用平台龙头搭配多家垂直细分冠军的格局；其三，小米 CyberOne 已落地工厂开展工序验证、<strong>2027 年目标 10 万台</strong>，美的整合库卡技术储备同步布局。含义很直接：<strong>选雇主时优先看「量产爬坡进度」而非「发布会热度」</strong>——2026H1 技术验证期编制 30-80 人，2026H2 小批量试产扩到 80-150 人，2027 年规模化量产将扩到 150-300 人，编制扩张节奏就是岗位增量节奏。</p>
+      <a class="source-link" href="https://www.ithome.com/1/006/947.htm" target="_blank">📎 查看原文</a>
     </div>
   </div>
   <div class="card">
-    <h3>arXiv:2609.17292 Escape-Aware CBF：仅状态型障碍函数会「认证错误的代价」</h3>
+    <h3>马斯克专访：Optimus 量产提速，「未来 20 年或达 1000 亿台」</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-teal">arXiv</span><span class="badge-info">📋 理论缺口</span><span>2026-09-15</span></div>
-      <p>输入受限系统的 CBF 把可行输入集写进安全集定义，但障碍函数几乎总是仅依赖状态。对四旋翼这并非细节——<strong>推力矢量必须先重新定向才能减速，而重新定向受可达机体角速度限制</strong>，于是仅状态型障碍函数会「认证」一些来不及逃逸的状态。作者给出<strong>认证缺口的闭式表达</strong>（与接近速度成正比、与角速度上限成反比），并在状态与上一次输入的增广对上定义逃逸障碍函数；<strong>550 组配对闭环回合</strong>中，停止距离型障碍函数恰在两类场景失败 15% 与 25%。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2609.17292" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-orange">产业信号</span><span class="badge new">🆕 供应链审厂</span><span>2026-09-23</span></div>
+      <p>9 月 23 日马斯克在央视财经专访中预测：<strong>10 年内人形机器人至少 10 亿台，未来 20 年可能达 1000 亿台</strong>。更实际的信号是：<strong>特斯拉正在中国长三角推进新一轮人形机器人供应链审厂，将实质导向 Optimus 的量产，已向供应链企业下达相关订单</strong>。数据面：2026 年被视为人形机器人「量产元年」，<strong>2026H1 全球出货量超 2.2 万台、同比增长近 300%</strong>，高盛预测 2026 年全球出货 7.5 万台、2030 年约 89 万台；<strong>2025 年全球出货量前六位全部为中国企业，合计占全球 87.87%</strong>。「十五五」规划将具身智能列为新增长点，6 月工信部、国资委启动「人形机器人与具身智能实景实训专项行动」，覆盖 10 省市、目标年底形成万台级落地能力。对机械硕士：长三角供应链审厂意味着<strong>精密减速器、丝杠、关节模组等零部件岗位在上海—苏州—杭州一线持续放量</strong>。</p>
+      <a class="source-link" href="https://finance.eastmoney.com/a/202609233882500467.html" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">📜 02 政策标准 · 人形机器人标准化进入密集落地期</div>
+  <div class="card">
+    <h3>《国家人形机器人产业标准体系建设指南（2026 版）》征求意见昨日截止：2028 年前至少 100 项关键标准</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-red">国家标准</span><span class="badge hot">🔥 9-23 截止</span><span>2026-08-25 发布</span></div>
+      <p>工信部《国家人形机器人产业标准体系建设指南（2026 版）》（征求意见稿）于 <strong>8 月 25 日至 9 月 23 日</strong>公开征求意见——也就是说，征求窗口昨日刚刚关闭，正式版出台进入倒计时。核心目标：<strong>到 2028 年，在能力测试及评估方法、关键技术、平台与系统、场景应用、安全治理等方面完成至少 100 项关键标准制定，开展标准宣贯和实施推广的企业超过 200 家</strong>。标准体系分六部分：基础共性、类脑与智算、肢体与部组件、整机与系统、应用、安全伦理；重点包括人形机器人<strong>能力分级方法体系、唯一标识编码规则、结构化/半结构化工业环境下的作业能力规范</strong>。对求职者的含义：能力分级与测试评估一旦标准化，<strong>「机器人测试工程师」「标准与认证工程师」会像汽车的「整车检测」一样成为稳定的工程岗位</strong>，且这类岗位天然欢迎懂机构、懂动力学又懂规范的机械背景人才。</p>
+      <a class="source-link" href="https://www.stdaily.com/web/gdxw/2026-08/25/content_569413.html" target="_blank">📎 查看原文</a>
     </div>
   </div>
   <div class="card">
-    <h3>arXiv:2609.12758 对抗风智能体 + HAPPO：海况 10 下成功率提升 16%</h3>
+    <h3>国际电联具身智能标准焦点组第三次会议 10 月 13-16 日落地杭州：9 大工作组、27 项在研项目</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-orange">arXiv</span><span class="badge-success">🤝 域泛化</span><span>2026-09-11</span></div>
-      <p>论文用<strong>异构智能体近端策略优化（HAPPO）</strong>学习船载机械臂空中捕获四旋翼的协同策略，在 NVIDIA Isaac Lab 中引入课程 + <strong>对抗风智能体</strong>（HARL-AC），对比基线为课程式域随机化。分布内海况 0 / 4 / 5 上两者相当，成功率最高 <strong>97.5%</strong>；分布外海况 7 / 8 / 10 上 HARL-AC 泛化更好，<strong>海况 10 下中位成功率高 16%</strong>、坠毁率低最多 14%，超时仅增加不到 3%。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2609.12758" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-amber">国际标准</span><span class="badge new">🆕 全球协作</span><span>2026-09-23</span></div>
+      <p>中国信通院消息，国际电信联盟（ITU）具身智能标准焦点组（FG-EAI）第三次会议将于 <strong>2026 年 10 月 13-16 日在杭州举行</strong>，参会免费。三大看点：① <strong>九大工作组覆盖从基础术语、模型算法、系统集成、网络互联到评测基准、开源生态的完整标准化链条</strong>；② 目前已形成 <strong>27 项推进中的工作项目</strong>，内容涵盖具身智能术语与本体、参考架构、<strong>多模态数据管理与采集、仿真环境、云边端协同、多智能体协作</strong>，以及电力、制造、物流等重点行业应用；③ 会议将发布具身智能产业主题报告，研判「部署态元年」的应用进展。对你的价值有两层：一是<strong>关注「仿真环境」「评测基准」两个工作组</strong>——仿真与评测恰好是机械硕士做 Sim2Real、动力学建模最容易切入的标准空白区；二是会议本身开放报名，<strong>适合作为了解行业全景与积累人脉的低成本入口</strong>。</p>
+      <a class="source-link" href="https://www.toutiao.com/article/7688527889372840486/" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🧭 03 职业发展 · 机械工程师的「设备层→产线层→系统层」升级路线</div>
+  <div class="card">
+    <h3>三级升级路线：会 MES/SCADA 不再是加分项，而是工作常识</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">职业规划</span><span class="badge-high">高优先</span><span>2026</span></div>
+      <p>行业咨询视角给出一条非常具体的升级路线，建议逐段对照自检：<strong>① 设备层</strong>——熟悉至少一类核心设备（机床、冲压、焊接、装配），知道极限能力和常见故障，能对接供应商参与选型与技术谈判，而不只是听销售讲参数；<strong>② 产线层</strong>——从「单机思维」走向「产线思维」，理解节拍、瓶颈、物流动线，学会用离散事件仿真软件评估方案；<strong>③ 系统层</strong>——参与自动化、信息化项目规划，懂通讯协议、接口形式、安全规范等通用标准。文中点明关键变化：<strong>会用 MES、SCADA 这些系统不再是加分项，而是工作常识；懂一点 Python、脚本或工业软件二次开发接口，就能在团队里迅速脱颖而出</strong>。落地动作也很具体：多争取参与设备改造与小型自动化项目，主动和信息化部门、设备商的人聊，把自己做的图纸和方案<strong>用数据表达——多少节拍、多少能耗、多少人力</strong>。</p>
+      <a class="source-link" href="https://www.js-friends.com/jixie/29893.html" target="_blank">📎 查看原文</a>
     </div>
   </div>
   <div class="card">
-    <h3>arXiv:2609.13243 GzDRL：单进程 Gazebo 强化学习框架，策略零微调上真机</h3>
+    <h3>向「懂一点算法的机械工程师」靠近，做团队里的「关键转译者」</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-green">arXiv</span><span class="badge-info">📋 仿真工程</span><span>2026-09-03</span></div>
-      <p>GzDRL 针对基于中间件的 RL-Gazebo 集成的非确定性与不可复现问题，提出<strong>无中间件的环境步进机制</strong>，直接同步智能体动作与物理更新，实现确定性、高吞吐的数据采集与高效向量化。基准显示其在工作站上取得所评测框架中<strong>最高吞吐</strong>，并维持精确的智能体—环境同步。最关键的是 <strong>Sim-to-Real 验证：策略直接部署到物理四旋翼，不做任何微调</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2609.13243" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-teal">差异化定位</span><span class="badge-success">🤝 转型策略</span><span>2026</span></div>
+      <p>很多年轻工程师纠结要不要彻底转行做软件、数据。这篇的答案很务实：<strong>在机械行业内部向「带数字味道的机械人」演进，比彻底离开机械换赛道更容易形成差异化价值</strong>。2026 年工厂最真实的问题不是「买不买设备」，而是「新线买回来了，怎么让它稳定跑起来」——数据采集协议不统一、算法模型落不了地、人的能力断档（老工人懂机床不懂系统，年轻人会系统不懂机床），<strong>谁能把机械、工艺、自动化和数据打通，谁就掌握话语权</strong>。特别吃香的能力清单：能用 <strong>Python、MATLAB</strong> 对设备数据做清洗和可视化；懂统计基础，知道什么是波动区间与异常点；了解 <strong>Modbus、OPC UA</strong> 等常见工业协议。这类能力叠加在机械设计、工艺规划之上，会让你扮演「关键转译者」——和程序员、设备商、生产主管说同一种话的人。</p>
+      <a class="source-link" href="https://www.js-friends.com/jixie/29731.html" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>机械工程靠 AI「翻身」：新职业名录扩容，硕士年薪 20 万起步成为常态</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">赛道薪资</span><span class="badge-info">📋 薪资对标</span><span>2026</span></div>
+      <p>2026 年 AI 辅助设计工具大范围普及：基础建模、图纸校验、初步仿真交给 AI，工程师精力转向方案创新与结构优化；生成式设计按重量、强度、成本约束<strong>短时间生成几十套备选结构方案</strong>；数字孪生让设备不用实体样机即可完成工况模拟测试。政策面，<strong>人社部 2026 年新职业名录纳入「数字孪生工程技术人员」「具身智能机器人应用技术员」「工业产品数字建模师」</strong>等机械+AI 深度绑定的新职业。薪资分化非常清晰：传统通用制造本科应届起薪多为 6000-8000 元/月；而<strong>新能源车企、动力电池、半导体设备企业，机械本科应届年薪普遍 12-18 万，硕士优秀者 20 万起步；3-5 年经验深耕智能制造、新能源赛道，年薪 20-35 万属正常区间</strong>。结论与两条升级路线文章互相印证：<strong>高薪只面向掌握复合型能力的技术人员</strong>，守住传统技能不碰数字化工具，依旧会面临竞争压力。</p>
+      <a class="source-link" href="https://www.toutiao.com/article/7680475864131256855" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🛠️ 04 技能转型 · 数据素养五件套与行动路线图</div>
+  <div class="card">
+    <h3>转智能制造该补什么：从「AI 应用逻辑」到 RAG/Agent 的企业级落地能力</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">技能清单</span><span class="badge-high">高优先</span><span>2026</span></div>
+      <p>对智能制造落地岗位，<strong>无需深耕底层算法研发，重点掌握适配工业场景的 AI 应用逻辑</strong>：生成式 AI 基础原理认知（无需深究数学公式）、大模型基础应用与提示词设计（用 AI 梳理工艺文档、优化生产方案、拆解设备故障）、多模态 AI 工具在图文分析、故障识别、数据整理等高频场景的用法。更进阶的是<strong>系统化的设备/质量/生产三维场景分析能力</strong>：设备维度梳理全生命周期故障高发节点，适配预测性维护；质量维度结合不良品成因搭建 AI 质检与溯源思路；生产维度拆解排程、节拍、物料浪费与产能瓶颈。最稀缺的一层是 <strong>RAG 与 Agent</strong>：把工艺手册、运维文档、质检标准搭建成专属知识库实现智能问答，搭建设备监控、质量预警、生产统计的自动化工作流——<strong>这是从「AI 工具使用者」升级为「企业 AI 应用落地者」的核心突破点</strong>，直接对应智能制造工程师、数字化转型专员、AI 应用工程师的岗位要求。</p>
+      <a class="source-link" href="https://m.toutiao.com/article/7682781592800018950" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>机械专业转型路线图：从数据分析切入，先做一个数字孪生 demo</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">行动路线</span><span class="badge-info">📋 可执行</span><span>2026</span></div>
+      <p>面向 2026 年的五步行动路线图，可直接照抄进周计划：<strong>① 巩固根基</strong>——力学、材料、工艺必须扎实，这是转型的本金；<strong>② 点亮数字技能树</strong>——主攻数据分析（可通过系统认证构建知识体系）加一门编程语言（Python 首选）；<strong>③ 熟悉智能装备</strong>——学习机器人技术和自动化集成原理；<strong>④ 建立系统视角</strong>——理解工业互联网和主流工业软件的逻辑；<strong>⑤ 动手实践</strong>——通过竞赛（如智能制造大赛）、开源项目或实习，把所学整合进一个具体场景，「设计一个简单的智能产线数字孪生 demo」被明确点名。文中最有价值的提醒是跨界沟通：<strong>用对方能理解的语言沟通机械约束，同时快速学习对方的领域知识</strong>——在技术日新月异的当下，保持好奇心和快速学习能力是唯一的「永久续航」方案。</p>
+      <a class="source-link" href="https://m.toutiao.com/article/7660733059532096050" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🚗 05 秋招岗位地图 · 智驾域控、控制算法与自动驾驶系统向机械硕士开放</div>
+  <div class="card">
+    <h3>智驾新程（上海）：域控制器「结构与热设计」——机械硕士最顺滑的智驾切入口</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">域控结构</span><span class="badge hot">🔥 技能重合</span><span>2026-09-03 发布</span></div>
+      <p>FY27 校招岗位，工作地北京/上海，<strong>硕士</strong>，机械设计、车辆工程、热能工程、动力工程、流体力学等专业均可投。职责覆盖智能驾驶域控制器从样机到量产的全生命周期：<strong>3D/2D 图纸、尺寸链公差分析、MBOM 搭建；静力学、动力学、随机振动及疲劳寿命仿真分析；散热方案设计、热仿真建模与热测试验证；结构 DFMEA 编制</strong>。任职要求里「精通 CAD 与 CAE 仿真软件、熟悉 CNC/注塑/压铸/钣金等批量生产工艺、能基于制造约束做可生产性设计」——这与机械硕士的课题训练几乎完全重叠。<strong>对做过结构仿真、疲劳分析的同学，域控结构/热设计是绕开算法内卷、直接进入智驾硬件体系的最短路径</strong>。</p>
+      <a class="source-link" href="https://career.hebut.edu.cn/correcruit/content/id/80023.html" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>智驾新程（上海）：智驾控制算法工程师（交付方向）——PID/LQR/MPC + Simulink 是硬门槛</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">控制算法</span><span class="badge-info">📋 硕士 · 上海</span><span>2026-09-03 发布</span></div>
+      <p>同一公司另一岗：要求<strong>熟悉车辆转向、驱动、制动系统工作原理，掌握 PID、LQR、MPC 等常用控制算法</strong>，了解数值优化、自适应控制、鲁棒控制；对车辆纵/横向动力学特性有较好理解；<strong>熟练 C/C++，熟悉 Matlab/Simulink</strong>，了解 CANoe、CarMaker、Carsim 等仿真测试工具；加分项包括 RoboMaster、FSAE、智能车竞赛控制算法开发经验、实车调试经验、ICRA/IROS/TITS 论文。职责含新车型的控制参数标定与<strong>系统辨识</strong>、针对执行器时延与精度差异设计鲁棒控制策略、量产级 C++ 代码开发。<strong>这份 JD 再次确认：车辆动力学建模 + MPC + Simulink 仿真三件套，是机械硕士切入智驾规控的标准弹药</strong>——与日报此前梳理的东风、北汽 JD 要求高度一致。</p>
+      <a class="source-link" href="https://career.hebut.edu.cn/correcruit/content/id/80016.html" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>小鹏汽车：自动驾驶系统开发工程师——机械设计及其自动化在硬性专业清单内</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-chery">小鹏</span><span class="badge new">🆕 广州 · 硕士</span><span>2026-09-03 更新</span></div>
+      <p>岗位在广州，<strong>硕士及以上</strong>，硬性专业清单明确包含<strong>机电一体化、机械设计及其自动化</strong>，以及车辆工程、人工智能、汽车电子、计算机、通信、电子工程。职责偏系统与交付：统筹通用智能功能开发需求，从价值、可行性、资源、交付风险综合评估后拆解至各研发模块；<strong>输出系统设计规范、整车关联件需求规范、仿真/测试需求；负责仿真/测试/体验验收与问题闭环</strong>。加分项是熟悉大模型技术原理与工程落地流程、有自动驾驶或智能座舱课题开发经验。它揭示了一个容易被忽视的岗位类型：<strong>不写底层算法、但把控功能交付全程的「系统工程师」席位，恰好适合有整车项目经验的机械硕士</strong>。</p>
+      <a class="source-link" href="https://www.shushuqiuzhi.com/position/580178" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>卡特彼勒 2027 校招：自动驾驶方向 JD 里写满 World Model、Sim-to-Real 与 3DGS</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">卡特彼勒</span><span class="badge new">🆕 非公路场景</span><span>2026-09-01 发布</span></div>
+      <p>研发类自动驾驶方向（无锡/上海），招 9 人，10k-15k，本科及以上，机械类、车辆工程、自动化类、计算机类均可投。任职要求值得关注：熟练 Python、熟悉 PyTorch 训练流程与 Linux 环境；熟悉以下至少一个方向——<strong>自动标注、数据管理、MLOps、分布式训练；合成数据、World Model、Sim-to-Real、域随机化，或三维重建（NeRF / 3DGS）</strong>。这是工程机械巨头在非公路场景（矿区、工地）布局自动驾驶的信号：相比乘用车，<strong>工程机械自动驾驶竞争密度更低、对机械场景理解的要求更高</strong>，做过无人化施工、远程操控相关课题的机械硕士有天然叙事优势。加分项还有 Docker、CI/CD 工程工具与无人驾驶/机器人项目经历。</p>
+      <a class="source-link" href="https://job.ustc.edu.cn/Jobinformation/list.aspx?itemid=325121" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>广汽集团 27 届智能驾驶岗：感知/预测/决策/规划/控制全链条开放投递</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-chery">广汽</span><span class="badge-info">📋 广州 · 本科起</span><span>2026-09-09 发布</span></div>
+      <p>广汽集团 27 届智能驾驶岗，工作地广州，本科及以上，专业覆盖计算机、软件工程、电子信息、自动化、<strong>控制科学与工程、车辆工程</strong>。职责为全链条算法工作：<strong>感知、预测、决策、规划、控制核心算法的设计、开发、优化与测试</strong>；参与智驾系统技术方案制定、架构设计与软硬件协同；聚焦传感器标定、融合定位、高精地图应用、诊断服务、功能安全等特定领域开发。任职资格注意两道门槛：<strong>成绩前 20% 优先、需通过大学英语六级、大学期间无重修补考记录</strong>——对准备投递的同学，成绩单和六级证书要提前备好。福利含六险一金、入户广州。结合本期域控结构、控制算法、系统开发三类岗位看，<strong>智驾产业链对机械相关专业的吸纳面比想象中宽：结构、热、系统、算法四条线全部开放</strong>。</p>
+      <a class="source-link" href="https://www.yingjiesheng.com/job-008-064-914.html" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">💰 06 人才市场 · 缺口百万、供需比 1:8，但窗口属于复合型人才</div>
+  <div class="card">
+    <h3>具身智能人才「攻坚战」：岗位月薪 5.9 万升至 6.2 万，年培养科班人才仅 4000 余人</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-red">人才数据</span><span class="badge hot">🔥 卖方市场</span><span>2026</span></div>
+      <p>新华社报道转载的产业全景：脉脉高聘数据显示 <strong>2026 年 1-4 月具身智能领域岗位平均月薪从 5.9 万元攀升至 6.2 万元</strong>；猎聘数据显示节后开工首周具身智能新发职位同比增长 73.65%，平均年薪 33.38 万元，远超全行业。薪酬顶端「上不封顶」：<strong>优必选面向全球招募具身智能首席科学家，年薪 1500 万元起、最高可达 1.24 亿元</strong>。供需缺口更大：北理工指出各行业具身智能人才缺口约 100 万，而<strong>全国 84 所院校开设相关专业、年培养科班人才合计仅 4000 余人</strong>；本科四年叠加硕博三至五年，首批科研型人才大规模进入产业最早要到 2030 年。对应届博士，<strong>VLA、世界模型等「大脑」算法方向起薪普遍超 60 万元</strong>，顶会一作 4 篇以上可破百万。理性看待：百万年薪属于金字塔尖，但它划定了坐标系——<strong>机械硕士的合理卡位是「本体+控制+数据」交汇带，用仿真与建模能力向算法侧各让半步</strong>。</p>
+      <a class="source-link" href="https://qzftz.gxzf.gov.cn/ztzl/rdjj/jkdzxxcyjq/cyxw/t28115259.shtml" target="_blank">📎 查看原文</a>
     </div>
   </div>
   <div class="highlight-box">
-    <div class="highlight-title">💡 开题建议：五篇论文映射成五个章节</div>
-    <p>① Escape-Aware CBF → 「输入受限下的安全认证」；② OmniRisk → 「高速动态避障的风险表示」；③ arXiv:2609.19362 → 「编队避碰可行性」；④ HAPPO 对抗风 → 「域随机化 vs 对抗课程」；⑤ GzDRL → 「仿真可复现性」。其中 ①+② 最适合作为硕士开题主攻方向。</p>
-  </div>
-</div>
-<div class="section">
-  <div class="section-title">📜 02 行业政策 · 中山、福建、前海三地同期落地低空新政</div>
-  <div class="card">
-    <h3>中山市：三年行动方案给出「50 亿 → 200 亿 → 300 亿」阶梯目标</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-red">地方政府</span><span class="badge hot">🔥 量化目标</span><span>2026-09-07 印发</span></div>
-      <p>方案按「需求牵引、航路先行、设施支撑、网联保障」部署<strong>四大领域 17 项重点任务</strong>，目标分三档：<strong>到 2026 年底</strong>打造示范场景 10 个以上、建成无人机起降点 <strong>100 个</strong>、产业规模突破 <strong>50 亿元</strong>；<strong>到 2028 年</strong>培育特色场景 30 个以上、建设 2 处枢纽型低空起降点、产业规模突破 <strong>200 亿元</strong>；<strong>「十五五」期末</strong>累计建成起降点 <strong>300 个</strong>、产业规模突破 <strong>300 亿元</strong>。</p>
-      <a class="source-link" href="https://psc.zs.gov.cn/zcfg/gfxwj/content/post_2648242.html" target="_blank">📎 查看原文</a>
-    </div>
-  </div>
-  <div class="card">
-    <h3>福建省：首个支持民企投资低空基础设施的导则，明确「不得设置歧视性条款」</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-amber">省级导则</span><span class="badge new">🆕 民资准入</span><span>2026-09-10 印发</span></div>
-      <p>导则依据<strong>国办发〔2025〕38 号</strong>与《无人驾驶航空器飞行管理暂行条例》制定，适用起降设施、飞行服务保障设施、信息基础设施等。四条原则中，<strong>「平等准入、公平透明」</strong>要求：负面清单以外的领域民营企业与其他所有制资本享有同等权利，<strong>在招标、审批或许可等环节不得设置任何形式的歧视性、排他性条款</strong>。</p>
-      <a class="source-link" href="https://fgw.fj.gov.cn/zwgk/fgzd/sfgwgfxwj/202609/t20260914_7212956.htm" target="_blank">📎 查看原文</a>
-    </div>
-  </div>
-  <div class="card">
-    <h3>前海十二条：银行不良贷款净损失补偿 50%，单家每年最高 50 万元</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-teal">金融工具</span><span class="badge-info">📋 9-01 起施行</span><span>2026-09</span></div>
-      <p>措施自 <strong>2026 年 9 月 1 日</strong>起实施，有效期至 2028 年 12 月 31 日。工具包括：鼓励保险机构围绕 <strong>eVTOL 与工业级无人机</strong>开发研发类、财产类、产品类、责任类保险；组建<strong>低空经济产业共保体并设立资金池</strong>，对赔付率超 <strong>100%</strong> 的机构按超出部分 <strong>50%</strong> 补偿；设立「前海低空经济专区」并推出「入板即贷」；对备案信贷产品的不良贷款净损失给予 50% 风险补偿，<strong>每家银行每年最高 50 万元</strong>。</p>
-      <a class="source-link" href="https://www.gdjr.gov.cn/gdjr/jrzx/dfjr/content/post_45017.html" target="_blank">📎 查看原文</a>
-    </div>
-  </div>
-</div>
-<div class="section">
-  <div class="section-title">🏠 03 家乡场景 · 徐州「低空一张网」成型，算法岗短缺是明确信号</div>
-  <div class="card">
-    <h3>新华日报：泉山区 21 项场景闭环，九里湖夜巡人员由 80 人降至 50 人</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-chery">徐州</span><span class="badge hot">🔥 家乡场景</span><span>2026-09-07</span></div>
-      <p>徐州对全域无人机、智能机巢、感知终端、作业队伍<strong>集中管理</strong>，实现「统一规划、统一标准、统一建设、统一运营」，搭建全域低空态势监测与数据分级保密体系，实现<strong>飞行、数据双重可控</strong>。<strong>泉山区建成全市首个低空政务一体化平台</strong>，整合 5 大部门、16 个街道业务，打造耕地保护、违建监管、河道巡检等 <strong>21 项</strong>场景，形成「空中巡查—AI 识别—派单处置—复核归档」闭环，单机库覆盖半径 5 千米、续航 30 分钟。九里湖湿地公园改用无人机搭载红外相机后，<strong>夜间巡查人员由 80 人降至 50 人</strong>。</p>
-      <a class="source-link" href="https://xh.xhby.net/pad/con/202609/07/content_1587725.html" target="_blank">📎 查看原文</a>
-    </div>
-  </div>
-  <div class="card">
-    <h3>徐州科创大走廊：省产学研合作项目 19 项居全省第一，飞控中试是抓手</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-chery">徐州</span><span class="badge-success">🤝 求职线索</span><span>2026-09-16</span></div>
-      <p>江苏省概念验证中心（中国矿业大学）<strong>累计立项资助 41 项</strong>，<strong>徐州获批省产学研合作项目 19 项、数量位居全省第一</strong>。最关键的是：<strong>徐州市低空产业发展有限公司结合全市科创大走廊布局，联合电子科技大学、东南大学等高校团队，针对算法等领域工程师短缺问题开展数据开发与算法训练</strong>，并支撑飞控、传感器等中试验证。9 月 16 日，2026「徐州科创圈」创新创业大赛颁奖举行，赛道覆盖人工智能 +、具身智能等 19 个细分领域，<strong>共吸引 269 个团队与企业参赛</strong>。</p>
-      <a class="source-link" href="https://baike.baidu.com/item/%E5%BE%90%E5%B7%9E%E7%A7%91%E5%88%9B%E5%A4%A7%E8%B5%B0%E5%BB%8A/67897676" target="_blank">📎 查看原文</a>
-    </div>
-  </div>
-  <div class="card">
-    <h3>徐工两大在建项目：智能驾驶零部件基地 20 亿元、农机基地一期投产</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-orange">徐州</span><span class="badge-info">📋 岗位外溢</span><span>2026-09 项目汇总</span></div>
-      <p><strong>徐工高端智驾零部件产业基地</strong>（徐州经开区，总投资 <strong>20 亿元</strong>）聚焦新能源重卡底盘与智能驾驶核心零部件研发制造；<strong>徐工农机智能制造基地</strong>一期已投产，全面达产后年产值将跨百亿元。另有<strong>中国物流徐州工程机械智慧产业园</strong>（总投资 14 亿元）5 公里半径覆盖徐工 12 家主机厂。信号很明确：<strong>本地岗位增量正从「结构设计」向「底盘控制 + 智能驾驶」迁移</strong>。</p>
-      <a class="source-link" href="https://m.toutiao.com/article/7683703535401271871" target="_blank">📎 查看原文</a>
-    </div>
-  </div>
-</div>
-<div class="section">
-  <div class="section-title">🚗 04 秋招目标地图 · 车企 JD 里出现了 Sim2Real、线控底盘与 MuJoCo</div>
-  <div class="card">
-    <h3>东风研发总院：智能化研发岗写「深耕具身智能控制算法，探索 Sim2Real」</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-orange">东风</span><span class="badge hot">🔥 技术栈重合</span><span>2026-09</span></div>
-      <p>汽车智能化研发岗职责除电子电气架构、智能底盘决策控制算法、智能驾驶决策规划控制外，明确包含<strong>「负责机器人前沿控制技术的探索与预研，参与高自由度机器人的运动学 / 动力学建模与仿真验证」</strong>与<strong>「深耕具身智能控制算法，探索 Sim2Real、大模型与机器人控制的结合」</strong>。专业要求含控制科学与工程、机械工程、机械电子工程、车辆工程、自动化、机器人工程；加分项含熟悉 C/C++/Python 及 ROS/ROS2、掌握 MuJoCo。</p>
-      <a class="source-link" href="https://wendaedu.ahbys.com/job2.html?cid=420642&jid=83462" target="_blank">📎 查看原文</a>
-    </div>
-  </div>
-  <div class="card">
-    <h3>北汽集团：规控岗要「车辆动力学模型 + 仿真验证」，底盘岗要「控制代码生成」</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-accent">北汽</span><span class="badge-info">📋 硕士 · 2027 应届</span><span>2026-09</span></div>
-      <p><strong>智驾（规控）算法开发工程师</strong>职责含：负责车辆全生命周期、全路况下的纵横向精准控制与状态在线估计与控制自适应调整；<strong>建立车辆（含挂车）动力学 / 运动学模型，结合仿真工具提升算法开发与验证效率</strong>；对接线控系统并完成标定。<strong>智能底盘开发工程师</strong>负责横纵垂融合控制、线控制动、线控转向控制、CDC 减震器控制、空气悬架控制等算法开发，以及<strong>控制代码生成及软件集成</strong>。网申 <code>https://baicgroup.zhiye.com/campus/jobs</code>。</p>
-      <a class="source-link" href="https://vip.gangweiku.com/wap/index.php?a=comapply&c=job&id=397048" target="_blank">📎 查看原文</a>
-    </div>
-  </div>
-  <div class="card">
-    <h3>奇瑞智能科技板块：具身工程部招「控制算法 / 仿真设计」，工作地芜湖</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-chery">奇瑞</span><span class="badge-info">📋 就近就业</span><span>2026-09</span></div>
-      <p>智能化研究院筹备组下设：<strong>具身工程部</strong>岗位方向为控制算法、机械设计、电气设计、仿真设计，需求含控制工程、机械工程、人工智能；<strong>智能底盘部</strong>为电子电器、线控底盘，需求含车辆工程、机械电子工程、控制工程、自动化；<strong>零维科技车体结构部</strong>含仿真设计、车体结构设计。多数岗位工作地为<strong>芜湖</strong>——对徐州—马鞍山通勤线而言，芜湖是继南京、合肥之后的第三个「高铁 1 小时级」就业城市。</p>
-      <a class="source-link" href="https://www.jrzp.com/xiaozhaoView/5701923.shtml" target="_blank">📎 查看原文</a>
-    </div>
-  </div>
-  <div class="card">
-    <h3>零一飞行（南京）：飞控岗要求「多状态 PID 自适应 + 组合导航 + MATLAB 仿真」</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-purple">南京</span><span class="badge new">🆕 本地飞控岗</span><span>2026-09-07 发布</span></div>
-      <p>岗位在南京市建邺区，<strong>本科，招聘 1 人，10 万元 / 年</strong>。职责要求完成飞控系统核心算法开发，包括<strong>多状态 PID 自适应控制算法、组合导航系统算法</strong>，熟练使用 MATLAB 进行数字仿真并将核心算法嵌入飞控系统验证；掌握<strong>飞行力学、飞行器动力学建模、系统辨识</strong>；<strong>熟练基于 MBD 开发控制律者优先</strong>；熟悉 Ardupilot 或 PX4 二次开发者优先。公司创始人张杰博士毕业于南京航空航天大学。</p>
-      <a class="source-link" href="https://m.yingjiesheng.com/job-008-061-081.html" target="_blank">📎 查看原文</a>
-    </div>
-  </div>
-</div>
-<div class="section">
-  <div class="section-title">📝 05 开题方法论 · 先用三个问题筛掉「假题目」</div>
-  <div class="card">
-    <h3>「90% 的选题问题出在问题定义阶段」——三个自检问题</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-accent">开题</span><span class="badge-high">高优先</span><span>方法参考</span></div>
-      <p><strong>约 90% 的选题问题都出在问题定义阶段</strong>。常见误区三类：选题过于宽泛、问题边界模糊、脱离 RL 技术特性。正确姿势是先锁定一个具体场景中的决策优化问题，再思考如何转化为马尔可夫决策过程（MDP）。选题前务必回答三个问题：<strong>① 环境状态是否可观测？② 是否有明确的奖励信号？③ 智能体的动作空间是否明确定义？</strong>文中「经典控制类」推荐选题直接列出<strong>「无人机避障中的课程学习（Curriculum Learning）策略」</strong>，并强调<strong>关键要记录训练过程中奖励曲线的收敛情况</strong>。</p>
-      <a class="source-link" href="http://www.mhpq.cn/news/525409" target="_blank">📎 查看原文</a>
-    </div>
-  </div>
-  <div class="card">
-    <h3>第一篇小实验：「单算法改进 + 多环境验证」比挑战新框架更稳</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-teal">科研工程</span><span class="badge-info">📋 可复现性</span><span>方法参考</span></div>
-      <p>建议先从<strong>「单算法改进 + 多环境验证」</strong>入手，而不是直接挑战新框架，例如研究 PPO 的 clip 参数在不同环境中的敏感性。这类方向环境成熟、基线清晰、实验可重复。文中点出两个最容易踩的坑：<strong>奖励函数设计</strong>与<strong>实验可复现性缺失</strong>，并建议用配置文件、固定随机种子、统一输出目录管理实验。含义是：<strong>「PPO clip 参数敏感性 + 四旋翼抗风扰」本身就是一篇可交付的小论文骨架</strong>。</p>
-      <a class="source-link" href="https://blog.csdn.net/weixin_30985047/article/details/164434802" target="_blank">📎 查看原文</a>
-    </div>
-  </div>
-</div>
-<div class="section">
-  <div class="section-title">💻 06 技能路线 · Simulink 四旋翼建模与薪资对标</div>
-  <div class="card">
-    <h3>五子系统拆分法：位置环放惯性系、姿态环放机体系</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-accent">仿真</span><span class="badge-info">📋 建模结构</span><span>技术参考</span></div>
-      <p>模型核心是三部分：位置动力学、姿态动力学、控制分配；最易出问题的是坐标系转换——<strong>旋转矩阵用错会导致姿态在转而位置不动</strong>。建议<strong>位置环放在惯性坐标系下建立、姿态环放在机体坐标系下建立</strong>，中间用方向余弦矩阵或四元数转换。建模按信息流切成五个子系统：期望值生成器、控制器、控制分配与电机、六自由度刚体动力学、传感器测量。路线建议<strong>白盒优先</strong>，转动惯量与推力系数再用真实飞行日志标定。</p>
-      <a class="source-link" href="https://blog.csdn.net/weixin_29185493/article/details/164422148" target="_blank">📎 查看原文</a>
-    </div>
-  </div>
-  <div class="card">
-    <h3>从模型到 C 代码：Model Advisor 检查 + 求解器改离散定步长</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-orange">工程化</span><span class="badge-info">📋 代码生成</span><span>技术参考</span></div>
-      <p>做代码生成前首先要跑模型风格检查——<strong>Model Advisor</strong> 可自动检查模型是否符合代码生成规范，例如是否使用了连续时间模块、是否存在代数环、是否有不明确的采样时间；<strong>其次要配置求解器为离散定步长</strong>。文中还提到：在汽车电子领域，<strong>很多 ECU 里的控制算法早已不是手写 C 代码，而是直接从 Simulink 模型自动生成</strong>——这正是北汽「控制代码生成及软件集成」岗位的技术背景。</p>
-      <a class="source-link" href="https://blog.csdn.net/weixin_31887307/article/details/164418770" target="_blank">📎 查看原文</a>
-    </div>
-  </div>
-  <div class="card">
-    <h3>薪资对标：苏州飞控算法岗 25-45k·14 薪，重庆低空飞控岗 1.6-3.3 万</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-green">市场行情</span><span class="badge-info">📋 薪资参考</span><span>2026-09</span></div>
-      <p>猎聘苏州地区行情：<strong>飞控算法工程师 25-45k·14 薪（3-5 年，本科）</strong>、<strong>无人机飞控工程师 20-40k（3-5 年，硕士）</strong>、<strong>高级无人机飞控算法工程师 30-60k·15 薪（5 年以上）</strong>，另有姿轨控总体设计师 25-45k·15 薪（硕士）。另一条硕士起点岗位来自<strong>招商局交通科技（重庆）</strong>的低空飞行控制算法工程师：<strong>1.6 万—3.3 万元</strong>，要求硕士及以上、控制科学与工程 / 机器人工程 / 航空宇航科学相关专业，<strong>精通多刚体动力学，熟练掌握 MPC 及 WBC 算法者优先</strong>。结论：长三角飞控岗锚点在 25k 上下，<strong>「MPC/WBC + 多刚体动力学」是拉开档次的第二技能点</strong>。</p>
-      <a class="source-link" href="https://www.liepin.com/city-suzhou/career/feikongsuanfa/" target="_blank">📎 查看原文</a>
-    </div>
+    <div class="highlight-title">💡 今日行动建议：给机械硕士的三件小事</div>
+    <p>① <strong>本周内</strong>：把简历里的仿真经历改写成「数据语言」——节拍、能耗、良率、精度各给一个量化数字，对齐本期 03 节的「关键转译者」定位；② <strong>本月内</strong>：启动一个小型数字孪生或 Sim2Real demo（哪怕是四旋翼/机械臂的仿真环境 + 强化学习策略），投卡特彼勒、智驾新程这类明确写 World Model / Sim-to-Real 的岗位时作为作品集附件；③ <strong>10 月 13-16 日</strong>：ITU 具身智能标准焦点组杭州会议免费开放，关注「仿真环境」「评测基准」两个工作组，适合实地了解行业全景并积累人脉。</p>
   </div>
 </div>
 <div class="section">
@@ -198,27 +166,22 @@
     <table class="summary-table">
       <thead><tr><th>来源标题</th><th>链接</th><th>时间</th></tr></thead>
       <tbody>
-        <tr><td>arXiv:2609.19362 四旋翼无人机高阶安全临界控制的可行性与奇异性</td><td><a class="source-link" href="https://arxiv.org/abs/2609.19362" target="_blank">📎 查看原文</a></td><td>2026-09-16</td></tr>
-        <tr><td>arXiv:2609.18191 OmniRisk：敏捷四旋翼动态避障的全向轨迹风险学习</td><td><a class="source-link" href="https://arxiv.org/abs/2609.18191" target="_blank">📎 查看原文</a></td><td>2026-09-16</td></tr>
-        <tr><td>arXiv:2609.17292 机体角速度限制下四旋翼安全的逃逸感知控制障碍函数</td><td><a class="source-link" href="https://arxiv.org/abs/2609.17292" target="_blank">📎 查看原文</a></td><td>2026-09-15</td></tr>
-        <tr><td>arXiv:2609.12758 海事场景下四旋翼自主着舰的课程对抗异构智能体强化学习</td><td><a class="source-link" href="https://arxiv.org/abs/2609.12758" target="_blank">📎 查看原文</a></td><td>2026-09-11</td></tr>
-        <tr><td>arXiv:2609.13243 GzDRL：基于 Gazebo 的可复现可扩展深度强化学习框架</td><td><a class="source-link" href="https://arxiv.org/abs/2609.13243" target="_blank">📎 查看原文</a></td><td>2026-09-03</td></tr>
-        <tr><td>中山市低空经济高质量发展行动方案（2026-2028 年）</td><td><a class="source-link" href="https://psc.zs.gov.cn/zcfg/gfxwj/content/post_2648242.html" target="_blank">📎 查看原文</a></td><td>2026-09-07</td></tr>
-        <tr><td>福建省支持民营企业投资低空领域基础设施工作导则（试行）</td><td><a class="source-link" href="https://fgw.fj.gov.cn/zwgk/fgzd/sfgwgfxwj/202609/t20260914_7212956.htm" target="_blank">📎 查看原文</a></td><td>2026-09-10</td></tr>
-        <tr><td>深圳前海金融赋能低空经济产业高质量发展的十二条措施</td><td><a class="source-link" href="https://www.gdjr.gov.cn/gdjr/jrzx/dfjr/content/post_45017.html" target="_blank">📎 查看原文</a></td><td>2026-09-01 起施行</td></tr>
-        <tr><td>破解数据孤岛，徐州打造「低空一张网」（新华日报）</td><td><a class="source-link" href="https://xh.xhby.net/pad/con/202609/07/content_1587725.html" target="_blank">📎 查看原文</a></td><td>2026-09-07</td></tr>
-        <tr><td>徐州科创大走廊（低空算法人才短缺）</td><td><a class="source-link" href="https://baike.baidu.com/item/%E5%BE%90%E5%B7%9E%E7%A7%91%E5%88%9B%E5%A4%A7%E8%B5%B0%E5%BB%8A/67897676" target="_blank">📎 查看原文</a></td><td>2026-09</td></tr>
-        <tr><td>徐州市 2026 年 9 月拟在建重点项目汇总（徐工两大基地）</td><td><a class="source-link" href="https://m.toutiao.com/article/7683703535401271871" target="_blank">📎 查看原文</a></td><td>2026-09</td></tr>
-        <tr><td>东风汽车集团有限公司研发总院 2027 届秋季校园招聘简章</td><td><a class="source-link" href="https://wendaedu.ahbys.com/job2.html?cid=420642&jid=83462" target="_blank">📎 查看原文</a></td><td>2026-09</td></tr>
-        <tr><td>北汽集团智驾（规控）算法开发工程师 / 智能底盘开发工程师</td><td><a class="source-link" href="https://vip.gangweiku.com/wap/index.php?a=comapply&c=job&id=397048" target="_blank">📎 查看原文</a></td><td>2026-09</td></tr>
-        <tr><td>奇瑞智能科技板块全球招聘 2027 届本硕博毕业生</td><td><a class="source-link" href="https://www.jrzp.com/xiaozhaoView/5701923.shtml" target="_blank">📎 查看原文</a></td><td>2026-09</td></tr>
-        <tr><td>零一飞行（南京）科技有限公司无人机飞控系统开发工程师</td><td><a class="source-link" href="https://m.yingjiesheng.com/job-008-061-081.html" target="_blank">📎 查看原文</a></td><td>2026-09-07</td></tr>
-        <tr><td>强化学习毕设选题指南：99 个热门方向与避坑策略</td><td><a class="source-link" href="http://www.mhpq.cn/news/525409" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
-        <tr><td>强化学习科研实战全链路：从 MDP、PPO 到 RLHF 与 DPO</td><td><a class="source-link" href="https://blog.csdn.net/weixin_30985047/article/details/164434802" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
-        <tr><td>Simulink 四旋翼 QAV 建模实战：从动力学到串级 PID 全流程解析</td><td><a class="source-link" href="https://blog.csdn.net/weixin_29185493/article/details/164422148" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
-        <tr><td>Simulink 建模仿真实战：从物理建模到自动代码生成全流程解析</td><td><a class="source-link" href="https://blog.csdn.net/weixin_31887307/article/details/164418770" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
-        <tr><td>苏州飞控算法工程师岗位薪资行情（猎聘）</td><td><a class="source-link" href="https://www.liepin.com/city-suzhou/career/feikongsuanfa/" target="_blank">📎 查看原文</a></td><td>2026-09</td></tr>
-        <tr><td>招商局交通科技（重庆）低空飞行控制算法工程师</td><td><a class="source-link" href="https://www.huibo.com/cq/job/job415vu94" target="_blank">📎 查看原文</a></td><td>2026-09</td></tr>
+        <tr><td>财经观察：中国具身智能机器人进入「实干时代」？（环球时报）</td><td><a class="source-link" href="https://www.toutiao.com/article/7688834498074526223/" target="_blank">📎 查看原文</a></td><td>2026-09-24</td></tr>
+        <tr><td>具身智能迈入类脑时代：五家独角兽领跑，四层梯队格局初定（IT之家）</td><td><a class="source-link" href="https://www.ithome.com/1/006/947.htm" target="_blank">📎 查看原文</a></td><td>2026-09</td></tr>
+        <tr><td>特斯拉 Optimus 量产提速，马斯克：未来 20 年或达 1000 亿台（东方财富）</td><td><a class="source-link" href="https://finance.eastmoney.com/a/202609233882500467.html" target="_blank">📎 查看原文</a></td><td>2026-09-23</td></tr>
+        <tr><td>国家人形机器人产业标准体系建设指南（2026 版）将公开征求意见（科技日报）</td><td><a class="source-link" href="https://www.stdaily.com/web/gdxw/2026-08/25/content_569413.html" target="_blank">📎 查看原文</a></td><td>2026-08-25</td></tr>
+        <tr><td>国际电联具身智能标准焦点组第三次会议将于 10 月在杭州召开（中国信通院）</td><td><a class="source-link" href="https://www.toutiao.com/article/7688527889372840486/" target="_blank">📎 查看原文</a></td><td>2026-09-23</td></tr>
+        <tr><td>未来机械行业发展趋势：2026 年工程人如何抓住智能制造风口（弗雷恩德）</td><td><a class="source-link" href="https://www.js-friends.com/jixie/29893.html" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
+        <tr><td>未来机械行业发展趋势：智能制造浪潮下，工程师该抓住哪些机会（弗雷恩德）</td><td><a class="source-link" href="https://www.js-friends.com/jixie/29731.html" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
+        <tr><td>机械工程：被称作工科之母，2026 年跳出传统制造，靠 AI 翻身走红（今日头条）</td><td><a class="source-link" href="https://www.toutiao.com/article/7680475864131256855" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
+        <tr><td>机械工程师转智能制造，只会画图够用吗？真正该补这 5 项数据素养（今日头条）</td><td><a class="source-link" href="https://m.toutiao.com/article/7682781592800018950" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
+        <tr><td>机械专业想进智能制造，需要补什么能力？2026 年转型指南（今日头条）</td><td><a class="source-link" href="https://m.toutiao.com/article/7660733059532096050" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
+        <tr><td>智驾新程（上海）FY27 校招：结构与热设计（河北工业大学就业指导中心）</td><td><a class="source-link" href="https://career.hebut.edu.cn/correcruit/content/id/80023.html" target="_blank">📎 查看原文</a></td><td>2026-09-03</td></tr>
+        <tr><td>智驾新程（上海）FY27 校招：智能驾驶控制算法工程师（交付方向）</td><td><a class="source-link" href="https://career.hebut.edu.cn/correcruit/content/id/80016.html" target="_blank">📎 查看原文</a></td><td>2026-09-03</td></tr>
+        <tr><td>小鹏汽车自动驾驶系统开发工程师（鼠鼠求职）</td><td><a class="source-link" href="https://www.shushuqiuzhi.com/position/580178" target="_blank">📎 查看原文</a></td><td>2026-09-03</td></tr>
+        <tr><td>卡特彼勒（中国）2027 校招：研发类—自动驾驶方向（无锡/上海）（中科大就业信息网）</td><td><a class="source-link" href="https://job.ustc.edu.cn/Jobinformation/list.aspx?itemid=325121" target="_blank">📎 查看原文</a></td><td>2026-09-01</td></tr>
+        <tr><td>广汽集团 27 届智能驾驶岗（应届生求职网）</td><td><a class="source-link" href="https://www.yingjiesheng.com/job-008-064-914.html" target="_blank">📎 查看原文</a></td><td>2026-09-09</td></tr>
+        <tr><td>具身智能产业打响人才「攻坚战」（广西壮族自治区政府网转载）</td><td><a class="source-link" href="https://qzftz.gxzf.gov.cn/ztzl/rdjj/jkdzxxcyjq/cyxw/t28115259.shtml" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
       </tbody>
     </table>
   </div>

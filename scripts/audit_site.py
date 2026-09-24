@@ -232,9 +232,12 @@ def check_dates():
         while day < today:
             st = day.strftime("%Y%m%d")
             if st not in all_days:
-                warn("漏期", day.isoformat(),
-                     "%d 个分类全部没有该日报告（全天缺失）——请用 build_backfill.py 补做"
-                     % len(CATEGORIES))
+                miss = [c for c in CATEGORIES
+                        if st >= START_DATES.get(c, "00000000")]
+                if miss:
+                    warn("漏期", day.isoformat(),
+                         "缺 %d 个分类（全天缺失）: %s ——请用 build_backfill.py 补做"
+                         % (len(miss), ", ".join(miss)))
             day += datetime.timedelta(days=1)
 
 

@@ -5,10 +5,12 @@
 ## 1. 概览
 - 线上 https://ts-dinglilu.github.io/ ｜仓库 `TS-dinglilu/TS-dinglilu.github.io`（main 直推，Pages 1–2 分钟生效）。
 - 本地 `D:\研二\github.auto\repo` = 站点根 = 发布源 = **唯一真源**。**命令一律在 `repo/` 下执行**。
-- 14 分类：car-recruit / mechanical-recruit / school-news / drone-research / ahut-campus / byd-recruit /
-  chery-recruit / geely-recruit / xiaomi-recruit / weixiaoli-recruit / traditional-auto /
-  **supply-chain-recruit（车企供应链招聘日报，2026-09-24 新增，首页卡片+底部导航已加）** /
-  research-institute / future-planning。
+- 23 分类（招聘/资讯类 14 + 地区类 9）：car-recruit / mechanical-recruit / school-news / drone-research /
+  ahut-campus / byd-recruit / chery-recruit / geely-recruit / xiaomi-recruit / weixiaoli-recruit /
+  traditional-auto / supply-chain-recruit / research-institute / future-planning ＋
+  **地区类 9 个（2026-09-25 上线）：xuzhou / nanjing / shanghai / hangzhou / jiangzhehu / hefei /
+  anhui / jiangsu / shenzhen 各 `-news`，主页「地区」筛选标签下挂 9 卡，每日更新、正文 8000–20000 字**。
+- 全站密码门 guard.js（密码 0，localStorage 免输）；password_gate.py 幂等注入 + build_report 构建时自动注入。
 - 手册 `scripts/DAILY_WORKFLOW.md`｜规范 `content/STYLE_GUIDE.md`。仓库是 **public**（`.workbuddy/` 记忆随之上公开）。
 
 ## 2. 工作区布局（2026-09-15 起）
@@ -17,7 +19,8 @@
 
 ## 3. 命令清单（都在 `repo/scripts/`）
 - **日常一条命令**：写完 `content/<分类>.html` → `python scripts/publish_all.py --push`
-  （校验→构建 13 分类→更新主页→发布前自查→提交推送；自带漏跑自查、退避重试、三级推送）。
+  （校验→构建 23 分类→更新主页→发布前自查→提交推送；自带漏跑自查、退避重试、三级推送）。
+  ⚠️ 按**当下日期**构建——跨天会话（19 点跑到凌晨）会以新一天为「今天」给全部分类建当天报告，注意防重复。
 - 单分类 `build_report.py --category --date --content`｜补漏 `build_backfill.py --date <日> --dir content/backfill<MMDD>`。
 - **外链核验一条命令**：`check_links_today.py`（`--fix` 自动把 https 不通的改写成 http）。
   抽 `source-link` href → 去重 → 6 路并发探测 → 首轮不通自动复测 → 再回退 http。
