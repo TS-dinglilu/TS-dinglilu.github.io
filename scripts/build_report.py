@@ -208,7 +208,7 @@ def rebuild_index(category):
         badge = '<span class="latest-badge">LATEST</span>' if i == 0 else ""
         link_text = "点击查看 →" if i == 0 else "查看 →"
         cards.append(
-            '        <a href="%s" class="report-card%s">\n'
+            '        <a href="%s" class="report-card%s" target="_blank">\n'
             '            <div class="card-info">\n'
             '                <div class="card-date">%s%s</div>\n'
             '                <div class="card-weekday">%s</div>\n'
