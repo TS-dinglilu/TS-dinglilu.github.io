@@ -181,6 +181,13 @@ def build_report(category, dt, content_path):
     # 兜底：页脚日报名统一为标准名（骨架 A / B 都覆盖）
     out = normalize_footer_name(out, category)
 
+    # 密码守卫：每份新报告自动带上全站访问门（幂等）
+    try:
+        from password_gate import inject as _inject_gate
+        out, _ = _inject_gate(out)
+    except Exception as _e:  # noqa: BLE001
+        print("[WARN] 密码守卫注入失败(不影响构建): %s" % _e)
+
     out_path = os.path.join(ROOT, category, target_name)
     open(out_path, "w", encoding="utf-8").write(out)
     print("[OK] 报告已生成: %s (%d bytes)" % (out_path, len(out)))
