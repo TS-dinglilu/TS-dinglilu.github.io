@@ -5,8 +5,9 @@
 ## 1. 概览
 - 线上 https://ts-dinglilu.github.io/ ｜仓库 `TS-dinglilu/TS-dinglilu.github.io`（main 直推，Pages 1–2 分钟生效）。
 - 本地 `D:\研二\github.auto\repo` = 站点根 = 发布源 = **唯一真源**。**命令一律在 `repo/` 下执行**。
-- 13 分类：car-recruit / mechanical-recruit / school-news / drone-research / ahut-campus / byd-recruit /
+- 14 分类：car-recruit / mechanical-recruit / school-news / drone-research / ahut-campus / byd-recruit /
   chery-recruit / geely-recruit / xiaomi-recruit / weixiaoli-recruit / traditional-auto /
+  **supply-chain-recruit（车企供应链招聘日报，2026-09-24 新增，首页卡片+底部导航已加）** /
   research-institute / future-planning。
 - 手册 `scripts/DAILY_WORKFLOW.md`｜规范 `content/STYLE_GUIDE.md`。仓库是 **public**（`.workbuddy/` 记忆随之上公开）。
 
