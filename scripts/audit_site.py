@@ -38,6 +38,9 @@ VALID = set(CATEGORIES)
 # 分类的「建号日期」：新增分类是从某一天才开始有报告的，此前各天不参与「跨分类漏期」比对，
 # 否则新分类会被判定成「自 20260901 起每天都缺」，一次刷出几十条假 ERROR。
 # 只登记「中途新增」的分类；老分类默认不设下限（00000000）。
+# 已拍板不补的历史欠账日期（2026-09-25 用户确认保留留白，audit 不再报 WARN）
+SKIP_DAYS = {"20260916", "20260920", "20260921", "20260922", "20260923"}
+
 START_DATES = {
     "supply-chain-recruit": "20260924",  # 车企供应链招聘日报，2026-09-24 新增
     "xuzhou-news": "20260924",           # 地区·徐州汽车机械日报，2026-09-25 新增
@@ -219,7 +222,8 @@ def check_dates():
     recent = sorted(d for d in all_days if d >= "20260901")
     for d in recent:
         miss = [c for c in CATEGORIES
-                if d not in cover[c] and d >= START_DATES.get(c, "00000000")]
+                if d not in cover[c] and d >= START_DATES.get(c, "00000000")
+                and d not in SKIP_DAYS]
         if miss:
             iso = "%s-%s-%s" % (d[:4], d[4:6], d[6:8])
             err("漏期", iso, "缺 %d 个分类: %s" % (len(miss), ", ".join(miss)))
@@ -231,7 +235,7 @@ def check_dates():
         today = datetime.date.today()
         while day < today:
             st = day.strftime("%Y%m%d")
-            if st not in all_days:
+            if st not in all_days and st not in SKIP_DAYS:
                 miss = [c for c in CATEGORIES
                         if st >= START_DATES.get(c, "00000000")]
                 if miss:
