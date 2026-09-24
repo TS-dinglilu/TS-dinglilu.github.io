@@ -29,8 +29,15 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CATEGORIES = ["car-recruit", "mechanical-recruit", "school-news", "drone-research",
               "ahut-campus", "byd-recruit", "chery-recruit", "geely-recruit",
               "xiaomi-recruit", "weixiaoli-recruit", "traditional-auto",
-              "research-institute", "future-planning"]
+              "supply-chain-recruit", "research-institute", "future-planning"]
 VALID = set(CATEGORIES)
+
+# 分类的「建号日期」：新增分类是从某一天才开始有报告的，此前各天不参与「跨分类漏期」比对，
+# 否则新分类会被判定成「自 20260901 起每天都缺」，一次刷出几十条假 ERROR。
+# 只登记「中途新增」的分类；老分类默认不设下限（00000000）。
+START_DATES = {
+    "supply-chain-recruit": "20260924",  # 车企供应链招聘日报，2026-09-24 新增
+}
 
 ERRORS = defaultdict(list)
 WARNS = defaultdict(list)
@@ -199,12 +206,13 @@ def check_dates():
     all_days = set().union(*cover.values()) if cover else set()
     recent = sorted(d for d in all_days if d >= "20260901")
     for d in recent:
-        miss = [c for c in CATEGORIES if d not in cover[c]]
+        miss = [c for c in CATEGORIES
+                if d not in cover[c] and d >= START_DATES.get(c, "00000000")]
         if miss:
             iso = "%s-%s-%s" % (d[:4], d[4:6], d[6:8])
             err("漏期", iso, "缺 %d 个分类: %s" % (len(miss), ", ".join(miss)))
 
-    # 全天缺失：某一天 13 个分类全都没有报告时，上面的循环没有参照物、查不出来
+    # 全天缺失：某一天所有分类都没有报告时，上面的循环没有参照物、查不出来
     # （2026-09-16 就是这样被漏掉的）。这里用「已首报日期 → 昨天」的连续区间补一道检查。
     if recent:
         day = datetime.datetime.strptime(recent[0], "%Y%m%d").date() + datetime.timedelta(days=1)
@@ -213,7 +221,8 @@ def check_dates():
             st = day.strftime("%Y%m%d")
             if st not in all_days:
                 warn("漏期", day.isoformat(),
-                     "13 个分类全部没有该日报告（全天缺失）——请用 build_backfill.py 补做")
+                     "%d 个分类全部没有该日报告（全天缺失）——请用 build_backfill.py 补做"
+                     % len(CATEGORIES))
             day += datetime.timedelta(days=1)
 
 

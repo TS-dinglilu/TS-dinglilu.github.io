@@ -14,7 +14,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CATEGORIES = ["car-recruit", "mechanical-recruit", "school-news", "drone-research",
               "ahut-campus", "byd-recruit", "chery-recruit", "geely-recruit",
               "xiaomi-recruit", "weixiaoli-recruit", "traditional-auto",
-              "research-institute", "future-planning"]
+              "supply-chain-recruit", "research-institute", "future-planning"]
 
 STATS_CSS = """/* === auto-updated (generated) === */
 .auto-updated {

@@ -7,7 +7,7 @@ CATS = [
     "car-recruit", "mechanical-recruit", "school-news", "drone-research",
     "ahut-campus", "byd-recruit", "chery-recruit", "geely-recruit",
     "xiaomi-recruit", "weixiaoli-recruit", "traditional-auto",
-    "research-institute", "future-planning",
+    "supply-chain-recruit", "research-institute", "future-planning",
 ]
 
 MD_LINK = re.compile(r"\]\(https?://")

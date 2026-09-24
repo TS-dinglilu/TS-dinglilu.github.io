@@ -11,11 +11,11 @@
 ```
 D:\研二\github.auto\        ← 工作区（本身不是仓库）
 ├─ repo\                    ← git 仓库根 = 站点根 = GitHub Pages 发布源
-│  ├─ content\              ← 13 分类正文草稿 + STYLE_GUIDE.md（原工作区根的 content，已迁入）
+│  ├─ content\              ← 14 分类正文草稿 + STYLE_GUIDE.md（原工作区根的 content，已迁入）
 │  ├─ logs\                 ← 推送日志 / 审计记录 / 归档页（原工作区根的 logs，已迁入）
 │  ├─ .workbuddy\           ← 目录联接 → 工作区根的 .workbuddy（记忆与工作日志）
 │  ├─ scripts\              ← 构建 / 发布 / 体检脚本
-│  └─ <13 个分类目录>\      ← 已生成的日报
+│  └─ <14 个分类目录>\      ← 已生成的日报
 └─ backups\                 ← 历史快照，体积大，不入 git（见 §0.1）
 ```
 
@@ -47,7 +47,28 @@ python scripts/publish_all.py --push  # 照常跑当日流程（推送兜底见 
 记忆目录（`.workbuddy\`）是可选的：它是 WorkBuddy 的工作记忆，本地会重新积累，
 需要恢复时从仓库对应路径取回即可。
 
-## 13 个日报分类
+### 0.3 新增一个日报分类（2026-09-24 新增「车企供应链招聘日报」的完整步骤）
+
+**需要同时改 6 处，漏一处就会出问题**：
+
+| # | 改哪里 | 不改的后果 |
+|---|---|---|
+| 1 | `scripts/tail_template.py` → `CATEGORY_NAMES` 加一行（标准日报名唯一真源） | 页脚日报名不对 |
+| 2 | `scripts/publish_all.py`、`update_homepage.py`、`audit_site.py`、`strict_check.py`、`fix_site.py` → `CATEGORIES` 各加同一行 | 每日自动化直接跳过该分类 |
+| 3 | `scripts/audit_site.py` → `START_DATES` 登记建号日期 `YYYYMMDD` | 新分类被判定「自 20260901 起每天都缺」，一次刷出几十条假 ERROR |
+| 4 | 建 `<分类>\` 目录 + `content\<分类>.html`，用引导脚本生成首期报告与归档页 | 没有模板报告，每日构建起不来（pick_template 只在本分类里找模板） |
+| 5 | `index.html` 主页 auto-grid 里加卡片（`data-cat` 对应筛选分组）+ 底部导航加链接 | 主页「已生成日报」总数少算、用户看不到入口 |
+| 6 | 本手册与 `README.md` 的分类数 | 文档与实际脱节 |
+
+第 4 步的引导脚本是一次性的（`logs\bootstrap_supply_chain.py`），要点：
+- **借壳**：「传统车企招聘日报」同为通用型骨架的招聘日报，拿它的最新报告当壳最省事；
+- ⚠️ **借壳只取到 hero 为止**：`build_report` 的 head 切片取「首个内容锚点之前」，
+  会把模板里历史累积的 report-header / highlight-box 区块一并带过来——
+  借壳时若不截断，会把「传统车企」的正文块（一汽-大众、江淮等）污染进新分类；
+- 归档页从同分类的 `index.html` 复制改名，再由 `rebuild_index()` 重建列表与统计数字；
+- 引导脚本跑完后，每日构建不需要再管它，会自我延续。
+
+## 14 个日报分类
 
 | 分类目录 | 日报名称 |
 |---|---|
@@ -62,6 +83,7 @@ python scripts/publish_all.py --push  # 照常跑当日流程（推送兜底见 
 | xiaomi-recruit | 小米汽车招聘日报 |
 | weixiaoli-recruit | 蔚小理招聘日报 |
 | traditional-auto | 传统车企招聘日报 |
+| supply-chain-recruit | 车企供应链招聘日报 |
 | research-institute | 科研院所招聘日报 |
 | future-planning | 未来规划日报 |
 
@@ -77,9 +99,9 @@ python scripts/audit_site.py                # 全站体检：结构/死链/索�
 再继续今天的流程。补做用专用工具（自动校验正文 → 批量构建 → 重建索引）：
 
 > **全天缺失也要看 `[WARN] 漏期`**：`[ERROR] 漏期` 只能发现「某天部分分类缺」，
-> 如果某一天 **13 个分类全都没有报告**，就没有参照物、老逻辑查不出来
+> 如果某一天 **14 个分类全都没有报告**，就没有参照物、老逻辑查不出来
 > （2026-09-16 就是这样被静默漏掉的）。2026-09-18 起 `audit_site.py` 增加了连续区间检查，
-> 会以 `[WARN]` 打出「13 个分类全部没有该日报告（全天缺失）」。
+> 会以 `[WARN]` 打出「所有分类全都没有该日报告（全天缺失）」。
 > 另外**开工前务必先看 `git status`**：中断的会话可能已经写好正文、甚至构建好报告但**没提交**
 > （2026-09-17 就是这种状态，报告在本地躺着、线上仍是 09-15）。
 > 这种情况先 `git add -A && git commit && git push` 抢救，**不要重写正文**。
@@ -162,9 +184,14 @@ python scripts/ssh_fallback_push.py             # 执行兜底推送（通道不
 cd D:\研二\github.auto\repo
 python scripts/publish_all.py --push
 ```
-该脚本会自动完成：内容校验（禁 Markdown 链接/必需板块/文档标签/长度）→ 批量构建 13 分类报告
+该脚本会自动完成：内容校验（禁 Markdown 链接/必需板块/文档标签/长度）→ 批量构建 14 分类报告
 → 重建各分类归档索引 → 更新主页卡片（最新日期+累计期数）与总数统计 → **全站自查**
 → git 提交推送。自查失败会打出 `[WARN]` 但仍继续推送，收工前请按提示修掉。
+
+只想构建单个分类（其余不动）：
+```bash
+python scripts/publish_all.py --categories supply-chain-recruit --push
+```
 
 推送逻辑（针对本机环境定制）：**优先走"凭据直连通道"**（`scripts/export_git_cred.ps1`
 从 Windows 凭据管理器导出凭据 → 用 git store 助手推送，约 15 秒完成）；失败才退回常规
@@ -227,4 +254,5 @@ arXiv 类链接可以直接验真：`curl -s -o /dev/null -w "%{http_code}" http
 | 某一天的报告一个都没有，`audit_site.py` 却不报漏期 | 老逻辑只比对「其它分类有的日期」，全天缺失无参照物。2026-09-18 起已补上连续区间检查，会打 `[WARN] 漏期 …全天缺失`。补做方式同上（写 `content/backfill<MMDD>/` → `build_backfill.py`） |
 | 写手产出的正文动辄 3–4 万字符，远超 2 万上限 | 提示词里把「字节数」误当成篇幅目标了。**统一写「目标 12000–19000 字符，用 `len()` 校验」**；发布前跑 `python scripts/strict_check.py`，不合格先压缩再发布（压缩优先级见 §2） |
 | 推送成功、`contents` API 也能查到文件，但线上页面 404 | GitHub Pages 部署有延迟，新文件可能比同批的其它文件晚 1–3 分钟生效。**轮询重试**即可（实测 `report_20260918.html` 首查 404、约 2 分钟后 200），不要因此重复推送 |
+| 新增分类后 `audit_site.py` 刷出几十条「某日缺新分类」 | 新分类的建号日期没登记。在 `scripts/audit_site.py` 的 `START_DATES` 里加一行 `"<分类>": "YYYYMMDD"`，此前各天不参与跨分类漏期比对（见 §0.3） |
 | 主页出现两份 `index.html` / `homepage_index.html` | 后者是个人主页的旧版本，已被 `index.html` 取代，已归档到 `logs/archive/`。不要再往 repo 里放第二份主页，否则 `update_homepage.py` 只改 `index.html`，两份会逐渐不一致 |

@@ -45,6 +45,7 @@ CATEGORY_NAMES = {
     "xiaomi-recruit": "小米汽车招聘日报",
     "weixiaoli-recruit": "蔚小理招聘日报",
     "traditional-auto": "传统车企招聘日报",
+    "supply-chain-recruit": "车企供应链招聘日报",
     "research-institute": "科研院所招聘日报",
     "future-planning": "未来规划日报",
 }
