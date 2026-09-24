@@ -29,7 +29,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CATEGORIES = ["car-recruit", "mechanical-recruit", "school-news", "drone-research",
               "ahut-campus", "byd-recruit", "chery-recruit", "geely-recruit",
               "xiaomi-recruit", "weixiaoli-recruit", "traditional-auto",
-              "supply-chain-recruit", "research-institute", "future-planning"]
+              "supply-chain-recruit", "research-institute", "future-planning",
+              "xuzhou-news", "nanjing-news", "shanghai-news", "hangzhou-news",
+              "jiangzhehu-news", "hefei-news", "anhui-news", "jiangsu-news",
+              "shenzhen-news"]
 VALID = set(CATEGORIES)
 
 # 分类的「建号日期」：新增分类是从某一天才开始有报告的，此前各天不参与「跨分类漏期」比对，
@@ -37,6 +40,15 @@ VALID = set(CATEGORIES)
 # 只登记「中途新增」的分类；老分类默认不设下限（00000000）。
 START_DATES = {
     "supply-chain-recruit": "20260924",  # 车企供应链招聘日报，2026-09-24 新增
+    "xuzhou-news": "20260924",           # 地区·徐州汽车机械日报，2026-09-25 新增
+    "nanjing-news": "20260924",          # 地区·南京汽车机械日报
+    "shanghai-news": "20260924",         # 地区·上海汽车机械日报
+    "hangzhou-news": "20260924",         # 地区·杭州汽车机械日报
+    "jiangzhehu-news": "20260924",       # 地区·江浙沪汽车机械日报
+    "hefei-news": "20260924",            # 地区·合肥汽车机械日报
+    "anhui-news": "20260924",            # 地区·安徽汽车机械日报
+    "jiangsu-news": "20260924",          # 地区·江苏汽车机械日报
+    "shenzhen-news": "20260924",         # 地区·深圳汽车机械日报
 }
 
 ERRORS = defaultdict(list)

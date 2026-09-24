@@ -48,6 +48,15 @@ CATEGORY_NAMES = {
     "supply-chain-recruit": "车企供应链招聘日报",
     "research-institute": "科研院所招聘日报",
     "future-planning": "未来规划日报",
+    "xuzhou-news": "徐州汽车机械日报",
+    "nanjing-news": "南京汽车机械日报",
+    "shanghai-news": "上海汽车机械日报",
+    "hangzhou-news": "杭州汽车机械日报",
+    "jiangzhehu-news": "江浙沪汽车机械日报",
+    "hefei-news": "合肥汽车机械日报",
+    "anhui-news": "安徽汽车机械日报",
+    "jiangsu-news": "江苏汽车机械日报",
+    "shenzhen-news": "深圳汽车机械日报",
 }
 
 COMMENTS_BLOCK = (

@@ -8,6 +8,9 @@ CATS = [
     "ahut-campus", "byd-recruit", "chery-recruit", "geely-recruit",
     "xiaomi-recruit", "weixiaoli-recruit", "traditional-auto",
     "supply-chain-recruit", "research-institute", "future-planning",
+    "xuzhou-news", "nanjing-news", "shanghai-news", "hangzhou-news",
+    "jiangzhehu-news", "hefei-news", "anhui-news", "jiangsu-news",
+    "shenzhen-news",
 ]
 
 MD_LINK = re.compile(r"\]\(https?://")

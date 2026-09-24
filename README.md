@@ -11,11 +11,11 @@
 
 | 层级 | URL 格式 | 说明 |
 |------|---------|------|
-| 主页 | `https://ts-dinglilu.github.io/` | 14 个日报系统入口，卡片显示各分类最新日期与累计期数 |
+| 主页 | `https://ts-dinglilu.github.io/` | 23 个日报系统入口，卡片显示各分类最新日期与累计期数 |
 | 报告汇总 | `https://ts-dinglilu.github.io/car-recruit/` | 该日报的归档列表 |
 | 报告 | `https://ts-dinglilu.github.io/car-recruit/report_20260911.html` | 具体某天的日报 |
 
-## 14 个日报系统
+## 23 个日报系统
 
 | 序号 | 子目录 | 日报名称 |
 |------|--------|----------|
@@ -33,6 +33,15 @@
 | 12 | supply-chain-recruit | 车企供应链招聘日报 |
 | 13 | research-institute | 科研院所招聘日报 |
 | 14 | future-planning | 未来规划日报 |
+| 15 | xuzhou-news | 徐州汽车机械日报 |
+| 16 | nanjing-news | 南京汽车机械日报 |
+| 17 | shanghai-news | 上海汽车机械日报 |
+| 18 | hangzhou-news | 杭州汽车机械日报 |
+| 19 | jiangzhehu-news | 江浙沪汽车机械日报 |
+| 20 | hefei-news | 合肥汽车机械日报 |
+| 21 | anhui-news | 安徽汽车机械日报 |
+| 22 | jiangsu-news | 江苏汽车机械日报 |
+| 23 | shenzhen-news | 深圳汽车机械日报 |
 
 ## 每日流程
 
@@ -47,7 +56,7 @@ git pull origin main
 # 1) 体检（可选但推荐）：确认没有漏跑的日期、坏链接或索引不一致
 python scripts/audit_site.py
 
-# 2) 为 14 个分类写正文（每个分类一个文件，规范见 content/STYLE_GUIDE.md）
+# 2) 为 23 个分类写正文（每个分类一个文件，规范见 content/STYLE_GUIDE.md）
 #    输出到 content/<分类>.html（仓库内路径）
 
 # 3) 校验 + 构建 + 更新主页 + 全站自查 + 推送，一条命令搞定

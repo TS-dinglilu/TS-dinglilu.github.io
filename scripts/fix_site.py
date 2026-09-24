@@ -26,7 +26,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CATEGORIES = ["car-recruit", "mechanical-recruit", "school-news", "drone-research",
               "ahut-campus", "byd-recruit", "chery-recruit", "geely-recruit",
               "xiaomi-recruit", "weixiaoli-recruit", "traditional-auto",
-              "supply-chain-recruit", "research-institute", "future-planning"]
+              "supply-chain-recruit", "research-institute", "future-planning",
+              "xuzhou-news", "nanjing-news", "shanghai-news", "hangzhou-news",
+              "jiangzhehu-news", "hefei-news", "anhui-news", "jiangsu-news",
+              "shenzhen-news"]
 VALID = set(CATEGORIES)
 
 # 已知的历史错误子路径 → 正确分类

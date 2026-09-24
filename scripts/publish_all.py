@@ -25,7 +25,10 @@ import build_report  # noqa: E402
 CATEGORIES = ["car-recruit", "mechanical-recruit", "school-news", "drone-research",
               "ahut-campus", "byd-recruit", "chery-recruit", "geely-recruit",
               "xiaomi-recruit", "weixiaoli-recruit", "traditional-auto",
-              "supply-chain-recruit", "research-institute", "future-planning"]
+              "supply-chain-recruit", "research-institute", "future-planning",
+              "xuzhou-news", "nanjing-news", "shanghai-news", "hangzhou-news",
+              "jiangzhehu-news", "hefei-news", "anhui-news", "jiangsu-news",
+              "shenzhen-news"]
 # 正文草稿目录：自 2026-09-15 起已迁入仓库内（repo/content），
 # 使整个工作流以仓库为唯一真源，换机器 clone 即可续接。
 CONTENT_DIR = os.path.join(ROOT, "content")
