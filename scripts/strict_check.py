@@ -25,8 +25,10 @@ for cat in CATS:
     s = open(path, encoding="utf-8").read()
     n = len(s)
     issues = []
-    if n < 8000 or n > 20000:
-        issues.append("LEN=%d" % n)
+    # 分级下限：招聘/资讯类要求更厚（与自动化 prompt 的 12000–19000 一致），地区日报 8000 起
+    lo = 8000 if cat.endswith("-news") else 12000
+    if n < lo or n > 20000:
+        issues.append("LEN=%d(下限%d)" % (n, lo))
     if MD_LINK.search(s):
         issues.append("MD-LINK")
     if DOC_TAG.search(s):

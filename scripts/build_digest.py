@@ -320,6 +320,30 @@ def build_digest_index():
     print("[OK] digest/index.html 已更新（%d 份汇总报告）" % len(files))
 
 
+def update_homepage_digest_card(fname):
+    """生成新汇总报告后，同步主页 digest 卡的「最新」标（闭环，防静态数字漂移）。"""
+    p = os.path.join(ROOT, "index.html")
+    if not os.path.exists(p):
+        print("[WARN] 主页不存在，跳过 digest 卡更新")
+        return
+    s = open(p, encoding="utf-8").read()
+    if fname.startswith("weekly"):
+        label = "周记 W" + fname.split("W", 1)[1].replace(".html", "")
+    elif fname.startswith("monthly"):
+        label = "月记 " + fname.replace("monthly_", "").replace(".html", "")
+    else:
+        label = "年记 " + fname.replace("yearly_", "").replace(".html", "")
+    new = "最新 <b>%s</b>" % label
+    s2, n = re.subn(r"最新 <b>周记 W\d+</b>|最新 <b>月记 \d+M\d+</b>|最新 <b>年记 \d+</b>",
+                    new, s, count=1)
+    if n:
+        with open(p, "w", encoding="utf-8", newline="\n") as f:
+            f.write(s2)
+        print("[OK] 主页 digest 卡已更新: %s" % new)
+    else:
+        print("[WARN] 主页 digest 卡未匹配到「最新」字段，未改动")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--type", required=True, choices=["weekly", "monthly", "yearly"])
@@ -349,6 +373,7 @@ def main():
         with open(out_path, "w", encoding="utf-8", newline="\n") as f:
             f.write(html)
         print("[OK] 汇总报告已生成: digest/%s (%d bytes)" % (fname, len(html)))
+        update_homepage_digest_card(fname)
 
     build_digest_index()
 

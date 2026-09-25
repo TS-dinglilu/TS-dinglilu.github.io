@@ -11,6 +11,9 @@
   **地区类 9 个（2026-09-25 上线）：xuzhou / nanjing / shanghai / hangzhou / jiangzhehu / hefei /
   anhui / jiangsu / shenzhen 各 `-news`，主页「地区」筛选标签下挂 9 卡，每日更新、正文 8000–20000 字**。
 - 全站密码门 guard.js（密码 0，localStorage 免输）；password_gate.py 幂等注入 + build_report 构建时自动注入。
+- **周记月记年记板块** `digest/`（2026-09-25 上线）：build_digest.py 每周一/1 日/1 月 2 日生成站级汇总
+  （自动化 id f7c42b9c…，每日 06:30 判断触发）；digest 不参与每日 publish_all，由 digest 自动化自推；
+  audit VALID 已含 "digest"；推送卡壳直接跑 `python logs/push_manual.py`。
 - 手册 `scripts/DAILY_WORKFLOW.md`｜规范 `content/STYLE_GUIDE.md`。仓库是 **public**（`.workbuddy/` 记忆随之上公开）。
 
 ## 2. 工作区布局（2026-09-15 起）
