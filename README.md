@@ -11,6 +11,7 @@
 
 | 层级 | URL 格式 | 说明 |
 |------|---------|------|
+| 周记月记年记 | `https://ts-dinglilu.github.io/digest/` | 站级汇总：每周/月/年自动生成动态与数据统计报告，可按大类筛选 |
 | 主页 | `https://ts-dinglilu.github.io/` | 23 个日报系统入口，卡片显示各分类最新日期与累计期数 |
 | 报告汇总 | `https://ts-dinglilu.github.io/car-recruit/` | 该日报的归档列表 |
 | 报告 | `https://ts-dinglilu.github.io/car-recruit/report_20260911.html` | 具体某天的日报 |
@@ -42,6 +43,14 @@
 | 21 | anhui-news | 安徽汽车机械日报 |
 | 22 | jiangsu-news | 江苏汽车机械日报 |
 | 23 | shenzhen-news | 深圳汽车机械日报 |
+
+## 周记 / 月记 / 年记
+
+`scripts/build_digest.py` 在每周一（周记）、每月 1 日（月记）、每年 1 月 2 日（年记）自动生成站级汇总报告到 `digest/`，聚合页带「招聘 / 校园科研 / 地区 / 规划」大类筛选标签。手动生成：
+
+```bash
+python scripts/build_digest.py --type weekly   # 月记 monthly / 年记 yearly
+```
 
 ## 每日流程
 

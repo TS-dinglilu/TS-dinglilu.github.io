@@ -59,6 +59,8 @@
   → ② 常规 push 退避重试 → ③ 临时部署密钥 + SSH over 443（`ssh_fallback_push.py`，自带开关，先探 443 通了就跳过）；
   禁用兜底 `--no-ssh-fallback`。① 的原因：本机 `credential.helper=helper-selector` 非交互会**静默挂起**（`git ls-remote` 却正常），
   且需重试 3–4 轮、间隔 ≥25s（抖动时前几次常 "Connection was reset"）。
+  ⚠️ push_with_retry 卡住（>3 分钟无果）别干等，直接跑独立脚本 `python logs/push_manual.py`
+  （凭据导出 + store helper 限时 push 一步到位，输出可见，2026-09-25 实测一次成功）。
 - **配置陷阱**：git 全局 `http.https://github.com.proxy` 是**空值**（禁代理），故 `curl` 通而 `git` 不通，别误判「网络全断」。
 - **别用 `git status` 判断推送成败**：本机 `origin/main` 跟踪引用长期陈旧。验远端用
   `curl -s https://api.github.com/repos/TS-dinglilu/TS-dinglilu.github.io/commits/main`，或 curl 具体页面看 200。

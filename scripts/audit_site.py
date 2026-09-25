@@ -33,7 +33,7 @@ CATEGORIES = ["car-recruit", "mechanical-recruit", "school-news", "drone-researc
               "xuzhou-news", "nanjing-news", "shanghai-news", "hangzhou-news",
               "jiangzhehu-news", "hefei-news", "anhui-news", "jiangsu-news",
               "shenzhen-news"]
-VALID = set(CATEGORIES)
+VALID = set(CATEGORIES) | {"digest"}  # digest = 周记月记年记板块
 
 # 分类的「建号日期」：新增分类是从某一天才开始有报告的，此前各天不参与「跨分类漏期」比对，
 # 否则新分类会被判定成「自 20260901 起每天都缺」，一次刷出几十条假 ERROR。

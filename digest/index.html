@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>周记月记年记 | 站级汇总</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0e1a; color: #d8e2f0; font-family: "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.7; }
+a { color: #00d4ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.hero { padding: 42px 20px 26px; text-align: center; background: linear-gradient(180deg, rgba(0,212,255,.08), transparent); border-bottom: 1px solid rgba(0,212,255,.15); }
+.hero-tag { display: inline-block; font-size: 12px; letter-spacing: 2px; color: #00d4ff; border: 1px solid rgba(0,212,255,.4); border-radius: 999px; padding: 3px 14px; margin-bottom: 14px; }
+.hero h1 { font-size: 26px; color: #fff; margin-bottom: 8px; }
+.hero .subtitle { color: #8fa3c0; font-size: 14px; }
+.stats { display: flex; justify-content: center; gap: 34px; margin-top: 20px; flex-wrap: wrap; }
+.stat-num { font-size: 24px; font-weight: 700; color: #00d4ff; }
+.stat-label { font-size: 12px; color: #8fa3c0; }
+.container { max-width: 960px; margin: 0 auto; padding: 26px 18px 60px; }
+.back-link { display: inline-block; font-size: 14px; margin-bottom: 18px; }
+.filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+.filter-tab { cursor: pointer; font-size: 13px; padding: 6px 16px; border-radius: 999px; border: 1px solid rgba(0,212,255,.25); color: #8fa3c0; user-select: none; }
+.filter-tab.active { background: rgba(0,212,255,.14); color: #00d4ff; border-color: rgba(0,212,255,.6); }
+.group { margin-bottom: 30px; }
+.group > h2 { font-size: 19px; color: #fff; border-left: 4px solid #00d4ff; padding-left: 12px; margin-bottom: 6px; }
+.group > .group-sub { font-size: 12px; color: #8fa3c0; margin-bottom: 12px; padding-left: 16px; }
+.cat-block { background: #111827; border: 1px solid rgba(0,212,255,.14); border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; }
+.cat-block.hidden { display: none; }
+.group.hidden { display: none; }
+.cat-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.cat-head h3 { font-size: 15px; color: #e8f2ff; }
+.cnt { font-size: 12px; color: #00d4ff; background: rgba(0,212,255,.1); border-radius: 999px; padding: 1px 10px; }
+.rep-item { padding: 8px 0; border-top: 1px dashed rgba(0,212,255,.12); }
+.rep-item:first-of-type { border-top: none; }
+.rep-line { font-size: 14px; }
+.rep-date { color: #8fa3c0; font-size: 12px; margin-right: 8px; }
+.toc { font-size: 12px; color: #7d8ea8; margin-top: 2px; }
+.zero { color: #7d8ea8; font-size: 13px; }
+h2.sec { font-size: 18px; color: #fff; border-left: 4px solid #00d4ff; padding-left: 12px; margin: 30px 0 12px; }
+.table-wrap { overflow-x: auto; }
+table.summary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.summary-table th, .summary-table td { border: 1px solid rgba(0,212,255,.18); padding: 8px 10px; text-align: left; }
+.summary-table th { background: rgba(0,212,255,.08); color: #9fd8ff; }
+.footer { text-align: center; color: #5f7089; font-size: 12px; padding: 24px 0 34px; border-top: 1px solid rgba(0,212,255,.1); margin-top: 40px; }
+
+.report-list { display: flex; flex-direction: column; gap: 12px; }
+.report-card { display: flex; justify-content: space-between; align-items: center; background: #111827; border: 1px solid rgba(0,212,255,.14); border-radius: 12px; padding: 14px 18px; color: #d8e2f0; }
+.report-card.latest { border-color: rgba(0,212,255,.5); }
+.report-card:hover { border-color: rgba(0,212,255,.55); text-decoration: none; }
+.card-date { font-size: 15px; color: #fff; }
+.latest-badge { font-size: 10px; color: #0a0e1a; background: #00d4ff; border-radius: 4px; padding: 1px 6px; margin-left: 8px; font-weight: 700; }
+.card-link { font-size: 13px; color: #00d4ff; }
+</style>
+<script src="/guard.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-tag">站级汇总 · 自动生成</div>
+  <h1>周记 · 月记 · 年记</h1>
+  <p class="subtitle">每周/每月/每年结束时自动汇总全站 23 个分类的动态与数据</p>
+  <div class="stats">
+    <div><div class="stat-num">1</div><div class="stat-label">汇总报告</div></div>
+    <div><div class="stat-num">每周一</div><div class="stat-label">周记更新</div></div>
+    <div><div class="stat-num">每月 1 日</div><div class="stat-label">月记更新</div></div>
+  </div>
+</div>
+<div class="container">
+  <a class="back-link" href="https://ts-dinglilu.github.io/">← 返回主页</a>
+  <h2 class="sec">汇总归档</h2>
+  <div class="report-list">
+<a href="weekly_2026W38.html" class="report-card latest" target="_blank">
+  <div class="card-date">[周记] 2026W38<span class="latest-badge">NEW</span></div>
+  <div class="card-link">查看 →</div>
+</a>
+  </div>
+</div>
+<div class="footer">周记月记年记 · © 2026 TS-dinglilu</div>
+<script>
+// Scroll-to-top button visibility
+window.addEventListener('scroll', function() {
+  var btn = document.querySelector('.scroll-top');
+  if (btn) {
+    if (window.scrollY > 400) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+  }
+});
+
+// Giscus configuration
+var giscusScript = document.createElement('script');
+giscusScript.src = 'https://giscus.app/client.js';
+giscusScript.setAttribute('data-repo', 'TS-dinglilu/TS-dinglilu.github.io');
+giscusScript.setAttribute('data-repo-id', 'R_kgDOTjqaJQ');
+giscusScript.setAttribute('data-category', 'General');
+giscusScript.setAttribute('data-category-id', 'DIC_kwDOTjqaJc4DCIL2');
+giscusScript.setAttribute('data-mapping', 'pathname');
+giscusScript.setAttribute('data-strict', '0');
+giscusScript.setAttribute('data-reactions-enabled', '1');
+giscusScript.setAttribute('data-emit-metadata', '0');
+giscusScript.setAttribute('data-input-position', 'top');
+giscusScript.setAttribute('data-theme', 'dark_dimmed');
+giscusScript.setAttribute('data-lang', 'zh-CN');
+giscusScript.setAttribute('data-loading', 'lazy');
+giscusScript.crossOrigin = 'anonymous';
+giscusScript.async = true;
+var giscusBox = document.querySelector('.giscus');
+if (giscusBox) { giscusBox.appendChild(giscusScript); }
+</script>
+
+</body>
+</html>

@@ -96,6 +96,14 @@ python scripts/publish_all.py --push  # 照常跑当日流程（推送兜底见 
 | jiangsu-news | 江苏汽车机械日报（2026-09-24 新增） |
 | shenzhen-news | 深圳汽车机械日报（2026-09-24 新增） |
 
+## 周记 / 月记 / 年记（digest 板块）
+
+- 每周一 06:30 自动化生成上周周报、每月 1 日生成上月月记、每年 1 月 2 日生成年记：
+  `python scripts/build_digest.py --type weekly`（type = weekly / monthly / yearly）
+- 输出 `digest/weekly_2026W38.html` 等 + 聚合归档页 `digest/index.html`（自动重建）
+- 23 个分类归档页与主页已有入口；digest 不参与每日 publish_all，由 digest 自动化自行构建推送
+- 周期覆盖规则：周记 = 上一个自然周（周一~周日）；月记 = 上一个自然月；年记 = 上一年
+
 ## 每日执行步骤
 
 ### 1. 准备与漏跑自查
