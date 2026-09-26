@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<script src="/guard.js" charset="utf-8"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>校园新闻日报 | 2026-09-27</title>
+<style>
+/* ============================================================
+   报告页统一CSS模板 - v9.0 圆润Q弹生动版
+   v9.0改进:
+   - 圆润: 增大border-radius, 全面弧形过渡
+   - Q弹: 弹性cubic-bezier缓动, 微缩放悬停效果
+   - 生动: 入场动画, 脉冲发光, 流动渐变边框
+   - 动态: 滚动渐入, 悬停弹跳, 光晕扩散
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --bg: #0a0e1a;
+  --bg-elev: #111726;
+  --card: rgba(20, 28, 48, 0.55);
+  --card-solid: rgba(20, 28, 48, 0.75);
+  --card-hover: rgba(20, 28, 48, 0.8);
+  --border: rgba(0, 212, 255, 0.12);
+  --border-hover: rgba(0, 212, 255, 0.4);
+  --text: #f0f4f8;
+  --text-dim: #c8d4e8;
+  --text-faint: #90a0c0;
+  --accent: #00d4ff;
+  --accent-warm: #ffb347;
+  --accent-green: #22d3a0;
+  --accent-purple: #818cf8;
+  --accent-pink: #f87171;
+  --accent-teal: #14b8a6;
+  --accent-orange: #fb923c;
+  --success: #22d3a0;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #00d4ff;
+  --grid-line: rgba(0, 212, 255, 0.04);
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.25);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.35);
+  --shadow-lg: 0 16px 56px rgba(0,0,0,0.45);
+  --shadow-glow: 0 0 24px rgba(0, 212, 255, 0.12);
+  --shadow-glow-hover: 0 0 40px rgba(0, 212, 255, 0.25);
+  --radius: 24px;
+  --radius-sm: 18px;
+  --radius-xs: 12px;
+  --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: rgba(0, 212, 255, 0.3); color: #ffffff; }
+
+p { margin-bottom: 12px; color: var(--text-dim); line-height: 1.8; }
+p:last-child { margin-bottom: 0; }
+strong, b { color: var(--accent); font-weight: 600; }
+a { color: var(--accent); text-decoration: none; transition: color 0.3s var(--smooth), opacity 0.3s var(--smooth); }
+a:hover { color: #5ee5ff; text-decoration: underline; text-underline-offset: 2px; }
+ul, ol { margin: 12px 0; padding-left: 22px; color: var(--text-dim); }
+li { margin-bottom: 6px; line-height: 1.8; }
+li::marker { color: var(--accent); }
+em, i { color: var(--text); font-style: italic; }
+small { color: var(--text-faint); font-size: 0.85em; }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.10) 0%, rgba(129, 140, 248, 0.05) 50%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(50px);
+  animation: floatOrb 20s ease-in-out infinite;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  33% { transform: translate(-40px, 30px) scale(1.05); opacity: 0.8; }
+  66% { transform: translate(30px, -20px) scale(0.95); opacity: 0.7; }
+}
+
+.container { max-width: 960px; margin: 0 auto; padding: 40px 28px 80px; position: relative; z-index: 1; }
+.container-wide { max-width: 1100px; }
+.container-narrow { max-width: 760px; }
+
+/* ============================================================
+   Header — 圆润渐变 + 入场动画
+   ============================================================ */
+.header, .report-header {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.14) 0%, rgba(129, 140, 248, 0.12) 50%, rgba(34, 211, 160, 0.10) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 44px 36px;
+  margin: 0 auto 48px;
+  max-width: 960px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+  animation: fadeInDown 0.8s var(--spring) both;
+}
+
+.header::before, .report-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-purple), var(--accent-green));
+  background-size: 200% 100%;
+  animation: gradientFlow 6s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.header h1, .report-header h1 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.03em;
+  margin-bottom: 14px;
+  text-shadow: 0 0 28px rgba(0, 212, 255, 0.5), 0 0 56px rgba(0, 212, 255, 0.25);
+  line-height: 1.3;
+}
+
+.header .subtitle, .report-header .subtitle {
+  color: var(--text-dim);
+  font-size: 1.02rem;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: 0.03em;
+}
+
+.header .date, .report-header .date,
+.header .date-badge, .report-header .date-badge {
+  display: inline-block;
+  background: rgba(0, 212, 255, 0.14);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  color: var(--accent);
+  padding: 8px 24px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.4s var(--bounce);
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.header .date:hover, .report-header .date:hover,
+.header .date-badge:hover, .report-header .date-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.2); }
+  50% { box-shadow: 0 0 16px 4px rgba(0, 212, 255, 0.15); }
+}
+
+.header .meta, .report-header .meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+.header .meta span, .report-header .meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header { text-align: center; }
+
+/* ============================================================
+   Back Links + Nav
+   ============================================================ */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  padding: 10px 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.4s var(--bounce);
+  backdrop-filter: blur(10px);
+}
+
+.back-link:hover {
+  color: var(--accent);
+  border-color: var(--border-hover);
+  background: var(--card-hover);
+  text-decoration: none;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.15);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 24px 0 40px;
+  padding: 14px 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(10px);
+}
+
+.nav-links a {
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: all 0.3s var(--bounce);
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+  background: rgba(0, 212, 255, 0.14);
+  border-color: var(--border-hover);
+  text-decoration: none;
+  transform: translateY(-1px) scale(1.05);
+}
+
+.nav-toc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  margin: 0 0 48px;
+  backdrop-filter: blur(10px);
+}
+
+.nav-toc .toc-title { color: var(--accent); font-size: 1rem; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.03em; }
+.nav-toc ol, .nav-toc ul { list-style: none; padding-left: 0; margin: 0; }
+.nav-toc li { padding: 4px 0; }
+.nav-toc a { color: var(--text-dim); font-size: 0.9rem; transition: all 0.3s var(--smooth); }
+.nav-toc a:hover { color: var(--accent); text-decoration: none; padding-left: 4px; }
+
+/* ============================================================
+   Section Titles — h2 / .section-title (Cyan) - 圆润+流动
+   ============================================================ */
+h2, .section-title {
+  color: #00d4ff;
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin: 0 0 24px;
+  padding: 14px 20px 14px 18px;
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 212, 255, 0.02) 100%);
+  border-left: 4px solid var(--accent);
+  border-top: 1px solid rgba(0, 212, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.25);
+  border-radius: 0 16px 16px 0;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  line-height: 1.4;
+  transition: all 0.4s var(--bounce);
+}
+
+h2:hover, .section-title:hover {
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.05) 100%);
+  transform: translateX(4px);
+  box-shadow: 0 4px 24px rgba(0, 212, 255, 0.15);
+}
+
+.section-title .emoji, h2 .emoji { font-size: 1.3rem; line-height: 1; flex-shrink: 0; }
+
+.section-title .num, h2 .num,
+.section-title .num-badge, h2 .num-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  background-size: 200% 200%;
+  color: #0a0e1a;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+  flex-shrink: 0;
+  margin-left: auto;
+  animation: gradientFlow 5s ease infinite;
+}
+
+.section-title a, h2 a { color: inherit; }
+.section-title a:hover { color: #5ee5ff; text-decoration: none; }
+
+/* ============================================================
+   Sections (.section) — with top gradient bar
+   ============================================================ */
+.section {
+  margin: 56px 0;
+  position: relative;
+  padding: 0;
+  scroll-margin-top: 24px;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-purple) 50%, var(--accent-green) 100%);
+  border-radius: 999px;
+  opacity: 0.85;
+}
+
+.section:first-of-type { margin-top: 0; }
+.section:first-of-type::before { display: none; }
+.section > h2:first-child, .section > .section-title:first-child { margin-top: 0; }
+
+/* ============================================================
+   H3 Sub-titles — Purple
+   ============================================================ */
+h3 {
+  color: #c4b5fd;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 36px 0 14px;
+  padding: 8px 0 8px 14px;
+  border-left: 3px solid #818cf8;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  transition: all 0.3s var(--bounce);
+}
+
+h3:hover { border-left-width: 5px; padding-left: 16px; color: #d4c5ff; }
+
+h3:first-child { margin-top: 0; }
+h3 a { color: inherit; }
+h3 a:hover { color: #c7d0ff; text-decoration: none; }
+
+/* ============================================================
+   H4 Minor Headings — Amber
+   ============================================================ */
+h4 {
+  color: #fcd34d;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 24px 0 10px;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  border: none;
+  transition: all 0.3s var(--bounce);
+}
+
+h4:hover { transform: translateX(3px); }
+
+h4:first-child { margin-top: 0; }
+h4 a { color: inherit; }
+h4 a:hover { color: #fde68a; text-decoration: none; }
+
+h5 { color: var(--text); font-size: 0.9rem; font-weight: 600; margin: 16px 0 8px; }
+h6 { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; margin: 14px 0 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ============================================================
+   Cards (.card) — Q弹悬停 + 入场动画
+   ============================================================ */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  margin: 16px 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.6s var(--spring) both;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: var(--card-hover);
+  border-color: var(--border-hover);
+  border-left-color: var(--accent);
+  box-shadow: var(--shadow-md), var(--shadow-glow-hover);
+}
+
+.card-title { color: var(--accent); font-size: 1.08rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 0.02em; line-height: 1.4; }
+.card-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.card-content { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+.card-content p { margin-bottom: 8px; }
+
+/* ============================================================
+   Job Cards (.job-card) — Green + Q弹
+   ============================================================ */
+.job-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-green);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  margin: 16px 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.6s var(--spring) both;
+}
+
+.job-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: var(--card-hover);
+  border-color: rgba(34, 211, 160, 0.4);
+  border-left-color: var(--accent-green);
+  box-shadow: var(--shadow-md), 0 0 40px rgba(34, 211, 160, 0.12);
+}
+
+.job-card .job-title { color: var(--accent-green); font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
+.job-card .job-title a { color: inherit; }
+.job-card .job-title a:hover { color: #4ee9b8; text-decoration: none; }
+.job-card .job-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.job-card .job-meta span { display: inline-flex; align-items: center; gap: 4px; }
+.job-card .job-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+
+/* ============================================================
+   News Items (.news-item) — Cyan + Q弹
+   ============================================================ */
+.news-item {
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 12px 0;
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth);
+  backdrop-filter: blur(8px);
+  animation: fadeInUp 0.5s var(--spring) both;
+}
+
+.news-item:hover {
+  transform: translateY(-3px) scale(1.01);
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--border-hover);
+  border-left-color: var(--accent);
+  box-shadow: var(--shadow-sm), var(--shadow-glow-hover);
+}
+
+.news-item .news-title { color: var(--accent); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+.news-item .news-title a { color: inherit; }
+.news-item .news-title a:hover { color: #5ee5ff; text-decoration: none; }
+.news-item .news-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.news-item .news-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
+.news-item .badge, .news-item .tag { margin-right: 6px; }
+
+/* ============================================================
+   Stats Grid (.stats-grid / .stat-box)
+   ============================================================ */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0 28px; }
+
+.stat-box {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(20, 28, 48, 0.6) 100%);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px 18px;
+  text-align: center;
+  transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.5s var(--spring) both;
+}
+
+.stat-box:hover { transform: translateY(-5px) scale(1.03); box-shadow: var(--shadow-md), var(--shadow-glow-hover); }
+
+.stat-box .num { display: block; font-size: 1.8rem; font-weight: 800; color: var(--accent); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; text-shadow: 0 0 16px rgba(0, 212, 255, 0.3); }
+.stat-box .label { display: block; font-size: 0.88rem; color: var(--text-dim); font-weight: 500; margin-bottom: 4px; }
+.stat-box .sub { display: block; font-size: 0.78rem; color: var(--text-faint); }
+
+/* ============================================================
+   Tables
+   ============================================================ */
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); -webkit-overflow-scrolling: touch; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; overflow: hidden; }
+th { background: linear-gradient(135deg, rgba(0, 212, 255, 0.20) 0%, rgba(0, 212, 255, 0.08) 100%); color: var(--accent); font-weight: 700; text-align: left; padding: 14px 16px; border-bottom: 2px solid rgba(0, 212, 255, 0.3); letter-spacing: 0.03em; white-space: nowrap; }
+.table-wrapper { overflow-x: auto; margin: 20px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); -webkit-overflow-scrolling: touch; }
+td { padding: 12px 16px; color: var(--text-dim); border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); vertical-align: top; }
+td:last-child { border-right: none; }
+th { border-right: 1px solid rgba(0, 212, 255, 0.15); }
+th:last-child { border-right: none; }
+table tbody tr:nth-child(odd) td { background: rgba(0, 212, 255, 0.04); }
+table tbody tr:nth-child(even) td { background: rgba(0, 212, 255, 0.08); }
+table tbody tr { transition: background 0.3s var(--smooth); }
+table tbody tr:hover td { background: rgba(0, 212, 255, 0.16); color: var(--text); }
+table tbody tr:last-child td { border-bottom: none; }
+.salary-table th { background: linear-gradient(135deg, rgba(34, 211, 160, 0.18) 0%, rgba(34, 211, 160, 0.08) 100%); color: var(--accent-green); border-bottom-color: rgba(34, 211, 160, 0.3); }
+.salary-table td strong { color: var(--accent-green); }
+.summary-table th { background: linear-gradient(135deg, rgba(129, 140, 248, 0.18) 0%, rgba(129, 140, 248, 0.08) 100%); color: #a5b4fc; border-bottom-color: rgba(129, 140, 248, 0.3); }
+.summary-table td:first-child { color: var(--text); font-weight: 500; }
+
+/* ============================================================
+   Salary Grid
+   ============================================================ */
+.salary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+.salary-item { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent-green); border-radius: var(--radius-sm); padding: 14px 16px; transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth); position: relative; backdrop-filter: blur(8px); animation: fadeInUp 0.5s var(--spring) both; }
+.salary-item:hover { transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-md), 0 0 32px rgba(34, 211, 160, 0.12); border-color: rgba(34, 211, 160, 0.4); border-left-color: var(--accent-green); }
+.salary-item .level { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 6px; letter-spacing: 0.02em; }
+.salary-item .amount { font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 700; color: var(--accent-green); margin-bottom: 4px; line-height: 1.3; }
+.salary-item .note { font-size: 0.78rem; color: var(--text-faint); line-height: 1.4; }
+@media (max-width: 600px) { .salary-grid { grid-template-columns: 1fr; } .salary-item { padding: 12px 14px; } .salary-item .amount { font-size: 1.05rem; } }
+
+/* ============================================================
+   Badges
+   ============================================================ */
+.badge { display: inline-block; padding: 3px 10px; font-size: 0.78rem; font-weight: 600; border-radius: 999px; background: rgba(0, 212, 255, 0.12); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.3); letter-spacing: 0.03em; line-height: 1.5; vertical-align: middle; margin-right: 4px; transition: all 0.3s var(--bounce); }
+.badge:hover { transform: scale(1.08); }
+.badge.hot, .badge-hot { background: linear-gradient(135deg, rgba(248, 113, 113, 0.2), rgba(251, 146, 60, 0.2)); color: #fca5a5; border-color: rgba(248, 113, 113, 0.5); }
+.badge.new, .badge-new { background: rgba(34, 211, 160, 0.18); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.45); }
+.badge.warn, .badge-warn { background: rgba(251, 191, 36, 0.16); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-high { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+.badge-mid { background: rgba(251, 146, 60, 0.14); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.4); }
+.badge-low { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+.badge-purple { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.4); }
+
+/* ============================================================
+   Tags
+   ============================================================ */
+.tag { display: inline-block; padding: 3px 10px; font-size: 0.78rem; font-weight: 500; border-radius: 999px; background: rgba(168, 184, 208, 0.1); color: var(--text-dim); border: 1px solid var(--border); margin: 0 4px 4px 0; letter-spacing: 0.02em; line-height: 1.5; vertical-align: middle; transition: all 0.3s var(--bounce); }
+.tag:hover { transform: scale(1.06); }
+.tag.green, .tag-green { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag.purple, .tag-purple { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.3); }
+.tag.orange, .tag-orange { background: rgba(251, 146, 60, 0.14); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.3); }
+.tag.red, .tag-red { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag.pink, .tag-pink { background: rgba(248, 113, 113, 0.12); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag.teal, .tag-teal { background: rgba(20, 184, 166, 0.12); color: var(--accent-teal); border-color: rgba(20, 184, 166, 0.3); }
+.tag.amber, .tag-amber { background: rgba(251, 191, 36, 0.12); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag.accent, .tag-accent { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+.tag-byd { background: rgba(0, 153, 204, 0.18); color: #4dabf5; border-color: rgba(0, 153, 204, 0.35); }
+.tag-chery { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-geely { background: rgba(129, 140, 248, 0.14); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.3); }
+.tag-faw { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-vw { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-tesla { background: rgba(248, 113, 113, 0.18); color: #fca5a5; border-color: rgba(248, 113, 113, 0.4); }
+.tag-other { background: rgba(168, 184, 208, 0.12); color: var(--text-dim); border-color: var(--border); }
+
+/* ============================================================
+   Pills
+   ============================================================ */
+.pill { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; font-size: 0.8rem; font-weight: 500; border-radius: 999px; background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.25); margin: 0 6px 6px 0; letter-spacing: 0.02em; line-height: 1.5; vertical-align: middle; transition: all 0.3s var(--bounce); }
+.pill:hover { transform: scale(1.05); }
+.pill-green { background: rgba(34, 211, 160, 0.1); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.25); }
+.pill-purple { background: rgba(129, 140, 248, 0.1); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.25); }
+.pill-orange { background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.25); }
+.pill-pink { background: rgba(248, 113, 113, 0.1); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.25); }
+.pill-amber { background: rgba(251, 191, 36, 0.1); color: #fbbf24; border-color: rgba(251, 191, 36, 0.25); }
+.pill-teal { background: rgba(20, 184, 166, 0.1); color: var(--accent-teal); border-color: rgba(20, 184, 166, 0.25); }
+.pill-gray { background: rgba(168, 184, 208, 0.1); color: var(--text-dim); border-color: var(--border); }
+.pill-location { background: rgba(0, 212, 255, 0.1); color: var(--accent); border-color: rgba(0, 212, 255, 0.25); }
+.pill-salary { background: rgba(34, 211, 160, 0.1); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.25); }
+.pill-edu { background: rgba(129, 140, 248, 0.1); color: #a5b4fc; border-color: rgba(129, 140, 248, 0.25); }
+.pill-type { background: rgba(251, 146, 60, 0.1); color: var(--accent-orange); border-color: rgba(251, 146, 60, 0.25); }
+
+/* ============================================================
+   Source Links
+   ============================================================ */
+.source-link { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; font-size: 0.8rem; font-weight: 500; border-radius: 999px; background: rgba(0, 212, 255, 0.1); color: var(--accent); border: 1px solid rgba(0, 212, 255, 0.3); margin: 4px 0; transition: all 0.4s var(--bounce); letter-spacing: 0.02em; }
+.source-link:hover { background: var(--accent); color: #0a0e1a; border-color: var(--accent); text-decoration: none; box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); transform: scale(1.05); }
+.source-link::before { content: '🔗'; font-size: 0.85em; }
+
+/* ============================================================
+   Discussion Items — Orange + Q弹
+   ============================================================ */
+.discussion { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent-orange); border-radius: var(--radius-sm); padding: 16px 20px; margin: 14px 0; transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth), background 0.3s var(--smooth); backdrop-filter: blur(8px); animation: fadeInUp 0.5s var(--spring) both; }
+.discussion:hover { transform: translateY(-3px) scale(1.01); background: var(--card-hover); border-color: rgba(251, 146, 60, 0.4); border-left-color: var(--accent-orange); box-shadow: var(--shadow-md), 0 0 36px rgba(251, 146, 60, 0.1); }
+.discussion .discussion-title { color: var(--accent-orange); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+.discussion .discussion-title a { color: inherit; }
+.discussion .discussion-title a:hover { color: #fdba74; text-decoration: none; }
+.discussion .discussion-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.discussion-item { background: rgba(251, 146, 60, 0.05); border: 1px solid var(--border); border-left: 3px solid var(--accent-orange); border-radius: var(--radius-sm); padding: 12px 16px; margin: 10px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; }
+.discussion-item .discussion-author { color: var(--accent-orange); font-weight: 600; }
+.discussion-item .discussion-time { color: var(--text-faint); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
+
+/* ============================================================
+   Tip/Warning/Highlight/Info/Note Boxes
+   ============================================================ */
+.tip-box { background: rgba(34, 211, 160, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-green); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.tip-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(34, 211, 160, 0.1); }
+.tip-box .tip-title, .tip-box h4 { color: var(--accent-green); font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.tip-box .tip-title::before { content: '💡'; }
+.tip-box p:last-child { margin-bottom: 0; }
+.tip-box ul { margin: 8px 0 0; }
+.tip-box li { margin-bottom: 4px; }
+
+.warning-box { background: rgba(248, 113, 113, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-pink); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.warning-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(248, 113, 113, 0.1); }
+.warning-box .warning-title { color: var(--accent-pink); font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.warning-box .warning-title::before { content: '⚠️'; }
+.warning-box p:last-child { margin-bottom: 0; }
+
+.highlight-box { background: rgba(129, 140, 248, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-purple); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.highlight-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(129, 140, 248, 0.1); }
+.highlight-box .highlight-title { color: #a5b4fc; font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.highlight-box .highlight-title::before { content: '✨'; }
+.highlight-box p:last-child { margin-bottom: 0; }
+
+.info-box { background: rgba(129, 140, 248, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent-purple); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.info-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(129, 140, 248, 0.1); }
+.info-box .info-title { color: #a5b4fc; font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.02em; display: flex; align-items: center; gap: 6px; }
+.info-box .info-title::before { content: 'ℹ️'; }
+.info-box p:last-child { margin-bottom: 0; }
+
+.note-box { background: rgba(0, 212, 255, 0.06); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; transition: transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth); }
+.note-box:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1); }
+.note-box .note-title { color: var(--accent); font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; }
+
+.progress-bar { width: 100%; height: 10px; background: rgba(0, 212, 255, 0.08); border-radius: 999px; overflow: hidden; margin: 8px 0; border: 1px solid var(--border); }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-purple)); border-radius: 999px; transition: width 0.5s var(--smooth); }
+.progress-fill.green { background: linear-gradient(90deg, var(--accent-green), var(--accent-teal)); }
+.progress-fill.orange { background: linear-gradient(90deg, var(--accent-orange), var(--accent-warm)); }
+.progress-fill.pink { background: linear-gradient(90deg, var(--accent-pink), var(--accent-orange)); }
+.progress-fill.purple { background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink)); }
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-accent { color: var(--accent); }
+.text-green { color: var(--accent-green); }
+.text-purple { color: #a5b4fc; }
+.text-orange { color: var(--accent-orange); }
+.text-pink { color: var(--accent-pink); }
+.text-amber { color: #fbbf24; }
+.text-teal { color: var(--accent-teal); }
+.text-dim { color: var(--text-dim); }
+.text-faint { color: var(--text-faint); }
+.text-white { color: #ffffff; }
+.text-sm { font-size: 0.85rem; }
+.text-lg { font-size: 1.1rem; }
+.text-xl { font-size: 1.3rem; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.mt-0 { margin-top: 0; } .mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 24px; }
+.mb-0 { margin-bottom: 0; } .mb-1 { margin-bottom: 8px; } .mb-2 { margin-bottom: 16px; } .mb-3 { margin-bottom: 24px; }
+.flex { display: flex; } .flex-wrap { flex-wrap: wrap; } .flex-center { display: flex; align-items: center; justify-content: center; }
+.gap-1 { gap: 8px; } .gap-2 { gap: 16px; }
+.hidden { display: none !important; } .block { display: block; } .inline-block { display: inline-block; }
+.divider { height: 1px; background: var(--border); margin: 24px 0; border: none; }
+.muted { color: var(--text-faint); }
+
+/* ============================================================
+   hr, blockquote, code, pre
+   ============================================================ */
+hr { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 32px 0; }
+blockquote { margin: 16px 0; padding: 12px 18px; background: rgba(0, 212, 255, 0.05); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--text-dim); font-style: italic; }
+blockquote p { margin-bottom: 0; }
+blockquote footer, blockquote cite { display: block; margin-top: 8px; font-size: 0.85rem; color: var(--text-faint); font-style: normal; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 0.88em; background: rgba(0, 212, 255, 0.1); color: var(--accent); padding: 2px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.15); }
+pre { background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; overflow-x: auto; margin: 16px 0; box-shadow: var(--shadow-sm); }
+pre code { background: transparent; color: var(--text-dim); padding: 0; border: none; font-size: 0.88em; line-height: 1.6; }
+
+/* ============================================================
+   Giscus / Comments
+   ============================================================ */
+.comments-section { margin: 56px 0 32px; padding: 28px 24px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); position: relative; backdrop-filter: blur(10px); }
+.comments-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent-purple), var(--accent), var(--accent-green)); background-size: 200% 100%; border-radius: var(--radius) var(--radius) 0 0; animation: gradientFlow 6s ease infinite; }
+.comments-title { color: #a5b4fc; font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
+.comments-desc { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 16px; }
+.giscus { margin-top: 16px; }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+footer, .footer { margin-top: 56px; padding: 28px 24px; text-align: center; color: var(--text-faint); font-size: 0.85rem; border-top: 1px solid var(--border); letter-spacing: 0.02em; }
+footer p, .footer p { margin-bottom: 8px; }
+footer a, .footer a { color: var(--text-dim); }
+footer a:hover, .footer a:hover { color: var(--accent); }
+.footer-meta { margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-faint); }
+
+/* ============================================================
+   Scroll-to-top button — Q弹
+   ============================================================ */
+.scroll-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: var(--card-solid); border: 1px solid var(--border-hover); border-radius: 50%; color: var(--accent); font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.3s var(--smooth), transform 0.4s var(--bounce), background 0.3s var(--smooth); backdrop-filter: blur(10px); }
+.scroll-top.visible { opacity: 1; pointer-events: auto; }
+.scroll-top:hover { background: var(--accent); color: #0a0e1a; transform: translateY(-4px) scale(1.1); box-shadow: 0 4px 24px rgba(0, 212, 255, 0.4); }
+.scroll-top:active { transform: translateY(-2px) scale(0.95); }
+
+/* ============================================================
+   Entrance Animations
+   ============================================================ */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 768px) { .nav-links { flex-direction: column; align-items: flex-start; } .stats-grid { grid-template-columns: 1fr 1fr; } }
+
+@media (max-width: 600px) {
+  body { font-size: 14px; line-height: 1.75; }
+  .container { padding: 24px 16px 60px; }
+  .header, .report-header { padding: 28px 20px; margin-bottom: 32px; border-radius: 20px; }
+  .header h1, .report-header h1 { font-size: 1.5rem; }
+  .header .subtitle, .report-header .subtitle { font-size: 0.9rem; }
+  h2, .section-title { font-size: 1.2rem; padding: 10px 14px 10px 12px; }
+  h3 { font-size: 1rem; }
+  h4 { font-size: 0.9rem; }
+  .section { margin: 40px 0; }
+  .card, .job-card, .news-item, .discussion, .tip-box, .warning-box, .highlight-box, .info-box, .note-box { padding: 14px 16px; border-radius: 14px; }
+  .card:hover, .job-card:hover, .news-item:hover, .discussion:hover { transform: none; }
+  th, td { padding: 9px 10px; font-size: 0.82rem; }
+  .nav-links { padding: 10px 12px; border-radius: 14px; }
+  .nav-links a { font-size: 0.8rem; padding: 5px 10px; }
+  .comments-section { padding: 20px 16px; border-radius: 20px; }
+  footer, .footer { padding: 20px 16px; }
+  .report-header .meta { gap: 10px; font-size: 0.8rem; }
+  .badge, .tag, .pill { font-size: 0.72rem; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-box .num { font-size: 1.5rem; }
+  .scroll-top { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+}
+
+/* ============================================================
+   Icons
+   ============================================================ */
+.icon { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 10px; font-size: 1.1rem; flex-shrink: 0; line-height: 1; }
+.icon-blue, .icon.icon-blue { background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.3); }
+.icon-green, .icon.icon-green { background: rgba(34, 211, 160, 0.15); border: 1px solid rgba(34, 211, 160, 0.3); }
+.icon-orange, .icon.icon-orange { background: rgba(251, 146, 60, 0.15); border: 1px solid rgba(251, 146, 60, 0.3); }
+.icon-purple, .icon.icon-purple { background: rgba(129, 140, 248, 0.15); border: 1px solid rgba(129, 140, 248, 0.3); }
+.icon-teal, .icon.icon-teal { background: rgba(20, 184, 166, 0.15); border: 1px solid rgba(20, 184, 166, 0.3); }
+.icon-pink, .icon.icon-pink { background: rgba(248, 113, 113, 0.15); border: 1px solid rgba(248, 113, 113, 0.3); }
+.icon-amber, .icon.icon-amber { background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.3); }
+.emoji { display: inline-block; font-size: 1.2rem; line-height: 1; vertical-align: middle; }
+
+/* ============================================================
+   Priority / Status indicators
+   ============================================================ */
+.priority-high, .priority-hot { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+.priority-mid, .priority-medium { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(251, 146, 60, 0.15); color: var(--accent-orange); border: 1px solid rgba(251, 146, 60, 0.3); }
+.priority-low, .priority-normal { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+
+.match-score { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+.match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
+
+/* ============================================================
+   Grid layouts
+   ============================================================ */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 16px 0; }
+.card-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 16px 0; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+
+/* ============================================================
+   Flexbox helpers
+   ============================================================ */
+.flex-row { display: flex; flex-direction: row; align-items: center; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-start { display: flex; align-items: flex-start; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: 6px; } .gap-md { gap: 12px; } .gap-lg { gap: 20px; }
+.w-full { width: 100%; } .w-auto { width: auto; }
+
+/* ============================================================
+   Text size helpers
+   ============================================================ */
+.fs-xs { font-size: 0.75rem; } .fs-sm { font-size: 0.85rem; } .fs-md { font-size: 0.93rem; }
+.fs-lg { font-size: 1.1rem; } .fs-xl { font-size: 1.3rem; } .fs-2xl { font-size: 1.6rem; }
+
+/* ============================================================
+   Color helpers
+   ============================================================ */
+.text-success { color: var(--accent-green) !important; }
+.text-warning { color: #fbbf24 !important; }
+.text-danger { color: var(--accent-pink) !important; }
+.text-info { color: var(--accent) !important; }
+.text-muted { color: var(--text-faint) !important; }
+.text-dimmer { color: var(--text-dim) !important; }
+.text-bright { color: var(--text) !important; }
+.text-accent-green { color: var(--accent-green) !important; }
+.text-accent-orange { color: var(--accent-orange) !important; }
+.text-accent-purple { color: #a5b4fc !important; }
+.text-accent-pink { color: var(--accent-pink) !important; }
+.text-accent-teal { color: var(--accent-teal) !important; }
+
+/* ============================================================
+   Margin/Padding helpers
+   ============================================================ */
+.mt-4 { margin-top: 32px; } .mt-5 { margin-top: 40px; } .mt-6 { margin-top: 48px; }
+.mb-4 { margin-bottom: 32px; } .mb-5 { margin-bottom: 40px; } .mb-6 { margin-bottom: 48px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.p-0 { padding: 0; } .p-2 { padding: 16px; } .p-3 { padding: 24px; }
+.py-2 { padding-top: 16px; padding-bottom: 16px; }
+.px-2 { padding-left: 16px; padding-right: 16px; }
+
+/* ============================================================
+   Misc component styles
+   ============================================================ */
+.timeline-item { position: relative; padding-left: 24px; margin: 12px 0; }
+.timeline-item::before { content: ''; position: absolute; left: 0; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(0, 212, 255, 0.4); transition: transform 0.3s var(--bounce); }
+.timeline-item:hover::before { transform: scale(1.3); }
+.timeline-item::after { content: ''; position: absolute; left: 4px; top: 20px; bottom: -12px; width: 2px; background: var(--border); }
+.timeline-item:last-child::after { display: none; }
+
+.count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 8px; background: linear-gradient(135deg, var(--accent), var(--accent-purple)); color: #0a0e1a; font-size: 0.78rem; font-weight: 700; border-radius: 999px; font-family: 'JetBrains Mono', monospace; }
+
+mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent); padding: 1px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.2); }
+
+.emoji-list { list-style: none; padding-left: 0; }
+.emoji-list li { padding-left: 28px; position: relative; margin-bottom: 8px; }
+
+.separator { height: 2px; background: linear-gradient(90deg, transparent, var(--border-hover), transparent); margin: 32px 0; border: none; }
+
+.badge-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.4); }
+.badge-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+.badge-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.4); }
+
+.tag-success { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border-color: rgba(34, 211, 160, 0.3); }
+.tag-warning { background: rgba(251, 191, 36, 0.14); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+.tag-danger { background: rgba(248, 113, 113, 0.14); color: var(--accent-pink); border-color: rgba(248, 113, 113, 0.3); }
+.tag-info { background: rgba(0, 212, 255, 0.12); color: var(--accent); border-color: rgba(0, 212, 255, 0.3); }
+
+@media print {
+  body { background: #ffffff; color: #000000; font-size: 12px; line-height: 1.6; }
+  body::before, body::after { display: none !important; }
+  .container { max-width: 100%; padding: 0; }
+  .header, .report-header { background: #f5f7fa; border: 1px solid #cccccc; box-shadow: none; break-inside: avoid; }
+  .header::before, .report-header::before { background: #006699; }
+  .header h1, .report-header h1 { color: #000000; text-shadow: none; }
+  .header .subtitle, .report-header .subtitle, .header .meta, .report-header .meta { color: #333333; }
+  .header .date, .report-header .date, .header .date-badge, .report-header .date-badge { background: #e0eef5; border-color: #006699; color: #006699; }
+  h2, .section-title { color: #006699; background: #e8f4fa; border-left-color: #006699; }
+  h3 { color: #4444aa; border-left-color: #6666cc; }
+  h4 { color: #aa6600; }
+  .section { margin: 24px 0; break-inside: avoid; }
+  .section::before { background: #006699; }
+  .card, .job-card, .news-item, .discussion, .tip-box, .warning-box, .highlight-box, .info-box, .note-box { background: #f9f9f9; border: 1px solid #cccccc; box-shadow: none; break-inside: avoid; }
+  .card:hover, .job-card:hover, .news-item:hover, .discussion:hover { transform: none; box-shadow: none; }
+  p, li, td, .card-content, .job-desc, .news-desc { color: #222222; }
+  a { color: #006699; text-decoration: underline; }
+  .source-link { background: #e0eef5; color: #006699; border-color: #006699; }
+  th { background: #e0eef5; color: #006699; border-bottom: 2px solid #006699; }
+  table tbody tr:nth-child(odd) td, table tbody tr:nth-child(even) td { background: #ffffff; }
+  table tbody tr:hover td { background: #f0f0f0; }
+  .back-link, .nav-links, .nav-toc, .comments-section, footer, .footer, .scroll-top { display: none; }
+  pre { background: #f5f5f5; border-color: #cccccc; }
+  pre code, code { color: #333333; background: #eeeeee; }
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- 报告头部 -->
+<div class="report-header">
+<h1>校园新闻日报</h1>
+<div class="subtitle">安徽工业大学 · 长春工程学院 · 徐州三中 · 大庙中心中学</div>
+<div style="text-align:center;">
+<span class="date-badge">2026年9月27日 星期日</span>
+</div>
+</div>
+
+<!-- 统计概览 -->
+
+<!-- ==================== 报告头部 ==================== -->
+<div class="report-header">
+  <h1>校园新闻日报</h1>
+  <div class="subtitle">安徽工业大学 · 长春工程学院 · 徐州三中 · 大庙中心中学</div>
+  <div style="text-align:center;">
+    <span class="date-badge">2026年9月27日 星期日</span>
+  </div>
+</div>
+
+<!-- ==================== 统计概览 ==================== -->
+
+<div class="container">
+
+<!-- 报告头部 -->
+<div class="report-header">
+<h1>校园新闻日报</h1>
+<div class="subtitle">安徽工业大学 · 长春工程学院 · 徐州三中 · 大庙中心中学</div>
+<div style="text-align:center;">
+<span class="date-badge">2026年9月27日 星期日</span>
+</div>
+</div>
+
+<!-- 统计概览 -->
+
+
+
+<div class="highlight-box">
+  <div class="highlight-title">💡 今日核心判断</div>
+  <p>今天是 <strong>2026年9月27日（星期日）</strong>，开学第 <strong>3</strong> 周。本期聚焦 <strong>9月12日—14日</strong> 四校最新动态：安工大 <strong>9月14日下午召开党员基本培训集中大课</strong>、<strong>9月15日举行秋季新兵欢送仪式</strong>；长春工程学院 <strong>9月12日迎来4700余名2026级新同学</strong>；徐州三中 <strong>9月10日举行教师节座谈会</strong>；大庙中学 <strong>9月8日公开新学期物业管理采购意向</strong>，并承接9月12—13日一级建造师考试考点。对正在备战秋招与开题的你，母校与家乡学校的这些"日常运转"细节，恰恰是面试谈资与地域判断的鲜活素材。</p>
+</div>
+
+
+
+
+<div class="report-header">
+  <h1>校园新闻日报 · 2026-09-27</h1>
+  <div class="subtitle">安徽工业大学 · 长春工程学院 · 徐州三中 · 徐州市大庙中学 · 四校联动的校园动态与家乡教育观察</div>
+  <div class="meta">
+    <span class="date-badge">2026-09-27 星期日</span>
+    <span class="text-muted">读者画像：机械工程硕士（四旋翼飞控仿真），坐标徐州、就读安徽工业大学（马鞍山），求职车企 / 机械 / 科研院所</span>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <div class="highlight-title">💡 今日核心判断</div>
+  <p>今天是 <strong>2026年9月27日（星期日）</strong>，开学第 <strong>4</strong> 周，四校动态主线是「<strong>科研平台化</strong>」与「<strong>就业前置化</strong>」。安工大 <strong>9月11—13日</strong> 在合肥承办 <strong>2026中国工业计算机大会</strong>，专设「<strong>无人系统智能感知与控制</strong>」专题，南航陈谋教授作无人机集群特邀报告；<strong>9月15日</strong> 软科 <strong>2026世界一流学科排名</strong> 发布，安徽 <strong>13校112学科</strong> 登榜、<strong>安工大占9个</strong>。长春工程学院半个月内接连迎来京能集团、双环传动与华能两大电力央企的专场宣讲。徐州三中 <strong>2026年市区指标生A志愿投档线713.0分</strong>，稳居全市第二梯队头部。</p>
+</div>
+
+
+<div class="report-header">
+  <h1>校园新闻日报 · 2026-09-27</h1>
+  <div class="subtitle">安徽工业大学 · 长春工程学院 · 徐州三中 · 徐州市大庙中学 · 四校联动的校园动态与家乡教育观察</div>
+  <div class="meta">
+    <span class="date-badge">2026-09-27 星期日</span>
+    <span class="text-muted">读者画像：机械工程硕士（四旋翼飞控仿真），坐标徐州、就读安徽工业大学（马鞍山），求职车企 / 机械 / 科研院所</span>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <div class="highlight-title">💡 今日核心判断</div>
+  <p>今天是 <strong>2026年9月27日（星期日）</strong>，开学第 <strong>4</strong> 周。主线是「<strong>校企校地对接提速 + 评奖评优全面铺开</strong>」。安工大 <strong>9月18日</strong> 三线并进：「诗城创星港」马鞍山经开区校企对接科创沙龙、巡察整改日常监督联席会议、外国语学院研究生学业奖学金名单公示。长春工程学院 <strong>9月15日</strong> 与中国能建科技发展有限公司洽谈首届「<strong>定制班</strong>」，<strong>9月18日</strong> 一天连排 <strong>4场</strong> 宣讲。徐州 <strong>9月15日</strong> 明珠高级中学骨干教师拟聘公示，义务教育首个<strong>秋假</strong> 定于 <strong>11月18—20日</strong>。</p>
+</div>
+
+
+<div class="report-header">
+  <h1>校园新闻日报 · 2026-09-27</h1>
+  <div class="subtitle">安徽工业大学 · 长春工程学院 · 徐州三中 · 徐州市大庙中学 · 四校联动的校园动态与家乡教育观察</div>
+  <div class="meta">
+    <span class="date-badge">2026-09-27 星期日</span>
+    <span class="text-muted">读者画像：机械工程硕士（四旋翼飞控仿真），坐标徐州、就读安徽工业大学（马鞍山），求职车企 / 机械 / 科研院所</span>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <div class="highlight-title">💡 今日核心判断</div>
+  <p>今天是 <strong>2026年9月27日（星期日）</strong>，开学第 <strong>4</strong> 周。主线是「<strong>校企校地对接提速 + 评奖评优全面铺开</strong>」。安工大 <strong>9月18日</strong> 三线并进：「诗城创星港」马鞍山经开区校企对接科创沙龙、巡察整改日常监督联席会议、外国语学院研究生学业奖学金名单公示。长春工程学院 <strong>9月15日</strong> 与中国能建科技发展有限公司洽谈首届「<strong>定制班</strong>」，<strong>9月18日</strong> 一天连排 <strong>4场</strong> 宣讲。徐州 <strong>9月15日</strong> 明珠高级中学骨干教师拟聘公示，义务教育首个<strong>秋假</strong> 定于 <strong>11月18—20日</strong>。</p>
+</div>
+
+
+<div class="report-header">
+  <h1>校园新闻日报 · 2026-09-27</h1>
+  <div class="subtitle">安徽工业大学 · 长春工程学院 · 徐州三中 · 徐州市大庙中学 · 四校联动的校园动态与家乡教育观察</div>
+  <div class="meta">
+    <span class="date-badge">2026-09-27 星期日</span>
+    <span class="text-muted">读者画像：机械工程硕士（四旋翼飞控仿真），坐标徐州、就读安徽工业大学（马鞍山），求职车企 / 机械 / 科研院所</span>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <div class="highlight-title">💡 今日核心判断</div>
+  <p>今天是 <strong>2026年9月27日（星期日）</strong>，<strong>中秋假期第二天</strong>，四所学校集体进入「假期静默模式」——官网与公众号基本无新推送。但把假期前后的信息面串起来看，有三条主线值得记录：一是<strong>安工大亮出学科家底</strong>，9个学科上榜2026软科世界一流学科排名、创近五年新高，并新增1个ESI前1%学科；二是<strong>长春工程学院迎新收尾</strong>，4700余名新生报到完毕、入学教育五大专题收官，10月中下旬央企宣讲排期已经排满；三是<strong>徐州进入双节节奏</strong>，经开区「金龙湖之夜」金秋文旅季9月25日晚浪漫开场，义务教育学校秋假日期（<strong>11月18日至20日</strong>）此前也已明确。今日三中、大庙中学暂无新动态，相关板块为近期梳理。</p>
+</div>
+
+
+<div class="report-header">
+  <h1>校园新闻日报 · 2026-09-27</h1>
+  <div class="subtitle">安徽工业大学 · 长春工程学院 · 徐州三中 · 徐州市大庙中学 · 四校联动的校园动态与家乡教育观察</div>
+  <div class="meta">
+    <span class="date-badge">2026-09-27 星期日</span>
+    <span class="text-muted">读者画像：机械工程硕士（四旋翼飞控仿真），坐标徐州、就读安徽工业大学（马鞍山），求职车企 / 机械 / 科研院所</span>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <div class="highlight-title">💡 今日核心判断</div>
+  <p>今天是 <strong>2026年9月27日（星期日）</strong>，<strong>中秋假期最后一天</strong>，四所学校继续处于「假期静默模式」，官网与公众号基本无新推送。但假期的最后一天恰恰是布局日：一是<strong>安工大节后首日高密度</strong>，9月28日（周一）上午淮北矿业、安徽悦联、海天集团三场宣讲接连落地秀山校区，下午4:50召开校第五届党代会第三次会议；二是<strong>长春工程学院就业线持续加温</strong>，中国能建科技发展公司9月15日来校洽谈定制班并开专场招聘，10月中下旬央企宣讲排期已满；三是<strong>徐州双节文旅进入下半场</strong>，「金龙湖之夜」音乐会假期里持续开唱，<strong>9月28日2026徐州汉文化旅游节正式启幕</strong>，10月1日至3日经开区还有国庆专场接棒。今日三中、大庙中学暂无新动态，相关板块为近期梳理。提醒一句：<strong>明天开始连上三天课就迎来国庆7天长假，10月10日（周六）有一次调休补课</strong>。</p>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="emoji">🔗</span> 板块一 · 安工大：假期收尾盘点，节后首日「三宣讲+一会议」高密度开局</div>
+  <div class="card">
+    <h3>假期前最后一批校务动态：工作通报会、署名文章与专业认证</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-accent">校务通报</span>
+        <span class="badge new">🆕 9月24日</span>
+        <span>2026-09-24</span>
+      </div>
+      <p>假期前最后两个工作日，安工大新闻网集中更新多条要闻。<strong>9月24日</strong>，学校召开<strong>2026年上半年及暑期学校工作情况通报会</strong>，对上半年教学科研、招生就业与暑期重点工作进行系统通报；同日，<strong>校党委副书记、校长曾杰在《科技日报》理论版发表署名文章</strong>，学校还承办了马鞍山市仲裁员综合业务培训班。<strong>9月23日</strong>一天内，<strong>9个学科上榜2026软科世界一流学科排名并新增1个ESI前1%学科</strong>、<strong>材料成型及控制工程专业接受工程教育专业认证专家组现场考查</strong>、江苏科瑞恩科技股份有限公司来校开展校企合作交流、合肥幼儿师范高等专科学校来校调研等动态接连挂网——专业认证现场考查是材料成型这一机械近邻专业的「大考」，其结果对相关工科培养方案的含金量有直接参考意义。</p>
+      <a class="source-link" href="https://news.ahut.edu.cn/" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-purple">节后节点</span>
+        <span class="badge hot">🔥 9月28日四连</span>
+        <span>2026-09-28</span>
+      </div>
+      <p>节后首日（<strong>9月28日周一</strong>）安工大信息面高密度：<strong>上午10:00</strong> 淮北矿业（集团）在秀山校区东教D207开讲，<strong>17:30</strong> 安徽悦联商业管理落地东教D105，<strong>18:30</strong> 海天集团压轴东教一阶202；下午 <strong>4:50</strong>，校第五届党代会第三次会议在佳山校区学术会议中心四楼报告厅召开，选举出席省委教育工委高校党员代表会议的代表。<strong>9月29日下午</strong>，中伟新材料股份有限公司还将跟进一场宣讲（14:30，东教D207）。中秋假期最后一天，正是把简历打印出来、把正装找出来的最后窗口。</p>
+      <a class="source-link" href="https://my.yingjiesheng.com/xjh-006-297-813.html" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-amber">假期花絮</span>
+        <span>2026-09-24</span>
+      </div>
+      <p>假期氛围线上，学校9月24日发布<strong>「手工月饼庆双节 暖心慰问牵民心」</strong>动态，食堂与学院层面组织手工月饼制作与假期慰问；此前一天（9月23日）学校还举办了<strong>「平安进校园 守护『警』相随」</strong>安全宣传活动与<strong>2026级新生军训军歌合唱比赛</strong>——2026级新生的开学第一课在歌声与安全提示中收尾。对假期留校的同学，校内图书馆开放与商户营业时间以各部门假前通知为准。</p>
+      <a class="source-link" href="https://news.ahut.edu.cn/" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="emoji">🏛️</span> 板块二 · 长春工程学院：中国能建定制班洽谈落地，辅修学位报名收尾，10月央企大部队压境</div>
+  <div class="card">
+    <h3>就业新动作：中国能源建设集团科技发展公司来校，定制班+专场招聘双线推进</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-green">校企定制班</span>
+        <span class="badge new">🆕 央企定制</span>
+        <span>2026-09-15</span>
+      </div>
+      <p><strong>9月15日</strong>，中国能源建设集团科技发展有限公司人力资源部、党委组织部部长于家鹏率队来校，开展<strong>定制班合作洽谈暨首届定制班专场招聘活动</strong>。会前，学校党委书记宋立军与来访企业代表团座谈，介绍学校能源电力优势专业建设及人才培养成果，双方就深化校企协同育人、推进定制班建设达成初步共识；能源动力工程学院、电气与信息工程学院负责人与企业团队围绕<strong>定制班人才培养方案、课程共建、实训教学、就业衔接</strong>等内容展开细致沟通。「定制班」意味着大三、研二阶段即可锁定央企岗位通道，对能源、电气、机械方向的低年级同学，这是比秋招更早的一条就业支线。</p>
+      <a class="source-link" href="https://www.ccit.edu.cn/" target="_blank">📎 查看原文</a>
+    </div>
+    <h3 class="mt-4">教务动态：辅修学位报名收官在即，考研辅导课10月19日开班</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-info">教务通知</span>
+        <span>2026-09-21</span>
+      </div>
+      <p>教务处两条通知值得在校生留意。其一，<strong>2026年辅修学士学位报名</strong>按9月7日至20日的窗口执行，<strong>9月21日</strong>各辅修专业学院完成审核并确定拟录取名单，教务处复核备案后公示，随后缴纳学费、另行通知开课——辅修上课时间集中在周一至周五晚上或周末，适合学有余力的同学构建「主修+辅修」复合背景。其二，<strong>考研辅导线下素质通选课</strong>选课已于9月14日至15日完成，课程预计<strong>10月19日（第七教学周周一）开课</strong>，选课人数少于30人的教学班将取消开课；有考研计划的同学可按课表预留复习与上课的时间分配。</p>
+      <a class="source-link" href="https://jwc.ccit.edu.cn/info/1052/5599.htm" target="_blank">📎 查看原文</a>
+      <a class="source-link" href="https://jwc.ccit.edu.cn/info/1050/5604.htm" target="_blank">📎 查看原文</a>
+    </div>
+    <h3 class="mt-4">秋招前哨：中建八局9月8日专场开局，10月排期已排满</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-orange">宣讲排期</span>
+        <span class="badge hot">🔥 央企密集</span>
+        <span>2026-09-08 至 10-27</span>
+      </div>
+      <p>复盘长工程9月就业线：<strong>9月8日</strong>中国建筑第八工程局2027届毕业生专场招聘会在湖西校区逸夫图书馆开局；9月22日至24日，建投承德热电、中国水利水电第六与第四工程局、苏州苏纳光电、思源电气轮番到校。<strong>10月排期</strong>已经排满：中国二十二冶集团 <strong>10月9日</strong>、国家电投集团 <strong>10月15日</strong>、华能澜沧江水电与日丰集团 <strong>10月19日</strong>、中国电建青岛华丰伟业 <strong>10月27日</strong>。叠加中国能建定制班的首场推进，水利、电力、能源央企仍是2027届的主战场，国庆假期正好按排期做针对性准备。</p>
+      <a class="source-link" href="https://www.ccit.edu.cn/" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="tip-box mt-3">
+      <div class="tip-title">✅ 观察视角</div>
+      <p>长工程与安工大的秋招节奏几乎同频：两家都在9月下旬收完第一批宣讲、10月上旬起进入央企与制造业头部企业的密集期。对两边都投的读者来说，可以把<strong>10月9日至19日</strong>视为「长工程周」——中国二十二冶、国家电投、华能澜沧江都值得跨城关注，中国能建定制班模式也提示了一条思路：与其在秋招红海里挤，不如盯紧低年级的「定制班、订单班」入口。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="emoji">🏫</span> 板块三 · 徐州三中：假期静默期，9月主线收官于「科学家精神」双课堂</div>
+  <div class="card">
+    <h3>今日动态较少，以下为近期梳理：成长好课堂连开两讲后进入假期</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-purple">近期梳理</span>
+        <span class="badge-info badge">ℹ️ 假期静默</span>
+        <span>2026-09</span>
+      </div>
+      <p>截至发稿，徐州三中官网「三中要闻」<strong>最新更新仍停留在9月19日</strong>——中科院老科学家何林教授为三中学子解读科技创新的「成长好课堂」专场，此后中秋假期前后暂无新推送。回看9月收官的两讲颇有分量：<strong>9月18日</strong>，陆军工程大学郭志昆教授以《那一生「为国铸盾」的背影》讲授钱七虎院士的科学家精神；<strong>9月19日</strong>，中科院老科学家何林教授从创新案例切入，为学子解读科技创新的底层逻辑。加上<strong>9月17日班主任业务培训会</strong>、<strong>9月11日教师节庆祝</strong>、<strong>9月3日开学典礼与优秀毕业生返校分享会</strong>、<strong>9月1日教职工大会与师德师风专题教育</strong>，学校在新学期第一个月完成了「制度线+育人线」的双线铺排。假期结束后是否释放新动态，可持续关注官网与公众号。</p>
+      <a class="source-link" href="https://www.jsxz3z.cn/engine2/m/0/6944372/7920925?currentBranch=1&p=1350027&t=38831841" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-amber">假期观察</span>
+        <span>2026-09-25 至 09-27</span>
+      </div>
+      <p>按国务院安排，<strong>中秋节9月25日至27日放假3天、不调休</strong>，三中与全市高中同步度过中秋假期。对高三学子而言，假期最后一天的正确打开方式不是补觉到底，而是<strong>收心</strong>：明天（9月28日周一）起连上3天课，9月30日（周三）放学即进入国庆7天长假，<strong>10月10日（周六）有一次调休补课</strong>。一轮复习的错题归因、专题突破，正好可以借明天上课前的今晚做一次快速整理；节后的复习节奏建议按「连上6天课」来规划体力。</p>
+      <a class="source-link" href="https://www.scio.gov.cn/zdgz/jj/202511/t20251110_938367.html" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="info-box mt-3">
+      <div class="info-title">ℹ️ 说明</div>
+      <p>江苏省教育厅已在全省推行中小学春秋假制度，徐州义务教育学校秋假明确为<strong>11月18日至20日</strong>、与周末连休形成5天假期（鼓楼、云龙、泉山、经开区及市直学校统一执行）。秋假对象目前以<strong>义务教育阶段</strong>为主，三中这样的高中是否参照安排，尚待教育部门与学校进一步明确。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="emoji">🏫</span> 板块四 · 徐州市大庙中学：假期静默，从年度预算看一所乡镇初中的家底</div>
+  <div class="card">
+    <h3>今日动态较少，以下为近期梳理：预算公开+校服采购+经开区双节氛围</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-orange">近期梳理</span>
+        <span>2026-09-17</span>
+      </div>
+      <p>大庙中学官网层面最近的挂网动态仍是<strong>9月17日公开的2026年9月第2批采购意向（校服采购）</strong>，中秋假期前后无新的校园新闻。稍早前的公开信息还有<strong>《2026年度徐州市大庙中学单位预算》</strong>：文件显示学校内设校长室、办公室、教务处、会计室、安保处、德育处、年级处、总务处等机构，主要职能为实施初中义务教育，2026年度主要任务包括加强教育教学常规管理、开齐课程开足课时、深入推进课程改革、抓好校园安全等。结合此前已明确的<strong>600人招生计划</strong>与新学期运行节奏，学校当前处于开学第一个月的平稳期，校服采购的后续招标公告可在徐州经开区教育网「智慧教育—招标公告」栏目持续跟踪。</p>
+      <a class="source-link" href="http://www.xzkfq.cn/info/1239/36584.htm" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-green">双节氛围</span>
+        <span class="badge hot">🔥 中秋专场</span>
+        <span>2026-09-26</span>
+      </div>
+      <p>大庙中学所在的徐州经开区，中秋假期社会面热度很高：<strong>「金龙湖之夜」音乐会中秋专场</strong>如约亮相金龙湖畔，市民席地静坐湖畔草坪、点亮手机微光合唱，汉风舞蹈《花好月圆夜》与古筝演奏持续圈粉；<strong>淮海环球港</strong>中秋第二天客流持续升高，汉风巡游、NPC互动、晚风音乐会与月圆之夜的嫦娥奔月表演接连上演；<strong>金龙湖新天地</strong>推出「潮行经开·月满金秋」中秋国风系列活动，汉礼传习、诗词书签手作、国风走秀、拜月大典轮番登场。对大庙片区的家庭来说，假期最后一天傍晚去金龙湖畔散步听歌，仍是零成本的好选择。</p>
+      <a class="source-link" href="https://www.sohu.com/a/1081236270_121106832" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-info">节后看点</span>
+        <span class="badge new">🆕 汉文化旅游节</span>
+        <span>2026-09-28</span>
+      </div>
+      <p><strong>9月28日，一年一度的徐州汉文化旅游节将正式启幕</strong>，经开区作为分会场以「潮行经开 悦见经彩」为主题多点布局：湖畔、商圈、乡村联动，形成多元文商旅消费矩阵。「金龙湖之夜」系列活动计划从9月下旬持续至10月下旬、<strong>共7场演出</strong>，10月1日至3日国庆专场将陆续登场。家里有弟弟妹妹在读初中的，10月国庆专场与11月中旬的义务教育秋假（11月18日至20日）都是可以提前规划的家庭出行节点。</p>
+      <a class="source-link" href="https://m.ourjiangsu.com/news/2026/9/25/1552989128196239360.html" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="emoji">🗓️</span> 板块五 · 徐州教育大盘：中秋收官、国庆接棒，节奏表一张看懂</div>
+  <div class="card">
+    <h3>假期拼图：明天开始3天过渡，10月1日国庆开闸</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-teal">放假安排</span>
+        <span>2026-09</span>
+      </div>
+      <p>江苏各市的假期拼图已经清晰：<strong>中秋节9月25日（周五）至27日（周日）放假，共3天、不调休</strong>；<strong>国庆节10月1日（周四）至7日（周三）放假调休7天</strong>，<strong>9月20日（周日）、10月10日（周六）</strong>上班上课。中秋与国庆之间仅隔3个工作日（9月28日至30日）。对学生家庭而言，更实际的是记牢 <strong>10月10日（周六）要上课</strong>，别被双节惯性带偏了作息；对大学生而言，9月30日傍晚起的高铁票已进入抢票尾声，回徐州的车票还没着落的要抓紧候补。</p>
+      <a class="source-link" href="https://www.toutiao.com/article/7682375744907805199" target="_blank">📎 查看原文</a>
+    </div>
+    <h3 class="mt-4">秋假定了：徐州义务教育学校11月18日至20日，与周末连休5天</h3>
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="tag tag-green">春秋假制度</span>
+        <span class="badge new">🆕 日期明确</span>
+        <span>2026-11</span>
+      </div>
+      <p>根据江苏省教育厅《关于优化中小学假期安排的通知》，全省推行春秋假制度，继春季学期首次试行春假后，各地秋假安排陆续落定。<strong>徐州鼓楼区、云龙区、泉山区、经开区以及市直学校的秋假安排在11月18日至20日</strong>，与11月21日、22日周末连休，形成<strong>5天小长假</strong>；其他县（市）区结合本地实际确定。这是徐州义务教育学校<strong>首个秋假</strong>——大庙中学等初中家庭可以提前规划11月下旬的出行与研学安排；高中段学校是否参照执行，以教育部门后续通知为准。</p>
+      <a class="source-link" href="https://www.toutiao.com/article/7682375744907805199" target="_blank">📎 查看原文</a>
+    </div>
+    <div class="table-wrap mt-3">
+      <table class="summary-table">
+        <thead><tr><th>节点</th><th>时间</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>中秋假期（进行中）</td><td>09-25 至 09-27</td><td>3天，不调休，今日收官</td></tr>
+          <tr><td>过渡周</td><td>09-28 至 09-30</td><td>连上3天课，9月28日汉文化旅游节启幕</td></tr>
+          <tr><td>国庆假期</td><td>10-01 至 10-07</td><td>7天，10月10日（周六）补课</td></tr>
+          <tr><td>徐州秋假（义务教育）</td><td>11-18 至 11-20</td><td>与周末连休，共5天</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="emoji">💬</span> 板块六 · 全网热议与读者关联</div>
+  <div class="card">
+    <div class="discussion-item">
+      <div class="discussion-title">「古彭中秋人气旺」：徐州双节文旅刷屏，金龙湖之夜成顶流</div>
+      <div class="discussion-meta"><span class="discussion-author">徐州市文广旅局 / 搜狐城市号</span><span class="discussion-time">2026-09-26</span></div>
+      <p>中秋假期第二天，徐州各县市区活动密集刷屏：经开区<strong>金龙湖之夜音乐会中秋专场</strong>、淮海环球港嫦娥奔月表演、金龙湖新天地拜月大典，贾汪趣喵岛中秋花灯手作，沛县图书馆「花好月圆话中秋」，新沂马陵山为期三天的<strong>花厅·曙光音乐节</strong>9月25日中秋团圆夜开幕……媒体盘点的标题直接写「中秋假期尚余一日美好时光，徐州的热闹仍在继续」。对回徐过节的在校生，这份清单正好可以用在假期最后一天。</p>
+    </div>
+    <div class="discussion-item">
+      <div class="discussion-title">「9个学科上榜」：安工大冲击「双一流」的学科叙事持续发酵</div>
+      <div class="discussion-meta"><span class="discussion-author">安徽工业大学新闻网 / 高教自媒体</span><span class="discussion-time">2026-09-23</span></div>
+      <p>2026软科世界一流学科排名发布后，「安工大9学科上榜、省属并列第二、近五年新高」成为安徽高校圈的热议话题，叠加<strong>新增1个ESI前1%学科</strong>与4月挂牌的氢能工程、智能机器人等五个新学院（研究院），「安工大要从钢铁特色高校转型多科交叉」的讨论热度不低。对在读研究生来说，这轮叙事的现实影响会体现在：导师横向课题的行业资源、学院实验室设备更新预算（材料学院实验中心采购项目已成交定标），以及求职时简历上「所在学科进入世界一流学科排名」的含金量。</p>
+    </div>
+    <div class="highlight-box mt-3">
+      <div class="highlight-title">💡 与读者画像的关联</div>
+      <p>假期最后一天的优先级排序：今晚<strong>收心+改简历</strong>（对标明天淮北矿业、后天中伟新材料与10月9日伯特利、冠盛的岗位JD）→ 明天上午<strong>淮北矿业宣讲</strong>（国企矿业龙头，机械背景可重点投递）→ 下午如果没课可旁听党代会通报的学校工作主线。家乡线（三中、大庙）静默期正好把注意力让位给秋招主线；国庆7天则是下一波准备窗口——10月8日起安工大宣讲将迎来冠盛、伯特利、三花智能控制等汽车零部件与智能制造企业的密集档期。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">📚 信息来源汇总</div>
+  <div class="table-wrap">
+    <table class="summary-table">
+      <thead><tr><th>来源标题</th><th>链接</th><th>时间</th></tr></thead>
+      <tbody>
+        <tr><td>安徽工业大学新闻网（学校要闻/院部动态：通报会、署名文章、专业认证、软科排名等）</td><td><a class="source-link" href="https://news.ahut.edu.cn/" target="_blank">📎 查看原文</a></td><td>2026-09-24</td></tr>
+        <tr><td>安徽工业大学门户网站（通知公告/校务公开）</td><td><a class="source-link" href="https://www.ahut.edu.cn/" target="_blank">📎 查看原文</a></td><td>2026-09</td></tr>
+        <tr><td>海天集团2027校园招聘宣讲会·安徽工业大学（含完整宣讲排期，应届生求职网）</td><td><a class="source-link" href="https://my.yingjiesheng.com/xjh-006-297-813.html" target="_blank">📎 查看原文</a></td><td>2026-09</td></tr>
+        <tr><td>长春工程学院官网·学校要闻（中国能建定制班洽谈暨专场招聘）</td><td><a class="source-link" href="https://www.ccit.edu.cn/" target="_blank">📎 查看原文</a></td><td>2026-09-16</td></tr>
+        <tr><td>关于开展2026年辅修学士学位报名工作的通知（长春工程学院教务处）</td><td><a class="source-link" href="https://jwc.ccit.edu.cn/info/1052/5599.htm" target="_blank">📎 查看原文</a></td><td>2026-09-07</td></tr>
+        <tr><td>关于2026-2027学年第1学期考研辅导线下素质通选课选课通知（长春工程学院教务处）</td><td><a class="source-link" href="https://jwc.ccit.edu.cn/info/1050/5604.htm" target="_blank">📎 查看原文</a></td><td>2026-09-11</td></tr>
+        <tr><td>三中要闻·徐州市第三中学官网（成长好课堂何林/郭志昆专场等）</td><td><a class="source-link" href="https://www.jsxz3z.cn/engine2/m/0/6944372/7920925?currentBranch=1&p=1350027&t=38831841" target="_blank">📎 查看原文</a></td><td>2026-09-19</td></tr>
+<tr><td>徐州市大庙中学2026年9月第2批采购意向公开一览表（校服采购）</td><td><a class="source-link" href="http://www.xzkfq.cn/info/1239/36584.htm" target="_blank">📎 查看原文</a></td><td>2026-09-17</td></tr>
+        <tr><td>古彭中秋人气旺，多彩活动嗨不停（徐州市文广旅局/搜狐）</td><td><a class="source-link" href="https://www.sohu.com/a/1081236270_121106832" target="_blank">📎 查看原文</a></td><td>2026-09-26</td></tr>
+        <tr><td>湖光夜色伴歌声，徐州经开区「金秋文旅季」浪漫开场（我苏网）</td><td><a class="source-link" href="https://m.ourjiangsu.com/news/2026/9/25/1552989128196239360.html" target="_blank">📎 查看原文</a></td><td>2026-09-25</td></tr>
+        <tr><td>湖畔赏月听国风！徐州金龙湖之夜奏响中秋文旅序曲（交汇点/新浪）</td><td><a class="source-link" href="https://k.sina.com.cn/article_5675440730_152485a5a020027jy4.html" target="_blank">📎 查看原文</a></td><td>2026-09-25</td></tr>
+        <tr><td>江苏9-11月放假时间（南京广播电视台/今日头条）</td><td><a class="source-link" href="https://www.toutiao.com/article/7682375744907805199" target="_blank">📎 查看原文</a></td><td>2026-09-06</td></tr>
+        <tr><td>国务院办公厅关于2026年部分节假日安排的通知</td><td><a class="source-link" href="https://www.scio.gov.cn/zdgz/jj/202511/t20251110_938367.html" target="_blank">📎 查看原文</a></td><td>2025-11</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+</div>
+</div>
+
+<div class="comments-section">
+  <div class="comments-title">💬 评论区</div>
+  <div class="comments-desc">登录 GitHub 账号即可评论，支持 Markdown 和表情回应。欢迎交流求职经验、分享面试心得！</div>
+  <div class="giscus"></div>
+</div>
+
+<footer class="footer">
+  <p>校园新闻日报 | 安徽工业大学机械工程硕士研究生个性化推荐报告</p>
+  <p>报告日期：2026年9月27日 | 数据来源：公开网络信息整理</p>
+  <div class="footer-meta">Generated by WorkBuddy Automation | Powered by TS-dinglilu.github.io</div>
+</footer>
+
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button>
+
+<script>
+// Scroll-to-top button visibility
+window.addEventListener('scroll', function() {
+  var btn = document.querySelector('.scroll-top');
+  if (btn) {
+    if (window.scrollY > 400) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+  }
+});
+
+// Giscus configuration
+var giscusScript = document.createElement('script');
+giscusScript.src = 'https://giscus.app/client.js';
+giscusScript.setAttribute('data-repo', 'TS-dinglilu/TS-dinglilu.github.io');
+giscusScript.setAttribute('data-repo-id', 'R_kgDOTjqaJQ');
+giscusScript.setAttribute('data-category', 'General');
+giscusScript.setAttribute('data-category-id', 'DIC_kwDOTjqaJc4DCIL2');
+giscusScript.setAttribute('data-mapping', 'pathname');
+giscusScript.setAttribute('data-strict', '0');
+giscusScript.setAttribute('data-reactions-enabled', '1');
+giscusScript.setAttribute('data-emit-metadata', '0');
+giscusScript.setAttribute('data-input-position', 'top');
+giscusScript.setAttribute('data-theme', 'dark_dimmed');
+giscusScript.setAttribute('data-lang', 'zh-CN');
+giscusScript.setAttribute('data-loading', 'lazy');
+giscusScript.crossOrigin = 'anonymous';
+giscusScript.async = true;
+var giscusBox = document.querySelector('.giscus');
+if (giscusBox) { giscusBox.appendChild(giscusScript); }
+</script>
+
+</body>
+</html>
