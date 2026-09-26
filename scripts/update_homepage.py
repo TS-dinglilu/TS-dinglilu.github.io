@@ -17,7 +17,10 @@ CATEGORIES = ["car-recruit", "mechanical-recruit", "school-news", "drone-researc
               "supply-chain-recruit", "research-institute", "future-planning",
               "xuzhou-news", "nanjing-news", "shanghai-news", "hangzhou-news",
               "jiangzhehu-news", "hefei-news", "anhui-news", "jiangsu-news",
-              "shenzhen-news"]
+              "shenzhen-news",
+              "xuzhou-recruit", "nanjing-recruit", "shanghai-recruit",
+              "hangzhou-recruit", "jiangzhehu-recruit", "hefei-recruit",
+              "anhui-recruit", "jiangsu-recruit", "shenzhen-recruit"]
 
 STATS_CSS = """/* === auto-updated (generated) === */
 .auto-updated {

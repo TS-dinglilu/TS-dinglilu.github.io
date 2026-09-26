@@ -57,6 +57,15 @@ CATEGORY_NAMES = {
     "anhui-news": "安徽汽车机械日报",
     "jiangsu-news": "江苏汽车机械日报",
     "shenzhen-news": "深圳汽车机械日报",
+    "xuzhou-recruit": "徐州招聘日报",
+    "nanjing-recruit": "南京招聘日报",
+    "shanghai-recruit": "上海招聘日报",
+    "hangzhou-recruit": "杭州招聘日报",
+    "jiangzhehu-recruit": "江浙沪招聘日报",
+    "hefei-recruit": "合肥招聘日报",
+    "anhui-recruit": "安徽招聘日报",
+    "jiangsu-recruit": "江苏招聘日报",
+    "shenzhen-recruit": "深圳招聘日报",
 }
 
 COMMENTS_BLOCK = (

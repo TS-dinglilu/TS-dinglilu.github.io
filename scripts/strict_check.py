@@ -11,7 +11,14 @@ CATS = [
     "xuzhou-news", "nanjing-news", "shanghai-news", "hangzhou-news",
     "jiangzhehu-news", "hefei-news", "anhui-news", "jiangsu-news",
     "shenzhen-news",
+    "xuzhou-recruit", "nanjing-recruit", "shanghai-recruit",
+    "hangzhou-recruit", "jiangzhehu-recruit", "hefei-recruit",
+    "anhui-recruit", "jiangsu-recruit", "shenzhen-recruit",
 ]
+
+# 地区类（地区现状 + 地区招聘）篇幅下限 8000，其余 12000
+REGION_CATS = {"xuzhou", "nanjing", "shanghai", "hangzhou", "jiangzhehu",
+               "hefei", "anhui", "jiangsu", "shenzhen"}
 
 MD_LINK = re.compile(r"\]\(https?://")
 DOC_TAG = re.compile(r"<!DOCTYPE|<html[\s>]|<head[\s>]|<body[\s>]", re.I)
@@ -26,7 +33,7 @@ for cat in CATS:
     n = len(s)
     issues = []
     # 分级下限：招聘/资讯类要求更厚（与自动化 prompt 的 12000–19000 一致），地区日报 8000 起
-    lo = 8000 if cat.endswith("-news") else 12000
+    lo = 8000 if cat.split("-")[0] in REGION_CATS else 12000
     if n < lo or n > 20000:
         issues.append("LEN=%d(下限%d)" % (n, lo))
     if MD_LINK.search(s):

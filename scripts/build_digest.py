@@ -38,9 +38,14 @@ GROUPS = [
                          "weixiaoli-recruit", "traditional-auto",
                          "supply-chain-recruit", "research-institute"]),
     ("campus", "校园科研", ["school-news", "ahut-campus", "drone-research"]),
-    ("region", "地区", ["xuzhou-news", "nanjing-news", "shanghai-news",
-                        "hangzhou-news", "jiangzhehu-news", "hefei-news",
-                        "anhui-news", "jiangsu-news", "shenzhen-news"]),
+    ("region", "地区现状", ["xuzhou-news", "nanjing-news", "shanghai-news",
+                            "hangzhou-news", "jiangzhehu-news", "hefei-news",
+                            "anhui-news", "jiangsu-news", "shenzhen-news"]),
+    ("region-recruit", "地区招聘", ["xuzhou-recruit", "nanjing-recruit",
+                                    "shanghai-recruit", "hangzhou-recruit",
+                                    "jiangzhehu-recruit", "hefei-recruit",
+                                    "anhui-recruit", "jiangsu-recruit",
+                                    "shenzhen-recruit"]),
     ("personal", "规划", ["future-planning"]),
 ]
 CAT_NAME = tail_template.CATEGORY_NAMES

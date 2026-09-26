@@ -32,7 +32,10 @@ CATEGORIES = ["car-recruit", "mechanical-recruit", "school-news", "drone-researc
               "supply-chain-recruit", "research-institute", "future-planning",
               "xuzhou-news", "nanjing-news", "shanghai-news", "hangzhou-news",
               "jiangzhehu-news", "hefei-news", "anhui-news", "jiangsu-news",
-              "shenzhen-news"]
+              "shenzhen-news",
+              "xuzhou-recruit", "nanjing-recruit", "shanghai-recruit",
+              "hangzhou-recruit", "jiangzhehu-recruit", "hefei-recruit",
+              "anhui-recruit", "jiangsu-recruit", "shenzhen-recruit"]
 VALID = set(CATEGORIES) | {"digest"}  # digest = 周记月记年记板块
 
 # 分类的「建号日期」：新增分类是从某一天才开始有报告的，此前各天不参与「跨分类漏期」比对，
@@ -52,6 +55,15 @@ START_DATES = {
     "anhui-news": "20260924",            # 地区·安徽汽车机械日报
     "jiangsu-news": "20260924",          # 地区·江苏汽车机械日报
     "shenzhen-news": "20260924",         # 地区·深圳汽车机械日报
+    "xuzhou-recruit": "20260926",        # 地区·徐州招聘日报，2026-09-26 新增
+    "nanjing-recruit": "20260926",       # 地区·南京招聘日报
+    "shanghai-recruit": "20260926",      # 地区·上海招聘日报
+    "hangzhou-recruit": "20260926",      # 地区·杭州招聘日报
+    "jiangzhehu-recruit": "20260926",    # 地区·江浙沪招聘日报
+    "hefei-recruit": "20260926",         # 地区·合肥招聘日报
+    "anhui-recruit": "20260926",         # 地区·安徽招聘日报
+    "jiangsu-recruit": "20260926",       # 地区·江苏招聘日报
+    "shenzhen-recruit": "20260926",      # 地区·深圳招聘日报
 }
 
 ERRORS = defaultdict(list)
