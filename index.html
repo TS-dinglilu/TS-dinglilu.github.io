@@ -1444,6 +1444,51 @@ mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent
   border-bottom: 1px dashed var(--border);
 }
 .auto-updated b { color: var(--accent-green); font-weight: 600; }
+
+/* ============================================================
+   机械行业全景标签 (Industry Map)
+   ============================================================ */
+.industry-intro { color: var(--text-dim); font-size: 0.95rem; margin: -8px 0 24px; }
+.industry-intro b { color: var(--accent); }
+.industry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+.industry-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 22px 22px 18px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.4s var(--bounce), border-color 0.3s var(--smooth), box-shadow 0.4s var(--smooth);
+}
+.industry-card:hover { transform: translateY(-4px); border-color: var(--border-hover); box-shadow: var(--shadow-glow-hover); }
+.industry-card-title {
+  font-size: 1.05rem; font-weight: 700; color: #ffffff;
+  margin-bottom: 6px; padding-left: 12px; border-left: 4px solid var(--accent);
+  line-height: 1.4; letter-spacing: 0.02em;
+}
+.industry-card-sub { color: var(--text-faint); font-size: 0.82rem; margin-bottom: 14px; padding-left: 16px; }
+.industry-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.industry-tag {
+  display: inline-flex; align-items: baseline; gap: 5px;
+  padding: 5px 12px; font-size: 0.84rem;
+  color: var(--text-dim); background: rgba(0,212,255,0.06);
+  border: 1px solid var(--border); border-radius: 999px;
+  cursor: pointer; user-select: none;
+  transition: color 0.3s var(--bounce), background 0.3s var(--smooth), border-color 0.3s var(--smooth), transform 0.3s var(--bounce), box-shadow 0.3s var(--smooth);
+}
+.industry-tag small { color: var(--text-faint); font-size: 0.72rem; }
+.industry-tag:hover {
+  color: #ffffff; background: rgba(0,212,255,0.16); border-color: var(--border-hover);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 16px rgba(0,212,255,0.18);
+  text-decoration: none;
+}
+.industry-card.hot .industry-card-title { border-color: var(--accent-pink); }
+.industry-card.trad .industry-card-title { border-color: var(--accent-warm); }
+.industry-card.niche .industry-card-title { border-color: var(--accent-purple); }
+.industry-card.emerging .industry-card-title { border-color: var(--accent-green); }
+.industry-card.service .industry-card-title { border-color: var(--accent-orange); }
+.no-result { text-align: center; color: var(--text-faint); font-size: 0.95rem; padding: 32px 0 8px; }
+@media (max-width: 768px) { .industry-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body data-page-node-id="QEqUKvuf9uK3sRknTvsPq2">
@@ -1459,7 +1504,7 @@ mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent
       独立开发并维护 23 个每日自动化信息聚合系统（另设周记·月记·年记站级汇总），统一部署于单一 GitHub 仓库。
     </p>
     <div class="hero-stats" data-page-node-id="AabeXAA1SQxGQJmyyKbuxn">
-      <div class="stat" data-page-node-id="qWqaGQJG759akwIslDKBjB"><div class="stat-num" data-page-node-id="rWec4oWhBYk3TVgA5hAgvX">24</div><div class="stat-label" data-page-node-id="16av7HUFrPg832CdUGcFSy">自动化系统</div></div>
+      <div class="stat" data-page-node-id="qWqaGQJG759akwIslDKBjB"><div class="stat-num" data-page-node-id="rWec4oWhBYk3TVgA5hAgvX">33</div><div class="stat-label" data-page-node-id="16av7HUFrPg832CdUGcFSy">自动化系统</div></div>
       <div class="stat" data-page-node-id="VY6KoBbI7Wy1ZJkkcZJOI7"><div class="stat-num" data-page-node-id="0f5ETZOxoXEiqKDjYv05ta">323+</div><div class="stat-label" data-page-node-id="gx7AvvQEHqX4YfOUoGdvQm">已生成日报</div></div>
       <div class="stat" data-page-node-id="316ESzvnXTPXJyMNH9bzvu"><div class="stat-num" data-page-node-id="1gqrQWVwx0lFYldgB1rCoI">05:00</div><div class="stat-label" data-page-node-id="DaooLDTJGNgmC3JdbWuBjA">每日定时</div></div>
       <div class="stat" data-page-node-id="modauxeBTATYzSO0pjT26m"><div class="stat-num" data-page-node-id="7UgKgxQmPSKxqrsdDXfThD">100%</div><div class="stat-label" data-page-node-id="kro4YdZUE1SvQpCPJoHfne">自动运行</div></div>
@@ -1890,6 +1935,7 @@ mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent
       </a>
 
     </div>
+    <p id="noResult" class="no-result" style="display:none">😕 没有匹配的日报 —— 点击「全部」或清空搜索框可重置。</p>
   </div>
 </section>
 
@@ -1938,6 +1984,102 @@ mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent
       <div class="skill-tag" data-page-node-id="YHVSptF6LweQmNCGvkuJc2">HTML / CSS <span class="level" data-page-node-id="UxcgFARjJgjDBsKBACH1Ke">proficient</span></div>
       <div class="skill-tag" data-page-node-id="Vw8vCQRhFFoS35vkH5lvxt">飞书 API <span class="level" data-page-node-id="qJAYYAoYTpyJw5i2CFLxIP">proficient</span></div>
       <div class="skill-tag" data-page-node-id="iwOQ3oGIO3T2Bf7RFZQTbR">Ubuntu Linux <span class="level" data-page-node-id="wLMAtLZcoFE5haSiDIQN7F">familiar</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRY MAP -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Industry Map</div>
+      <h2 class="section-title">机械行业全景</h2>
+    </div>
+    <p class="industry-intro">机械工程能触及的行业版图，按热度与赛道分 <b>5 大类 · 47 个行业</b>。点击任意标签，可筛选上方相关的自动化日报。</p>
+    <div class="industry-grid">
+
+      <div class="industry-card hot">
+        <div class="industry-card-title">🔥 流行 / 风口行业</div>
+        <div class="industry-card-sub">景气度高、校招量大、薪资溢价明显</div>
+        <div class="industry-tags">
+          <span class="industry-tag" onclick="searchIndustry('汽车')">新能源汽车 <small>比亚迪/特斯拉</small></span>
+          <span class="industry-tag" onclick="searchIndustry('智能驾驶')">智能驾驶 <small>华为/Momenta</small></span>
+          <span class="industry-tag" onclick="searchIndustry('机器人')">机器人 <small>埃斯顿/优必选</small></span>
+          <span class="industry-tag" onclick="searchIndustry('无人机')">无人机·低空经济 <small>大疆/亿航</small></span>
+          <span class="industry-tag" onclick="searchIndustry('半导体')">半导体设备 <small>北方华创/中微</small></span>
+          <span class="industry-tag" onclick="searchIndustry('宁德时代')">锂电设备 <small>先导智能</small></span>
+          <span class="industry-tag" onclick="searchIndustry('光伏')">光伏设备 <small>迈为/捷佳伟创</small></span>
+          <span class="industry-tag" onclick="searchIndustry('储能')">储能·氢能 <small>阳光电源</small></span>
+          <span class="industry-tag" onclick="searchIndustry('医疗')">医疗设备研发 <small>联影/迈瑞</small></span>
+        </div>
+      </div>
+
+      <div class="industry-card trad">
+        <div class="industry-card-title">🏗️ 传统支柱行业</div>
+        <div class="industry-card-sub">体量大、岗位稳定、机械对口的压舱石</div>
+        <div class="industry-tags">
+          <span class="industry-tag" onclick="searchIndustry('徐工')">工程机械 <small>徐工/三一/中联</small></span>
+          <span class="industry-tag" onclick="searchIndustry('车企')">传统汽车整车 <small>一汽/上汽/长安</small></span>
+          <span class="industry-tag" onclick="searchIndustry('零部件')">汽车零部件 <small>博世/延锋</small></span>
+          <span class="industry-tag" onclick="searchIndustry('轨道交通')">轨道交通 <small>中车</small></span>
+          <span class="industry-tag" onclick="searchIndustry('船舶')">船舶与海工 <small>中船集团</small></span>
+          <span class="industry-tag" onclick="searchIndustry('电力')">能源电力装备 <small>哈电/东方电气</small></span>
+          <span class="industry-tag" onclick="searchIndustry('矿山')">重型·矿山机械 <small>中信重工</small></span>
+          <span class="industry-tag" onclick="searchIndustry('农机')">农业机械 <small>潍柴雷沃/一拖</small></span>
+          <span class="industry-tag" onclick="searchIndustry('机床')">机床工具 <small>海天精工</small></span>
+          <span class="industry-tag" onclick="searchIndustry('石化')">石化通用机械 <small>沈鼓集团</small></span>
+          <span class="industry-tag" onclick="searchIndustry('电梯')">电梯与起重 <small>奥的斯/三菱</small></span>
+        </div>
+      </div>
+
+      <div class="industry-card niche">
+        <div class="industry-card-title">🧊 冷门 / 小众行业</div>
+        <div class="industry-card-sub">竞争小、对口窄但稳定，藏着差异化机会</div>
+        <div class="industry-tags">
+          <span class="industry-tag" onclick="searchIndustry('纺织')">纺织机械 <small>经纬纺机</small></span>
+          <span class="industry-tag" onclick="searchIndustry('印刷')">印刷包装机械 <small>凌云光</small></span>
+          <span class="industry-tag" onclick="searchIndustry('食品')">食品加工机械 <small>中亚机械</small></span>
+          <span class="industry-tag" onclick="searchIndustry('橡塑')">橡塑机械 <small>海天国际</small></span>
+          <span class="industry-tag" onclick="searchIndustry('造纸')">造纸机械 <small>轻机联</small></span>
+          <span class="industry-tag" onclick="searchIndustry('烟草')">烟草机械 <small>中烟机械</small></span>
+          <span class="industry-tag" onclick="searchIndustry('压缩机')">制冷·压缩机 <small>美芝/海立</small></span>
+          <span class="industry-tag" onclick="searchIndustry('泵')">泵阀·流体机械 <small>南方泵业</small></span>
+          <span class="industry-tag" onclick="searchIndustry('焊接')">焊接切割设备 <small>华工科技</small></span>
+          <span class="industry-tag" onclick="searchIndustry('试验机')">试验机·检测仪器 <small>济南试金</small></span>
+          <span class="industry-tag" onclick="searchIndustry('港口')">港口机械 <small>振华重工</small></span>
+          <span class="industry-tag" onclick="searchIndustry('冶金')">冶金设备 <small>中冶赛迪</small></span>
+          <span class="industry-tag" onclick="searchIndustry('钟表')">钟表·精密计时 <small>飞亚达</small></span>
+        </div>
+      </div>
+
+      <div class="industry-card emerging">
+        <div class="industry-card-title">🚀 新兴交叉行业</div>
+        <div class="industry-card-sub">军民两线 + 前沿制造，高门槛高回报</div>
+        <div class="industry-tags">
+          <span class="industry-tag" onclick="searchIndustry('航天')">航空航天 <small>中国航发/商飞</small></span>
+          <span class="industry-tag" onclick="searchIndustry('军工')">军工国防 <small>航天科技/兵器</small></span>
+          <span class="industry-tag" onclick="searchIndustry('核')">核工业 <small>中核/中广核</small></span>
+          <span class="industry-tag" onclick="searchIndustry('3D')">增材制造·3D打印 <small>铂力特</small></span>
+          <span class="industry-tag" onclick="searchIndustry('仪器')">精密科学仪器 <small>聚光科技</small></span>
+          <span class="industry-tag" onclick="searchIndustry('环保')">环保装备 <small>龙净环保</small></span>
+          <span class="industry-tag" onclick="searchIndustry('生物')">生物制造装备 <small>东富龙</small></span>
+          <span class="industry-tag" onclick="searchIndustry('工业互联网')">工业互联网 <small>树根互联</small></span>
+        </div>
+      </div>
+
+      <div class="industry-card service">
+        <div class="industry-card-title">🔬 科研 · 专业服务</div>
+        <div class="industry-card-sub">离开产线的技术角色，适合深造路线</div>
+        <div class="industry-tags">
+          <span class="industry-tag" onclick="searchIndustry('研究所')">科研院所 <small>中科院/航天院所</small></span>
+          <span class="industry-tag" onclick="searchIndustry('高校')">高校教职·博士后 <small>安工大等</small></span>
+          <span class="industry-tag" onclick="searchIndustry('CAE')">CAE 仿真服务 <small>安世亚太</small></span>
+          <span class="industry-tag" onclick="searchIndustry('检测')">检测认证 <small>SGS/华测</small></span>
+          <span class="industry-tag" onclick="searchIndustry('工业软件')">工业软件 <small>中望/安世</small></span>
+          <span class="industry-tag" onclick="searchIndustry('知识产权')">知识产权 <small>专利代理师</small></span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -2070,6 +2212,17 @@ function filterCards() {
       card.classList.add('hidden');
     }
   });
+
+  var noRes = document.getElementById('noResult');
+  if (noRes) noRes.style.display = (visibleCount === 0) ? 'block' : 'none';
+}
+
+function searchIndustry(kw) {
+  var input = document.getElementById('searchInput');
+  input.value = kw;
+  filterCards();
+  var grid = document.getElementById('autoGrid');
+  if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 </script>
 

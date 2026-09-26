@@ -12,11 +12,11 @@
 | 层级 | URL 格式 | 说明 |
 |------|---------|------|
 | 周记月记年记 | `https://ts-dinglilu.github.io/digest/` | 站级汇总：每周/月/年自动生成动态与数据统计报告，可按大类筛选 |
-| 主页 | `https://ts-dinglilu.github.io/` | 23 个日报系统入口，卡片显示各分类最新日期与累计期数 |
+| 主页 | `https://ts-dinglilu.github.io/` | 32 个日报系统入口，卡片显示各分类最新日期与累计期数 |
 | 报告汇总 | `https://ts-dinglilu.github.io/car-recruit/` | 该日报的归档列表 |
 | 报告 | `https://ts-dinglilu.github.io/car-recruit/report_20260911.html` | 具体某天的日报 |
 
-## 23 个日报系统
+## 32 个日报系统
 
 | 序号 | 子目录 | 日报名称 |
 |------|--------|----------|
@@ -43,10 +43,19 @@
 | 21 | anhui-news | 安徽汽车机械日报 |
 | 22 | jiangsu-news | 江苏汽车机械日报 |
 | 23 | shenzhen-news | 深圳汽车机械日报 |
+| 24 | xuzhou-recruit | 徐州招聘日报（2026-09-26 新增） |
+| 25 | nanjing-recruit | 南京招聘日报（2026-09-26 新增） |
+| 26 | shanghai-recruit | 上海招聘日报（2026-09-26 新增） |
+| 27 | hangzhou-recruit | 杭州招聘日报（2026-09-26 新增） |
+| 28 | jiangzhehu-recruit | 江浙沪招聘日报（2026-09-26 新增） |
+| 29 | hefei-recruit | 合肥招聘日报（2026-09-26 新增） |
+| 30 | anhui-recruit | 安徽招聘日报（2026-09-26 新增） |
+| 31 | jiangsu-recruit | 江苏招聘日报（2026-09-26 新增） |
+| 32 | shenzhen-recruit | 深圳招聘日报（2026-09-26 新增） |
 
 ## 周记 / 月记 / 年记
 
-`scripts/build_digest.py` 在每周一（周记）、每月 1 日（月记）、每年 1 月 2 日（年记）自动生成站级汇总报告到 `digest/`，聚合页带「招聘 / 校园科研 / 地区 / 规划」大类筛选标签。手动生成：
+`scripts/build_digest.py` 在每周一（周记）、每月 1 日（月记）、每年 1 月 2 日（年记）自动生成站级汇总报告到 `digest/`，聚合页带「招聘 / 校园科研 / 地区现状 / 地区招聘 / 规划」大类筛选标签。手动生成：
 
 ```bash
 python scripts/build_digest.py --type weekly   # 月记 monthly / 年记 yearly
@@ -65,7 +74,7 @@ git pull origin main
 # 1) 体检（可选但推荐）：确认没有漏跑的日期、坏链接或索引不一致
 python scripts/audit_site.py
 
-# 2) 为 23 个分类写正文（每个分类一个文件，规范见 content/STYLE_GUIDE.md）
+# 2) 为 32 个分类写正文（每个分类一个文件，规范见 content/STYLE_GUIDE.md）
 #    输出到 content/<分类>.html（仓库内路径）
 
 # 3) 校验 + 构建 + 更新主页 + 全站自查 + 推送，一条命令搞定
