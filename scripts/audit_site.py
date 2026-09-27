@@ -27,7 +27,7 @@ from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CATEGORIES = ["car-recruit", "mechanical-recruit", "school-news", "drone-research",
-              "ahut-campus", "byd-recruit", "chery-recruit", "geely-recruit",
+              "ahut-campus", "byd-recruit", "chery-recruit", "chery-insider", "geely-recruit",
               "xiaomi-recruit", "weixiaoli-recruit", "traditional-auto",
               "supply-chain-recruit", "research-institute", "future-planning",
               "xuzhou-news", "nanjing-news", "shanghai-news", "hangzhou-news",
@@ -45,6 +45,7 @@ VALID = set(CATEGORIES) | {"digest"}  # digest = 周记月记年记板块
 SKIP_DAYS = {"20260916", "20260920", "20260921", "20260922", "20260923"}
 
 START_DATES = {
+    "chery-insider": "20260927",          # 奇瑞职场口碑日报，2026-09-27 新增
     "supply-chain-recruit": "20260924",  # 车企供应链招聘日报，2026-09-24 新增
     "xuzhou-news": "20260924",           # 地区·徐州汽车机械日报，2026-09-25 新增
     "nanjing-news": "20260924",          # 地区·南京汽车机械日报

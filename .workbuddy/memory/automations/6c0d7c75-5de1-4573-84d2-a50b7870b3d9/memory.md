@@ -134,3 +134,12 @@
 - 发布：`publish_all.py --push` 凭据直连首推成功，提交 `0694a61`；远端 main = 本地 HEAD。
 - 验证：线上 23/23 页面 200（首轮 404 为 Pages 延迟，90 秒后复测转 200）；主页总数 314+；audit 最终全过。
 - 本轮全绿，无踩坑、无遗留。
+
+## 2026-09-27（05:00 触发）
+- 开工检查：git pull 已最新（a87b60c），无抢跑记录，audit 0 错误 0 警告。当前口径 32 分类。
+- 正文 32/32 一次成功（8 个并行子代理全 model lite，零 429 零重派；逐个核对 mtime 确认落盘）。
+- strict_check 首轮 1 份不合格（mechanical-recruit DIV 78/77，板块四少一个 </div>，手补后 0 不合格）。
+- 外链 412 条：403 直接有效；8 条 --fix 改 http；死链修复 8 处——武大就业网深链（首页当日列表无比亚迪场次，不可验）、cqbys 全族 3 条（连 WebFetch 都不通）、91wllm 404 ×2、jsczt 签名 PDF 过期、randstad 410、moomoo 不可验，全部换已验证 200 的替代源（壁虎官网 JD / 应届生网自控所简章 / 福大挂的吉利简章 / 西交大徐工简章 / 央视网+中国经济网银河TT / 银行招聘网）。保留：hefei.gov.cn 521（WebFetch 验真）、nwpu 412（WAF）、moltbook（WebFetch 验真，UAV 主题对口）、scio.gov.cn（504 站点过载）、campus.xcmg.com 本地不可达但官网 URL 经 UP简历+西交简章交叉证实（已换西交深链）。
+- 发布：publish_all --push 凭据直连首推成功，提交 07d0f3f；远端 main（API）= 本地 HEAD。
+- 验证：线上 32/32 页面 200（car-recruit/mechanical/school-news 首轮 404 为 Pages 延迟，90 秒后复测转 200）；主页 32 卡全「09-27」、总数 355+；audit 最终全过（32 分类/355 报告）。
+- 教训：①写手产出仍会出 div 配平错误，strict_check 必须跑且要看 FAIL 明细；②深度就业网深链（武大/cqbys）若无法二次验证一律换源，不要赌；③UP简历聚合页里列的官网 URL 不可信（xcmg career/2027campus 404），要以高校就业网简章类 200 链接为准。

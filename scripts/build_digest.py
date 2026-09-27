@@ -34,7 +34,7 @@ GISCUS = build_report.GISCUS_SCRIPT
 # 大类分组（聚合页筛选标签，与主页 data-cat 命名一致）
 GROUPS = [
     ("recruit", "招聘", ["car-recruit", "mechanical-recruit", "byd-recruit",
-                         "chery-recruit", "geely-recruit", "xiaomi-recruit",
+                         "chery-recruit", "chery-insider", "geely-recruit", "xiaomi-recruit",
                          "weixiaoli-recruit", "traditional-auto",
                          "supply-chain-recruit", "research-institute"]),
     ("campus", "校园科研", ["school-news", "ahut-campus", "drone-research"]),

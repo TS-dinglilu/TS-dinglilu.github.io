@@ -23,7 +23,7 @@ sys.path.insert(0, HERE)
 import build_report  # noqa: E402
 
 CATEGORIES = ["car-recruit", "mechanical-recruit", "school-news", "drone-research",
-              "ahut-campus", "byd-recruit", "chery-recruit", "geely-recruit",
+              "ahut-campus", "byd-recruit", "chery-recruit", "chery-insider", "geely-recruit",
               "xiaomi-recruit", "weixiaoli-recruit", "traditional-auto",
               "supply-chain-recruit", "research-institute", "future-planning",
               "xuzhou-news", "nanjing-news", "shanghai-news", "hangzhou-news",

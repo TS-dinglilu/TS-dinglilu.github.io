@@ -12,11 +12,11 @@
 | 层级 | URL 格式 | 说明 |
 |------|---------|------|
 | 周记月记年记 | `https://ts-dinglilu.github.io/digest/` | 站级汇总：每周/月/年自动生成动态与数据统计报告，可按大类筛选 |
-| 主页 | `https://ts-dinglilu.github.io/` | 32 个日报系统入口，卡片显示各分类最新日期与累计期数 |
+| 主页 | `https://ts-dinglilu.github.io/` | 33 个日报系统入口，卡片显示各分类最新日期与累计期数 |
 | 报告汇总 | `https://ts-dinglilu.github.io/car-recruit/` | 该日报的归档列表 |
 | 报告 | `https://ts-dinglilu.github.io/car-recruit/report_20260911.html` | 具体某天的日报 |
 
-## 32 个日报系统
+## 33 个日报系统
 
 | 序号 | 子目录 | 日报名称 |
 |------|--------|----------|
@@ -52,6 +52,7 @@
 | 30 | anhui-recruit | 安徽招聘日报（2026-09-26 新增） |
 | 31 | jiangsu-recruit | 江苏招聘日报（2026-09-26 新增） |
 | 32 | shenzhen-recruit | 深圳招聘日报（2026-09-26 新增） |
+| 33 | chery-insider | 奇瑞职场口碑日报（2026-09-27 新增，待遇/加班/薪资/口碑/网友评论） |
 
 ## 周记 / 月记 / 年记
 

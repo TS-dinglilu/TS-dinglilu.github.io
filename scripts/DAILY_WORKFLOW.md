@@ -11,11 +11,11 @@
 ```
 D:\研二\github.auto\        ← 工作区（本身不是仓库）
 ├─ repo\                    ← git 仓库根 = 站点根 = GitHub Pages 发布源
-│  ├─ content\              ← 32 分类正文草稿 + STYLE_GUIDE.md（原工作区根的 content，已迁入）
+│  ├─ content\              ← 33 分类正文草稿 + STYLE_GUIDE.md（原工作区根的 content，已迁入）
 │  ├─ logs\                 ← 推送日志 / 审计记录 / 归档页（原工作区根的 logs，已迁入）
 │  ├─ .workbuddy\           ← 目录联接 → 工作区根的 .workbuddy（记忆与工作日志）
 │  ├─ scripts\              ← 构建 / 发布 / 体检脚本
-│  └─ <32 个分类目录>\      ← 已生成的日报
+│  └─ <33 个分类目录>\      ← 已生成的日报
 └─ backups\                 ← 历史快照，体积大，不入 git（见 §0.1）
 ```
 
@@ -68,7 +68,7 @@ python scripts/publish_all.py --push  # 照常跑当日流程（推送兜底见 
 - 归档页从同分类的 `index.html` 复制改名，再由 `rebuild_index()` 重建列表与统计数字；
 - 引导脚本跑完后，每日构建不需要再管它，会自我延续。
 
-## 32 个日报分类
+## 33 个日报分类
 
 > **地区现状 vs 地区招聘**（2026-09-26 起）：`*-news` 9 个为「地区现状」日报（地区产业新闻），
 > `*-recruit` 9 个为「地区招聘」日报（地区企业岗位/校招/社招）。主页筛选标签分设
@@ -110,6 +110,7 @@ python scripts/publish_all.py --push  # 照常跑当日流程（推送兜底见 
 | anhui-recruit | 安徽招聘日报（2026-09-26 新增） |
 | jiangsu-recruit | 江苏招聘日报（2026-09-26 新增） |
 | shenzhen-recruit | 深圳招聘日报（2026-09-26 新增） |
+| chery-insider | 奇瑞职场口碑日报（2026-09-27 新增，待遇/加班/薪资/口碑/网友评论） |
 
 ## 周记 / 月记 / 年记（digest 板块）
 
@@ -216,7 +217,7 @@ python scripts/ssh_fallback_push.py             # 执行兜底推送（通道不
 cd D:\研二\github.auto\repo
 python scripts/publish_all.py --push
 ```
-该脚本会自动完成：内容校验（禁 Markdown 链接/必需板块/文档标签/长度）→ 批量构建 32 分类报告
+该脚本会自动完成：内容校验（禁 Markdown 链接/必需板块/文档标签/长度）→ 批量构建 33 分类报告
 → 重建各分类归档索引 → 更新主页卡片（最新日期+累计期数）与总数统计 → **全站自查**
 → git 提交推送。自查失败会打出 `[WARN]` 但仍继续推送，收工前请按提示修掉。
 
