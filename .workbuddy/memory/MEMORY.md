@@ -5,8 +5,9 @@
 ## 1. 概览
 - 线上 https://ts-dinglilu.github.io/ ｜仓库 `TS-dinglilu/TS-dinglilu.github.io`（main 直推，Pages 1–2 分钟生效）。
 - 本地 `D:\研二\github.auto\repo` = 站点根 = 发布源 = **唯一真源**。**命令一律在 `repo/` 下执行**。
-- 32 分类（招聘/资讯类 14 + 地区现状 9 + 地区招聘 9）：car-recruit / mechanical-recruit / school-news / drone-research /
-  ahut-campus / byd-recruit / chery-recruit / geely-recruit / xiaomi-recruit / weixiaoli-recruit /
+- 33 分类（招聘/资讯类 15 + 地区现状 9 + 地区招聘 9）：car-recruit / mechanical-recruit / school-news / drone-research /
+  ahut-campus / byd-recruit / chery-recruit / **chery-insider（奇瑞职场口碑，2026-09-27 上线：待遇/加班/薪资/口碑/网友评论，
+  与 chery-recruit 分工=打工体验 vs 招聘新闻）** / geely-recruit / xiaomi-recruit / weixiaoli-recruit /
   traditional-auto / supply-chain-recruit / research-institute / future-planning ＋
   **地区现状 9 个（2026-09-25 上线）**：xuzhou / nanjing / shanghai / hangzhou / jiangzhehu / hefei /
   anhui / jiangsu / shenzhen 各 `-news` ＋ **地区招聘 9 个（2026-09-26 上线）**：同 9 地区各 `-recruit`。
