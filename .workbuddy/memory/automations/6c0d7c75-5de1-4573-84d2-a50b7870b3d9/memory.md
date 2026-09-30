@@ -143,3 +143,11 @@
 - 发布：publish_all --push 凭据直连首推成功，提交 07d0f3f；远端 main（API）= 本地 HEAD。
 - 验证：线上 32/32 页面 200（car-recruit/mechanical/school-news 首轮 404 为 Pages 延迟，90 秒后复测转 200）；主页 32 卡全「09-27」、总数 355+；audit 最终全过（32 分类/355 报告）。
 - 教训：①写手产出仍会出 div 配平错误，strict_check 必须跑且要看 FAIL 明细；②深度就业网深链（武大/cqbys）若无法二次验证一律换源，不要赌；③UP简历聚合页里列的官网 URL 不可信（xcmg career/2027campus 404），要以高校就业网简章类 200 链接为准。
+
+## 2026-10-01（05:00 触发）
+- 开工状态：09-28/29/30 三天 33 分类全缺（机器离线），audit 0 错误 3 警告；工作区 4 份 content 有 09-28 半成品改写未提交，快照存 `logs/archive/content_draft_0928_uncommitted/` 后覆盖，随本轮带上。按惯例不追溯补写。
+- 正文 33/33 一次成功（10 个并行子代理全 model lite）；strict_check 0 不合格。
+- **本轮最大拦截：月度销量年份错配**。geely-recruit 把 2025-09 销量（273,125，chinaautosupplier 页面落款 2025-10-04、china.com URL 含 20251001）当成本年 9 月快报——已改写为「9 月快报未发 + 8 月每经口径（27.02 万 +8%、出口 11.01 万 +205%、极氪 36,981 创新高）」。weixiaoli/byd/xiaomi/chery 的数字经同比/环比+去年同月锚点交叉算术验算确认为 2026 真值，未误伤。**新判据：销量必须交叉验算；页面落款/URL 含上一年份的链接一律不得当本年新闻。**
+- 外链 383 → 376 有效；换源 11 处（quanzhi 404×2、nio 校招双链、scc.cufe、longportapp、offcn 404、ahtlyaq 408、chejiahao 405），保留 7 条 WebFetch/WAF 判据验真（qcgys 周要闻、chinaautosupplier 小米目标、freepressjournal 徐工订单、nwpu/jy.scu 反爬、chejiahao 567）。
+- 发布：`publish_all.py --push` 凭据直连首推成功，提交 `d1d9851`；远端 main（API）= 本地 HEAD。
+- 验证：线上 33/33 = 200；主页 33 卡全「10-01」、日报总数 389+；无新增告警。
