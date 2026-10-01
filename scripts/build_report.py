@@ -25,8 +25,12 @@ import tail_template  # noqa: E402  标准尾部唯一真源
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WEEKDAY_CN = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
 
-ANCHORS = ['<div class="section"', '<div class="section ', '<div class="stats-grid',
+ANCHORS = ['<div class="highlight-box"', '<div class="section"', '<div class="section "',
+           '<div class="stats-grid',
            '<div class="nav-links', '<div class="card', '<div class="card-grid']
+# 说明：把 highlight-box 放在最前，是因为部分分类（如 company-reputation）的正文以
+# highlight-box 起头、且位于第一个 <div class="section"> 之前。若只按 section 切「头部」，
+# 会把模板里同样位置的旧 highlight-box 一并当作页面头部保留，导致重建时该块重复出现。
 
 GISCUS_SCRIPT = """<script>
 // Scroll-to-top button visibility
@@ -70,10 +74,16 @@ def pick_template(category, exclude_name=None):
     d = os.path.join(ROOT, category)
     if not os.path.isdir(d):
         die("分类目录不存在: " + d)
-    files = sorted(glob.glob(os.path.join(d, "report_*.html")))
+    all_files = sorted(glob.glob(os.path.join(d, "report_*.html")))
+    files = all_files
     if exclude_name:
-        files = [f for f in files if os.path.basename(f) != exclude_name]
+        files = [f for f in all_files if os.path.basename(f) != exclude_name]
     if not files:
+        # 新分类首期：目录里只有当天这一份报告，没有「别的历史报告」可当模板。
+        # 此时退回用目标自身当模板（只取它的 <head>/CSS/hero 骨架），否则首期重建
+        # （如同一天二次运行 publish_all）会因找不到模板直接失败。
+        if all_files:
+            return all_files[-1]
         die("该分类下没有任何历史报告可作为模板: " + category)
     return files[-1]
 
