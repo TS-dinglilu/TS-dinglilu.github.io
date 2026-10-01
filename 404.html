@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>页面未找到 · 404 | TS-dinglilu 自动化日报</title>
+<meta name="description" content="页面未找到。返回主页浏览 35 个自动化日报系统。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📭</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0e1a;
+  --card: rgba(20, 28, 48, 0.6);
+  --border: rgba(0, 212, 255, 0.14);
+  --text: #f0f4f8;
+  --text-dim: #c8d4e8;
+  --text-faint: #90a0c0;
+  --accent: #00d4ff;
+  --accent-purple: #818cf8;
+  --accent-green: #22d3a0;
+  --radius: 24px;
+  --smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+.wrap {
+  position: relative;
+  max-width: 620px;
+  width: 100%;
+  text-align: center;
+  animation: rise 0.7s var(--spring) both;
+}
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+.code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(76px, 18vw, 140px);
+  font-weight: 700;
+  line-height: 1;
+  background: linear-gradient(135deg, #00d4ff 0%, #818cf8 50%, #22d3a0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 14px; }
+p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.9; margin-bottom: 28px; }
+.links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+a.btn {
+  display: inline-block;
+  padding: 11px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  background: var(--card);
+  transition: all 0.35s var(--smooth);
+}
+a.btn:hover { border-color: rgba(0, 212, 255, 0.4); color: var(--accent); transform: translateY(-2px); }
+a.btn.primary {
+  background: linear-gradient(135deg, #00d4ff, #818cf8);
+  color: #0a0e1a;
+  font-weight: 700;
+  border: none;
+}
+a.btn.primary:hover { color: #0a0e1a; box-shadow: 0 8px 28px rgba(0, 212, 255, 0.3); }
+.tip { margin-top: 26px; font-size: 0.8rem; color: var(--text-faint); }
+.tip code { font-family: 'JetBrains Mono', monospace; color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="code">404</div>
+  <h1>这一页不存在</h1>
+  <p>链接可能已失效、被移动，或日期还没到。<br>回到主页可以浏览全部 35 个自动化日报系统。</p>
+  <div class="links">
+    <a href="https://ts-dinglilu.github.io/" class="btn primary">← 返回主页</a>
+    <a href="https://ts-dinglilu.github.io/digest/" class="btn">📊 周记 · 月记 · 年记</a>
+    <a href="https://github.com/TS-dinglilu" class="btn">GitHub</a>
+  </div>
+  <p class="tip">如果是每日报告，请确认日期格式为 <code>report_YYYYMMDD.html</code></p>
+</div>
+</body>
+</html>

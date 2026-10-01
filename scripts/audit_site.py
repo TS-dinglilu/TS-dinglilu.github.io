@@ -11,6 +11,9 @@
   5. 站点主页     分类卡片的"最新日期 / 累计期数"、全局总数
   6. 日期覆盖     各分类缺失的日期（漏跑检测，默认看最近 45 天有报告的日期集合）
   7. 旧品牌       残留的 TRAE / TraeWork Automation
+  8. 元信息       每页含唯一 title / description / og:url（且指向自身分类）、canonical
+  9. 资源外链     </head> 完整、报告页外链 /assets/report.css（不再内联大块 CSS）
+ 10. 站点基建     根目录存在 404.html / robots.txt / sitemap.xml / .nojekyll，且 sitemap 覆盖全部报告
 
 用法:
   python scripts/audit_site.py            # 人类可读报告
@@ -68,6 +71,8 @@ START_DATES = {
     "jiangsu-recruit": "20260926",       # 地区·江苏招聘日报
     "shenzhen-recruit": "20260926",      # 地区·深圳招聘日报
 }
+
+SITE_BASE = "https://ts-dinglilu.github.io"
 
 ERRORS = defaultdict(list)
 WARNS = defaultdict(list)
@@ -260,13 +265,143 @@ def check_dates():
             day += datetime.timedelta(days=1)
 
 
+def _page_expected_url(path):
+    """由文件路径推出该页面「应有的」规范 URL（用于校验 og:url / canonical 是否指错分类）。"""
+    r = rel(path)
+    if r == "index.html":
+        return SITE_BASE + "/"
+    seg = r.split("/")[0]
+    if "/" in r:
+        return "%s/%s/" % (SITE_BASE, seg)
+    return "%s/%s" % (SITE_BASE, seg)
+
+
+def _titles_of(paths):
+    """读一批页面的 <title>，返回 {title: [files]} 供重复标题检测。"""
+    seen = defaultdict(list)
+    for f in paths:
+        if not os.path.exists(f):
+            continue
+        m = re.search(r"<title>(.*?)</title>", open(f, encoding="utf-8").read(), re.S)
+        if m:
+            seen[m.group(1).strip()].append(rel(f))
+    return seen
+
+
+def check_meta():
+    """元信息一致性：每页必须有 description / og:url 且 og:url 指向自身、有 canonical。
+    历史教训：新增分类复制母版后忘记改 og:url，导致 18 个分类的 og:url 全指向
+    traditional-auto/（社交分享与搜索引擎都会串页）。这里把它固化成硬校验。"""
+    pages = html_files()
+    for f in pages:
+        r = rel(f)
+        # 404 页刻意 noindex，不需要 description/og/canonical（搜索引擎也不该索引它）
+        if r.endswith("404.html"):
+            s404 = open(f, encoding="utf-8").read()
+            if 'name="robots"' not in s404 or "noindex" not in s404:
+                warn("元信息", r, "404 页缺少 noindex（可能被搜索引擎收进索引）")
+            continue
+        s = open(f, encoding="utf-8").read()
+        head = s[:s.find("</head>")] if "</head>" in s else s[:5000]
+        if "</head>" not in s:
+            err("元信息", r, "缺少 </head>（头部未正确闭合）")
+        m = re.search(r'<meta name="description" content="([^"]*)"', head)
+        if not m or not m.group(1).strip():
+            err("元信息", r, "缺少 meta description")
+        m = re.search(r'<meta property="og:url" content="([^"]*)"', head)
+        exp = _page_expected_url(f)
+        if not m:
+            err("元信息", r, "缺少 og:url")
+        elif m.group(1).rstrip("/") != exp.rstrip("/"):
+            err("元信息", r, "og:url=%s 应为 %s" % (m.group(1), exp))
+        m = re.search(r'<link rel="canonical" href="([^"]*)"', head)
+        if not m:
+            err("元信息", r, "缺少 canonical")
+        elif m.group(1).rstrip("/") != exp.rstrip("/"):
+            err("元信息", r, "canonical=%s 应为 %s" % (m.group(1), exp))
+        if not re.search(r'<meta name="viewport"', head):
+            warn("元信息", r, "缺少 viewport（移动端缩放异常）")
+
+    # 同一分类内不应出现完全相同的 <title>（说明日报名没跟着分类走）
+    for c in CATEGORIES:
+        seen = _titles_of(glob.glob(os.path.join(ROOT, c, "report_*.html")))
+        for t, fs in seen.items():
+            if len(fs) > 1:
+                warn("元信息", c, "%d 份报告共用同一 <title>: %s" % (len(fs), t[:60]))
+
+
+def check_assets():
+    """资源外链化：报告页应外链 /assets/report.css，而不是各自内联 49KB CSS。
+    内联 CSS 会让每份报告多 20KB+，390 份累计就是十几 MB 的重复传输。"""
+    css = os.path.join(ROOT, "assets", "report.css")
+    if not os.path.exists(css):
+        err("资源", "assets/report.css", "缺失（报告页外链的共享样式表）")
+    else:
+        sz = os.path.getsize(css)
+        if sz < 20000:
+            warn("资源", "assets/report.css", "体积仅 %d 字节，疑似被截断" % sz)
+
+    inline_big = 0
+    for f in report_files():
+        s = open(f, encoding="utf-8").read()
+        if "/assets/report.css" not in s:
+            inline_big += 1
+            err("资源", rel(f), "未外链 /assets/report.css（仍在页内自带样式）")
+    if inline_big:
+        warn("资源", "全站", "%d 份报告仍内联样式，可用 scripts/extract_css.py 批量抽离" % inline_big)
+
+    # 主页 / 分类归档页同样纳入 <head> 完整性检查
+    for f in [os.path.join(ROOT, "index.html")] + \
+             [os.path.join(ROOT, c, "index.html") for c in CATEGORIES] + \
+             [os.path.join(ROOT, "digest", "index.html")]:
+        if os.path.exists(f) and "</head>" not in open(f, encoding="utf-8").read():
+            err("资源", rel(f), "缺少 </head>")
+
+
+def check_infra():
+    """站点基建：404 页、robots、sitemap、.nojekyll 必须存在；sitemap 必须覆盖全部报告页。
+    缺 .nojekyll 时 GitHub Pages 会跳过下划线开头的文件；缺 sitemap 则搜索引擎收录慢。"""
+    for name, must in (("404.html", True), ("robots.txt", True),
+                       ("sitemap.xml", True), (".nojekyll", False)):
+        p = os.path.join(ROOT, name)
+        if not os.path.exists(p):
+            (err if must else warn)("基建", name, "站点根缺少该文件")
+    reb = os.path.join(ROOT, "robots.txt")
+    if os.path.exists(reb):
+        t = open(reb, encoding="utf-8").read()
+        if "Sitemap:" not in t:
+            warn("基建", "robots.txt", "未声明 Sitemap 地址")
+        if "Allow" not in t:
+            warn("基建", "robots.txt", "未显式 Allow，部分爬虫可能保守抓取")
+
+    sm = os.path.join(ROOT, "sitemap.xml")
+    if os.path.exists(sm):
+        t = open(sm, encoding="utf-8").read()
+        # sitemap 里的目录 URL 带尾斜杠、报告 URL 不带；统一去尾斜杠后比对
+        def norm(u):
+            u = u.rstrip("/")
+            return u if u else SITE_BASE
+        locs = {norm(x) for x in re.findall(r"<loc>([^<]+)</loc>", t)}
+        need = {norm(_page_expected_url(f)) for f in report_files()}
+        need |= {norm(_page_expected_url(os.path.join(ROOT, c, "index.html")))
+                 for c in CATEGORIES}
+        need.add(norm(SITE_BASE + "/"))
+        miss = need - locs
+        if miss:
+            err("基建", "sitemap.xml", "缺失 %d 条（例：%s）—— 请运行 scripts/build_sitemap.py"
+                % (len(miss), sorted(miss)[0]))
+        if len(locs) < len(need):
+            warn("基建", "sitemap.xml", "仅 %d 条，预期至少 %d 条" % (len(locs), len(need)))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--quiet", action="store_true")
     args = ap.parse_args()
 
     for fn in (check_structure, check_comments, check_links,
-               check_category_index, check_homepage, check_dates):
+               check_category_index, check_homepage, check_dates,
+               check_meta, check_assets, check_infra):
         fn()
 
     n_err = sum(len(v) for v in ERRORS.values())

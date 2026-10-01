@@ -127,13 +127,13 @@ python scripts/publish_all.py --push  # 照常跑当日流程（推送兜底见 
 ```bash
 cd D:\研二\github.auto\repo
 git pull origin main                        # 同步远端（网络不通可跳过，不影响本地生成）
-python scripts/audit_site.py                # 全站体检：结构/死链/索引/主页/漏期
+python scripts/audit_site.py                # 全站体检：结构/死链/索引/主页/漏期/元信息/资源/基建
 ```
 体检报告里 `[ERROR] 漏期` 段会直接列出「哪天缺哪些分类」。**先补做缺失日期**，
 再继续今天的流程。补做用专用工具（自动校验正文 → 批量构建 → 重建索引）：
 
 > **全天缺失也要看 `[WARN] 漏期`**：`[ERROR] 漏期` 只能发现「某天部分分类缺」，
-> 如果某一天 **32 个分类全都没有报告**，就没有参照物、老逻辑查不出来
+> 如果某一天 **34 个分类全都没有报告**，就没有参照物、老逻辑查不出来
 > （2026-09-16 就是这样被静默漏掉的）。2026-09-18 起 `audit_site.py` 增加了连续区间检查，
 > 会以 `[WARN]` 打出「所有分类全都没有该日报告（全天缺失）」。
 > 另外**开工前务必先看 `git status`**：中断的会话可能已经写好正文、甚至构建好报告但**没提交**
@@ -218,7 +218,7 @@ python scripts/ssh_fallback_push.py             # 执行兜底推送（通道不
 cd D:\研二\github.auto\repo
 python scripts/publish_all.py --push
 ```
-该脚本会自动完成：内容校验（禁 Markdown 链接/必需板块/文档标签/长度）→ 批量构建 34 分类报告
+该脚本会自动完成：内容校验（禁 Markdown 链接/必需板块/文档标签/长度）→ 批量构建 34 分类报告 → 生成 sitemap.xml
 → 重建各分类归档索引 → 更新主页卡片（最新日期+累计期数）与总数统计 → **全站自查**
 → git 提交推送。自查失败会打出 `[WARN]` 但仍继续推送，收工前请按提示修掉。
 
@@ -236,7 +236,7 @@ python scripts/publish_all.py --categories supply-chain-recruit --push
 
 ### 4. 验证
 ```bash
-python scripts/audit_site.py                                             # 本地全站体检，应输出「全部通过 ✓」
+python scripts/audit_site.py                                             # 本地全站体检，应输出「0 个错误」
 curl -s -o /dev/null -w "%{http_code}\n" https://ts-dinglilu.github.io/car-recruit/report_<日期>.html
 ```
 GitHub Pages 推送后 1–2 分钟生效，返回 200 即成功。

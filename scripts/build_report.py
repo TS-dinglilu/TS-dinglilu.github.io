@@ -14,6 +14,7 @@
 import argparse
 import datetime
 import glob
+import hashlib
 import os
 import re
 import subprocess
@@ -103,6 +104,10 @@ def fix_weekday(text, dt):
 def normalize_head(html):
     """修复模板里的历史瑕疵: 重复 <body> 标签。"""
     html = re.sub(r"(<body[^>]*>)\s*(<body[^>]*>)+", r"\1", html)
+    # 去掉头部结尾的空行：拼接处是 head_part + "\n" + body，若头部本身已带尾随空行，
+    # 每重建一次就多积一行（实测 company-reputation 重建 7 次积了 7 个空行）。
+    # 这里统一 rstrip 掉行尾空白，让构建幂等。
+    html = html.rstrip() + "\n"
     return html
 
 
@@ -141,6 +146,90 @@ def normalize_footer_name(html, category):
     return head + (new_seg if n else seg)
 
 
+CSS_ASSET = os.path.join(ROOT, "assets", "report.css")
+CSS_LINK = '<link rel="stylesheet" href="/assets/report.css">'
+
+
+def extract_inline_css(html):
+    """把与 assets/report.css 完全相同的内联 <style> 换成外部 <link>。
+
+    报告页的公共 CSS 全站一致（约 50KB）。内联会让每份报告多背 49KB、
+    且无法跨页缓存（全站 390 份 ≈ 19MB 纯重复）。抽成共享文件后浏览器只下一次。
+    只替换「指纹与 assets/report.css 一致」的那一块；页面自带的
+    custom overrides（.nav-toc / .summary-table 等）原样保留。
+    """
+    if not os.path.exists(CSS_ASSET):
+        return html
+    want = hashlib.md5(open(CSS_ASSET, encoding="utf-8").read().strip().encode()).hexdigest()
+    n = 0
+
+    def repl(m):
+        nonlocal n
+        if hashlib.md5(m.group(1).strip().encode()).hexdigest() == want:
+            n += 1
+            return CSS_LINK if n == 1 else ""
+        return m.group(0)
+
+    return re.sub(r"<style[^>]*>(.*?)</style>", repl, html, flags=re.S)
+
+
+def inject_meta(html, category, title, dt):
+    """确保 <head> 内的元信息完整且正确（description / og / canonical）。
+
+    历史母版复制会造成 og:url 指错分类、缺 og 标签、缺 description。
+    这里先清掉旧的同类标签，再注入一份标准块，保证每次都收敛到唯一正确状态。
+    """
+    i, j = html.find("<head"), html.find("</head>")
+    if i < 0 or j < 0:
+        return html
+    head, rest = html[i:j], html[j:]
+
+    def drop(pat):
+        nonlocal head
+        head = re.sub(pat, "", head, flags=re.S)
+
+    for pat in (r'<meta name="description"[^>]*>\s*',
+                r'<meta property="og:[^"]*"[^>]*>\s*',
+                r'<meta name="twitter:[^"]*"[^>]*>\s*',
+                r'<link rel="canonical"[^>]*>\s*'):
+        drop(pat)
+
+    iso_date = dt.strftime("%Y-%m-%d")
+    block = tail_template.build_meta(category, title, iso_date)
+    # 插在 <title> 之后、<style> 之前，保持可读
+    mt = re.search(r"</title>", head)
+    if mt:
+        head = head[:mt.end()] + "\n" + block + head[mt.end():]
+    else:
+        head = head.rstrip() + "\n" + block + "\n"
+    return html[:i] + head + rest
+
+
+def unify_title_and_h1(head, category, dt):
+    """把页面头部里的 <title> 与可见 <h1> 归一到「标准日报名 + 本次日期」。
+
+    历史教训（2026-10-01 全站排查）：<title> 曾经是用模板 <h1> 派生的，于是母版里
+    残留的旧文案会一直往下传染——实测积累了 96 份错标题（「六大XX」前缀 73 份、
+    日期错位 1 份、格式不统一 22 份），详见 scripts/fix_titles.py。
+    改成以 tail_template.CATEGORY_NAMES + 构建日期为唯一真源后，模板再脏也不会传染。
+    """
+    std = tail_template.CATEGORY_NAMES.get(category, category)
+    title = "%s - %s年%d月%d日" % (std, dt.year, dt.month, dt.day)
+
+    # 可见标题：去掉继承来的裸「六大」前缀，并把 h1 文本对齐标准名
+    h1 = re.search(r"(<h1[^>]*>)(.*?)(</h1>)", head, re.S)
+    if h1:
+        inner = re.sub(r"^\s*六大\s*", "", h1.group(2), count=1)
+        # 仅当 h1 里已含日报名时保留其 emoji 等装饰，否则直接用标准名
+        if std not in strip_tags(inner):
+            inner = std
+        head = head[:h1.start(2)] + inner + head[h1.end(2):]
+
+    head = re.sub(r"<title>.*?</title>", "<title>%s</title>" % title,
+                  head, count=1, flags=re.S)
+    return head
+
+
 def build_report(category, dt, content_path):
     target_name = "report_%s.html" % dt.strftime("%Y%m%d")
     tpl_path = pick_template(category, exclude_name=target_name)
@@ -162,6 +251,9 @@ def build_report(category, dt, content_path):
         head_part = fix_weekday(replace_dates(head_part, dt), dt)
         tail_part = fix_weekday(replace_dates(tail_part, dt), dt)
         tail_part = tail_part.replace("TraeWork Automation", "WorkBuddy Automation")
+        # <title> / <h1> 统一为标准日报名 + 本次日期（骨架 A 曾原样继承模板头部，
+        # 是历史错标题的另一条来源；见 scripts/fix_titles.py）
+        head_part = unify_title_and_h1(head_part, category, dt)
         out = autoclose_divs(normalize_head(head_part) + "\n" + body) + tail_part
     else:  # ---- 骨架 B: 通用型 ----
         body_i = tpl.find("<body")
@@ -174,22 +266,23 @@ def build_report(category, dt, content_path):
         # 去掉头部里的目录导航(锚点会失效)
         head_part = re.sub(r'<div class="nav-links">.*?</div>\s*', "", head_part, flags=re.S)
         head_part = fix_weekday(replace_dates(head_part, dt), dt)
-        # 更新 <title>
-        h1 = re.search(r"<h1[^>]*>(.*?)</h1>", head_part, re.S)
-        # <title> 沿用模板 <h1>：页面标题允许带 emoji / 用全称，属既有风格，历史报告一致。
-        # 页脚日报名则统一走 tail_template.CATEGORY_NAMES（见 normalize_footer_name），
-        # 因为页脚名是 unify_style 的统一对象，拿 <h1> 派生的名字会让两份工具每天打架。
-        title = strip_tags(h1.group(1)) if h1 else category
-        head_part = re.sub(r"<title>.*?</title>",
-                           "<title>%s | %s</title>" % (title, dt.strftime("%Y-%m-%d")),
-                           head_part, count=1, flags=re.S)
+        # 更新 <title> / <h1>（统一走 unify_title_and_h1，见其 docstring）
+        head_part = unify_title_and_h1(head_part, category, dt)
+        std = tail_template.CATEGORY_NAMES.get(category, category)
         # 标准尾部（评论区 + 页脚 + 返回顶部 + giscus）放在容器闭合之后，与 unify_style 结果一致
-        tail = tail_template.build_tail(title, dt.year, dt.month, dt.day,
+        tail = tail_template.build_tail(std, dt.year, dt.month, dt.day,
                                         GISCUS_SCRIPT, has_main_close=False)
         out = autoclose_divs(head_part + "\n" + body) + "\n" + tail
 
     # 兜底：页脚日报名统一为标准名（骨架 A / B 都覆盖）
     out = normalize_footer_name(out, category)
+
+    # 元信息（description / og / canonical）：统一按本分类注入，修掉母版复制的历史错配
+    std_title = tail_template.CATEGORY_NAMES.get(category, category)
+    out = inject_meta(out, category, std_title, dt)
+
+    # 公共 CSS 抽成共享外链，避免每份报告重复内联 49KB
+    out = extract_inline_css(out)
 
     # 密码守卫：每份新报告自动带上全站访问门（幂等）
     try:

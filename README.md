@@ -12,12 +12,15 @@
 | 层级 | URL 格式 | 说明 |
 |------|---------|------|
 | 周记月记年记 | `https://ts-dinglilu.github.io/digest/` | 站级汇总：每周/月/年自动生成动态与数据统计报告，可按大类筛选 |
-| 主页 | `https://ts-dinglilu.github.io/` | 34 个日报系统入口，卡片显示各分类最新日期与累计期数 |
+| 主页 | `https://ts-dinglilu.github.io/` | 35 个日报系统入口，卡片显示各分类最新日期与累计期数 |
 | 报告汇总 | `https://ts-dinglilu.github.io/car-recruit/` | 该日报的归档列表 |
 | 报告 | `https://ts-dinglilu.github.io/car-recruit/report_20260911.html` | 具体某天的日报 |
 
-## 34 个日报系统
+> 站点另含基建文件：`404.html`（错误页）、`robots.txt`、`sitemap.xml`（429 条 URL，由 `build_sitemap.py` 生成）、
+> `.nojekyll`（防止 GitHub Pages 忽略下划线开头的文件）。共享样式表在 `assets/report.css`（约 50KB），
+> 报告页统一外链引用，不再各自内联。
 
+## 34 个日报系统
 | 序号 | 子目录 | 日报名称 |
 |------|--------|----------|
 | 1 | car-recruit | 车企招聘日报 |
@@ -76,7 +79,7 @@ git pull origin main
 # 1) 体检（可选但推荐）：确认没有漏跑的日期、坏链接或索引不一致
 python scripts/audit_site.py
 
-# 2) 为 32 个分类写正文（每个分类一个文件，规范见 content/STYLE_GUIDE.md）
+# 2) 为 34 个分类写正文（每个分类一个文件，规范见 content/STYLE_GUIDE.md）
 #    输出到 content/<分类>.html（仓库内路径）
 
 # 3) 校验 + 构建 + 更新主页 + 全站自查 + 推送，一条命令搞定
@@ -87,23 +90,31 @@ python scripts/publish_all.py --push
 
 | 脚本 | 作用 |
 |------|------|
-| `scripts/publish_all.py` | 一键发布：内容校验 → 批量构建 14 分类 → 更新主页 → 全站自查 → 提交推送（凭据直连优先，常规 push 兜底） |
-| `scripts/build_report.py` | 单分类构建：以最新历史报告为模板替换正文/日期，写出 `report_YYYYMMDD.html`，重建该分类 `index.html` |
+| `scripts/publish_all.py` | 一键发布：内容校验 → 批量构建 34 分类 → 更新主页 → 生成 sitemap → 全站自查 → 提交推送（凭据直连优先，常规 push 兜底，最后 SSH/443 兜底） |
+| `scripts/build_report.py` | 单分类构建：以最新历史报告为模板替换正文/日期，写出 `report_YYYYMMDD.html`，重建该分类 `index.html`；自动注入规范 meta 并外链 `/assets/report.css` |
 | `scripts/build_backfill.py` | 补做漏跑日期：从指定正文目录批量构建某历史日期的报告，缺失分类会列出 |
-| `scripts/audit_site.py` | 全站体检：结构完整性 / 评论区 / 死链 / 索引一致性 / 主页数字 / 漏期检测 |
+| `scripts/audit_site.py` | 全站体检：结构完整性 / 评论区 / 死链 / 索引一致性 / 主页数字 / 漏期 / **元信息 / 资源外链 / 站点基建** |
 | `scripts/fix_site.py` | 全站修复（幂等）：坏链接、旧品牌名、缺失评论区、重复 `<body>`、废弃页引用 |
 | `scripts/update_homepage.py` | 扫描各分类期数与最新日期，写回主页卡片与统计区 |
-| `scripts/tail_template.py` | 报告尾部（评论区 + 页脚 + 返回顶部 + giscus）与 14 个标准日报名的**唯一真源**，构建与统一共用 |
+| `scripts/tail_template.py` | 报告尾部（评论区 + 页脚 + 返回顶部 + giscus）与 35 个标准日报名的**唯一真源**，构建与统一共用；另含 `build_meta()` 生成 og/canonical |
+| `scripts/fix_meta.py` | 批量修复各分类 `report_*.html` 的 meta（补 `</head>`、纠 og:url、补 description），`--check` 可预检 |
+| `scripts/fix_index_meta.py` | 批量修复归档页 / 主页 / digest 页的 meta（og:url 曾因复制母版全指向 traditional-auto） |
+| `scripts/fix_titles.py` | 批量纠正历史报告的 `<title>` / `<h1>`（日期错位、"六大"前缀残留），以文件名为日期真源 |
+| `scripts/extract_css.py` | 把报告页内联 CSS 抽成共享外链 `assets/report.css`（390 份平均 85KB→36KB） |
+| `scripts/build_sitemap.py` | 生成 `sitemap.xml`（主页 + 34 归档页 + 全部报告页，共 429 条） |
 | `scripts/export_git_cred.ps1` | 从 Windows 凭据管理器导出 Git 凭据，供推送兜底通道使用（用完即删临时文件） |
 | `scripts/set_giscus_category.py` | 全站切换 giscus 评论分类（见下方"评论系统"） |
-| `scripts/report_css_v9.css` | 报告页 CSS 模板参考（实际 CSS 已内联在各页面中） |
+| `scripts/report_css_v9.css` | 报告页 CSS 模板参考（正式副本见 `assets/report.css`） |
 
-构建器兼容两种历史骨架：`<main>` 型（car-recruit）与 hero+container 型（其余 13 个），并会自动修复未闭合 `<div>`、重复 `<body>` 等历史瑕疵。
+构建器兼容两种历史骨架：`<main>` 型（car-recruit）与 hero+container 型（其余 33 个），并会自动修复未闭合 `<div>`、重复 `<body>` 等历史瑕疵。
 
 发布后想单独体检或排障：
 ```bash
-python scripts/audit_site.py          # 应输出「全部通过 ✓」，退出码 0
+python scripts/audit_site.py          # 应输出「全部通过 ✓」（仅历史漏期告警），退出码 0
 python scripts/fix_site.py --dry-run  # 出现结构/链接问题时，先看将要改什么
+python scripts/fix_meta.py --check    # meta 是否漂移（og:url / description / </head>）
+python scripts/fix_index_meta.py --check  # 归档页/主页/digest 页 meta
+python scripts/fix_titles.py --check  # 标题与文件名日期是否一致、有无「六大」残留
 ```
 
 ## 内容规范
@@ -111,7 +122,7 @@ python scripts/fix_site.py --dry-run  # 出现结构/链接问题时，先看将
 - 正文只输出 `<main>` 区域内内容，分类页头由构建脚本注入
 - 所有链接必须是 HTML `<a>` 标签：`<a class="source-link" href="..." target="_blank">📎 查看原文</a>`，**严禁 Markdown 链接**
 - 每份报告结尾必须包含「信息来源汇总」表格 + `<div class="giscus"></div>`
-- 报告命名：`report_YYYYMMDD.html`
+- 报告命名：`report_YYYYMMDD.html`；页面 `<title>` 与 `<h1>` 由构建器统一为标准日报名 + 该日期（不要再在正文里写标题）
 - 内容 8000–20000 字符（用 `python scripts/strict_check.py` 自查），关键数据用 `<strong>` 高亮
 - **所有链接必须真实可点击，严禁编造 URL 与精确假数据**
 - 历史报告只增不删
@@ -121,7 +132,7 @@ python scripts/fix_site.py --dry-run  # 出现结构/链接问题时，先看将
 - 背景 `#0a0e1a`（深空蓝）｜强调色 `#00d4ff`（青色）
 - 主文字 `#f0f4f8`｜正文 `#c8d4e8`｜辅助 `#90a0c0`
 - 字体：JetBrains Mono + Noto Sans SC
-- 14 个分类页面共用统一 CSS 变量，视觉一致
+- 34 个分类页面共用统一 CSS 变量（`assets/report.css`），视觉一致
 
 ## 评论系统
 
@@ -171,8 +182,10 @@ D:\研二\github.auto\
    │  └─ backfill<MMDD>\ # 漏跑日期的补做正文（按 <分类>.html 命名，供 build_backfill.py 消费）
    ├─ logs\              # 推送日志 / 审计记录 / 归档页（archive\）+ 一次性脚本
    ├─ scripts\           # 构建、发布、体检、修复脚本 + DAILY_WORKFLOW.md
-   ├─ index.html         # 站点主页（个人主页 + 14 日报入口）
-   └─ <14 个分类目录>     # 每个目录含 index.html（归档）与 report_*.html（报告）
+   ├─ index.html         # 站点主页（个人主页 + 35 日报入口）
+   ├─ assets\           # 共享样式表 report.css（报告页统一外链）
+   ├─ 404.html / robots.txt / sitemap.xml / .nojekyll  # 站点基建
+   └─ <34 个分类目录>     # 每个目录含 index.html（归档）与 report_*.html（报告）
 ```
 
 > 注意：站点主页只有 `repo/index.html` 一份。历史遗留的 `homepage_index.html` 已归档到

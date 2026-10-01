@@ -78,6 +78,86 @@ COMMENTS_BLOCK = (
     '</div>'
 )
 
+# ---------------------------------------------------------------- 页面元信息
+# 每个分类的标准描述文案（用于 <meta name="description"> 与 og:description）。
+# 必须逐类唯一：全站 390 份报告若共用同一句描述，搜索引擎会判定为重复内容，
+# 分享到微信/微博也只显示同一段摘要，无法区分是哪份日报。
+CATEGORY_DESCRIPTIONS = {
+    "car-recruit": "车企招聘日报：每日推送重点车企校招/社招岗位、同层次院校就业数据、进车企攻略与推荐岗位。",
+    "mechanical-recruit": "机械招聘日报：江浙沪机械工程岗位、校招时间线与面试经验，覆盖工程机械与智能制造方向。",
+    "school-news": "校园新闻日报：安徽工业大学、长春工程、徐州三中、大庙中学等母校资讯与就业政策汇总。",
+    "drone-research": "无人机科研日报：arXiv 无人机 / 自动驾驶论文速递，含飞行控制与仿真方向研究进展。",
+    "ahut-campus": "安工大校园日报：安徽工业大学就业去向、政策通知、奖学金与升学指南。",
+    "byd-recruit": "比亚迪招聘日报：岗位、校招、薪资与面试流程，含研发与产线两类方向对比。",
+    "chery-recruit": "奇瑞招聘日报：奇瑞及星途/捷途/风云岗位、校招、销量与产品组织新闻。",
+    "chery-insider": "奇瑞职场口碑日报：待遇、薪资结构、加班文化与员工口碑，聚合全网网友真实评论。",
+    "company-reputation": "企业口碑日报：整车厂/零部件/供应链/科研院所全景口碑——薪资、待遇、工时、离职流动、争议丑闻与网友原声六维度交叉对照。",
+    "geely-recruit": "吉利招聘日报：吉利及极氪/领克/沃尔沃体系岗位、校招、销量与组织动态。",
+    "xiaomi-recruit": "小米汽车招聘日报：小米汽车岗位、校招、SU7/YU7 交付与工厂产能动态。",
+    "weixiaoli-recruit": "蔚小理招聘日报：蔚来、小鹏、理想三家的岗位、校招、产品与经营动态对比。",
+    "traditional-auto": "传统车企招聘日报：比亚迪、吉利、长城、长安、一汽、东风、广汽等传统大厂招聘与经营动态。",
+    "supply-chain-recruit": "车企供应链招聘日报：宁德时代、博世、采埃孚等汽车供应链企业岗位与校招信息。",
+    "research-institute": "科研院所招聘日报：航天、中电科、中科院系院所与高校科研岗招聘动态。",
+    "future-planning": "未来规划日报：职业路径、考研考公、行业趋势与长期规划参考。",
+    "xuzhou-news": "徐州汽车机械日报：徐州及周边汽车产业、工程机械（徐工）与制造业新闻。",
+    "nanjing-news": "南京汽车机械日报：南京汽车产业、机械制造与相关企业动态新闻。",
+    "shanghai-news": "上海汽车机械日报：上海汽车产业、机械制造与相关企业动态新闻。",
+    "hangzhou-news": "杭州汽车机械日报：杭州汽车产业、机械制造与相关企业动态新闻。",
+    "jiangzhehu-news": "江浙沪汽车机械日报：长三角汽车产业、机械制造与相关企业动态新闻。",
+    "hefei-news": "合肥汽车机械日报：合肥汽车产业（蔚来、江淮、大众安徽）与制造业新闻。",
+    "anhui-news": "安徽汽车机械日报：安徽汽车产业与全省制造业动态新闻。",
+    "jiangsu-news": "江苏汽车机械日报：江苏汽车产业与全省制造业动态新闻。",
+    "shenzhen-news": "深圳汽车机械日报：深圳汽车产业（比亚迪总部）与制造业动态新闻。",
+    "xuzhou-recruit": "徐州招聘日报：徐州及周边校招/社招岗位、招聘会与求职信息。",
+    "nanjing-recruit": "南京招聘日报：南京地区校招/社招岗位、招聘会与求职信息。",
+    "shanghai-recruit": "上海招聘日报：上海地区校招/社招岗位、招聘会与求职信息。",
+    "hangzhou-recruit": "杭州招聘日报：杭州地区校招/社招岗位、招聘会与求职信息。",
+    "jiangzhehu-recruit": "江浙沪招聘日报：长三角地区校招/社招岗位、招聘会与求职信息。",
+    "hefei-recruit": "合肥招聘日报：合肥地区校招/社招岗位、招聘会与求职信息。",
+    "anhui-recruit": "安徽招聘日报：安徽地区校招/社招岗位、招聘会与求职信息。",
+    "jiangsu-recruit": "江苏招聘日报：江苏地区校招/社招岗位、招聘会与求职信息。",
+    "shenzhen-recruit": "深圳招聘日报：深圳地区校招/社招岗位、招聘会与求职信息。",
+}
+
+SITE_BASE = "https://ts-dinglilu.github.io"
+
+
+def meta_description(category):
+    """返回该分类的标准描述文案（唯一真源）。"""
+    name = CATEGORY_NAMES.get(category, category)
+    desc = CATEGORY_DESCRIPTIONS.get(category)
+    if desc:
+        return desc
+    return TITLE_SUFFIX + " - " + name + "，每日自动更新。"
+
+
+def build_meta(category, title, iso_date):
+    """生成完整的 <meta> 元信息块（description + og + canonical）。
+
+    全站唯一真源：build_report（每日构建）与 unify_style（历史改造）共用，
+    确保「描述文案 / og:url / canonical」永远指向本分类自己的页面，
+    不再出现从母版复制过来、og:url 指错分类的历史问题。
+    """
+    name = CATEGORY_NAMES.get(category, category)
+    url = "%s/%s/" % (SITE_BASE, category)
+    desc = meta_description(category)
+    esc_title = (title or name).replace('"', "&quot;")
+    esc_desc = desc.replace('"', "&quot;")
+    lines = [
+        '<meta name="description" content="%s">' % esc_desc,
+        '<meta property="og:type" content="website">',
+        '<meta property="og:site_name" content="TS-dinglilu 自动化日报">',
+        '<meta property="og:title" content="%s | %s">' % (esc_title, iso_date),
+        '<meta property="og:description" content="%s">' % esc_desc,
+        '<meta property="og:url" content="%s">' % url,
+        '<meta property="og:locale" content="zh_CN">',
+        '<meta name="twitter:card" content="summary">',
+        '<meta name="twitter:title" content="%s | %s">' % (esc_title, iso_date),
+        '<meta name="twitter:description" content="%s">' % esc_desc,
+        '<link rel="canonical" href="%s">' % url,
+    ]
+    return "\n".join(lines)
+
 # 尾部起点标记：任一在文件末尾窗口内出现，即视为「尾部区块从这里开始」。
 # 注意：不含正文里的「评论区」字样（那是文章内容），只用注释 / 容器 / 页脚标签。
 TAIL_MARKERS = [
