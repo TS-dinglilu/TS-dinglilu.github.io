@@ -42,6 +42,7 @@ CATEGORY_NAMES = {
     "byd-recruit": "比亚迪招聘日报",
     "chery-recruit": "奇瑞招聘日报",
     "chery-insider": "奇瑞职场口碑日报",
+    "company-reputation": "企业口碑日报",
     "geely-recruit": "吉利招聘日报",
     "xiaomi-recruit": "小米汽车招聘日报",
     "weixiaoli-recruit": "蔚小理招聘日报",

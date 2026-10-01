@@ -37,6 +37,7 @@ GROUPS = [
                          "chery-recruit", "chery-insider", "geely-recruit", "xiaomi-recruit",
                          "weixiaoli-recruit", "traditional-auto",
                          "supply-chain-recruit", "research-institute"]),
+    ("reputation", "口碑", ["company-reputation"]),
     ("campus", "校园科研", ["school-news", "ahut-campus", "drone-research"]),
     ("region", "地区现状", ["xuzhou-news", "nanjing-news", "shanghai-news",
                             "hangzhou-news", "jiangzhehu-news", "hefei-news",

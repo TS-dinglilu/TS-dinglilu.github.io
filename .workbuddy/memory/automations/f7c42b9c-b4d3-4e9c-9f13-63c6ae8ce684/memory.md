@@ -1,5 +1,12 @@
 # 周记月记年记自动化 — 执行记忆
 
+## 2026-10-01（周四）06:30 — 生成 9 月月记 ✓
+- 命中每月 1 日 → 生成上月月记（2026 年 9 月）。05:00 每日任务已完成（d1d9851），无并行冲突。
+- `build_digest.py --type monthly` 一次成功：digest/monthly_2026M09.html（154KB）+ digest/index.html（3 份汇总）+ 主页 digest 卡更新。
+- 提交 6bb70c2（7 文件，含 05:00 任务遗留的 memory/log 改动，git add -A 自然带上）。
+- 推送：常规 `git push` 120s 超时挂起（github.com:443 老毛病）→ `python logs/push_manual.py` 一次成功。
+- 验证：API commits/main = 6bb70c2 ✓；monthly_2026M09.html 首轮轮询即 200 ✓；digest/ 聚合页 200 ✓。
+
 ## 2026-09-30（周三）06:30 前后（实际 23:53 恢复执行）
 - 今天不命中触发条件（周一/每月1日/每年1月2日），无需生成。
 - 例行核实：线上 `digest/weekly_2026W39.html` 200、`digest/` 聚合页 200（09-21~09-27 周记已于 09-28 上线），无遗留缺口。

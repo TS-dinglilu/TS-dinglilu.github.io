@@ -32,7 +32,8 @@ CATEGORIES = ["car-recruit", "mechanical-recruit", "school-news", "drone-researc
               "shenzhen-news",
               "xuzhou-recruit", "nanjing-recruit", "shanghai-recruit",
               "hangzhou-recruit", "jiangzhehu-recruit", "hefei-recruit",
-              "anhui-recruit", "jiangsu-recruit", "shenzhen-recruit"]
+              "anhui-recruit", "jiangsu-recruit", "shenzhen-recruit",
+              "company-reputation"]
 VALID = set(CATEGORIES)
 
 # 已知的历史错误子路径 → 正确分类

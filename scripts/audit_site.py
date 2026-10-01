@@ -35,7 +35,8 @@ CATEGORIES = ["car-recruit", "mechanical-recruit", "school-news", "drone-researc
               "shenzhen-news",
               "xuzhou-recruit", "nanjing-recruit", "shanghai-recruit",
               "hangzhou-recruit", "jiangzhehu-recruit", "hefei-recruit",
-              "anhui-recruit", "jiangsu-recruit", "shenzhen-recruit"]
+              "anhui-recruit", "jiangsu-recruit", "shenzhen-recruit",
+              "company-reputation"]
 VALID = set(CATEGORIES) | {"digest"}  # digest = 周记月记年记板块
 
 # 分类的「建号日期」：新增分类是从某一天才开始有报告的，此前各天不参与「跨分类漏期」比对，
@@ -45,6 +46,7 @@ VALID = set(CATEGORIES) | {"digest"}  # digest = 周记月记年记板块
 SKIP_DAYS = {"20260916", "20260920", "20260921", "20260922", "20260923"}
 
 START_DATES = {
+    "company-reputation": "20261001",    # 企业口碑日报，2026-10-01 新增
     "chery-insider": "20260927",          # 奇瑞职场口碑日报，2026-09-27 新增
     "supply-chain-recruit": "20260924",  # 车企供应链招聘日报，2026-09-24 新增
     "xuzhou-news": "20260924",           # 地区·徐州汽车机械日报，2026-09-25 新增

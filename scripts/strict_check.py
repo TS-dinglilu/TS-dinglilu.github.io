@@ -14,6 +14,7 @@ CATS = [
     "xuzhou-recruit", "nanjing-recruit", "shanghai-recruit",
     "hangzhou-recruit", "jiangzhehu-recruit", "hefei-recruit",
     "anhui-recruit", "jiangsu-recruit", "shenzhen-recruit",
+    "company-reputation",
 ]
 
 # 地区类（地区现状 + 地区招聘）篇幅下限 8000，其余 12000

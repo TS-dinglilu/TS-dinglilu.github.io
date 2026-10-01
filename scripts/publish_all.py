@@ -31,7 +31,8 @@ CATEGORIES = ["car-recruit", "mechanical-recruit", "school-news", "drone-researc
               "shenzhen-news",
               "xuzhou-recruit", "nanjing-recruit", "shanghai-recruit",
               "hangzhou-recruit", "jiangzhehu-recruit", "hefei-recruit",
-              "anhui-recruit", "jiangsu-recruit", "shenzhen-recruit"]
+              "anhui-recruit", "jiangsu-recruit", "shenzhen-recruit",
+              "company-reputation"]
 # 正文草稿目录：自 2026-09-15 起已迁入仓库内（repo/content），
 # 使整个工作流以仓库为唯一真源，换机器 clone 即可续接。
 CONTENT_DIR = os.path.join(ROOT, "content")
