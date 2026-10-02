@@ -151,3 +151,10 @@
 - 外链 383 → 376 有效；换源 11 处（quanzhi 404×2、nio 校招双链、scc.cufe、longportapp、offcn 404、ahtlyaq 408、chejiahao 405），保留 7 条 WebFetch/WAF 判据验真（qcgys 周要闻、chinaautosupplier 小米目标、freepressjournal 徐工订单、nwpu/jy.scu 反爬、chejiahao 567）。
 - 发布：`publish_all.py --push` 凭据直连首推成功，提交 `d1d9851`；远端 main（API）= 本地 HEAD。
 - 验证：线上 33/33 = 200；主页 33 卡全「10-01」、日报总数 389+；无新增告警。
+
+## 2026-10-03（05:00 触发）
+- 开工状态：git pull 正常（昨晚 21:14 b36a4d2 = 10-02 轮），无抢跑记录；audit 0 错误 3 警告（09-28~30 全天缺失，既有欠账）。当前口径 34 分类（company-reputation 10-01 新增后首个自动轮全量跑通）。
+- 正文 34/34 一次成功（9 个并行子代理全 model lite，零 429 零重派；逐个核对 mtime/字符数确认落盘）。
+- strict_check 0 不合格。外链 306 条：297 有效；处置 14 条——换源 4 处（campus.nio.com ×2 → nio.cn/careers 200；91wllm 404 → campus.chinahr.com/pages/2027-boc/ 200；zbjy.nuc 连 WebFetch 都不通 → ncss.cn 国家大学生就业服务平台 200），job.njtu https→http ×2（302 落 http 200），job592 换同站搜索索引全文验证的 com4390 深链（整站对本机/WebFetch 均屏蔽，属站点级屏蔽）。保留验真 9 条：牛客 ×4（WebFetch 全部证实内容吻合）、gzw.hefei 521（WebFetch 证实为合肥水务 2026 招聘公告）、jy.scu 483（WAF）、525hr/sspnote 403（反爬，WebFetch 证实）。
+- **推送（本轮重点）**：publish_all 构建全绿但凭据直连/常规 push 各 3 次全败（git 连 github.com:443 全部 "Could not connect"，而 curl github.com 与 api.github.com 均 200——curl 通 git 不通的配置陷阱复发）；SSH 兜底因「tcp 探活成功」被自动跳过 → **手动 `python -c` 调 `ssh_fallback_push.ssh_fallback_push(force=True)` 强制走 SSH over 443，一次成功**，临时部署密钥自动注册+撤销。新 know-how：当 curl 通 443 而 git 不通时，publish_all 的探活判据会误跳过 SSH 兜底，需手动 force。
+- 验证：远端 main（API）= 本地 HEAD = `e59c374`（每日日报自动更新 2026-10-03）；首轮 34 页面 404 为 Pages 延迟，90 秒后复测 **34/34 全 200**；主页 34 卡全「10-03」、日报总数 **458+**（424→458，+34 吻合）；audit 最终 0 错误 3 警告（既有欠账）。
