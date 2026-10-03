@@ -1,85 +1,92 @@
 <div class="section">
   <div class="section-title">板块一 · 本期导览</div>
   <div class="stats-grid">
-    <div class="stat-box"><div class="count-badge">8</div><div class="label">本期精选论文</div></div>
-    <div class="stat-box"><div class="count-badge">4</div><div class="label">10月1日新提交</div></div>
-    <div class="stat-box"><div class="count-badge">2</div><div class="label">多机/安全控制</div></div>
-    <div class="stat-box"><div class="count-badge">2</div><div class="label">自动驾驶交叉</div></div>
+    <div class="stat-box"><div class="count-badge">7</div><div class="label">本期精选条目</div></div>
+    <div class="stat-box"><div class="count-badge">3</div><div class="label">10月1-2日新挂网论文</div></div>
+    <div class="stat-box"><div class="count-badge">4:1</div><div class="label">DARPA 重载挑战载荷自重比</div></div>
+    <div class="stat-box"><div class="count-badge">2万亿</div><div class="label">2030年低空经济规模测算</div></div>
   </div>
   <div class="highlight-box">
     <div class="highlight-title">💡 本期视角</div>
-    <p>本期为 <strong>2026 年 9 月 30 日—10 月 3 日</strong>无人机科研日报（周六稿，国庆假期第三期），共 <strong>6 个板块、8 条</strong>内容。arXiv 十月第一批论文已经挂网，最大的看点是「<strong>安全性正在从经验走向定理</strong>」：<strong>多旋翼交叉路径分散式安全跟踪</strong>（arXiv:2610.00216）把横向反馈线性化重写成带四个等式约束的二次规划，只松弛沿路径速度一项、其余约束全部保持硬约束，在 Drake 物理引擎里给出收敛、避撞、防姿态奇异三重保证；同日挂出的 <strong>STL 时序逻辑可行性几何判定程序</strong>（arXiv:2610.00208）在六维无人机运动学上做到亚毫秒级可行性检查，还能给出闭式时间延迟修复方案。应用侧，<strong>高空无人机 PTZ 相机稀疏目标搜索</strong>（2610.01067）把 POMCP 规划用到「目标在视场里却看不清」这个被忽视的痛点；<strong>湍流水面着陆</strong>（2605.23717 v3）与<strong>吊挂载荷投掷</strong>（2606.27603）展示了「仿真造数据 + 真机零样本部署」在两个极端场景的成熟。自动驾驶侧，上海交大团队的<strong>端到端驾驶训练生态综述</strong>（2610.00926）提出数据-策略-平台三层分类法，LeCun 参与的 <strong>AD-E2E-JEPA</strong>（2609.34085）把世界模型推理加速 100 倍。假期精读建议：控制线读 00216、估计线读 01067、仿真线读 27603，三篇正好覆盖你的课题闭环。</p>
+    <p>本期为 <strong>2026 年 10 月 4 日（周日）</strong>无人机科研日报，共 <strong>6 个板块、7 条</strong>内容，全部为昨日稿未覆盖的新条目。arXiv 侧，10 月 1 日—2 日新挂网论文里最值得四旋翼方向关注的是三篇：<strong>吊挂多机协同重载吊运</strong>（arXiv:2610.01185）把「力分配不均」这个吊挂多机的隐性痛点做成了规划-控制一体化框架，4—10 机仿真与真机实验齐备；<strong>免训练扩散规划器</strong>（arXiv:2610.01959）用解析局部评分替代学习评分，300+ 智能体 6 秒出可行轨迹，直接冲击「规划器必须先训练」的默认假设；浙大团队的<strong>反应式特技飞行</strong>（arXiv:2505.24396）则演示了全球首个「连续倒飞 + 反应式穿移动门」的真机结果。行业科研侧，<strong>DARPA Lift Challenge</strong> 用 9 个月把重载无人机「载荷/自重比」的行业天花板从 1:1 推到接近 4:1；<strong>Vigilant Aerospace</strong> 公开机载雷达「探测与避让」（DAA）的最新飞行测试细节；国内《证券日报》的低空经济深度调查给出「2030 年 2 万亿元」的规模测算与「飞得好」的四道瓶颈。<strong>今天的主题词是「约束下的极限」：重载、倒飞、百机规划、雨夜空域——都是约束逼近物理极限时的控制问题，恰是飞控仿真课题最该盯的方向</strong>。</p>
   </div>
-  <div class="info-box"><div class="info-title">ℹ️ 阅读说明</div><p>每条给出论文标题、arXiv 编号与提交时间，链接直达 arXiv 摘要页。标注「仿真」的条目尚未上真机，复现门槛更低；标注「真机验证」的条目工程细节更值得精读。所有 arXiv 链接均经检索确认真实存在。</p></div>
+  <div class="info-box"><div class="info-title">ℹ️ 阅读说明</div><p>每条给出论文标题、arXiv 编号与提交时间，链接直达 arXiv 摘要页；行业动态注明来源与发布日期。昨日稿已详读的 2610.00216、2610.00208、2610.01067、2606.27603 等条目本期不再重复，可在往期存档中查阅。</p></div>
 </div>
 
 <div class="section">
-  <div class="section-title">板块二 · 多机安全控制：从「外挂安全滤器」到「约束进公式」</div>
+  <div class="section-title">板块二 · 吊挂多机与集群竞速：力分配与博弈安全</div>
   <div class="card">
-    <h3>① 多旋翼交叉路径分散式安全跟踪：QP 化的横向反馈线性化，三重理论保证</h3>
+    <h3>① AFD-CAMLs：吊挂多机重载吊运的「力分布感知」规划与控制，4—10 机真机验证</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-accent">多机安全</span><span class="badge hot">🔥 10/1提交</span><span>arXiv:2610.00216 · eess.SY/cs.RO</span></div>
-      <p>Hamza Tariq、Adeel Akhtar 10 月 1 日提交的 <strong>Decentralized Safe Path Following for Multiple Quadrotors on Intersecting Paths with Theoretical Guarantees</strong>：多机沿交叉路径飞行时，「安全」= <strong>避撞 + 严格沿预设航线</strong>两件事同时成立——允许绕行会让航线权责不清，这对空域管理是灾难。该控制器把<strong>横向反馈线性化（transverse feedback linearization）重构为带四个等式约束的二次规划</strong>：两个约束保证收敛并严格保持路径，两个约束规定期望速度与航向；安全性的实现方式极具工程品味——<strong>只松弛「沿路径速度」这一项约束</strong>（让出减速空间避撞），路径与航向约束保持硬约束。在给定假设与可容许初始条件下，控制器保证所有智能体<strong>收敛并 thereafter 跟随各自路径、避免碰撞、避免姿态奇异</strong>。评测在 <strong>Drake 物理引擎</strong>中于非平面交叉路径上进行，与两种「标称控制器 + 安全滤器」级联方案对比，代码开源。<strong>对你的课题，这篇示范了一个范式：把经典控制律写成优化问题，安全约束就从「滤器的额外逻辑」变成「QP 的自然组成部分」——Simulink 里用 qpsolver 复现四旋翼版本，一周工作量，且天然兼容你的 MATLAB 栈</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.00216" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-accent">吊挂多机</span><span class="badge hot">🔥 10/1提交</span><span>arXiv:2610.01185 · cs.RO</span></div>
+      <p>Antreas Kourris、Sihao Sun 10 月 1 日提交的 <strong>Agile Force-Distribution-Aware Planning and Control for Cable-Suspended Aerial Multi-Lifting Systems</strong>：多无人机用缆绳协同吊运重物时，除了控制载荷的位置与姿态，还有一件容易被忽视的事——<strong>各缆绳张力分布是否均衡</strong>。当「张力-广义力」分配矩阵冗余或病态时（几何失配、低层跟踪误差都会加剧），传统基于轨迹的方法会把力集中压到少数几根缆上，轻则张力饱和、重则缆绳松弛失稳。论文给出<strong>混合规划-控制框架</strong>：全局规划器在指定内力设定下探索分配零空间，生成载荷轨迹与缆力参考；局部规划器把缆力参考并入代价函数，为所有无人机生成轨迹；末端再接一个<strong>导纳滤波器</strong>，比较规划力与机载张力估计值，实时修正运动学参考——在退化或近退化构型下依然保住力跟踪。仿真与实验覆盖 <strong>4 机到 10 机</strong>，在悬停与激进机动下都获得更均衡的张力分布，且不牺牲敏捷性与载荷跟踪精度。<strong>对你的课题，这篇的「力参考进代价函数」思路可以直接平移：Simulink 里做单机吊挂跟踪时，把张力约束写成软约束项，就是一版缩小重现；而导纳滤波器本身是经典控制元件，MATLAB 一下午可以搭出降级版本</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.01185" target="_blank">📎 查看原文</a>
     </div>
+    <h3 class="mt-4">Superhuman Racing：多智能体强化学习给高速竞速装上「安全脚手架」</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-accent">形式化方法</span><span class="badge-info">🧪 亚毫秒判定</span><span>arXiv:2610.00208 · eess.SY/cs.RO</span></div>
-      <p>同日挂出的 <strong>信号时序逻辑（STL）控制综合的几何判定程序</strong>：STL 控制综合常因执行器限幅或任务死线设置不当而「物理上不可行」，标准的离散化时域优化方法计算量随视界长度指数增长，且抽不出连续的时间调整量。该工作给出一个<strong>几何决策程序</strong>：把显式时序逻辑约束变换为「在零时刻求值的连续空间后向可达集」——通过解析反演 Bhat-Bernstein 镇定时间积分，把时间窗口映射为连续空间边界，可行性检查退化为<strong>局部矩阵与向量包含判定</strong>；当规格不可行时，程序提取 <strong>Farkas 对偶证书</strong>定位冲突约束，并把最大几何间隙解析映射为<strong>闭式时间延迟</strong>，精确修复边界亏缺。论文严格证明了程序的可稳性、有界完备性与视界无关可扩展性，实验在<strong>六维无人机运动学</strong>上展示：亚毫秒执行时间、对深度嵌套逻辑公式的计算免疫。<strong>方法论启发：为你的飞控任务定义 STL 规格（如「8 秒内到达且全程速度 &lt; 5 m/s」）再做可行性预检，比调参失败后再返工便宜得多——这也是「任务书即代码」路线的一个漂亮样本</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.00208" target="_blank">📎 查看原文</a>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <div class="section-title">板块三 · 感知与任务规划：PTZ 搜索与湍流着陆</div>
-  <div class="card">
-    <h3>① 高空无人机的稀疏地面目标搜索：POMCP + 云台的「看哪里、怎么变焦」决策</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-teal">POMDP规划</span><span class="badge new">🆕 10/1提交</span><span>arXiv:2610.01067 · cs.RO</span></div>
-      <p>Ashik E Rasul、Hyung-Jin Yoon 10 月 1 日提交的 <strong>Online Planning for Sparse Ground Target Search from a High-Altitude UAV under Partial Observability</strong>：高空无人机搜索地面目标有个反直觉痛点——<strong>目标明明已在视场内，却因为表观尺度太小而「不可观测」</strong>：分辨率降采样与上下文缺失让标准检测器失效。主动搜索框架的常规解法是「飞到合适的位置拍更大的目标」，但城市空域的飞行限制常常禁止这种机动。论文的替代路线：<strong>不动机体、动云台</strong>——利用机载相机的 pan-tilt-zoom（PTZ）机构动态调整视场，对感兴趣区域序贯采集增强视觉信息；候选位置锁定后，再调用多模型集成检测器在固定尺度下做精细推理。算法侧，PTZ 序贯探索被形式化为 <strong>POMDP</strong>：智能体维护目标位置的信度状态，用<strong>部分可观蒙特卡洛规划（POMCP）</strong>求解，感知可靠性以目标尺度为条件，并接入选择性集成检测作为附加推理步骤。光真实感仿真中，该方法在不同环境条件与载具状态下，<strong>以更少步数、更低传感器分辨率依赖</strong>检出变尺度地面目标。<strong>「机体不动、传感器动」是被低估的规划维度——你的仿真里加一个可变 FOV 相机通道，就能多出一类「感知动作」进动作空间</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.01067" target="_blank">📎 查看原文</a>
-    </div>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-teal">RL着陆</span><span class="badge-success">✅ 真机验证·v3</span><span>arXiv:2605.23717 · UZH/DTU</span></div>
-      <p>苏黎世大学 RPG 与丹麦技术大学团队（Angelis、Bauersfeld、Scaramuzza、Boukas）的 <strong>Vision-Based Agile Landing on Turbulent Waters</strong>（最新 v3 于 8 月 31 日更新）：无人机在海上舰船上自主着陆的难点是<strong>载具与落台运动耦合 + 海况恶劣</strong>。该方法的聪明之处在于「不显式估计平台状态」——<strong>用自身状态测量 + 着陆面局部视觉特征（关键点与描述子）隐式推断平台相对运动</strong>，直接输出姿态与推力指令交由低层控制器跟踪。训练在仿真中用<strong>随机生成描述子的合成关键点</strong>，从而实现<strong>换任何局部特征提取器都零样本部署</strong>——这个设计让策略对特征前端「即插即换」，工程价值极大。评测：<strong>「Very Rough」海况</strong>下平台运动超过 SOTA MPC 基线；真机实验在人工造波水池中完成全机载计算着陆。对做仿真出身的读者，这篇 + 上期的吊挂投掷（2606.27603）共同回答一个问题：<strong>「合成特征训练」是打通 sim-to-real 特征前端鸿沟的低成本解法——比域适应网络便宜、比域随机化干净</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2605.23717" target="_blank">📎 查看原文</a>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <div class="section-title">板块四 · RL 与仿真方法论：投掷任务与「真机里学飞」</div>
-  <div class="card">
-    <h3>① Learning to Throw：解析模型 + 物理求解器耦合仿真，RL 学出精准吊挂投掷</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-purple">空中操控</span><span class="badge hot">🔥 真机零样本</span><span>arXiv:2606.27603 · UZH</span></div>
-      <p>苏黎世大学 RPG 团队（Zhai、Raimondi、Ren 等，Scaramuzza 组）的 <strong>Learning to Throw: Agile and Accurate Cable-Suspended Payload Delivery with a Quadrotor</strong>：吊挂载荷的「运输与穿越」研究已充分，但<strong>「高动态的定点投掷」</strong>几乎无人问津——搜索救援、医疗配送里恰恰需要把载荷抛到指定点。模型基方法（轨迹优化 + 跟踪）在这里失灵，因为柔性绳索动力学几乎无法解析建模。论文的仿真架构值得全文精读：<strong>高保真解析四旋翼模型与 PhysX 绳索-载荷物理求解器耦合，每一步在两个域之间交换力</strong>，得到物理上足够准确的吊挂系统仿真；在此环境中训练深度 RL 策略执行敏捷精准投掷，<strong>零样本部署到真机</strong>——落点误差比模型基基线降低最多 <strong>50%</strong>，投掷耗时缩短最多 <strong>30%</strong>，消融实验证明耦合仿真是全部增益的来源。团队还证明同一管线可训练<strong>纯视觉观测策略</strong>，精度与状态基相当，并承诺开源仿真器。<strong>「解析模型管机体、物理引擎管接触」的混合仿真架构，正是 Simulink + Gazebo/PhysX 组合可以复刻的路线——你的 MATLAB 模型 + Python 侧强化学习，中间架一条力接口就是同款</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2606.27603" target="_blank">📎 查看原文</a>
-    </div>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-purple">在线自适应</span><span class="badge-info">📖 RSS 2026线</span><span>RPG 真机学习专题</span></div>
-      <p>顺着投掷论文翻 RPG 的学习专题页，<strong>Learning Agile Quadrotor Flight in the Real World</strong>（Ren、Zhu、Xing、Scaramuzza，<strong>RSS 2026</strong>）值得并列阅读：学习型敏捷飞行控制器通常依赖海量仿真训练 + 精确系统辨识做 sim-to-real，但固定策略在分布外场景（外部气动扰动、硬件老化）依然脆弱，保守安全裕度又牺牲敏捷性。该工作给出「不用精确辨识、不用离线 sim-to-real」的自适应框架：<strong>自适应时间尺度（ATS）主动探索平台物理极限 + 在线残差学习增强简单标称模型</strong>；在混合模型之上提出<strong>真机锚定的短时程 BPTT（RASH-BPTT）</strong>实现高效稳健的在飞策略更新。结果：四旋翼在<strong>执行器饱和极限附近</strong>可靠完成敏捷机动，基策略峰值速度从 <strong>1.9 m/s 进化到 7.3 m/s</strong>，只用约 <strong>100 秒</strong>飞行时间。配套的还有同期 <strong>Continual Robot Policy Learning via Variational Neural Dynamics</strong>（2606.27353：真机四旋翼在变化风场下约 <strong>1 秒</strong>从周期性扰动恢复，大扰动悬停/跟踪误差较 SOTA 在线自适应降低 <strong>65.7%/53.3%</strong>）。<strong>「仿真调参」与「真机自适应」正在合流：你的 Simulink 管线若留出残差模型接口，节后实验室调试就能直接套这套流程</strong>。</p>
+      <div class="news-meta"><span class="tag tag-purple">多机博弈</span><span class="badge-success">✅ 超越人类冠军</span><span>UZH RPG · 2026</span></div>
+      <p>苏黎世大学 RPG 团队（Scaramuzza 组）的 <strong>Superhuman Safe and Agile Racing through Multi-Agent Reinforcement Learning</strong>：单智能体范式把其他飞行器当「环境噪声」，导致自主系统在共享动态空间里依然脆弱——而高速无人机竞速恰是高随机交互的极端测试场。该工作用<strong>多智能体强化学习</strong>训练变数量参赛者的竞速智能体：通过<strong>联盟式自我博弈（league-based self-play）</strong>，智能体演化出主动避撞、超车、处理多机物理交互（包括<strong>气动下洗流</strong>）等前瞻行为。结果：在 <strong>22 m/s 以上</strong>速度的多机竞赛中<strong>超越冠军级人类飞手</strong>，同时碰撞率较 SOTA 单智能体基线<strong>降低 50%</strong>；更重要的是，与多样化人造智能体训练带来的<strong>零样本泛化能力</strong>可以迁移到与人类的安全交互上。方法论上有两点值得记：一是「把其他智能体建模为一等公民而非扰动」是集群安全的新范式；二是自我博弈的课程设计（从 1v1 到变数量）本身就是一套可借鉴的 RL 训练课程——<strong>你的多机避撞仿真若从单机 RL 切到自博弈课程，动作空间的复杂度上升可控，而策略的鲁棒性收益显著</strong>。</p>
       <a class="source-link" href="https://rpg.ifi.uzh.ch/research_learning.html" target="_blank">📎 RPG 学习专题页</a>
-      <a class="source-link" href="https://arxiv.org/abs/2606.27353" target="_blank">📎 Continual Learning 论文</a>
     </div>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-title">板块五 · 自动驾驶交叉：训练生态综述与世界模型推理加速</div>
+  <div class="section-title">板块三 · 规划与控制新方法：免训练扩散规划器与反应式特技飞行</div>
   <div class="card">
-    <h3>① 端到端自动驾驶训练生态综述：数据-策略-平台三层分类法</h3>
+    <h3>① Training-Free Diffusion Planning：把「学出来的评分」换回「解析的评分」，300 机 6 秒出解</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-orange">系统综述</span><span class="badge new">🆕 10/1提交</span><span>arXiv:2610.00926 · cs.RO</span></div>
-      <p>上海交通大学团队（Chengkai Xu、Jiaqi Liu 等，Jian Sun 组）10 月 1 日提交的 <strong>A Survey on End-to-End Autonomous Driving Training from the Perspectives of Data, Strategy, and Platform</strong>：端到端自动驾驶（E2E-AD）的效果最终由<strong>训练生态</strong>决定，而非单点模型。综述提出 <strong>Data-Strategy-Platform（数据-策略-平台）分类法</strong>：数据层定义「能学到什么」，策略层 govern「学习如何对齐驾驶目标」，平台层支撑「规模化与持续进化」；在此框架下横扫数据中心管线、学习范式与训练基础设施，并分析三层的相互作用如何塑造模型性能、鲁棒性与可部署性。收尾的展望同样有观点：<strong>从数据数量转向数据价值、从孤立优化转向基础模型驱动的泛化、从静态训练转向训练-测试一体化闭环</strong>。团队维护持续更新的文献仓库。<strong>上期综述读「评测协议」，本期综述读「训练生态」，两篇拼起来就是 E2E 的方法论全景——准备开题或写综述的同学，这两篇的三层分类框架可以直接借来做你的文献综述骨架</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.00926" target="_blank">📎 查看原文</a>
-      <a class="source-link" href="https://github.com/Jiaaqiliu/Awesome-Training-Ecosystem-for-E2E-AD" target="_blank">📎 配套文献仓库</a>
+      <div class="news-meta"><span class="tag tag-teal">运动规划</span><span class="badge new">🆕 10/1提交</span><span>arXiv:2610.01959 · cs.RO/cs.LG</span></div>
+      <p>Michael Y. Fatemi、Jinhao Liang、Ferdinando Fioretto 10 月 1 日提交的 <strong>Training-Free Diffusion Planning with Analytical Local Scores</strong>：扩散模型做轨迹规划近两年很热，但有个硬伤——<strong>必须先在大规模可行轨迹数据集上训练，换一张地图就要重训</strong>，没有高质量演示就没法部署。论文的关键观察：<strong>轨迹的评分可以只由「相邻路点 × 邻近约束」的局部交互重构</strong>——障碍、平滑、速度、智能体间可行性四类项都是局部的。据此把学习版全局评分替换为<strong>解析局部评分</strong>，得到一个免训练的扩散规划器：既保留扩散模型的迭代精化行为，又继承经典轨迹优化的结构约束。实验规模相当唬人：<strong>300+ 智能体、100+ 障碍物的环境，GPU 上 6 秒内</strong>生成平滑可行轨迹，胜过强学习基线与优化基线，且完全不依赖数据。<strong>方法论的普适价值在于「分解」：当全局问题难学时，检查评分函数是否天然可分解为局部项——你的四旋翼规划仿真里，路径代价同样可分解为曲率、障碍距离、速度一致性三项，用解析局部项做扩散去噪或梯度下降，都不需要先攒数据集</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.01959" target="_blank">📎 查看原文</a>
     </div>
-    <h3 class="mt-4">AD-E2E-JEPA：LeCun 参与的世界模型提速 100 倍，零样本规划直达 NAVSIMv2</h3>
+    <h3 class="mt-4">Reactive Aerobatic Flight：浙大团队 RL 特技飞行——连续倒飞中反应式穿越移动门</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-orange">世界模型</span><span class="badge hot">🔥 100×推理加速</span><span>arXiv:2609.34085 · 9/28提交</span></div>
-      <p><strong>AD-E2E-JEPA: A Joint-Embedding Predictive Architecture For End-to-End Autonomous Driving</strong>（Haoran Zhu、Wancong Zhang、<strong>Yann LeCun</strong>、Anna Choromanska，9 月 28 日提交）：世界模型用于自动驾驶规划的两难——要么「准但慢」，要么「快但不胜任划」。论文先系统评测现有动作条件 JEPA 世界模型（LeWM、DINO-WM、JEPA-WM），用<strong>目标条件零样本规划</strong>设置（以真值未来观测为目标、不训练任何驾驶策略）把「世界模型质量」与「策略学习」解耦；随后提出 <strong>AD-E2E-JEPA</strong>：对投影 patch 嵌入施加 SIGReg 正则的可学习投影器，规划 patch 数减少 <strong>16 倍</strong>、嵌入维度减少 <strong>4 倍</strong>，<strong>推理提速 100 倍</strong>而规划性能不掉——8 帧 rollout、256 条候选轨迹运行时仅 <strong>0.8 秒</strong>。不训练任何策略，世界模型 rollout 轨迹词表即可在平均 20 米内到达目标（位移 4.0/2.8 米）；NAVSIMv2 上零样本规划取得 <strong>67.3/72.9 EPDMS</strong>（含乘性安全指标）与 <strong>84.1/86.5 EPDMS†</strong>（不含）；自监督预训练的投影器把下游模仿学习从 80.2 提到 <strong>85.4 EPDMS</strong>。代码开源。<strong>结合上期 RoXDrive 的「世界模型忠实性审计」，世界模型这条线的完整拼图正在浮现：先做快、再做忠、最后进控制环——仿真人的机会窗口在「忠」与「控」之间</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2609.34085" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-purple">RL特技</span><span class="badge hot">🔥 全球首演示</span><span>arXiv:2505.24396 · 浙江大学</span></div>
+      <p>浙江大学工业控制技术全国重点实验室与湖州研究院团队（Zhichao Han、Xijie Huang 等，Fei Gao 通讯）的 <strong>Reactive Aerobatic Flight via Reinforcement Learning</strong>：四旋翼的「欠驱动 + 大机动时不稳定」让倒飞、快翻这类特技长期是人类飞手的专属领地。传统「轨迹优化 + 跟踪控制」两段式框架在高敏捷场景有三个固有缺陷：<strong>跟踪误差放大、计算延迟、对初始条件敏感</strong>。论文用 RL 直接把「机体状态 + 特技意图」映射到控制指令，取消模块切分，实现端到端策略优化；训练侧引入<strong>自动课程学习</strong>动态调整特技任务难度，配合<strong>域随机化</strong>实现零样本 sim-to-real。真机结果创下两个「首次」：<strong>无人机在连续倒飞状态下反应式穿越移动龙门</strong>——倒飞时姿态高度不稳定、控制信号微小误差即灾难，这个演示对控制器带宽与策略鲁棒性的要求远超常规穿框。<strong>可借鉴处：自动课程学习（由易到难动态调参）是你自己训练仿真策略时立刻可用的技巧——比手动设计课程稳定，代码量也不大</strong>。</p>
+      <a class="source-link" href="https://ar5iv.arxiv.org/html/2505.24396" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块四 · 平台与硬件极限：倾斜旋翼全向控制与 DARPA 重载挑战</div>
+  <div class="card">
+    <h3>① 倾斜旋翼过驱动四旋翼的端到端 RL：执行器级控制零样本上真机</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">新构型</span><span class="badge-info">🧪 ETH+东大</span><span>arXiv:2602.21583 · v2</span></div>
+      <p>ETH 苏黎世自主系统实验室（ASL）与东京大学 DRAGON 实验室（Moju Zhao 组）合作的 <strong>Learning End-to-End Control for Omnidirectional Aerial Motion on Overactuated Tilt-rotor Quadrotors</strong>（9 月 12 日接收更新）：RL 在常规四旋翼上已很成熟，但<strong>倾斜旋翼 + 旋转关节的混合执行器</strong>（无刷电机 × 舵机关节耦合）sim-to-real 鸿沟显著更难，执行器级 RL 能否可靠部署一直是悬案。论文提出全向运动控制的端到端 RL 框架：直接把目标位姿映射到关节与转子指令，<strong>执行器级仿真 + 非对称 actor-critic</strong> 做 6D 位姿到达；为可靠迁移，<strong>系统辨识 + 最小而物理自洽的域随机化</strong>双管齐下。真机零样本部署后，在航点悬停、外力恢复、载荷变化（0.25 kg × 2）、轨迹跟踪、风扰抑制（2.5 m/s）与分配奇异构型穿越等场景评测；与 SOTA NMPC 对比：<strong>NMPC 稳态位置误差更低，RL 姿态误差更均匀、位姿切换更快、机载算力需求更小</strong>——模型基与学习基的分野被精确刻画到各自的优势象限。<strong>做控制对比实验的同学，这篇的评测协议（六场景 + 双基线）是现成的论文实验章节模板</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/html/2602.21583v2" target="_blank">📎 查看原文</a>
+    </div>
+    <h3 class="mt-4">DARPA Lift Challenge 复盘：9 个月把「4:1 载荷自重比」从不可能变成接近现实</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-red">重载挑战</span><span class="badge hot">🔥 行业天花板重写</span><span>National Defense · 2026年10月刊</span></div>
+      <p>《National Defense》10 月刊长文复盘了 <strong>DARPA Lift Challenge</strong>：目标让 ≤55 磅（约 25 kg）的无人机在 <strong>5 海里航线</strong>上吊运 <strong>110—220 磅</strong>有效载荷——即 <strong>4:1 载荷自重比</strong>，而商用现货水平最好也就 1:1，业内专家当初普遍断言「不可能」。赛况：超过 <strong>480 支队伍报名</strong>、132 支入围，8 月在俄亥俄州代顿的 7 天现场赛中约 70 支到场、35 支带可飞飞机、<strong>仅 5 支完赛</strong>。冠军 Avidrone Aerospace（加拿大）以 <strong>29 磅自重吊起 112 磅</strong>（接近 4:1）夺冠并获 <strong>125 万美元</strong>奖金；前三名都逼近 3:1。获胜要素值得细读：创始人 Scott Gray 把设计哲学归结为「<strong>极简设计</strong>——把非飞行必需部件砍到几乎重造一架新机」+「<strong>自研自驾软件</strong>——对自主机动保持完全控制权而非买现成方案」。DARPA 已宣布 <strong>2028 年第二届</strong>：最小载荷 220 磅、航线 10 海里。<strong>对飞控科研的启示：极限指标竞赛的胜负手在「系统减重 + 自研控制栈」，而不是某个单点算法——研究生阶段把控制栈全链路自己写过一遍（哪怕缩比版），就是这个逻辑的最小复现</strong>。</p>
+      <a class="source-link" href="https://digital.nationaldefensemagazine.org/october-2026/page-24" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块五 · 行业科研动态：低空经济「飞得好」的四道坎与机载 DAA 雷达实测</div>
+  <div class="card">
+    <h3>① 《证券日报》深度调查：低空经济 2030 年 2 万亿元，但「飞得好、飞得稳」还有四道坎</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">产业调查</span><span class="badge new">🆕 10/2发布</span><span>证券日报 · 2026-10-02</span></div>
+      <p>10 月 2 日《证券日报》刊发的低空经济深度调查（大众网转载）给出几组关键数据与判断：<strong>2026 年「低空经济」第三次写入《政府工作报告》，定位从「新兴产业」升级为「新兴支柱产业」；测算 2030 年我国低空经济规模有望达到 2 万亿元</strong>。应用端已多点突破：重庆翼动科技的手掌大小微纳无人机（机身与翼展均小于 170 毫米、整机约 50 克、集成 <strong>510 个精密零部件</strong>）主打城市楼宇与地下管网的狭小空间巡检；广汽孵化的高域科技 AirCab 机型在广州海心沙完成核心城区实景首飞，已收获 <strong>2000 架意向订单</strong>，广州工厂产线首台机下线后预计 2026 年底量产交付。但调查的核心判断是「<strong>国内低空经济已初步『飞得起来』，距离『飞得好、飞得稳、规模化、常态化』仍有不小差距</strong>」，瓶颈集中在技术迭代、空域管控、基建配套、人才供给四个维度。<strong>对研究生的含义很直接：低空经济的人才缺口正在从「能飞」转向「能管安全、能做适航、能建管控系统」——飞控与仿真背景恰是这条转型线的核心供给，读行业新闻时把「瓶颈清单」当「选题清单」读</strong>。</p>
+      <a class="source-link" href="http://news.gzylhyzx.com/detail.html?newsId=46199524" target="_blank">📎 查看原文</a>
+    </div>
+    <h3 class="mt-4">Vigilant Aerospace 公开机载雷达 DAA 飞行测试：移动与振动条件下的多目标跟踪</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-teal">空域安全</span><span class="badge-info">📖 10/2报道</span><span>Unmanned Airspace · 2026-10-02</span></div>
+      <p>行业媒体 Unmanned Airspace 10 月 2 日报道了 Vigilant Aerospace Systems 对其机载「探测与避让」（DAA）软件 <strong>FlightHorizon PILOT-M</strong> 的最新雷达测试：核心难点是<strong>传感器自身在动</strong>——地面建筑、植被的雷达回波必须滤除而不能误删真实空中交通，且机体移动与振动会让静止目标在两次雷达更新间「漂移」。飞行测试中系统成功在约 <strong>2 公里</strong>距离稳定跟踪多架 Cessna 172 级飞机，机载处理雷达数据并转发地面显示，传感器、计算、通信、数据流与电源系统在飞行条件下整体联测。项目由俄克拉荷马州 OCAST 产业创新计划资助 <strong>100 万美元</strong>，俄克拉荷马州立大学 OAIRE 提供试飞支持，下一步将集成到更大的固定翼无人机平台。技术上值得注意的是其架构：<strong>ADS-B In 处理合作目标 + 机载雷达补非合作目标</strong>，冲突评估与避让指引都在机上完成，支撑 BVLOS（超视距）运行。<strong>对做感知-控制闭环仿真的读者，「传感器移动偏差建模」是被教科书轻描淡写但工程上极费工的一环，你的 Simulink 仿真里给量测模型加一项由机体姿态驱动的偏差项，就是对这类真实问题的低成本预演</strong>。</p>
+      <a class="source-link" href="http://vigilantaerospace.com/unmanned-airspace-vigilant-aerospace-radar-testing" target="_blank">📎 查看原文</a>
+    </div>
+    <h3 class="mt-4">国庆科创集市观察：eVTOL 与巡检无人机走进大众视野</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-amber">产业动态</span><span>2026-10-01</span></div>
+      <p>10 月 1 日，南昌在会议中心广场开办低空经济与智能穿戴产品集市：<strong>31 家企业、112 项展品、1500 平方米展区</strong>。低空展区的看点是全球首个获民航局型号合格证的载人级无人驾驶 eVTOL <strong>亿航 EH216-S</strong>、可在人流密集区安全穿行的「小球慧巡 S300」室内防碰撞巡检无人机、AR-500 消防无人直升机、AEGIS 机载式无人机反制系统等——载人通航、应急救援、安防巡检多条产品线同台，直观展示了低空产业链的配套成熟度。空中未来集团高管在采访中把「无人机集群控制」「低空智联」「产教融合」并列为企业下一阶段发力的新赛道。对读者的观察点：<strong>「巡检 + 集群控制 + 反制」三类岗位随展会经济同步下沉到二线城市，江浙皖的低空展会季值得留意——校招季看一个地区的产业热度，展会密度是最直观的指标之一</strong>。</p>
+      <a class="source-link" href="https://www.163.com/dy/article/L85M7D720514VRTP.html" target="_blank">📎 查看原文</a>
     </div>
   </div>
 </div>
@@ -87,8 +94,8 @@
 <div class="section">
   <div class="section-title">📚 本期方法论小结</div>
   <div class="card">
-    <div class="info-box"><div class="info-title">ℹ️ 三条可迁移线索（写给飞控仿真课题）</div><p><strong>① 安全约束写进优化问题，而不是写在损失函数里</strong>：多机路径跟踪把横向反馈线性化写成四约束 QP（2610.00216）、STL 可行性判定退化成矩阵包含检查（2610.00208）——共同点是<strong>把「安全」从训练后的补救变成建模时的结构</strong>，你的 Simulink 模型完全可以先定义规格再定义控制器。<strong>② 「机体不动、传感器动」是被低估的动作维度</strong>：PTZ 相机把「变焦」做成 POMDP 动作（2610.01067），降低了对机体机动与传感器分辨率的依赖——仿真课题里给相机加可控参数，动作空间立刻多一个研究自由度。<strong>③ 混合仿真是 sim-to-real 的最短路径</strong>：解析模型 + 物理引擎耦合训练出零样本真机投掷（2606.27603），合成特征训练让着陆策略「换前端即用」（2605.23717）——「该解析的解析、该碰的碰、该合成的合成」这条分配原则，比「全用域随机化」聪明得多。</p></div>
-    <div class="highlight-box"><div class="highlight-title">💡 假期建议</div><p>假期第 3 天，建议做一次<strong>「文献→课题」的映射练习</strong>：拿 2610.00216 的 QP 形式化，把你的四旋翼跟踪控制器改写成约束优化（MATLAB quadprog 一晚可成）；拿 2606.27603 的耦合仿真架构，画出「Simulink 动力学 + Python RL + 力接口」的框图——两件事做完，节后开题报告的「技术路线」一节就有两张可以直接放进 PPT 的图。另外把 2610.00926 综述的三层分类法套在自己课题上自检一遍：数据层（仿真数据从哪来、值不值）、策略层（RL 对齐了什么目标）、平台层（训练管线能不能持续迭代），缺哪层补哪层。</p></div>
+    <div class="info-box"><div class="info-title">ℹ️ 三条可迁移线索（写给飞控仿真课题）</div><p><strong>① 「力/约束参考进代价」是软硬约束之间的黄金中间层</strong>：吊挂多机把张力参考并入局部规划代价（2610.01185）、竞速 RL 用自我博弈把交互安全写进训练课程（RPG Racing）、免训练扩散规划把四类物理代价分解为解析局部项（2610.01959）——三个不同领域给出了同一个答案：别让安全靠事后检查，把它做成代价结构。<strong>② 评测协议本身就是研究成果</strong>：倾斜旋翼 RL 论文的「六场景双基线」（2602.21583）值得整章精读，你的论文实验设计直接缺一个这样的标准场景矩阵——航点、扰动、变载荷、跟踪、风扰、极限构型，每个场景都能在 Simulink 里低成本复刻。<strong>③ 极限指标来自系统集成而非单点算法</strong>：DARPA 冠军的 4:1 = 极简设计 × 自研自驾栈；浙大倒飞穿门 = 自动课程 × 域随机化 × 端到端——「把全链路自己写一遍」在科研和求职两个语境下都是稀缺能力。</p></div>
+    <div class="highlight-box"><div class="highlight-title">💡 假期第 4 天建议</div><p>长假过半，建议今天做一次「仿真栈体检」：对照本期三条线索给自己的 MATLAB/Python 管线打分——代价函数里有没有安全项（不只是约束越界报错）？训练/调参有没有课程机制（还是固定难度一把梭）？实验矩阵是否可复现（换一台电脑能不能一键重跑）？三项里有短板的，假期后半段补哪项都来得及。另外，2610.01185 的导纳滤波器结构简单、真机意义明确，适合作为节后第一篇精读+复现对象。</p></div>
   </div>
 </div>
 
@@ -98,18 +105,16 @@
     <table class="summary-table">
       <thead><tr><th>来源标题</th><th>链接</th><th>时间</th></tr></thead>
       <tbody>
-        <tr><td>Decentralized Safe Path Following for Multiple Quadrotors on Intersecting Paths (arXiv:2610.00216)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.00216" target="_blank">📎 查看原文</a></td><td>2026-10-01</td></tr>
-        <tr><td>信号时序逻辑可行性几何判定程序（六维无人机运动学验证）(arXiv:2610.00208)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.00208" target="_blank">📎 查看原文</a></td><td>2026-10-01</td></tr>
-        <tr><td>Online Planning for Sparse Ground Target Search from a High-Altitude UAV (arXiv:2610.01067)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.01067" target="_blank">📎 查看原文</a></td><td>2026-10-01</td></tr>
-        <tr><td>Vision-Based Agile Landing on Turbulent Waters (arXiv:2605.23717, v3 2026-08-31)</td><td><a class="source-link" href="https://arxiv.org/abs/2605.23717" target="_blank">📎 查看原文</a></td><td>2026-05-22</td></tr>
-        <tr><td>Learning to Throw: Agile and Accurate Cable-Suspended Payload Delivery (arXiv:2606.27603)</td><td><a class="source-link" href="https://arxiv.org/abs/2606.27603" target="_blank">📎 查看原文</a></td><td>2026-06-25</td></tr>
-        <tr><td>Learning Agile Quadrotor Flight in the Real World (RSS 2026) · RPG 学习专题</td><td><a class="source-link" href="https://rpg.ifi.uzh.ch/research_learning.html" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
-        <tr><td>Continual Robot Policy Learning via Variational Neural Dynamics (arXiv:2606.27353)</td><td><a class="source-link" href="https://arxiv.org/abs/2606.27353" target="_blank">📎 查看原文</a></td><td>2026-06-25</td></tr>
-        <tr><td>A Survey on E2E-AD Training: Data, Strategy, and Platform (arXiv:2610.00926)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.00926" target="_blank">📎 查看原文</a></td><td>2026-10-01</td></tr>
-        <tr><td>Awesome-Training-Ecosystem-for-E2E-AD 文献仓库（GitHub）</td><td><a class="source-link" href="https://github.com/Jiaaqiliu/Awesome-Training-Ecosystem-for-E2E-AD" target="_blank">📎 查看原文</a></td><td>2026-10</td></tr>
-        <tr><td>AD-E2E-JEPA: A Joint-Embedding Predictive Architecture for E2E-AD (arXiv:2609.34085)</td><td><a class="source-link" href="https://arxiv.org/abs/2609.34085" target="_blank">📎 查看原文</a></td><td>2026-09-28</td></tr>
-        <tr><td>arXiv eess.SY 新提交列表（2610.00208/00216 检索来源）</td><td><a class="source-link" href="https://arxiv.org/list/eess/new" target="_blank">📎 查看原文</a></td><td>2026-10-01</td></tr>
-        <tr><td>Forward-Invariant Policy Classes for Safe RL in Multicopter Control（上期回顾，arXiv:2609.38655）</td><td><a class="source-link" href="https://arxiv.org/abs/2609.38655" target="_blank">📎 查看原文</a></td><td>2026-09-29</td></tr>
+        <tr><td>AFD-CAMLs: Agile Force-Distribution-Aware Planning and Control for Cable-Suspended Aerial Multi-Lifting Systems (arXiv:2610.01185)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.01185" target="_blank">📎 查看原文</a></td><td>2026-10-01</td></tr>
+        <tr><td>Superhuman Safe and Agile Racing through Multi-Agent RL（RPG 学习专题页）</td><td><a class="source-link" href="https://rpg.ifi.uzh.ch/research_learning.html" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
+        <tr><td>Training-Free Diffusion Planning with Analytical Local Scores (arXiv:2610.01959)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.01959" target="_blank">📎 查看原文</a></td><td>2026-10-01</td></tr>
+        <tr><td>Reactive Aerobatic Flight via Reinforcement Learning（浙江大学，arXiv:2505.24396）</td><td><a class="source-link" href="https://ar5iv.arxiv.org/html/2505.24396" target="_blank">📎 查看原文</a></td><td>2026</td></tr>
+        <tr><td>Learning End-to-End Control for Omnidirectional Aerial Motion on Overactuated Tilt-rotor Quadrotors (arXiv:2602.21583)</td><td><a class="source-link" href="https://arxiv.org/html/2602.21583v2" target="_blank">📎 查看原文</a></td><td>2026-09</td></tr>
+        <tr><td>DARPA Pushes Industry to Build Lighter Drones to Carry Heavy Loads（National Defense 10月刊）</td><td><a class="source-link" href="https://digital.nationaldefensemagazine.org/october-2026/page-24" target="_blank">📎 查看原文</a></td><td>2026-10</td></tr>
+        <tr><td>低空经济距离「飞得好」还有多远？（证券日报，大众网转载）</td><td><a class="source-link" href="http://news.gzylhyzx.com/detail.html?newsId=46199524" target="_blank">📎 查看原文</a></td><td>2026-10-02</td></tr>
+        <tr><td>Vigilant Aerospace tests onboard radar for FlightHorizon PILOT DAA（Unmanned Airspace 报道转载）</td><td><a class="source-link" href="http://vigilantaerospace.com/unmanned-airspace-vigilant-aerospace-radar-testing" target="_blank">📎 查看原文</a></td><td>2026-10-02</td></tr>
+        <tr><td>国庆逛科创集市：南昌低空经济与智能穿戴赛道（南昌发布）</td><td><a class="source-link" href="https://www.163.com/dy/article/L85M7D720514VRTP.html" target="_blank">📎 查看原文</a></td><td>2026-10-01</td></tr>
+        <tr><td>arXiv eess.SY / cs.RO 新提交列表（本期论文检索入口）</td><td><a class="source-link" href="https://arxiv.org/list/eess/new" target="_blank">📎 查看原文</a></td><td>2026-10</td></tr>
       </tbody>
     </table>
   </div>
