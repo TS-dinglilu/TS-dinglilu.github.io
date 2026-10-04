@@ -166,3 +166,11 @@
 - 外链：--fix 改 5 处 http；换源 3 处（wtu.91wllm 404 → employment.jx.smartedu.cn 302→200 验证；cqu.cqbys 连 WebFetch 都不通 → 删冗余链接留 niuqizp；job592 com26081439 不可验 → 同站 com4390 主页经搜索索引全文验证）。WebFetch 验真保留：牛客 ×4、intern.nio.com、rsj.hefei 521、jwc.ahut、yinhangzhaopin（本机 404 实为站点屏蔽）。
 - **publish_all 推送环节卡死 20 分钟（仅 1 次 FAIL 后无输出）→ TaskStop 杀掉后跑 logs/push_manual.py 一次成功**（09-25 的方案复发有效）。
 - 发布：提交 d9be3a6，远端 main（API）= 本地 HEAD；线上 34/34 页面 200；主页 34 卡全「10-04」；audit 0 错误 3 警告（09-28~30 既有欠账）。
+
+## 2026-10-05（05:18 接管轮）
+- **并发抢跑接管**：05:00 自动化另一会话已写 24/34 份正文后于 05:18 死掉（静默 20 分钟确认）。本会话监控 4 轮确认死亡后接管：24 份不动，补写缺失 10 份（shenzhen/jiangzhehu/shanghai/hangzhou/jiangsu-news、shanghai/hangzhou/jiangsu-recruit、traditional-auto、supply-chain-recruit，5 个并行子代理 model lite）+ 修复 6 份不合格（字数<12000 的 drone-research/ahut-campus/geely/xiaomi/weixiaoli/future-planning，3 个并行扩写代理）。strict_check 0 不合格。
+- geely-recruit 带 DIV 配平错误（h3 误写成 </div>），扩写代理已修。
+- 外链 13 条可疑：WebFetch/搜索验真保留 6（bastillepost /hongkong/ 路径本机 000 但搜索命中同 ID 原文，已换 /nls/ 路径；lmjx 405 反爬；yoneihan 复测 200；job.ahu/nwpu 412 WAF；nowcoder 站点屏蔽）；换源 6 处（cqu.cqbys→job.byd.com 官方门户、zccareer.zufe 整站 DNS 不通→牛企直聘蔚来区域公司专场、cqbys jobfair91→24365 智慧就业平台埃科动力公司页、wsyu.91wllm 404→吉大就业网奇瑞简章、quanzhi 404→牛小二+爱企查小米武汉普工时薪、qcgys 整站 000→asianev 比亚迪固态电池/删冗余链接）。
+- 发布：publish_all --push 凭据直连一次成功，提交 0c5856e；远端 main（API）= 本地 HEAD。
+- 验证：线上 34/34 页面 200；主页 34 卡「10-05」、日报总数 526+；audit 0 错误 3 警告（09-28~30 既有欠账）。
+- 新坑：①正文 <a> 与信息来源汇总表内 <a> 字符串完全相同，批量替换必须先换表格整行再换正文锚点（否则 count 断言撞 2）；②git bash heredoc 写含 emoji 的长 Python 脚本会 unexpected EOF，改用 Write 工具落盘。
