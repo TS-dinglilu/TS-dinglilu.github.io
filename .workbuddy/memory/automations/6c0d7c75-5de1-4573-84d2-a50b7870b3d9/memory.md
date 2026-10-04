@@ -158,3 +158,11 @@
 - strict_check 0 不合格。外链 306 条：297 有效；处置 14 条——换源 4 处（campus.nio.com ×2 → nio.cn/careers 200；91wllm 404 → campus.chinahr.com/pages/2027-boc/ 200；zbjy.nuc 连 WebFetch 都不通 → ncss.cn 国家大学生就业服务平台 200），job.njtu https→http ×2（302 落 http 200），job592 换同站搜索索引全文验证的 com4390 深链（整站对本机/WebFetch 均屏蔽，属站点级屏蔽）。保留验真 9 条：牛客 ×4（WebFetch 全部证实内容吻合）、gzw.hefei 521（WebFetch 证实为合肥水务 2026 招聘公告）、jy.scu 483（WAF）、525hr/sspnote 403（反爬，WebFetch 证实）。
 - **推送（本轮重点）**：publish_all 构建全绿但凭据直连/常规 push 各 3 次全败（git 连 github.com:443 全部 "Could not connect"，而 curl github.com 与 api.github.com 均 200——curl 通 git 不通的配置陷阱复发）；SSH 兜底因「tcp 探活成功」被自动跳过 → **手动 `python -c` 调 `ssh_fallback_push.ssh_fallback_push(force=True)` 强制走 SSH over 443，一次成功**，临时部署密钥自动注册+撤销。新 know-how：当 curl 通 443 而 git 不通时，publish_all 的探活判据会误跳过 SSH 兜底，需手动 force。
 - 验证：远端 main（API）= 本地 HEAD = `e59c374`（每日日报自动更新 2026-10-03）；首轮 34 页面 404 为 Pages 延迟，90 秒后复测 **34/34 全 200**；主页 34 卡全「10-03」、日报总数 **458+**（424→458，+34 吻合）；audit 最终 0 错误 3 警告（既有欠账）。
+
+## 2026-10-04（05:14 接管轮）
+- **本轮重点：并发抢跑接管**。05:00 自动化在另一会话已开跑，写了 27/34 份 10-04 正文后于 05:14 死掉（静默 19 分钟确认）。本会话按 09-17 抢救模式接管：27 份已写正文不动，只补写剩余 7 份（mechanical/geely/chery-insider/company-reputation/research-institute/jiangsu-recruit/nanjing-recruit，3 个并行子代理 model lite 一次成功）。
+- **接管判定标准（新 know-how）**：content/*.html mtime 静默 ≥19 分钟 + 无 push 日志 + 无新文件 = 判死接管；mtime 秒级推进 = 让路监控。
+- ahut-campus（对方写的）strict_check 11129 字低于 12000 下限 → 从官网要闻列表补三条真实动态（软科 9 学科上榜+ESI 新增、材控专业工程认证现场考查、马鞍山代市长调研）扩到合格。
+- 外链：--fix 改 5 处 http；换源 3 处（wtu.91wllm 404 → employment.jx.smartedu.cn 302→200 验证；cqu.cqbys 连 WebFetch 都不通 → 删冗余链接留 niuqizp；job592 com26081439 不可验 → 同站 com4390 主页经搜索索引全文验证）。WebFetch 验真保留：牛客 ×4、intern.nio.com、rsj.hefei 521、jwc.ahut、yinhangzhaopin（本机 404 实为站点屏蔽）。
+- **publish_all 推送环节卡死 20 分钟（仅 1 次 FAIL 后无输出）→ TaskStop 杀掉后跑 logs/push_manual.py 一次成功**（09-25 的方案复发有效）。
+- 发布：提交 d9be3a6，远端 main（API）= 本地 HEAD；线上 34/34 页面 200；主页 34 卡全「10-04」；audit 0 错误 3 警告（09-28~30 既有欠账）。
