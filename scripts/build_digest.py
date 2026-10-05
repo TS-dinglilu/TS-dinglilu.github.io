@@ -92,6 +92,20 @@ table.summary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 """
 
 
+def add_meta(html, fname, kind=""):
+    """补 meta description / og:url / canonical（audit_site 元信息检查要求）。"""
+    desc = {
+        "weekly":  "本周 34 类自动化日报的站级汇总：招聘、地区、口碑与科研动态一周回顾。",
+        "monthly": "本月 34 类自动化日报的站级汇总：招聘、地区、口碑与科研动态月度回顾。",
+        "yearly":  "本年 34 类自动化日报的站级汇总：全年招聘、地区、口碑与科研动态回顾。",
+    }.get(kind, "周记月记年记：34 类自动化日报的站级汇总归档。")
+    url = "https://ts-dinglilu.github.io/digest/"
+    meta = ('<meta name="description" content="%s">\n'
+            '<meta property="og:url" content="%s">\n'
+            '<link rel="canonical" href="%s">\n' % (desc, url, url))
+    return html.replace("<title>", meta + "<title>", 1)
+
+
 def strip_tags(s):
     return re.sub(r"<[^>]+>", "", s).strip()
 
@@ -322,7 +336,7 @@ def build_digest_index():
 </html>
 """ % dict(css=INDEX_CSS, n=len(files), listing=listing, giscus=GISCUS)
     with open(os.path.join(DIGEST_DIR, "index.html"), "w", encoding="utf-8", newline="\n") as f:
-        f.write(html)
+        f.write(add_meta(html, "index.html"))
     print("[OK] digest/index.html 已更新（%d 份汇总报告）" % len(files))
 
 
@@ -377,7 +391,7 @@ def main():
         print("[SKIP] 已存在: %s（--force 可覆盖）" % fname)
     else:
         with open(out_path, "w", encoding="utf-8", newline="\n") as f:
-            f.write(html)
+            f.write(add_meta(html, fname, args.type))
         print("[OK] 汇总报告已生成: digest/%s (%d bytes)" % (fname, len(html)))
         update_homepage_digest_card(fname)
 

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<script src="/guard.js" charset="utf-8"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚁</text></svg>">
+<title>无人机科研日报 - 2026年10月6日</title>
+<meta name="description" content="无人机科研日报：arXiv 无人机 / 自动驾驶论文速递，含飞行控制与仿真方向研究进展。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TS-dinglilu 自动化日报">
+<meta property="og:title" content="无人机科研日报 | 2026-10-06">
+<meta property="og:description" content="无人机科研日报：arXiv 无人机 / 自动驾驶论文速递，含飞行控制与仿真方向研究进展。">
+<meta property="og:url" content="https://ts-dinglilu.github.io/drone-research/">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="无人机科研日报 | 2026-10-06">
+<meta name="twitter:description" content="无人机科研日报：arXiv 无人机 / 自动驾驶论文速递，含飞行控制与仿真方向研究进展。">
+<link rel="canonical" href="https://ts-dinglilu.github.io/drone-research/">
+<link rel="stylesheet" href="/assets/report.css">
+<style>
+/* custom overrides (preserved by replace_css.py - only first style block is replaced) */
+.nav-toc { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px 24px; margin: 24px 0 32px; backdrop-filter: blur(8px); }
+.nav-toc .toc-title { font-size: 1rem; font-weight: 700; color: var(--accent-purple); margin-bottom: 10px; }
+.nav-toc ol { margin: 0; padding-left: 20px; }
+.nav-toc ol li { margin-bottom: 6px; }
+.nav-toc ol li a { color: var(--text-dim); font-size: 0.9rem; transition: color 0.3s var(--smooth); }
+.nav-toc ol li a:hover { color: var(--accent); }
+.table-wrap { overflow-x: auto; margin: 16px 0; border-radius: var(--radius-sm); }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.summary-table th { background: rgba(0, 212, 255, 0.08); color: var(--accent); padding: 12px 14px; text-align: left; font-weight: 600; border-bottom: 2px solid rgba(0, 212, 255, 0.2); white-space: nowrap; }
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dim); vertical-align: middle; }
+.summary-table tr:hover td { background: rgba(0, 212, 255, 0.03); }
+.summary-table td a { font-size: 0.82rem; }
+.scroll-top { position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px; border-radius: 50%; background: var(--card-solid); border: 1px solid var(--border-hover); color: var(--accent); font-size: 1.2rem; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.4s var(--bounce); z-index: 100; backdrop-filter: blur(8px); }
+.scroll-top.visible { opacity: 1; visibility: visible; }
+.scroll-top:hover { transform: translateY(-4px) scale(1.1); box-shadow: var(--shadow-glow-hover); }
+.badge { display: inline-block; padding: 2px 10px; font-size: 0.75rem; font-weight: 600; border-radius: 999px; margin: 0 4px 4px 0; letter-spacing: 0.02em; }
+.badge.new { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.footer { margin-top: 48px; padding: 28px 0; text-align: center; border-top: 1px solid var(--border); }
+.footer p { font-size: 0.85rem; color: var(--text-faint); margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<div class="report-header">
+  <h1>🚁 无人机科研日报</h1>
+  <p class="subtitle">arXiv无人机论文热点 · 自动驾驶前沿 · IEEE期刊动态 · 全网技术讨论</p>
+  <div class="date-badge">📅 2026-10-06 星期二</div>
+  <div class="meta">
+    <span>📂 arXiv cs.RO / cs.SY / cs.CV / cs.LG</span>
+    <span>🔄 每日自动更新</span>
+    <span>📡 覆盖7大方向</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <a href="https://ts-dinglilu.github.io/drone-research/" class="back-link">← 返回无人机科研日报汇总</a>
+  <a href="https://ts-dinglilu.github.io/" class="back-link" style="margin-left: 8px;">🏠 返回主页</a>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-06</h1>
+  <div class="subtitle">arXiv 预印本精选 · 四旋翼控制 / 强化学习 / 导航 / 集群 / eVTOL 低空经济 / 仿真工具链</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-06 星期二</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习</span>
+  </div>
+</div>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-06</h1>
+  <div class="subtitle">arXiv 预印本精选 · 四旋翼控制与制导 / 学习控制 / 感知避障 / 集群组网 / 低空经济 / 自动驾驶交叉</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-06 星期二</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习</span>
+  </div>
+</div>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-06</h1>
+  <div class="subtitle">arXiv 预印本精选 · 四旋翼控制与制导 / 学习控制 / 感知避障 / 集群组网 / 低空经济 / 自动驾驶交叉</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-06 星期二</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习</span>
+  </div>
+</div>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-06</h1>
+  <div class="subtitle">arXiv 预印本精选 · 四旋翼控制与安全 / 学习控制 / 感知定位 / 集群协同 / 低空经济与 eVTOL / 自动驾驶交叉</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-06 星期二</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士研二，四旋翼飞控仿真方向，徐州人，求职车企 / 机械 / 研究院</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块一 · 本期导览：六篇新论文一条主线——「扰动来了，系统怎么办」</div>
+  <div class="stats-grid">
+    <div class="stat-box"><div class="count-badge">6</div><div class="label">本期精选条目</div></div>
+    <div class="stat-box"><div class="count-badge">2</div><div class="label">10月2日新挂网论文</div></div>
+    <div class="stat-box"><div class="count-badge">9/10</div><div class="label">DR-IPC扰动下任务完成率</div></div>
+    <div class="stat-box"><div class="count-badge">0.83W</div><div class="label">HexVIO全天候追踪功耗</div></div>
+  </div>
+  <div class="highlight-box">
+    <div class="highlight-title">💡 本期视角</div>
+    <p>本期为 <strong>2026 年 10 月 6 日（周二）</strong>无人机科研日报，共 <strong>7 个板块、10 条</strong>内容，全部为上期未覆盖的新条目。把六篇论文放在一起看，主线比上期更收敛：<strong>「扰动来了，系统怎么办」</strong>。DR-IPC（2610.03530）把扰动观测器直接写进 NMPC 预测模型，扰动下任务完成率从 1/10 拉到 9/10；NST-RL（IEEE RA-L 10月刊）用残差 RL 补偿风与负载扰动；Lightweight Safe RL（2607.01794）把「安全」本身当成一等约束处理；EIDA（2610.01219）则指出 sim-to-real 失配的本质也是一种「执行层扰动」。与上期「状态表征」主线衔接后的完整拼图是：<strong>表征解决「看得见」，扰动处理解决「扛得住」，两者合起来才构成可部署的飞控栈</strong>。你课题里的下一步动作很明确——观测向量里加状态（上期动作）之外，训练闭环里加一个显式的扰动估计或安全约束模块。</p>
+  </div>
+  <div class="info-box"><div class="info-title">ℹ️ 阅读说明</div><p>每条给出论文标题、arXiv 编号与提交时间，链接直达摘要页；本期所有 arXiv 编号均已逐条核验可访问。上期已详读的 2610.00209、2610.01569、2610.01067、2609.37316 等不再重复，可在往期存档查阅。</p></div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块二 · 规划控制一体化：EKF + 非线性扰动观测器写进 NMPC，扰动下任务完成率 1/10 → 9/10</div>
+  <div class="card">
+    <h3>① DR-IPC：不做轨迹优化器，让控制器自己「边飞边算」</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">规划控制一体化</span><span class="badge hot">🔥 10/2提交</span><span>arXiv:2610.03530 · cs.RO</span></div>
+      <p>Peng Liu、Jingyan Wang 等（10 月 2 日提交）的 <strong>DR-IPC: Disturbance-Resilient Integrated Planning and Control for LiDAR-Based Quadrotor Navigation</strong>，处理的是密集环境激光雷达导航的分层顽疾：<strong>避障运动生成与抗扰控制分属两层，扰动一来各层各自为战</strong>。论文的方案是取消独立的轨迹优化阶段：轻量路径引导直接喂给 NMPC，由 NMPC 一步生成角速度与推力；预测模型里统一了非线性四旋翼动力学、执行器约束、局部运动生成与带惩罚的安全飞行走廊残差。抗扰的关键是一个<strong>互联结构的 EKF + 非线性扰动观测器（NDO）</strong>，同时给出滤波状态估计与重构扰动量，供 NMPC 预测时直接补偿。验证栈非常完整：Gazebo 与 MARSIM 双仿真、室内外真机，扰动类型覆盖<strong>风扰、吊挂负载、窄缝、球撞击与动态障碍物主动规避</strong>。量化结果有两组值得记进素材库：<strong>扰动下多目标导航任务完成数从 1/10 提升到 9/10（Gazebo），真机高度 RMSE 从 0.34 m 降到 0.01 m</strong>；整个系统<strong>机载 100 Hz</strong> 运行，源码承诺开源。<strong>对你课题的映射：如果你在做 Simulink/Python 仿真里的 NMPC 或 RL 控制器，把「扰动观测器输出」作为控制器的一个额外输入通道，是比加大网络更便宜的鲁棒性来源——这正是上期「状态表征」主线在扰动场景下的自然延伸</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.03530" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块三 · 安全与残差：把「不出事」写成硬约束，把「补扰动」交给残差学习</div>
+  <div class="card">
+    <h3>① Lightweight Safe RL for End-to-End UAV Navigation：稀疏激光雷达 + 拉格朗日安全 PPO</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">安全RL</span><span class="badge-info">🧪 轻量部署</span><span>arXiv:2607.01794 · cs.RO</span></div>
+      <p>Shenghui Zhang、YuXuan Gao 等（山东大学团队）的 <strong>Lightweight Safe Reinforcement Learning for End-to-End UAV Navigation</strong>，三个痛点对得很准：稠密感知与大网络撑不起机载算力；稀疏 LiDAR 观测不显式标记高风险区域，训练不稳；多数 RL 框架只靠 reward shaping 隐式处理安全。框架四件套：<strong>非对称卷积 + 深度可分离卷积（DSConv）的轻量感知网络</strong>，把 1×36×4 的稀疏 LiDAR 张量编码为 128 维嵌入；任务建成<strong>约束马尔可夫决策过程（CMDP）</strong>，用带安全价值网络（Cost Critic）的<strong>拉格朗日 Safe PPO</strong> 动态平衡任务回报与安全代价；动作空间用 <strong>Beta 分布</strong>替代高斯分布，避免物理边界截断造成的动作畸变；跨障碍物密度迁移时<strong>冻结感知编码器、正交重置策略输出层</strong>的课程学习设计，既保留几何表征又避免策略陷入次优。在 NVIDIA Isaac Sim + OmniDrones 的 40m×40m 森林环境里，100/200/300 个障碍物三档密度下对比基线 RL，成功率、安全性与效率全面占优。<strong>两条可直接抄的设计：一是「近邻增强」的 LiDAR 表征——把原始距离转成邻近度权重，放大近处高危障碍信号；二是 CMDP + 拉格朗日的安全形式化，比你调惩罚系数稳定得多，课程迁移的「冻结编码器」技巧也适用于你更换任务密度时的训练流程</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2607.01794" target="_blank">📎 查看原文</a>
+    </div>
+    <h3 class="mt-4">② NST-RL（IEEE RA-L 2026年10月刊）：残差 RL 与近似最优调节器的「分工协议」</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-teal">残差RL</span><span class="badge high">💎 期刊论文</span><span>KAIST · RA-L vol.11 no.10</span></div>
+      <p>KAIST 的 Pertin Guining、Chang Dong Eui 在 <strong>IEEE Robotics and Automation Letters 2026 年 10 月刊（vol.11, no.10, pp.12200-12207）</strong>发表的 <strong>NST-RL: Residual Reinforcement Learning With Approximate Optimal Regulation for Robust Drone Control</strong>，给「残差 RL」这一家子补了一块理论拼图：名义控制器来自非线性系统工具箱计算的<strong>近似最优调节器</strong>，RL 只学残差修正；三条约束设计得非常工程化——残差经由<strong>动态扩展路由</strong>以保持控制输入为正、<strong>衰减高频残差分量</strong>、并保证名义调节器在有界残差下<strong>局部输入-状态稳定（ISS）</strong>。训练侧的亮点是 <strong>BalancedBuffer</strong>：用调节器的最优代价把 off-policy 采样集中到「高难度状态」上，避免成熟控制器留下大量低价值数据稀释训练。Crazyflie 2.1 真机轨迹跟踪实验在风扰与负载扰动下对比几何控制、自适应控制与先前残差 RL 基线，<strong>跟踪鲁棒性与控制平滑度均有提升</strong>。<strong>方法论价值：残差 RL 的最大风险是「学生踩老师」，这篇的动态扩展 + 高频衰减 + ISS 保证是一套可引用的防踩踏模板——如果你的课题要在现有控制器上叠加学习模块，架构设计直接参考它</strong>。</p>
+      <a class="source-link" href="https://koasas.kaist.ac.kr/handle/10203/346910" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块四 · 感知与追踪：DSP 上跑 VIO 的功耗账本，与跨具身全景分割新基准</div>
+  <div class="card">
+    <h3>① HexVIO：把视觉前端塞进手机 DSP，0.83 W 跑一天 30 fps 立体惯性追踪</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">视觉惯性里程计</span><span class="badge new">🆕 10/2提交</span><span>arXiv:2610.03283 · cs.RO</span></div>
+      <p>TUM 的 Patrick Wolf、Mateo de Mayo、Daniel Cremers 10 月 2 日提交的 <strong>HexVIO: Towards All-Day Stereo-Inertial Tracking Through Commodity DSPs</strong>，瞄准 VIO 的功耗痛点：机器人、可穿戴、XR 设备与无人机都需要全天候定位，但 VIO 前端特征提取在 CPU 上跑既热又费电。论文的思路是把<strong>立体惯性里程计的视觉前端卸载到 Hexagon DSP</strong>——现代智能手机与 XR 设备普遍搭载的商用协处理器——后端仍留在主 CPU。针对 DSP 架构的实现优化带来<strong>功耗降低 67% 或吞吐提升 86%</strong>：在测试手机上以 <strong>0.83 W 维持长期实时 30 fps 追踪，折合约 18 小时续航</strong>。对无人机读者的直接启发是算力预算表的新行项：<strong>当感知前端可以下沉到低功耗协处理器，飞控主芯片就能腾出预算给规划、RL 策略与安全监控——「哪些计算放在哪颗芯片上」正在成为机载系统设计的核心问题，也值得你在仿真系统架构章节里专门讨论一节</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.03283" target="_blank">📎 查看原文</a>
+    </div>
+    <h3 class="mt-4">② EmbPASS：车辆、无人机、可穿戴、四足同台竞技的全景分割基准</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-red">感知基准</span><span class="badge new">🆕 10/2提交</span><span>arXiv:2610.03248 · cs.CV</span></div>
+      <p>Pujun Guo、Yuanfan Zheng 等（湖南大学、Kailun Yang 团队）10 月 2 日提交的 <strong>EmbPASS: Towards Cross-Embodiment Open Panoramic Segmentation</strong>，提出一个此前系统性研究不足的新任务：<strong>跨具身开放全景分割</strong>——不同具身平台（车辆、无人机、可穿戴、四足机器人）的观测视角与空间布局差异巨大，在一个平台训练的感知模型换平台就失效。论文建立 <strong>EmbPASS 基准</strong>，在统一语义分类下覆盖四大平台的全景语义分割，并提出 <strong>EPONet</strong>：融合关系感知度量适配器（RAMA）与内容自适应语义迁移（CAST）的开放词表全景分割网络，在 EmbPASS 上取得 <strong>35.82% 的平台均衡 mIoU</strong>，超出最强基线 1.10%，源码与基准承诺公开。<strong>对做无人机感知的读者的提醒：你的检测/分割模型大概率只在一种平台数据上验证过，「视角偏移」是被低估的泛化杀手；这篇论文的问题定义与评测协议可以直接搬来设计你论文的跨平台实验</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.03248" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块五 · 导航前沿：气动势流理论做避障场，与 sim-to-real 的「执行接口」适配</div>
+  <div class="card">
+    <h3>① LiDARFlow：从空气动力学借来的避障场，机载实时全避障</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-teal">避障导航</span><span class="badge new">🆕 10/1提交</span><span>arXiv:2610.01573 · cs.RO</span></div>
+      <p>ENAC-LAB 的 João Machado、Zeynep Bilgin、Matthieu Verdoucq、Murat Bronz 10 月 1 日提交的 <strong>LiDARFlow: Real-Time Panel-Based MAV Guidance in Unknown Environments</strong>，方法出身很有意思：<strong>面元法（panel formulation）源自空气动力学势流理论</strong>——把局部感知到的障碍物当作「源」，生成平滑无碰的引导向量场，再与名义引导向量场积分得到最终控制输入。创新点在于扩展到未知环境：机载 LiDAR 在线构建并更新障碍表征，无需先验地图。室内飞行实验验证航点导航与定向引导两个场景，<strong>全程仅用机载感知实时避开所有障碍</strong>；作者坦承点云处理是当前主要工程瓶颈，但整体计算足够轻量适合机载部署。<strong>值得借鉴的思路：物理场方法（势场、流场）与学习方法并非对立——它的「平滑性」正好补学习策略输出抖动的短板，你可以在仿真里把这类解析引导场作为 RL 策略的先验或安全滤波器，做一条「解析场 + 学习修正」的对比实验线</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.01573" target="_blank">📎 查看原文</a>
+    </div>
+    <h3 class="mt-4">② EIDA：velocity 命令发出去之后真的执行成什么样？让仿真先学会「听指挥」</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">Sim-to-Real</span><span class="badge new">🆕 10/1提交</span><span>arXiv:2610.01219 · cs.RO</span></div>
+      <p>Yiwei Qian、Shanze Wang 等 10 月 1 日提交的 <strong>EIDA: Execution-Interface Dynamics Adaptation for Real-to-Sim-to-Real Robot Navigation</strong>，抓住 sim-to-real 的一个被忽视的缝隙：<strong>速度指令与实际运动/反馈之间的失配</strong>——训练时仿真假设「发 0.5 m/s 就走 0.5 m/s」，真机上轮子打滑、底盘延迟让反馈完全不同。EIDA 的处理分三步：用目标平台的执行数据<strong>拟合机体系位姿增量模型</strong>（更新仿真器几何响应）与<strong>速度反馈预测模型</strong>（预测策略实际看到的反馈）；把一小段速度反馈历史加进策略输入；全部放进轻量 GPU 并行仿真器训练。结果：Jackal 与 Go2 全验证集上位置与偏航预测误差显著下降；100 个导航环境评测中成功率与导航分数均居对比策略之首；<strong>真机 Unitree Go2 的 20 个静态场景试验全部无碰撞到点，基线只有 4/20</strong>。<strong>迁移点：这个「适配执行接口而不是重建执行器动力学」的思想完全适用于旋翼机——你的仿真里油门指令到真实推力的响应曲线、姿态环的延迟，都可以用少量真机数据拟合修正，比全系统辨识便宜得多</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.01219" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块六 · 方法论小结：本周三条可迁移线索与精读建议</div>
+  <div class="card">
+    <div class="highlight-box">
+      <div class="highlight-title">💡 本期方法论小结（写给飞控仿真课题的三条可迁移线索）</div>
+      <p><strong>① 扰动要显式建模，不要指望网络「自己扛」</strong>：DR-IPC 的 NDO 进 NMPC、NST-RL 的残差路由进调节器，两篇殊途同归——扰动是结构化信息，提出来显式补偿，比堆网络深度或拉大域随机化区间都划算。本周动作：在你的仿真里加一个一阶低通滤波的「扰动观测器」占位模块，即使先喂理想值，架构先立起来。<strong>② 安全约束要形式化，不要只调惩罚系数</strong>：2607.01794 的 CMDP + 拉格朗日 + Cost Critic 三件套是当前最稳的安全 RL 起手式，代码在 Clean RL 生态里能找到近亲实现。<strong>③ 部署预算要「按瓦特算」</strong>：HexVIO 证明感知可以下沉到协处理器，EIDA 证明适配接口比重建模型便宜——机载系统的设计自由度在芯片与数据两侧同时扩展，你论文的 deployment 章节可以从「能跑」升级为「多大算力、多少瓦、多少校准数据」的量化表述，审稿人会很买账。</p>
+    </div>
+    <div class="tip-box mt-3">
+      <div class="tip-title">✅ 本周精读建议</div>
+      <p>本周建议<strong>精读 2610.03530（DR-IPC）</strong>：它是「规划控制一体化 + 扰动观测」两条线的交汇点，11 页正文 16 图 7 表的结构完整，NMPC 公式推导与你的控制课程衔接顺畅，且承诺开源——先 clone 代码跑通 Gazebo 场景，再决定是否把它的 NDO 模块移植进你的仿真框架。次选 2607.01794，如果你更想做安全 RL 方向，它的 Isaac Sim 环境搭建经验比公式更值钱。节后第一周的工作目标建议定成一条可验证的实验结论：「我加了 X，指标 Y 提升了 Z%」——不管是 X=NDO 通道、X=安全约束还是 X=执行接口适配。</p>
+    </div>
+    <div class="info-box mt-3"><div class="info-title">ℹ️ 检索节奏提醒</div><p>10 月 2 日挂网的一批 cs.RO 论文本期已消化大半（DR-IPC、HexVIO、EmbPASS、XGenAct 等），美国时间 10 月 5 日起的新批次预计本周四、周五挂出，重点关注三条线索：一是 DR-IPC 团队的开源代码是否如期释出；二是 CoRL 2026 收录论文（如 2610.03476 对抗防御、2610.03132 奖励劫持分析）中与飞行控制相关的内容；三是 eess.SY 上是否出现新的安全滤波与 CBM 工作跟踪 2610.00209 的引用链。</p></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块七 · 视野外扩：大疆 EV50 珠峰试飞信号与安徽低空场景三年行动方案</div>
+  <div class="card">
+    <h3>① 产业信号：DJI EV50 载货 eVTOL 珠峰飞行，中美低空路线图继续分叉</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">低空产业</span><span class="badge hot">🔥 10月动态</span><span>DroneXL · 2026-10</span></div>
+      <p>行业媒体 DroneXL 十月的 eVTOL 月度综述给出三个值得记录的坐标：<strong>其一，大疆 EV50 载货 eVTOL 以 29072 英尺（约 8860 米）的珠峰飞行首秀</strong>——消费无人机巨头直接切入重载货运 eVTOL 赛道，信号是「无人机巨头先规模化，再向上延伸」，与传统航空公司的「先取证后放量」路线形成对照；其二，美国 FAA 在俄克拉荷马城动工 <strong>830 万美元的 V-PAR 垂直起降试验场</strong>，用于研究「已在别处飞行」的电动与混动垂直起降航空器，基础设施先行、飞行器在后的格局仍在延续；其三，奥兰多机场批准 eVTOL 起降点等待 FAA 批准，而大众集团退出中国空中出租车竞争，侧面印证中国市场的认证与运营速度。<strong>对科研选题的启示：货运 eVTOL 的载荷-航程-能耗权衡、高海拔稀薄大气下的旋翼效率，都是工业界真金白银在推的问题，做仿真课题时把「高海拔」与「重载」写进工况矩阵，选题的现实锚点立刻扎实</strong>。</p>
+      <a class="source-link" href="https://dronexl.co/drone-technology/evtol/" target="_blank">📎 查看原文</a>
+    </div>
+    <h3 class="mt-4">② 政策观察：《安徽省「低空+」应用场景拓展工程行动方案（2026—2028年）》印发</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">低空政策</span><span class="badge-info">📋 省级方案</span><span>央广网 · 2026-10</span></div>
+      <p>央广网近期报道，安徽省政府办公厅印发<strong>《安徽省「低空」应用场景拓展工程行动方案（2026—2028年）》</strong>，与上期报道的《浙江省民用航空条例》构成「立法保障 + 场景工程」的两种省级推进路径对照。安徽方案的量化目标有三：到 <strong>2028 年全省年度低空飞行时长达 500 万小时</strong>；集聚<strong>低空运营类企业超 300 家</strong>；累计建成<strong>低空应用示范场景 100 个</strong>，覆盖生产作业、低空运输、公共治理、低空消费四大方向。市场侧的落地样本是中创翱翔在淮南市落地的云波波飞行乐园——安徽省内首个集飞行体验、飞行培训、航空赛事、航空科普于一体的低空文旅复合业态，已进入运营验证阶段。<strong>背景信息同样关键：低空经济已纳入国家「十五五」规划整体布局，新修订的《民用航空法》7 月 1 日施行、民航局低空安全司同步挂牌</strong>。对科研读者的读法：飞行时长 500 万小时是运营规模指标，背后是空域管理、调度算法、安全监管技术的真实需求——你论文里若涉及多机调度或空域约束优化，引用这类省级量化目标能让动机段更硬。</p>
+      <a class="source-link" href="https://apicnrapp.cnr.cn/html/share.html?id=30830133" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">📚 信息来源汇总</div>
+  <div class="table-wrap">
+    <table class="summary-table">
+      <thead><tr><th>来源标题</th><th>链接</th><th>时间</th></tr></thead>
+      <tbody>
+        <tr><td>DR-IPC: Disturbance-Resilient Integrated Planning and Control for LiDAR-Based Quadrotor Navigation (arXiv:2610.03530)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.03530" target="_blank">📎 查看原文</a></td><td>2026-10-02</td></tr>
+        <tr><td>Lightweight Safe Reinforcement Learning for End-to-End UAV Navigation (arXiv:2607.01794)</td><td><a class="source-link" href="https://arxiv.org/abs/2607.01794" target="_blank">📎 查看原文</a></td><td>2026-07-02</td></tr>
+        <tr><td>NST-RL: Residual Reinforcement Learning With Approximate Optimal Regulation for Robust Drone Control (IEEE RA-L, KAIST)</td><td><a class="source-link" href="https://koasas.kaist.ac.kr/handle/10203/346910" target="_blank">📎 查看原文</a></td><td>2026-10</td></tr>
+        <tr><td>HexVIO: Towards All-Day Stereo-Inertial Tracking Through Commodity DSPs (arXiv:2610.03283)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.03283" target="_blank">📎 查看原文</a></td><td>2026-10-02</td></tr>
+        <tr><td>EmbPASS: Towards Cross-Embodiment Open Panoramic Segmentation (arXiv:2610.03248)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.03248" target="_blank">📎 查看原文</a></td><td>2026-10-02</td></tr>
+        <tr><td>LiDARFlow: Real-Time Panel-Based MAV Guidance in Unknown Environments (arXiv:2610.01573)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.01573" target="_blank">📎 查看原文</a></td><td>2026-10-01</td></tr>
+        <tr><td>EIDA: Execution-Interface Dynamics Adaptation for Real-to-Sim-to-Real Robot Navigation (arXiv:2610.01219)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.01219" target="_blank">📎 查看原文</a></td><td>2026-10-01</td></tr>
+        <tr><td>eVTOL: Air Taxis, Delivery Craft and Who Is Actually Flying (October 2026)（DroneXL）</td><td><a class="source-link" href="https://dronexl.co/drone-technology/evtol/" target="_blank">📎 查看原文</a></td><td>2026-10</td></tr>
+        <tr><td>高质量发展看中国丨御风向云端 低空经济打开文旅新视界（央广网）</td><td><a class="source-link" href="https://apicnrapp.cnr.cn/html/share.html?id=30830133" target="_blank">📎 查看原文</a></td><td>2026-10</td></tr>
+        <tr><td>arXiv cs.RO 最新提交列表（本期论文检索入口）</td><td><a class="source-link" href="https://arxiv.org/list/cs.RO/recent" target="_blank">📎 查看原文</a></td><td>2026-10</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+</div>
+
+<div class="comments-section">
+  <div class="comments-title">💬 评论区</div>
+  <div class="comments-desc">登录 GitHub 账号即可评论，支持 Markdown 和表情回应。欢迎交流求职经验、分享面试心得！</div>
+  <div class="giscus"></div>
+</div>
+
+<footer class="footer">
+  <p>无人机科研日报 | 安徽工业大学机械工程硕士研究生个性化推荐报告</p>
+  <p>报告日期：2026年10月6日 | 数据来源：公开网络信息整理</p>
+  <div class="footer-meta">Generated by WorkBuddy Automation | Powered by TS-dinglilu.github.io</div>
+</footer>
+
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button>
+
+<script>
+// Scroll-to-top button visibility
+window.addEventListener('scroll', function() {
+  var btn = document.querySelector('.scroll-top');
+  if (btn) {
+    if (window.scrollY > 400) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+  }
+});
+
+// Giscus configuration
+var giscusScript = document.createElement('script');
+giscusScript.src = 'https://giscus.app/client.js';
+giscusScript.setAttribute('data-repo', 'TS-dinglilu/TS-dinglilu.github.io');
+giscusScript.setAttribute('data-repo-id', 'R_kgDOTjqaJQ');
+giscusScript.setAttribute('data-category', 'General');
+giscusScript.setAttribute('data-category-id', 'DIC_kwDOTjqaJc4DCIL2');
+giscusScript.setAttribute('data-mapping', 'pathname');
+giscusScript.setAttribute('data-strict', '0');
+giscusScript.setAttribute('data-reactions-enabled', '1');
+giscusScript.setAttribute('data-emit-metadata', '0');
+giscusScript.setAttribute('data-input-position', 'top');
+giscusScript.setAttribute('data-theme', 'dark_dimmed');
+giscusScript.setAttribute('data-lang', 'zh-CN');
+giscusScript.setAttribute('data-loading', 'lazy');
+giscusScript.crossOrigin = 'anonymous';
+giscusScript.async = true;
+var giscusBox = document.querySelector('.giscus');
+if (giscusBox) { giscusBox.appendChild(giscusScript); }
+</script>
+
+</body>
+</html>
