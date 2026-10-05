@@ -174,3 +174,11 @@
 - 发布：publish_all --push 凭据直连一次成功，提交 0c5856e；远端 main（API）= 本地 HEAD。
 - 验证：线上 34/34 页面 200；主页 34 卡「10-05」、日报总数 526+；audit 0 错误 3 警告（09-28~30 既有欠账）。
 - 新坑：①正文 <a> 与信息来源汇总表内 <a> 字符串完全相同，批量替换必须先换表格整行再换正文锚点（否则 count 断言撞 2）；②git bash heredoc 写含 emoji 的长 Python 脚本会 unexpected EOF，改用 Write 工具落盘。
+
+## 2026-10-06（05:18 接管轮）
+- **并发抢跑接管（连续第三天同模式）**：05:00 自动化另一会话已写 18/34 份正文（05:09~05:17 三批）后死掉。本会话监控 3 轮（5+9 分钟）至静默 19 分半确认死亡后接管：18 份不动，7 个并行子代理（model lite）补写 16 份，一次成功、零 429、零重派；逐个核对 mtime/字符数后 strict_check 复跑。
+- **接管轮首见「抢跑正文超标」**：car-recruit（对方写的）23008 字超 20000 上限 → 按压缩优先级删板块六①③（与 shenzhen-news/chery/byd 重复）+ 板块一导读 news-item + 汇总表对应行，23008→19790，用 Python 删块脚本一次到位（断言 div 配平 + URL 全清除）。
+- 外链 456 条：442 有效；--fix 改 9 份 http；换源 2 处（jsszrcw 深链 → jrzp.com 同活动 ID 200；cqbys 全族不通 → 通渭县政府网同口径招聘简章 200，正文表述同步改）；WebFetch/搜索验真保留：itdcw（搜索命中同 URL 原文=站点级屏蔽）、eet-china ×2（000 但 WebFetch 全文命中）、xzsnrc（WebFetch 命中徐州人才网招聘会列表页）、pcauto 503（Too many requests 限流）、nowcoder ×4 / nwpu 412 / hefei.gov 521（既有判据）。
+- **顺手修 digest 元信息 6 ERROR（昨日周记自动化遗留）**：build_digest.py 模板缺 meta description/og:url/canonical → 注入 add_meta() 后处理（注意 audit 对 digest 页期望目录 URL「…/digest/」而非文件 URL；heredoc 传 \\n 转义匹配失败过一次，改用 Edit 工具）；--force 重建 W40 + index 后 audit 0 错误。
+- 发布：publish_all --push 凭据直连一次成功，提交 e9b42e1；远端 main（API）= 本地 HEAD。
+- 验证：线上 34/34 页面 200（本轮无一例 Pages 延迟）；主页 34 卡全「10-06」、日报总数 560+（526→560，+34 吻合）；audit 最终 0 错误 3 警告（09-28~30 既有欠账）。
