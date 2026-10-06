@@ -1,115 +1,140 @@
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-07</h1>
+  <div class="subtitle">arXiv 预印本精选 · 四旋翼安全控制 / 学习与自适应 / 集群与世界模型 / 自动驾驶交叉 / 低空产业</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-07 星期三</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习，求职车企 / 机械 / 研究院</span>
+  </div>
+</div>
+
 <div class="section">
-  <div class="section-title">板块一 · 本期导览：六篇新论文一条主线——「扰动来了，系统怎么办」</div>
+  <div class="section-title">板块一 · 本期导览：10 月 5—6 日新批次开闸，主线是「安全的几何化与控制的系统性」</div>
   <div class="stats-grid">
-    <div class="stat-box"><div class="count-badge">6</div><div class="label">本期精选条目</div></div>
-    <div class="stat-box"><div class="count-badge">2</div><div class="label">10月2日新挂网论文</div></div>
-    <div class="stat-box"><div class="count-badge">9/10</div><div class="label">DR-IPC扰动下任务完成率</div></div>
-    <div class="stat-box"><div class="count-badge">0.83W</div><div class="label">HexVIO全天候追踪功耗</div></div>
+    <div class="stat-box"><div class="count-badge">8</div><div class="label">本期精选论文</div></div>
+    <div class="stat-box"><div class="count-badge">10.8</div><div class="label">美国 Part 108 审查窗口截止</div></div>
+    <div class="stat-box"><div class="count-badge">100万单</div><div class="label">美团无人机累计配送</div></div>
+    <div class="stat-box"><div class="count-badge">85.3%</div><div class="label">ReDiffNet 低光检测 mAP50</div></div>
   </div>
   <div class="highlight-box">
     <div class="highlight-title">💡 本期视角</div>
-    <p>本期为 <strong>2026 年 10 月 6 日（周二）</strong>无人机科研日报，共 <strong>7 个板块、10 条</strong>内容，全部为上期未覆盖的新条目。把六篇论文放在一起看，主线比上期更收敛：<strong>「扰动来了，系统怎么办」</strong>。DR-IPC（2610.03530）把扰动观测器直接写进 NMPC 预测模型，扰动下任务完成率从 1/10 拉到 9/10；NST-RL（IEEE RA-L 10月刊）用残差 RL 补偿风与负载扰动；Lightweight Safe RL（2607.01794）把「安全」本身当成一等约束处理；EIDA（2610.01219）则指出 sim-to-real 失配的本质也是一种「执行层扰动」。与上期「状态表征」主线衔接后的完整拼图是：<strong>表征解决「看得见」，扰动处理解决「扛得住」，两者合起来才构成可部署的飞控栈</strong>。你课题里的下一步动作很明确——观测向量里加状态（上期动作）之外，训练闭环里加一个显式的扰动估计或安全约束模块。</p>
+    <p>本期为 <strong>2026 年 10 月 7 日（周三）</strong>无人机科研日报，共 <strong>7 个板块、13 条</strong>内容，全部为上期未覆盖的新条目。美国时间 10 月 5—6 日的新一批 cs.RO 论文如期挂出，主线是<strong>「安全的几何化与控制的系统性」</strong>：Mirtaba 与 Cohen（2610.06629）用降姿态表示在单位球几何上做向量场跟踪，并把控制障碍函数（CBF）编码进期望向量场；Tariq 与 Akhtar（2610.00216）把横向反馈线性化重写成约束二次规划，给多旋翼交叉路径跟随装上理论保证；剑桥 GAMBIT（2610.06290）把集群规划推到上千台机器人规模。<strong>与上期「扰动来了，系统怎么办」主线衔接：上期解决「扛得住」，本期解决「不出事」——安全不再靠事后滤波器兜底，而是被写进动力学几何与优化问题的结构本身</strong>。你课题里的对应动作：把 CBF 或解析引导场作为学习策略的安全滤波层，是比加大网络更便宜的鲁棒性来源。</p>
   </div>
-  <div class="info-box"><div class="info-title">ℹ️ 阅读说明</div><p>每条给出论文标题、arXiv 编号与提交时间，链接直达摘要页；本期所有 arXiv 编号均已逐条核验可访问。上期已详读的 2610.00209、2610.01569、2610.01067、2609.37316 等不再重复，可在往期存档查阅。</p></div>
+  <div class="info-box"><div class="info-title">ℹ️ 阅读说明</div><p>每条给出论文标题、arXiv 编号与提交时间，链接直达摘要页；所有编号均来自真实检索结果。上期已详读的 2610.03530（DR-IPC）、2607.01794、2610.03283、2610.01573、2610.01219 等不再重复，可在往期存档查阅。</p></div>
 </div>
 
 <div class="section">
-  <div class="section-title">板块二 · 规划控制一体化：EKF + 非线性扰动观测器写进 NMPC，扰动下任务完成率 1/10 → 9/10</div>
+  <div class="section-title">板块二 · 四旋翼安全控制：向量场跟踪的几何化，与交叉路径跟随的约束 QP 化</div>
   <div class="card">
-    <h3>① DR-IPC：不做轨迹优化器，让控制器自己「边飞边算」</h3>
+    <h3>① Vector Field Following via Reduced Attitude：CBF 安全写进单位球几何（10 月 5 日新挂网）</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-accent">规划控制一体化</span><span class="badge hot">🔥 10/2提交</span><span>arXiv:2610.03530 · cs.RO</span></div>
-      <p>Peng Liu、Jingyan Wang 等（10 月 2 日提交）的 <strong>DR-IPC: Disturbance-Resilient Integrated Planning and Control for LiDAR-Based Quadrotor Navigation</strong>，处理的是密集环境激光雷达导航的分层顽疾：<strong>避障运动生成与抗扰控制分属两层，扰动一来各层各自为战</strong>。论文的方案是取消独立的轨迹优化阶段：轻量路径引导直接喂给 NMPC，由 NMPC 一步生成角速度与推力；预测模型里统一了非线性四旋翼动力学、执行器约束、局部运动生成与带惩罚的安全飞行走廊残差。抗扰的关键是一个<strong>互联结构的 EKF + 非线性扰动观测器（NDO）</strong>，同时给出滤波状态估计与重构扰动量，供 NMPC 预测时直接补偿。验证栈非常完整：Gazebo 与 MARSIM 双仿真、室内外真机，扰动类型覆盖<strong>风扰、吊挂负载、窄缝、球撞击与动态障碍物主动规避</strong>。量化结果有两组值得记进素材库：<strong>扰动下多目标导航任务完成数从 1/10 提升到 9/10（Gazebo），真机高度 RMSE 从 0.34 m 降到 0.01 m</strong>；整个系统<strong>机载 100 Hz</strong> 运行，源码承诺开源。<strong>对你课题的映射：如果你在做 Simulink/Python 仿真里的 NMPC 或 RL 控制器，把「扰动观测器输出」作为控制器的一个额外输入通道，是比加大网络更便宜的鲁棒性来源——这正是上期「状态表征」主线在扰动场景下的自然延伸</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.03530" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-accent">几何控制</span><span class="badge hot">🔥 10/5提交</span><span>arXiv:2610.06629 · eess.SY</span></div>
+      <p>Mohammad Mirtaba 与 Max H. Cohen（10 月 5 日提交）的 <strong>Vector Field Following for Quadrotors via Reduced Attitude Representations with Applications to Safety-Critical Control</strong>，处理的是向量场跟踪的控制理论基建：四旋翼平移动力学只依赖推力方向、与偏航无关，因此<strong>降姿态（reduced-attitude）表示——利用单位球的几何结构——是向量场跟踪的天然框架</strong>。论文提出两种向量场跟踪控制器，分别基于<strong>动态扩展与几何控制</strong>构造；安全编码的思路很优雅：把安全目标（如避障）写进低维期望向量场本身，再用<strong>控制障碍函数（CBF）</strong>把安全约束执行到全系统动力学上，验证覆盖仿真与<strong>真机飞行实验</strong>。<strong>对你课题的映射：这论文给了「解析引导场＋安全滤波」路线的教科书式模板——给 RL 策略加安全层，向量场＋CBF 的组合是比对抗训练更可解释、更好调的起点，且与你的 MATLAB/Simulink 工具链高度兼容</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.06629" target="_blank">📎 查看原文</a>
+    </div>
+    <h3 class="mt-4">② Decentralized Safe Path Following：横向反馈线性化 = 约束 QP，Drake 引擎验证</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-teal">多机安全</span><span class="badge new">🆕 新挂网</span><span>arXiv:2610.00216 · eess.SY</span></div>
+      <p>Hamza Tariq 与 Adeel Akhtar 的 <strong>Decentralized Safe Path Following for Multiple Quadrotors on Intersecting Paths with Theoretical Guarantees</strong>（8 页 3 图），研究多旋翼在<strong>交叉路径</strong>上的分散式安全路径跟随：安全＝避碰＋严格沿预分配路径飞行。方法亮点是把<strong>横向反馈线性化（transverse feedback linearization）重构为带四个等式约束的二次规划</strong>：两个约束保证收敛并严格贴路径，两个约束规定期望速度与航向；安全性只通过放松「沿路径速度」这一条约束实现，路径与航向约束始终是硬的。在给定假设与容许初值下，控制器保证所有智能体收敛并跟随各自路径、互不碰撞、且避开姿态奇异，<strong>验证在 Drake 物理引擎的非平面交叉路径上完成，并与两种「名义控制＋安全滤波」级联方案对比</strong>。<strong>方法论价值：「把经典控制律重写成优化问题」是当前安全控制的通用语法——约束怎么设、哪条放松哪条保硬，直接决定安全语义；你论文里若做多机场景，这套「交叉路径＋硬约束分工」的表述可直接引用</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.00216" target="_blank">📎 查看原文</a>
+    </div>
+    <h3 class="mt-4">③ 信号时序逻辑可行性判定：6 维无人机运动学上亚毫秒执行</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">形式化方法</span><span class="badge-info">🧪 亚毫秒级</span><span>arXiv:2610.00208 · eess.SY</span></div>
+      <p>同一批次 eess.SY 上的 <strong>arXiv:2610.00208</strong> 给出信号时序逻辑（STL）控制综合的几何判定程序：标准优化方法把时间离散化导致计算量随视界指数增长，本文提出<strong>与时间视界长度完全无关的物理可行性判定</strong>——把显式时间逻辑约束转成时间零点处评估的连续空间后向可达集，解析反解 Bhat-Bernstein 镇定时间积分把时间窗映射为空间边界，把可行性检查约化为局部矩阵与向量的包含判定；不可行时还能提取 Farkas 对偶证书并给出闭式时间延迟修正。<strong>在六维无人机运动学上验证：亚毫秒执行、对深度嵌套逻辑公式免疫</strong>。<strong>迁移点：任务级「何时到哪」的规格检查不必上重型求解器——若你的仿真要做多任务调度与时间窗约束，这类几何判定可把任务可行性预检做到机载实时</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.00208" target="_blank">📎 查看原文</a>
     </div>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-title">板块三 · 安全与残差：把「不出事」写成硬约束，把「补扰动」交给残差学习</div>
+  <div class="section-title">板块三 · 学习与自适应控制：核表示在线适配扰动，嵌入式芯片上跑上千并行 MPC</div>
   <div class="card">
-    <h3>① Lightweight Safe RL for End-to-End UAV Navigation：稀疏激光雷达 + 拉格朗日安全 PPO</h3>
+    <h3>① Domain-Adaptive Policy Learning：随机傅里叶特征建模非平稳扰动，Crazyflie 真机验证</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-purple">安全RL</span><span class="badge-info">🧪 轻量部署</span><span>arXiv:2607.01794 · cs.RO</span></div>
-      <p>Shenghui Zhang、YuXuan Gao 等（山东大学团队）的 <strong>Lightweight Safe Reinforcement Learning for End-to-End UAV Navigation</strong>，三个痛点对得很准：稠密感知与大网络撑不起机载算力；稀疏 LiDAR 观测不显式标记高风险区域，训练不稳；多数 RL 框架只靠 reward shaping 隐式处理安全。框架四件套：<strong>非对称卷积 + 深度可分离卷积（DSConv）的轻量感知网络</strong>，把 1×36×4 的稀疏 LiDAR 张量编码为 128 维嵌入；任务建成<strong>约束马尔可夫决策过程（CMDP）</strong>，用带安全价值网络（Cost Critic）的<strong>拉格朗日 Safe PPO</strong> 动态平衡任务回报与安全代价；动作空间用 <strong>Beta 分布</strong>替代高斯分布，避免物理边界截断造成的动作畸变；跨障碍物密度迁移时<strong>冻结感知编码器、正交重置策略输出层</strong>的课程学习设计，既保留几何表征又避免策略陷入次优。在 NVIDIA Isaac Sim + OmniDrones 的 40m×40m 森林环境里，100/200/300 个障碍物三档密度下对比基线 RL，成功率、安全性与效率全面占优。<strong>两条可直接抄的设计：一是「近邻增强」的 LiDAR 表征——把原始距离转成邻近度权重，放大近处高危障碍信号；二是 CMDP + 拉格朗日的安全形式化，比你调惩罚系数稳定得多，课程迁移的「冻结编码器」技巧也适用于你更换任务密度时的训练流程</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2607.01794" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-orange">自适应控制</span><span class="badge high">💎 真机部署</span><span>arXiv:2606.13842 · cs.LG</span></div>
+      <p>密歇根大学 Hongyu Zhou、Mingtian Tan、Vasileios Tzoumas 的 <strong>Efficient Domain-Adaptive Policy Learning via Kernel Representation with Application to Quadrotor Control under Non-Stationary Disturbances</strong>，瞄准学习控制的软肋：环境编码器离线训练后固定，无法表示训练分布之外的扰动。方案是<strong>用基于随机傅里叶特征（RFF）的可微核逼近建模未知扰动</strong>：核系数与带宽两组参数都可学习、函数逼近可微；离线阶段随机采样核参数生成丰富扰动谱，经可微仿真以解析梯度优化策略——<strong>RTX 4090 上仅需约 50 秒训练</strong>；部署阶段通过<strong>在线最小二乘估计同时更新核系数与带宽</strong>，实时适配非平稳环境，Crazyflie 真机覆盖复杂气动效应、风扰、地效与负载波动。<strong>两条可抄的设计：一是「扰动建模用可微核而不是固定编码器」，带宽自适应让你的基函数跟着飞行工况变；二是 50 秒离线训练＋在线最小二乘的分工，把「学」与「适配」拆开，正好匹配你「仿真训练＋真机微调」的课题结构</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2606.13842" target="_blank">📎 查看原文</a>
     </div>
-    <h3 class="mt-4">② NST-RL（IEEE RA-L 2026年10月刊）：残差 RL 与近似最优调节器的「分工协议」</h3>
+    <h3 class="mt-4">② LLA-MPC on Embedded Hardware：上千并行模型的快速自适应控制（IROS 2026 Workshop）</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-teal">残差RL</span><span class="badge high">💎 期刊论文</span><span>KAIST · RA-L vol.11 no.10</span></div>
-      <p>KAIST 的 Pertin Guining、Chang Dong Eui 在 <strong>IEEE Robotics and Automation Letters 2026 年 10 月刊（vol.11, no.10, pp.12200-12207）</strong>发表的 <strong>NST-RL: Residual Reinforcement Learning With Approximate Optimal Regulation for Robust Drone Control</strong>，给「残差 RL」这一家子补了一块理论拼图：名义控制器来自非线性系统工具箱计算的<strong>近似最优调节器</strong>，RL 只学残差修正；三条约束设计得非常工程化——残差经由<strong>动态扩展路由</strong>以保持控制输入为正、<strong>衰减高频残差分量</strong>、并保证名义调节器在有界残差下<strong>局部输入-状态稳定（ISS）</strong>。训练侧的亮点是 <strong>BalancedBuffer</strong>：用调节器的最优代价把 off-policy 采样集中到「高难度状态」上，避免成熟控制器留下大量低价值数据稀释训练。Crazyflie 2.1 真机轨迹跟踪实验在风扰与负载扰动下对比几何控制、自适应控制与先前残差 RL 基线，<strong>跟踪鲁棒性与控制平滑度均有提升</strong>。<strong>方法论价值：残差 RL 的最大风险是「学生踩老师」，这篇的动态扩展 + 高频衰减 + ISS 保证是一套可引用的防踩踏模板——如果你的课题要在现有控制器上叠加学习模块，架构设计直接参考它</strong>。</p>
-      <a class="source-link" href="https://koasas.kaist.ac.kr/handle/10203/346910" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-teal">嵌入式控制</span><span class="badge new">🆕 IROS Workshop</span><span>arXiv:2610.03616 · cs.RO</span></div>
+      <p>CMU 的 Henry Z. Liao、Maitham F. AL-Sunni、John M. Dolan 的 <strong>LLA-MPC on Embedded Hardware: Rapid Adaptive Control with Thousands of Parallel Models</strong>，被 <strong>IROS 2026「Sim2Real 与经典控制」workshop</strong>录用（匹兹堡）。方向直指机载部署的核心矛盾：MPC 的在线优化吃算力，学习方法又难保证稳定。LLA-MPC 路线是<strong>预生成上千个并行模型，嵌入式硬件上做快速查找与切换</strong>，以「并行模型库＋轻量在线选择」替代逐步数值优化，实现嵌入式快速自适应控制。<strong>对你的启发：机载算力预算表上又多一个选项——「离线展开、在线选择」的架构介于查表法与 MPC 之间，适合你的仿真平台先做「模型库规模—控制性能—计算耗时」的三角扫描实验，这是很容易出图出结论的课题切口</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.03616" target="_blank">📎 查看原文</a>
     </div>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-title">板块四 · 感知与追踪：DSP 上跑 VIO 的功耗账本，与跨具身全景分割新基准</div>
+  <div class="section-title">板块四 · 集群与感知：GAMBIT 上千机器人无碰规划，ReDiffNet 低光无人机车辆检测</div>
   <div class="card">
-    <h3>① HexVIO：把视觉前端塞进手机 DSP，0.83 W 跑一天 30 fps 立体惯性追踪</h3>
+    <h3>① GAMBIT：模仿＋强化学习规划连续多机器人轨迹，规模推到上千台（10 月 6 日新挂网）</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-orange">视觉惯性里程计</span><span class="badge new">🆕 10/2提交</span><span>arXiv:2610.03283 · cs.RO</span></div>
-      <p>TUM 的 Patrick Wolf、Mateo de Mayo、Daniel Cremers 10 月 2 日提交的 <strong>HexVIO: Towards All-Day Stereo-Inertial Tracking Through Commodity DSPs</strong>，瞄准 VIO 的功耗痛点：机器人、可穿戴、XR 设备与无人机都需要全天候定位，但 VIO 前端特征提取在 CPU 上跑既热又费电。论文的思路是把<strong>立体惯性里程计的视觉前端卸载到 Hexagon DSP</strong>——现代智能手机与 XR 设备普遍搭载的商用协处理器——后端仍留在主 CPU。针对 DSP 架构的实现优化带来<strong>功耗降低 67% 或吞吐提升 86%</strong>：在测试手机上以 <strong>0.83 W 维持长期实时 30 fps 追踪，折合约 18 小时续航</strong>。对无人机读者的直接启发是算力预算表的新行项：<strong>当感知前端可以下沉到低功耗协处理器，飞控主芯片就能腾出预算给规划、RL 策略与安全监控——「哪些计算放在哪颗芯片上」正在成为机载系统设计的核心问题，也值得你在仿真系统架构章节里专门讨论一节</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.03283" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-accent">集群规划</span><span class="badge hot">🔥 10/6提交</span><span>arXiv:2610.06290 · cs.RO</span></div>
+      <p>剑桥大学 Rishabh Jain、Wolfgang Hönig、Amanda Prorok 等的 <strong>GAMBIT: Learning to Plan Continuous Multi-Robot Trajectories</strong>，通过<strong>模仿学习与强化学习协调的运动原语（motion primitive）选择</strong>，并引入<strong>带备份轨迹的安全机制</strong>，实现<strong>连续域中上千个机器人的无碰撞轨迹规划</strong>，性能显著优于现有基线。三个值得记录的技术选型：运动原语作为搜索基元（把连续规划离散化但不牺牲平滑性）、学习负责「选」而非「算」（决策网络输出原语序列，安全由解析机制兜底）、备份轨迹保证任何时刻可退回安全状态。<strong>与上期 DR-IPC「规划控制一体化」对照：GAMBIT 是任务层的大规模版本——规模上去之后，「学习做选择、解析保安全」的分工几乎是必然架构，这也是判断任何集群论文成色的快 checklist</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.06290" target="_blank">📎 查看原文</a>
     </div>
-    <h3 class="mt-4">② EmbPASS：车辆、无人机、可穿戴、四足同台竞技的全景分割基准</h3>
+    <h3 class="mt-4">② ReDiffNet：低光无人机 RGB-红外定向车辆检测，DroneVehicle 85.3% mAP50</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-red">感知基准</span><span class="badge new">🆕 10/2提交</span><span>arXiv:2610.03248 · cs.CV</span></div>
-      <p>Pujun Guo、Yuanfan Zheng 等（湖南大学、Kailun Yang 团队）10 月 2 日提交的 <strong>EmbPASS: Towards Cross-Embodiment Open Panoramic Segmentation</strong>，提出一个此前系统性研究不足的新任务：<strong>跨具身开放全景分割</strong>——不同具身平台（车辆、无人机、可穿戴、四足机器人）的观测视角与空间布局差异巨大，在一个平台训练的感知模型换平台就失效。论文建立 <strong>EmbPASS 基准</strong>，在统一语义分类下覆盖四大平台的全景语义分割，并提出 <strong>EPONet</strong>：融合关系感知度量适配器（RAMA）与内容自适应语义迁移（CAST）的开放词表全景分割网络，在 EmbPASS 上取得 <strong>35.82% 的平台均衡 mIoU</strong>，超出最强基线 1.10%，源码与基准承诺公开。<strong>对做无人机感知的读者的提醒：你的检测/分割模型大概率只在一种平台数据上验证过，「视角偏移」是被低估的泛化杀手；这篇论文的问题定义与评测协议可以直接搬来设计你论文的跨平台实验</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.03248" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-red">无人机感知</span><span class="badge new">🆕 10/6提交</span><span>arXiv:2610.05074 · cs.LG</span></div>
+      <p>大连海事大学、港科大（广州）等团队的 <strong>ReDiffNet: Differential RGB-Infrared Learning for Low-Light UAV Oriented Vehicle Detection</strong>，处理夜间无人机感知的真问题：<strong>低光照下模态可靠性此消彼长</strong>——RGB 退化时红外仍有信号，但两模态可信度随场景实时变化。论文提出<strong>可靠性条件化的差分表示网络</strong>，解决模态可靠性变化与小目标两大挑战，在 <strong>DroneVehicle 上达 85.3% mAP50、VEDAI 上达 73.9% mAP50</strong>。同批还有港科大（广州）的 <strong>LightVLN（arXiv:2610.05024）</strong>：面向空中视觉语言导航的轻量框架，以紧凑记忆与历史引导局部聚合降低计算开销，<strong>在 OpenFly 与 AerialVLN-S 上超越 7B 模型基线并实现机载实时部署</strong>。<strong>两篇合起来的信号：无人机感知的「标配验证」正从单模态、地面视角转向多模态、空中视角、机载算力约束下的评测——你若做感知实验，DroneVehicle/VEDAI/OpenFly 是应收录的基准清单</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.05074" target="_blank">📎 ReDiffNet 查看原文</a>
+      <a class="source-link" href="https://arxiv.org/abs/2610.05024" target="_blank">📎 LightVLN 查看原文</a>
     </div>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-title">板块五 · 导航前沿：气动势流理论做避障场，与 sim-to-real 的「执行接口」适配</div>
+  <div class="section-title">板块五 · 自动驾驶交叉：E2E 训练生态综述、4D 雷达规划基准与 JEPA 零样本规划</div>
   <div class="card">
-    <h3>① LiDARFlow：从空气动力学借来的避障场，机载实时全避障</h3>
+    <h3>① E2E-AD 训练综述（IEEE T-ITS）：数据—策略—平台三层生态，场景价值函数 V(s) 是核心抓手</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-teal">避障导航</span><span class="badge new">🆕 10/1提交</span><span>arXiv:2610.01573 · cs.RO</span></div>
-      <p>ENAC-LAB 的 João Machado、Zeynep Bilgin、Matthieu Verdoucq、Murat Bronz 10 月 1 日提交的 <strong>LiDARFlow: Real-Time Panel-Based MAV Guidance in Unknown Environments</strong>，方法出身很有意思：<strong>面元法（panel formulation）源自空气动力学势流理论</strong>——把局部感知到的障碍物当作「源」，生成平滑无碰的引导向量场，再与名义引导向量场积分得到最终控制输入。创新点在于扩展到未知环境：机载 LiDAR 在线构建并更新障碍表征，无需先验地图。室内飞行实验验证航点导航与定向引导两个场景，<strong>全程仅用机载感知实时避开所有障碍</strong>；作者坦承点云处理是当前主要工程瓶颈，但整体计算足够轻量适合机载部署。<strong>值得借鉴的思路：物理场方法（势场、流场）与学习方法并非对立——它的「平滑性」正好补学习策略输出抖动的短板，你可以在仿真里把这类解析引导场作为 RL 策略的先验或安全滤波器，做一条「解析场 + 学习修正」的对比实验线</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.01573" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-purple">自动驾驶综述</span><span class="badge high">💎 T-ITS刊发</span><span>arXiv:2610.00926 · cs.RO</span></div>
+      <p>上交大团队 Chengkai Xu、Peng Hang、Jian Sun 等的 <strong>A Survey on End-to-End Autonomous Driving Training from the Perspectives of Data, Strategy, and Platform</strong>（10 月 1 日提交，已刊于 <strong>IEEE T-ITS</strong>，DOI 10.1109/tits.2026.3695999），给出 E2E 自动驾驶训练的系统分类：<strong>数据层定义「能学什么」、策略层管「怎么对齐驾驶目标」、平台层决定「怎么规模化」</strong>，并论证三层是系统性依赖而非独立问题。数据层的<strong>场景价值函数 V(s) = w_r·R(s) + w_u·U(s|θ) + w_d·D(s|D_train)</strong>——按安全关键度、模型不确定度、分布距离给场景打分，把「数据量」升级为「数据价值」——是全文最有操作性的贡献；策略层把模仿学习、强化学习、扩散策略、多模态大模型、世界模型五类范式排成流水线角色。<strong>迁移价值：V(s) 的加权评分结构完全可搬进你的仿真实验设计——「哪些初始条件与扰动工况值得训练」正是飞控 RL 数据筛选的同款问题；求职视角，车企智驾面试里这篇综述的三层框架是现成谈资</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.00926" target="_blank">📎 查看原文</a>
     </div>
-    <h3 class="mt-4">② EIDA：velocity 命令发出去之后真的执行成什么样？让仿真先学会「听指挥」</h3>
+    <h3 class="mt-4">② Radar2Plan 与 AD-E2E-JEPA：4D 雷达单独可规划，JEPA 世界模型零样本选轨迹</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-accent">Sim-to-Real</span><span class="badge new">🆕 10/1提交</span><span>arXiv:2610.01219 · cs.RO</span></div>
-      <p>Yiwei Qian、Shanze Wang 等 10 月 1 日提交的 <strong>EIDA: Execution-Interface Dynamics Adaptation for Real-to-Sim-to-Real Robot Navigation</strong>，抓住 sim-to-real 的一个被忽视的缝隙：<strong>速度指令与实际运动/反馈之间的失配</strong>——训练时仿真假设「发 0.5 m/s 就走 0.5 m/s」，真机上轮子打滑、底盘延迟让反馈完全不同。EIDA 的处理分三步：用目标平台的执行数据<strong>拟合机体系位姿增量模型</strong>（更新仿真器几何响应）与<strong>速度反馈预测模型</strong>（预测策略实际看到的反馈）；把一小段速度反馈历史加进策略输入；全部放进轻量 GPU 并行仿真器训练。结果：Jackal 与 Go2 全验证集上位置与偏航预测误差显著下降；100 个导航环境评测中成功率与导航分数均居对比策略之首；<strong>真机 Unitree Go2 的 20 个静态场景试验全部无碰撞到点，基线只有 4/20</strong>。<strong>迁移点：这个「适配执行接口而不是重建执行器动力学」的思想完全适用于旋翼机——你的仿真里油门指令到真实推力的响应曲线、姿态环的延迟，都可以用少量真机数据拟合修正，比全系统辨识便宜得多</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.01219" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-teal">自动驾驶前沿</span><span class="badge new">🆕 10/6提交</span><span>arXiv:2610.06121 / 2609.34085</span></div>
+      <p>两条自动驾驶与机器人交叉的新进展：<strong>其一</strong>，港科大（广州）＋上交大＋牛津的 <strong>Radar2Plan（arXiv:2610.06121）</strong>——首个面向自动驾驶开环自车轨迹规划的<strong>四维毫米波雷达基准</strong>，比较七种传感器组合与四种规划基线，结论是<strong>4D 雷达单独即可实现竞争性规划且恶劣天气下更鲁棒</strong>；<strong>其二</strong>，<strong>AD-E2E-JEPA（arXiv:2609.34085）</strong>——把联合嵌入预测架构（JEPA）引入端到端驾驶：冻结 DINOv3 编码器、自监督动作条件世界模型，<strong>零样本目标条件规划速度提升约 100 倍</strong>，预训练投影器还能反哺下游模仿学习。<strong>信号解读：传感器「恶劣天气鲁棒性」与「世界模型 zero-shot 规划」正成为两条并行的降本主线——类比到飞控：低成本传感器＋好算法替代昂贵传感器的路径，你的四旋翼仿真同样值得加一条「降传感器规格后的性能曲线」实验</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.06121" target="_blank">📎 Radar2Plan 查看原文</a>
+      <a class="source-link" href="https://arxiv.org/abs/2609.34085" target="_blank">📎 AD-E2E-JEPA 查看原文</a>
     </div>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-title">板块六 · 方法论小结：本周三条可迁移线索与精读建议</div>
+  <div class="section-title">板块六 · 产业与政策：Part 108 审查窗口明日到期，美团无人机破百万单，长江水上配送常态化</div>
+  <div class="card">
+    <h3>① 美国监管节点：Part 108 BVLOS 规则 OIRA 审查 90 天窗口 10 月 8 日到期，15 州诉 FAA 开庭在即</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">监管动态</span><span class="badge hot">🔥 明日到期</span><span>2026-10 核对</span></div>
+      <p>行业跟踪媒体汇总的十月监管坐标有三处值得写进科研背景：<strong>其一</strong>，美国 FAA 的 <strong>Part 108（超视距常规飞行 BVLOS）规则</strong>自 7 月 10 日提交白宫 OIRA 审查后，<strong>名义上的 90 天窗口明天（10 月 8 日）到期</strong>，截至发稿尚未发布最终规则——大规模远程配送仍需逐案豁免；<strong>其二</strong>，TSA 就 BVLOS 安全计划召集运营方闭门圆桌，报名截止 <strong>10 月 19 日</strong>；<strong>其三</strong>，路透 9 月 28 日报道<strong>加州、纽约州等 15 州加上得州哈里斯县在第二巡回法院起诉 FAA</strong>，主张全国性环评跳过了市场针对性审查——7 月 28 日 FAA 签署的全国环境评估（让亚马逊无需逐站环评）可能被推翻，亚马逊三个城镇的 MK30 无人机枢纽正同步遭遇地方阻力。<strong>科研视角的读法：BVLOS 规则的落地节奏直接决定「调度算法、冲突消解、噪音最小化轨迹」等研究方向的需求强度——写低空经济论文的动机段，这份「规则待定、诉讼进行中」的状态本身就是论据</strong>。</p>
+      <a class="source-link" href="https://roboticsreports.com/aerial-robots-october-2026-update-what-changed-why-it-matters-and-what-to-watch-next" target="_blank">📎 Aerial Robots October 2026 Update</a>
+      <a class="source-link" href="https://www.droneranker.com/amazon-drone-delivery-hub-opposition-towns" target="_blank">📎 Amazon 无人机枢纽争议追踪</a>
+    </div>
+    <h3 class="mt-4">② 国内低空物流三线开花：美团破 100 万单、顺丰联手峰飞、长江水上配送常态化</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">低空产业</span><span class="badge hot">🔥 10月5-6日</span><span>2026-10</span></div>
+      <p>国内侧三条高密度动态：<strong>其一</strong>，2026 国际低空经济博览会期间，<strong>美团无人机宣布配送订单突破 100 万单</strong>，并推出坪降、索降、柜降三类解决方案——城市低空末端配送正式走出试验阶段；<strong>顺丰携手峰飞航空</strong>瞄准海上能源运维、远海岛际运输与大件物流（顺丰仅大湾区日均配送量已突破 <strong>2 万单</strong>），<strong>圆通</strong>与上海闵行双溪低空经济运营基地战略合作，规划 14.2 平方公里专属空域内的中转与跨省货运专线；<strong>其二</strong>，中国水运报 10 月 6 日报道<strong>长江干线水上无人机配送加速铺开</strong>：南京江翼达低空飞行基地以大疆 FC30（最大载重 40 公斤）向行进中的货轮索降配送物资，船舶无需减速靠岸；<strong>其三</strong>，海外侧，Skydio 发布首款固定翼 <strong>F10 Lightrunner</strong> 与 MegaDock 机库，Matternet 发布 <strong>M3</strong>（11 磅载荷、10 英里半径、屋顶机库），DoorDash 已获 FAA Part 135 承运人认证。<strong>对科研选题的启示：重载（吨级 eVTOL）、水上移动平台对接、机库化自动运维，是三条被订单验证过的真需求——把「移动平台上的精准投放」写进你的仿真工况矩阵，现实锚点立刻扎实</strong>。</p>
+      <a class="source-link" href="https://www.163.com/dy/article/L8FMALBD0511M3GR.html" target="_blank">📎 顺丰与圆通布局低空基础设施（网易·快递观察家）</a>
+      <a class="source-link" href="https://www.toutiao.com/article/7692714368610140712/" target="_blank">📎 长江水上无人机配送观察（中国水运报）</a>
+      <a class="source-link" href="https://roboticsreports.com/what-is-new-with-aerial-robots-in-october-2026-latest-company-releases-and-research-papers-and-key-takeaways" target="_blank">📎 October 2026 Aerial Robots 新品汇总</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块七 · 方法论小结：本周三条可迁移线索与精读建议</div>
   <div class="card">
     <div class="highlight-box">
       <div class="highlight-title">💡 本期方法论小结（写给飞控仿真课题的三条可迁移线索）</div>
-      <p><strong>① 扰动要显式建模，不要指望网络「自己扛」</strong>：DR-IPC 的 NDO 进 NMPC、NST-RL 的残差路由进调节器，两篇殊途同归——扰动是结构化信息，提出来显式补偿，比堆网络深度或拉大域随机化区间都划算。本周动作：在你的仿真里加一个一阶低通滤波的「扰动观测器」占位模块，即使先喂理想值，架构先立起来。<strong>② 安全约束要形式化，不要只调惩罚系数</strong>：2607.01794 的 CMDP + 拉格朗日 + Cost Critic 三件套是当前最稳的安全 RL 起手式，代码在 Clean RL 生态里能找到近亲实现。<strong>③ 部署预算要「按瓦特算」</strong>：HexVIO 证明感知可以下沉到协处理器，EIDA 证明适配接口比重建模型便宜——机载系统的设计自由度在芯片与数据两侧同时扩展，你论文的 deployment 章节可以从「能跑」升级为「多大算力、多少瓦、多少校准数据」的量化表述，审稿人会很买账。</p>
+      <p><strong>① 安全要写进几何与结构，不要只当外挂滤波器</strong>：2610.06629 把 CBF 编码进向量场、2610.00216 把安全性拆成「一条可放松＋三条保硬」的 QP 约束，共同点是——安全语义在问题构造阶段就定型，而不是训练完再打补丁。本周动作：把避障约束显式写成优化问题的硬约束层，对比「事后安全滤波」的性能差异，这本身就是一组干净消融。<strong>② 「离线展开、在线适配」是部署架构的通用语法</strong>：LLA-MPC 的千模型库在线切换、2606.13842 的 50 秒离线训练＋在线最小二乘适配，都在做同一件事——把贵计算搬到离线，把在线留给轻量估计。你的「Simulink 预生成轨迹库＋Python 在线选择」原型完全踩在这条线上。<strong>③ 评测要带「工况矩阵」，不要只报均值</strong>：Radar2Plan 用七种传感器组合×四种规划器扫矩阵，ReDiffNet 分模态报可靠性——复课后的第一组实验建议按「扰动类型×强度×传感器规格」三轴展开。</p>
     </div>
     <div class="tip-box mt-3">
       <div class="tip-title">✅ 本周精读建议</div>
-      <p>本周建议<strong>精读 2610.03530（DR-IPC）</strong>：它是「规划控制一体化 + 扰动观测」两条线的交汇点，11 页正文 16 图 7 表的结构完整，NMPC 公式推导与你的控制课程衔接顺畅，且承诺开源——先 clone 代码跑通 Gazebo 场景，再决定是否把它的 NDO 模块移植进你的仿真框架。次选 2607.01794，如果你更想做安全 RL 方向，它的 Isaac Sim 环境搭建经验比公式更值钱。节后第一周的工作目标建议定成一条可验证的实验结论：「我加了 X，指标 Y 提升了 Z%」——不管是 X=NDO 通道、X=安全约束还是 X=执行接口适配。</p>
+      <p>本周建议<strong>精读 2610.06629（Vector Field Following via Reduced Attitude）</strong>：它是「几何控制＋CBF 安全」两条线的交汇点，与你的四旋翼飞控课题零距离——降姿态表示、单位球几何、障碍函数三个工具都是控制课程可直接衔接的内容，且包含真机实验的完整闭环。次选 2606.13842：如果你更想做「学习＋在线适配」方向，它的 RFF 核表示与 50 秒可微仿真训练是低成本复现的起点。节后第一周的工作目标建议定成一条可验证的实验结论：「我加了 X，指标 Y 提升了 Z%」。</p>
     </div>
-    <div class="info-box mt-3"><div class="info-title">ℹ️ 检索节奏提醒</div><p>10 月 2 日挂网的一批 cs.RO 论文本期已消化大半（DR-IPC、HexVIO、EmbPASS、XGenAct 等），美国时间 10 月 5 日起的新批次预计本周四、周五挂出，重点关注三条线索：一是 DR-IPC 团队的开源代码是否如期释出；二是 CoRL 2026 收录论文（如 2610.03476 对抗防御、2610.03132 奖励劫持分析）中与飞行控制相关的内容；三是 eess.SY 上是否出现新的安全滤波与 CBM 工作跟踪 2610.00209 的引用链。</p></div>
-  </div>
-</div>
-
-<div class="section">
-  <div class="section-title">板块七 · 视野外扩：大疆 EV50 珠峰试飞信号与安徽低空场景三年行动方案</div>
-  <div class="card">
-    <h3>① 产业信号：DJI EV50 载货 eVTOL 珠峰飞行，中美低空路线图继续分叉</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-orange">低空产业</span><span class="badge hot">🔥 10月动态</span><span>DroneXL · 2026-10</span></div>
-      <p>行业媒体 DroneXL 十月的 eVTOL 月度综述给出三个值得记录的坐标：<strong>其一，大疆 EV50 载货 eVTOL 以 29072 英尺（约 8860 米）的珠峰飞行首秀</strong>——消费无人机巨头直接切入重载货运 eVTOL 赛道，信号是「无人机巨头先规模化，再向上延伸」，与传统航空公司的「先取证后放量」路线形成对照；其二，美国 FAA 在俄克拉荷马城动工 <strong>830 万美元的 V-PAR 垂直起降试验场</strong>，用于研究「已在别处飞行」的电动与混动垂直起降航空器，基础设施先行、飞行器在后的格局仍在延续；其三，奥兰多机场批准 eVTOL 起降点等待 FAA 批准，而大众集团退出中国空中出租车竞争，侧面印证中国市场的认证与运营速度。<strong>对科研选题的启示：货运 eVTOL 的载荷-航程-能耗权衡、高海拔稀薄大气下的旋翼效率，都是工业界真金白银在推的问题，做仿真课题时把「高海拔」与「重载」写进工况矩阵，选题的现实锚点立刻扎实</strong>。</p>
-      <a class="source-link" href="https://dronexl.co/drone-technology/evtol/" target="_blank">📎 查看原文</a>
-    </div>
-    <h3 class="mt-4">② 政策观察：《安徽省「低空+」应用场景拓展工程行动方案（2026—2028年）》印发</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-purple">低空政策</span><span class="badge-info">📋 省级方案</span><span>央广网 · 2026-10</span></div>
-      <p>央广网近期报道，安徽省政府办公厅印发<strong>《安徽省「低空」应用场景拓展工程行动方案（2026—2028年）》</strong>，与上期报道的《浙江省民用航空条例》构成「立法保障 + 场景工程」的两种省级推进路径对照。安徽方案的量化目标有三：到 <strong>2028 年全省年度低空飞行时长达 500 万小时</strong>；集聚<strong>低空运营类企业超 300 家</strong>；累计建成<strong>低空应用示范场景 100 个</strong>，覆盖生产作业、低空运输、公共治理、低空消费四大方向。市场侧的落地样本是中创翱翔在淮南市落地的云波波飞行乐园——安徽省内首个集飞行体验、飞行培训、航空赛事、航空科普于一体的低空文旅复合业态，已进入运营验证阶段。<strong>背景信息同样关键：低空经济已纳入国家「十五五」规划整体布局，新修订的《民用航空法》7 月 1 日施行、民航局低空安全司同步挂牌</strong>。对科研读者的读法：飞行时长 500 万小时是运营规模指标，背后是空域管理、调度算法、安全监管技术的真实需求——你论文里若涉及多机调度或空域约束优化，引用这类省级量化目标能让动机段更硬。</p>
-      <a class="source-link" href="https://apicnrapp.cnr.cn/html/share.html?id=30830133" target="_blank">📎 查看原文</a>
-    </div>
-  </div>
+    <div class="info-box mt-3"><div class="info-title">ℹ️ 检索节奏提醒</div><p>10 月 5—6 日两批论文已消化大半（Vector Field、GAMBIT、Radar2Plan、ReDiffNet 等），10 月 7 日起的 cs.RO 新批次预计今晚至明晨挂出，重点关注三条线索：一是 2610.06629 团队后续是否放出代码；二是 UZH Scaramuzza 组 2026 年新条目（Cable-Suspended Payload Delivery、Turbulent Waters Landing 等，RPG 主页可追踪）；三是 eess.SY 上是否出现新的 CBF 与安全滤波工作跟踪 2610.00216 的引用链。</p></div>  </div>
 </div>
 
 <div class="section">
@@ -118,16 +143,24 @@
     <table class="summary-table">
       <thead><tr><th>来源标题</th><th>链接</th><th>时间</th></tr></thead>
       <tbody>
-        <tr><td>DR-IPC: Disturbance-Resilient Integrated Planning and Control for LiDAR-Based Quadrotor Navigation (arXiv:2610.03530)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.03530" target="_blank">📎 查看原文</a></td><td>2026-10-02</td></tr>
-        <tr><td>Lightweight Safe Reinforcement Learning for End-to-End UAV Navigation (arXiv:2607.01794)</td><td><a class="source-link" href="https://arxiv.org/abs/2607.01794" target="_blank">📎 查看原文</a></td><td>2026-07-02</td></tr>
-        <tr><td>NST-RL: Residual Reinforcement Learning With Approximate Optimal Regulation for Robust Drone Control (IEEE RA-L, KAIST)</td><td><a class="source-link" href="https://koasas.kaist.ac.kr/handle/10203/346910" target="_blank">📎 查看原文</a></td><td>2026-10</td></tr>
-        <tr><td>HexVIO: Towards All-Day Stereo-Inertial Tracking Through Commodity DSPs (arXiv:2610.03283)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.03283" target="_blank">📎 查看原文</a></td><td>2026-10-02</td></tr>
-        <tr><td>EmbPASS: Towards Cross-Embodiment Open Panoramic Segmentation (arXiv:2610.03248)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.03248" target="_blank">📎 查看原文</a></td><td>2026-10-02</td></tr>
-        <tr><td>LiDARFlow: Real-Time Panel-Based MAV Guidance in Unknown Environments (arXiv:2610.01573)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.01573" target="_blank">📎 查看原文</a></td><td>2026-10-01</td></tr>
-        <tr><td>EIDA: Execution-Interface Dynamics Adaptation for Real-to-Sim-to-Real Robot Navigation (arXiv:2610.01219)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.01219" target="_blank">📎 查看原文</a></td><td>2026-10-01</td></tr>
-        <tr><td>eVTOL: Air Taxis, Delivery Craft and Who Is Actually Flying (October 2026)（DroneXL）</td><td><a class="source-link" href="https://dronexl.co/drone-technology/evtol/" target="_blank">📎 查看原文</a></td><td>2026-10</td></tr>
-        <tr><td>高质量发展看中国丨御风向云端 低空经济打开文旅新视界（央广网）</td><td><a class="source-link" href="https://apicnrapp.cnr.cn/html/share.html?id=30830133" target="_blank">📎 查看原文</a></td><td>2026-10</td></tr>
+        <tr><td>Vector Field Following for Quadrotors via Reduced Attitude Representations (arXiv:2610.06629)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.06629" target="_blank">📎 查看原文</a></td><td>2026-10-05</td></tr>
+        <tr><td>Decentralized Safe Path Following for Multiple Quadrotors on Intersecting Paths (arXiv:2610.00216)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.00216" target="_blank">📎 查看原文</a></td><td>2026-10</td></tr>
+        <tr><td>Signal Temporal Logic 可行性几何判定（6维无人机运动学）(arXiv:2610.00208)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.00208" target="_blank">📎 查看原文</a></td><td>2026-10</td></tr>
+        <tr><td>Efficient Domain-Adaptive Policy Learning via Kernel Representation (arXiv:2606.13842)</td><td><a class="source-link" href="https://arxiv.org/abs/2606.13842" target="_blank">📎 查看原文</a></td><td>2026-06</td></tr>
+        <tr><td>LLA-MPC on Embedded Hardware: Rapid Adaptive Control (arXiv:2610.03616, IROS 2026 Workshop)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.03616" target="_blank">📎 查看原文</a></td><td>2026-10</td></tr>
+        <tr><td>GAMBIT: Learning to Plan Continuous Multi-Robot Trajectories (arXiv:2610.06290)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.06290" target="_blank">📎 查看原文</a></td><td>2026-10-06</td></tr>
+        <tr><td>ReDiffNet: Differential RGB-Infrared Learning for Low-Light UAV Detection (arXiv:2610.05074)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.05074" target="_blank">📎 查看原文</a></td><td>2026-10-06</td></tr>
+        <tr><td>LightVLN: Efficient Aerial Vision-and-Language Navigation (arXiv:2610.05024)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.05024" target="_blank">📎 查看原文</a></td><td>2026-10-06</td></tr>
+        <tr><td>A Survey on End-to-End Autonomous Driving Training (arXiv:2610.00926, IEEE T-ITS)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.00926" target="_blank">📎 查看原文</a></td><td>2026-10-01</td></tr>
+        <tr><td>Radar2Plan: Benchmarking 4D Radar for E2E Ego-Trajectory Planning (arXiv:2610.06121)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.06121" target="_blank">📎 查看原文</a></td><td>2026-10-06</td></tr>
+        <tr><td>AD-E2E-JEPA: A Joint-Embedding Predictive Architecture for E2E Autonomous Driving (arXiv:2609.34085)</td><td><a class="source-link" href="https://arxiv.org/abs/2609.34085" target="_blank">📎 查看原文</a></td><td>2026-09</td></tr>
+        <tr><td>Aerial Robots October 2026 Update: What Changed, Why It Matters (Robotics and AI Reports)</td><td><a class="source-link" href="https://roboticsreports.com/aerial-robots-october-2026-update-what-changed-why-it-matters-and-what-to-watch-next" target="_blank">📎 查看原文</a></td><td>2026-10</td></tr>
+        <tr><td>What Is New With Aerial Robots in October 2026 (Robotics and AI Reports)</td><td><a class="source-link" href="https://roboticsreports.com/what-is-new-with-aerial-robots-in-october-2026-latest-company-releases-and-research-papers-and-key-takeaways" target="_blank">📎 查看原文</a></td><td>2026-10</td></tr>
+        <tr><td>Amazon Drone Delivery Hub Fights: 3 Towns, Dates and Status (DroneRanker)</td><td><a class="source-link" href="https://www.droneranker.com/amazon-drone-delivery-hub-opposition-towns" target="_blank">📎 查看原文</a></td><td>2026-10-06</td></tr>
+        <tr><td>布局未来30年快递基础设施，顺丰与圆通先后出手（网易·快递观察家）</td><td><a class="source-link" href="https://www.163.com/dy/article/L8FMALBD0511M3GR.html" target="_blank">📎 查看原文</a></td><td>2026-10-05</td></tr>
+        <tr><td>无人机如何「飞得稳」又「管得好」？（中国水运报·今日头条）</td><td><a class="source-link" href="https://www.toutiao.com/article/7692714368610140712/" target="_blank">📎 查看原文</a></td><td>2026-10-06</td></tr>
         <tr><td>arXiv cs.RO 最新提交列表（本期论文检索入口）</td><td><a class="source-link" href="https://arxiv.org/list/cs.RO/recent" target="_blank">📎 查看原文</a></td><td>2026-10</td></tr>
+        <tr><td>UZH Robotics and Perception Group 学习控制研究页（精读追踪线索）</td><td><a class="source-link" href="https://rpg.ifi.uzh.ch/research_learning.html" target="_blank">📎 查看原文</a></td><td>2026-10 核对</td></tr>
       </tbody>
     </table>
   </div>
