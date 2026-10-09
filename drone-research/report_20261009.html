@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<script src="/guard.js" charset="utf-8"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚁</text></svg>">
+<title>无人机科研日报 - 2026年10月9日</title>
+<meta name="description" content="无人机科研日报：arXiv 无人机 / 自动驾驶论文速递，含飞行控制与仿真方向研究进展。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TS-dinglilu 自动化日报">
+<meta property="og:title" content="无人机科研日报 | 2026-10-09">
+<meta property="og:description" content="无人机科研日报：arXiv 无人机 / 自动驾驶论文速递，含飞行控制与仿真方向研究进展。">
+<meta property="og:url" content="https://ts-dinglilu.github.io/drone-research/">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="无人机科研日报 | 2026-10-09">
+<meta name="twitter:description" content="无人机科研日报：arXiv 无人机 / 自动驾驶论文速递，含飞行控制与仿真方向研究进展。">
+<link rel="canonical" href="https://ts-dinglilu.github.io/drone-research/">
+<link rel="stylesheet" href="/assets/report.css">
+<style>
+/* custom overrides (preserved by replace_css.py - only first style block is replaced) */
+.nav-toc { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px 24px; margin: 24px 0 32px; backdrop-filter: blur(8px); }
+.nav-toc .toc-title { font-size: 1rem; font-weight: 700; color: var(--accent-purple); margin-bottom: 10px; }
+.nav-toc ol { margin: 0; padding-left: 20px; }
+.nav-toc ol li { margin-bottom: 6px; }
+.nav-toc ol li a { color: var(--text-dim); font-size: 0.9rem; transition: color 0.3s var(--smooth); }
+.nav-toc ol li a:hover { color: var(--accent); }
+.table-wrap { overflow-x: auto; margin: 16px 0; border-radius: var(--radius-sm); }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.summary-table th { background: rgba(0, 212, 255, 0.08); color: var(--accent); padding: 12px 14px; text-align: left; font-weight: 600; border-bottom: 2px solid rgba(0, 212, 255, 0.2); white-space: nowrap; }
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dim); vertical-align: middle; }
+.summary-table tr:hover td { background: rgba(0, 212, 255, 0.03); }
+.summary-table td a { font-size: 0.82rem; }
+.scroll-top { position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px; border-radius: 50%; background: var(--card-solid); border: 1px solid var(--border-hover); color: var(--accent); font-size: 1.2rem; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.4s var(--bounce); z-index: 100; backdrop-filter: blur(8px); }
+.scroll-top.visible { opacity: 1; visibility: visible; }
+.scroll-top:hover { transform: translateY(-4px) scale(1.1); box-shadow: var(--shadow-glow-hover); }
+.badge { display: inline-block; padding: 2px 10px; font-size: 0.75rem; font-weight: 600; border-radius: 999px; margin: 0 4px 4px 0; letter-spacing: 0.02em; }
+.badge.new { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.footer { margin-top: 48px; padding: 28px 0; text-align: center; border-top: 1px solid var(--border); }
+.footer p { font-size: 0.85rem; color: var(--text-faint); margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<div class="report-header">
+  <h1>🚁 无人机科研日报</h1>
+  <p class="subtitle">arXiv无人机论文热点 · 自动驾驶前沿 · IEEE期刊动态 · 全网技术讨论</p>
+  <div class="date-badge">📅 2026-10-09 星期五</div>
+  <div class="meta">
+    <span>📂 arXiv cs.RO / cs.SY / cs.CV / cs.LG</span>
+    <span>🔄 每日自动更新</span>
+    <span>📡 覆盖7大方向</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <a href="https://ts-dinglilu.github.io/drone-research/" class="back-link">← 返回无人机科研日报汇总</a>
+  <a href="https://ts-dinglilu.github.io/" class="back-link" style="margin-left: 8px;">🏠 返回主页</a>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-09</h1>
+  <div class="subtitle">arXiv 预印本精选 · 四旋翼控制 / 强化学习 / 导航 / 集群 / eVTOL 低空经济 / 仿真工具链</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-09 星期五</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习</span>
+  </div>
+</div>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-09</h1>
+  <div class="subtitle">arXiv 预印本精选 · 四旋翼控制与制导 / 学习控制 / 感知避障 / 集群组网 / 低空经济 / 自动驾驶交叉</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-09 星期五</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习</span>
+  </div>
+</div>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-09</h1>
+  <div class="subtitle">arXiv 预印本精选 · 四旋翼控制与制导 / 学习控制 / 感知避障 / 集群组网 / 低空经济 / 自动驾驶交叉</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-09 星期五</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习</span>
+  </div>
+</div>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-09</h1>
+  <div class="subtitle">arXiv 预印本精选 · 四旋翼控制与安全 / 学习控制 / 感知定位 / 集群协同 / 低空经济与 eVTOL / 自动驾驶交叉</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-09 星期五</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士研二，四旋翼飞控仿真方向，徐州人，求职车企 / 机械 / 研究院</span>
+  </div>
+</div>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-09</h1>
+  <div class="subtitle">arXiv 预印本精选 · 四旋翼安全控制 / 学习与自适应 / 集群与世界模型 / 自动驾驶交叉 / 低空产业</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-09 星期五</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习，求职车企 / 机械 / 研究院</span>
+  </div>
+</div>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-09</h1>
+  <div class="subtitle">arXiv 预印本精选 · 规划与控制 / 感知导航 / 学习与自适应 / 空中作业 / 无人机物流 / 自动驾驶交叉</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-09 星期五</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习，求职车企 / 机械 / 研究院</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块一 · 本期导览：10 月 5—7 日新批次开闸，主线是「规划即约束、学习带退出机制」</div>
+  <div class="stats-grid">
+    <div class="stat-box"><div class="count-badge">10</div><div class="label">本期精选论文</div><div class="sub">10/1-10/7 提交</div></div>
+    <div class="stat-box"><div class="count-badge">9.5m/s</div><div class="label">NMPP 森林无碰撞飞行</div><div class="sub">RMSE 降 58-67%</div></div>
+    <div class="stat-box"><div class="count-badge">78%→95%</div><div class="label">跨传感器布局导航成功率</div><div class="sub">零样本迁移 · 7 相机</div></div>
+    <div class="stat-box"><div class="count-badge">59mm</div><div class="label">纳米无人机外部定位误差</div><div class="sub">四足机器人「借眼」</div></div>
+  </div>
+  <div class="highlight-box">
+    <div class="highlight-title">💡 本期视角</div>
+    <p>本期为 <strong>2026 年 10 月 9 日（周五）</strong>无人机科研日报，共 <strong>10 条</strong>，全部为上期未覆盖的新条目，覆盖 10 月 1—7 日 arXiv 新批次。主线两条：<strong>其一，「规划即约束」——NMPP（2610.08695）把感知到的障碍作为硬几何约束直接写进非线性 MPC，规划器输出全状态参考给「不避障」的 SE(3) 控制器，森林真机 9.5 m/s 零碰撞；Rehberg 与 Alexis（2610.08306）则把任意深度相机布局统一反投影到机器人坐标系球面距离图，RL 策略零样本泛化到从未见过的 7 相机布局</strong>；<strong>其二，「学习带退出机制」——Scaramuzza 组（2610.06019）的自适应专家引导让专家随学生能力增强自动退出，最终策略反超专家</strong>。与上期「安全的几何化」主线衔接：上期把安全写进动力学结构，本期把任务约束写进优化问题与表征几何——你课题里的对应动作是把「障碍/任务」作为硬约束进优化器，而不是当软代价调权重。</p>
+  </div>
+  <div class="info-box"><div class="info-title">ℹ️ 阅读说明</div><p>每条给出论文标题、作者、arXiv 编号与提交时间，链接直达 arXiv 摘要页；所有编号与作者名单均来自真实检索结果。上期已详读的 2610.06629（降姿态向量场）、2610.00216（交叉路径 QP）、2610.06290 等不再重复，可在往期存档查阅。</p></div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块二 · 规划与控制：障碍是硬约束，不是软代价</div>
+  <div class="card">
+    <h3>① NMPP：非线性模型预测规划——障碍进约束、控制器不避障（10 月 6 日提交）</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">预测规划</span><span class="badge hot">🔥 10/6提交</span><span>arXiv:2610.08695 · cs.RO</span></div>
+      <p>Ondřej Procházka、Juraj Pauko、Robert Pěnička、Martin Saska（布拉格 CTU）的 <strong>NMPP: Nonlinear Model Predictive Planning for Agile UAV Flight in Cluttered Environments</strong>（10 月 6 日提交、10 月 7 日更新）。问题设定：杂乱环境中的四旋翼不仅需要无碰撞参考轨迹，参考还必须动力学可行、在执行器限制内、能被控制器精确跟踪——现有方法要么在凸走廊里优化平滑多项式（限制敏捷性），要么把障碍当软代价与跟踪性能做权衡。方案：<strong>把感知到的障碍作为硬几何约束直接施加在非线性 MPC 里，规划器输出全状态参考交给「不感知障碍」的 SE(3) 控制器</strong>。数据：位置 RMSE 比线性 MPC 轨迹规划器低 <strong>58-67%</strong>、比多项式轨迹规划器低 <strong>41-70%</strong>；<strong>森林真机飞行最高 9.5 m/s 全程无碰撞</strong>；更激进速度剖面下成功率 86%（对比 SOTA 规划器仅 26%）；未知杂乱环境真机可靠执行至 5.5 m/s。<strong>对课题的映射：硬约束 NMPC + 无障碍感知的 SE(3) 控制器是「规划层管安全、控制层管跟踪」的干净分工，比「软代价调权」可复现得多；你可以在 Simulink 里用 s-function 把圆/胶囊障碍写成非线性约束，复刻这套基准。</strong></p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.08695" target="_blank">📎 查看原文</a>
+    </div>
+    <h3 class="mt-4">② Sensor-Layout-Agnostic Navigation：任意相机布局的零样本导航策略（10 月 6 日提交）</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-teal">感知导航</span><span class="badge new">🆕 新挂网</span><span>arXiv:2610.08306 · cs.RO</span></div>
+      <p>Welf Rehberg 与 Kostas Alexis（NTNU）的 <strong>Sensor-Layout-Agnostic Navigation via Geometric Observation Canonicalization</strong>（10 月 6 日提交）。痛点：现有视觉导航策略绑定固定相机配置，无法零样本部署到异构机器人传感器布局。方案：<strong>不隐式学习空间对齐，而是把任意深度传感器载荷（数量、外参、内参各异）的深度测量显式反投影到统一的机器人中心坐标系，拼接成球面距离图 + 二值有效掩码</strong>——掩码让下游策略显式区分已覆盖空间与未观测盲区。训练用带激进相机随机化的强化学习；<strong>策略零样本泛化到最多 7 相机的未见布局，成功率从 78% 升至 95%（随空间覆盖增加）</strong>；真机四旋翼在障碍走廊与室外森林完成飞行验证，并对在线传感器突然掉线保持韧性。<strong>迁移点：「几何正则化观测」是比「更大网络」更便宜的泛化手段——你的仿真若要跨机型/跨载荷部署，把输入统一到机体坐标系球面图这一步，比训练集堆数据更有效</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.08306v1" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块三 · 学习与自适应：专家自动退出的在线 RL，与扰动保真度的定量审计</div>
+  <div class="card">
+    <h3>① Adaptive Expert Guidance：专家份额随能力动态退出，策略最终反超专家（10 月 6 日提交）</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">在线RL</span><span class="badge high">💎 Scaramuzza组</span><span>arXiv:2610.06019 · cs.LG</span></div>
+      <p>Daniele Affinita、Ming Xu、Rudolf Reiter、Davide Scaramuzza、Pascal Fua（EPFL / 苏黎世大学）的 <strong>Adaptive Expert Guidance for Efficient On-Policy Reinforcement Learning</strong>（10 月 6 日提交，29 页）。问题：在线策略 RL 早期样本效率低，常驻专家引导又会让策略被专家上限锁死。方案：<strong>通过可学习参数动态调整专家与学习者的控制份额——训练早期利用次优专家提升样本效率，随能力增强自动退出，最终优于专家</strong>。该方向上一批工作（同组 2610.05270 等）已经把「专家份额调度」做成显式机制而非启发式退火。<strong>对课题的映射：这正是「仿真训练 + 真机微调」结构里最值得抄的一块——给 RL 训练挂一个 PID/几何控制器当退化的「专家」，让策略先抄作业再毕业，比纯冷启动收敛快、比固定残差结构上限高；实现上就是一个可学习的混合系数，改造成本低</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.06019" target="_blank">📎 查看原文</a>
+    </div>
+    <h3 class="mt-4">② Statistical Turbulence 与风场保真度：RL 四旋翼控制器的训练数据审计（10 月 7 日新批次）</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">扰动建模</span><span class="badge-info">🧪 数据审计</span><span>arXiv:2610.06874 · physics.flu-dyn</span></div>
+      <p>Xun Huang 的 <strong>Statistical Turbulence and High-Fidelity Disturbance Fields for Quadrotor Flight Control</strong>（10 月 7 日新批次列表，跨 physics.flu-dyn / cs.LG / cs.RO）。核心问题：RL 四旋翼控制器通常在简化风模型下训练，但<strong>风场保真度（而非幅值）对策略鲁棒性的影响从未被量化</strong>。论文比较五个扰动保真度等级——无风、离散 1-cosine 阵风、统计湍流、合成相干结构、大气边界层大涡模拟（LES）场——在 0-12 m/s 风速扫描下对 PPO 智能体做全交叉训练-测试矩阵，并以级联 PID 与几何 SE(3) 控制器作为免训练参照。结果反直觉：<strong>训练-测试矩阵「出奇地平」，最便宜的结构化训练风（离散阵风域随机化）在每一测试列都排第一</strong>；一次调好的几何控制器在零坠机率下「包夹」了所有学到的 PPO 策略；机制诊断表明<strong>限制鲁棒性的是控制权限而非风场真实性</strong>——风场保真度投入应与平台风敏感度成比例。<strong>对课题的映射：这是给「要不要上 CFD 级仿真」这个问题的定量答案——27 g 量级的风敏感平台才值得高保真风场，常规四旋翼先把控制权限和阵风随机化做足</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.06874" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块四 · 多机协同与机载系统：异构「借眼」、仓库 VLA、配送协同</div>
+  <div class="card">
+    <h3>① Borrowed Eyes + Micro-UAV Localization：四足机器人给纳米无人机「借眼」（10 月 5/7 日提交）</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-teal">异构协同</span><span class="badge new">🆕 双联发</span><span>arXiv:2610.09967 / 2610.06215 · cs.RO</span></div>
+      <p>Alejandro Lorite Mora、Andrés Faíña 等五天内连发两篇同方向工作。<strong>前作</strong>（arXiv:2610.06215，10 月 5 日提交）：<strong>Towards Quadruped-Provided Localization and Active Tracking for Micro-UAVs</strong>——把定位栈整体从 27 g 微型无人机上卸载到带 7 自由度机械臂的四足机器人，臂端相机检测 AprilTag 并与四足自身定位融合，输出无人机全 6-DOF 位姿；机械臂作为主动受控观测者持续调整机位，实验室飞行外部定位精度 <strong>12-16 mm</strong>，主动跟随把跟踪误差从 11.0 cm 降到 6.9 cm。<strong>新作</strong>（arXiv:2610.09967，10 月 7 日提交）：<strong>Borrowed Eyes: Markerless Nano-UAV Flight with an Active Quadruped Observer</strong>——去掉标记物，用分割掩码 + 深度估计位置，并开发<strong>感知感知型 NMPC</strong> 动态调整四足身体与机械臂位姿、把观测可靠性作为主要控制目标；纳米无人机仅凭外部估计完成起飞到降落的全轨迹飞行，<strong>中位 3D 定位误差 59 mm</strong>，视线短暂丢失时平滑切回机载惯性飞行。<strong>方法论价值：把「负载受限」问题翻译成「感知外包 + 主动观测」——这是集群与多机器人论文里少见的把 NMPC 目标函数直接写成观测质量的写法，值得在你综述的多机异构章节引用</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.09967" target="_blank">📎 查看原文（Borrowed Eyes）</a>
+      <a class="source-link" href="https://arxiv.org/abs/2610.06215" target="_blank">📎 查看原文（Micro-UAV Localization）</a>
+    </div>
+    <h3 class="mt-4">② WareFly-VLA 与配送订单池化：仓库无人机导航的 VLA 框架 + 路网监测协同（10 月 7/6 日）</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-teal">低空应用</span><span class="badge hot">🔥 VLA上机</span><span>arXiv:2610.08526 / 2610.05270 · cs.RO</span></div>
+      <p>两条落地向工作。<strong>其一，Thinh D. Le、Son T. Nguyen、Duong Q. Nguyen、Dung D. Le、Ngo Anh Vien、H. Nguyen-Xuan 的 WareFly-VLA: A Vision-Language-Action Framework for UAV Navigation and Human Tracking in Smart Warehouses</strong>（10 月 7 日新批次，41 页 35 图 11 表）：面向智能仓库的无人机导航与人员跟踪，用视觉-语言-动作（VLA）框架把自然语言指令映射到机载导航行为——VLA 从机械臂操作向飞行平台迁移的代表性样本。<strong>其二，Yulong Hu、Meng Xu、Sen Li、Nikolas Geroliminis（港科大 / EPFL）的 Synergizing Drone Delivery Order Pooling and Road Network Monitoring through Monitoring-Task Orderization</strong>（10 月 6 日提交）：提出监测任务订单化 + 图多智能体 Q 学习，让无人机配送订单池化与路网监测互相成就——<strong>监测性能提升 25.1%、配送损失小于 1%</strong>，并显著减少超时。<strong>读法：前者是「大模型上机」的应用端，后者是「一份飞行预算干两份活」的运营端——低空经济叙事下，物流无人机的论文正在从单机性能转向系统级协同，你的路径规划背景切入后者的门槛更低</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.08526" target="_blank">📎 查看原文（WareFly-VLA）</a>
+      <a class="source-link" href="https://arxiv.org/abs/2610.05270" target="_blank">📎 查看原文（配送与监测协同）</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块五 · 自动驾驶交叉：端到端训练生态综述与架构之争</div>
+  <div class="card">
+    <h3>① E2E-AD 训练综述（IEEE T-ITS 接收）：Data-Strategy-Platform 三层分类法（10 月 1 日提交）</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">自动驾驶</span><span class="badge high">💎 T-ITS综述</span><span>arXiv:2610.00926 · cs.RO</span></div>
+      <p>Chengkai Xu、Yiming Cui、Jiaqi Liu、Yicheng Guo、Cheng Qin、Geyuan Zhang、Xinwei Dong、Shiyu Fang、Peng Hang、Jian Sun 的 <strong>A Survey on End-to-End Autonomous Driving Training from the Perspectives of Data, Strategy, and Platform</strong>（10 月 1 日提交，21 页 6 图，<strong>已被 IEEE Transactions on Intelligent Transportation Systems 接收</strong>）。综述提出 <strong>Data-Strategy-Platform 分类法</strong>：数据层定义「能学到什么」，策略层规定「学习如何对齐驾驶目标」，平台层支撑「可扩展性与持续演化」；系统梳理数据中心流水线、学习范式与训练基础设施的相互作用，并给出三个趋势判断——<strong>从数据数量到数据价值、从孤立优化到基础模型驱动的泛化、从静态训练到训练-测试一体化闭环</strong>。团队维护持续更新的文献仓库。<strong>读法：对做 RL+UAV 的人，这套三层法可以直接平移——数据（仿真保真度）、策略（RL/模仿混合）、平台（Simulink/Isaac 闭环）同样是你的课题分解框架，写开题的文献综述时借它的骨架</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.00926" target="_blank">📎 查看原文</a>
+    </div>
+    <h3 class="mt-4">② End-to-End vs. Modular：四维架构选择框架，10 个系统命中 7 个（10 月 1 日提交）</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">自动驾驶</span><span class="badge-info">🧪 架构对比</span><span>arXiv:2610.01746 · cs.RO</span></div>
+      <p>Kartik B. Kapse 的 <strong>End-to-End Learning vs. Modular Architectures: Comparative Insights into Autonomous Driving Systems</strong>（10 月 1 日提交）。端到端学习把原始传感输入直接映射到驾驶执行，简洁自适应但缺乏透明度、依赖大数据；模块化架构按感知-认知-规划-控制分流水线，可解释、可分模块优化，但集成复杂、扩展难。文章的贡献不在站队，而在<strong>提出四维架构选择框架：安全性、运行环境、数据/算力资源、部署场景四个维度共 12 个二元判据，对 10 个已发表系统做架构推荐验证，命中 7/10</strong>；并指出融合两种范式的混合架构是当前最有方向性的答案。<strong>迁移点：这套「12 判据选架构」的方法论可以直接搬到无人机——安全等级、GNSS 可用性、机载算力、任务复用度四个维度，恰好也是你答辩时回答「为什么不用端到端」的现成框架</strong>。</p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.01746" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块六 · 信息来源汇总</div>
+  <div class="table-wrap">
+    <table class="summary-table">
+      <thead><tr><th>论文</th><th>链接</th><th>提交时间</th></tr></thead>
+      <tbody>
+        <tr><td>NMPP: Nonlinear Model Predictive Planning for Agile UAV Flight in Cluttered Environments（Procházka, Pauko, Pěnička, Saska）</td><td><a class="source-link" href="https://arxiv.org/abs/2610.08695" target="_blank">📎 查看原文</a></td><td>2026-10-06</td></tr>
+        <tr><td>Sensor-Layout-Agnostic Navigation via Geometric Observation Canonicalization（Rehberg, Alexis）</td><td><a class="source-link" href="https://arxiv.org/abs/2610.08306v1" target="_blank">📎 查看原文</a></td><td>2026-10-06</td></tr>
+        <tr><td>Adaptive Expert Guidance for Efficient On-Policy Reinforcement Learning（Affinita, Xu, Reiter, Scaramuzza, Fua）</td><td><a class="source-link" href="https://arxiv.org/abs/2610.06019" target="_blank">📎 查看原文</a></td><td>2026-10-06</td></tr>
+        <tr><td>Statistical Turbulence and High-Fidelity Disturbance Fields for Quadrotor Flight Control（Xun Huang）</td><td><a class="source-link" href="https://arxiv.org/abs/2610.06874" target="_blank">📎 查看原文</a></td><td>2026-10-07</td></tr>
+        <tr><td>Borrowed Eyes: Markerless Nano-UAV Flight with an Active Quadruped Observer（Lorite Mora, Arapis, Faíña）</td><td><a class="source-link" href="https://arxiv.org/abs/2610.09967" target="_blank">📎 查看原文</a></td><td>2026-10-07</td></tr>
+        <tr><td>Towards Quadruped-Provided Localization and Active Tracking for Micro-UAVs（Lorite Mora, Faíña）</td><td><a class="source-link" href="https://arxiv.org/abs/2610.06215" target="_blank">📎 查看原文</a></td><td>2026-10-05</td></tr>
+        <tr><td>WareFly-VLA: A Vision-Language-Action Framework for UAV Navigation and Human Tracking in Smart Warehouses（Le 等）</td><td><a class="source-link" href="https://arxiv.org/abs/2610.08526" target="_blank">📎 查看原文</a></td><td>2026-10-07</td></tr>
+        <tr><td>Synergizing Drone Delivery Order Pooling and Road Network Monitoring（Hu, Xu, Li, Geroliminis）</td><td><a class="source-link" href="https://arxiv.org/abs/2610.05270" target="_blank">📎 查看原文</a></td><td>2026-10-06</td></tr>
+        <tr><td>A Survey on End-to-End Autonomous Driving Training（Xu 等，IEEE T-ITS 接收）</td><td><a class="source-link" href="https://arxiv.org/abs/2610.00926" target="_blank">📎 查看原文</a></td><td>2026-10-01</td></tr>
+        <tr><td>End-to-End Learning vs. Modular Architectures（Kapse）</td><td><a class="source-link" href="https://arxiv.org/abs/2610.01746" target="_blank">📎 查看原文</a></td><td>2026-10-01</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note-box mt-4">
+    <p class="text-sm">论文标题、作者与 arXiv 编号均来自 arXiv 官方列表页及检索结果的真实条目，链接直达摘要页；摘要为中文转述，技术细节以原文为准。arXiv cs.RO / eess.SY 新批次每日更新，同编号可能随版本修订。日期：2026-10-09，周五。</p>
+  </div>
+</div>
+
+
+</div>
+
+<div class="comments-section">
+  <div class="comments-title">💬 评论区</div>
+  <div class="comments-desc">登录 GitHub 账号即可评论，支持 Markdown 和表情回应。欢迎交流求职经验、分享面试心得！</div>
+  <div class="giscus"></div>
+</div>
+
+<footer class="footer">
+  <p>无人机科研日报 | 安徽工业大学机械工程硕士研究生个性化推荐报告</p>
+  <p>报告日期：2026年10月9日 | 数据来源：公开网络信息整理</p>
+  <div class="footer-meta">Generated by WorkBuddy Automation | Powered by TS-dinglilu.github.io</div>
+</footer>
+
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button>
+
+<script>
+// Scroll-to-top button visibility
+window.addEventListener('scroll', function() {
+  var btn = document.querySelector('.scroll-top');
+  if (btn) {
+    if (window.scrollY > 400) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+  }
+});
+
+// Giscus configuration
+var giscusScript = document.createElement('script');
+giscusScript.src = 'https://giscus.app/client.js';
+giscusScript.setAttribute('data-repo', 'TS-dinglilu/TS-dinglilu.github.io');
+giscusScript.setAttribute('data-repo-id', 'R_kgDOTjqaJQ');
+giscusScript.setAttribute('data-category', 'General');
+giscusScript.setAttribute('data-category-id', 'DIC_kwDOTjqaJc4DCIL2');
+giscusScript.setAttribute('data-mapping', 'pathname');
+giscusScript.setAttribute('data-strict', '0');
+giscusScript.setAttribute('data-reactions-enabled', '1');
+giscusScript.setAttribute('data-emit-metadata', '0');
+giscusScript.setAttribute('data-input-position', 'top');
+giscusScript.setAttribute('data-theme', 'dark_dimmed');
+giscusScript.setAttribute('data-lang', 'zh-CN');
+giscusScript.setAttribute('data-loading', 'lazy');
+giscusScript.crossOrigin = 'anonymous';
+giscusScript.async = true;
+var giscusBox = document.querySelector('.giscus');
+if (giscusBox) { giscusBox.appendChild(giscusScript); }
+</script>
+
+</body>
+</html>

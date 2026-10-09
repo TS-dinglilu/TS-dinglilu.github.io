@@ -182,3 +182,11 @@
 - **顺手修 digest 元信息 6 ERROR（昨日周记自动化遗留）**：build_digest.py 模板缺 meta description/og:url/canonical → 注入 add_meta() 后处理（注意 audit 对 digest 页期望目录 URL「…/digest/」而非文件 URL；heredoc 传 \\n 转义匹配失败过一次，改用 Edit 工具）；--force 重建 W40 + index 后 audit 0 错误。
 - 发布：publish_all --push 凭据直连一次成功，提交 e9b42e1；远端 main（API）= 本地 HEAD。
 - 验证：线上 34/34 页面 200（本轮无一例 Pages 延迟）；主页 34 卡全「10-06」、日报总数 560+（526→560，+34 吻合）；audit 最终 0 错误 3 警告（09-28~30 既有欠账）。
+
+## 2026-10-07（05:00 触发）
+- 开工状态：git pull 已最新（3c23a04），无抢跑记录（工作区仅 digest 自动化记忆文件改动）；audit 0 错误 3 警告（09-28~30 既有欠账）。
+- 正文 34/34 一次成功（10 个并行子代理全 model lite，零 429 零重派；逐个核对 mtime/字符数 8k–19.3k 落盘）；strict_check 0 不合格。
+- 外链 476 条：455 有效，--fix 改 6 份 http；换源 4 处——campus.nio.com ×4 份正文→nio.cn/careers 200（302 落点不可达旧判据）、比亚迪双 91wllm 死链→job.byd.com 200、蔚来×博世 aastocks URL **含 bxss.me 注入 payload**→车家号 24893225（新判据：URL 里出现注入/扫描 payload 一律换源）、奇瑞峰会 CNA 通稿→中国城市网 zgcsb.com 200；删除 5 处死链（sntcm WebFetch 不通、cjxy/whicu/wustyjs 91wllm 404、163 404、zgong 468 验证墙，均有同条目 200 链接兜底）；保留 10 条既有判据（jy.scu 483 ×3、ncepu 483、nowcoder 站点屏蔽、pcauto 503、expo.11467 429、hefei.gov 521 ×3）。
+- **修复脚本踩坑**：删链接正则 `[^<]*</a>` 太宽，把表格行里的同款链接也匹配进正文 op（期望1实际2 FAIL 不落盘，但同文件表格行 op 已成功）——按「FAIL 不落盘」设计重跑一轮收尾即可，别慌；修复脚本要用 Write 工具落盘（含 emoji 的 heredoc 会 EOF）。
+- 发布：publish_all --push 凭据直连首推成功，提交 4c00c45；远端 main（API）= 本地 HEAD。
+- 验证：线上 34/34 页面 200；主页 34 卡全「10-07」；audit 最终 0 错误 3 警告（既有欠账）。
