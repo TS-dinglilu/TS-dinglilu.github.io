@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="本周 34 类自动化日报的站级汇总：招聘、地区、口碑与科研动态一周回顾。">
+<meta property="og:url" content="https://ts-dinglilu.github.io/digest/">
+<link rel="canonical" href="https://ts-dinglilu.github.io/digest/">
+<title>周记 · 2026 年第 41 周 | 站级汇总</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0e1a; color: #d8e2f0; font-family: "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.7; }
+a { color: #00d4ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.hero { padding: 42px 20px 26px; text-align: center; background: linear-gradient(180deg, rgba(0,212,255,.08), transparent); border-bottom: 1px solid rgba(0,212,255,.15); }
+.hero-tag { display: inline-block; font-size: 12px; letter-spacing: 2px; color: #00d4ff; border: 1px solid rgba(0,212,255,.4); border-radius: 999px; padding: 3px 14px; margin-bottom: 14px; }
+.hero h1 { font-size: 26px; color: #fff; margin-bottom: 8px; }
+.hero .subtitle { color: #8fa3c0; font-size: 14px; }
+.stats { display: flex; justify-content: center; gap: 34px; margin-top: 20px; flex-wrap: wrap; }
+.stat-num { font-size: 24px; font-weight: 700; color: #00d4ff; }
+.stat-label { font-size: 12px; color: #8fa3c0; }
+.container { max-width: 960px; margin: 0 auto; padding: 26px 18px 60px; }
+.back-link { display: inline-block; font-size: 14px; margin-bottom: 18px; }
+.filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+.filter-tab { cursor: pointer; font-size: 13px; padding: 6px 16px; border-radius: 999px; border: 1px solid rgba(0,212,255,.25); color: #8fa3c0; user-select: none; }
+.filter-tab.active { background: rgba(0,212,255,.14); color: #00d4ff; border-color: rgba(0,212,255,.6); }
+.group { margin-bottom: 30px; }
+.group > h2 { font-size: 19px; color: #fff; border-left: 4px solid #00d4ff; padding-left: 12px; margin-bottom: 6px; }
+.group > .group-sub { font-size: 12px; color: #8fa3c0; margin-bottom: 12px; padding-left: 16px; }
+.cat-block { background: #111827; border: 1px solid rgba(0,212,255,.14); border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; }
+.cat-block.hidden { display: none; }
+.group.hidden { display: none; }
+.cat-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.cat-head h3 { font-size: 15px; color: #e8f2ff; }
+.cnt { font-size: 12px; color: #00d4ff; background: rgba(0,212,255,.1); border-radius: 999px; padding: 1px 10px; }
+.rep-item { padding: 8px 0; border-top: 1px dashed rgba(0,212,255,.12); }
+.rep-item:first-of-type { border-top: none; }
+.rep-line { font-size: 14px; }
+.rep-date { color: #8fa3c0; font-size: 12px; margin-right: 8px; }
+.toc { font-size: 12px; color: #7d8ea8; margin-top: 2px; }
+.zero { color: #7d8ea8; font-size: 13px; }
+h2.sec { font-size: 18px; color: #fff; border-left: 4px solid #00d4ff; padding-left: 12px; margin: 30px 0 12px; }
+.table-wrap { overflow-x: auto; }
+table.summary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.summary-table th, .summary-table td { border: 1px solid rgba(0,212,255,.18); padding: 8px 10px; text-align: left; }
+.summary-table th { background: rgba(0,212,255,.08); color: #9fd8ff; }
+.footer { text-align: center; color: #5f7089; font-size: 12px; padding: 24px 0 34px; border-top: 1px solid rgba(0,212,255,.1); margin-top: 40px; }
+</style>
+<script src="/guard.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-tag">站级汇总 · 自动生成</div>
+  <h1>周记 · 2026 年第 41 周</h1>
+  <p class="subtitle">覆盖 2026-10-05 ~ 2026-10-11（共 7 天）· 全站 23 个分类</p>
+  <div class="stats">
+    <div><div class="stat-num">204</div><div class="stat-label">日报份数</div></div>
+    <div><div class="stat-num">34</div><div class="stat-label">活跃分类</div></div>
+    <div><div class="stat-num">5675</div><div class="stat-label">信息链接</div></div>
+  </div>
+</div>
+<div class="container">
+  <a class="back-link" href="https://ts-dinglilu.github.io/">← 返回主页</a>
+  <div class="filter-bar"><div class="filter-tab active" onclick="setFilter(this)">全部</div>
+<div class="filter-tab" onclick="setFilter(this, 'recruit')">招聘</div>
+<div class="filter-tab" onclick="setFilter(this, 'reputation')">口碑</div>
+<div class="filter-tab" onclick="setFilter(this, 'campus')">校园科研</div>
+<div class="filter-tab" onclick="setFilter(this, 'region')">地区现状</div>
+<div class="filter-tab" onclick="setFilter(this, 'region-recruit')">地区招聘</div>
+<div class="filter-tab" onclick="setFilter(this, 'personal')">规划</div></div>
+<div class="group" data-group="recruit">
+  <h2>招聘</h2>
+  <div class="group-sub">11 个分类 · 66 份报告</div>
+<div class="cat-block" data-cat="recruit">
+  <div class="cat-head"><h3>车企招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/car-recruit/report_20261005.html" target="_blank">车企招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期第五天先做哪三件事 · 板块二 · 校招窗口收口与大盘新增量：一汽、东风、奇瑞 · 板块三 · 宣讲日历更新：四个新增场次填进节后第一、二、三周 · 板块四 · 央企科研院所与渠道：中汽中心 200+ 岗、蔚来窗口确认 · 板块五 · 行业风向：车展「旺丁不旺财」与下沉市场主战场 · 板块六 · 行动清单：假期剩余 3 天怎么用</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/car-recruit/report_20261006.html" target="_blank">车企招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期第六天先做哪三件事 · 板块二 · 校招长窗口与岗位大盘：上汽、吉利、广汽、长安 · 板块三 · 短窗口收口：东风剩 8 天、特斯拉进入 Offer 冲刺期 · 板块四 · 宣讲日历更新：零跑 10-09 打头，一汽解放三场连排 · 板块五 · 央企科研院所：中汽中心 200+ 岗持续网申 · 板块六 · 行业风向：9 月数据的三条主线 · 板块七 · 行动清单：假期最后两天的六件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/car-recruit/report_20261007.html" target="_blank">车企招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期最后一天先做哪三件事 · 板块二 · 奇瑞 2027 校招：3000 人大盘子，节后宣讲南京七连发 · 板块三 · 新势力校招：理想进入 Offer 期，蔚来、小米窗口全开 · 板块四 · 吉利宣讲推进：10-08 中科大、10-09 安大，合肥双场开跑 · 板块五 · 央地抢人现场：四大车企掌门人聚首中科大，江淮 10 月专场 · 板块六 · 行动清单：假期最后一天的五件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/car-recruit/report_20261009.html" target="_blank">车企招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：先看宣讲日历，再对网申倒计时 · 板块二 · 奇瑞 2027 校招：首场已开讲，行程扩至中原与西北 · 板块三 · 零跑与特斯拉：一个 1500+ Offer，一个 15—50K 明码标价 · 板块四 · 窗口倒计时：福特 10-31、东风 10-14、一汽解放/奔腾 10-15 · 板块五 · 新势力窗口速查与行业风向 · 板块六 · 行动清单：周末两天五件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/car-recruit/report_20261010.html" target="_blank">车企招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：周末宣讲、笔试节奏与扩招信号 · 板块二 · 周末与下周宣讲日历：一汽-大众、上汽大通、奕境排面最硬 · 板块三 · 岚图逆势扩招 500+：行业寒冬里的对照样本 · 板块四 · 流程加速带：福田当场面试、解放截止前压哨宣讲 · 板块五 · 社招窗口与产业动向：海外基地建厂带来编制增量 · 板块六 · 招聘会日历：汽车行业专场双选会扎堆 10 月下旬 · 板块七 · 行动清单：周末与下周四件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/car-recruit/report_20261011.html" target="_blank">车企招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：周日大场、宣讲加密与窗口收口 · 板块二 · 周日与下周宣讲日历：江铃今早吉大开讲，特斯拉三城连排 · 板块三 · 网申窗口盘点：福特中国 10-31 收口，三一批次口径 10-26 · 板块四 · 招聘会日历：华工今天开大场，武汉理工专场 10-17 截报名 · 板块五 · 政策与产业链动向：新规抬升测试验证岗位，宁德时代牵手赛力斯 · 板块六 · 行动清单：本周执行表</div>
+</div>
+</div>
+<div class="cat-block" data-cat="recruit">
+  <div class="cat-head"><h3>机械招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/mechanical-recruit/report_20261005.html" target="_blank">机械招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 上海双选会密集周：交大五场连排，上理 10-26 收尾 · 板块二 · 同济机械学院专场 10-16：院级招聘会的「对口浓度」样本 · 板块三 · 苏南线上双通道：无锡专场 10-08 开跑，与苏州场同档互备 · 板块四 · 机器人双雄同日进校：宇树 10-09 浙工大、智元 10-09 复旦 · 板块五 · 岗位样本与浙江日历：海天塑机 8000—13000、浙大双选 10-11 · 板块六 · 行动清单与避坑：假期剩余 3 天执行表</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/mechanical-recruit/report_20261006.html" target="_blank">机械招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 开跑倒计时 48 小时：苏南双线上专场的最后准备清单 · 板块二 · 江苏高校机械专场双确认：苏科大 10-15、扬大 10-21 · 板块三 · 浙江三场新确认：宁波 10-23、嘉兴 10-24、浙理工机械专场 10-28 · 板块四 · 上海日历补全：上大 10-10 打头，9 校联办 10-23 收中段 · 板块五 · 企业校招动态：零跑 400 人、双环传动、新剑传动、今飞 150 人 · 板块六 · 行业面：具身智能从「会跳舞」到「能上岗」，工程岗吃红利 · 板块七 · 行动清单与避坑：复课前最后两天的执行表</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/mechanical-recruit/report_20261007.html" target="_blank">机械招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 工程机械双巨头：三一 970 人、徐工 800+ 岗，本周期最大编制盘 · 板块二 · 沪杭装备与工控线：上海电气、上海机床厂、汇川、中控技术四家在招 · 板块三 · 宁波汽车零部件双雄：均胜押注具身智能，拓普慈溪基地开放 · 板块四 · 节后宣讲日历：江苏高校线下场 10-08 起密集恢复 · 板块五 · 行业面：工程机械销量八个月增长 24.2%，出口连续高增 · 板块六 · 行动清单与避坑：10-07 ~ 10-10 执行表</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/mechanical-recruit/report_20261009.html" target="_blank">机械招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本校宣讲直击：昨天到下周的三批场次，三花与双环是机械对口的两个头号目标 · 板块二 · 新势力车企线：零跑 400 人整车研发开讲三校，杭州滨江落点直投 · 板块三 · 江浙沪线下双选会排期：扬州 10-21、宁波 10-23、嘉兴 10-24 三场连轴 · 板块四 · 续跟踪：三一·徐工·上海电气·汇川·中控·均胜六家网申窗口仍在倒计时 · 板块五 · 行动清单与避坑：10-09 ~ 10-12 执行表</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/mechanical-recruit/report_20261010.html" target="_blank">机械招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 工程机械双龙头校招全解：徐工 1000+ 席位全球启动，三一 970 人网申倒计时 · 板块二 · 上海装备线：上海电气 10-19 进东华开新场次，振华重工 AI 岗 15-26K·13 薪 · 板块三 · 浙江增量线：海天塑机「鲲鹏计划」100 人进北航，双环传动南京/淮安基地同样可用 · 板块四 · 周日行动位：安徽大学先进制造专场 125 家企业，马鞍山出发一小时 · 板块五 · 续跟踪与行业基本盘：汇川提前批薪资坐标，8 月挖机销量 +19.3% 印证扩招逻辑 · 板块六 · 行动清单与避坑：本周末到 10-19 的执行表</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/mechanical-recruit/report_20261011.html" target="_blank">机械招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 周日现场：浙大综合双选会开场，机器人与海工宣讲同日 · 板块二 · 上海线：上海电气风电 29 岗清单细化，CAE 仿真与机械结构设计列名首位 · 板块三 · 浙江线：浙工大 10-12 宣讲五连场，双环传动、晶盛机电同日登台 · 板块四 · 江苏线：徐工新能源科技收窗口，阿特拉斯·科普柯（无锡）进南航 · 板块五 · 续跟踪：三一 50 校直通车推进，苏州汇川首批岗位口径再确认 · 板块六 · 行动清单与避坑：10-12 到 10-19 的执行表</div>
+</div>
+</div>
+<div class="cat-block" data-cat="recruit">
+  <div class="cat-head"><h3>比亚迪招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/byd-recruit/report_20261005.html" target="_blank">比亚迪招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 固态电池「罗生门」：枪声与冷水都是真的 · 板块二 · 9 月数据交叉验算与海外新坐标 · 板块三 · 产品线交付动态：腾势 Z9S、方程 S 与闪充网络破 2000 座 · 板块四 · 招聘窗口：电池专场 10-09 截止与校招倒计时 14 天</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/byd-recruit/report_20261006.html" target="_blank">比亚迪招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 组织线：第九届董事会换届落定，「五年全球第一」的第一棒交接 · 板块二 · 产品线：大唐创纪录、王朝破千万、大汉 10-13 上市——「双旗舰」打法成型 · 板块三 · 产能与补能：二代刀片电池爬坡、闪充订单饱满、国庆高速充电量创新高 · 板块四 · 招聘窗口：电池专场 10-09 截止（剩 3 天）与主通道 10-19 截止（剩 13 天） · 板块五 · 行动清单与风险提示：假期最后一天的三件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/byd-recruit/report_20261007.html" target="_blank">比亚迪招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 用工线：西安近万人、长沙雨花 2000 人——两轮扩招读懂比亚迪的产能节奏 · 板块二 · 电池产能线：西咸基地全面投产——「销量取决于电池产量」的第一份答卷 · 板块三 · 数据交叉验算：9 月 46.36 万辆的三个读法 · 板块四 · 校招与海外线：机械岗志愿规则、匈牙利 Q4 量产、召回风波的风险样本 · 板块五 · 行动清单与风险提示：假期最后一天的收尾动作</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/byd-recruit/report_20261009.html" target="_blank">比亚迪招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 校招窗口线：今天一扇门关闭，还剩两扇 · 板块二 · 数据线：东方证券 10 月 8 日研报——9 月 46.36 万辆的机构读法 · 板块三 · 产品线：大汉 10-13 上市、新唐 Q4 登场——四季度 10 款车的招聘含义 · 板块四 · 海外产能线：匈牙利 Q4 装配确认、巴西累计 10 万辆 · 板块五 · 行动清单与风险提示：本周末的三件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/byd-recruit/report_20261010.html" target="_blank">比亚迪招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 制造端：西安基地招工超 8000 人——第二大基地满产爬坡的真实信号 · 板块二 · 产品线：四季度 7 款新车收官战——大汉 10-13 打响第一枪，海鸥昨日盲订 · 板块三 · 校招线：主通道剩 9 天——本周六是最后一个完整窗口 · 板块四 · 深汕基地与用工观察：多家基地同步补员的产能地图 · 板块五 · 行动清单与风险提示：10 月 10 日—13 日的三件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/byd-recruit/report_20261011.html" target="_blank">比亚迪招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 制造端：深汕「超级工厂」多地协同招工超 7000 人——三大基地同步放量 · 板块二 · 产品线：大汉上市读秒——海鸥盲订发酵与 7 款新车收官战 · 板块三 · 校招线：主通道剩 8 天——高校宣讲密集落地与补录双截止提醒 · 板块四 · 销量与展望：9 月官方锚点 46.36 万辆，10 月预估仅作参考 · 板块五 · 行动清单与风险提示：10 月 11 日—13 日的三件事</div>
+</div>
+</div>
+<div class="cat-block" data-cat="recruit">
+  <div class="cat-head"><h3>奇瑞招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/chery-recruit/report_20261005.html" target="_blank">奇瑞招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 港交所子品牌明细：一枝独秀与两端承压 · 板块二 · 欧洲专题：增速 193% 背后的本地化用人需求 · 板块三 · 校招排期密集披露：四场宣讲/双选会与两个口径的人数 · 板块四 · 产品与行情：风云 T11 十月权益与市场热度</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/chery-recruit/report_20261006.html" target="_blank">奇瑞招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 智界 RX 上市复盘：连降 4 万、对标 YU7 GT、L3 架构——一场定价与技术的双重博弈 · 板块二 · 组织与品牌：尹同跃的「奔驰加宝马」与智界铁三角 · 板块三 · 数据交叉验算：出口占比 71.2%、H1 净利 -11.7%——两条曲线的背离读法 · 板块四 · 校招排期：北交大 10-20 新增场次，江西 10-10 打响节后第一枪 · 板块五 · 行动清单与风险提示：节后第一周的四场会怎么排</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/chery-recruit/report_20261007.html" target="_blank">奇瑞招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 组织线：张贵兵接棒常务副总裁——「全球化 3.0」的组织落子 · 板块二 · 数据交叉验算：出口 20.78 万辆创纪录背后，「七成靠海外」的双面读法 · 板块三 · 产品线：智界 RX 今日继续开售，新款 R7 与享界 V8 同台 · 板块四 · 校招与岗位线：iCAR 智能制造 15 人挂出，2000+ 岗位全景图同步打开 · 板块五 · 社招岗位价格表：芜湖在招的技术岗行情速览 · 板块六 · 行动清单与风险提示：复课前三天的奇瑞动作</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/chery-recruit/report_20261009.html" target="_blank">奇瑞招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 组织线：两周两调——主品牌并入全球体系，李学用退守捷途 · 板块二 · 资本与出口线：摩根大通首予「增持」，英国月销冠军再夺冠 · 板块三 · 校招线：宣讲排期落地——国科大 10-19、北交大 10-20、北理工 10-29 · 板块四 · 产品线：风云新车 10-10 上市、A9L 13.99 万起、iCAR V27 长续航版 · 板块五 · 产线招聘与行动清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/chery-recruit/report_20261010.html" target="_blank">奇瑞招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 校招线：宣讲排期再添三场——国际事业部专场首次浮出水面 · 板块二 · 海外产能线：英国研发中心深秋开业——桑德兰代工、本地化招聘在路上 · 板块三 · 国内市场线：O&J 回归传闻与「全球反哺国内」的产品打法 · 板块四 · 产线与区域招聘：芜湖弋江区专场——奇瑞新能源多工种放量 · 板块五 · 行动清单与风险提示：未来两周的节奏表</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/chery-recruit/report_20261011.html" target="_blank">奇瑞招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 校招线：北科大专场细节披露——电池/三电两大方向各 30 人 · 板块二 · 销量线：9 月出口再破 20 万辆——港股公告与集团口径交叉核验 · 板块三 · 组织线：全球化 3.0 高管分工落定——张贵兵统管全局、李学用专注捷途 · 板块四 · 产品线：风云 A9L 十月权益窗口——10-31 前锁单是关键节点 · 板块五 · 行动清单与风险提示：10 月 11 日—23 日的三件事</div>
+</div>
+</div>
+<div class="cat-block" data-cat="recruit">
+  <div class="cat-head"><h3>奇瑞职场口碑日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/chery-insider/report_20261005.html" target="_blank">奇瑞职场口碑日报 📎</a></div>
+  <div class="toc">板块：板块一 · 职级与薪资结构：P1—P14 的定价算术 · 板块二 · 加班账本：餐补、调休与「无效加班」的三本账 · 板块三 · 员工口碑：领导盲盒、酒桌文化与研发的另一种活法 · 板块四 · 离职与跳槽：「黄埔军校」的行情价是 40%—60% · 板块五 · Offer 结构拆解与面试必问清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/chery-insider/report_20261006.html" target="_blank">奇瑞职场口碑日报 📎</a></div>
+  <div class="toc">板块：板块一 · 最新变化：涨薪传闻与加班松绑的两个正面信号 · 板块二 · 脉脉双面镜：同一家公司的两种真实 · 板块三 · 加班账本档案：负荷率 1.4、10 元餐补与「系统里永远 17:00 下班」 · 板块四 · 请假与假期：春节管控风波，「再没饭吃也不能到奇瑞」 · 板块五 · 离职率与离职细节：走的人为什么多，走的时候又丢了什么 · 板块六 · 面试必问清单：三份面经实录拼出奇瑞面试的真实形状</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/chery-insider/report_20261007.html" target="_blank">奇瑞职场口碑日报 📎</a></div>
+  <div class="toc">板块：板块一 · 薪酬分布地图：10504 条样本里的奇瑞价签 · 板块二 · 正面样本：两年老员工的在职自述——「整改后确实在往人性化靠」 · 板块三 · 负面档案：月 300 小时到手 4800 的账本，至今仍是最锋利的参照系 · 板块四 · 产线端的另一本账：开封、安庆、青岛三地的劳务市场实价 · 板块五 · 本期版「谈 Offer 前必问」：从口碑清单升级为「数据核验清单」</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/chery-insider/report_20261009.html" target="_blank">奇瑞职场口碑日报 📎</a></div>
+  <div class="toc">板块：板块一 · 薪资结构与职级：90%＋10% 的月薪公式，与「全国同薪」的代价 · 板块二 · 加班与工时：纸面 8:30—17:00，实际执行看「领导盲盒」 · 板块三 · 员工口碑：正反两面并陈——「黄埔军校」的两种读法 · 板块四 · 离职率：「黄埔军校」的流水账——90%/80% 传闻与 19.7% 的口径差 · 板块五 · 面试必问清单：从流程面经到「反问环节的十个问题」</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/chery-insider/report_20261010.html" target="_blank">奇瑞职场口碑日报 📎</a></div>
+  <div class="toc">板块：板块一 · 薪资结构与职级：P1-P14 全序列带宽，与「低调涨薪 10%」的两面解读 · 板块二 · 加班与工时：从「896、时薪 16 元」到「1.5/2 倍国标」——整改前后的两本账 · 板块三 · 员工口碑：正反两面并陈——「黄埔军校」与新版「国企底色」 · 板块四 · 离职率：从「90% 传闻」到「14970 人、男性近 90%」——流动的结构性画像 · 板块五 · 面试必问清单：从 2026 年 6 月线上面试实录到「十问」</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/chery-insider/report_20261011.html" target="_blank">奇瑞职场口碑日报 📎</a></div>
+  <div class="toc">板块：板块一 · 薪资结构与职级：从「90%＋10%」到「社招卡15%涨幅」——offer 数字的含金量拆解 · 板块二 · 加班与工时：公告里的「1.5/2/3 倍」与访谈里的「刷加班时长」——两套并行的话语 · 板块三 · 员工口碑：1777 条点评 4.1 分的背面——「服从性测试」与「领导盲盒」 · 板块四 · 离职与流动：「21 届离职率 90%」的流传口径与跳槽翻倍的实证账 · 板块五 · 面试必问清单：从「车间转办公室」陷阱到 2026-10-11 版「十问」</div>
+</div>
+</div>
+<div class="cat-block" data-cat="recruit">
+  <div class="cat-head"><h3>吉利招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/geely-recruit/report_20261005.html" target="_blank">吉利招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 银河战舰 700 倒计时 5 天：从预售爆款到交付大考 · 板块二 · 极氪与领克：产品焕新与补能体系双线推进 · 板块三 · 宣讲季本周开局：三场宣讲排期与岗位全景 · 板块四 · 行动清单：极电岗 48 小时倒计时与面试素材</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/geely-recruit/report_20261006.html" target="_blank">吉利招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 9 月销量考卷：29.2 万辆背后的品牌冷热差 · 板块二 · 战舰 700 倒计时 4 天：六款版型配置分层全公开 · 板块三 · 领克 10 智充版与十月购车季：终端权益全景 · 板块四 · 组织动态：吉利×蔚来换电「资本联姻」，补能体系从各自为战到交叉持股 · 板块五 · 宣讲季后天开局：四场排期、岗位清单与行动纪律</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/geely-recruit/report_20261007.html" target="_blank">吉利招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 战舰 700 倒计时 3 天：预售账本与上市日看点 · 板块二 · 极氪：001 换代官宣、9X 出海德国与 10 月限时权益 · 板块三 · 领克 20 上市首周：入门即高配的技术账本与交付窗口 · 板块四 · 吉利智充技术账本：AI 温控、脉冲修复与补能网络对标 · 板块五 · 银河双车区域上市与校招时间线：24 天倒计时的行动纪律</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/geely-recruit/report_20261009.html" target="_blank">吉利招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 9 月销量账本：29.2 万辆创年内新高的三重结构 · 板块二 · 战舰 700 倒计时 1 天：明天上市的看点清单 · 板块三 · 巴黎车展 10-12 开幕：6 品牌 5 馆的出海集结 · 板块四 · 补能、合作与市场观点 · 板块五 · 2027 校招：网申只剩 22 天，四条时间线并行 · 板块六 · 今日岗位速览</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/geely-recruit/report_20261010.html" target="_blank">吉利招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 战舰 700 今日上市：从预售账本看四季度排产信号 · 板块二 · 极氪账本：前三季度翻倍增长与 9X 的欧洲定价 · 板块三 · 巴黎车展倒计时 2 天：22 家中国车企「点兵」与吉利 6 品牌 5 馆 · 板块四 · 四季度算术题：345 万辆目标还差多少、40.5 万辆/月意味着什么 · 板块五 · 2027 校招最后 21 天：时间线核对与社招岗位速览 · 板块六 · 本周岗位策略：三条新闻流向三条投递主线</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/geely-recruit/report_20261011.html" target="_blank">吉利招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 战舰 700 昨日上市：限时焕新价 16.98 万起的定价攻势 · 板块二 · 巴黎车展明天开幕：6 品牌 5 馆——吉利系最大参展集团的欧洲攻势 · 板块三 · 销量锚点：9 月 29.2 万辆港交所公告交叉核验——极氪距 30 万目标差 1.2 万 · 板块四 · 校招线：网申剩 20 天——9 大方向 1000+ 岗与本周宣讲排期 · 板块五 · 行动清单与风险提示：10 月 11 日—15 日的三件事</div>
+</div>
+</div>
+<div class="cat-block" data-cat="recruit">
+  <div class="cat-head"><h3>小米汽车招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/xiaomi-recruit/report_20261005.html" target="_blank">小米汽车招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 10-07 双节点倒计时 2 天：战报与权益同日兑现 · 板块二 · 产能账本：60 万辆总盘子与「永远差一步」的扩建逻辑 · 板块三 · 交付周期全景：从「57 周」到「2 小时」的效率跃迁 · 板块四 · 招聘窗口与行动清单：假期收尾的四件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/xiaomi-recruit/report_20261006.html" target="_blank">小米汽车招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 10-07 双节点倒计时最后一天：战报与权益同日兑现 · 板块二 · 假期观察：黄金周工厂参观加开，今日明日每日 14 场 · 板块三 · 55 万年度目标的缺口验算：官方月度成绩单与产能双口径 · 板块四 · 校招窗口：452 个在招职位、汽车岗长窗口与社招自动驾驶线 · 板块五 · 行动清单与风险提示：假期收尾的四个动作</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/xiaomi-recruit/report_20261007.html" target="_blank">小米汽车招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 今晚开奖：澎程首销月战报的三个阅读要点 · 板块二 · 55 万目标缺口精确验算：官方口径下的四季度数学题 · 板块三 · 武汉工厂 10 月达产：中部制造岗最大增量池 · 板块四 · 校招岗位显微镜：AI Agent 写进任职要求意味着什么 · 板块五 · 行动清单：开奖夜的三个动作</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/xiaomi-recruit/report_20261009.html" target="_blank">小米汽车招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 澎程首销月战报：锁单破 7 万台的三种读法 · 板块二 · 订单与产能：第 40 周数据与目标下修 · 板块三 · 10 月限时购车权益：现车 2 小时速提 · 板块四 · 校招与在招岗位 · 板块五 · 今日岗位速览</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/xiaomi-recruit/report_20261010.html" target="_blank">小米汽车招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 规模化里程碑：50 万台背后的制造账本 · 板块二 · 渠道下沉：10 月 22 家新店首次进入六城 · 板块三 · 出海倒计时：2027 欧洲落地的三块拼图 · 板块四 · 2027 届校招：主通道与新零售通道的双轨拆解 · 板块五 · 社招与产能侧岗位速览 · 板块六 · 本周岗位策略</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/xiaomi-recruit/report_20261011.html" target="_blank">小米汽车招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 澎程首销月收官：7 万锁单的成色与含金量 · 板块二 · 产能与交付：7:1 缺口背后的制造压力测试 · 板块三 · 招聘窗口：同济招聘会今日开锣，智驾测试岗北京在招 · 板块四 · 行业视角：科技巨头造车进入「第二篇章」，竞争图谱再排序 · 板块五 · 本周岗位策略</div>
+</div>
+</div>
+<div class="cat-block" data-cat="recruit">
+  <div class="cat-head"><h3>蔚小理招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/weixiaoli-recruit/report_20261005.html" target="_blank">蔚小理招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 理想：i9 全国交付落地，36.98 万的「单一版本」打法 · 板块三 · 蔚来：L90 周交付新高、萤火虫破 8 万，四季度盈利冲刺 · 板块四 · 小鹏：更名「小鹏集团」，27 届校招按物理 AI 公司改版 · 板块五 · 校招倒计时：理想剩 5 天，三家通道状态一览 · 板块六 · 假期新增信号：理想 9 月交付回落与 i6 换代定档，小鹏出海新突破</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/weixiaoli-recruit/report_20261006.html" target="_blank">蔚小理招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 黄金周一线观察：蔚小理门店促销侧重各不同 · 板块二 · 蔚来：9 月官方成绩单 34,749 台，乐道成第一大品牌 · 板块三 · 小鹏：两周两个组织大动作，产品线「四变二」+ 通用智能中心成立 · 板块四 · 小鹏出海：巴黎车展倒计时 5 天，G9L 全球发布与具身智能阵容 · 板块五 · 理想：校招批次口径复核，i9 交付背景更新 · 板块六 · 行动清单与面试素材：假期最后两天的三件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/weixiaoli-recruit/report_20261007.html" target="_blank">蔚小理招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 小鹏：Q3 账本落定，G9L 与出海双线兑现 · 板块二 · 蔚来：换电网络的用户账本与吉利率合的下一步 · 板块三 · 理想：i6 改款定档 10 月底，合格证背后的研发节奏 · 板块四 · 校招窗口：三家节奏对照与本周动作清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/weixiaoli-recruit/report_20261009.html" target="_blank">蔚小理招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 蔚来：乐道 20 万台里程碑与 1—9 月 30 万辆账本 · 板块二 · 小鹏：IRON 量产线启用，机器人从样机走向产线 · 板块三 · 理想：MEGA 交付提速、i6 定档 10 月底 · 板块四 · 校招动态：三家窗口全开 · 板块五 · 今日岗位速览</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/weixiaoli-recruit/report_20261010.html" target="_blank">蔚小理招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 蔚来：单日换电纪录与「换电公共品化」的转折 · 板块二 · 小鹏：探索者计划细则与巴黎车展双线出击 · 板块三 · 理想：9 月账本、巴黎首秀与 Offer 冲刺周 · 板块四 · 三家校招窗口：一个 Offer 周与两个抢 HC 赛道 · 板块五 · 本周岗位策略</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/weixiaoli-recruit/report_20261011.html" target="_blank">蔚小理招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 蔚来：国庆补能大考交卷，网络规模再上台阶 · 板块二 · 小鹏：联合国框架「中国首次」与图灵 AI 智驾报告 · 板块三 · 理想：i6 今日进店、10-28 上市，i9 爬坡与双节账本 · 板块四 · 校招与岗位窗口：三家节奏各不相同 · 板块五 · 本周岗位策略</div>
+</div>
+</div>
+<div class="cat-block" data-cat="recruit">
+  <div class="cat-head"><h3>传统车企招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/traditional-auto/report_20261005.html" target="_blank">传统车企招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 一汽×广汽：以股换股的央地车企新范式，南北丰田走向统一运营 · 板块二 · 上汽：前三季度 314.7 万辆领跑，新能源单月 22.5 万辆创历史纪录 · 板块三 · 长城：9 月销量同比下滑约 14%，出口占比超 50% 的双刃剑 · 板块四 · 长安：启源 Q06 国庆热销与「重庆造」政策红利 · 板块五 · 北汽：享界 V8 预售 72 小时订单破 8200 台，鸿蒙智行首款家用旗舰 MPV · 板块六 · 九月大盘与汇率面：出口成最大结构变量，六大车企汇兑失血近百亿 · 板块七 · 出海下一站：巴黎车展 10 月 12 日开幕，20 个中国品牌集结 · 板块八 · 本期小结</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/traditional-auto/report_20261006.html" target="_blank">传统车企招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 一汽×广汽重组：官方辟谣与交易悬念并存，南北丰田统一运营渐近 · 板块二 · 9 月成绩单收官：比亚迪 46.36 万登顶，奇瑞出口 20.78 万创中国汽车单月纪录 · 板块三 · 长城：总量下滑 13.99% 背后，欧拉 +79% 与皮卡 +16% 的结构性答案 · 板块四 · 校招窗口：教育部「校园招聘月」启动，庆铃/东风柳汽简章挂网，一汽-大众薪酬口径流出 · 板块五 · 假期车市收官：深圳车展 42 万人次成交 28 亿，苏州车展 26 万人次成交 22 亿</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/traditional-auto/report_20261007.html" target="_blank">传统车企招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 南北丰田整合深读：一汽「退而不出」，销售公司才是下一张牌 · 板块二 · 东风系：奕派 9 月环比 +46%，四季度三款新车排队上市 · 板块三 · 一汽：研发总院 350 岗长窗口 + 红旗/捷达/奔腾品牌动作 · 板块四 · 9 月销量补充口径：结构比总量更值得写进面试 · 板块五 · 行动清单：假期最后一天的四件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/traditional-auto/report_20261009.html" target="_blank">传统车企招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 一汽×丰田×广汽：三方战略合作 10 月 8 日官宣 · 板块二 · 9 月产销快报盘点：新能源与海外是唯二亮点 · 板块三 · 行业寒意：完成率刚过半，「金九」成色不足 · 板块四 · 巴黎车展倒计时：10 月 12 日开幕，22 家中国品牌创纪录 · 板块五 · 招聘窗口提醒：三个央企/国企截止日全部在下周 · 板块六 · 行动清单：周末两天四件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/traditional-auto/report_20261010.html" target="_blank">传统车企招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 一汽×丰田×广汽：三方战略联盟 10 月 9 日签字落地 · 板块二 · 广汽 9 月产销快报：总量下滑背后的三条增长曲线 · 板块三 · 长安：海外量利双升，巴黎车展在即 · 板块四 · 长城：前 9 月完成率 51%，欧拉翻倍与坦克承压并存 · 板块五 · 招聘窗口提醒：一汽-大众今晚开讲，解放 10-15 压哨 · 板块六 · 东风系编制观察：集团 2600 岗、岚图独占 500+ · 板块七 · 行动清单：周末与下周五件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/traditional-auto/report_20261011.html" target="_blank">传统车企招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 四部门新规征求意见：一汽当晚表态，中汽协发倡议 · 板块二 · 长安 9 月双口径：公告 21.54 万辆 -19.11%，海外与新能源逆势向上 · 板块三 · 长城 9 月快报：总量 -13.99%，海外占比首次过半，欧拉 +79% · 板块四 · 东风线：商用车「绿智平台」全球发布，东风股份新能源累计翻倍 · 板块五 · 产业面：宁德时代×赛力斯签约、太仓出口破百万、鄂州空运出海 · 板块六 · 求职者提示：新格局下的投递策略</div>
+</div>
+</div>
+<div class="cat-block" data-cat="recruit">
+  <div class="cat-head"><h3>车企供应链招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/supply-chain-recruit/report_20261005.html" target="_blank">车企供应链招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 今日焦点：洛阳基地假期满产与「去宁德化」大讨论 · 板块二 · 电池出海双线：匈牙利电芯投产与国轩×大众资本运作 · 板块三 · 财报口径：供应链四强的 2026 上半年真实成绩单 · 板块四 · 机器人供应链：特斯拉审厂之后，产能竞赛进入十月窗口 · 板块五 · 校招进行时：供应链企业 27 届网申与宣讲会全图 · 板块六 · 假期生产一线：零部件厂的国庆「不打烊」实录 · 板块七 · 投递倒计时与本周行动清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/supply-chain-recruit/report_20261006.html" target="_blank">车企供应链招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 宁德时代：匈牙利工厂首次开放，补贴传闻公开回应 · 板块二 · 技术主线：超级科技日「凝聚态 1500 公里」与钠电年底量产 · 板块三 · 行业格局：中国 17 家企业上榜全球零部件百强，10 月排产与锂价罕见背离 · 板块四 · 产能与集群：洛阳基地今年产值 337.86 亿，「10 分钟新能源产业圈」成形 · 板块五 · 汇川技术：人形机器人定点落地 + 中报口径 + 储能集采入围 · 板块六 · 岗位直通车：采埃孚两岗新挂、博世华域校招、神行者 2027 启动</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/supply-chain-recruit/report_20261007.html" target="_blank">车企供应链招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 电池军团校招开闸：国轩 1000 人、亿纬全球基地、蜂巢进南昌 · 板块二 · 汽车电子双雄：德赛西威 700 人，均胜 200 人押注具身智能 · 板块三 · 博世：绑定蔚来三品牌，中德论坛定调「联合共创」 · 板块四 · 采埃孚：中国电驱双定点、8 挡混动量产，商用车斩获 50 亿欧 · 板块五 · 零部件扩产与集群：延锋仪征设新公司，华域塞尔维亚落子 · 板块六 · 行动清单：假期最后一天的五件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/supply-chain-recruit/report_20261009.html" target="_blank">车企供应链招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 宁德时代：6000+ Offer 下周进京，经营端同步放大招 · 板块二 · 电池行业盘面：1—8 月全球榜单出炉，二线电池厂量价齐升 · 板块三 · ATL 宁德新能源：400+ Offer、30 万/年，10-10 上交开讲 · 板块四 · 汇川技术：110 家海外机构调研居首，工博会晒机器人与工业 AI · 板块五 · 博世与均胜：德系 Tier1 宣讲进京，均胜股价剧烈波动 · 板块六 · 行动清单：本周末到下周三的优先级</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/supply-chain-recruit/report_20261010.html" target="_blank">车企供应链招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 宁德时代：股价回暖、排产放量、三季报定档，校招通道全开 · 板块二 · 均胜电子：「星驰计划」31 岗位明细曝光，网申 10-23 截止进入最后两周 · 板块三 · 博世中国：宣讲三连倒计时 7 天，上海场 10-24 是江浙沪读者的主场 · 板块四 · 德系双雄补充线：采埃孚中国岗位地图，大陆集团系校招散点在招 · 板块五 · 自主 Tier1 双线：延锋 700+ 人进场，拓普灵巧手与工艺岗双轨在招 · 板块六 · 行动清单与说明：从今天到 10-24 的优先级排布</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/supply-chain-recruit/report_20261011.html" target="_blank">车企供应链招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 宁德时代与电池链：专利登顶、固态热炒与钠电落地 · 板块二 · 德系巨头：博世首次半年报的信号与 IAA 商用车新战场 · 板块三 · 中国供应链改写格局：17 家上榜百强与人形机器人第二曲线 · 板块四 · 校招与岗位窗口：电池厂编制地图与两家 27 届在招 · 板块五 · 行动清单与说明</div>
+</div>
+</div>
+<div class="cat-block" data-cat="recruit">
+  <div class="cat-head"><h3>科研院所招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/research-institute/report_20261005.html" target="_blank">科研院所招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期第五天，「今天截止」的两张航天入场券与中科院三线新窗口 · 板块二 · 今天截止：航天科工四院与九部——机械工程类在列的最后窗口 · 板块三 · 航天科技集团大盘子：2927 个岗位、机械列高频专业、滚动招聘宜早不宜迟 · 板块四 · 中科院线三连：空天院 100 人科研岗 + 地质地球所 + 光电所新窗口 · 板块五 · 宣讲排期与投递策略：10 月中旬是院所宣讲最密的一周</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/research-institute/report_20261006.html" target="_blank">科研院所招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期第六天，电科集团统一批次今日关闭，兵器与中船窗口全开 · 板块二 · 今天截止：中国电科集团 2027 届校招统一批次网申今日关闭 · 板块三 · 电科系所级通道：29 所机械工程列名，芯片研究院开放到明年 6 月 · 板块四 · 兵器线：兵器工业集团 2027 届秋招，机械类列第一梯队，窗口到 11 月 1 日 · 板块五 · 中船线：2027 届秋招网申 9—11 月，智能船舶岗月薪 16—21K · 板块六 · 中科院线：沈自所机器人国家队 + 合肥物质院博士后梯度 · 板块七 · 十月投递日历（更新版）与节后三天行动清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/research-institute/report_20261007.html" target="_blank">科研院所招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：集团批次收尾后，所级通道成为主战场 · 板块二 · 电科线：14 所仅剩 2 天，45 所机械设计 10 人，产业基础研究院 11-02 截止 · 板块三 · 航天线：805 所机械岗位与薪资细节，二院 23 所、航空工业全面铺开 · 板块四 · 中船线：702 所机械类校招与工业软件「奥蓝托」双通道 · 板块五 · 中科院上海线 + 先进院：微系统所 11-15、光机所 15 个装备职位、深先进研究助理 · 板块六 · 十月投递日历（更新版）与本周行动清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/research-institute/report_20261009.html" target="_blank">科研院所招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：光学机械交叉所成机械硕士主战场 · 板块二 · 中科院光学线：长春光机所今天截止，西安光机所 10-31 收口 · 板块三 · 电科线：十所 18 万/年 200 人、55 所网申开放、芯片研究院明天进吉大 · 板块四 · 航天与兵器线：湖南航天机械结构设计师、北方车辆研究所结构设计岗、地质地球所</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/research-institute/report_20261010.html" target="_blank">科研院所招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：机器人国家队与航空工业线同日放量 · 板块二 · 中科院线：沈阳自动化所 60 人开招，机器人方向与课题直接对口 · 板块三 · 航空工业线：强度所 22 万+安家费、611 所与自控所网申中 · 板块四 · 航天与航发线：六院 11-01 收口、306 所复合材料岗、航发沈阳所 10-31 · 板块五 · 船舶线：中船集团统一秋招，智能船舶工程师岗对 RL 背景直接友好</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/research-institute/report_20261011.html" target="_blank">科研院所招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：智能制造国家队与航天防务线同日放量 · 板块二 · 中科院线：工业人工智能研究所开招，智能制造首个国家级机构 · 板块三 · 电科线：27 所事业编公告落地，芯片研究院 200 人本周宣讲 · 板块四 · 航天防务线：十部本周末连开两场宣讲，十院报名至 12-31</div>
+</div>
+</div>
+</div>
+<div class="group" data-group="reputation">
+  <h2>口碑</h2>
+  <div class="group-sub">1 个分类 · 6 份报告</div>
+<div class="cat-block" data-cat="reputation">
+  <div class="cat-head"><h3>企业口碑日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/company-reputation/report_20261005.html" target="_blank">企业口碑日报 📎</a></div>
+  <div class="toc">板块：板块一 · 新势力档案更新：蔚来 / 小鹏 / 理想 / 赛力斯 · 板块二 · 传统车企档案更新：比亚迪 / 吉利（极氪）/ 长安 / 奇瑞 · 板块三 · 供应链与科技档案更新：宁德时代 / 小米汽车 · 板块四 · 机械重工与院所档案更新：三一 / 徐工 / 科研院所</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/company-reputation/report_20261006.html" target="_blank">企业口碑日报 📎</a></div>
+  <div class="toc">板块：板块一 · 新势力档案更新：蔚来 / 小鹏 / 理想 / 小米汽车 · 板块二 · 传统车企档案更新：比亚迪 / 吉利 / 长安 / 奇瑞 · 板块三 · 电池与供应链档案更新：宁德时代 / 汇川技术 / 博世 · 板块四 · 机械重工档案更新：徐工 / 三一</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/company-reputation/report_20261007.html" target="_blank">企业口碑日报 📎</a></div>
+  <div class="toc">板块：板块一 · 新势力与华为系档案更新：赛力斯 / 华为引望 · 板块二 · 央企与传统车企档案更新：一汽 / 东风 / 广汽 · 板块三 · 科研院所档案更新：2026 校招行情全景与「硕士天花板」问题 · 板块四 · 海外车企口碑对照：德国汽车业的裁员与工时保卫战</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/company-reputation/report_20261009.html" target="_blank">企业口碑日报 📎</a></div>
+  <div class="toc">板块：板块一 · 新势力档案更新：理想 / 蔚来 / 小鹏 · 板块二 · 比亚迪专项 + 传统车企工时档案：长城 / 吉利 / 奇瑞 / 长安 · 板块三 · 零部件与电池系档案：宁德时代 / 小米汽车工厂 / 博世中国 / 汇川技术 · 板块四 · 工程机械双龙头：三一重工 / 徐工</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/company-reputation/report_20261010.html" target="_blank">企业口碑日报 📎</a></div>
+  <div class="toc">板块：板块一 · 赛力斯：问界光环下的「高薪高压」，与「520 计划」的年龄焦虑 · 板块二 · 一汽集团：「下车间三年」的长账与「青岛解放」的高配样本 · 板块三 · 东风汽车：绩效 50% 发放的下行样本，与「一日连查三人」的反腐风暴 · 板块四 · 广汽集团：合资黄金时代的「年终奖 4 个月」，与下行期的「流失 13.36%」 · 板块五 · 华为引望：一三五到晚八点半、月末周六双倍——「有加班费的狼性」样本 · 板块六 · 科研院所：总包 20-35 万、公积金双边顶格——与「硕士只配工程落地」的另一面 · 板块七 · 本期横向对照与风险提示</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/company-reputation/report_20261011.html" target="_blank">企业口碑日报 📎</a></div>
+  <div class="toc">板块：板块一 · 造车新势力：理想「上三休四」、蔚来「不卷」的另一面、小鹏「15 薪＋生育补贴」 · 板块二 · 规模龙头：比亚迪「月饼争议」、长城「双休落地」、吉利「两小时打卡」、长安「薪资倒挂」 · 板块三 · 体制底盘回访：赛力斯 / 一汽 / 东风 / 广汽——查无重大新动态，近期梳理 · 板块四 · 电池与科技：宁德「涨 150 元」、小米「强度公认极高」、博世「15 天年假」、汇川「年终 3-6 个月」、引望回访 · 板块五 · 机械重工与院所：徐工「周末加班 208 元/天」、三一「离职率 15%-20%」、院所新增两所样本 · 板块六 · 风险提示</div>
+</div>
+</div>
+</div>
+<div class="group" data-group="campus">
+  <h2>校园科研</h2>
+  <div class="group-sub">3 个分类 · 18 份报告</div>
+<div class="cat-block" data-cat="campus">
+  <div class="cat-head"><h3>校园新闻日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/school-news/report_20261005.html" target="_blank">校园新闻日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期第五天，复课前最后一份「静默期读报」 · 板块二 · 安徽工业大学：节前最后一批要闻里，藏着三条与「去向」有关的线索 · 板块三 · 长春工程学院：双选会报名截止 7 天倒计时，小心「第三方平台」的时间差 · 板块四 · 徐州三中：今日动态较少，高三「返校经验分享会」与「成长的回响」新篇目值得细读 · 板块五 · 大庙中学：警校社联席会与食堂招标，两份「治理档案」读懂一所乡镇初中 · 板块六 · 复课节奏表：从 10 月 8 日到 10 月 16 日的三周行动轴</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/school-news/report_20261006.html" target="_blank">校园新闻日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期第六天，明天复课——本期重点是一张「节后首周日程全景表」 · 板块二 · 安徽工业大学：官网假期静默，但「明天的三个打开方式」值得提前想好 · 板块三 · 长春工程学院：就业网日历排到 10 月 27 日，报名截止只剩 6 天 · 板块四 · 省内参照系：安徽工程大学的两条学生动态，可当「机制自查表」 · 板块五 · 徐州三中：今日动态较少，最新挂网是 9 月 17 日班主任培训——但这条恰是家校协同的关键拼图 · 板块六 · 大庙中学：今日动态较少＋一次「同名学校」核验——检索乡镇校信息，地域关键词是救命符 · 板块七 · 复课节奏表：从明天到 10 月 24 日的完整行动轴</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/school-news/report_20261007.html" target="_blank">校园新闻日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期最后一天，本期重点是「长工程日历又添三场」与「车企秋招排期表」 · 板块二 · 安徽工业大学：学科建设双突破——软科 9 学科上榜创近五年新高，ESI 第五个前 1% 学科诞生 · 板块三 · 长春工程学院：日历再添三场——二十二冶、广西能源、湖东专场，倒计时 5 天 · 板块四 · 车企秋招风向：零跑 400 人整车研发、一汽解放 10-13 开讲、蔚来通道开启 · 板块五 · 徐州三中：今日动态较少，「成长的回响」系列与高三返校分享是开学季最佳补读材料 · 板块六 · 大庙中学：今日动态较少——从公开采购台账读一所乡镇初中的「账本治理」 · 板块七 · 复课节奏表：从明天到 10 月 24 日的完整行动轴</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/school-news/report_20261009.html" target="_blank">校园新闻日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：复课首周三条主线——安工大官网复更、本校宣讲开闸、长工程今迎二十二冶 · 板块二 · 安徽工业大学：官网假期后复更——校友当选加拿大皇家学会科学院院士，三条治理要闻同日挂网 · 板块三 · 长春工程学院：今日二十二冶开讲，湖西报名截止进入三天倒计时，10 月空中双选会同步在跑 · 板块四 · 徐州三中：秋季运动会圆满落幕——潇湘校区新学期的第一场全校活动交卷 · 板块五 · 大庙中学：今日动态较少——以食堂招标台账回看「后勤透明化」样本 · 板块六 · 行动节奏表：从今天到 10 月 29 日的完整节点轴</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/school-news/report_20261010.html" target="_blank">校园新闻日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：周末盘点日——教学线新要闻、长工程双选会邀请函、三中潇湘档案与大庙观察 · 板块二 · 安徽工业大学：教学线两条新要闻挂网——培养方案修订启动与省级优秀案例 · 板块三 · 长春工程学院：两份双选会邀请函挂网——湖西 10-16 与湖东 11-21，周一中午报名硬截止 · 板块四 · 徐州三中：本周无新增发布——以潇湘校区开学季档案与体育成绩单作近期梳理 · 板块五 · 大庙中学：今日动态较少——以 2026 招生计划与食堂服务执行观察作近期梳理 · 板块六 · 行动节奏表：从 10 月 10 日到 11 月 21 日的七格节点轴</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/school-news/report_20261011.html" target="_blank">校园新闻日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：周日档案日——长工程迎新三连挂网、安工大考研报名与就业培训、两所徐州学校周末梳理 · 板块二 · 安徽工业大学：考研考点报名公告挂网、新闻网确认就业培训会与教研新成果 · 板块三 · 长春工程学院：迎新季三连挂网——开学典礼、文艺汇演、军训合唱，十月开局双线并行 · 板块四 · 徐州三中：今日动态较少——以学科喜报矩阵与校友档案作近期梳理 · 板块五 · 大庙中学：今日动态较少——以建校七十年、特色社团与食堂执行观察作近期梳理 · 板块六 · 行动节奏表：从 10 月 11 日到 10 月 24 日的六格节点轴</div>
+</div>
+</div>
+<div class="cat-block" data-cat="campus">
+  <div class="cat-head"><h3>安工大校园日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/ahut-campus/report_20261005.html" target="_blank">安工大校园日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期第五天，本校静态但「节后第一周日程」已满负荷 · 板块二 · 机械工程学院：院领导接待日 10 月 8 日下午——本学院直通渠道，预约制 · 板块三 · 假期里的「学院温度」：外院慰问考研学生与马院思想动态调研 · 板块四 · 学校治理线：党代会三次会议、巡察工作会与上半年工作通报会 · 板块五 · 学科与学生荣誉线：三创赛特等奖背后的「实战赛」方法论 · 板块六 · 复课节奏表：10 月 8 日到 10 月 24 日的五个节点 · 板块七 · 教务处节后安排：「汇文回响」接待日场次与公选课线上学习时间窗</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/ahut-campus/report_20261006.html" target="_blank">安工大校园日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期第六天，明天复课——「首日三线分流」与「双选会双城记」 · 板块二 · 明天复课首日：三件事时间重叠、通道各异，逐线说明 · 板块三 · 双选会双城记：长工程日历里的「跨校窗口」，电气/能动读者重点看三场 · 板块四 · 省内参照系：安徽工程大学「师生下午茶」第二十一期与本校的「渠道地图」 · 板块五 · 节前要闻终读：三组数字与一个判断，写进开题与面试都用得上 · 板块六 · 复课行动轴：10 月 8 日到 10 月 30 日的七格日程</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/ahut-campus/report_20261007.html" target="_blank">安工大校园日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期最后一天——「学科双突破」与「10 月会议排期」是本期两条主线 · 板块二 · 学科双突破：软科 9 学科上榜创近五年新高，ESI 第五个前 1% 学科诞生 · 板块三 · 校长声音与校务动态：《科技日报》理论版署名文章与节前治理动作 · 板块四 · 机械学院动态：新生专业教育、推免经验分享、就业信息五连发 · 板块五 · 学术会议排期：「数智思政」论坛 10-24 在校举办，ICCPR 2026 与系列报告补全日历 · 板块六 · 假期研工服务：外国语学院慰问考研学生、马院思想动态调研会——「假期不离线」的学生工作样本 · 板块七 · 复课行动轴：10 月 8 日到 10 月 30 日的七格日程</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/ahut-campus/report_20261009.html" target="_blank">安工大校园日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期结束信息源重启——「官网复更」与「宣讲开闸」是本周两条主线 · 板块二 · 官网复更四条：校友院士荣誉打头，三条治理要闻指向「十五五」开局资源扩容 · 板块三 · 复课首周宣讲开闸：两天七场，三花智能控制与芜湖伯特利最对口机械方向 · 板块四 · 就业节点与生活提醒：10-24 双选会与省级皖南分会合并举办，2027 年度医保缴费启动 · 板块五 · 校园动态补遗：计算机学院 AI 学科上榜软科专题挂网，马院研究生调研会模板存档 · 板块六 · 复课行动轴：10 月 9 日到 10 月 24 日的七格日程</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/ahut-campus/report_20261010.html" target="_blank">安工大校园日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：周六复盘日——教学线三连发、论坛节点、双选会倒计时三件事 · 板块二 · 教学科研：2027版培养方案修订启动，4项案例入选省级质量工程优秀案例 · 板块三 · 讲座论坛：10-24「数智思政」论坛本校承办，考研报名讲座与智能制造系列报告可回看 · 板块四 · 就业信息：10-24 双选会进入 14 天倒计时，新增 10-19 先进芯测宣讲与学院就业信息源 · 板块五 · 校园动态与生活提醒：实验室危废摸排、廉洁教育活动、两项省级人才公示 · 板块六 · 周末复盘与下周行动轴：从 10-10 到 10-24 的六格日程</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/ahut-campus/report_20261011.html" target="_blank">安工大校园日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：周日备战日——考研报名节点落地、就业动员下沉到辅导员、明天宣讲五连 · 板块二 · 就业信息：辅导员就业培训会召开，10-12 宣讲五连、10-13 又是五场，10-24 双选会 13 天倒计时 · 板块三 · 教学科研：柯清平教授成果发表、计算机学院启动院级培养方案修订、机械学院示范课与访企拓岗 · 板块四 · 考研与教务：考点 3460 网报公告挂出，实验教学填报与平台培训两份新通知 · 板块五 · 校园动态与竞赛：物流设计大赛校内赛出结果、马院研究生思想动态调研、机械十佳歌手 · 板块六 · 周日备战与下周行动轴：从 10-11 到 10-24 的六格日程</div>
+</div>
+</div>
+<div class="cat-block" data-cat="campus">
+  <div class="cat-head"><h3>无人机科研日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/drone-research/report_20261005.html" target="_blank">无人机科研日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：六篇新论文，一条主线——「让控制器知道自己的状态」 · 板块二 · 电池感知 RL：把「电量衰减」写进策略输入，38 克微机竞速提速 10 秒 · 板块三 · 自适应控制：GRU 残差估计器替代域随机化，3 次飞行完成 sim-to-real 校准 · 板块四 · 多机协同：横向安全路径跟随的理论保证与共享体素图的真机部署 · 板块五 · LLM 与集群前沿：当每架无人机都装一个小语言模型，通信反而成了主瓶颈 · 板块六 · 工具链与科研基建：可微仿真框架 VisFly-Lab 与 ABPT 算法 · 板块七 · 视野外扩：高空 POMDP 目标搜索新论文与低空经济立法落地</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/drone-research/report_20261006.html" target="_blank">无人机科研日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：六篇新论文一条主线——「扰动来了，系统怎么办」 · 板块二 · 规划控制一体化：EKF + 非线性扰动观测器写进 NMPC，扰动下任务完成率 1/10 → 9/10 · 板块三 · 安全与残差：把「不出事」写成硬约束，把「补扰动」交给残差学习 · 板块四 · 感知与追踪：DSP 上跑 VIO 的功耗账本，与跨具身全景分割新基准 · 板块五 · 导航前沿：气动势流理论做避障场，与 sim-to-real 的「执行接口」适配 · 板块六 · 方法论小结：本周三条可迁移线索与精读建议 · 板块七 · 视野外扩：大疆 EV50 珠峰试飞信号与安徽低空场景三年行动方案</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/drone-research/report_20261007.html" target="_blank">无人机科研日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：10 月 5—6 日新批次开闸，主线是「安全的几何化与控制的系统性」 · 板块二 · 四旋翼安全控制：向量场跟踪的几何化，与交叉路径跟随的约束 QP 化 · 板块三 · 学习与自适应控制：核表示在线适配扰动，嵌入式芯片上跑上千并行 MPC · 板块四 · 集群与感知：GAMBIT 上千机器人无碰规划，ReDiffNet 低光无人机车辆检测 · 板块五 · 自动驾驶交叉：E2E 训练生态综述、4D 雷达规划基准与 JEPA 零样本规划 · 板块六 · 产业与政策：Part 108 审查窗口明日到期，美团无人机破百万单，长江水上配送常态化 · 板块七 · 方法论小结：本周三条可迁移线索与精读建议</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/drone-research/report_20261009.html" target="_blank">无人机科研日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：10 月 5—7 日新批次开闸，主线是「规划即约束、学习带退出机制」 · 板块二 · 规划与控制：障碍是硬约束，不是软代价 · 板块三 · 学习与自适应：专家自动退出的在线 RL，与扰动保真度的定量审计 · 板块四 · 多机协同与机载系统：异构「借眼」、仓库 VLA、配送协同 · 板块五 · 自动驾驶交叉：端到端训练生态综述与架构之争</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/drone-research/report_20261010.html" target="_blank">无人机科研日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：主线是「安全机制进 RL 管线，表征决定泛化」 · 板块二 · 学习控制与安全着陆：CBF 上舰、电池入环、三传感器避障 · 板块三 · 状态估计与感知：滤波器学习化改造与纳米机上的 15 克方案 · 板块四 · 世界模型与 sim-to-real：表征比预测更重要 · 板块五 · LLM 智能体集群：通信必须是确定性机制，安全要纵深防御 · 板块六 · 低空产业动态：珠峰 8861 米、香港沙盒首飞、eVTOL 认证季</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/drone-research/report_20261011.html" target="_blank">无人机科研日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：主线是「把看不见的扰动变成显式输入」 · 板块二 · 学习控制与自适应：风扰显式入环、残差动力学在线估计 · 板块三 · 规划与安全控制：CBF 写进向量场，扰动韧性规划控制一体化 · 板块四 · 仿真工具链与世界模型：可微仿真、轻量世界模型、过驱动倾斜旋翼 · 板块五 · 低空产业动态：Joby 德州展演、南昌低空集市、eVTOL 国际一周</div>
+</div>
+</div>
+</div>
+<div class="group" data-group="region">
+  <h2>地区现状</h2>
+  <div class="group-sub">9 个分类 · 54 份报告</div>
+<div class="cat-block" data-cat="region">
+  <div class="cat-head"><h3>徐州汽车机械日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/xuzhou-news/report_20261005.html" target="_blank">徐州汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：出口纪录刷新 + 实验平台调研 + 企业座谈会 + 县域产线保供 · 板块二 · 从徐州奔赴南美：XCA3000BR刷新中国轮吊出口纪录 · 板块三 · 柳泉实验平台专题调研：国内行业规模最大的整机实验基地在路上 · 板块四 · 「535」企业座谈会：政企面对面的产业温度计 · 板块五 · 县域保供一线：邳州汽车零部件企业的假期产线 · 板块六 · 产业纵深：第二主业定型与欧洲本土化布局 · 板块七 · 行业坐标系：挖掘机出口的年度账本与节后观察清单 · 板块八 · 求职者视角与本期小结：把「出口纪录」翻译成岗位语言</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/xuzhou-news/report_20261006.html" target="_blank">徐州汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：领航工厂登上人民网 + 卡特彼勒产线纵深 + 9月重卡订单盘点 · 板块二 · 人民网观察徐工：从「4年1款」到「2年3款」的敏捷研发革命 · 板块三 · 一根胶管的战略纵深：卡特彼勒徐州工厂量产复盘 · 板块四 · 投资者关系透视：徐工机械的印尼落子与新能源账本 · 板块五 · 「金九」重卡订单盘点：徐工数千辆签约与零一汽车的产融合作 · 板块六 · 产业纵深：泰国CBA展的绿色成套方案与氢燃料、CKD出海底数 · 板块七 · 节后岗位观察：徐工汽车在招岗位结构与投递建议 · 板块八 · 求职者视角与本期小结：把「效率革命」翻译成面试语言</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/xuzhou-news/report_20261007.html" target="_blank">徐州汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：最大吨位起重机赴南美 + 农机智能工厂开工在即 + 锂电新落子 · 板块二 · 出海新纪录：中国出口最大吨位轮式起重机从徐州奔赴南美 · 板块三 · 产能新落子：徐工 5.07 亿农机智能工厂 10 月 18 日开工 · 板块四 · 新能源电池矩阵：协鑫 40 亿项目开工与比亚迪百亿工厂扩建 · 板块五 · 智能制造纵深：徐工汽车的全栈自研与 66 亿公里运营底数 · 板块六 · 徐州智造微观样本：汉界轻卡的「20 厘米突破」 · 板块七 · 国际对照：德国汽车业裁员潮与中国工程机械的景气分化 · 板块八 · 本期小结：节后第一周的观察清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/xuzhou-news/report_20261009.html" target="_blank">徐州汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：热度账本 + 金融背书 + 增持进展 + 出海梯队 · 板块二 · 央视舞台的后续账本：《立潮头》38亿阅读背后的城市名片效应 · 板块三 · 出海金融再加码：进出口银行与徐工集团在京会谈 · 板块四 · 资本市场线：徐工集团新一轮增持进展披露，已投约3002万元 · 板块五 · 出海样本（上）：海伦哲64米高空作业车与丰县电动三轮车的「全球爆款」 · 板块六 · 出海样本（下）：邳州华邦专汽的数字化技改账本与经开区假期冲刺 · 板块七 · 行业参照：新能源自卸车8月数据与汉境干线的补能账 · 板块八 · 本期小结：三件事值得写进面试，三件事持续跟踪</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/xuzhou-news/report_20261010.html" target="_blank">徐州汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：出海纪录周 + 农机开工倒计时 + 人才周启幕 · 板块二 · 出海纪录（上）：近300台履带起重机集体发运东南亚 · 板块三 · 出海纪录（下）：2000吨级轮式起重机与XGC16000刷新两项出口纪录 · 板块四 · 全球交付扫描：安哥拉十年最大单、南美高空平台、莫桑比克电动矿挖首秀 · 板块五 · 新赛道执行期：徐工农机智能工厂开工倒计时，10月18日动工 · 板块六 · 产业引才窗口：2026徐州人才周今日启幕 · 板块七 · 县域智造看点：丰县电动车产业园的「全机器人焊接」产线 · 板块八 · 本期小结：把「纪录周」写成面试素材，把「开工日」写进行动清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/xuzhou-news/report_20261011.html" target="_blank">徐州汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：双奖加冕 + 非洲助阵 + 回购落地 + 数字化新政 · 板块二 · 双料加冕：全球矿山设备50强前20 + 印尼年度产品奖 · 板块三 · 非洲世纪工程：百台徐工重器助阵丹格特炼油厂开工 · 板块四 · 资本市场线：徐工机械回购进展——累计3.45亿元、3680.64万股 · 板块五 · 政策落地：650家中小企业数字化改造，工程机械行业列首位 · 板块六 · 项目建设线：创新中心二期钢结构60% + 智慧产业园铺开 · 板块七 · 人才与产业生态：徐工×焦耳阶跃战略合作 + 徐工汽车股份化改制 · 板块八 · 本期小结：把"双奖"写成技术叙事，把"650家"写成产业机会</div>
+</div>
+</div>
+<div class="cat-block" data-cat="region">
+  <div class="cat-head"><h3>南京汽车机械日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/nanjing-news/report_20261005.html" target="_blank">南京汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：LG钠电中试线落地 + 高精地图进度 + 节后车市盘点 · 板块二 · 钠离子电池竞争升温：LG新能源南京一厂建起200MWh中试线 · 板块三 · 车路云底座：南京智能网联高精地图将覆盖江南主城1400千米 · 板块四 · 产业底数：南京新能源汽车版图与溧水「整车+电池」格局 · 板块五 · 节后终端行情：启源Q07优惠1万元、A07让利0.6万元 · 板块六 · 求职者视角与本期小结：钠电、地图与终端的三条求职线</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/nanjing-news/report_20261006.html" target="_blank">南京汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：徐工落宁连锁反应 + 车展收官盘点 + 补贴兑付节奏 · 板块二 · 徐工落宁观察：领航工厂的「产融样本」与华东总部的岗位想象 · 板块三 · 车展收官盘点：从「看车卖车」到「票根经济」，南京车展的城市场外账 · 板块四 · 补贴官方口径：最高7000元的购新补贴，2027年上半年才能到手 · 板块五 · 长安系南京终端：蓝鲸超擎混动密集到店，国庆促销梯度盘点 · 板块六 · 求职者视角与本期小结：假期第六天，节后三步走</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/nanjing-news/report_20261007.html" target="_blank">南京汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：百万辆里程碑 + 上半年产业账本 + 节后车市接力 · 板块二 · 深蓝百万辆在宁下线：一座南京工厂的「4年100万辆」 · 板块三 · 南京造车半年账本：新能源增速44.4%跑赢全国，「生态招商」路线浮出水面 · 板块四 · 节后车市接力：以旧换新2500亿收官、假期前三日汽车贡献74.5亿 · 板块五 · 装备线观察：徐工总部进入执行期，南京装备叙事的「制造+总部」双轮 · 板块六 · 求职者视角与本期小结：假期最后一天，把三条线装进节后第一周</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/nanjing-news/report_20261009.html" target="_blank">南京汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：车展官方战报 + 深蓝百万辆确认 + 补贴账本 · 板块二 · 车展收官战报：13737台预订、25.71亿元，官方口径确认「智慧出行嘉年华」模式 · 板块三 · 深蓝百万辆进入交付期：南京广电确认下线，S07节后行情同步更新 · 板块四 · 补贴与金融账本：南京购新3%最高7000元，免息与折让构成节后窗口 · 板块五 · 装备线执行期追踪：徐工华东总部「双核布局」细节披露，车展海外视角收尾 · 板块六 · 求职者视角与本期小结：把「交付周」变成行动周</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/nanjing-news/report_20261010.html" target="_blank">南京汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：机构调研潮 + 并购交割 + 实训场景 + 标准会战 · 板块二 · 埃斯顿调研复盘（上）：出货量榜首与盈利结构的三重张力 · 板块三 · 埃斯顿调研复盘（下）：酷卓交割、AI+机器人与「走向无人区」的攻坚点 · 板块四 · 会战与产能：具身智能产教融合大会10月20日启幕，集萃智造基地Q4投产 · 板块五 · 场景落地线：「机器人学校」投用倒计时 + 机器人从工厂走进商场与校园 · 板块六 · 产业基本面参照：新能源车产量+44.4%的上半年账本与深蓝交付追踪 · 板块七 · 本期小结：三份素材、一场大会、一个跟踪节点</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/nanjing-news/report_20261011.html" target="_blank">南京汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：滚装首航 + 具身智能高地 + 整零协同 · 板块二 · 今日头条：南京—欧洲滚装航线开通，出海口"搬"到厂门口 · 板块三 · 机器人产业线：新华日报专题聚焦江宁具身智能创新高地 · 板块四 · 整零协同样本：溧水"一辆车的朋友圈"，不出区界配齐一车 · 板块五 · 消费面：国庆车展订车13737台、预计销售25.71亿元 · 板块六 · 项目与链主线：徐工华东区域总部落宁 + 高淳车载显示项目冲刺竣工 · 板块七 · 本期小结：把"滚装首航"写成出海叙事，把"朋友圈"写成供应链答案</div>
+</div>
+</div>
+<div class="cat-block" data-cat="region">
+  <div class="cat-head"><h3>上海汽车机械日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/shanghai-news/report_20261005.html" target="_blank">上海汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期第五天，上汽年考成绩单与上海装备的新订单线 · 板块二 · 上汽前三季度314.7万辆深读：规模第一之外，看结构、现金流与海外第二曲线 · 板块三 · 上海品牌新车冲单：智己国庆3天锁单2000台、LS8纯电将发，荣威家越07预售破2万 · 板块四 · 特斯拉上海工厂：马斯克央视专访定调「瑰宝」，上半年交付46.8万辆创近三年新高 · 板块五 · 蔚来前三季度30万台创新高：三品牌结构、毛利率18.5%与同吉利的充换电资本绑定 · 板块六 · 上海电气订单连发：C929外翼盒段6.64亿、榆横热电6.53亿、马来西亚500MW燃机出海 · 板块七 · 求职者视角与本期小结：一份销量年考、一家工厂的定性与四条装备新线</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/shanghai-news/report_20261006.html" target="_blank">上海汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期第六天，特斯拉Q3定档、具身智能双喜与上海装备出海三线 · 板块二 · 特斯拉Q3数据定档：上海工厂占全球交付一半以上，储能与大船纪录同步刷新 · 板块三 · 智己LS6冲单第二日：全线控底盘的技术拆解与「入门即满配」的产品账 · 板块四 · 具身智能双喜：智元第2万台下线、IDC确认全球出货断层第一，浦东AI产业半年破千亿 · 板块五 · 上海装备出海三线：电气五大订单落定、风电标段候选、振华巴哈马岸桥启动交机 · 板块六 · 政策定调：临港「十五五」规划——智能汽车3000亿、动力装备1000亿两张目标表 · 板块七 · 求职者视角与本期小结：一份Q3数据、一条线控底盘线与两张政策目标表</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/shanghai-news/report_20261007.html" target="_blank">上海汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：工博会倒计时5天，两场大会与一条船 · 板块二 · 工博会前瞻：10月12日开幕，人形机器人专区首次独立成馆 · 板块三 · 具身智能实操大考：10月23日张江开赛，无彩排、黑盒盲测 · 板块四 · 高端装备出海：沪东中华开工全球首批QC-Max型LNG船 · 板块五 · 产业坐标：四直辖市对比中的上海位置——全国第5、出口导向、三力汇聚 · 板块六 · 求职者视角与本期小结：三场活动、两个赛道、一张时间表</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/shanghai-news/report_20261009.html" target="_blank">上海汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：车市回暖、合资反击与工博会倒计时 · 板块二 · 节后车市复盘：新店、补贴与「假期搭子」三重奏 · 板块三 · 上汽合资新能源「金九银十」：顶配争着抢、交付排着队 · 板块四 · 工博会倒计时3天：西门子亮出人形机器人全价值链，申城高校秀硬核 · 板块五 · 具身智能消费侧：启元机器人首批交付，北外滩机器人「身兼数职」 · 板块六 · 求职者视角与本期小结：盯交付周期、看工博会展位图</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/shanghai-news/report_20261010.html" target="_blank">上海汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：工博会倒计时 + 特斯拉回暖 + 出海物流 + 临港规划 · 板块二 · 工博会开幕前瞻：31万平方米的世界级智造盛会后天启幕 · 板块三 · 特斯拉上海（上）：9月交付回升至90812辆，「银十」促销同步加码 · 板块四 · 特斯拉上海（下）：储能工厂20GWh产能与FSD本土闭环的「第二战场」 · 板块五 · 出海物流线：海通码头「四船同靠」，国庆11.2万辆吞吐同比增长超4% · 板块六 · 区域规划线：临港「十五五」账本——智能汽车2942亿向3000亿进军，储能半年增2.5倍 · 板块七 · 本期小结：三张账本、两个现场、一个倒计时</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/shanghai-news/report_20261011.html" target="_blank">上海汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：出口拐点 + 工博倒计时 + 换电里程碑 · 板块二 · 数据确认线：特斯拉上海9月批发95366辆，出口占比升至近五成 · 板块三 · 会展线：智行未来展明日开幕，车芯联合展团 + 全固态电芯全球首发 · 板块四 · 消费面：以旧换新延续至年底"100%中签"，特斯拉沪上门店加密至28家 · 板块五 · 补能线：蔚来"十一"充换电超200万次，单日换电183664次创纪录 · 板块六 · 上汽系：智己LS6集中交付、MG半固态下探9万级、尚界换帅 · 板块七 · 本期小结：把"出口占比49%"写成坐标，把"换电13.7%"写成验证</div>
+</div>
+</div>
+<div class="cat-block" data-cat="region">
+  <div class="cat-head"><h3>杭州汽车机械日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/hangzhou-news/report_20261005.html" target="_blank">杭州汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期第五天，吉利新车连发、零跑下线纪录与杭氧乙烯大单 · 板块二 · 吉利新车双响：银河E5后驱上市9.78万起，战舰700官宣10月10日登场 · 板块三 · 吉利9月成绩单的车型级拆解：星愿占比46%、领克20上市、极氪10月冲刺全年目标 · 板块四 · 蔚来×吉利充换电资本绑定：易易互联并入蔚来能源，杭州发布的「反内卷」样本 · 板块五 · 零跑双线：A10创135天10万台下线纪录，B01/B10终端行情与机构目标价 · 板块六 · 杭氧装备线：中标齐鲁石化百万吨乙烯再压缩机，氢液化全链技术储备兑现中 · 板块七 · 城市场景：拱墅金秋汽车生活节开市，杭州汽车流通消费改革试点的实景样本 · 板块八 · 求职者视角与本期小结：后驱平权、下线速度与两条装备硬线</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/hangzhou-news/report_20261006.html" target="_blank">杭州汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期第六天，银河双车区域上市、零跑出口提前达标与杭叉研报定调 · 板块二 · 银河双车区域上市巡回：E5把6C超充打进行业账本，TT用漂移吉尼斯纪录立人设 · 板块三 · 零跑的出海里程碑：连续三月破10万台、出口目标提前完成、巴黎车展带新品赴欧 · 板块四 · 杭叉集团研报定调：智能物流收入+30.81%、国自智能订单8.92亿、LogiMind工业具身大模型 · 板块五 · 杭州机器人板块的资本坐标：宇树科创板上市后，具身智能的「杭州军团」再盘点 · 板块六 · 城市场景收官：2026CMS杭州车展闭幕，杭州新能源汽车推广量突破100万辆 · 板块七 · 求职者视角与本期小结：出口曲线、智能物流第二曲线与一辆车的三个新技能包</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/hangzhou-news/report_20261007.html" target="_blank">杭州汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：出口曲线、硬派越野倒计时与机器人的假期双秀 · 板块二 · 吉利9月成绩单：出口连续四个月破10万，极氪翻倍，全球体系再落子 · 板块三 · 战舰700上市倒计时：10月10日杭州揭晓，预售9分钟破万台的硬派样本 · 板块四 · 补能与电池的杭州一笔：蔚来×吉利充换电签约，车企电池自研进入集体行动 · 板块五 · 杭州机器人假期双秀：变电站人形机器人首秀，机器狗公园「上岗领工资」 · 板块六 · 产业底盘与大盘坐标：296X集群增速9.3%，9月新能源渗透率预估65.7% · 板块七 · 求职者视角与本期小结：跟着出口曲线与越野四件套写简历</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/hangzhou-news/report_20261009.html" target="_blank">杭州汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：车市成绩单、总部曲线与机器人实战 · 板块二 · 国庆杭州车市成绩单：车展成交11226台，汽车消费当「压舱石」 · 板块三 · 双总部9月曲线：零跑连续3个月破10万，战舰700明晚揭晓 · 板块四 · 杭州制造底盘：90秒下线一辆车，钱塘汽车城拆解到工位级 · 板块五 · 机器人实战与产业政策：云深处DR02上街，500亿产值目标进入执行期 · 板块六 · 求职者视角与本期小结：跟着出口曲线、越野四件套与500亿目标写简历</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/hangzhou-news/report_20261010.html" target="_blank">杭州汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：A10上市 + 吉利收获期 + 296X集群 + 金融活水 · 板块二 · 零跑产品线：A10上市把「车位到车位」打进6万级，巴黎车展双车蓄势 · 板块三 · 吉利体系线：销量数字之外，「多品牌+多能源+全球化」进入收获期 · 板块四 · 集群底盘：央媒聚焦杭州「296X」，钱塘「双千亿」汽车链是缩影 · 板块五 · 政策窗口：CMS车展后的「抢政策」逻辑与百万辆推广底座 · 板块六 · 产业金融线：「车相伴」账本——链上小微近1亿、经销商超5亿 · 板块七 · 项目面与小结：5000万冲压件项目进入设备安装 + 本期行动清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/hangzhou-news/report_20261011.html" target="_blank">杭州汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：战舰700上市 + 零跑锁单 + DR02首发 + 车市总账 · 板块二 · 吉利新车线：银河战舰700杭州全球上市，16.98万起重定硬派SUV价格坐标 · 板块三 · 零跑订单线：国庆7天锁单32546台，A10扛起量、巴黎车展倒计时1天 · 板块四 · 机器人产业线：云深处发布全球首款IP66全天候人形机器人DR02，国庆西湖已实战 · 板块五 · 消费总账线：国庆杭州五大行业消费218.78亿，汽车是压舱石 · 板块六 · 流通产业线：2026汽车流通数智生态大会落地杭州，AI重构买车用车全链路</div>
+</div>
+</div>
+<div class="cat-block" data-cat="region">
+  <div class="cat-head"><h3>江浙沪汽车机械日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/jiangzhehu-news/report_20261005.html" target="_blank">江浙沪汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期第四至五天——9 月战报收官，蔚来自换电引资，长三角车间与机器人赛道假期不打烊 · 板块二 · 车市 9 月战报：上汽反超、零跑断层、极氪撞线——先绕开三个口径坑再读榜 · 板块三 · 蔚来 × 吉利：换电资产交易重画股权地图，神行者 8 给常熟带来「合资 3.0」样本 · 板块四 · 假日车间图鉴：吴中三家企业赶工冲刺，宿迁刹车片海外订单 +18% · 板块五 · 具身智能四城联动：浦东千亿产业盘、昆山张浦 12 款新品、无锡关节模组量产前夜、上海 Robotex 开赛 · 板块六 · 工业母机与机床：杭州蕙勒「机床转机器人」，太仓瑞铁机床拿下长三角质量榜 · 板块七 · 本期小结：假期最后一天的五条求职线索</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/jiangzhehu-news/report_20261006.html" target="_blank">江浙沪汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：两份成绩单 + 浙江车展双城记 + 零部件全球榜 · 板块二 · 上海：特斯拉Q3交付出炉，上海工厂仍是「全球半壁」 · 板块三 · 浙江（上）：车展双城记——拱墅汽车生活节与台州国际车展 · 板块四 · 浙江（下）：杭州「90秒造一辆车」——钱塘智造底座与产业带全景 · 板块五 · 零部件全球榜：中国企业17家上榜首超美德，博世在华收入150亿欧元 · 板块六 · 常州连线：理想i6 2026款锁定10月底上市，自研5C电池续航升至780km · 板块七 · 本期小结：假期第六天的四条求职线索</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/jiangzhehu-news/report_20261007.html" target="_blank">江浙沪汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：出口纪录 + 出口过半 + 4小时产业圈 · 板块二 · 奇瑞出口月度纪录：单月20.78万辆、前三季度155万辆超去年全年 · 板块三 · 上海：特斯拉工厂「出口过半」成新常态， Model Y产能与出口节奏重排 · 板块四 · 长三角4小时产业圈：央广网以一辆车的诞生，讲透三省一市的分工 · 板块五 · 机械装备线：五轴机床总部落户嘉定，徐工「全球第一吊」亮相上海世赛 · 板块六 · 求职者视角与本期小结：把「出口链」与「工业母机」写进求职关键词</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/jiangzhehu-news/report_20261009.html" target="_blank">江浙沪汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：上汽双公告 + 常州项目潮 + 苏州走廊 + 浙江集群 · 板块二 · 上汽双公告：9月总盘-7.67%，但新能源+18.7%、海外+49.1% · 板块三 · 常州项目潮：「新能源之都」从万亿制造走向万亿生态 · 板块四 · 苏州零部件走廊：吴中开工、昆山推进、太仓赶单，订单排到明年5月 · 板块五 · 浙江集群与上海消费端：嵊州44.2%高增长，上海以旧换新「100%中签」延续 · 板块六 · 求职者视角与本期小结：三条曲线、一个走廊</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/jiangzhehu-news/report_20261010.html" target="_blank">江浙沪汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：4小时产业圈 + 安徽跃迁 + 芜湖样本 + 浙江梯队 · 板块二 · 央媒定调：一辆车的跨城「链」动——长三角「4小时产业圈」的分工地图 · 板块三 · 格局之变：安徽「四项全国第一」与长三角旧分工的失效 · 板块四 · 芜湖样本：6872.5亿链上营收 + 出口破百万辆的「世界著名汽车城」路线图 · 板块五 · 浙江零部件纵深：宁波海曙的「隐形冠军雁阵」 · 板块五 · 浙江「汽摩配之都」：瑞安6000家企业的出海跃迁与「以大带小」机制 · 板块六 · 行业监测参照：平湖底盘件「内需承压、出口支撑」的分化样本 · 板块七 · 本期小结：用「4小时产业圈」重画求职地图，三件事持续跟踪</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/jiangzhehu-news/report_20261011.html" target="_blank">江浙沪汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：出海双通道 + 上海工厂反差 + 产业带数据 · 板块二 · 出海通道线：南京—欧洲滚装新航线今日开通，「江苏造船、南京装船、国货远航」 · 板块三 · 出口大数线：太仓口岸前9月出口汽车108万辆，历史首破百万 · 板块四 · 上海工厂线：特斯拉9月交付9.5万创年内新高，但零售连跌四个月 · 板块五 · 产业带底盘线：嘉兴零部件575亿账本 + 绍兴车展成交1.1亿 · 板块六 · 机械装备线：叉车百万销量里的浙江智造 + 国际具身智能技能大赛10月23日开赛</div>
+</div>
+</div>
+<div class="cat-block" data-cat="region">
+  <div class="cat-head"><h3>合肥汽车机械日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/hefei-news/report_20261005.html" target="_blank">合肥汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 今日焦点：国轩高科×大众——246亿出海合资与「减持不离场」的绑定新解 · 板块三 · 江淮汽车：玛莎拉蒂合作传闻发酵，公司公告澄清「意向未定」 · 板块四 · 大众安徽深读：129亿「学费」之后，与众09迎来10月24日大考 · 板块五 · 车展收官与城市坐标：187万辆整车背后的产业生态 · 板块六 · 本期小结：假期最后一天的三个动作</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/hefei-news/report_20261006.html" target="_blank">合肥汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 蔚来：9月交付创月度新高，换电网络在安徽完成「县县通」 · 板块三 · 江淮/尊界：100%持股与华为主导——权属结构里读岗位走向 · 板块四 · 大众安徽：与众09上市倒计时，夏测实车与制造视频披露新细节 · 板块五 · 产能坐标与假期余温：比亚迪合肥86.6%利用率，新桥产业园的百万辆蓝图 · 板块六 · 本期小结：节后第一天的三个观察点</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/hefei-news/report_20261007.html" target="_blank">合肥汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 蔚来9月数据核验：37408台的成色与三个里程碑 · 板块三 · 换电与能源：丝绸之路线贯通、牵手吉利、车网互动一年考 · 板块四 · 江淮：人民日报聚焦AI智造，合作传闻的增量与边界 · 板块五 · 大众安徽：冲刺60天——与众09上市前的渠道、产能与打法 · 板块六 · 产业底座：车展收官盘点与具身智能训练场里的「机器人大学」 · 板块七 · 本期小结：数据核验周的三个动作</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/hefei-news/report_20261009.html" target="_blank">合肥汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 车展复盘：47.9万人次、33.15亿元，安徽整车的一场「集体阅兵」 · 板块三 · 蔚来与江淮：换电省域全覆盖的深读，尊界两万台的含金量 · 板块四 · 合力上市30周年：从合肥叉车厂到全球七强，电动化率突破70% · 板块五 · 产业链增量：两大总部项目落户合肥，大众安徽新车定档 · 板块六 · 求职视角小结：车展之后，三个可执行的跟踪点</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/hefei-news/report_20261010.html" target="_blank">合肥汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 舆情复盘：尊界V800制动事件，江淮两日市值蒸发118亿 · 板块三 · 蔚来三季报：前三季度300,301台，萤火虫累计交付破8万 · 板块四 · 大众安徽：十万台下线之后，四车矩阵与「第三次创业」的全链落子 · 板块五 · 家电智造线：安徽首个「可持续灯塔工厂」花落合肥 · 板块六 · 产业项目线：高新区国庆不停工，2.9万亿重点项目清单里的「合肥坐标」 · 板块七 · 求职视角小结：舆情期的三个跟踪点</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/hefei-news/report_20261011.html" target="_blank">合肥汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：大众安徽双节点 + 乐道20万 + 经开区844亿 · 板块二 · 大众安徽线：与众09定档10月24日，产品大年进入收官冲刺 · 板块三 · 蔚来线：乐道两年20万台，A面是速度，B面是盈利考题 · 板块四 · 车展结构线：33.15亿总账之外，三条技术主线与本土品牌全价格带 · 板块五 · 产业底盘线：经开区「三足鼎立、雨林共生」——844.4亿产值与146家配套</div>
+</div>
+</div>
+<div class="cat-block" data-cat="region">
+  <div class="cat-head"><h3>安徽汽车机械日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/anhui-news/report_20261005.html" target="_blank">安徽汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 今日焦点：奇瑞9月成绩单——出口创纪录与品牌分化的两幅面孔 · 板块三 · 十月前瞻：奇瑞全球用户大会10月18日芜湖启幕，近20项绿色技术集中展示 · 板块四 · 全省坐标：235万辆的唯一省份，与一家「灯塔工厂」的聚变效应 · 板块五 · 多市协同：从六安配套到安庆「第三极」，安徽车链的第二梯队 · 板块六 · 本期小结：假期结束，校招季的三条主线</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/anhui-news/report_20261006.html" target="_blank">安徽汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 奇瑞深读：累计出口700万辆之后，账本上的成色与隐忧 · 板块三 · 十月前瞻：奇瑞全球用户大会的绿色技术清单再确认 · 板块四 · 机器人产业：安徽2030路线图与「车机协同」的第二增长曲线 · 板块五 · 全省坐标：出口145.1万辆的「长四角」叙事与物流通道革命 · 板块六 · 本期小结：节后第一周的三个动作</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/anhui-news/report_20261007.html" target="_blank">安徽汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 奇瑞前三季度成绩单：总量破纪录，子品牌「分化」是真正的新闻 · 板块三 · 出海纵深：从「卖得多」到「卖得进」——欧洲高法规市场的三张牌 · 板块四 · 用户大会倒计时11天：吉尼斯纪录、全固态电池与再生铝压铸 · 板块五 · 江淮/尊界：8月销量全口径盘点与2027年SUV的预期管理 · 板块六 · 工程机械与机器人：合力的全球坐标系与全省基金群 · 板块七 · 本期小结：三季报之后的三个跟踪点</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/anhui-news/report_20261009.html" target="_blank">安徽汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 省委调研信号：从芜湖奇瑞到阜阳弗迪，汽车产业链是主轴 · 板块三 · 奇瑞三季报：总量与出口双破纪录，子品牌「分化」是真正的新闻 · 板块四 · 项目落地：宿州电池封顶、寿县10亿招标、黄山3.2亿施工 · 板块五 · 省域基本面：「双核联动」与五年答卷里的制造业家底 · 板块六 · 本期小结：三季报之后的三个跟踪点</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/anhui-news/report_20261010.html" target="_blank">安徽汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 奇瑞「大会时间」：国际用户峰会10月18日芜湖启幕 · 板块三 · 机器人政策双响：省级实施意见定目标，芜湖十条新政发「消费券」 · 板块四 · 出海大单与项目落地：国轩西班牙10.94亿欧元，安庆千万件轴类零部件 · 板块五 · 政策底座：「首位产业」框架下的「十五五」布局 · 板块六 · 本期小结：峰会周之前的三个跟踪点</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/anhui-news/report_20261011.html" target="_blank">安徽汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：五年答卷 + 奇瑞出口纪录 + 江淮百万辆 + 埃夫特产能 · 板块二 · 省级答卷线：安徽日报五年答卷——工业增速全国第2、机器人月均5000台 · 板块三 · 奇瑞账本线：9月出口20.78万辆再创纪录，前三季度出口已超去年全年 · 板块四 · 商用车线：江淮轻卡基地第100万辆下线，安徽汽车的「另一半底气」 · 板块五 · 机器人产业线：埃夫特超级工厂11月竣工 + 车厂养大机器人厂的芜湖样本</div>
+</div>
+</div>
+<div class="cat-block" data-cat="region">
+  <div class="cat-head"><h3>江苏汽车机械日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/jiangsu-news/report_20261005.html" target="_blank">江苏汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 今日焦点：徐工华东区域总部落地南京，「工程机械总部+数字化+新能源」生态集群展开 · 板块三 · 徐工出海与研发双线：3000 吨巨臂奔赴南美、实验平台加快建设、央视舞台上的「立潮头」 · 板块四 · 恒立液压三季报前瞻：10 月 27 日披露在即，双反应对与机器人量产是两个关键变量 · 板块五 · 常州纵深：制造业十强第六城，「全球每 10 辆新能源车就有 1 辆搭载常州造电池」 · 板块六 · 假期不停工的苏南制造现场：吴中工厂与溧水重大项目的四季度冲刺 · 板块七 · 出海窗口：2026 款理想 i6 十月上市在即，巴黎车展 10 月 12 日开幕 · 板块八 · 本期小结</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/jiangsu-news/report_20261006.html" target="_blank">江苏汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：徐工双线 + 悦达出口底数 + 常州理想倒计时 · 板块二 · 徐工（上）：领航工厂「产融共生」样本——从340天到120天的制造加速度 · 板块三 · 徐工（下）与行业景气：出口272.58亿美元的江苏坐标 · 板块四 · 盐城悦达起亚：八成产能面向出口的「全球枢纽」底数复核 · 板块五 · 常州理想：i6 2026款10月底上市，自研5C电池与马赫芯片的双重升级 · 板块六 · 无锡与苏州：上汽来锡深化合作，博世苏州智驾专利披露 · 板块七 · 县域车市与政策：海安「国补+地补」组合发力，假期汽车消费升温 · 板块八 · 本期小结：假期第六天的观察清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/jiangsu-news/report_20261007.html" target="_blank">江苏汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：徐工涨价 + 华东总部落宁 + 常州链式驱动 + 南京车展收官 · 板块二 · 徐工（上）：新能源重卡全系涨价3%——头部企业带头跳出低价内卷 · 板块三 · 徐工（下）：华东区域总部落地南京，链主职能向省会延伸 · 板块四 · 常州「链式驱动」：比亚迪23.3万辆、星星充电转型与万亿之后的下一程 · 板块五 · 理想常州基地的效率账：40秒节拍、7天交付与单车降本2万元 · 板块六 · 假期车市收官：南京车展「票根经济学」与全省消费图景 · 板块七 · 本期小结：假期收官日的观察清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/jiangsu-news/report_20261009.html" target="_blank">江苏汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：万亿产业底数 + 充电账本 + 超充示范 + 两地项目开工 · 板块二 · 常州「新能源之都」国家级注脚：3400家企业、80万辆与1.2万亿目标 · 板块三 · 补能基建（上）：国庆江苏高速充电量1036.1万千瓦时、同比增三成 · 板块四 · 补能基建（下）：常州首座固态变压器直挂重卡超充站节前投运 · 板块五 · 零部件扩产：典奇5亿元液冷配件项目节后首日苏州吴中开工 · 板块六 · 装备出海：盐城亭湖长虹智能的埃及整车工厂每小时下线12台 · 板块七 · 消费侧延续：以旧换新2500亿收官，假期前三天汽车置换4.6万辆 · 板块八 · 本期小结：产业带观察清单与口径提醒</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/jiangsu-news/report_20261010.html" target="_blank">江苏汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 理想常州工厂：产线改造为纯电L系铺路，「增程+纯电」双线并进 · 板块三 · 太仓港：全国每8辆出口汽车有1辆从这里发运 · 板块四 · 锂电装备与「十五五」催化：理奇智能20亿基地落地锡山 · 板块五 · 徐工绿色出海：从1.5吨到70吨电动挖掘机全覆盖，汉境重卡发布 · 板块六 · 出口格局观察：「江苏智造」的公共服务路线与整车话语权之辩 · 板块七 · 本期小结：四季度江苏观察清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/jiangsu-news/report_20261011.html" target="_blank">江苏汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：车展收官 + 万亿常州 + 技改公示 + 产才对接 · 板块二 · 车市消费线：苏州十一国际车展收官，订单1.27万台、22亿元 · 板块三 · 产业纵深线：万亿之上，常州作答新能源产业"未来之题" · 板块四 · 整车制造线：一汽盐城基地累计产量破30万辆，国庆双班攻坚 · 板块五 · 装备技改线：柳工常州年产1500台套工程机械技改项目进入环评公示 · 板块六 · 产才对接线：淮安"淮上英才"智能制造专场，采埃孚吉凯恩到场 · 板块七 · 省域协同观察：徐工华东区域总部落宁，链主网络的省内重构 · 板块八 · 本期小结：车展数据当"体温计"，万亿常州当"坐标系"</div>
+</div>
+</div>
+<div class="cat-block" data-cat="region">
+  <div class="cat-head"><h3>深圳汽车机械日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/shenzhen-news/report_20261005.html" target="_blank">深圳汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期第四至五天——比亚迪销量结构深读，乾崑「人机大战」收官，机械与低空各有硬动态 · 板块二 · 今日焦点：比亚迪 9 月销量深读——46.36 万辆背后，「海外扛旗」与「高端上量」两大结构拐点 · 板块三 · 华为车 BU：乾崑「重庆人机大战」收官，官网累计里程跳过 160 亿公里 · 板块四 · 机械与自动化：汇川技术 110 家海外机构扎堆调研，湾芯展 10 月 14 日深圳启幕 · 板块五 · 低空经济：龙华机场定名补上关键一环，深港跨境低空物流进入协商期 · 板块六 · 本期小结：返程高峰开始前的五个求职判断</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/shenzhen-news/report_20261006.html" target="_blank">深圳汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：车展收官账本，机器人「国家队」落定，乾崑规模竞赛开打 · 板块二 · 今日焦点：深圳国际车展收官——42 万人次、14759 台、近 28 亿元的假期消费样本 · 板块三 · 华为车 BU 与引望：辅助驾驶进入百万用户时代，竞争逻辑正在改写 · 板块四 · 机器人：南山拿下「国家队」入场券，20.04 平方公里国家级版图铺开 · 板块五 · 出海与装备：小漠港单船纪录与仰望 U9 首航，湾芯展进入一周倒计时 · 板块六 · 本期小结：假期最后一天的五个求职判断</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/shenzhen-news/report_20261007.html" target="_blank">深圳汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：乾崑160亿公里 + 自动化展倒计时 + 低空物流常态化 · 板块二 · 华为乾崑：累计里程破160亿公里，安全基准首次「上官网」 · 板块三 · 节后装备展日历：S-FACTORY自动化展与具身机器人展10月底宝安联展 · 板块四 · 低空经济：物流飞行73.6万架次，深圳进入商业化常态化阶段 · 板块五 · 假期收官回顾与节后日历：车展余温、政策末班车与湾芯展一周倒计时 · 板块六 · 本期小结：假期收官日的五个观察点</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/shenzhen-news/report_20261009.html" target="_blank">深圳汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 比亚迪出海线：日本破万台，海獭Racco成增长主力 · 板块三 · 机器人产业线：智元落子南山，深圳企业数与产值双创新高 · 板块四 · 展会与政策：ROBOTECH ASIA倒计时18天，两份文件构成政策底座 · 板块五 · 车市回顾口径：车展收官账本与补贴组合拳</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/shenzhen-news/report_20261010.html" target="_blank">深圳汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 华为乾崑：国庆5.53亿公里的智驾大考与「答网友问」第16期 · 板块三 · 比亚迪收官战：四季度7款新车，大汉EV打响第一枪 · 板块四 · 人形机器人收入榜：中国包揽前五，优必选与乐聚双席深圳 · 板块五 · 生态注脚：乐聚中试产线、美的库卡「机器人生产机器人」与嘉立创的12小时打样 · 板块六 · 本期小结：三份账本之后的三个跟踪点</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/shenzhen-news/report_20261011.html" target="_blank">深圳汽车机械日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：国字号双牌 + 坪山1270亿 + 深圳机器人全国份额 · 板块二 · 比亚迪线：入选国家级示范基地，坪山链主地位再获官方确认 · 板块三 · 南山机器人谷线：全国仅2席的「国字号」，五个案例看懂含金量 · 板块四 · 坪山集群线：300余家企业+1270亿产值+Robotaxi 82万单 · 板块五 · 省级坐标线：广东先进制造业大会上的深圳数据 + 小结</div>
+</div>
+</div>
+</div>
+<div class="group" data-group="region-recruit">
+  <h2>地区招聘</h2>
+  <div class="group-sub">9 个分类 · 54 份报告</div>
+<div class="cat-block" data-cat="region-recruit">
+  <div class="cat-head"><h3>徐州招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/xuzhou-recruit/report_20261005.html" target="_blank">徐州招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：徐工主批次最后48小时，人才周与金秋招聘月接力 · 板块二 · 徐工2027校招：主批次10-9截止，浙大宣讲10-12面向两届毕业生 · 板块三 · 徐工子公司校招技术岗：施维英、随车起重机、科技分公司岗位拆解 · 板块四 · 徐工汽车与新能源板块：双资质商用车企业的岗位样本 · 板块五 · 市政排片：人才周10-10启幕，金秋招聘月全月排期表出炉 · 板块六 · 倒计时与投递建议：节前最后一天的三件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/xuzhou-recruit/report_20261006.html" target="_blank">徐州招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：网申最后三天，10 月 8 日是节后第一个「双线机会日」 · 板块二 · 徐工集团 2027 校招：超 800 岗位、两届同招，10 月 9 日关闸前把网申办掉 · 板块三 · 徐工挖机事业部：10 月 8 日兰州理工宣讲，四大序列岗位与「1 元午餐」福利拆解 · 板块四 · 徐工汽车与新能源板块：校招硕士岗 1.2-1.5 万·14 薪成排挂出，三电与线控是主线 · 板块五 · 市政排片：10 月 8 日机械电子专场开闸，人才周 10-10 启幕，金秋招聘月全月排满 · 板块六 · 倒计时与投递建议：节后第一周的四件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/xuzhou-recruit/report_20261007.html" target="_blank">徐州招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：主批次关闸倒计时 + 两个子批次细拆 + 10 月 10 日三场合一 · 板块二 · 徐工矿机批次细拆：全球矿山装备四强，10 月 31 日截止 · 板块三 · 徐工新能源科技批次细拆：源网荷储一体化，11 月 13 日截止 · 板块四 · 徐矿集团 2027 校招：管培生双一流门槛、六大区域，10 月 31 日截止 · 板块五 · 社招速递：徐工研究总院热管理 1.5-2.8 万领衔，徐州制造业岗位清单 · 板块六 · 市政排片：10 月 10 日「三场合一」，人才周与师大秋招会同日启幕 · 板块七 · 倒计时与投递建议：未来四周的六件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/xuzhou-recruit/report_20261009.html" target="_blank">徐州招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：人才周明日启幕 + 主批次截止后的补位地图 · 板块二 · 明日主场：2026 徐州人才周 10 月 10 日启幕，「彭聚英才·城就未来」 · 板块三 · 徐工校招补位与岗位细拆：液压、电子电气、产投三条线仍在招 · 板块四 · 社招价码带：徐工电驱总成 2-3 万、整车热管理 1.8-3.5 万领衔 · 板块五 · 事业编与公立机构窗口：医院高层次人才、面试排期与县域教师编 · 板块六 · 引才纵深：「名校名所行」战报与平台聚才的产业侧注脚 · 板块七 · 本期小结：一张投递优先级表</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/xuzhou-recruit/report_20261010.html" target="_blank">徐州招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：人才周今天开幕，10月中下旬的窗口地图 · 板块二 · 今日双场：人才周上午开幕，云龙万达傍晚开市 · 板块三 · 金秋招聘月全月排期：周六常规场 + 周五夜市 + 直播带岗 + 网络专场 · 板块四 · 徐工与徐矿批次线：1000+席位的投递入口与234人的岗位明细 · 板块五 · 央企国企徐州岗窗口：七条截止线集中在未来三周 · 板块六 · 事业编与经开区产业岗：党校教师、医院高层次人才与外资制造一线 · 板块七 · 本期小结：一张投递优先级表</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/xuzhou-recruit/report_20261011.html" target="_blank">徐州招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：人才周战报出炉，本周截止线进入倒计时 · 板块二 · 人才周开幕战报：政策兑现、科创大走廊亮相，分项活动延续至月底 · 板块三 · 徐工线：主批次网申收官，明天浙大宣讲是现场补投最后窗口 · 板块四 · 徐矿与国企窗口：智联网申入口直通，本周三条截止线压境 · 板块五 · 招聘会日历更新：徐医大双选会10月25日、数字经济线上专场10月15日开市 · 板块六 · 产业岗位速递：半导体设备与新能源储能两条链在徐州招人 · 板块七 · 事业编长线提醒：党校教师10月31日、中心医院12月31日仍在窗口 · 板块八 · 本期小结：一张本周投递优先级表</div>
+</div>
+</div>
+<div class="cat-block" data-cat="region-recruit">
+  <div class="cat-head"><h3>南京招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/nanjing-recruit/report_20261005.html" target="_blank">南京招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：一场「进皖」专场、一场500展位联招、两条机械明牌批次线 · 板块二 · 雨花台区专场10-10进安徽大学：开沃新能源机械岗位成建制到场 · 板块三 · 两条机械明牌批次线：省港口集团10-20截止，恒天领锐11-28截止 · 板块四 · 机器人与装备校招：埃斯顿27秋招在投，京东方10-14宣讲机械在列 · 板块五 · 社招参照线：上汽乘用车南京、海拉、布雷博技术岗在挂 · 板块六 · 联招会定档与倒计时：10-28 南理工五百展位是本月最大的线下场</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/nanjing-recruit/report_20261006.html" target="_blank">南京招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：一岗25人的机器人结构工程师，与一条明天关闸的铁路线 · 板块二 · 因克斯2027校招：结构工程师25人，本科14万-30万/年 · 板块三 · 机床与液压：乔锋智能20人、讯联液压20人，两张「专精特新」门票 · 板块四 · 央企工艺带：南京晨光与中国一拖，两条「国家队」研发工艺线 · 板块五 · 国企关闸倒计时：省铁路集团明天截止，江苏交控10月16日 · 板块六 · 宣讲与新增线索：福拉特10-10进安徽大学，LG新能源材料岗10-01上新</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/nanjing-recruit/report_20261007.html" target="_blank">南京招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：金陵石化的机械硕士窗口，与今晚关闸的铁路线 · 板块二 · 央企炼化线：金陵石化2027校招57人，设备储备岗对机械硕士开门 · 板块三 · 民企与管培线：恒天领锐研发岗8K-10K、绿森10月12日关闸、上汽大通制造岗补位 · 板块四 · 国企关闸倒计时：今晚第一条线关闭，一周内还有四条 · 板块五 · 节后招聘会排片：明天起线上专场先行，10月27-28日双峰压轴</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/nanjing-recruit/report_20261009.html" target="_blank">南京招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：事业单位开闸 + 机械对口校招 + 银行关闸 + 招聘会排片 · 板块二 · 事业单位线：卫健委85名高层次人才「长期批」，雨花台区29名编外「一周批」 · 板块三 · 机械对口校招线：科远智慧液压/装备智能化岗在招，LG新能源材料开发岗13-25K · 板块四 · 泛行业补充线：紫金保险理赔岗收机械专业，南银法巴10月11日关闸，国网宣讲进宁 · 板块五 · 招聘会排片：南京10月172场全月盘，南财228家单位留苏专场获央媒报道 · 板块六 · 本期小结与截止日倒排表</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/nanjing-recruit/report_20261010.html" target="_blank">南京招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：580人校招大单 + 机械研发序列 + 10月校园排片 · 板块二 · 南瑞继保2027校招：研300+本280，机械结构设计在列，七险二金 · 板块三 · 埃斯顿2027秋招：机械研发、电机研发、工艺工程师全序列开放 · 板块四 · LG新能源南京基地：2027届电解液开发工程师挂出，研发岗主区间20-50K · 板块五 · 金陵石化报名热度首公开 + 本周截止提醒：绿森、福拉特10-12关闸 · 板块六 · 招聘会排片：建邺区校园行四站 + 10月14日南农、金审双专场 · 板块七 · 本期小结与截止日倒排表</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/nanjing-recruit/report_20261011.html" target="_blank">南京招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：双选会季全面铺开，本周三两场专场同日开打 · 板块二 · 南理工双选会战报：305家单位、2.2万岗位、AI赋能求职全链条 · 板块三 · 秋季招聘月南京排片：周三双专场，三江/二师接力 · 板块四 · 南京10月网络招聘会矩阵：市级+六区线上场贯穿全月 · 板块五 · 央企在宁校招窗口：国电南自10-18、中石化江苏石油10-28、华能燃机10-31 · 板块六 · 宣讲会与硬科技：能利芯科技10月20日宣讲排定，芯恩南大站已开讲 · 板块七 · 本期小结：一张南京求职周计划表</div>
+</div>
+</div>
+<div class="cat-block" data-cat="region-recruit">
+  <div class="cat-head"><h3>上海招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/shanghai-recruit/report_20261005.html" target="_blank">上海招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期最后一天，先办「今天关闸」的那一个 · 板块二 · 今日关闸：上锅板块10月5日截止，上海电气10月8日截止 · 板块三 · 装备制造长窗口：中国龙工与拓璞数控，机械岗位颗粒度最细的两家 · 板块四 · 汽车主线：上汽3000+ offer全球校招，蔚来秋招主通道在招 · 板块五 · 半导体高门槛友好批次：东方芯港临港300人，机械本科可投 · 板块六 · 节后招聘会排期：从10月8日到10月26日，四场重点先收藏 · 板块七 · 事业单位通道与投递建议：把「会过期的」办完，再谈选择</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/shanghai-recruit/report_20261006.html" target="_blank">上海招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：发那科80人领衔，机器人三连击与储能200人 · 板块二 · 工业机器人龙头：上海发那科2027校招80人，机械全口径在列 · 板块三 · 机器人新势力三连：钛虎、人形机器人（上海）、星猿哲 · 板块四 · 储能与锂电装备：派能科技200人、赢合科技370人 · 板块五 · 半导体装备与精密制造：御微机械工程师、富驰高科岗位透明 · 板块六 · 10月8日关闸执行清单与节后招聘会排期</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/shanghai-recruit/report_20261007.html" target="_blank">上海招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：上汽3000+的主场，与两条10月9日、11月1日的 deadline · 板块二 · 上汽主线：3000+ offer的岗位库怎么用，机械生该盯哪三个入口 · 板块三 · 央企装备线三连：中国船舶11月1日、中石化上海工程10月28日、华谊11月1日 · 板块四 · 特斯拉临港实习窗口：两个2027届岗位10月9日截止，转正通道明确 · 板块五 · 节后招聘会排片：10月17日大木桥路双专场，全年场次表在手</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/shanghai-recruit/report_20261009.html" target="_blank">上海招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：10月10日周六，节后首个线下招聘高峰 · 板块二 · 本周六招聘会四连：600家综合场+两场上应大+线上专场 · 板块三 · 青浦「青聚英才」官宣排片：五场高校专场+线上102所高校巡回 · 板块四 · 汽车主线：上海汇众10-12宣讲开跑，上汽、福特窗口仍在 · 板块五 · 高校排片速查：硕博专场、工科专场与10月26日上理工大会 · 板块六 · 求职者视角与本期小结：周末现场三步走，下周盯宣讲与青浦</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/shanghai-recruit/report_20261010.html" target="_blank">上海招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：周六双主场 + 车企校招盘子 + 同济机械专场 · 板块二 · 今日双场：海归招聘会50+名企，上应大专场机械岗位集中 · 板块三 · 车企校招盘子：上汽3000+、大通全球线、蔚来10-26截止、特斯拉价码 · 板块四 · 同济机械专场10-16：院级招聘会的含金量与参会方式 · 板块五 · 临港新片区秋招巡回：飞机制造、半导体、智能制造企业成批进高校 · 板块六 · 本期小结：周末两天与下周四场的执行表</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/shanghai-recruit/report_20261011.html" target="_blank">上海招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：周日双场在同济，10月双选会排片表出炉 · 板块二 · 今日双场：同济秋招会 + 「才荟建交」建设交通专场 · 板块三 · 10月双选会全月排片：六校联合10月23日压轴，华理两场连打 · 板块四 · 央企在沪校招：上海石化10-28截止、邮政上海10-31截止 · 板块五 · 上海国企批次：上实集团与华谊集团2027校招推进中 · 板块六 · 临港产线样本：特斯拉车身车间操作岗给出11-12万/年的公开口径 · 板块七 · 本期小结：一张上海求职周计划表</div>
+</div>
+</div>
+<div class="cat-block" data-cat="region-recruit">
+  <div class="cat-head"><h3>杭州招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/hangzhou-recruit/report_20261005.html" target="_blank">杭州招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：双龙头3000个校招坑位与一张10月招聘会日历 · 板块二 · 零跑汽车2027届校招：300+岗位、1500+ offer，整车研发类400人 · 板块三 · 海康威视2027校招：1500人需求，机械设计制造类明确在列 · 板块四 · 车企第二线：比亚迪27校招10月19日截止，杭州、绍兴有岗 · 板块五 · 10月招聘会日历：五场连排，「296X」先进制造业专场是本月必到场 · 板块六 · 事业单位窗口：三批次编外笔试10月11日开考，卫健系统面试10月17日 · 板块七 · 投递建议与倒排表：节后首周的三步走</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/hangzhou-recruit/report_20261006.html" target="_blank">杭州招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：一张「截止日」时间表决定本周投递顺序 · 板块二 · 零跑汽车：批次窗口10月12日到期，六天倒计时请立即处理 · 板块三 · 吉利控股2027全球校招：5000+Offer池开放至10月31日，杭州同学的主场 · 板块四 · 国企运营商窗口：国家能源明天关闸，电信移动笔试日历排定 · 板块五 · 中国银行浙江省分行：10月9日24点截止报名，本周内最紧的金融窗口 · 板块六 · 线下排期：10月11日浙大紫金港三线汇聚，浙理工连办四场到10月28日 · 板块七 · 投递建议与倒排表：假期最后两天做完全部「临期网申」</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/hangzhou-recruit/report_20261007.html" target="_blank">杭州招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：节后第一周，一天一场宣讲会排到10月13日 · 板块二 · 杭电宣讲周：宇树打头阵、零跑跟进，六天五场制造业龙头接力 · 板块三 · 海康威视：1500人、15万元/年起，机械臂运动控制算法岗把具身智能写进JD · 板块四 · 九阳进校路线与线下月历：10月10日浙大宣讲，四场市级招聘会确认不变 · 板块五 · 临期网申复核：中行还剩两天、零跑窗口10月12日到期、吉利给足三周 · 板块六 · 投递建议与倒排表：节后第一周的两张日历</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/hangzhou-recruit/report_20261009.html" target="_blank">杭州招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：机器人双雄宣讲在途，线下招聘日历密集展开 · 板块二 · 机器人双雄宣讲周：宇树160人、零跑1500+offer，同日开讲怎么选 · 板块三 · 海康威视2027校招：泛理工科岗位族全景，机械专业不再只能「看热闹」 · 板块四 · 线下招聘月历：10月9日就业服务日、10月22日博士巡游、10月28日杭电秋招会 · 板块五 · 政策面：省级32场双选会 + 全国89场活动，2027届线下窗口全面打开 · 板块六 · 编外与基层通道：九堡街道社区卫生服务中心2个岗位，报名窗口10月8日开启 · 板块七 · 投递建议：10月中旬的三张时间表</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/hangzhou-recruit/report_20261010.html" target="_blank">杭州招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：线下四连 + 四大批次 + 机械学院专场 · 板块二 · 杭州人才网10月线下四连：11日高层次专场、22日先进制造业专场 · 板块三 · 吉利控股2027校招：9大方向1000+岗位，智能制造类对机械明牌 · 板块四 · 零跑汽车2027校招：300+岗位、1500+offer，OFFER/三方10月开启 · 板块五 · 大华与海康：安防双雄的2027批次与岗位族对照 · 板块六 · 高校日历：浙理工三连场、钱塘巡回与见习专场 · 板块七 · 本期小结：四大批次投递清单与10月行程表</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/hangzhou-recruit/report_20261011.html" target="_blank">杭州招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：今日双场 + 宣讲一周 + 三批次倒计时 · 板块二 · 今日双场：市高层次专场5000+岗位，浙大双选会6万岗位 · 板块三 · 杭电宣讲一周：晶盛机电、德力西、海克斯康、传化智联连排 · 板块四 · 浙大玉泉宣讲带：零跑、海康、东风、中车株洲已开讲 · 板块五 · 网申倒计时：零跑10-18、海康10-25、吉利10-31三批次收口 · 板块六 · 本期小结：一张表排完10月中下旬行程</div>
+</div>
+</div>
+<div class="cat-block" data-cat="region-recruit">
+  <div class="cat-head"><h3>江浙沪招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/jiangzhehu-recruit/report_20261005.html" target="_blank">江浙沪招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 上汽系纵深：申沃免笔试开闸，乘用车两个研发岗给出明确截止日 · 板块三 · 上海零部件侧：继峰座椅质量岗挂出透明薪资，质量序列是机械生的宽入口 · 板块四 · 苏州线：10-08专场最后倒计时，应届机械岗两家开招 · 板块五 · 岗位速览卡：本期四个入口的画像参数 · 板块六 · 节后执行清单与风险提示</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/jiangzhehu-recruit/report_20261006.html" target="_blank">江浙沪招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：一条地铁都跑不完的双选会密集带 · 板块二 · 上海高校双选会矩阵：华东师大后天开打，松江七校与东北六校接力 · 板块三 · 江苏秋季招聘月：10月17日苏州四馆联动，专区分到产业链 · 板块四 · 苏州线：数字经济专场10-15开闸，吴江开发区周六场常态运转 · 板块五 · 浙江线与跨区域岗位：吉利500人锚点岗，跨区域企业27届校招速览 · 板块六 · 岗位速览卡：本期四个入口的画像参数 · 板块七 · 节后执行清单与风险提示</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/jiangzhehu-recruit/report_20261007.html" target="_blank">江浙沪招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：三线并进的岗位地图 · 板块二 · 上海汽车系（上）：上汽大乘用车网申进行中，汇众底盘100人 · 板块三 · 上海汽车系（下）：延锋200人与上汽系官网岗位明细 · 板块四 · 苏州线：半导体装备三杰同开窗口，福拉特10月12日截止最紧迫 · 板块五 · 宁波线：韵升30-40万年薪锚点，海天鲲鹏100人，金田装备管理岗 · 板块六 · 岗位速览卡与执行清单 · 板块七 · 节后执行清单与风险提示</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/jiangzhehu-recruit/report_20261009.html" target="_blank">江浙沪招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：三线并进的一周地图 · 板块二 · 上海线（一）：事业单位窗口、国家平台岗位与硕博专场 · 板块三 · 上海线（二）：38场高校招聘会矩阵与青浦巡回引才 · 板块四 · 苏锡线：纽威数控10-13截止，无锡新质生产力专场10-10开市 · 板块五 · 浙江线：镇海国资11人开闸，宁波国企批次与省属窗口密集报名 · 板块六 · 机械岗位速览：车企校招与装备企业近端窗口 · 板块七 · 岗位速览卡与执行清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/jiangzhehu-recruit/report_20261010.html" target="_blank">江浙沪招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：省级洽谈会800展位 + 两地巡回线 + 国企窗口 · 板块二 · 苏州线（一）：江苏省2027届公益供需洽谈会10-17，四大会场800展位 · 板块三 · 苏州线（二）：校园苏州日外埠三站 + 苏州工学院专场 · 板块四 · 上海线：临港巡回进杭州进临港，国家平台长三角岗位上新 · 板块五 · 浙江线：宁波国企四批次窗口 + 开投博士后机械方向 · 板块六 · 浙江高校日历与机械岗位速览 · 板块七 · 执行清单：从今天到10月28日的三地行程</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/jiangzhehu-recruit/report_20261011.html" target="_blank">江浙沪招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：省级招聘月专场 + 车企宣讲 + 机械岗位日更 · 板块二 · 江苏招聘月高校专场四连：南农大、三江、江南、无锡职大 · 板块三 · 沪苏车企宣讲：蔚来进沪、上汽排片、苏州金龙双站 · 板块四 · 苏州工学院汽车学院线上专场：559名车辆生源对接全国企业 · 板块五 · 机械岗位日更：华域视觉、恺博座椅、延锋金桥等按日上新 · 板块六 · 本期小结：跨城投递日历</div>
+</div>
+</div>
+<div class="cat-block" data-cat="region-recruit">
+  <div class="cat-head"><h3>合肥招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/hefei-recruit/report_20261005.html" target="_blank">合肥招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 国轩高科：80人/20万年薪的量化参数首曝，实习通道可曲线转正 · 板块三 · 大众安徽：官方社招门户76岗+电池车间普工50人+数售公司网申，四条入口同框 · 板块四 · 蔚来工厂实习与技能岗：F2基地滚动招人，产线观察的最低成本路径 · 板块五 · 岗位速览卡：本期四个入口的画像参数 · 板块六 · 节后执行清单与风险提示</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/hefei-recruit/report_20261006.html" target="_blank">合肥招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 蔚来2027届秋招：网申10-26关闸，机械生的四个对口序列逐条拆解 · 板块三 · 合工大10月9日四场同开：经开区44家企业名单，节后首日就是对接高峰 · 板块四 · 江淮汽车2027校招：1500人、八大类、薪酬口径三参数再确认，网申链接与流程收口 · 板块五 · 比亚迪合肥与本地补充：长丰基地应届工艺岗在招，国轩口径小幅补充 · 板块六 · 岗位速览卡：本期五个入口的画像参数 · 板块七 · 节后执行清单与风险提示</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/hefei-recruit/report_20261007.html" target="_blank">合肥招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 节后首周排片：合工大、安大、科大三校宣讲与招聘会全览 · 板块三 · 安工大专线：东教楼的汽车零部件之夜，10-24省级分会压轴 · 板块四 · 江淮系增量：零部件板块的独立校招通道，10-16安徽理工开讲 · 板块五 · 比亚迪合肥与制造大厂：工程师序列放量，蓝领口径更新 · 板块六 · 岗位速览卡与执行清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/hefei-recruit/report_20261009.html" target="_blank">合肥招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 国企与事业单位通道：两家截止日临近，三家集团在招 · 板块三 · 校招宣讲三连：智象元一进合肥三校，联宝科技网申进行中 · 板块四 · 制造大厂工程师岗：比亚迪系11个工程师编制放量，蓝领口径同步更新 · 板块五 · 科研机构与高薪岗：科学中心测试岗15-80万/年，蔚来F1工厂实习复盘 · 板块六 · 岗位速览卡与执行清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/hefei-recruit/report_20261010.html" target="_blank">合肥招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 半导体双雄：长鑫存储2027校招开闸，京东方合肥技术岗在招 · 板块三 · 宣讲与双选会日历：中电十所10-12双进合肥，国机集团10-12进合工大 · 板块四 · 整车与电池线：大众安徽普工批次+74个社招职位，国轩高科千人校招持续 · 板块五 · 线下通道与补充口径：经开区汽车专场10-20、三公里就业圈十月排片、蔚来官网九大类别 · 板块六 · 岗位速览卡与执行清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/hefei-recruit/report_20261011.html" target="_blank">合肥招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：区级招才收官一批，高校专场与车企批次接力 · 板块二 · 瑶海区「千企万岗」进新华学院：28家企业500岗位现场对接 · 板块三 · 合工大专场日历：机械工业集团10-12、昆山10-13、周末职通车双场 · 板块四 · 江淮系批次：合肥江淮2027简章挂出，江淮汽车26秋招11-11截止 · 板块五 · 国轩高科2027：研发类50人确认，外埠三站宣讲排定 · 板块六 · 宣讲周与制造岗日更：中科大/合工大专场 + 生产基地岗位 · 板块七 · 本期小结：合肥10月中旬投递日历</div>
+</div>
+</div>
+<div class="cat-block" data-cat="region-recruit">
+  <div class="cat-head"><h3>安徽招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/anhui-recruit/report_20261005.html" target="_blank">安徽招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 奇瑞2027届校招：3000人总量落定，12大方向的机械对口地图 · 板块三 · 奇瑞两条分线：智能科技板块的具身工程与线控底盘，国际事业部8-10K收机械生 · 板块四 · 芜湖岗位池：奇瑞723个在招职位+零部件三强，蓝领专场10-19排定 · 板块五 · 岗位速览卡：本期四个入口的画像参数 · 板块六 · 节后执行清单与风险提示</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/anhui-recruit/report_20261006.html" target="_blank">安徽招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 「人才皖企行」23户省属国企960+岗位：10月9日关闸，安徽国企线的主战役 · 板块三 · 皖能集团2027校招：批次口径显示10-05收尾，能源国企窗口今日核验 · 板块四 · 奇瑞线动态：国科大站10-19排定，新能源技能序列与国际事业部宣讲补充 · 板块五 · 蚌埠岗位池：10月重点企业用工清单出炉，中电科41所给出皖北最高薪口径 · 板块六 · 事业单位联考：10-17笔试11天倒计时，准考证10-14开放打印 · 板块七 · 岗位速览卡：本期五个入口的画像参数 · 板块八 · 节后执行清单与风险提示</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/anhui-recruit/report_20261007.html" target="_blank">安徽招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 奇瑞10月宣讲矩阵：13场排片与三电岗位的专业清单 · 板块三 · 奇瑞技能序列异地双选会：四场排定，本科技术员岗的「另一面」 · 板块四 · 国企批次日历：明日关闸的大盘与县域补充通道 · 板块五 · 联考冲刺与省级招聘会：10-17笔试周与10-24皖南分会 · 板块六 · 岗位速览卡与执行清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/anhui-recruit/report_20261009.html" target="_blank">安徽招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 车企线：江淮今日关闸，奇瑞矩阵北理工、安理工两站新增 · 板块三 · 央国企与装备企业窗口：安徽邮政机械类在列、中移动安徽10-15截止、福拉特压轴安徽两校 · 板块四 · 联考最后一周：准考证打印倒计时与冲刺动作 · 板块五 · 岗位速览卡与执行清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/anhui-recruit/report_20261010.html" target="_blank">安徽招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 校招双巨头：科大讯飞全岗位开闸，奇瑞动力电池岗细目披露 · 板块三 · 芜湖智造岗位带：机器人产业高薪放量，汽车电子批量招应届 · 板块四 · 国企窗口密集收尾：通航控股10-16、交通控股10-15、华电安徽10-18 · 板块五 · 省级双选会三连排：合师院10-16、宿州学院10-21、铜陵皖中南分会10-25 · 板块六 · 岗位速览卡与执行清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/anhui-recruit/report_20261011.html" target="_blank">安徽招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：联考周六开考，企业批次两周内密集截止 · 板块二 · 事业单位联考倒计时：10月17日开考，准考证10-14起打印 · 板块三 · 省属企业批次：皖能淮北30人、国元农险18人、万佛湖控股6人 · 板块四 · 奇瑞2027批次：外埠宣讲双站排定，智能制造与三电岗位口径明确 · 板块五 · 高校宣讲带：环新集团、延锋内饰、惠科进肥，皖企外埠接力 · 板块六 · 本期小结：全省10月中旬倒计时表</div>
+</div>
+</div>
+<div class="cat-block" data-cat="region-recruit">
+  <div class="cat-head"><h3>江苏招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/jiangsu-recruit/report_20261005.html" target="_blank">江苏招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：一个「10月9日」压顶，800+工程机械岗位兜底 · 板块二 · 紧急截止：中国能建江苏电建一公司2027校招，10月9日截止 · 板块三 · 徐工集团2027校招：超800个岗位，机械生的「岗位密度之王」 · 板块四 · 中石化双批次：金陵石化设备储备岗12人，江苏石油机电+新能源双线，10月28日截止 · 板块五 · 事业单位窗口：节后首周集中开闸，最早10月8日9时起报 · 板块六 · 车企线：比亚迪常州、无锡、盐城基地岗位，10月19日截止 · 板块七 · 投递建议与倒排表：节后首周三件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/jiangsu-recruit/report_20261006.html" target="_blank">江苏招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：三个「10月7日」压顶，线下招聘会节后集结 · 板块二 · 紧急截止：10月7日三关闸，江苏省铁路集团、国家能源、邮储/国开行 · 板块三 · 国网江苏电力2027校招：网申至10月19日，宣讲行程10月10日起跑 · 板块四 · 南京国企批次盘点：江苏交控、电科14所、苏豪鼎创、省工程咨询中心 · 板块五 · 药明康德2027校招：常州、苏州、无锡、南通等江苏六城放岗，网申开到12月31日 · 板块六 · 线下招聘会日历：苏州四校洽谈会、徐州专场、常州大学双专场、南审七大专场 · 板块七 · 投递建议与截止日倒排表：今晚三件事，节后首周三件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/jiangsu-recruit/report_20261007.html" target="_blank">江苏招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：节后三连关压顶，新窗口与线下招聘会双线接力 · 板块二 · 银行批次人数明细：工行800人、农行1040人、建行750人，节后两天收官 · 板块三 · 央企新窗口：中国邮政江苏、中石油江苏销售、中移铁通三个批次接力 · 板块四 · 车企线：比亚迪27校招机械类岗位放量，常州、无锡、盐城基地在列 · 板块五 · 线下招聘会日历：10月14日南农+常州同日，10月17日苏州四校，10月20日徐州 · 板块六 · 事业单位窗口：南京铁道职院10-08开启，南工程辅导员、省水科院、江苏海洋大学 · 板块七 · 投递建议与截止日倒排表：节后第一周的双线作战</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/jiangsu-recruit/report_20261009.html" target="_blank">江苏招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 徐工线：1000+席位今日关闸，矿机事业部的专业清单值得细读 · 板块三 · 央国企新窗口：中石化江苏石油40人、港口集团10-20、沿海开发10-15 · 板块四 · 银行收官明细与次生窗口：从今天的10-9到11月的广发 · 板块五 · 宣讲日历：药明康德10-13进江南大学，福拉特十场宣讲收官周 · 板块六 · 投递建议与截止日倒排表</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/jiangsu-recruit/report_20261010.html" target="_blank">江苏招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 常州整车线：理想基地产岗全景，从28元/时到35-55K月新区间 · 板块三 · 苏州装备制造校招集群：纽威数控、博众精工、德扬智能、友达光电 · 板块四 · 无锡半导体设备校招四连发：卓海10-14截止，经纬天地硕士16-25万 · 板块五 · 央企线与地市引才：电信江苏10-12关闸，央企秋招日历与昆山市引才行动 · 板块六 · 投递建议与截止日倒排表</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/jiangsu-recruit/report_20261011.html" target="_blank">江苏招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：省级招聘月进入苏州时间，能源央企三线倒排 · 板块二 · 省级大场：苏州公益供需洽谈会10月17日，800展位四大会场分专区 · 板块三 · 高校双选会：南理工战报305家2.2万岗，张家港综合专场10月15日464岗 · 板块四 · 线上专场：苏州工学院机械制造业专场月末收官，无锡蓝领专场10月19日接力 · 板块五 · 能源央企三线：华电江苏10-18、江苏油田10-28、华能综合能源10-31 · 板块六 · 事业编窗口：省水科院10-28、南京铁道职院10-15、泰州批次10-31笔试 · 板块七 · 本期小结：一张江苏求职周计划表</div>
+</div>
+</div>
+<div class="cat-block" data-cat="region-recruit">
+  <div class="cat-head"><h3>深圳招聘日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/shenzhen-recruit/report_20261005.html" target="_blank">深圳招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：假期最后一天的三件事与节后首周主战场 · 板块二 · 华为车BU（引望）：2027届校招批次10-08截止，投递路线与部门选择逐条拆解 · 板块三 · 比亚迪：校招岗位矩阵全图与坪山总部社招放量，「每年1-2万应届生」的用人逻辑 · 板块四 · 深圳汽车电子与机械企业在招岗速览：从座舱薪酬带到应届生保底选项 · 板块五 · 飞控对口岗专递：光启尖端与智洋创新——四旋翼经历的直接变现窗口 · 板块六 · 岗位速览卡：本期六个重点岗位的画像参数 · 板块七 · 投递建议：假期最后一天到节后首周的执行清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/shenzhen-recruit/report_20261006.html" target="_blank">深圳招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：华为倒计时压顶，腾讯大疆比亚迪「招满即止」拼手速 · 板块二 · 华为：27校招主批次与ICT BG双口径倒计时，深圳是核心工作地 · 板块三 · 腾讯：2027校招8月11日启动「招满即止」，AI原生岗位全面上新 · 板块四 · 大疆：2027「拓疆者」校招招满即止，机械与力学类岗位仍开放 · 板块五 · 比亚迪：官网长期开放，每年1-2万应届生的「工程师蓄水池」持续运转 · 板块六 · 收尾批次与在招池：招行深圳10-10截止，迅雷/京东10-31，韶音等消费品公司在招 · 板块七 · 投递建议与截止日倒排表：假期收官三件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/shenzhen-recruit/report_20261007.html" target="_blank">深圳招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：深圳能源新批次 + 深汕8000人社招 + 南粤线下日历 · 板块二 · 深圳能源集团2027届校招：机械类专业在列，「育才计划」安家补贴15-20万 · 板块三 · 比亚迪深汕超级工厂：社招超8000人，鹅埠、小漠双园区同步放量 · 板块四 · 百万英才汇南粤：10月中下旬五场线下招聘会连排 · 板块五 · 机械岗位池：装备企业在招的机械工程师与27届秋招第二梯队 · 板块六 · 存量窗口与截止日倒排表：节后第一周的双线作战</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/shenzhen-recruit/report_20261009.html" target="_blank">深圳招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 校招主线：比亚迪10-19截止，大疆拓疆者机械与力学在列 · 板块三 · 「百万英才汇南粤」线下日历：10-15哈工深、10-21智能制造、10-28深职大 · 板块四 · 深技大专场矩阵与高校宣讲周：机械岗最实的两个信息源 · 板块五 · 岗位速览卡与执行清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/shenzhen-recruit/report_20261010.html" target="_blank">深圳招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 激光装备线：大族激光岗位表全公开，机械工程师80人领衔 · 板块三 · 工控线：汇川技术六族岗位持续网申，提前批薪资参数已出 · 板块四 · 华为双线：供应链校招专项在招，制造部社招批次10-16截止 · 板块五 · 线下通道：深大周末双宣讲，信息职业技术大学10-14专场 · 板块六 · 岗位速览卡与执行清单</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/shenzhen-recruit/report_20261011.html" target="_blank">深圳招聘日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：五场双选 + 一个网申倒计时 + 两个国企窗口 · 板块二 · 深技大双选五连：坪山专场10-12打头，市属国企10-27压轴 · 板块三 · 比亚迪2027网申倒计时：10-19截止，机械类是明牌专业 · 板块四 · 国企批次：宝安交通集团19人10-30截止，大鹏、深汕窗口并行 · 板块五 · 长窗口与岗位日更：卫健2181人、福田10月活动、央企在深岗位 · 板块六 · 本期小结：深圳10月中下旬投递日历</div>
+</div>
+</div>
+</div>
+<div class="group" data-group="personal">
+  <h2>规划</h2>
+  <div class="group-sub">1 个分类 · 6 份报告</div>
+<div class="cat-block" data-cat="personal">
+  <div class="cat-head"><h3>未来规划日报</h3><span class="cnt">6 份</span></div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-05</span><a href="https://ts-dinglilu.github.io/future-planning/report_20261005.html" target="_blank">未来规划日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 行业趋势：低空经济跨过万亿门槛，「怎么飞、谁来管」进入实操 · 板块三 · 就业方向与考证路径：无人机赛道的五张门票 · 板块四 · 对口岗位拆解：三份大疆 JD 拼出的飞控门槛清单 · 板块五 · 读博还是就业：机械硕士的薪资地图与转型岔路 · 板块六 · 秋招日历更新：零跑 400 人研发大岗、一汽解放进校宣讲，节后第一周就是窗口 · 板块七 · 本期行动建议：返程日到节后两周的三件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-06</span><a href="https://ts-dinglilu.github.io/future-planning/report_20261006.html" target="_blank">未来规划日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 新职业风向标：官方给你的技能栈「定了价」 · 板块三 · 2027 届机械求职形势：周期前移、两极分化、复合技能分水岭 · 板块四 · 技能提升：具身智能运控 JD 把你的课题逐条标了价 · 板块五 · 考公考编：2026 国考 10 月 15 日报名，机械硕士的选岗算术 · 板块六 · 本期行动建议：节后一周的四件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-07</span><a href="https://ts-dinglilu.github.io/future-planning/report_20261007.html" target="_blank">未来规划日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 秋招节奏：十月是「面试高峰 + 首批 Offer 收割」档期 · 板块三 · 行业趋势一：低空经济拿到「2035 年 3.5 万亿」的十年坐标 · 板块四 · 行业趋势二：人形机器人「量产元年」，车企集体下注第二曲线 · 板块五 · 国考倒计时 8 天：机械硕士可报岗位逐个拆 · 板块六 · 方法论：把「面试复盘」做成可复用的资产 · 板块七 · 本期行动建议：十月上半月的四件事</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-09</span><a href="https://ts-dinglilu.github.io/future-planning/report_20261009.html" target="_blank">未来规划日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 定价基准：机械硕士的学历-薪酬对照与方向分化 · 板块三 · 秋招面试实录：小鹏三面、千里智驾两轮技术面、零跑校招开闸 · 板块四 · 方向与转型：机械研究生的「细分标签」打法与海归对照 · 板块五 · 薪资速查表</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-10</span><a href="https://ts-dinglilu.github.io/future-planning/report_20261010.html" target="_blank">未来规划日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览 · 板块二 · 秋招 10 月节点：面试高峰、首批 offer 与三方协议的三条纪律 · 板块三 · 国考报名倒计时：10-14 发公告、10-15 起报名、限报 1 岗 · 板块四 · 读博窗口：申请考核制的时间表、淘汰率与研二行动清单 · 板块五 · 产业趋势定方向：低空经济写入「十五五」，人形机器人进入交付时代</div>
+</div>
+<div class="rep-item">
+  <div class="rep-line"><span class="rep-date">2026-10-11</span><a href="https://ts-dinglilu.github.io/future-planning/report_20261011.html" target="_blank">未来规划日报 📎</a></div>
+  <div class="toc">板块：板块一 · 本期导览：offer 案例与决策框架周 · 板块二 · 简历与笔面试实战：「显、浓、真」三字诀与群面应对 · 板块三 · 机械硕士 offer 案例库：四份 offer 与三份 offer 的真实对照 · 板块四 · 读博 vs 就业：三个可操作的决策框架 · 板块五 · 行业趋势定方向：低空经济人才缺口的结构地图（近期梳理）</div>
+</div>
+</div>
+</div>
+<h2 class="sec">数据统计</h2>
+<div class="table-wrap">
+<table class="summary-table">
+<thead><tr><th>分类</th><th>本期报告</th><th>报告日期</th></tr></thead>
+<tbody>
+<tr><td>车企招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>机械招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>比亚迪招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>奇瑞招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>奇瑞职场口碑日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>吉利招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>小米汽车招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>蔚小理招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>传统车企招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>车企供应链招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>科研院所招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>企业口碑日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>校园新闻日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>安工大校园日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>无人机科研日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>徐州汽车机械日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>南京汽车机械日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>上海汽车机械日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>杭州汽车机械日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>江浙沪汽车机械日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>合肥汽车机械日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>安徽汽车机械日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>江苏汽车机械日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>深圳汽车机械日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>徐州招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>南京招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>上海招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>杭州招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>江浙沪招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>合肥招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>安徽招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>江苏招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>深圳招聘日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+<tr><td>未来规划日报</td><td>6 份</td><td>10-05, 10-06, 10-07, 10-09, 10-10, 10-11</td></tr>
+</tbody>
+</table>
+</div>
+<h2 class="sec">信息来源汇总</h2>
+<div class="table-wrap">
+<table class="summary-table">
+<thead><tr><th>报告</th><th>链接</th><th>日期</th></tr></thead>
+<tbody>
+<tr><td>车企招聘日报</td><td><a href="https://ts-dinglilu.github.io/car-recruit/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>车企招聘日报</td><td><a href="https://ts-dinglilu.github.io/car-recruit/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>车企招聘日报</td><td><a href="https://ts-dinglilu.github.io/car-recruit/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>车企招聘日报</td><td><a href="https://ts-dinglilu.github.io/car-recruit/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>车企招聘日报</td><td><a href="https://ts-dinglilu.github.io/car-recruit/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>车企招聘日报</td><td><a href="https://ts-dinglilu.github.io/car-recruit/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>机械招聘日报</td><td><a href="https://ts-dinglilu.github.io/mechanical-recruit/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>机械招聘日报</td><td><a href="https://ts-dinglilu.github.io/mechanical-recruit/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>机械招聘日报</td><td><a href="https://ts-dinglilu.github.io/mechanical-recruit/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>机械招聘日报</td><td><a href="https://ts-dinglilu.github.io/mechanical-recruit/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>机械招聘日报</td><td><a href="https://ts-dinglilu.github.io/mechanical-recruit/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>机械招聘日报</td><td><a href="https://ts-dinglilu.github.io/mechanical-recruit/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>比亚迪招聘日报</td><td><a href="https://ts-dinglilu.github.io/byd-recruit/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>比亚迪招聘日报</td><td><a href="https://ts-dinglilu.github.io/byd-recruit/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>比亚迪招聘日报</td><td><a href="https://ts-dinglilu.github.io/byd-recruit/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>比亚迪招聘日报</td><td><a href="https://ts-dinglilu.github.io/byd-recruit/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>比亚迪招聘日报</td><td><a href="https://ts-dinglilu.github.io/byd-recruit/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>比亚迪招聘日报</td><td><a href="https://ts-dinglilu.github.io/byd-recruit/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>奇瑞招聘日报</td><td><a href="https://ts-dinglilu.github.io/chery-recruit/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>奇瑞招聘日报</td><td><a href="https://ts-dinglilu.github.io/chery-recruit/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>奇瑞招聘日报</td><td><a href="https://ts-dinglilu.github.io/chery-recruit/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>奇瑞招聘日报</td><td><a href="https://ts-dinglilu.github.io/chery-recruit/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>奇瑞招聘日报</td><td><a href="https://ts-dinglilu.github.io/chery-recruit/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>奇瑞招聘日报</td><td><a href="https://ts-dinglilu.github.io/chery-recruit/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>奇瑞职场口碑日报</td><td><a href="https://ts-dinglilu.github.io/chery-insider/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>奇瑞职场口碑日报</td><td><a href="https://ts-dinglilu.github.io/chery-insider/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>奇瑞职场口碑日报</td><td><a href="https://ts-dinglilu.github.io/chery-insider/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>奇瑞职场口碑日报</td><td><a href="https://ts-dinglilu.github.io/chery-insider/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>奇瑞职场口碑日报</td><td><a href="https://ts-dinglilu.github.io/chery-insider/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>奇瑞职场口碑日报</td><td><a href="https://ts-dinglilu.github.io/chery-insider/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>吉利招聘日报</td><td><a href="https://ts-dinglilu.github.io/geely-recruit/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>吉利招聘日报</td><td><a href="https://ts-dinglilu.github.io/geely-recruit/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>吉利招聘日报</td><td><a href="https://ts-dinglilu.github.io/geely-recruit/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>吉利招聘日报</td><td><a href="https://ts-dinglilu.github.io/geely-recruit/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>吉利招聘日报</td><td><a href="https://ts-dinglilu.github.io/geely-recruit/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>吉利招聘日报</td><td><a href="https://ts-dinglilu.github.io/geely-recruit/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>小米汽车招聘日报</td><td><a href="https://ts-dinglilu.github.io/xiaomi-recruit/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>小米汽车招聘日报</td><td><a href="https://ts-dinglilu.github.io/xiaomi-recruit/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>小米汽车招聘日报</td><td><a href="https://ts-dinglilu.github.io/xiaomi-recruit/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>小米汽车招聘日报</td><td><a href="https://ts-dinglilu.github.io/xiaomi-recruit/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>小米汽车招聘日报</td><td><a href="https://ts-dinglilu.github.io/xiaomi-recruit/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>小米汽车招聘日报</td><td><a href="https://ts-dinglilu.github.io/xiaomi-recruit/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>蔚小理招聘日报</td><td><a href="https://ts-dinglilu.github.io/weixiaoli-recruit/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>蔚小理招聘日报</td><td><a href="https://ts-dinglilu.github.io/weixiaoli-recruit/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>蔚小理招聘日报</td><td><a href="https://ts-dinglilu.github.io/weixiaoli-recruit/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>蔚小理招聘日报</td><td><a href="https://ts-dinglilu.github.io/weixiaoli-recruit/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>蔚小理招聘日报</td><td><a href="https://ts-dinglilu.github.io/weixiaoli-recruit/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>蔚小理招聘日报</td><td><a href="https://ts-dinglilu.github.io/weixiaoli-recruit/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>传统车企招聘日报</td><td><a href="https://ts-dinglilu.github.io/traditional-auto/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>传统车企招聘日报</td><td><a href="https://ts-dinglilu.github.io/traditional-auto/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>传统车企招聘日报</td><td><a href="https://ts-dinglilu.github.io/traditional-auto/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>传统车企招聘日报</td><td><a href="https://ts-dinglilu.github.io/traditional-auto/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>传统车企招聘日报</td><td><a href="https://ts-dinglilu.github.io/traditional-auto/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>传统车企招聘日报</td><td><a href="https://ts-dinglilu.github.io/traditional-auto/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>车企供应链招聘日报</td><td><a href="https://ts-dinglilu.github.io/supply-chain-recruit/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>车企供应链招聘日报</td><td><a href="https://ts-dinglilu.github.io/supply-chain-recruit/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>车企供应链招聘日报</td><td><a href="https://ts-dinglilu.github.io/supply-chain-recruit/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>车企供应链招聘日报</td><td><a href="https://ts-dinglilu.github.io/supply-chain-recruit/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>车企供应链招聘日报</td><td><a href="https://ts-dinglilu.github.io/supply-chain-recruit/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>车企供应链招聘日报</td><td><a href="https://ts-dinglilu.github.io/supply-chain-recruit/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>科研院所招聘日报</td><td><a href="https://ts-dinglilu.github.io/research-institute/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>科研院所招聘日报</td><td><a href="https://ts-dinglilu.github.io/research-institute/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>科研院所招聘日报</td><td><a href="https://ts-dinglilu.github.io/research-institute/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>科研院所招聘日报</td><td><a href="https://ts-dinglilu.github.io/research-institute/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>科研院所招聘日报</td><td><a href="https://ts-dinglilu.github.io/research-institute/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>科研院所招聘日报</td><td><a href="https://ts-dinglilu.github.io/research-institute/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>企业口碑日报</td><td><a href="https://ts-dinglilu.github.io/company-reputation/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>企业口碑日报</td><td><a href="https://ts-dinglilu.github.io/company-reputation/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>企业口碑日报</td><td><a href="https://ts-dinglilu.github.io/company-reputation/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>企业口碑日报</td><td><a href="https://ts-dinglilu.github.io/company-reputation/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>企业口碑日报</td><td><a href="https://ts-dinglilu.github.io/company-reputation/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>企业口碑日报</td><td><a href="https://ts-dinglilu.github.io/company-reputation/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>校园新闻日报</td><td><a href="https://ts-dinglilu.github.io/school-news/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>校园新闻日报</td><td><a href="https://ts-dinglilu.github.io/school-news/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>校园新闻日报</td><td><a href="https://ts-dinglilu.github.io/school-news/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>校园新闻日报</td><td><a href="https://ts-dinglilu.github.io/school-news/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>校园新闻日报</td><td><a href="https://ts-dinglilu.github.io/school-news/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>校园新闻日报</td><td><a href="https://ts-dinglilu.github.io/school-news/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>安工大校园日报</td><td><a href="https://ts-dinglilu.github.io/ahut-campus/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>安工大校园日报</td><td><a href="https://ts-dinglilu.github.io/ahut-campus/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>安工大校园日报</td><td><a href="https://ts-dinglilu.github.io/ahut-campus/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>安工大校园日报</td><td><a href="https://ts-dinglilu.github.io/ahut-campus/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>安工大校园日报</td><td><a href="https://ts-dinglilu.github.io/ahut-campus/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>安工大校园日报</td><td><a href="https://ts-dinglilu.github.io/ahut-campus/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>无人机科研日报</td><td><a href="https://ts-dinglilu.github.io/drone-research/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>无人机科研日报</td><td><a href="https://ts-dinglilu.github.io/drone-research/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>无人机科研日报</td><td><a href="https://ts-dinglilu.github.io/drone-research/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>无人机科研日报</td><td><a href="https://ts-dinglilu.github.io/drone-research/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>无人机科研日报</td><td><a href="https://ts-dinglilu.github.io/drone-research/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>无人机科研日报</td><td><a href="https://ts-dinglilu.github.io/drone-research/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>徐州汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/xuzhou-news/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>徐州汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/xuzhou-news/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>徐州汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/xuzhou-news/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>徐州汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/xuzhou-news/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>徐州汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/xuzhou-news/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>徐州汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/xuzhou-news/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>南京汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/nanjing-news/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>南京汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/nanjing-news/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>南京汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/nanjing-news/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>南京汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/nanjing-news/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>南京汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/nanjing-news/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>南京汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/nanjing-news/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>上海汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/shanghai-news/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>上海汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/shanghai-news/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>上海汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/shanghai-news/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>上海汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/shanghai-news/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>上海汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/shanghai-news/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>上海汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/shanghai-news/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>杭州汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/hangzhou-news/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>杭州汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/hangzhou-news/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>杭州汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/hangzhou-news/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>杭州汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/hangzhou-news/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>杭州汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/hangzhou-news/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>杭州汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/hangzhou-news/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>江浙沪汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/jiangzhehu-news/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>江浙沪汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/jiangzhehu-news/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>江浙沪汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/jiangzhehu-news/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>江浙沪汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/jiangzhehu-news/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>江浙沪汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/jiangzhehu-news/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>江浙沪汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/jiangzhehu-news/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>合肥汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/hefei-news/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>合肥汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/hefei-news/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>合肥汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/hefei-news/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>合肥汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/hefei-news/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>合肥汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/hefei-news/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>合肥汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/hefei-news/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>安徽汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/anhui-news/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>安徽汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/anhui-news/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>安徽汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/anhui-news/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>安徽汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/anhui-news/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>安徽汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/anhui-news/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>安徽汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/anhui-news/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>江苏汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/jiangsu-news/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>江苏汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/jiangsu-news/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>江苏汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/jiangsu-news/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>江苏汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/jiangsu-news/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>江苏汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/jiangsu-news/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>江苏汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/jiangsu-news/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>深圳汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/shenzhen-news/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>深圳汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/shenzhen-news/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>深圳汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/shenzhen-news/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>深圳汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/shenzhen-news/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>深圳汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/shenzhen-news/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>深圳汽车机械日报</td><td><a href="https://ts-dinglilu.github.io/shenzhen-news/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>徐州招聘日报</td><td><a href="https://ts-dinglilu.github.io/xuzhou-recruit/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>徐州招聘日报</td><td><a href="https://ts-dinglilu.github.io/xuzhou-recruit/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>徐州招聘日报</td><td><a href="https://ts-dinglilu.github.io/xuzhou-recruit/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>徐州招聘日报</td><td><a href="https://ts-dinglilu.github.io/xuzhou-recruit/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>徐州招聘日报</td><td><a href="https://ts-dinglilu.github.io/xuzhou-recruit/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>徐州招聘日报</td><td><a href="https://ts-dinglilu.github.io/xuzhou-recruit/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>南京招聘日报</td><td><a href="https://ts-dinglilu.github.io/nanjing-recruit/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>南京招聘日报</td><td><a href="https://ts-dinglilu.github.io/nanjing-recruit/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>南京招聘日报</td><td><a href="https://ts-dinglilu.github.io/nanjing-recruit/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>南京招聘日报</td><td><a href="https://ts-dinglilu.github.io/nanjing-recruit/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>南京招聘日报</td><td><a href="https://ts-dinglilu.github.io/nanjing-recruit/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>南京招聘日报</td><td><a href="https://ts-dinglilu.github.io/nanjing-recruit/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>上海招聘日报</td><td><a href="https://ts-dinglilu.github.io/shanghai-recruit/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>上海招聘日报</td><td><a href="https://ts-dinglilu.github.io/shanghai-recruit/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>上海招聘日报</td><td><a href="https://ts-dinglilu.github.io/shanghai-recruit/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>上海招聘日报</td><td><a href="https://ts-dinglilu.github.io/shanghai-recruit/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>上海招聘日报</td><td><a href="https://ts-dinglilu.github.io/shanghai-recruit/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>上海招聘日报</td><td><a href="https://ts-dinglilu.github.io/shanghai-recruit/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>杭州招聘日报</td><td><a href="https://ts-dinglilu.github.io/hangzhou-recruit/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>杭州招聘日报</td><td><a href="https://ts-dinglilu.github.io/hangzhou-recruit/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>杭州招聘日报</td><td><a href="https://ts-dinglilu.github.io/hangzhou-recruit/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>杭州招聘日报</td><td><a href="https://ts-dinglilu.github.io/hangzhou-recruit/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>杭州招聘日报</td><td><a href="https://ts-dinglilu.github.io/hangzhou-recruit/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>杭州招聘日报</td><td><a href="https://ts-dinglilu.github.io/hangzhou-recruit/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>江浙沪招聘日报</td><td><a href="https://ts-dinglilu.github.io/jiangzhehu-recruit/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>江浙沪招聘日报</td><td><a href="https://ts-dinglilu.github.io/jiangzhehu-recruit/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>江浙沪招聘日报</td><td><a href="https://ts-dinglilu.github.io/jiangzhehu-recruit/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>江浙沪招聘日报</td><td><a href="https://ts-dinglilu.github.io/jiangzhehu-recruit/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>江浙沪招聘日报</td><td><a href="https://ts-dinglilu.github.io/jiangzhehu-recruit/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>江浙沪招聘日报</td><td><a href="https://ts-dinglilu.github.io/jiangzhehu-recruit/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>合肥招聘日报</td><td><a href="https://ts-dinglilu.github.io/hefei-recruit/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>合肥招聘日报</td><td><a href="https://ts-dinglilu.github.io/hefei-recruit/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>合肥招聘日报</td><td><a href="https://ts-dinglilu.github.io/hefei-recruit/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>合肥招聘日报</td><td><a href="https://ts-dinglilu.github.io/hefei-recruit/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>合肥招聘日报</td><td><a href="https://ts-dinglilu.github.io/hefei-recruit/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>合肥招聘日报</td><td><a href="https://ts-dinglilu.github.io/hefei-recruit/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>安徽招聘日报</td><td><a href="https://ts-dinglilu.github.io/anhui-recruit/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>安徽招聘日报</td><td><a href="https://ts-dinglilu.github.io/anhui-recruit/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>安徽招聘日报</td><td><a href="https://ts-dinglilu.github.io/anhui-recruit/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>安徽招聘日报</td><td><a href="https://ts-dinglilu.github.io/anhui-recruit/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>安徽招聘日报</td><td><a href="https://ts-dinglilu.github.io/anhui-recruit/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>安徽招聘日报</td><td><a href="https://ts-dinglilu.github.io/anhui-recruit/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>江苏招聘日报</td><td><a href="https://ts-dinglilu.github.io/jiangsu-recruit/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>江苏招聘日报</td><td><a href="https://ts-dinglilu.github.io/jiangsu-recruit/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>江苏招聘日报</td><td><a href="https://ts-dinglilu.github.io/jiangsu-recruit/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>江苏招聘日报</td><td><a href="https://ts-dinglilu.github.io/jiangsu-recruit/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>江苏招聘日报</td><td><a href="https://ts-dinglilu.github.io/jiangsu-recruit/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>江苏招聘日报</td><td><a href="https://ts-dinglilu.github.io/jiangsu-recruit/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>深圳招聘日报</td><td><a href="https://ts-dinglilu.github.io/shenzhen-recruit/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>深圳招聘日报</td><td><a href="https://ts-dinglilu.github.io/shenzhen-recruit/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>深圳招聘日报</td><td><a href="https://ts-dinglilu.github.io/shenzhen-recruit/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>深圳招聘日报</td><td><a href="https://ts-dinglilu.github.io/shenzhen-recruit/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>深圳招聘日报</td><td><a href="https://ts-dinglilu.github.io/shenzhen-recruit/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>深圳招聘日报</td><td><a href="https://ts-dinglilu.github.io/shenzhen-recruit/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+<tr><td>未来规划日报</td><td><a href="https://ts-dinglilu.github.io/future-planning/report_20261005.html" target="_blank">📎 查看</a></td><td>2026-10-05</td></tr>
+<tr><td>未来规划日报</td><td><a href="https://ts-dinglilu.github.io/future-planning/report_20261006.html" target="_blank">📎 查看</a></td><td>2026-10-06</td></tr>
+<tr><td>未来规划日报</td><td><a href="https://ts-dinglilu.github.io/future-planning/report_20261007.html" target="_blank">📎 查看</a></td><td>2026-10-07</td></tr>
+<tr><td>未来规划日报</td><td><a href="https://ts-dinglilu.github.io/future-planning/report_20261009.html" target="_blank">📎 查看</a></td><td>2026-10-09</td></tr>
+<tr><td>未来规划日报</td><td><a href="https://ts-dinglilu.github.io/future-planning/report_20261010.html" target="_blank">📎 查看</a></td><td>2026-10-10</td></tr>
+<tr><td>未来规划日报</td><td><a href="https://ts-dinglilu.github.io/future-planning/report_20261011.html" target="_blank">📎 查看</a></td><td>2026-10-11</td></tr>
+</tbody>
+</table>
+</div>
+<div class="giscus"></div>
+</div>
+<div class="footer">周记月记年记 · 每周/月/年自动汇总 · © 2026 TS-dinglilu</div>
+<script>
+function setFilter(tab, key) {
+  if (!key) key = 'all';
+  document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
+  tab.classList.add('active');
+  document.querySelectorAll('.group').forEach(function(g) {
+    g.classList.toggle('hidden', key !== 'all' && g.getAttribute('data-group') !== key);
+  });
+  document.querySelectorAll('.cat-block').forEach(function(b) {
+    b.classList.toggle('hidden', key !== 'all' && b.getAttribute('data-cat') !== key);
+  });
+}
+</script>
+<script>
+// Scroll-to-top button visibility
+window.addEventListener('scroll', function() {
+  var btn = document.querySelector('.scroll-top');
+  if (btn) {
+    if (window.scrollY > 400) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+  }
+});
+
+// Giscus configuration
+var giscusScript = document.createElement('script');
+giscusScript.src = 'https://giscus.app/client.js';
+giscusScript.setAttribute('data-repo', 'TS-dinglilu/TS-dinglilu.github.io');
+giscusScript.setAttribute('data-repo-id', 'R_kgDOTjqaJQ');
+giscusScript.setAttribute('data-category', 'General');
+giscusScript.setAttribute('data-category-id', 'DIC_kwDOTjqaJc4DCIL2');
+giscusScript.setAttribute('data-mapping', 'pathname');
+giscusScript.setAttribute('data-strict', '0');
+giscusScript.setAttribute('data-reactions-enabled', '1');
+giscusScript.setAttribute('data-emit-metadata', '0');
+giscusScript.setAttribute('data-input-position', 'top');
+giscusScript.setAttribute('data-theme', 'dark_dimmed');
+giscusScript.setAttribute('data-lang', 'zh-CN');
+giscusScript.setAttribute('data-loading', 'lazy');
+giscusScript.crossOrigin = 'anonymous';
+giscusScript.async = true;
+var giscusBox = document.querySelector('.giscus');
+if (giscusBox) { giscusBox.appendChild(giscusScript); }
+</script>
+
+</body>
+</html>
