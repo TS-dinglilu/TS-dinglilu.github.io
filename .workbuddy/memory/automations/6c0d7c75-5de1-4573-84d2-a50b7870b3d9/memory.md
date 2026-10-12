@@ -199,3 +199,11 @@
 - 验证：线上 34/34 全 200（无 Pages 延迟）；主页 34 卡全「10-09」、总数 628+（594→628 吻合）；audit 最终 0 错误 4 警告（09-28~30 既有 + 10-08 新欠账）。
 - 教训：派活分组后必须逐文件核对 mtime（本轮漏派就是这样抓到的）；网易号自媒体文章发布数日内可能被下架，口碑库优先引官方原始出处。
 - 补记：正刊推送后的记忆小提交（3c94fde）撞推送抖动——push_manual.py 一次失败 + 重试循环静默挂起 13 分钟（TaskStop 杀掉）→ `ssh_fallback_push(force=True)` 一次成功（模块在 `scripts/`）。远端 main 最终 = 3c94fde。
+
+## 2026-10-10（05:00 触发）
+- 开工：git pull 已最新（3c94fde），无抢跑；audit 基线 0 错误 4 警告（09-28~30、10-08 既有欠账）。
+- 正文 34/34 一次规划成功（11 个并行子代理 model lite；chery-insider+company-reputation 首派 400 超时，重派一次成功）。字符 12070–19989；strict_check 首轮 2 份 FAIL（car-recruit/traditional-auto giscus 嵌在外层 div 内 GISCUS-NOT-LAST，挪到末位修复后 0 不合格）。
+- 外链 386 条：--fix 改 11 份 http；22 条可疑——9 条 WebFetch 验真保留（含 hanguljobs 韩域名实为 LG新能源南京岗、cs.hust 实为零跑校招这类"host 看似不符但内容对口"案例），10 处换源/删链（cqbys 全族 ×3、moomoo→CnEVPost、sfccn 404→新浪转载、武大 xsjy/wjhr 删链、nio→nio.cn/careers、circ.gov.cntg.ncss.cn mashed 坏链→m.ncss.cn/student/24365、工博会 ciif-sh 畸形 URL→ciif-expo.com/org.cn）。修复脚本 logs/fix_links_20261010.py。
+- 发布：构建全绿；推送 3 通道齐挂（凭据 reset/常规 3 败/SSH 兜底误判跳过）→ 手动 ssh_fallback_push(force=True) 一次成功。提交 1ac47f2；记忆小提交 5351b43 也经 force SSH 推上。
+- 验证：远端 main（API）= 本地 HEAD；线上 34/34 = 200 无延迟；主页 34 卡「10-10」、总数 662+（628+34 吻合）；audit 最终 0 错误 4 警告。
+- 教训：①写手会把 giscus 嵌进收尾外层 div，strict_check 的 GISCUS-NOT-LAST 能抓到但要看 FAIL 明细；②"curl 通 443 而 git 不通"时 publish_all 会误跳 SSH 兜底，直接手动 force（10-03 方案复发有效）。
