@@ -296,3 +296,10 @@ arXiv 类链接可以直接验真：`curl -s -o /dev/null -w "%{http_code}" http
 | 推送成功、`contents` API 也能查到文件，但线上页面 404 | GitHub Pages 部署有延迟，新文件可能比同批的其它文件晚 1–3 分钟生效。**轮询重试**即可（实测 `report_20260918.html` 首查 404、约 2 分钟后 200），不要因此重复推送 |
 | 新增分类后 `audit_site.py` 刷出几十条「某日缺新分类」 | 新分类的建号日期没登记。在 `scripts/audit_site.py` 的 `START_DATES` 里加一行 `"<分类>": "YYYYMMDD"`，此前各天不参与跨分类漏期比对（见 §0.3） |
 | 主页出现两份 `index.html` / `homepage_index.html` | 后者是个人主页的旧版本，已被 `index.html` 取代，已归档到 `logs/archive/`。不要再往 repo 里放第二份主页，否则 `update_homepage.py` 只改 `index.html`，两份会逐渐不一致 |
+
+## 深度档案注入（2026-10-15 起加入每日流程）
+1. `publish_all.py --push` 完成并验证后，执行 `python scripts/deep_inject.py`（默认注入当天日期报告；招聘类 19 分类自动命中）。
+2. 再执行 `python scripts/deep_inject.py --push`：对当天报告做"深度档案注入"小提交并推送（幂等，重复跑安全；常规 push 失败跑 `python logs/push_manual.py`）。
+3. 深度资料唯一真源：`content/deep/<分类>.html`。拿到新的待遇/加班/口碑数据时更新对应文件并附真实链接，之后无需重建全部历史——当天报告自动生效。
+4. 新增外链照常走 check_links 流程（带浏览器 UA；000 且根域名也 000 才判死链；403/412/521 为反爬不算死）。
+5. 接管/补跑场景：若当天报告已注入过（页面含"🔍 深度档案"），deep_inject 自动跳过，不会重复插入。
