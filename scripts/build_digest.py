@@ -33,15 +33,18 @@ import tail_template  # noqa: E402
 DIGEST_DIR = os.path.join(ROOT, "digest")
 GISCUS = build_report.GISCUS_SCRIPT
 
-# 大类分组（聚合页筛选标签，与主页 data-cat 命名一致）
+# 大类分组（聚合页筛选标签，与主页 filter-tabs 显示文字 / data-cat 键名保持一致）
+# 2026-10-15 命名统一：招聘→企业招聘、口碑→企业口碑、地区现状→地区动态、规划→个人规划；
+# chery-insider 从 recruit 移入 reputation；campus 拆出 research（与主页一致）。
 GROUPS = [
-    ("recruit", "招聘", ["car-recruit", "mechanical-recruit", "byd-recruit",
-                         "chery-recruit", "chery-insider", "geely-recruit", "xiaomi-recruit",
-                         "weixiaoli-recruit", "traditional-auto",
-                         "supply-chain-recruit", "research-institute"]),
-    ("reputation", "口碑", ["company-reputation"]),
-    ("campus", "校园科研", ["school-news", "ahut-campus", "drone-research"]),
-    ("region", "地区现状", ["xuzhou-news", "nanjing-news", "shanghai-news",
+    ("recruit", "企业招聘", ["car-recruit", "mechanical-recruit", "byd-recruit",
+                             "chery-recruit", "geely-recruit", "xiaomi-recruit",
+                             "weixiaoli-recruit", "traditional-auto",
+                             "supply-chain-recruit", "research-institute"]),
+    ("reputation", "企业口碑", ["company-reputation", "chery-insider"]),
+    ("campus", "校园", ["school-news", "ahut-campus"]),
+    ("research", "科研", ["drone-research"]),
+    ("region", "地区动态", ["xuzhou-news", "nanjing-news", "shanghai-news",
                             "hangzhou-news", "jiangzhehu-news", "hefei-news",
                             "anhui-news", "jiangsu-news", "shenzhen-news"]),
     ("region-recruit", "地区招聘", ["xuzhou-recruit", "nanjing-recruit",
@@ -49,7 +52,7 @@ GROUPS = [
                                     "jiangzhehu-recruit", "hefei-recruit",
                                     "anhui-recruit", "jiangsu-recruit",
                                     "shenzhen-recruit"]),
-    ("personal", "规划", ["future-planning"]),
+    ("personal", "个人规划", ["future-planning"]),
 ]
 CAT_NAME = tail_template.CATEGORY_NAMES
 
