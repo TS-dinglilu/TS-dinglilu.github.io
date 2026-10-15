@@ -118,8 +118,14 @@ python scripts/publish_all.py --push  # 照常跑当日流程（推送兜底见 
 - 每周一 06:30 自动化生成上周周报、每月 1 日生成上月月记、每年 1 月 2 日生成年记：
   `python scripts/build_digest.py --type weekly`（type = weekly / monthly / yearly）
 - 输出 `digest/weekly_2026W38.html` 等 + 聚合归档页 `digest/index.html`（自动重建）
-- 34 个分类归档页与主页已有入口；digest 不参与每日 publish_all，由 digest 自动化自行构建推送
+- **入口位置（2026-10-15 改）**：digest **不在主页**放「汇总」标签/卡片；入口在 34 个分类归档页
+  顶部的「📊 周记 · 月记 · 年记（汇总）」面板——最新一期周记/月记/年记（周期标注到
+  周/月/年最后一天）+「全部汇总」归档链接。由 `build_digest.py` 的
+  `update_category_digest_entries()` 每次运行自动刷新（幂等，marker: `digest-entry`，
+  面板 HTML/CSS 都在 marker 区间内整体替换；分类页若被 `rebuild_index` 重建也不受影响）。
+  主页只在页脚导航留一个 `周记月记年记` 文字链接。
 - 周期覆盖规则：周记 = 上一个自然周（周一~周日）；月记 = 上一个自然月；年记 = 上一年
+- digest 不参与每日 publish_all，由 digest 自动化自行构建推送
 
 ## 每日执行步骤
 

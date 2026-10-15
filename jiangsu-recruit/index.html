@@ -463,6 +463,16 @@ body::after {
   display: none;
 }
 
+/* === digest-entry:css:start === */
+.digest-panel { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; margin-bottom: 24px; }
+.digest-panel-head { font-size: 0.95rem; font-weight: 700; color: var(--accent); margin-bottom: 12px; letter-spacing: 0.02em; }
+.digest-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.digest-chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border); background: rgba(0, 212, 255, 0.06); color: var(--text-dim); font-size: 0.85rem; text-decoration: none; transition: all 0.3s var(--smooth); }
+.digest-chip:hover { border-color: var(--border-hover); color: var(--accent); text-decoration: none; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0, 212, 255, 0.12); }
+.digest-chip .chip-kind { font-weight: 600; white-space: nowrap; }
+.digest-chip .chip-range { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-faint); white-space: nowrap; }
+.digest-chip-all { border-style: dashed; }
+/* === digest-entry:css:end === */
 </style>
 </head>
 <body>
@@ -480,7 +490,22 @@ body::after {
 
 <div class="container">
   <a href="https://ts-dinglilu.github.io/" class="back-link">← 返回主页</a>
-<a href="https://ts-dinglilu.github.io/digest/" class="back-link digest-entry" target="_blank">📊 周记 · 月记 · 年记（站级汇总） →</a>
+<!-- digest-entry:start -->
+<div class="digest-panel">
+  <div class="digest-panel-head">📊 周记 · 月记 · 年记（汇总）</div>
+  <div class="digest-links">
+    <a class="digest-chip" href="https://ts-dinglilu.github.io/digest/weekly_2026W41.html" target="_blank">
+      <span class="chip-kind">🗓 周记 2026W41</span><span class="chip-range">10-05 ~ 10-11</span>
+    </a>
+    <a class="digest-chip" href="https://ts-dinglilu.github.io/digest/monthly_2026M09.html" target="_blank">
+      <span class="chip-kind">📆 月记 2026M09</span><span class="chip-range">09-01 ~ 09-30</span>
+    </a>
+    <a class="digest-chip digest-chip-all" href="https://ts-dinglilu.github.io/digest/" target="_blank">
+      <span class="chip-kind">📚 全部汇总</span><span class="chip-range">归档 →</span>
+    </a>
+  </div>
+</div>
+<!-- digest-entry:end -->
 
   <div class="section">
     <div class="section-label">Archive</div>

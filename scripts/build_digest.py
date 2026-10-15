@@ -9,6 +9,8 @@
 输出：
 - digest/weekly_2026W38.html / monthly_2026M09.html / yearly_2026.html
 - digest/index.html 聚合归档页（带 全部/周记/月记/年记 筛选）
+- 34 个分类归档页内的汇总入口面板（最新 周记/月记/年记 + 全部汇总，
+  marker: digest-entry，幂等；2026-10-15 起 digest 不在主页放标签/卡片）
 报告内含 大类筛选标签（招聘 / 校园科研 / 地区 / 规划，同主页交互）+ 数据统计表。
 
 用法（在 repo/ 下）：
@@ -93,16 +95,26 @@ table.summary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 
 
 def add_meta(html, fname, kind=""):
-    """补 meta description / og:url / canonical（audit_site 元信息检查要求）。"""
+    """补 meta description / og / twitter / canonical（audit_site 元信息检查要求）。"""
     desc = {
         "weekly":  "本周 34 类自动化日报的站级汇总：招聘、地区、口碑与科研动态一周回顾。",
         "monthly": "本月 34 类自动化日报的站级汇总：招聘、地区、口碑与科研动态月度回顾。",
         "yearly":  "本年 34 类自动化日报的站级汇总：全年招聘、地区、口碑与科研动态回顾。",
     }.get(kind, "周记月记年记：34 类自动化日报的站级汇总归档。")
     url = "https://ts-dinglilu.github.io/digest/"
+    title = re.search(r"<title>(.*?)</title>", html).group(1)
     meta = ('<meta name="description" content="%s">\n'
+            '<meta property="og:type" content="website">\n'
+            '<meta property="og:site_name" content="TS-dinglilu 自动化日报">\n'
+            '<meta property="og:title" content="%s">\n'
+            '<meta property="og:description" content="%s">\n'
             '<meta property="og:url" content="%s">\n'
-            '<link rel="canonical" href="%s">\n' % (desc, url, url))
+            '<meta property="og:locale" content="zh_CN">\n'
+            '<meta name="twitter:card" content="summary">\n'
+            '<meta name="twitter:title" content="%s">\n'
+            '<meta name="twitter:description" content="%s">\n'
+            '<link rel="canonical" href="%s">\n'
+            % (desc, title, desc, url, title, desc, url))
     return html.replace("<title>", meta + "<title>", 1)
 
 
@@ -218,7 +230,7 @@ def build_report_html(kind, start_d, end_d, data):
 <div class="hero">
   <div class="hero-tag">站级汇总 · 自动生成</div>
   <h1>%(cn)s</h1>
-  <p class="subtitle">覆盖 %(s_iso)s ~ %(e_iso)s（共 %(days)d 天）· 全站 23 个分类</p>
+  <p class="subtitle">覆盖 %(s_iso)s ~ %(e_iso)s（共 %(days)d 天）· 全站 %(n_all)d 个分类</p>
   <div class="stats">
     <div><div class="stat-num">%(n_rep)d</div><div class="stat-label">日报份数</div></div>
     <div><div class="stat-num">%(n_cat)d</div><div class="stat-label">活跃分类</div></div>
@@ -267,7 +279,8 @@ function setFilter(tab, key) {
 </body>
 </html>
 """ % dict(cn=cn, css=CSS, s_iso=start_d.isoformat(), e_iso=end_d.isoformat(),
-           days=total_days, n_rep=n_reports, n_cat=n_cats, n_link=n_links,
+           days=total_days, n_all=sum(len(c) for _, _, c in GROUPS),
+           n_rep=n_reports, n_cat=n_cats, n_link=n_links,
            tabs=tabs, groups="\n".join(groups_html), stat_rows=stat_rows,
            src_rows=src_rows, giscus=GISCUS)
     return fname, html
@@ -316,7 +329,7 @@ def build_digest_index():
 <div class="hero">
   <div class="hero-tag">站级汇总 · 自动生成</div>
   <h1>周记 · 月记 · 年记</h1>
-  <p class="subtitle">每周/每月/每年结束时自动汇总全站 23 个分类的动态与数据</p>
+  <p class="subtitle">每周/每月/每年结束时自动汇总全站 %(n_all)d 个分类的动态与数据</p>
   <div class="stats">
     <div><div class="stat-num">%(n)d</div><div class="stat-label">汇总报告</div></div>
     <div><div class="stat-num">每周一</div><div class="stat-label">周记更新</div></div>
@@ -334,34 +347,142 @@ def build_digest_index():
 %(giscus)s
 </body>
 </html>
-""" % dict(css=INDEX_CSS, n=len(files), listing=listing, giscus=GISCUS)
+""" % dict(css=INDEX_CSS, n=len(files), n_all=sum(len(c) for _, _, c in GROUPS),
+           listing=listing, giscus=GISCUS)
     with open(os.path.join(DIGEST_DIR, "index.html"), "w", encoding="utf-8", newline="\n") as f:
         f.write(add_meta(html, "index.html"))
     print("[OK] digest/index.html 已更新（%d 份汇总报告）" % len(files))
 
 
-def update_homepage_digest_card(fname):
-    """生成新汇总报告后，同步主页 digest 卡的「最新」标（闭环，防静态数字漂移）。"""
-    p = os.path.join(ROOT, "index.html")
-    if not os.path.exists(p):
-        print("[WARN] 主页不存在，跳过 digest 卡更新")
-        return
-    s = open(p, encoding="utf-8").read()
-    if fname.startswith("weekly"):
-        label = "周记 W" + fname.split("W", 1)[1].replace(".html", "")
-    elif fname.startswith("monthly"):
-        label = "月记 " + fname.replace("monthly_", "").replace(".html", "")
+# ---------------------------------------------------------------- 分类页汇总入口
+# 2026-10-15 起：digest 不再在主页放「汇总」标签/卡片，入口改到 34 个分类归档页
+# （每页一个面板：最新周记 / 月记 / 年记 + 全部汇总归档），由本模块幂等维护。
+PANEL_CSS_INNER = """
+.digest-panel { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; margin-bottom: 24px; }
+.digest-panel-head { font-size: 0.95rem; font-weight: 700; color: var(--accent); margin-bottom: 12px; letter-spacing: 0.02em; }
+.digest-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.digest-chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border); background: rgba(0, 212, 255, 0.06); color: var(--text-dim); font-size: 0.85rem; text-decoration: none; transition: all 0.3s var(--smooth); }
+.digest-chip:hover { border-color: var(--border-hover); color: var(--accent); text-decoration: none; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0, 212, 255, 0.12); }
+.digest-chip .chip-kind { font-weight: 600; white-space: nowrap; }
+.digest-chip .chip-range { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-faint); white-space: nowrap; }
+.digest-chip-all { border-style: dashed; }
+"""
+CSS_START = "/* === digest-entry:css:start === */"
+CSS_END = "/* === digest-entry:css:end === */"
+HTML_START = "<!-- digest-entry:start -->"
+HTML_END = "<!-- digest-entry:end -->"
+# 旧版单行入口（2026-09-25 加的），见到就替换成面板
+OLD_ENTRY_RE = (r'<a href="https://ts-dinglilu\.github\.io/digest/" class="back-link digest-entry" '
+                r'target="_blank">📊 周记 · 月记 · 年记（站级汇总） →</a>\n')
+DIGEST_BASE = "https://ts-dinglilu.github.io/digest/"
+KIND_META = {"weekly": ("🗓", "周记"), "monthly": ("📆", "月记"), "yearly": ("📅", "年记")}
+
+
+def _digest_sort_key(fname):
+    return [int(x) for x in re.findall(r"\d+", fname)]
+
+
+def _period_of(kind, fname):
+    """由文件名推出周期起止（周记=ISO 周周一~周日，月记=自然月，年记=全年）。"""
+    if kind == "weekly":
+        y, w = (int(x) for x in re.findall(r"\d+", fname))
+        return datetime.date.fromisocalendar(y, w, 1), datetime.date.fromisocalendar(y, w, 7)
+    if kind == "monthly":
+        y, mo = (int(x) for x in re.findall(r"\d+", fname))
+        start = datetime.date(y, mo, 1)
+        nxt = datetime.date(y + (mo == 12), (mo % 12) + 1, 1)
+        return start, nxt - datetime.timedelta(days=1)
+    y = int(re.findall(r"\d+", fname)[0])
+    return datetime.date(y, 1, 1), datetime.date(y, 12, 31)
+
+
+def latest_digests():
+    """返回 [(kind, fname, start, end), ...]，每类只取最新一期；没有则跳过该类型。"""
+    out = []
+    for kind, pat in (("weekly", "weekly_*.html"),
+                      ("monthly", "monthly_*.html"),
+                      ("yearly", "yearly_*.html")):
+        files = sorted(glob.glob(os.path.join(DIGEST_DIR, pat)), key=_digest_sort_key, reverse=True)
+        if files:
+            n = os.path.basename(files[0])
+            s, e = _period_of(kind, n)
+            out.append((kind, n, s, e))
+    return out
+
+
+def build_panel_html(digests):
+    chips = []
+    for kind, fname, start, end in digests:
+        emoji, label = KIND_META[kind]
+        title = re.sub(r"\.html$", "", fname).replace(kind + "_", "")
+        rng = "全年" if kind == "yearly" else "%s ~ %s" % (fmt_d(start), fmt_d(end))
+        chips.append(
+            '<a class="digest-chip" href="%s%s" target="_blank">\n'
+            '      <span class="chip-kind">%s %s %s</span><span class="chip-range">%s</span>\n'
+            '    </a>' % (DIGEST_BASE, fname, emoji, label, title, rng))
+    chips.append(
+        '<a class="digest-chip digest-chip-all" href="%s" target="_blank">\n'
+        '      <span class="chip-kind">📚 全部汇总</span><span class="chip-range">归档 →</span>\n'
+        '    </a>' % DIGEST_BASE)
+    return (HTML_START + "\n"
+            '<div class="digest-panel">\n'
+            '  <div class="digest-panel-head">📊 周记 · 月记 · 年记（汇总）</div>\n'
+            '  <div class="digest-links">\n    ' + "\n    ".join(chips) + "\n  </div>\n"
+            '</div>\n' + HTML_END)
+
+
+def _inject_css(s):
+    block = CSS_START + "\n" + PANEL_CSS_INNER.strip() + "\n" + CSS_END
+    if CSS_START in s:
+        return re.sub(re.escape(CSS_START) + r".*?" + re.escape(CSS_END),
+                      lambda m: block, s, flags=re.S)
+    return s.replace("</style>", block + "\n</style>", 1)
+
+
+def patch_category_page(path, panel):
+    """把分类归档页的 digest 入口刷新成面板（CSS + HTML 均幂等）。返回是否有改动。"""
+    with open(path, encoding="utf-8") as f:
+        s = f.read()
+    orig = s
+    s = _inject_css(s)
+    if HTML_START in s:
+        s = re.sub(re.escape(HTML_START) + r".*?" + re.escape(HTML_END),
+                   lambda m: panel, s, flags=re.S)
     else:
-        label = "年记 " + fname.replace("yearly_", "").replace(".html", "")
-    new = "最新 <b>%s</b>" % label
-    s2, n = re.subn(r"最新 <b>周记 W\d+</b>|最新 <b>月记 \d+M\d+</b>|最新 <b>年记 \d+</b>",
-                    new, s, count=1)
-    if n:
-        with open(p, "w", encoding="utf-8", newline="\n") as f:
-            f.write(s2)
-        print("[OK] 主页 digest 卡已更新: %s" % new)
-    else:
-        print("[WARN] 主页 digest 卡未匹配到「最新」字段，未改动")
+        s2, n = re.subn(OLD_ENTRY_RE, lambda m: panel + "\n", s, count=1)
+        if n == 0:
+            m = re.search(r'<a href="[^"]*" class="back-link">[^<]*</a>\n', s)
+            if not m:
+                print("[WARN] 找不到 back-link，跳过: " + path)
+                return False
+            s2 = s[:m.end()] + panel + "\n" + s[m.end():]
+        s = s2
+    if s == orig:
+        return False
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
+        f.write(s)
+    return True
+
+
+def update_category_digest_entries():
+    """把最新 周记/月记/年记 入口写进全部分类归档页（替代原先的主页 digest 卡更新）。"""
+    digests = latest_digests()
+    panel = build_panel_html(digests)
+    cats = [c for _, _, lst in GROUPS for c in lst]
+    missing = set(CAT_NAME) - set(cats)
+    if missing:
+        print("[WARN] GROUPS 未覆盖分类: " + ", ".join(sorted(missing)))
+        cats = sorted(set(cats) | set(CAT_NAME))
+    changed = 0
+    for c in cats:
+        p = os.path.join(ROOT, c, "index.html")
+        if not os.path.exists(p):
+            print("[WARN] 无归档页，跳过: " + c)
+            continue
+        if patch_category_page(p, panel):
+            changed += 1
+    print("[OK] 分类页汇总入口已刷新: %d/%d 个页面（%d 期汇总）"
+          % (changed, len(cats), len(digests)))
 
 
 def main():
@@ -393,9 +514,9 @@ def main():
         with open(out_path, "w", encoding="utf-8", newline="\n") as f:
             f.write(add_meta(html, fname, args.type))
         print("[OK] 汇总报告已生成: digest/%s (%d bytes)" % (fname, len(html)))
-        update_homepage_digest_card(fname)
 
     build_digest_index()
+    update_category_digest_entries()
 
 
 if __name__ == "__main__":

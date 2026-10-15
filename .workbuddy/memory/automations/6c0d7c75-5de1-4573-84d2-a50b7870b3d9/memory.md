@@ -217,3 +217,10 @@
   ③ 163 文下架 → 头条转载同内容替换；④ campus.nio.com → nio.cn/careers ×2；⑤ 肥东政府网 521 整站不可达但公告经粉笔+华图双源证实真实 → 换粉笔考试日历页。
 - 发布：publish_all --push 凭据直连首推成功，提交 058566d；远端 main（API）= 本地 HEAD。
 - 验证：线上 34/34 = 200（4 页首轮 404 为 Pages 延迟，90 秒后转 200）；主页 34 卡全「10-13」、总数 696→730+；audit 最终 0 错误 5 警告（既有欠账）。
+
+## 2026-10-14（11:55 触发）
+- 开工：git pull 已最新（058566d），无抢跑记录；基线 audit 0 错误 5 警告（09-28~30、10-08、10-12 既有欠账）。
+- 正文 34/34 一次成功（12 个并行子代理全 model lite，零 429 零重派；逐文件核对 mtime/字符数 12246–18991）。strict_check 0 不合格。
+- 外链 462 条：454 有效，--fix 改 10 条 http；可疑 8 条——cnpc 412 WebFetch 验真（WAF）、job.cas.cn 与 m.sh-zhaopinhui 深链经搜索索引全文验真（本机屏蔽）保留、nwpu 412 ×2 + nowcoder ×3 既有判据。
+- 发布：构建全绿；推送三通道齐挂（凭据 reset/常规 3 败/SSH 兜底 IncompleteRead）→ push_manual.py 报 "Everything up-to-date" → **SSH 兜底实际已推成功（IncompleteRead 只是读响应断连）**。新 know-how：SSH 兜底报 IncompleteRead 别急重推，先用 API `git/refs/heads/main` 小端点核验远端 SHA（commits/main 大响应本机网络下会截断）。
+- 验证：远端 main = 本地 HEAD = 809b128；线上 34/34 首轮全 200（无延迟）；主页 34 卡全「10-14」、总数 764+（730+34 吻合）；audit 最终 0 错误 5 警告。
