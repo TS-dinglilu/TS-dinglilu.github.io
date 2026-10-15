@@ -41,6 +41,10 @@ CATEGORIES = ["car-recruit", "mechanical-recruit", "school-news", "drone-researc
               "anhui-recruit", "jiangsu-recruit", "shenzhen-recruit",
               "company-reputation"]
 VALID = set(CATEGORIES) | {"digest"}  # digest = 周记月记年记板块
+# 站点级资源路径（非分类）：og:image / JSON-LD / 搜索索引 / RSS / PWA 清单引用。
+# 2026-10-15 全站优化后，报告页 head 里会合法出现 ts-dinglilu.github.io/assets/... 等引用，
+# 不加进白名单会被误判成「路径拼写错误」刷出上千条假 ERROR。
+SITE_RESOURCE_SEGS = {"index", "assets", "search", "feed", "manifest"}
 
 # 分类的「建号日期」：新增分类是从某一天才开始有报告的，此前各天不参与「跨分类漏期」比对，
 # 否则新分类会被判定成「自 20260901 起每天都缺」，一次刷出几十条假 ERROR。
@@ -166,12 +170,18 @@ def check_links():
             href = m.group(1)
             if href.startswith(("http://", "https://", "mailto:")):
                 continue
-            if not os.path.exists(os.path.normpath(os.path.join(base, href))):
+            if href.startswith("/"):
+                # 站点根绝对路径（如 /search.html）：相对仓库根解析，
+                # 否则 join 会拼到盘符根上，把存在的文件误判成死链
+                target = os.path.join(ROOT, href.lstrip("/"))
+            else:
+                target = os.path.normpath(os.path.join(base, href))
+            if not os.path.exists(target):
                 err("死链", r, "站内链接不存在: %s" % href)
         # 站点绝对路径拼写
         for m in re.finditer(r"ts-dinglilu\.github\.io/([a-z\-]+)(?=[/\"'\s<)]|$)", s):
             seg = m.group(1)
-            if seg not in VALID and seg not in ("index",):
+            if seg not in VALID and seg not in SITE_RESOURCE_SEGS and seg not in ("index",):
                 err("死链", r, "站点路径拼写错误: /%s/" % seg)
 
 
@@ -266,14 +276,18 @@ def check_dates():
 
 
 def _page_expected_url(path):
-    """由文件路径推出该页面「应有的」规范 URL（用于校验 og:url / canonical 是否指错分类）。"""
+    """由文件路径推出该页面「应有的」规范 URL（校验 og:url / canonical）。
+
+    2026-10-15 起的新约定：**报告页 canonical 指向自身**。
+    旧约定是「全部分类下的报告统一指向分类首页」——那会让搜索引擎把同一分类
+    几百份日报判成首页的重复内容并折叠索引，真正有内容的报告页进不了搜索结果。
+    归档页（index.html）与站点根仍指向目录/站点本身。"""
     r = rel(path)
     if r == "index.html":
         return SITE_BASE + "/"
-    seg = r.split("/")[0]
-    if "/" in r:
-        return "%s/%s/" % (SITE_BASE, seg)
-    return "%s/%s" % (SITE_BASE, seg)
+    if r.endswith("/index.html"):          # 分类归档页 / digest 归档页 → 目录 URL
+        return "%s/%s/" % (SITE_BASE, r.split("/")[0])
+    return "%s/%s" % (SITE_BASE, r)        # 报告页 / 单期 digest → 自身 URL
 
 
 def _titles_of(paths):

@@ -306,3 +306,25 @@ arXiv 类链接可以直接验真：`curl -s -o /dev/null -w "%{http_code}" http
 3. 深度资料唯一真源：`content/deep/<分类>.html`。拿到新的待遇/加班/口碑数据时更新对应文件并附真实链接，之后无需重建全部历史——当天报告自动生效。
 4. 新增外链照常走 check_links 流程（带浏览器 UA；000 且根域名也 000 才判死链；403/412/521 为反爬不算死）。
 5. 接管/补跑场景：若当天报告已注入过（页面含"🔍 深度档案"），deep_inject 自动跳过，不会重复插入。
+
+## 站点基建层（2026-10-15 全站优化落地，publish_all 已自动集成）
+
+`publish_all.py` 的步骤 3.2–3.4 现在会自动跑以下幂等脚本，**日常无需手动干预**；单独排查时可用：
+
+| 脚本 | 职责 | 备注 |
+|---|---|---|
+| `optimize_site.py` | 全站 head 收敛：移除 Google Fonts（国内被墙、阻塞首屏）、canonical 指向报告自身、theme-color、og:image、JSON-LD 结构化数据、清理无效 no-cache 标记 | `--apply` 落盘；`--only fonts,cache` 可单项跑；幂等（版本指纹 `optimize_site:head`），重复跑 0 改动 |
+| `build_search.py` | 生成 `assets/search-index.json`（803 条，gzip 约 270KB）+ 给主页/34 归档页/404 注入「🔍 全站搜索」入口 | 入口由 `search-entry` marker 包裹，幂等刷新 |
+| `build_feed.py` | 生成 RSS `feed.xml`（最新 60 期） | 阅读器订阅地址：`https://ts-dinglilu.github.io/feed.xml` |
+| `upgrade_css.py` | `assets/report.css` 字体栈本地化 + 可访问性（prefers-reduced-motion / :focus-visible / skip-link / 窄屏表格滚动） | 一次性升级已跑完；以后改 CSS 若重引外部字体需再跑 |
+| `make_cover.py` | 生成 `assets/cover.png`（og:image 封面）与 PWA 图标 | 需用 venv 里的 Pillow 解释器跑 |
+
+**新约定（不要再改回去）**：
+- **报告页 canonical / og:url 指向报告自身**，og:type=article。旧约定「指向分类首页」会让搜索引擎把同分类几百份日报判成重复内容、报告页进不了索引。`audit_site.py` 的判据已同步更新。
+- **禁止再引入任何 `fonts.googleapis.com` 引用**（`<link>`、`@import` 都不行）：字体服务器国内不可达，会阻塞首屏到连接超时。字体一律用本地系统栈。
+- 新增分类时 `audit_site.py` 的 `SITE_RESOURCE_SEGS` 无需改（那是站点资源段白名单）；但 `CATEGORIES` 等六处照旧（见 §0.3）。
+
+### 全站搜索页
+- 访问 `https://ts-dinglilu.github.io/search.html`；支持多关键词（AND）、分类筛选、日期（如 `2026-10-15`）、相关度排序、分页。
+- 索引每日由 `publish_all` 自动重建；手工重建：`python scripts/build_search.py`。
+- 索引只含「板块名 + h3 条目标题 + 摘要 + 分类 + 日期」，**不含正文全文**——这是刻意取舍：全文会让 JSON 膨胀到数 MB，而标题/板块已覆盖绝大多数检索需求。

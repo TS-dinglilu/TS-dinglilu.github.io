@@ -173,11 +173,12 @@ def extract_inline_css(html):
     return re.sub(r"<style[^>]*>(.*?)</style>", repl, html, flags=re.S)
 
 
-def inject_meta(html, category, title, dt):
+def inject_meta(html, category, title, dt, page_path=None):
     """确保 <head> 内的元信息完整且正确（description / og / canonical）。
 
     历史母版复制会造成 og:url 指错分类、缺 og 标签、缺 description。
     这里先清掉旧的同类标签，再注入一份标准块，保证每次都收敛到唯一正确状态。
+    page_path 传报告页相对路径时，canonical 指向报告自身（2026-10-15 新约定）。
     """
     i, j = html.find("<head"), html.find("</head>")
     if i < 0 or j < 0:
@@ -190,12 +191,14 @@ def inject_meta(html, category, title, dt):
 
     for pat in (r'<meta name="description"[^>]*>\s*',
                 r'<meta property="og:[^"]*"[^>]*>\s*',
+                r'<meta property="article:[^"]*"[^>]*>\s*',
                 r'<meta name="twitter:[^"]*"[^>]*>\s*',
+                r'<meta name="theme-color"[^>]*>\s*',
                 r'<link rel="canonical"[^>]*>\s*'):
         drop(pat)
 
     iso_date = dt.strftime("%Y-%m-%d")
-    block = tail_template.build_meta(category, title, iso_date)
+    block = tail_template.build_meta(category, title, iso_date, page_path=page_path)
     # 插在 <title> 之后、<style> 之前，保持可读
     mt = re.search(r"</title>", head)
     if mt:
@@ -277,9 +280,11 @@ def build_report(category, dt, content_path):
     # 兜底：页脚日报名统一为标准名（骨架 A / B 都覆盖）
     out = normalize_footer_name(out, category)
 
-    # 元信息（description / og / canonical）：统一按本分类注入，修掉母版复制的历史错配
+    # 元信息（description / og / canonical）：统一按本分类注入，修掉母版复制的历史错配。
+    # page_path=本报告文件名 → canonical/og:url 指向报告自身（见 tail_template.build_meta）
     std_title = tail_template.CATEGORY_NAMES.get(category, category)
-    out = inject_meta(out, category, std_title, dt)
+    out = inject_meta(out, category, std_title, dt,
+                      page_path="%s/%s" % (category, target_name))
 
     # 公共 CSS 抽成共享外链，避免每份报告重复内联 49KB
     out = extract_inline_css(out)

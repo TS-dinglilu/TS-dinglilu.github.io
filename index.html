@@ -4,13 +4,10 @@
 <meta charset="UTF-8" data-page-node-id="js4iSIybdBCPEzIDIbUvGC">
 <script src="/guard.js" charset="utf-8"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="yzjUEHZkw9Bs7p0DzoVkMr">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" data-page-node-id="SKppWVnzE3Grltl9O4KtFM">
-<meta http-equiv="Pragma" content="no-cache" data-page-node-id="om9KAwFg6CQdd0nKdrzBE7">
-<meta http-equiv="Expires" content="0" data-page-node-id="6cseT6pT1sShmSjdfgnOGq">
-<link rel="preconnect" href="https://fonts.googleapis.com" data-page-node-id="geaz19ocVD8LngQSk7xYzo">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin data-page-node-id="UH6wacAlcEhsM0syoSvefw">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
 <title>TS-dinglilu · 机械工程 / 无人机研究 / 自动化开发</title>
+<meta property="og:image" content="https://ts-dinglilu.github.io/assets/cover.png">
+<meta name="theme-color" content="#0a0e1a">
 <meta name="description" content="34 个自动化日报系统：车企/机械/科研/校园/地区/口碑，每日 05:00 自动更新">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TS-dinglilu 自动化日报">
@@ -22,6 +19,8 @@
 <meta name="twitter:title" content="TS-dinglilu · 机械工程 / 无人机研究 / 自动化开发">
 <meta name="twitter:description" content="34 个自动化日报系统：车企/机械/科研/校园/地区/口碑，每日 05:00 自动更新">
 <link rel="canonical" href="https://ts-dinglilu.github.io/">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="alternate" type="application/rss+xml" title="TS-dinglilu 自动化日报" href="/feed.xml">
 <style>
 /* ============================================================
    报告页统一CSS模板 - v9.0 圆润Q弹生动版
@@ -31,8 +30,6 @@
    - 生动: 入场动画, 脉冲发光, 流动渐变边框
    - 动态: 滚动渐入, 悬停弹跳, 光晕扩散
    ============================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
 
 :root {
   --bg: #0a0e1a;
@@ -77,7 +74,7 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
   font-size: 15px;
   line-height: 1.8;
   min-height: 100vh;
@@ -201,7 +198,7 @@ body::after {
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.05em;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
   transition: all 0.4s var(--bounce);
   animation: pulseGlow 3s ease-in-out infinite;
 }
@@ -354,7 +351,7 @@ h2:hover, .section-title:hover {
   font-size: 0.82rem;
   font-weight: 700;
   border-radius: 999px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
   flex-shrink: 0;
   margin-left: auto;
   animation: gradientFlow 5s ease infinite;
@@ -458,7 +455,7 @@ h6 { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; margin: 14px 
 }
 
 .card-title { color: var(--accent); font-size: 1.08rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 0.02em; line-height: 1.4; }
-.card-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.card-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace; }
 .card-content { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
 .card-content p { margin-bottom: 8px; }
 
@@ -489,7 +486,7 @@ h6 { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; margin: 14px 
 .job-card .job-title { color: var(--accent-green); font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
 .job-card .job-title a { color: inherit; }
 .job-card .job-title a:hover { color: #4ee9b8; text-decoration: none; }
-.job-card .job-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.job-card .job-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace; }
 .job-card .job-meta span { display: inline-flex; align-items: center; gap: 4px; }
 .job-card .job-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
 
@@ -519,7 +516,7 @@ h6 { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; margin: 14px 
 .news-item .news-title { color: var(--accent); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
 .news-item .news-title a { color: inherit; }
 .news-item .news-title a:hover { color: #5ee5ff; text-decoration: none; }
-.news-item .news-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.news-item .news-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace; }
 .news-item .news-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
 .news-item .badge, .news-item .tag { margin-right: 6px; }
 
@@ -542,7 +539,7 @@ h6 { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; margin: 14px 
 
 .stat-box:hover { transform: translateY(-5px) scale(1.03); box-shadow: var(--shadow-md), var(--shadow-glow-hover); }
 
-.stat-box .num { display: block; font-size: 1.8rem; font-weight: 800; color: var(--accent); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; text-shadow: 0 0 16px rgba(0, 212, 255, 0.3); }
+.stat-box .num { display: block; font-size: 1.8rem; font-weight: 800; color: var(--accent); font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace; margin-bottom: 6px; text-shadow: 0 0 16px rgba(0, 212, 255, 0.3); }
 .stat-box .label { display: block; font-size: 0.88rem; color: var(--text-dim); font-weight: 500; margin-bottom: 4px; }
 .stat-box .sub { display: block; font-size: 0.78rem; color: var(--text-faint); }
 
@@ -574,7 +571,7 @@ table tbody tr:last-child td { border-bottom: none; }
 .salary-item { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent-green); border-radius: var(--radius-sm); padding: 14px 16px; transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth); position: relative; backdrop-filter: blur(8px); animation: fadeInUp 0.5s var(--spring) both; }
 .salary-item:hover { transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-md), 0 0 32px rgba(34, 211, 160, 0.12); border-color: rgba(34, 211, 160, 0.4); border-left-color: var(--accent-green); }
 .salary-item .level { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 6px; letter-spacing: 0.02em; }
-.salary-item .amount { font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 700; color: var(--accent-green); margin-bottom: 4px; line-height: 1.3; }
+.salary-item .amount { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 1.15rem; font-weight: 700; color: var(--accent-green); margin-bottom: 4px; line-height: 1.3; }
 .salary-item .note { font-size: 0.78rem; color: var(--text-faint); line-height: 1.4; }
 @media (max-width: 600px) { .salary-grid { grid-template-columns: 1fr; } .salary-item { padding: 12px 14px; } .salary-item .amount { font-size: 1.05rem; } }
 
@@ -645,10 +642,10 @@ table tbody tr:last-child td { border-bottom: none; }
 .discussion .discussion-title { color: var(--accent-orange); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
 .discussion .discussion-title a { color: inherit; }
 .discussion .discussion-title a:hover { color: #fdba74; text-decoration: none; }
-.discussion .discussion-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.discussion .discussion-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace; }
 .discussion-item { background: rgba(251, 146, 60, 0.05); border: 1px solid var(--border); border-left: 3px solid var(--accent-orange); border-radius: var(--radius-sm); padding: 12px 16px; margin: 10px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; }
 .discussion-item .discussion-author { color: var(--accent-orange); font-weight: 600; }
-.discussion-item .discussion-time { color: var(--text-faint); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
+.discussion-item .discussion-time { color: var(--text-faint); font-size: 0.8rem; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace; }
 
 /* ============================================================
    Tip/Warning/Highlight/Info/Note Boxes
@@ -709,7 +706,7 @@ table tbody tr:last-child td { border-bottom: none; }
 .text-sm { font-size: 0.85rem; }
 .text-lg { font-size: 1.1rem; }
 .text-xl { font-size: 1.3rem; }
-.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace; }
 .font-bold { font-weight: 700; }
 .font-semibold { font-weight: 600; }
 .mt-0 { margin-top: 0; } .mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 24px; }
@@ -727,7 +724,7 @@ hr { border: none; height: 1px; background: linear-gradient(90deg, transparent, 
 blockquote { margin: 16px 0; padding: 12px 18px; background: rgba(0, 212, 255, 0.05); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--text-dim); font-style: italic; }
 blockquote p { margin-bottom: 0; }
 blockquote footer, blockquote cite { display: block; margin-top: 8px; font-size: 0.85rem; color: var(--text-faint); font-style: normal; }
-code { font-family: 'JetBrains Mono', monospace; font-size: 0.88em; background: rgba(0, 212, 255, 0.1); color: var(--accent); padding: 2px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.15); }
+code { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 0.88em; background: rgba(0, 212, 255, 0.1); color: var(--accent); padding: 2px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.15); }
 pre { background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; overflow-x: auto; margin: 16px 0; box-shadow: var(--shadow-sm); }
 pre code { background: transparent; color: var(--text-dim); padding: 0; border: none; font-size: 0.88em; line-height: 1.6; }
 
@@ -747,7 +744,7 @@ footer, .footer { margin-top: 56px; padding: 28px 24px; text-align: center; colo
 footer p, .footer p { margin-bottom: 8px; }
 footer a, .footer a { color: var(--text-dim); }
 footer a:hover, .footer a:hover { color: var(--accent); }
-.footer-meta { margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-faint); }
+.footer-meta { margin-top: 12px; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 0.8rem; color: var(--text-faint); }
 
 /* ============================================================
    Scroll-to-top button — Q弹
@@ -813,7 +810,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 .priority-mid, .priority-medium { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(251, 146, 60, 0.15); color: var(--accent-orange); border: 1px solid rgba(251, 146, 60, 0.3); }
 .priority-low, .priority-normal { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
 
-.match-score { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+.match-score { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace; }
 .match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
 .match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
 .match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
@@ -879,7 +876,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 .timeline-item::after { content: ''; position: absolute; left: 4px; top: 20px; bottom: -12px; width: 2px; background: var(--border); }
 .timeline-item:last-child::after { display: none; }
 
-.count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 8px; background: linear-gradient(135deg, var(--accent), var(--accent-purple)); color: #0a0e1a; font-size: 0.78rem; font-weight: 700; border-radius: 999px; font-family: 'JetBrains Mono', monospace; }
+.count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 8px; background: linear-gradient(135deg, var(--accent), var(--accent-purple)); color: #0a0e1a; font-size: 0.78rem; font-weight: 700; border-radius: 999px; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace; }
 
 mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent); padding: 1px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.2); }
 
@@ -942,7 +939,7 @@ mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.82rem;
   font-weight: 500;
   color: var(--accent);
@@ -1035,7 +1032,7 @@ mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent
   font-size: 1.8rem;
   font-weight: 800;
   color: var(--accent);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
   margin-bottom: 4px;
   text-shadow: 0 0 16px rgba(0, 212, 255, 0.3);
 }
@@ -1050,7 +1047,7 @@ mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent
   font-size: 0.75rem;
   color: var(--text-faint);
   letter-spacing: 0.3em;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
   margin-top: 40px;
   animation: bounce 2s ease-in-out infinite;
 }
@@ -1066,7 +1063,7 @@ mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent
 }
 
 .section-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.78rem;
   color: var(--text-faint);
   text-transform: uppercase;
@@ -1336,7 +1333,7 @@ mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent
 .skill-tag .level {
   font-size: 0.72rem;
   color: var(--text-faint);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
   padding: 2px 8px;
   border-radius: 999px;
   background: rgba(0, 212, 255, 0.06);
@@ -1385,7 +1382,7 @@ mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent
 
 .proj-visibility {
   font-size: 0.7rem;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
   padding: 2px 8px;
   border-radius: 999px;
   margin-left: 6px;
@@ -1441,7 +1438,7 @@ mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent
 
 /* === auto-updated (generated) === */
 .auto-updated {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.72rem;
   color: var(--text-faint);
   letter-spacing: 0.02em;
@@ -1523,6 +1520,10 @@ mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent
 .eng-src a:hover { color: var(--accent); }
 @media (max-width: 768px) { .eng-grid { grid-template-columns: 1fr; } }
 </style>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "CollectionPage", "name": "", "url": "https://ts-dinglilu.github.io/", "inLanguage": "zh-CN", "isPartOf": {"@type": "WebSite", "name": "TS-dinglilu 自动化日报", "url": "https://ts-dinglilu.github.io/"}}
+</script>
+<!-- optimize_site:head -->
 </head>
 <body data-page-node-id="QEqUKvuf9uK3sRknTvsPq2">
 
@@ -1546,6 +1547,10 @@ mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent
   <div class="scroll-hint" data-page-node-id="DWcvAMWqgnKOjBAkCalaeQ">SCROLL</div>
 </section>
 
+
+<!-- search-entry:start -->
+<div style="text-align:center;margin:22px 0 0"><a href="/search.html" style="display:inline-block;background:linear-gradient(135deg,#00d4ff,#818cf8);color:#0a0e1a;font-weight:700;border-radius:999px;padding:13px 32px;text-decoration:none;font-size:1rem;box-shadow:0 8px 24px rgba(0,212,255,.18)">🔍 全站搜索 800+ 期日报</a></div>
+<!-- search-entry:end -->
 <!-- AUTOMATION PROJECTS -->
 <section class="section" data-page-node-id="TyQowHL7gYriofq5aJORwo">
   <div class="container" data-page-node-id="sNJ6uKFy3piVNyJl35v9zp">

@@ -11,7 +11,9 @@
   traditional-auto / supply-chain-recruit / research-institute / future-planning ＋
   **地区现状 9 个（2026-09-25 上线）**：xuzhou / nanjing / shanghai / hangzhou / jiangzhehu / hefei /
   anhui / jiangsu / shenzhen 各 `-news` ＋ **地区招聘 9 个（2026-09-26 上线）**：同 9 地区各 `-recruit`。
-  主页筛选标签：「地区现状」（data-cat=region）与「地区招聘」（data-cat=region-jobs）各挂 9 卡；
+  主页筛选标签（2026-10-15 统一命名）：全部/企业招聘/地区招聘/地区动态/校园/科研/企业口碑/个人规划；
+  **只改显示文字、data-cat 键名永不动**（JS/digest/audit 靠键名联动）；地区 news=「地区动态」
+  （旧称「地区现状」）与「地区招聘」各挂 9 卡；chery-insider 归口碑组；与 build_digest.py GROUPS 标签一一对应；
   两类地区日报正文均 8000–20000 字（strict_check 按 REGION_CATS 判下限）；每日更新。
 - 全站密码门 guard.js（密码 0，localStorage 免输）；password_gate.py 幂等注入 + build_report 构建时自动注入。
 - **周记月记年记板块** `digest/`（2026-09-25 上线）：build_digest.py 每周一/1 日/1 月 2 日生成站级汇总
@@ -130,3 +132,9 @@
 ## 10. 用户背景
 张恒辰（称"恒辰"），安徽工业大学机械工程硕士（研二），四旋翼无人机飞行控制与仿真
 （MATLAB/Simulink + Python 强化学习），徐州人，求职车企/机械/研究院，正赶毕业论文开题报告。内容要贴这些背景。
+
+## 11. 招聘深度档案库（2026-10-15 上线）
+- 真源 `content/deep/<分类>.html` ×19（10 公司/行业 + 9 地区招聘）；内容固定=待遇/几险几金/本科·硕士税前税后/班车/人才补贴/福利/加班(996/956/955/大小周/到几点)/事业部数量/在招岗位与城市分布(含西安基地)/≥3 平台口碑正反并陈。
+- `scripts/deep_inject.py` 幂等注入当天报告（第一个 section 前）；日报自动化已固化步骤 4.5（publish_all → deep_inject → --push）。正文草稿**不要**手写深度板块。
+- 税后统一估算口径（正文必须写明）：月薪×12、个人五险一金约 17.5%（公积金按 7% 估）、免征额 5000 元/月。薪资数字必须有来源链接，查不到写"暂无可靠公开数据"。
+- chery-insider / company-reputation 本身已是口碑深度专刊，未纳入注入（保持原分工）。

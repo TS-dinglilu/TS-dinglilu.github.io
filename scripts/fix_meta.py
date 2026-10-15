@@ -2,6 +2,11 @@
 # -*- coding: utf-8 -*-
 """历史报告元信息批量修复（description / og / canonical）。
 
+**2026-10-15 起已被 scripts/optimize_site.py 取代，保留仅作参考，勿再使用。**
+原因：本工具把 canonical 指向分类首页——这是后来被修正的错误约定
+（会让搜索引擎把同分类几百份日报判成重复内容）。optimize_site.py 才是
+当前真源：canonical 指向报告自身 + theme-color + og:image + JSON-LD。
+
 背景：报告页从不同母版复制而来，造成三类历史问题——
   1. og:url 指向错误的分类（大量页面都指向 traditional-auto）；
   2. 缺 og / twitter 标签，分享到微信、微博、QQ 时没有预览卡；

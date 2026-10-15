@@ -34,6 +34,11 @@ def main():
     if os.path.exists(idx):
         urls.append((BASE + "/", iso(idx), "1.0", "daily"))
 
+    # 站点级功能页：全站搜索（2026-10-15 上线）
+    sp = os.path.join(ROOT, "search.html")
+    if os.path.exists(sp):
+        urls.append((BASE + "/search.html", iso(sp), "0.7", "weekly"))
+
     for d in sorted(os.listdir(ROOT)):
         full = os.path.join(ROOT, d)
         if not os.path.isdir(full) or d in SKIP_DIRS or d.startswith("."):

@@ -228,6 +228,23 @@ def main():
     print("=" * 8, "更新主页", "=" * 8)
     subprocess.run([sys.executable, os.path.join(HERE, "update_homepage.py")], cwd=ROOT)
 
+    # 3.2) 全站 head 优化（幂等：已处理过的页面会通过版本指纹跳过，日常为 0 改动。
+    #      职责：新约定落地 —— 移除被墙的 Google Fonts、canonical 指向报告自身、
+    #      theme-color / og:image / JSON-LD 结构化数据等）
+    try:
+        subprocess.run([sys.executable, os.path.join(HERE, "optimize_site.py"),
+                        "--apply", "--quiet"], cwd=ROOT, check=False)
+    except Exception as _e:  # noqa: BLE001
+        print("[WARN] head 优化失败: %s" % _e)
+
+    # 3.3) 搜索索引 + 全站搜索入口 + RSS 订阅源（均幂等）
+    for _script in ("build_search.py", "build_feed.py"):
+        try:
+            subprocess.run([sys.executable, os.path.join(HERE, _script)],
+                           cwd=ROOT, check=False)
+        except Exception as _e:  # noqa: BLE001
+            print("[WARN] %s 失败: %s" % (_script, _e))
+
     # 3.4) 重新生成 sitemap.xml（收录主页/分类页/全部报告页）
     try:
         subprocess.run([sys.executable, os.path.join(HERE, "build_sitemap.py")],

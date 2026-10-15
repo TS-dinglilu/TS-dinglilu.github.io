@@ -8,7 +8,10 @@
    - 动态: 滚动渐入, 悬停弹跳, 光晕扩散
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+/* @import 加载 Google Fonts 已移除（2026-10-15）：
+   它是「先下载 CSS → 再发现这条依赖 → 再下载字体」的串行两轮请求，
+   而字体服务器在国内直连不可达，会一直阻塞渲染到连接超时，首屏白屏数秒。
+   字体已改用下方的本地系统字体栈，观感无损。 */
 
 :root {
   --bg: #0a0e1a;
@@ -53,7 +56,7 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
   font-size: 15px;
   line-height: 1.8;
   min-height: 100vh;
@@ -177,7 +180,7 @@ body::after {
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.05em;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace, monospace;
   transition: all 0.4s var(--bounce);
   animation: pulseGlow 3s ease-in-out infinite;
 }
@@ -330,7 +333,7 @@ h2:hover, .section-title:hover {
   font-size: 0.82rem;
   font-weight: 700;
   border-radius: 999px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace, monospace;
   flex-shrink: 0;
   margin-left: auto;
   animation: gradientFlow 5s ease infinite;
@@ -434,7 +437,7 @@ h6 { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; margin: 14px 
 }
 
 .card-title { color: var(--accent); font-size: 1.08rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 0.02em; line-height: 1.4; }
-.card-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.card-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace, monospace; }
 .card-content { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
 .card-content p { margin-bottom: 8px; }
 
@@ -465,7 +468,7 @@ h6 { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; margin: 14px 
 .job-card .job-title { color: var(--accent-green); font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
 .job-card .job-title a { color: inherit; }
 .job-card .job-title a:hover { color: #4ee9b8; text-decoration: none; }
-.job-card .job-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
+.job-card .job-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.82rem; color: var(--text-faint); margin-bottom: 10px; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace, monospace; }
 .job-card .job-meta span { display: inline-flex; align-items: center; gap: 4px; }
 .job-card .job-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
 
@@ -495,7 +498,7 @@ h6 { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; margin: 14px 
 .news-item .news-title { color: var(--accent); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
 .news-item .news-title a { color: inherit; }
 .news-item .news-title a:hover { color: #5ee5ff; text-decoration: none; }
-.news-item .news-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.news-item .news-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace, monospace; }
 .news-item .news-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.85; }
 .news-item .badge, .news-item .tag { margin-right: 6px; }
 
@@ -518,7 +521,7 @@ h6 { color: var(--text-dim); font-size: 0.85rem; font-weight: 600; margin: 14px 
 
 .stat-box:hover { transform: translateY(-5px) scale(1.03); box-shadow: var(--shadow-md), var(--shadow-glow-hover); }
 
-.stat-box .num { display: block; font-size: 1.8rem; font-weight: 800; color: var(--accent); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; text-shadow: 0 0 16px rgba(0, 212, 255, 0.3); }
+.stat-box .num { display: block; font-size: 1.8rem; font-weight: 800; color: var(--accent); font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace, monospace; margin-bottom: 6px; text-shadow: 0 0 16px rgba(0, 212, 255, 0.3); }
 .stat-box .label { display: block; font-size: 0.88rem; color: var(--text-dim); font-weight: 500; margin-bottom: 4px; }
 .stat-box .sub { display: block; font-size: 0.78rem; color: var(--text-faint); }
 
@@ -550,7 +553,7 @@ table tbody tr:last-child td { border-bottom: none; }
 .salary-item { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent-green); border-radius: var(--radius-sm); padding: 14px 16px; transition: transform 0.4s var(--bounce), box-shadow 0.4s var(--smooth), border-color 0.3s var(--smooth); position: relative; backdrop-filter: blur(8px); animation: fadeInUp 0.5s var(--spring) both; }
 .salary-item:hover { transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-md), 0 0 32px rgba(34, 211, 160, 0.12); border-color: rgba(34, 211, 160, 0.4); border-left-color: var(--accent-green); }
 .salary-item .level { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 6px; letter-spacing: 0.02em; }
-.salary-item .amount { font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 700; color: var(--accent-green); margin-bottom: 4px; line-height: 1.3; }
+.salary-item .amount { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace, monospace; font-size: 1.15rem; font-weight: 700; color: var(--accent-green); margin-bottom: 4px; line-height: 1.3; }
 .salary-item .note { font-size: 0.78rem; color: var(--text-faint); line-height: 1.4; }
 @media (max-width: 600px) { .salary-grid { grid-template-columns: 1fr; } .salary-item { padding: 12px 14px; } .salary-item .amount { font-size: 1.05rem; } }
 
@@ -621,10 +624,10 @@ table tbody tr:last-child td { border-bottom: none; }
 .discussion .discussion-title { color: var(--accent-orange); font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
 .discussion .discussion-title a { color: inherit; }
 .discussion .discussion-title a:hover { color: #fdba74; text-decoration: none; }
-.discussion .discussion-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.discussion .discussion-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; color: var(--text-faint); margin-bottom: 8px; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace, monospace; }
 .discussion-item { background: rgba(251, 146, 60, 0.05); border: 1px solid var(--border); border-left: 3px solid var(--accent-orange); border-radius: var(--radius-sm); padding: 12px 16px; margin: 10px 0; font-size: 0.92rem; color: var(--text-dim); line-height: 1.85; }
 .discussion-item .discussion-author { color: var(--accent-orange); font-weight: 600; }
-.discussion-item .discussion-time { color: var(--text-faint); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
+.discussion-item .discussion-time { color: var(--text-faint); font-size: 0.8rem; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace, monospace; }
 
 /* ============================================================
    Tip/Warning/Highlight/Info/Note Boxes
@@ -685,7 +688,7 @@ table tbody tr:last-child td { border-bottom: none; }
 .text-sm { font-size: 0.85rem; }
 .text-lg { font-size: 1.1rem; }
 .text-xl { font-size: 1.3rem; }
-.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace, monospace; }
 .font-bold { font-weight: 700; }
 .font-semibold { font-weight: 600; }
 .mt-0 { margin-top: 0; } .mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 24px; }
@@ -703,7 +706,7 @@ hr { border: none; height: 1px; background: linear-gradient(90deg, transparent, 
 blockquote { margin: 16px 0; padding: 12px 18px; background: rgba(0, 212, 255, 0.05); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--text-dim); font-style: italic; }
 blockquote p { margin-bottom: 0; }
 blockquote footer, blockquote cite { display: block; margin-top: 8px; font-size: 0.85rem; color: var(--text-faint); font-style: normal; }
-code { font-family: 'JetBrains Mono', monospace; font-size: 0.88em; background: rgba(0, 212, 255, 0.1); color: var(--accent); padding: 2px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.15); }
+code { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace, monospace; font-size: 0.88em; background: rgba(0, 212, 255, 0.1); color: var(--accent); padding: 2px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.15); }
 pre { background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; overflow-x: auto; margin: 16px 0; box-shadow: var(--shadow-sm); }
 pre code { background: transparent; color: var(--text-dim); padding: 0; border: none; font-size: 0.88em; line-height: 1.6; }
 
@@ -723,7 +726,7 @@ footer, .footer { margin-top: 56px; padding: 28px 24px; text-align: center; colo
 footer p, .footer p { margin-bottom: 8px; }
 footer a, .footer a { color: var(--text-dim); }
 footer a:hover, .footer a:hover { color: var(--accent); }
-.footer-meta { margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-faint); }
+.footer-meta { margin-top: 12px; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace, monospace; font-size: 0.8rem; color: var(--text-faint); }
 
 /* ============================================================
    Scroll-to-top button — Q弹
@@ -789,7 +792,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 .priority-mid, .priority-medium { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(251, 146, 60, 0.15); color: var(--accent-orange); border: 1px solid rgba(251, 146, 60, 0.3); }
 .priority-low, .priority-normal { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700; border-radius: 999px; background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
 
-.match-score { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+.match-score { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace, monospace; }
 .match-high { background: rgba(34, 211, 160, 0.15); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
 .match-mid { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
 .match-low { background: rgba(248, 113, 113, 0.15); color: var(--accent-pink); border: 1px solid rgba(248, 113, 113, 0.3); }
@@ -855,7 +858,7 @@ footer a:hover, .footer a:hover { color: var(--accent); }
 .timeline-item::after { content: ''; position: absolute; left: 4px; top: 20px; bottom: -12px; width: 2px; background: var(--border); }
 .timeline-item:last-child::after { display: none; }
 
-.count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 8px; background: linear-gradient(135deg, var(--accent), var(--accent-purple)); color: #0a0e1a; font-size: 0.78rem; font-weight: 700; border-radius: 999px; font-family: 'JetBrains Mono', monospace; }
+.count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 8px; background: linear-gradient(135deg, var(--accent), var(--accent-purple)); color: #0a0e1a; font-size: 0.78rem; font-weight: 700; border-radius: 999px; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace, monospace; }
 
 mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent); padding: 1px 6px; border-radius: 6px; border: 1px solid rgba(0, 212, 255, 0.2); }
 
@@ -900,3 +903,51 @@ mark, .highlight-text { background: rgba(0, 212, 255, 0.15); color: var(--accent
   pre code, code { color: #333333; background: #eeeeee; }
 }
 
+/* === a11y-font-enhance:v1 (由 scripts/upgrade_css.py 注入，勿手工编辑) === */
+/* ---- 1. 尊重「减弱动效」系统偏好 (WCAG 2.3.3) ----
+   站点视觉风格偏活泼，但动画必须可被用户关掉。 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---- 2. 键盘焦点必须看得见 (WCAG 2.4.7) ----
+   用 :focus-visible 而非 :focus：鼠标点击时不出现焦点环，键盘 Tab 时才出现。 */
+:focus-visible {
+  outline: 2px solid var(--accent, #00d4ff);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--accent, #00d4ff);
+  outline-offset: 3px;
+}
+
+/* ---- 3. 跳转到正文：让键盘/读屏用户一键跳过导航 ---- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 2147483646;
+  padding: 12px 20px;
+  background: var(--accent, #00d4ff);
+  color: #0a0e1a;
+  font-weight: 700;
+  border-radius: 0 0 8px 0;
+  text-decoration: none;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* ---- 4. 防止宽表格/长链接在窄屏把整页撑出横向滚动条 ----
+   table 改 display:block 会改变列宽行为，故只在窄屏启用，桌面视觉完全不变。 */
+table { max-width: 100%; }
+a { overflow-wrap: anywhere; }
+@media (max-width: 768px) {
+  .section table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}

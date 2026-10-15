@@ -131,32 +131,47 @@ def meta_description(category):
     return TITLE_SUFFIX + " - " + name + "，每日自动更新。"
 
 
-def build_meta(category, title, iso_date):
-    """生成完整的 <meta> 元信息块（description + og + canonical）。
+def build_meta(category, title, iso_date, page_path=None):
+    """生成完整的 <meta> 元信息块（description + og + canonical + theme-color）。
 
-    全站唯一真源：build_report（每日构建）与 unify_style（历史改造）共用，
-    确保「描述文案 / og:url / canonical」永远指向本分类自己的页面，
-    不再出现从母版复制过来、og:url 指错分类的历史问题。
+    全站唯一真源：build_report（每日构建）与历史回溯工具共用。
+    2026-10-15 起新约定：
+      - 传 page_path（如 'car-recruit/report_20261015.html'）→ canonical/og:url
+        指向**报告页自身**，og:type=article 并带发布时间。旧约定「全部指向分类
+        首页」会让搜索引擎把同分类几百份日报判成重复内容，报告页进不了索引。
+      - 不传（归档页调用）→ 保持目录 URL、og:type=website。
+      - 统一带上 theme-color（移动端地址栏取色）与 og:image（社交分享封面）。
     """
     name = CATEGORY_NAMES.get(category, category)
-    url = "%s/%s/" % (SITE_BASE, category)
+    if page_path:
+        url = "%s/%s" % (SITE_BASE, page_path)
+        og_type = "article"
+        published = ('\n<meta property="article:published_time" content="%s">' % iso_date)
+    else:
+        url = "%s/%s/" % (SITE_BASE, category)
+        og_type = "website"
+        published = ""
     desc = meta_description(category)
     esc_title = (title or name).replace('"', "&quot;")
     esc_desc = desc.replace('"', "&quot;")
     lines = [
         '<meta name="description" content="%s">' % esc_desc,
-        '<meta property="og:type" content="website">',
+        '<meta name="theme-color" content="#0a0e1a">',
+        '<meta property="og:type" content="%s">' % og_type,
         '<meta property="og:site_name" content="TS-dinglilu 自动化日报">',
         '<meta property="og:title" content="%s | %s">' % (esc_title, iso_date),
         '<meta property="og:description" content="%s">' % esc_desc,
         '<meta property="og:url" content="%s">' % url,
+        '<meta property="og:image" content="%s/assets/cover.png">' % SITE_BASE,
+        published,
         '<meta property="og:locale" content="zh_CN">',
         '<meta name="twitter:card" content="summary">',
         '<meta name="twitter:title" content="%s | %s">' % (esc_title, iso_date),
         '<meta name="twitter:description" content="%s">' % esc_desc,
+        '<meta name="twitter:image" content="%s/assets/cover.png">' % SITE_BASE,
         '<link rel="canonical" href="%s">' % url,
     ]
-    return "\n".join(lines)
+    return "\n".join(ln for ln in lines if ln)
 
 # 尾部起点标记：任一在文件末尾窗口内出现，即视为「尾部区块从这里开始」。
 # 注意：不含正文里的「评论区」字样（那是文章内容），只用注释 / 容器 / 页脚标签。

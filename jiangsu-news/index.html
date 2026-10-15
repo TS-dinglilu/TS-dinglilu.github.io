@@ -4,13 +4,10 @@
 <meta charset="UTF-8">
 <script src="/guard.js" charset="utf-8"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏭</text></svg>">
 <title>江苏汽车机械日报 - 报告汇总</title>
+<meta property="og:image" content="https://ts-dinglilu.github.io/assets/cover.png">
+<meta name="theme-color" content="#0a0e1a">
 <meta name="description" content="江苏县域集群与零部件产业新闻 - 每日自动更新">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TS-dinglilu 自动化日报">
@@ -23,8 +20,6 @@
 <meta name="twitter:description" content="江苏县域集群与零部件产业新闻 - 每日自动更新">
 <link rel="canonical" href="https://ts-dinglilu.github.io/jiangsu-news/">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
-
 :root {
   --bg: #0a0e1a;
   --bg-elev: #111726;
@@ -61,7 +56,7 @@
 *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 body {
-  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
   background: var(--bg);
   color: var(--text);
   font-size: 15px;
@@ -144,7 +139,7 @@ body::after {
 }
 
 .hero-tag {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.75rem;
   color: var(--accent);
   letter-spacing: 2px;
@@ -188,7 +183,7 @@ body::after {
 
 .hero .update-time {
   display: inline-block;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.78rem;
   color: var(--accent-warm);
   background: rgba(255, 179, 71, 0.1);
@@ -207,7 +202,7 @@ body::after {
 
 .stat { text-align: center; }
 .stat-num {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--accent);
@@ -222,7 +217,7 @@ body::after {
 .section { padding: 32px 0; margin: 48px 0; border-top: 3px solid rgba(0, 212, 255, 0.4); border-bottom: 3px solid rgba(0, 212, 255, 0.3); border-radius: var(--radius); }
 
 .section-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.72rem;
   color: var(--accent);
   letter-spacing: 2px;
@@ -327,7 +322,7 @@ body::after {
 .card-info { flex: 1; min-width: 0; }
 
 .card-info .card-date {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--accent);
@@ -361,7 +356,7 @@ body::after {
   border-radius: 50px;
   font-weight: 600;
   margin-left: 8px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
   animation: pulse 2s ease-in-out infinite;
 }
 
@@ -424,7 +419,7 @@ body::after {
 }
 
 .footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 48px; }
-.footer p { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text-faint); letter-spacing: 0.02em; }
+.footer p { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 0.78rem; color: var(--text-faint); letter-spacing: 0.02em; }
 .footer-links { display: flex; justify-content: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
 .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; transition: color 0.3s var(--smooth); }
 .footer-links a:hover { color: var(--accent); }
@@ -470,10 +465,14 @@ body::after {
 .digest-chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border); background: rgba(0, 212, 255, 0.06); color: var(--text-dim); font-size: 0.85rem; text-decoration: none; transition: all 0.3s var(--smooth); }
 .digest-chip:hover { border-color: var(--border-hover); color: var(--accent); text-decoration: none; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0, 212, 255, 0.12); }
 .digest-chip .chip-kind { font-weight: 600; white-space: nowrap; }
-.digest-chip .chip-range { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-faint); white-space: nowrap; }
+.digest-chip .chip-range { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 0.72rem; color: var(--text-faint); white-space: nowrap; }
 .digest-chip-all { border-style: dashed; }
 /* === digest-entry:css:end === */
 </style>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "CollectionPage", "name": "江苏汽车机械日报", "url": "https://ts-dinglilu.github.io/jiangsu-news/", "inLanguage": "zh-CN", "isPartOf": {"@type": "WebSite", "name": "TS-dinglilu 自动化日报", "url": "https://ts-dinglilu.github.io/"}}
+</script>
+<!-- optimize_site:head -->
 </head>
 <body>
 
@@ -490,6 +489,10 @@ body::after {
 
 <div class="container">
   <a href="https://ts-dinglilu.github.io/" class="back-link">← 返回主页</a>
+<!-- search-entry:start -->
+<a class="back-link" href="/search.html" style="margin-left:14px">🔍 全站搜索</a>
+<!-- search-entry:end -->
+
 <!-- digest-entry:start -->
 <div class="digest-panel">
   <div class="digest-panel-head">📊 周记 · 月记 · 年记（汇总）</div>
