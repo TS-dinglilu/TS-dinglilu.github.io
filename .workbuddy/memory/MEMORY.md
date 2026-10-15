@@ -17,6 +17,10 @@
 - **周记月记年记板块** `digest/`（2026-09-25 上线）：build_digest.py 每周一/1 日/1 月 2 日生成站级汇总
   （自动化 id f7c42b9c…，每日 06:30 判断触发）；digest 不参与每日 publish_all，由 digest 自动化自推；
   audit VALID 已含 "digest"；推送卡壳直接跑 `python logs/push_manual.py`。
+  **入口（2026-10-15 改）**：主页不放「汇总」标签/卡片（用户明确要求）；入口在 34 个分类归档页
+  顶部「📊 周记·月记·年记」面板（最新一期 chip + 全部汇总归档），由 build_digest.py 的
+  `update_category_digest_entries()` 幂等维护（HTML/CSS 均在 `digest-entry` marker 区间内整体替换，
+  `rebuild_index` 不碰它）；主页仅页脚留文字链接。
 - 手册 `scripts/DAILY_WORKFLOW.md`｜规范 `content/STYLE_GUIDE.md`。仓库是 **public**（`.workbuddy/` 记忆随之上公开）。
 
 ## 2. 工作区布局（2026-09-15 起）

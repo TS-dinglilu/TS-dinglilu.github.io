@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<script src="/guard.js" charset="utf-8"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚁</text></svg>">
+<title>无人机科研日报 - 2026年10月15日</title>
+<meta name="description" content="无人机科研日报：arXiv 无人机 / 自动驾驶论文速递，含飞行控制与仿真方向研究进展。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TS-dinglilu 自动化日报">
+<meta property="og:title" content="无人机科研日报 | 2026-10-15">
+<meta property="og:description" content="无人机科研日报：arXiv 无人机 / 自动驾驶论文速递，含飞行控制与仿真方向研究进展。">
+<meta property="og:url" content="https://ts-dinglilu.github.io/drone-research/">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="无人机科研日报 | 2026-10-15">
+<meta name="twitter:description" content="无人机科研日报：arXiv 无人机 / 自动驾驶论文速递，含飞行控制与仿真方向研究进展。">
+<link rel="canonical" href="https://ts-dinglilu.github.io/drone-research/">
+<link rel="stylesheet" href="/assets/report.css">
+<style>
+/* custom overrides (preserved by replace_css.py - only first style block is replaced) */
+.nav-toc { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px 24px; margin: 24px 0 32px; backdrop-filter: blur(8px); }
+.nav-toc .toc-title { font-size: 1rem; font-weight: 700; color: var(--accent-purple); margin-bottom: 10px; }
+.nav-toc ol { margin: 0; padding-left: 20px; }
+.nav-toc ol li { margin-bottom: 6px; }
+.nav-toc ol li a { color: var(--text-dim); font-size: 0.9rem; transition: color 0.3s var(--smooth); }
+.nav-toc ol li a:hover { color: var(--accent); }
+.table-wrap { overflow-x: auto; margin: 16px 0; border-radius: var(--radius-sm); }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.summary-table th { background: rgba(0, 212, 255, 0.08); color: var(--accent); padding: 12px 14px; text-align: left; font-weight: 600; border-bottom: 2px solid rgba(0, 212, 255, 0.2); white-space: nowrap; }
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-dim); vertical-align: middle; }
+.summary-table tr:hover td { background: rgba(0, 212, 255, 0.03); }
+.summary-table td a { font-size: 0.82rem; }
+.scroll-top { position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px; border-radius: 50%; background: var(--card-solid); border: 1px solid var(--border-hover); color: var(--accent); font-size: 1.2rem; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.4s var(--bounce); z-index: 100; backdrop-filter: blur(8px); }
+.scroll-top.visible { opacity: 1; visibility: visible; }
+.scroll-top:hover { transform: translateY(-4px) scale(1.1); box-shadow: var(--shadow-glow-hover); }
+.badge { display: inline-block; padding: 2px 10px; font-size: 0.75rem; font-weight: 600; border-radius: 999px; margin: 0 4px 4px 0; letter-spacing: 0.02em; }
+.badge.new { background: rgba(34, 211, 160, 0.14); color: var(--accent-green); border: 1px solid rgba(34, 211, 160, 0.3); }
+.footer { margin-top: 48px; padding: 28px 0; text-align: center; border-top: 1px solid var(--border); }
+.footer p { font-size: 0.85rem; color: var(--text-faint); margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<div class="report-header">
+  <h1>🚁 无人机科研日报</h1>
+  <p class="subtitle">arXiv无人机论文热点 · 自动驾驶前沿 · IEEE期刊动态 · 全网技术讨论</p>
+  <div class="date-badge">📅 2026-10-15 星期四</div>
+  <div class="meta">
+    <span>📂 arXiv cs.RO / cs.SY / cs.CV / cs.LG</span>
+    <span>🔄 每日自动更新</span>
+    <span>📡 覆盖7大方向</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <a href="https://ts-dinglilu.github.io/drone-research/" class="back-link">← 返回无人机科研日报汇总</a>
+  <a href="https://ts-dinglilu.github.io/" class="back-link" style="margin-left: 8px;">🏠 返回主页</a>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-15</h1>
+  <div class="subtitle">arXiv 预印本精选 · 四旋翼控制 / 强化学习 / 导航 / 集群 / eVTOL 低空经济 / 仿真工具链</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-15 星期四</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习</span>
+  </div>
+</div>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-15</h1>
+  <div class="subtitle">arXiv 预印本精选 · 四旋翼控制与制导 / 学习控制 / 感知避障 / 集群组网 / 低空经济 / 自动驾驶交叉</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-15 星期四</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习</span>
+  </div>
+</div>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-15</h1>
+  <div class="subtitle">arXiv 预印本精选 · 四旋翼控制与制导 / 学习控制 / 感知避障 / 集群组网 / 低空经济 / 自动驾驶交叉</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-15 星期四</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习</span>
+  </div>
+</div>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-15</h1>
+  <div class="subtitle">arXiv 预印本精选 · 四旋翼控制与安全 / 学习控制 / 感知定位 / 集群协同 / 低空经济与 eVTOL / 自动驾驶交叉</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-15 星期四</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士研二，四旋翼飞控仿真方向，徐州人，求职车企 / 机械 / 研究院</span>
+  </div>
+</div>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-15</h1>
+  <div class="subtitle">arXiv 预印本精选 · 四旋翼安全控制 / 学习与自适应 / 集群与世界模型 / 自动驾驶交叉 / 低空产业</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-15 星期四</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习，求职车企 / 机械 / 研究院</span>
+  </div>
+</div>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-15</h1>
+  <div class="subtitle">arXiv 预印本精选 · 规划与控制 / 感知导航 / 学习与自适应 / 空中作业 / 无人机物流 / 自动驾驶交叉</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-15 星期四</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习，求职车企 / 机械 / 研究院</span>
+  </div>
+</div>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-15</h1>
+  <div class="subtitle">arXiv 预印本精选 · 学习控制与安全着陆 / 状态估计 / 世界模型 sim-to-real / LLM 智能体集群 / 低空产业动态</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-15 星期四</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习，求职车企 / 机械 / 研究院</span>
+  </div>
+</div>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-15</h1>
+  <div class="subtitle">arXiv 预印本精选 · 风扰感知导航 / 自适应外环控制 / 安全向量场 / 可微仿真 / 机载世界模型 / 低空产业周动态</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-15 星期四</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习，求职车企 / 机械 / 研究院</span>
+  </div>
+</div>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-15</h1>
+  <div class="subtitle">arXiv 预印本精选 · UAV-UGV 协同规划 / LLM 蜂群安全 / 可通行性图导航 / 高斯泼溅规划 / 端到端自动驾驶专刊 / 低空产业周动态</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-15 星期四</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习，求职车企 / 机械 / 研究院</span>
+  </div>
+</div>
+
+<div class="report-header">
+  <h1>无人机科研日报 · 2026-10-15</h1>
+  <div class="subtitle">arXiv 预印本精选 · 感知对齐导航 / 力矩级安全屏障 / 风扰保真度阶梯 / 脉冲驱动端到端 / 世界模型规划 / 低空产业动态</div>
+  <div class="meta">
+    <span class="date-badge">2026-10-15 星期四</span>
+    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习，求职车企 / 机械 / 研究院</span>
+  </div>
+</div>
+
+<div class="report-header">
+  <h1 class="report-title">无人机科研日报 · 2026-10-15</h1>
+  <div class="subtitle">安徽工业大学机械工程硕士研究生 · 个性化推荐报告</div>
+  <div class="meta header-tags">
+    <span class="date-badge">📅 2026年10月15日 星期四</span>
+    <span class="text-muted">arXiv 预印本精选 · 可微仿真约束 RL / 模型库自适应安全滤波 / 事件相机通信 / 跨高度协同导航 / LLM 蜂群安全 / VLA 驾驶三连 / 低空产业动态</span>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <div class="highlight-title">💡 本期视角（2026-10-15 · 周四）</div>
+  <p>本期共 <strong>10 条论文 + 3 条产业动态</strong>，全部为上期未覆盖的新条目（10 个 arXiv 编号已逐一 curl 验证返回 200）。主线是<strong>「安全与约束的三种写法」</strong>：CDPL 把避障写成显式约束、用原始-对偶梯度进可微仿真训练，策略零样本迁移到 Gazebo/PX4 与真机；LBA-CBF 在控制回路里并行跑 25 万个候选动力学模型、按短期预测误差自适应切换，专治「突变的模型失配让安全证书失效」；BGC-Nav 则把不确定性写成信念记忆，让高空机的观测以「建议偏置」而非硬指令的方式约束低空机探索。自动驾驶侧 VLA 三连发（AUGUstus / SafeDriveVLA / DriveWLA）继续压缩「理解到动作」的延迟并把语言接口的安全问题正式化。<strong>对课题的映射：CDPL 的约束式训练与你的「Simulink+RL 仿真」完全同构，其 bounded clearance 约束函数可以直接嫁接到四旋翼避障 reward 里做对照实验。</strong></p>
+</div>
+
+<div class="stats-grid">
+  <div class="stat-box"><div class="count-badge">10篇</div><div class="label">本期精选论文</div><div class="sub">10/1-10/14 提交 · 编号全验200</div></div>
+  <div class="stat-box"><div class="count-badge">0.954</div><div class="label">YOUDrive NAVSIM PDMS</div><div class="sub">风格系数单调可调</div></div>
+  <div class="stat-box"><div class="count-badge">25万个</div><div class="label">LBA-CBF并行动力学模型</div><div class="sub">Crazyflie 2.1实机验证</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块一 · 无人机导航与安全控制：约束式可微仿真、模型库自适应滤波、事件相机通信</div>
+  <div class="card">
+    <h3>① CDPL：避障从惩罚项变显式约束，可微仿真里原始-对偶训练，零样本迁移真机（10 月 12 日提交）</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">安全RL</span><span class="badge hot">🔥 约束式训练</span><span>arXiv:2610.16119 · cs.RO</span></div>
+      <p>Yan Rui Tan、Praveen Krishnapur、Zeyu Feng、Han Bao、Yew-Soon Ong、Fan Shi 的 <strong>Constrained Differentiable Policy Learning for Safe Quadrotor Navigation</strong>。痛点直击惩罚法的软肋：可微仿真里安全通常作为加权惩罚项，权重怎么调全凭手感。CDPL 把避障<strong>写成显式约束、用原始-对偶梯度下降-上升法在可微仿真器里训练</strong>。两个关键组件：<strong>有界净空（bounded clearance）约束函数</strong>——在安全边界附近给出有信息量的梯度、又防止大违反值破坏对偶优化稳定性；<strong>log-mean-exp（LME）聚合</strong>——平滑地强调轨迹与批次中逐步安全违反的临界部分，用单个对偶变量统一管理。<strong>数据：安全性-性能权衡优于固定惩罚与既有策略学习基线，泛化到更密的分布外环境；策略零样本迁移到 Gazebo/PX4 与物理四旋翼，无需微调</strong>——理论上证明了温和假设下收敛到可行策略。<strong>读法：这篇是「约束式可微 RL」的现成模板，复现成本主要在接一个可微四旋翼仿真器；对照实验就做「固定惩罚 vs 对偶自适应」在惩罚系数扫描下的 Pareto 前沿对比，Simulink 端可用 S-Function 桥接。</strong></p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.16119" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>② LBA-CBF：25 万候选模型并行推断的安全滤波器，风反向与未知负载下追平预言机（10 月 6 日提交）</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">安全控制</span><span class="badge high">💎 CBF前沿</span><span>arXiv:2610.08765 · cs.RO</span></div>
+      <p>Maitham F. AL-Sunni、Timeea-Andreea Radu、Hassan Almubarak、Henry Z. Liao、Michael Görner、Francesco Maurelli、John M. Dolan 的 <strong>LBA-CBF: Rapidly Adaptive Safety Filters via Parallel Dynamics Inference</strong>。问题设定很刁钻：CBF 证书依赖假定的动力学模型，<strong>突变且未被测量的工况切换会让证书在最需要安全的时候失效</strong>。方案是 Look-Back Adaptive CBF：维护一个有限候选动力学模型库，按短回看窗口内的预测误差排序，对容差内的每个模型施加高阶 CBF 条件——从最优拟合自适应平滑过渡到全库鲁棒滤波，不需要切换逻辑也不需要连续参数化估计器。理论保证：只要库中保留「安全代表性候选」，滤波后的输入必满足真实 CBF 条件。<strong>数据：四旋翼仿真中遭遇突变风反向与未知负载，LBA-CBF 从全部随机初始条件安全到达目标、追平预言机，而自适应与鲁棒基线成功率仅 0-88%；25 万个模型在控制回路内实时运行；Crazyflie 2.1 与 F1TENTH 实机验证风扰、负载释放与轮胎-路面摩擦变化适应</strong>，代码开源。<strong>读法：与上期四阶 CBF（2610.14522）正交——一个把约束下探到力矩层、一个把模型不确定性装进滤波器，开题综述里可并列为 CBF 工程化的两条补丁路线。</strong></p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.08765" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>③ ATOC：事件相机同时干追踪与光通信，LED 信标变定位信道（10 月 3 日提交）</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-teal">事件相机</span><span class="badge-info">🧮 感知通信一体</span><span>arXiv:2610.04342 · cs.RO</span></div>
+      <p>Ziwei Wang、Angus Apps、Holly Battisson、Iain Guilliard、Timothy Molloy、Robert Mahony（ANU）的 <strong>Asynchronous Tracking, Optical Communication and 3D Motion Capture using Event-based Sensors</strong>。动机：机器人间无线通信「收方不知道信号从哪来、时钟同步难、广播无指向」；光学通信天然指向性与空间局域性恰好补位。ATOC 把 <strong>LED 智能信标调制、事件式检测、光学追踪、事件数据解调</strong>装进一条流水线，一个事件相机同时追踪并解调多个 LED 信标，把普通视觉标记升级成通信信道。<strong>验证：实验室套件 + 智慧城市演示 + 3D 动捕系统三个应用</strong>。<strong>读法：事件相机在无人机机间相对定位与协同场景是低成本方案——不用 GPS、不用 UWB 基站；对做集群的读者，这是「感知即通信」思路的代表性实现。</strong></p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.04342" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块二 · 集群与协同：跨高度信念耦合导航、LLM 蜂群的内存管理与纵深防御</div>
+  <div class="card">
+    <h3>④ BGC-Nav：高空机信念记忆 + 低空机探索自主，免训练跨高度协同搜救导航（10 月 10 日提交）</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-accent">空中VLN</span><span class="badge hot">🔥 免训练协同</span><span>arXiv:2610.14702 · cs.RO</span></div>
+      <p>Jiuwu Hao、Yueyang Wu、Liguo Sun、Haolin Song、Zao Zhang、Pin Lv（电子科技大学）的 <strong>BGC-Nav: Cross-Altitude Multi-UAV Collaborative Navigation via Belief-Guided Coupling</strong>。切入点：航空视觉语言导航（VLN）里单机室外搜救受部分可观测性限制，跨高度协同是自然方向，但现有方法「依赖精确目标定位+刚性目标指派」，忽略高空观测不确定性、还压制低空机探索自主。BGC-Nav 是<strong>免训练框架</strong>：高空机维护编码任务先验的<strong>全局信念记忆</strong>，低空智能体通过<strong>局部耗尽记忆（LEM）、局部吸引增强（LAA）、方向信念先验（DBP）</strong>三个机制把信念作为「建议偏置」而非刚性指令吸收进决策。<strong>数据：在 ESARBench 上稳定超越 SOTA 单机与协同方法</strong>，代码开源（github.com/uestchjw/BGC-Nav）。<strong>读法：「先验作为偏置而非命令」的接口设计对任何层级式多机系统都有借鉴意义——高层的信息永远应该可被底层否决。</strong></p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.14702" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>⑤ 分布式 agentic 蜂群双连发：兴趣感知 gossip 内存管理（CCNC 2027）与感知-推理接口纵深防御</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-purple">LLM蜂群</span><span class="badge badge-new">🆕 会议论文</span><span>arXiv:2610.01569 / 2610.03319</span></div>
+      <p>第一篇：Iannoli、Zyrianoff、Trotta、Gigli、Di Felice 的 <strong>Managing Context and Communication in Distributed Agentic UAV Swarms</strong>（已被 <strong>CCNC 2027</strong> 接收）。每架 UAV 跑一个小语言模型（SLM）做任务级推理，问题是交互历史膨胀侵蚀推理上下文、无差别转发抬高通信与推理开销。方案：事件驱动的「推理-行动-观察」生命周期 + 结构化原子笔记（核心/本地/对等三层记忆）+ <strong>按接收方语义新颖度与时效做兴趣感知 gossip</strong>。<strong>数据：10 机仿真搜救，本方案完成全部实验轮次、泛洪式转发只完成 70-85%、把转发决策交给 SLM 则一轮都完不成；推理 token 消耗约减半</strong>。第二篇：Homaei、Emami 等的 <strong>Defense-in-Depth at the Perception-Reasoning Interface of LLM-Centric Agentic UAV Swarms</strong>——对手悄悄篡改传感器报告就能在不动模型权重与机体的情况下劫持蜂群调度；五层防御检查报告来源、物理可容许性、与蜂群几何和服务历史的预测一致性、调度是否饿死传感器，失败则交回确定性调度器。<strong>数据：三个输入侧层的失真边界闭式推导且与 30 组匹配仿真吻合；拒绝攻击报告虽防住劫持，但累计成本分别上升 79% 与 74%</strong>——安全不是免费的，这个量化本身就值得引用。<strong>读法：两篇合看正好是「效率与安全」的镜像：一个砍冗余信息流，一个加防御信息流；LLM 蜂群的工程瓶颈已从「能不能推理」转移到「信息流怎么管」。</strong></p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.01569" target="_blank">📎 查看原文（CCNC 2027）</a>
+      <a class="source-link" href="https://arxiv.org/abs/2610.03319" target="_blank">📎 查看原文（纵深防御）</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块三 · 自动驾驶交叉：VLA 三连——统一生成与理解、世界模型做梦、世界-语言-动作</div>
+  <div class="card">
+    <h3>⑥ AUGUstus：动作生成先行、CoT 只做监督，VLA 端到端驾驶低延迟 SOTA（10 月 12 日提交）</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">端到端驾驶</span><span class="badge hot">🔥 94.6 PDMS</span><span>arXiv:2610.16985 · cs.CV</span></div>
+      <p>Yuqi Ye、Caigao Jiang 等的 <strong>AUGUstus: Autonomous Driving VLA Model with Unified Generation and Understanding</strong>。诊断现有 VLA 两个病：回归/流式直出动作退化为视觉-动作（VA）模型、浪费了 VLM 理解力；自回归先生成思维链再出动作则延迟太高。方案：<strong>统一扩散式动作生成与自回归 CoT 理解于一身，理解只服务于生成；AUGUstus-mode 把动作生成排在 CoT 之前</strong>——训练时 CoT 监督可靠动作，推理时只出动作，保住低延迟；AUGUstus-GRPO 统一优化动作与 CoT。<strong>数据：NAVSIMv1 94.6 PDMS、v2 90.7 EPDMS（免 scorer 的 SOTA）；nuScenes 平均 L2 0.27 m、碰撞率 0.05%；512 张 H800 训练 2 天、内部 1000 km 数据集验证并实车部署 12 Hz 运行</strong>。<strong>读法：低延迟 VLA 是实车部署的分水岭，12 Hz 是个值得记住的工程锚点。</strong></p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.16985" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>⑦ SafeDriveVLA：语言指令可能不安全——世界模型「做梦」预演合规后果（10 月 14 日提交，CoRL 2026）</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">驾驶安全</span><span class="badge high">💎 CoRL 2026</span><span>arXiv:2610.20609 · cs.RO</span></div>
+      <p>Shaoyuan Xie、Zihan Zhang 等的 <strong>SafeDriveVLA: Navigation-Conditioned World Model Dreaming for Conflict-Aware End-to-End Autonomous Driving</strong>（CoRL 2026 接收）。新问题被正式化：VLA 把导航接口从固定指令集放宽到自由自然语言，<strong>走神的乘客可能下出不安全指令、恶意用户甚至故意下危险指令</strong>。方案两件事：显式预测三级导航遵从模式、把冲突推理与动作生成分离；<strong>导航条件世界模型「做梦」</strong>——不同于以往滚动专家或规划动作的世界模型，它专门预演「严格服从导航信号」会发生什么，据此判断服从是否安全。<strong>数据：Bench2Drive 88.16 Driving Score、68.64% 成功率；闭环语言遵循提升 49.3%；不安全指令下碰撞从 60 次降到 38 次（对比最优 SimLingo 变体）</strong>；附带首个「导航遵循+冲突意识+对抗鲁棒」联合基准。<strong>读法：把「指令安全」从系统外挂变成模型内生预测，是 VLA 时代的安全新命题；世界模型用途从「预测未来」扩展到「预演反事实」，这个框架在无人机地面站的人机接口上同样成立。</strong></p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.20609" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>⑧ DriveWLA + YOUDrive：混合专家统一三域建模、驾驶风格变成可组合方向（10 月 13/10 日提交）</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-orange">范式演进</span><span class="badge-info">🎓 双连发</span><span>arXiv:2610.17903 / 2610.14802</span></div>
+      <p>DriveWLA（Wang 等，华中科技大学）：基于 <strong>Mixture-of-Transformers 的世界-语言-动作统一模型</strong>——世界专家管未来预测、语言专家管语义理解、动作专家管轨迹生成，跨专家注意力控制信息流；<strong>Flow-GRPO 强化学习后训练</strong>精炼动作专家。<strong>数据：NAVSIM v1 92.3 PDMS、v2 90.1 EPDMS，零样本泛化到 HUGSIM、nuScenes、Bench2Drive</strong>。YOUDrive（Zheng、Lv 等，NTU）换个切口：<strong>把「驾驶风格」蒸馏成任务向量——学习到的参数更新在表征空间里构成风格方向</strong>，推理时可缩放、可组合、免重训；流匹配解码器在风格条件下生成多模态可行轨迹；提出 Style Alignment Score。<strong>数据：NAVSIM navtest 上单个系数单调控制六种教师人格的激进程度，PDMS 全程高于 0.90、最高 0.954</strong>。<strong>读法：两篇共同指向 VLA 的下一个战场——可控性（composability）：能力靠预训练，个性与安全边界靠推理时的方向空间调节；这套「任务向量」机制与四旋翼策略的「风格化调参」（如激进度-安全度旋钮）可以互相启发。</strong></p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.17903" target="_blank">📎 查看原文（DriveWLA）</a>
+      <a class="source-link" href="https://arxiv.org/abs/2610.14802" target="_blank">📎 查看原文（YOUDrive）</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">板块四 · 低空产业动态：法治护航满百日、3.5 万亿预测、自贡大会</div>
+  <div class="card">
+    <h3>⑨ 新民航法施行满百日：低空经济首次入法、300 米以下分类分级、审批改备案</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">政策面</span><span class="badge badge-success">✅ 法治护航</span><span>2026-10-09/12 报道</span></div>
+      <p>新修订的《中华人民共和国民用航空法》自 2026 年 7 月 1 日施行，现已满百日：<strong>首次把「低空经济」写入国家法律文本，增设「发展促进」专章，明确 300 米以下低空空域分类分级管理，并把以往「一事一批」的空域审批部分转为备案制</strong>。配套监管：无人机「唯一识别码」、适航许可、飞行溯源。专家（国研新经济研究院朱克力）总结三大价值：稳定市场预期、理顺央地权责、以差异化监管平衡创新与安全。<strong>对科研人的含义：适航审定人才缺口被明确点名——「载人 eVTOL 适航验证周期长，审定人才存在缺口」，这是仿真+适航交叉方向的长期机会信号。</strong></p>
+      <a class="source-link" href="https://www.ce.cn/cysc/newmain/yc/jsxw/202610/t20261009_3250162.shtml" target="_blank">📎 查看原文（法治护航·中国经济网）</a>
+      <a class="source-link" href="https://new.qq.com/rain/a/20261012A03LT800" target="_blank">📎 查看原文（低空经济首次入法·腾讯新闻）</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>⑩ 规模锚点：2035 年 3.5 万亿预测、注册无人机 328.7 万架、飞行时长 +69.89%</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">数据面</span><span class="badge badge-high">📌 权威口径</span><span>2026-10-06 中国经济网</span></div>
+      <p>中国经济网梳理低空经济「政策+出海双重共振」：<strong>民航局预测 2035 年中国低空经济市场规模有望突破 3.5 万亿元</strong>；截至 2025 年底全行业注册无人机 <strong>328.7 万架（同比增长 51.0%）</strong>，2025 全年无人机累计飞行 <strong>4530.29 万小时（同比增长 69.89%）</strong>。国信证券判断商业化顺序为「先任务、后载客；先限定、后开放；先有人监督、后高自动化」——农业、能源巡检、测绘、应急救援、医疗物流等有明确付费方的场景率先形成高频收入。短板清单：国际适航互认、高可靠航空级供应链、跨区域运营、事故数据库与运营数据透明度。</p>
+      <a class="source-link" href="http://i5.ce.cn/finance/stock/gsgdbd/202610/t20261006_3248414.shtml" target="_blank">📎 查看原文（低空经济双重共振·中国经济网）</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>⑪ 2026 低空经济产业发展大会自贡开幕：中大型无人机与 eVTOL 关键子链靶向引育</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">产业面</span><span class="badge badge-new">🆕 昨日开幕</span><span>2026-10-14 四川自贡</span></div>
+      <p>10 月 14 日，以「低空新蓝海·翼起向未来」为主题的 2026 低空经济产业发展大会在自贡开幕，四川省长出席。地方动作三个关键词：<strong>「飞起来」——布局通用机场、垂直起降场、公共航路与智能网联系统；「强起来」——聚焦中大型无人机、电动垂直起降飞行器、低空安防装备等关键子链靶向引育链主与配套企业；「管起来」——依托省级低空空域运行服务中心建立全领域安全监管</strong>。大会同步举办中国大学生飞行器设计创新大赛总决赛、10 场平行会议与公众开放日。<strong>读法：把「检验检测、试飞验证、中试熟化」列为公共服务功能建设重点，意味着试飞验证类工程岗位在西部低空集群将持续放量。</strong></p>
+      <a class="source-link" href="https://news.qq.com/rain/a/20261014A0ALGY00" target="_blank">📎 查看原文（自贡大会开幕·腾讯新闻）</a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">信息来源汇总</div>
+  <div class="table-wrap">
+    <table class="summary-table">
+      <thead><tr><th>论文/动态</th><th>链接</th><th>时间</th></tr></thead>
+      <tbody>
+        <tr><td>Constrained Differentiable Policy Learning for Safe Quadrotor Navigation (arXiv:2610.16119)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.16119" target="_blank">📎 查看原文</a></td><td>2026-10-12</td></tr>
+        <tr><td>LBA-CBF: Rapidly Adaptive Safety Filters via Parallel Dynamics Inference (arXiv:2610.08765)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.08765" target="_blank">📎 查看原文</a></td><td>2026-10-06</td></tr>
+        <tr><td>Asynchronous Tracking, Optical Communication and 3D Motion Capture using Event-based Sensors (arXiv:2610.04342)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.04342" target="_blank">📎 查看原文</a></td><td>2026-10-03</td></tr>
+        <tr><td>BGC-Nav: Cross-Altitude Multi-UAV Collaborative Navigation (arXiv:2610.14702)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.14702" target="_blank">📎 查看原文</a></td><td>2026-10-10</td></tr>
+        <tr><td>Managing Context and Communication in Distributed Agentic UAV Swarms (arXiv:2610.01569, CCNC 2027)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.01569" target="_blank">📎 查看原文</a></td><td>2026-10-01</td></tr>
+        <tr><td>Defense-in-Depth at the Perception-Reasoning Interface of LLM-Centric Agentic UAV Swarms (arXiv:2610.03319)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.03319" target="_blank">📎 查看原文</a></td><td>2026-10-02</td></tr>
+        <tr><td>AUGUstus: Autonomous Driving VLA with Unified Generation and Understanding (arXiv:2610.16985)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.16985" target="_blank">📎 查看原文</a></td><td>2026-10-12</td></tr>
+        <tr><td>SafeDriveVLA: Navigation-Conditioned World Model Dreaming (arXiv:2610.20609, CoRL 2026)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.20609" target="_blank">📎 查看原文</a></td><td>2026-10-14</td></tr>
+        <tr><td>DriveWLA: Unifying Future Dynamics and Scene Semantics (arXiv:2610.17903)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.17903" target="_blank">📎 查看原文</a></td><td>2026-10-13</td></tr>
+        <tr><td>YOUDrive: Driving Style as a Composable Direction (arXiv:2610.14802)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.14802" target="_blank">📎 查看原文</a></td><td>2026-10-10</td></tr>
+        <tr><td>法治护航：低空经济步入发展新阶段（中国经济网）</td><td><a class="source-link" href="https://www.ce.cn/cysc/newmain/yc/jsxw/202610/t20261009_3250162.shtml" target="_blank">📎 查看原文</a></td><td>2026-10-09</td></tr>
+        <tr><td>低空经济首次写进国家法律（腾讯新闻）</td><td><a class="source-link" href="https://new.qq.com/rain/a/20261012A03LT800" target="_blank">📎 查看原文</a></td><td>2026-10-12</td></tr>
+        <tr><td>低空经济迎政策出海双重共振（中国经济网）</td><td><a class="source-link" href="http://i5.ce.cn/finance/stock/gsgdbd/202610/t20261006_3248414.shtml" target="_blank">📎 查看原文</a></td><td>2026-10-06</td></tr>
+        <tr><td>2026低空经济产业发展大会自贡开幕（腾讯新闻）</td><td><a class="source-link" href="https://news.qq.com/rain/a/20261014A0ALGY00" target="_blank">📎 查看原文</a></td><td>2026-10-14</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+</div>
+
+<div class="comments-section">
+  <div class="comments-title">💬 评论区</div>
+  <div class="comments-desc">登录 GitHub 账号即可评论，支持 Markdown 和表情回应。欢迎交流求职经验、分享面试心得！</div>
+  <div class="giscus"></div>
+</div>
+
+<footer class="footer">
+  <p>无人机科研日报 | 安徽工业大学机械工程硕士研究生个性化推荐报告</p>
+  <p>报告日期：2026年10月15日 | 数据来源：公开网络信息整理</p>
+  <div class="footer-meta">Generated by WorkBuddy Automation | Powered by TS-dinglilu.github.io</div>
+</footer>
+
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="返回顶部">↑</button>
+
+<script>
+// Scroll-to-top button visibility
+window.addEventListener('scroll', function() {
+  var btn = document.querySelector('.scroll-top');
+  if (btn) {
+    if (window.scrollY > 400) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+  }
+});
+
+// Giscus configuration
+var giscusScript = document.createElement('script');
+giscusScript.src = 'https://giscus.app/client.js';
+giscusScript.setAttribute('data-repo', 'TS-dinglilu/TS-dinglilu.github.io');
+giscusScript.setAttribute('data-repo-id', 'R_kgDOTjqaJQ');
+giscusScript.setAttribute('data-category', 'General');
+giscusScript.setAttribute('data-category-id', 'DIC_kwDOTjqaJc4DCIL2');
+giscusScript.setAttribute('data-mapping', 'pathname');
+giscusScript.setAttribute('data-strict', '0');
+giscusScript.setAttribute('data-reactions-enabled', '1');
+giscusScript.setAttribute('data-emit-metadata', '0');
+giscusScript.setAttribute('data-input-position', 'top');
+giscusScript.setAttribute('data-theme', 'dark_dimmed');
+giscusScript.setAttribute('data-lang', 'zh-CN');
+giscusScript.setAttribute('data-loading', 'lazy');
+giscusScript.crossOrigin = 'anonymous';
+giscusScript.async = true;
+var giscusBox = document.querySelector('.giscus');
+if (giscusBox) { giscusBox.appendChild(giscusScript); }
+</script>
+
+</body>
+</html>

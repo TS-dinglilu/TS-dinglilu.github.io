@@ -1,198 +1,150 @@
 <div class="report-header">
-  <h1>无人机科研日报 · 2026-10-15</h1>
-  <div class="subtitle">arXiv 预印本精选 · 碰撞恢复反射 / 立体视觉零样本迁移 / 可微仿真约束策略 / 动作空间设计 / 视觉惯性融合 / MPC 蒸馏 / 低空产业动态</div>
-  <div class="meta">
-    <span class="date-badge">2026-10-15 星期四</span>
-    <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习，求职车企 / 机械 / 研究院</span>
+  <h1 class="report-title">无人机科研日报 · 2026-10-15</h1>
+  <div class="subtitle">安徽工业大学机械工程硕士研究生 · 个性化推荐报告</div>
+  <div class="meta header-tags">
+    <span class="date-badge">📅 2026年10月15日 星期四</span>
+    <span class="text-muted">arXiv 预印本精选 · 可微仿真约束 RL / 模型库自适应安全滤波 / 事件相机通信 / 跨高度协同导航 / LLM 蜂群安全 / VLA 驾驶三连 / 低空产业动态</span>
   </div>
 </div>
 
-<div class="section">
-  <div class="section-title">板块一 · 本期导览：从「跑得起来」到「摔了也能回来」——机载反射、零样本迁移与可解释安全</div>
-  <div class="stats-grid">
-    <div class="stat-box"><div class="count-badge">12</div><div class="label">本期精选论文</div><div class="sub">10/11-10/14 新提交 · 与上期零重复</div></div>
-    <div class="stat-box"><div class="count-badge">19/22</div><div class="label">REFLEX 撞墙恢复成功率</div><div class="sub">5.03 m/s · 原自动驾驶仪仅 1/14</div></div>
-    <div class="stat-box"><div class="count-badge">-90%</div><div class="label">VIGOR-MPC 单步计算降幅</div><div class="sub">特权教师蒸馏为视觉短时域 MPC</div></div>
-  </div>
-  <div class="highlight-box">
-    <div class="highlight-title">💡 本期视角</div>
-    <p>本期 <strong>2026-10-15（周四）</strong>日报共 <strong>12 篇论文 + 4 条产业动态</strong>，均为 10 月 11-14 日新提交或新公布条目，与上期无重叠。主线是<strong>「把安全与鲁棒从外挂滤镜变成系统内生能力」</strong>：REFLEX 把碰撞恢复做成飞控里的机载反射模式，撞墙后 22 次恢复 19 次，原自动驾驶仪只有 <strong>1/14</strong>；Stereo-Planner 用「立体视觉直出轨迹」拿到 <strong>95%</strong> 仿真成功率并在 Orin NX 上以 7 m/s 实飞；可微仿真路线（2610.16119）把避障约束显式写进策略优化。控制理论侧，CoRE-MPC 用降阶模型规划但保证全阶安全，比全阶鲁棒 MPC 快 <strong>13-61 倍</strong>；VIGOR-MPC 把特权长时域 MPC 蒸馏成视觉短时域 MPC，单步计算减少 <strong>90% 以上</strong>。<strong>对课题的映射：「离散动作 vs 连续动作」（2610.20429）第一次被当作系统科学问题研究，这是 RL 飞控最容易被答辩委员会追问的建模选择</strong>。</p>
-  </div>
-  <div class="info-box"><div class="info-title">ℹ️ 阅读说明</div><p>每条给出论文标题、作者与 arXiv 编号，链接直达摘要页。前期已详读的 2610.17419（ClearNav）、2610.14522（四阶 CBF）、2610.08695（NMPP）、2610.11809（WAND）等不再重复收录。</p></div>
+<div class="highlight-box">
+  <div class="highlight-title">💡 本期视角（2026-10-15 · 周四）</div>
+  <p>本期共 <strong>10 条论文 + 3 条产业动态</strong>，全部为上期未覆盖的新条目（10 个 arXiv 编号已逐一 curl 验证返回 200）。主线是<strong>「安全与约束的三种写法」</strong>：CDPL 把避障写成显式约束、用原始-对偶梯度进可微仿真训练，策略零样本迁移到 Gazebo/PX4 与真机；LBA-CBF 在控制回路里并行跑 25 万个候选动力学模型、按短期预测误差自适应切换，专治「突变的模型失配让安全证书失效」；BGC-Nav 则把不确定性写成信念记忆，让高空机的观测以「建议偏置」而非硬指令的方式约束低空机探索。自动驾驶侧 VLA 三连发（AUGUstus / SafeDriveVLA / DriveWLA）继续压缩「理解到动作」的延迟并把语言接口的安全问题正式化。<strong>对课题的映射：CDPL 的约束式训练与你的「Simulink+RL 仿真」完全同构，其 bounded clearance 约束函数可以直接嫁接到四旋翼避障 reward 里做对照实验。</strong></p>
+</div>
+
+<div class="stats-grid">
+  <div class="stat-box"><div class="count-badge">10篇</div><div class="label">本期精选论文</div><div class="sub">10/1-10/14 提交 · 编号全验200</div></div>
+  <div class="stat-box"><div class="count-badge">0.954</div><div class="label">YOUDrive NAVSIM PDMS</div><div class="sub">风格系数单调可调</div></div>
+  <div class="stat-box"><div class="count-badge">25万个</div><div class="label">LBA-CBF并行动力学模型</div><div class="sub">Crazyflie 2.1实机验证</div></div>
 </div>
 
 <div class="section">
-  <div class="section-title">板块二 · 四旋翼学习控制：撞墙反射模式、立体视觉零样本、可微仿真约束策略</div>
+  <div class="section-title">板块一 · 无人机导航与安全控制：约束式可微仿真、模型库自适应滤波、事件相机通信</div>
   <div class="card">
-    <h3>① REFLEX：飞控里的「脊髓反射」，软体四旋翼撞墙后 5.03 m/s 恢复 19/22（10 月 11 日提交）</h3>
+    <h3>① CDPL：避障从惩罚项变显式约束，可微仿真里原始-对偶训练，零样本迁移真机（10 月 12 日提交）</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-accent">碰撞恢复</span><span class="badge hot">🔥 19/22 恢复</span><span>arXiv:2610.15867 · cs.RO</span></div>
-      <p>Jakob Hermeler、Luca Girardi、Gabriel Maquignaz、Stefan Leutenegger、Stefano Mintchev 的 <strong>REFLEX: A Learned On-Board Reflex for Robust Autonomous Collision Recovery of Soft Quadrotors</strong>。切入点很接地气：现有自动驾驶仪在碰撞后基本「躺平」——状态估计被撞歪、姿态发散，任务直接失败。REFLEX 的方案是<strong>在飞控上挂一个只依赖本体感受的递归策略作为「反射模式」</strong>：检测到碰撞特征后无缝切入，不依赖外部感知、无需人工遥控接管。<strong>数据：5.03 m/s 撞墙实验 22 次成功恢复 19 次，原自动驾驶仪 14 次仅 1 次自行恢复；该模式完全运行在机载飞控上</strong>。<strong>读法：这是「安全」叙事的另一种写法——不与障碍物博弈，而是承认碰撞会发生并解决「之后怎么办」。Simulink 侧可用 Stateflow 搭缩小版：碰撞检测 → 反射策略 → 切回任务模式，是开题「安全机制设计」一节的好案例</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.15867" target="_blank">📎 查看原文</a>
-    </div>
-    <h3 class="mt-4">② Stereo-Planner：立体视觉「一步出轨迹」，仿真 95% 成功率、Orin NX 上 7 m/s 实飞（10 月 11 日提交）</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-purple">视觉导航</span><span class="badge high">💎 零样本 sim-to-real</span><span>arXiv:2610.15560 · cs.RO</span></div>
-      <p>Hongming Shen、Junjie Lu、Xun Chen、Wei Wang、Xinhang Xu、Bailing Tian、Lihua Xie（南洋理工）的 <strong>Stereo-Planner: Learning Stereo-to-Trajectory Planning for Zero-Shot Sim-to-Real Quadrotor Navigation</strong>。设计哲学是「端到端但不黑箱」：<strong>把轨迹生成建模为「状态与尺度条件的隐式立体几何查询」</strong>——网络查询带尺度先验的三维几何表征再解出轨迹，而非把像素直接回归成路点，从而绕开端到端最常被诟病的「尺度歧义 + 仿真域差」。<strong>数据：仿真成功率 95%，部署到 Jetson Orin NX 实现最高 7 m/s 自主飞行，零样本 sim-to-real</strong>。<strong>读法：与上期 ClearNav（2610.17419）互补——一个修奖励、一个修观测到轨迹的映射结构，合读可拼出「视觉导航为何撞机」的归因地图；课题里若已有双目/深度仿真环境，这篇网络结构是现成的改进基线</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.15560" target="_blank">📎 查看原文</a>
-    </div>
-    <h3 class="mt-4">③ 可微仿真 × 原对偶梯度下降：把避障写成硬约束的策略学习，零样本迁移 PX4 与实机（10 月 12 日提交）</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-teal">可微仿真</span><span class="badge new">🆕 约束式 RL</span><span>arXiv:2610.16119 · cs.RO</span></div>
-      <p>Yan Rui Tan、Praveen Krishnapur、Zeyu Feng、Han Bao、Yew-Soon Ong、Fan Shi 的 <strong>Constrained Differentiable Policy Learning for Safe Quadrotor Navigation</strong>。思路：与其在奖励里软惩罚碰撞（权重难调、约束不保证），不如<strong>把避障作为显式约束，利用可微仿真器做原-对偶梯度下降-上升</strong>，训练时即满足约束、安全等级可直接指定。<strong>结果：训练完成的策略零样本迁移到 Gazebo/PX4 联合仿真与实体四旋翼</strong>。<strong>读法：「约束优化式 RL」正在成为安全飞控的第三条路线（另两条是 CBF 滤波器与奖励塑形）。Simulink 用户不必羡慕 PyTorch 可微栈：可对线性化模型做投影梯度对照，把「硬约束策略 vs 软惩罚策略」的安全-性能帕累托曲线画出来，就是一块完整的开题实验</strong>。</p>
+      <div class="news-meta"><span class="tag tag-accent">安全RL</span><span class="badge hot">🔥 约束式训练</span><span>arXiv:2610.16119 · cs.RO</span></div>
+      <p>Yan Rui Tan、Praveen Krishnapur、Zeyu Feng、Han Bao、Yew-Soon Ong、Fan Shi 的 <strong>Constrained Differentiable Policy Learning for Safe Quadrotor Navigation</strong>。痛点直击惩罚法的软肋：可微仿真里安全通常作为加权惩罚项，权重怎么调全凭手感。CDPL 把避障<strong>写成显式约束、用原始-对偶梯度下降-上升法在可微仿真器里训练</strong>。两个关键组件：<strong>有界净空（bounded clearance）约束函数</strong>——在安全边界附近给出有信息量的梯度、又防止大违反值破坏对偶优化稳定性；<strong>log-mean-exp（LME）聚合</strong>——平滑地强调轨迹与批次中逐步安全违反的临界部分，用单个对偶变量统一管理。<strong>数据：安全性-性能权衡优于固定惩罚与既有策略学习基线，泛化到更密的分布外环境；策略零样本迁移到 Gazebo/PX4 与物理四旋翼，无需微调</strong>——理论上证明了温和假设下收敛到可行策略。<strong>读法：这篇是「约束式可微 RL」的现成模板，复现成本主要在接一个可微四旋翼仿真器；对照实验就做「固定惩罚 vs 对偶自适应」在惩罚系数扫描下的 Pareto 前沿对比，Simulink 端可用 S-Function 桥接。</strong></p>
       <a class="source-link" href="https://arxiv.org/abs/2610.16119" target="_blank">📎 查看原文</a>
     </div>
-    <h3 class="mt-4">④ 离散动作何时是好的连续控制器？均匀分箱即可匹敌连续策略（10 月 14 日提交）</h3>
+  </div>
+  <div class="card">
+    <h3>② LBA-CBF：25 万候选模型并行推断的安全滤波器，风反向与未知负载下追平预言机（10 月 6 日提交）</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-info">RL 理论</span><span class="badge-info">🎯 建模必读</span><span>arXiv:2610.20429 · cs.RO / cs.LG</span></div>
-      <p>Zeji Yi、Soham Dasgupta、Xinyang Zhang、Koushil Sreenath、Guannan Qu、Xi Chen、Max Simchowitz、Guanya Shi 的 <strong>When Do Discrete Actions Make Good Continuous Controllers?</strong>。这是 RL 飞控的基础建模问题：离散动作（DQN 类，简单稳定、易部署嵌入式）vs 连续动作（PPO/SAC 类，控制平滑但调参难）。结论相当反直觉：<strong>即使最朴素的均匀分箱离散化也能匹敌甚至超越连续策略；真正的挑战不在「离散 vs 连续」本身，而在时间与动作维度乘积分布的分解误差</strong>。<strong>读法：做四旋翼 RL 几乎都面临这个选择（尤其 Simulink + 离散控制周期场景）。这篇给出「何时可放心用离散动作」的判据，答辩时被问「为什么用离散动作空间」可直接引；实验设计也简单：同一任务，均匀分箱 vs 对数分箱 vs 连续 PPO 三线对照</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.20429" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-purple">安全控制</span><span class="badge high">💎 CBF前沿</span><span>arXiv:2610.08765 · cs.RO</span></div>
+      <p>Maitham F. AL-Sunni、Timeea-Andreea Radu、Hassan Almubarak、Henry Z. Liao、Michael Görner、Francesco Maurelli、John M. Dolan 的 <strong>LBA-CBF: Rapidly Adaptive Safety Filters via Parallel Dynamics Inference</strong>。问题设定很刁钻：CBF 证书依赖假定的动力学模型，<strong>突变且未被测量的工况切换会让证书在最需要安全的时候失效</strong>。方案是 Look-Back Adaptive CBF：维护一个有限候选动力学模型库，按短回看窗口内的预测误差排序，对容差内的每个模型施加高阶 CBF 条件——从最优拟合自适应平滑过渡到全库鲁棒滤波，不需要切换逻辑也不需要连续参数化估计器。理论保证：只要库中保留「安全代表性候选」，滤波后的输入必满足真实 CBF 条件。<strong>数据：四旋翼仿真中遭遇突变风反向与未知负载，LBA-CBF 从全部随机初始条件安全到达目标、追平预言机，而自适应与鲁棒基线成功率仅 0-88%；25 万个模型在控制回路内实时运行；Crazyflie 2.1 与 F1TENTH 实机验证风扰、负载释放与轮胎-路面摩擦变化适应</strong>，代码开源。<strong>读法：与上期四阶 CBF（2610.14522）正交——一个把约束下探到力矩层、一个把模型不确定性装进滤波器，开题综述里可并列为 CBF 工程化的两条补丁路线。</strong></p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.08765" target="_blank">📎 查看原文</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>③ ATOC：事件相机同时干追踪与光通信，LED 信标变定位信道（10 月 3 日提交）</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-teal">事件相机</span><span class="badge-info">🧮 感知通信一体</span><span>arXiv:2610.04342 · cs.RO</span></div>
+      <p>Ziwei Wang、Angus Apps、Holly Battisson、Iain Guilliard、Timothy Molloy、Robert Mahony（ANU）的 <strong>Asynchronous Tracking, Optical Communication and 3D Motion Capture using Event-based Sensors</strong>。动机：机器人间无线通信「收方不知道信号从哪来、时钟同步难、广播无指向」；光学通信天然指向性与空间局域性恰好补位。ATOC 把 <strong>LED 智能信标调制、事件式检测、光学追踪、事件数据解调</strong>装进一条流水线，一个事件相机同时追踪并解调多个 LED 信标，把普通视觉标记升级成通信信道。<strong>验证：实验室套件 + 智慧城市演示 + 3D 动捕系统三个应用</strong>。<strong>读法：事件相机在无人机机间相对定位与协同场景是低成本方案——不用 GPS、不用 UWB 基站；对做集群的读者，这是「感知即通信」思路的代表性实现。</strong></p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.04342" target="_blank">📎 查看原文</a>
     </div>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-title">板块三 · 状态估计与感知：视觉惯性自适应加权、分层分辨率建图、可认证状态估计</div>
+  <div class="section-title">板块二 · 集群与协同：跨高度信念耦合导航、LLM 蜂群的内存管理与纵深防御</div>
   <div class="card">
-    <h3>① Smart Fusion：914 参数 MLP 做视觉-惯性权重调节，EuRoC APE 降 27.7%（10 月 14 日提交）</h3>
+    <h3>④ BGC-Nav：高空机信念记忆 + 低空机探索自主，免训练跨高度协同搜救导航（10 月 10 日提交）</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-accent">视觉惯性</span><span class="badge new">🆕 轻量自适应</span><span>arXiv:2610.20226 · cs.RO</span></div>
-      <p>Wonju Lee、Dara Molloy、Abhilash Nand Kumar 等的 <strong>Smart Fusion for Adaptive Visual-IMU Weighting in cuVSLAM Sparse Bundle Adjustment</strong>。问题：VIO 在视觉退化（弱纹理、运动模糊、光照剧变）时，固定权重仍把大量信任交给视觉前端，误差随即发散。方案：<strong>引入标量 α 动态调节视觉-惯性权重，用一个仅 914 参数的 MLP 视觉质量估计器做二值 regime 预测，嵌入 cuVSLAM 稀疏光束平差</strong>。<strong>数据：EuRoC MAV 数据集 RMSE APE 降低 27.7%、TUM-VI Room 降低 14.9%</strong>。<strong>读法：MAV 数据集 + 机载实时约束正是微型无人机典型痛点；「小模型守门、大模型干活」的分层设计与本期 VIGOR-MPC 蒸馏哲学一致。Simulink 侧可把「视觉置信度 → 权重切换」做成查表加一阶滤波的对照实现</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.20226" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-accent">空中VLN</span><span class="badge hot">🔥 免训练协同</span><span>arXiv:2610.14702 · cs.RO</span></div>
+      <p>Jiuwu Hao、Yueyang Wu、Liguo Sun、Haolin Song、Zao Zhang、Pin Lv（电子科技大学）的 <strong>BGC-Nav: Cross-Altitude Multi-UAV Collaborative Navigation via Belief-Guided Coupling</strong>。切入点：航空视觉语言导航（VLN）里单机室外搜救受部分可观测性限制，跨高度协同是自然方向，但现有方法「依赖精确目标定位+刚性目标指派」，忽略高空观测不确定性、还压制低空机探索自主。BGC-Nav 是<strong>免训练框架</strong>：高空机维护编码任务先验的<strong>全局信念记忆</strong>，低空智能体通过<strong>局部耗尽记忆（LEM）、局部吸引增强（LAA）、方向信念先验（DBP）</strong>三个机制把信念作为「建议偏置」而非刚性指令吸收进决策。<strong>数据：在 ESARBench 上稳定超越 SOTA 单机与协同方法</strong>，代码开源（github.com/uestchjw/BGC-Nav）。<strong>读法：「先验作为偏置而非命令」的接口设计对任何层级式多机系统都有借鉴意义——高层的信息永远应该可被底层否决。</strong></p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.14702" target="_blank">📎 查看原文</a>
     </div>
-    <h3 class="mt-4">② 分层分辨率体素建图：规划走廊内精细、外围粗糙，积分 CPU 时间省 6-8 倍（10 月 14 日提交）</h3>
+  </div>
+  <div class="card">
+    <h3>⑤ 分布式 agentic 蜂群双连发：兴趣感知 gossip 内存管理（CCNC 2027）与感知-推理接口纵深防御</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-teal">户外导航</span><span class="badge-info">🗺️ 规划-建图一体</span><span>arXiv:2610.20476 · cs.RO</span></div>
-      <p>Afonso E. Carvalho、David Portugal、Paulo Peixoto、George Kantor 的 <strong>Tiered-Resolution Volumetric Mapping for Real-Time Simultaneous Planning and Mapping on Natural Outdoor Environments</strong>。针对无人机在森林、山地等自然环境「精细图太大建不动、粗糙图又会撞上未分辨障碍」的两难，方案是<strong>分层分辨率建图：规划走廊内保持精细、外围退化为粗糙表征，边规划边建图</strong>。<strong>数据：相比均匀精细图，地图体积小 13-15 倍、积分 CPU 时间少 6-8 倍，路径成本与均匀精细图相当，避免了均匀粗图的路径质量崩溃</strong>。<strong>读法：「算力花在刀刃上」的工程直觉被量化成可复现数据；课题若涉及测绘/巡检场景仿真（该方向已进入国自然低空专项指南），这套分辨率调度是仿真环境搭建的直接参考，MATLAB 侧可用 occupancy grid 多分辨率层做最小复现</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.20476" target="_blank">📎 查看原文</a>
-    </div>
-    <h3 class="mt-4">③ 可认证状态估计：感知退化下的亚微秒级全局最优验证（10 月 14 日提交）</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-purple">状态估计</span><span class="badge high">💎 形式化认证</span><span>arXiv:2610.20490 · cs.RO</span></div>
-      <p>Baoshan Song 的 <strong>Towards Certifiable State Estimation under Observability Degeneracy</strong>。痛点：无人机状态估计广泛使用 SDP 松弛求解，但<strong>严重感知退化（可观性退化）时松弛解会「秩扩张」，给出错误的最优性证明</strong>——系统报告「估计已收敛最优」而实际并非如此。方案：<strong>候选驱动的对偶认证框架，实现亚微秒延迟的全局最优验证与自适应对偶安全阈值</strong>。<strong>读法：这是安全论证链上最易被忽视的一环——控制层再稳，估计层撒谎照样出事。对飞控仿真的价值在于「故障注入实验」范式：故意制造可观性退化（GPS 拒影、单目失效），检验估计器自诊断能力；实验成本低、故事性强，适合作为开题鲁棒性验证小节</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.20490" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-purple">LLM蜂群</span><span class="badge badge-new">🆕 会议论文</span><span>arXiv:2610.01569 / 2610.03319</span></div>
+      <p>第一篇：Iannoli、Zyrianoff、Trotta、Gigli、Di Felice 的 <strong>Managing Context and Communication in Distributed Agentic UAV Swarms</strong>（已被 <strong>CCNC 2027</strong> 接收）。每架 UAV 跑一个小语言模型（SLM）做任务级推理，问题是交互历史膨胀侵蚀推理上下文、无差别转发抬高通信与推理开销。方案：事件驱动的「推理-行动-观察」生命周期 + 结构化原子笔记（核心/本地/对等三层记忆）+ <strong>按接收方语义新颖度与时效做兴趣感知 gossip</strong>。<strong>数据：10 机仿真搜救，本方案完成全部实验轮次、泛洪式转发只完成 70-85%、把转发决策交给 SLM 则一轮都完不成；推理 token 消耗约减半</strong>。第二篇：Homaei、Emami 等的 <strong>Defense-in-Depth at the Perception-Reasoning Interface of LLM-Centric Agentic UAV Swarms</strong>——对手悄悄篡改传感器报告就能在不动模型权重与机体的情况下劫持蜂群调度；五层防御检查报告来源、物理可容许性、与蜂群几何和服务历史的预测一致性、调度是否饿死传感器，失败则交回确定性调度器。<strong>数据：三个输入侧层的失真边界闭式推导且与 30 组匹配仿真吻合；拒绝攻击报告虽防住劫持，但累计成本分别上升 79% 与 74%</strong>——安全不是免费的，这个量化本身就值得引用。<strong>读法：两篇合看正好是「效率与安全」的镜像：一个砍冗余信息流，一个加防御信息流；LLM 蜂群的工程瓶颈已从「能不能推理」转移到「信息流怎么管」。</strong></p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.01569" target="_blank">📎 查看原文（CCNC 2027）</a>
+      <a class="source-link" href="https://arxiv.org/abs/2610.03319" target="_blank">📎 查看原文（纵深防御）</a>
     </div>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-title">板块四 · MPC 与安全滤波器：降阶规划全阶安全、教师蒸馏视觉 MPC、安全评论家与矩阵 CBF</div>
+  <div class="section-title">板块三 · 自动驾驶交叉：VLA 三连——统一生成与理解、世界模型做梦、世界-语言-动作</div>
   <div class="card">
-    <h3>① CoRE-MPC：降阶模型规划、全阶安全保证，比全阶鲁棒 MPC 快 13-61 倍（10 月 13 日提交）</h3>
+    <h3>⑥ AUGUstus：动作生成先行、CoT 只做监督，VLA 端到端驾驶低延迟 SOTA（10 月 12 日提交）</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-teal">MPC</span><span class="badge hot">🔥 13-61× 加速</span><span>arXiv:2610.19250 · eess.SY</span></div>
-      <p>Luis Pabon、Johannes Köhler、Revant Kasichainula、Marco Pavone 的 <strong>Full-Order Safety for Nonlinear Reduced-Order MPC</strong>。矛盾点：高保真全阶非线性 MPC 计算昂贵；降阶模型（ROM）快但规划出的轨迹在全阶系统上未必可行、未必安全。CoRE-MPC 的答案是<strong>用非线性 ROM 做规划，但通过两个「误差半径」保证全阶系统的递归可行性与约束满足</strong>——规划在低维快模型上进行，安全证书覆盖高维真实系统。<strong>数据：比全阶鲁棒 MPC 快 13-61 倍，且保守性更低</strong>。<strong>读法：与上期 NMPP（2610.08695）构成 MPC 谱系两端——一个把障碍做成硬约束求敏捷，一个把模型误差做成半径求安全。Simulink + NMPC 工作流可借鉴「误差半径」：给降阶规划器加模型失配，验证半径包络是否成立，是现成的对照实验题</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.19250" target="_blank">📎 查看原文</a>
-    </div>
-    <h3 class="mt-4">② VIGOR-MPC：特权教师蒸馏成视觉短时域 MPC，单步计算减少 90% 以上（10 月 14 日提交）</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-accent">师生蒸馏</span><span class="badge new">🆕 视觉 MPC</span><span>arXiv:2610.20333 · eess.SY / cs.RO</span></div>
-      <p>Jelena Trisovic、Rahel Rickenbach、Marek Landert、Panagiotis Minos、Melanie N. Zeilinger 的 <strong>VIGOR-MPC: Vision-Guided Objective Regulation MPC</strong>。框架：<strong>教师是掌握特权信息的长时域 MPC（离线计算参考与代价参数），学生是在线运行的轻量短时域 MPC，仅用视觉观测在线确定代价函数参数</strong>，实现「长时域规划的质量、短时域计算的实时性」。<strong>数据：自动驾驶赛车上单步计算减少 90% 以上，圈速接近教师</strong>。<strong>读法：「特权教师 → 视觉学生」正是飞控 RL 里 sim-to-real 的核心范式（仿真里知道风场真值、实机只有 IMU 推断），这篇把该范式从策略网络搬到 MPC 代价参数上，直接可移植：仿真中用真实风扰调出最优代价权重，实机端用轻量网络从历史状态估计权重——这几乎就是一套完整的「风扰自适应飞控」开题方案，强烈建议精读</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.20333" target="_blank">📎 查看原文</a>
-    </div>
-    <h3 class="mt-4">③ 后退时域安全评论家 + 可微动作屏蔽：PPO 集成的安全 RL（10 月 14 日提交）</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-purple">安全 RL</span><span class="badge-info">🛡️ 运行时保证</span><span>arXiv:2610.20255 · cs.RO / cs.LG</span></div>
-      <p>Siwei Ju、Jan Peters、Oleg Arenz 的 <strong>Safe Reinforcement Learning with Receding-Horizon Safety Critic and Differentiable Action Shields</strong>。方案两件套：<strong>学习一个后退时域安全评论家，预测未来若干步是否会进入不安全终止状态；训练时以闭式可微 CBF 安全过滤器作为「动作屏蔽」与 PPO 集成</strong>，不可行动作在反向传播中被平滑投影而非简单截断。<strong>结果：四足运动在动作噪声、外部扰动与地形变化下鲁棒性显著提升</strong>。<strong>读法：对飞控 RL 的「探索安全」老问题给出可落地组合拳——评论家管预判、可微屏蔽管训练期约束；Simulink + Python 联合仿真环境下，屏蔽器可用解析 QP 实现、评论家用小 MLP，一周内可搭出原型</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.20255" target="_blank">📎 查看原文</a>
-    </div>
-    <h3 class="mt-4">④ 最优衰减矩阵 CBF：标量权重升级为矩阵，保持 SDP 凸性且更少保守（10 月 13 日提交）</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-orange">CBF 理论</span><span class="badge high">💎 凸性保持</span><span>arXiv:2610.18675 · eess.SY</span></div>
-      <p>Samuel G. Gessow、Albert Wu、Aaron D. Ames、Brett T. Lopez 的 <strong>Optimal Decay Matrix Control Barrier Functions: Soundness and Completeness for Matrix Safety Constraints</strong>。进展：矩阵 CBF（MCBF）把多个安全约束组织成矩阵形式，但传统实现用<strong>标量权重统一调节衰减，限制了系统表达能力</strong>。本文提出<strong>矩阵最优衰减（MOD）替代标量权重，在保持半定规划凸性的同时实现可证明的可靠性与完备性</strong>。<strong>读法：与前期已报的四阶 CBF（2610.14522）、降姿态 CBF（2610.06629）放在一起，正好凑成开题综述「CBF 在四旋翼上的三条演进线」：约束相对阶（力矩层）、几何降维（球面）、矩阵权重（多约束）。三篇互相引用关系清晰，是文献综述章节的天然骨架</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.18675" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-orange">端到端驾驶</span><span class="badge hot">🔥 94.6 PDMS</span><span>arXiv:2610.16985 · cs.CV</span></div>
+      <p>Yuqi Ye、Caigao Jiang 等的 <strong>AUGUstus: Autonomous Driving VLA Model with Unified Generation and Understanding</strong>。诊断现有 VLA 两个病：回归/流式直出动作退化为视觉-动作（VA）模型、浪费了 VLM 理解力；自回归先生成思维链再出动作则延迟太高。方案：<strong>统一扩散式动作生成与自回归 CoT 理解于一身，理解只服务于生成；AUGUstus-mode 把动作生成排在 CoT 之前</strong>——训练时 CoT 监督可靠动作，推理时只出动作，保住低延迟；AUGUstus-GRPO 统一优化动作与 CoT。<strong>数据：NAVSIMv1 94.6 PDMS、v2 90.7 EPDMS（免 scorer 的 SOTA）；nuScenes 平均 L2 0.27 m、碰撞率 0.05%；512 张 H800 训练 2 天、内部 1000 km 数据集验证并实车部署 12 Hz 运行</strong>。<strong>读法：低延迟 VLA 是实车部署的分水岭，12 Hz 是个值得记住的工程锚点。</strong></p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.16985" target="_blank">📎 查看原文</a>
     </div>
   </div>
-</div>
-
-<div class="section">
-  <div class="section-title">板块五 · 集群、机载智能与自动驾驶交叉：禁飞区多机网络、星上学习先例、安全驾驶 VLA 基准</div>
   <div class="card">
-    <h3>① 多无人机网络 × 禁飞区 × 用户移动：SAC + 优先经验回放的联合优化（10 月 14 日提交）</h3>
+    <h3>⑦ SafeDriveVLA：语言指令可能不安全——世界模型「做梦」预演合规后果（10 月 14 日提交，CoRL 2026）</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-accent">无人机网络</span><span class="badge-info">📡 MARL 应用</span><span>arXiv:2610.19515 · eess.SY</span></div>
-      <p>Bin Li、Senning Wan、Decheng Zhang、Yonglei Yao、Yu Xue 的 <strong>Heterogeneous Services in Multi-UAV Networks with No-Fly Zone and User Mobility</strong>。场景：多架无人机同时给地面移动用户提供差异化服务，且空域存在禁飞区。方案：<strong>联合优化飞行轨迹、发射功率控制与用户关联，采用带优先经验回放的 soft actor-critic（SAC）算法</strong>，收敛速度与稳定性优于普通回放。<strong>读法：若课题有「集群协同」或「通信-控制一体化」延伸空间，这篇提供了最贴近工程约束的问题建模（禁飞区硬约束 + 用户机动）；对纯飞控方向，其价值在于示范「硬空域约束如何进入 RL 观测与奖励」，可迁移到多机避障的约束设计</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.19515" target="_blank">📎 查看原文</a>
-    </div>
-    <h3 class="mt-4">② Learning in Orbit：Jetson TX2 NX 上星上训练 + 热分割闭环姿控，一年 12 次实验（10 月 13 日提交）</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-teal">机载智能</span><span class="badge high">💎 星上训练先例</span><span>arXiv:2610.19122 · eess.SY</span></div>
-      <p>Elena Sorina Lupu、Hannah Grauer 等的 <strong>Learning in Orbit: Onboard Training and Closed-Loop Attitude Control with a Thermal Segmentation Model on a Spacecraft</strong>。在 <strong>6U CubeSat 上用 NVIDIA Jetson TX2 NX 实现热分割模型的星上训练与推理</strong>，并用实时热图像做闭环姿态控制跟踪月球，在轨一年完成 <strong>12 次</strong>实验。<strong>读法：虽然对象是卫星，但「在边缘设备上完成训练-推理-控制闭环」的工程先例对无人机极有参照——它证明 Jetson 级算力足以支撑「感知模型在线更新 + 控制闭环」。做 sim-to-real 若涉及机载重训练，这篇的算力预算与实验节奏（一年 12 次）是现实的基准线</strong>。</p>
-      <a class="source-link" href="https://arxiv.org/abs/2610.19122" target="_blank">📎 查看原文</a>
-    </div>
-    <h3 class="mt-4">③ SafeDriveVLA：首个联合评估导航遵循、冲突意识与对抗鲁棒性的 VLA 基准（10 月 14 日提交）</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-purple">自动驾驶</span><span class="badge new">🆕 评测基准</span><span>arXiv:2610.20609 · cs.RO</span></div>
-      <p>Shaoyuan Xie、Zihan Zhang、Jingxuan Wang 等的 <strong>SafeDriveVLA: Navigation-Conditioned World Model Dreaming for Conflict-Aware End-to-End Autonomous Driving</strong>。提出<strong>首个联合评估「导航遵循、冲突意识、对抗鲁棒性」三要素的 VLA 驾驶基准</strong>，并用导航条件世界模型 dreaming 预测三级导航合规模式。<strong>数据：Bench2Drive 上取得 88.16 DS，将不安全指令下的碰撞从 60 降至 38</strong>。<strong>读法：车企智驾岗位（求职目标之一）今年的技术热点就是 VLA + 世界模型，这篇的「基准思维」值得借鉴——把「不安全指令下的行为」单列为评测维度，与无人机「违规指令下的安全降级」同构；面试聊智驾趋势时可直接引用</strong>。</p>
+      <div class="news-meta"><span class="tag tag-orange">驾驶安全</span><span class="badge high">💎 CoRL 2026</span><span>arXiv:2610.20609 · cs.RO</span></div>
+      <p>Shaoyuan Xie、Zihan Zhang 等的 <strong>SafeDriveVLA: Navigation-Conditioned World Model Dreaming for Conflict-Aware End-to-End Autonomous Driving</strong>（CoRL 2026 接收）。新问题被正式化：VLA 把导航接口从固定指令集放宽到自由自然语言，<strong>走神的乘客可能下出不安全指令、恶意用户甚至故意下危险指令</strong>。方案两件事：显式预测三级导航遵从模式、把冲突推理与动作生成分离；<strong>导航条件世界模型「做梦」</strong>——不同于以往滚动专家或规划动作的世界模型，它专门预演「严格服从导航信号」会发生什么，据此判断服从是否安全。<strong>数据：Bench2Drive 88.16 Driving Score、68.64% 成功率；闭环语言遵循提升 49.3%；不安全指令下碰撞从 60 次降到 38 次（对比最优 SimLingo 变体）</strong>；附带首个「导航遵循+冲突意识+对抗鲁棒」联合基准。<strong>读法：把「指令安全」从系统外挂变成模型内生预测，是 VLA 时代的安全新命题；世界模型用途从「预测未来」扩展到「预演反事实」，这个框架在无人机地面站的人机接口上同样成立。</strong></p>
       <a class="source-link" href="https://arxiv.org/abs/2610.20609" target="_blank">📎 查看原文</a>
     </div>
   </div>
-</div>
-
-<div class="section">
-  <div class="section-title">板块六 · 低空经济产业动态：大疆机场 4 换电架构落地、感知避障首项国际标准、eVTOL 取证竞速</div>
   <div class="card">
-    <h3>① 大疆机场 4（Dock 4）10 月 14 日发布确认换电架构：机巢「给飞机换电池」取代原地充电</h3>
+    <h3>⑧ DriveWLA + YOUDrive：混合专家统一三域建模、驾驶风格变成可组合方向（10 月 13/10 日提交）</h3>
     <div class="news-item">
-      <div class="news-meta"><span class="tag tag-accent">大疆</span><span class="badge hot">🔥 换电架构</span><span>2026年10月14日</span></div>
-      <p>大疆 10 月 8 日发布的六秒预告片「Always There, Always Ready」在 14 日正式揭晓：新一代机场（外界称 Dock 4）最大的机制变化是<strong>自动换电——电池包沿导轨落入旋转托盘，再送入折叠臂四旋翼的机背电池舱</strong>，而 Dock 3 及此前机型都只能在机内充电（Dock 3 从 15% 充至 95% 需 <strong>27 分钟</strong>）。配套机型 Matrice 5TD 已于 9 月 21 日在民航 UOM 系统登记：<strong>空机 2.6 公斤、最大起飞重量 3.05 公斤</strong>，申报用途为电力线路与油气管道巡检；海外媒体预估「机场 + 飞机」组合售价约 <strong>2.7 万-3.3 万美元</strong>（非官方），因美国 Covered List 限制预计不在美销售。<strong>读法：换电把无人值守的「单任务周转时间」从半小时级压到分钟级，巡检、应急响应任务的密度上限随之抬升——直接放大了电科系院所、电网与应急系统的飞控/系统集成岗位需求，求职时可作行业景气度佐证</strong>。</p>
-      <a class="source-link" href="https://dronexl.co/2026/10/08/dji-enterprise-teaser-battery-swap-dock-october-14/" target="_blank">📎 查看原文</a>
-    </div>
-    <h3 class="mt-4">② 我国联合牵头《无人机感知与避障系统》国际标准：填补领域空白，明确检测距离与安全间隔参数</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-green">国际标准</span><span class="badge new">🆕 标准破局</span><span>2026年10月12日</span></div>
-      <p>据市场监管总局消息（经济参考报 10 月 12 日报道），我国深度参与 ISO、IEC 低空经济标准化工作：<strong>我国联合牵头制定的《无人机感知与避障系统》填补了相关领域国际标准空白</strong>，以城市复杂场景应用为导向，规定了无人机对航空器或其他物体感知与避障系统的通用功能、系统架构、性能及安全质量要求，<strong>明确了检测距离、安全间隔距离等技术参数，并对着陆阶段的障碍物检测与应急避障策略作出详细规定</strong>；同时，我国牵头提出的无人驾驶航空器身份识别领域<strong>首个国际标准提案成功立项</strong>。<strong>读法：对飞控方向是双重信号——技术侧，「感知避障」进入国际统一语言阶段，仿真实验的评测指标应对标「检测距离/安全间隔」表述；职业侧，标准制定参与单位（检测机构、院所、龙头厂商）的相关岗位含金量上升</strong>。</p>
-      <a class="source-link" href="https://www.toutiao.com/article/7695594002044764714" target="_blank">📎 查看原文</a>
-    </div>
-    <h3 class="mt-4">③ eVTOL 取证竞速：齐飞 W280 获 TC 受理（总装到受理仅一年）、TCab E20 签约马来西亚 SIDEC</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-orange">eVTOL</span><span class="badge-info">✈️ 型号合格证</span><span>2026年10月8-9日</span></div>
-      <p>国产 eVTOL 本周两项关键进展。其一，<strong>齐飞航空（苏州）10 月 8 日宣布完成近亿元人民币战略轮融资</strong>（苏州创新投资集团领投），资金投向研发、试飞与适航取证；其载人机型 <strong>W280 已于 9 月 1 日获民航华东管理局型号合格证（TC）受理——从总装下线到适航受理仅用一年</strong>；W280 为复合翼构型、纯电驱动，<strong>最大起飞重量 3.18 吨、5-6 座、最大速度 280 km/h、最大航程 300 公里</strong>，同平台货运版 W280F 最大商载 1 吨，走「由货及客」路径。其二，<strong>时的科技 TCab E20（五座倾转旋翼）10 月 9 日与马来西亚 SIDEC 签署 MOU</strong>，探索在馬商业化并谋求东南亚扩张；E20 已完成认证基础（G-1）、符合性方法（G-2）与审定计划，CAAC 型号认证进行中、尚未取证。<strong>读法：「货运先行积累飞行小时与维护记录、再支撑载人取证」的路径，对理解飞控冗余等级差异（货运 vs 载人）是活教材；eVTOL 主机厂的控制、仿真、适航岗位正从概念期转入扩张期</strong>。</p>
-      <a class="source-link" href="https://www.x-techcon.com/article/195447.html" target="_blank">📎 查看原文</a>
-    </div>
-    <h3 class="mt-4">④ 制度底座加速成型：新《民航法》施行满百日（空域审批 72 小时压缩至 2 小时）、北京无人机新规 11 月 15 日施行</h3>
-    <div class="news-item">
-      <div class="news-meta"><span class="tag tag-teal">政策法规</span><span class="badge-info">📜 制度观察</span><span>2026年10月上旬</span></div>
-      <p>新修订的《中华人民共和国民用航空法》自 2026 年 7 月 1 日施行已满百日：该法<strong>首次将「低空经济」写入国家法律文本，增设「发展促进」专章，明确 300 米以下低空空域分类分级管理，部分飞行活动由「一事一批」调整为备案制</strong>；据行业媒体梳理，<strong>空域审批时限由 72 小时压缩至 2 小时</strong>，20 余省份已布局低空产业。同期，中共中央、国务院 10 月 9 日印发《关于发展新质生产力的意见》，明确提出「在确保安全前提下，推动低空经济、商业航天健康有序发展」。地方侧，<strong>新修订《北京市无人驾驶航空器管理规定》将于 11 月 15 日施行</strong>，北京行政区域全域为管制空域、禁止持有存放无人机及核心部件，同步出台特殊保障规定覆盖应急、消防、安防场景。<strong>读法：法律-审批-场景三级制度同时收紧与松绑，「安全」与「合规」从成本项变成准入门槛——这与本期论文主线的「安全内生」形成产业呼应：标准与法规正在把论文里的安全机制变成产品必需项</strong>。</p>
-      <a class="source-link" href="https://www.sohu.com/a/1086885755_100288030" target="_blank">📎 查看原文</a>
+      <div class="news-meta"><span class="tag tag-orange">范式演进</span><span class="badge-info">🎓 双连发</span><span>arXiv:2610.17903 / 2610.14802</span></div>
+      <p>DriveWLA（Wang 等，华中科技大学）：基于 <strong>Mixture-of-Transformers 的世界-语言-动作统一模型</strong>——世界专家管未来预测、语言专家管语义理解、动作专家管轨迹生成，跨专家注意力控制信息流；<strong>Flow-GRPO 强化学习后训练</strong>精炼动作专家。<strong>数据：NAVSIM v1 92.3 PDMS、v2 90.1 EPDMS，零样本泛化到 HUGSIM、nuScenes、Bench2Drive</strong>。YOUDrive（Zheng、Lv 等，NTU）换个切口：<strong>把「驾驶风格」蒸馏成任务向量——学习到的参数更新在表征空间里构成风格方向</strong>，推理时可缩放、可组合、免重训；流匹配解码器在风格条件下生成多模态可行轨迹；提出 Style Alignment Score。<strong>数据：NAVSIM navtest 上单个系数单调控制六种教师人格的激进程度，PDMS 全程高于 0.90、最高 0.954</strong>。<strong>读法：两篇共同指向 VLA 的下一个战场——可控性（composability）：能力靠预训练，个性与安全边界靠推理时的方向空间调节；这套「任务向量」机制与四旋翼策略的「风格化调参」（如激进度-安全度旋钮）可以互相启发。</strong></p>
+      <a class="source-link" href="https://arxiv.org/abs/2610.17903" target="_blank">📎 查看原文（DriveWLA）</a>
+      <a class="source-link" href="https://arxiv.org/abs/2610.14802" target="_blank">📎 查看原文（YOUDrive）</a>
     </div>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-title">板块七 · 本周精读建议：三个可以在两周内启动的仿真实验</div>
-  <div class="highlight-box">
-    <div class="highlight-title">💡 给四旋翼飞控仿真方向的三个落点</div>
-    <p><strong>落点一（建模侧）：</strong>照 2610.20429 搭「均匀分箱 vs 对数分箱 vs 连续 PPO」三线对照，回答「离散动作空间在四旋翼姿态/速率控制上损失多少性能」——实验量小、结论明确，直接支撑开题的方法论选择。<strong>落点二（架构侧）：</strong>复现 REFLEX 的「模式切换」最小版：Stateflow 实现碰撞检测 → 本体感受反射策略 → 任务模式恢复；再借 VIGOR-MPC 的「特权教师调权重、视觉学生估权重」思路，把风扰补偿做成两层架构，同时覆盖「安全机制 + 自适应控制」两个开题关键词。<strong>落点三（估计侧）：</strong>参考 2610.20226 与 2610.20490 做「视觉退化注入」实验：仿真中按时间段削弱视觉观测（模糊/弱纹理/遮挡），对比固定权重 EKF 与自适应加权方案的轨迹误差与自诊断触发延迟——低成本、高信息量，可作开题鲁棒性验证章节的核心图表。</p>
+  <div class="section-title">板块四 · 低空产业动态：法治护航满百日、3.5 万亿预测、自贡大会</div>
+  <div class="card">
+    <h3>⑨ 新民航法施行满百日：低空经济首次入法、300 米以下分类分级、审批改备案</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">政策面</span><span class="badge badge-success">✅ 法治护航</span><span>2026-10-09/12 报道</span></div>
+      <p>新修订的《中华人民共和国民用航空法》自 2026 年 7 月 1 日施行，现已满百日：<strong>首次把「低空经济」写入国家法律文本，增设「发展促进」专章，明确 300 米以下低空空域分类分级管理，并把以往「一事一批」的空域审批部分转为备案制</strong>。配套监管：无人机「唯一识别码」、适航许可、飞行溯源。专家（国研新经济研究院朱克力）总结三大价值：稳定市场预期、理顺央地权责、以差异化监管平衡创新与安全。<strong>对科研人的含义：适航审定人才缺口被明确点名——「载人 eVTOL 适航验证周期长，审定人才存在缺口」，这是仿真+适航交叉方向的长期机会信号。</strong></p>
+      <a class="source-link" href="https://www.ce.cn/cysc/newmain/yc/jsxw/202610/t20261009_3250162.shtml" target="_blank">📎 查看原文（法治护航·中国经济网）</a>
+      <a class="source-link" href="https://new.qq.com/rain/a/20261012A03LT800" target="_blank">📎 查看原文（低空经济首次入法·腾讯新闻）</a>
+    </div>
   </div>
-  <div class="warning-box"><div class="warning-title">⚠️ 查重与引用提醒</div><p>本期 12 篇论文均为 10 月 11-14 日新提交或新公布条目，与上期（10 月 14 日）日报及此前各期无重复；产业动态 4 条均为本周新事件。arXiv 编号与链接均来自 arXiv 官方检索结果，实验数字引自作者摘要自述，复现时注意仿真条件差异；引用前建议核对论文最新版本。</p></div>
+  <div class="card">
+    <h3>⑩ 规模锚点：2035 年 3.5 万亿预测、注册无人机 328.7 万架、飞行时长 +69.89%</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">数据面</span><span class="badge badge-high">📌 权威口径</span><span>2026-10-06 中国经济网</span></div>
+      <p>中国经济网梳理低空经济「政策+出海双重共振」：<strong>民航局预测 2035 年中国低空经济市场规模有望突破 3.5 万亿元</strong>；截至 2025 年底全行业注册无人机 <strong>328.7 万架（同比增长 51.0%）</strong>，2025 全年无人机累计飞行 <strong>4530.29 万小时（同比增长 69.89%）</strong>。国信证券判断商业化顺序为「先任务、后载客；先限定、后开放；先有人监督、后高自动化」——农业、能源巡检、测绘、应急救援、医疗物流等有明确付费方的场景率先形成高频收入。短板清单：国际适航互认、高可靠航空级供应链、跨区域运营、事故数据库与运营数据透明度。</p>
+      <a class="source-link" href="http://i5.ce.cn/finance/stock/gsgdbd/202610/t20261006_3248414.shtml" target="_blank">📎 查看原文（低空经济双重共振·中国经济网）</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>⑪ 2026 低空经济产业发展大会自贡开幕：中大型无人机与 eVTOL 关键子链靶向引育</h3>
+    <div class="news-item">
+      <div class="news-meta"><span class="tag tag-green">产业面</span><span class="badge badge-new">🆕 昨日开幕</span><span>2026-10-14 四川自贡</span></div>
+      <p>10 月 14 日，以「低空新蓝海·翼起向未来」为主题的 2026 低空经济产业发展大会在自贡开幕，四川省长出席。地方动作三个关键词：<strong>「飞起来」——布局通用机场、垂直起降场、公共航路与智能网联系统；「强起来」——聚焦中大型无人机、电动垂直起降飞行器、低空安防装备等关键子链靶向引育链主与配套企业；「管起来」——依托省级低空空域运行服务中心建立全领域安全监管</strong>。大会同步举办中国大学生飞行器设计创新大赛总决赛、10 场平行会议与公众开放日。<strong>读法：把「检验检测、试飞验证、中试熟化」列为公共服务功能建设重点，意味着试飞验证类工程岗位在西部低空集群将持续放量。</strong></p>
+      <a class="source-link" href="https://news.qq.com/rain/a/20261014A0ALGY00" target="_blank">📎 查看原文（自贡大会开幕·腾讯新闻）</a>
+    </div>
+  </div>
 </div>
 
 <div class="section">
   <div class="section-title">信息来源汇总</div>
   <div class="table-wrap">
     <table class="summary-table">
-      <thead><tr><th>来源标题</th><th>链接</th><th>时间</th></tr></thead>
+      <thead><tr><th>论文/动态</th><th>链接</th><th>时间</th></tr></thead>
       <tbody>
-        <tr><td>REFLEX: A Learned On-Board Reflex for Soft Quadrotors (arXiv:2610.15867)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.15867" target="_blank">📎 查看原文</a></td><td>2026-10-11</td></tr>
-        <tr><td>Stereo-Planner: Stereo-to-Trajectory Planning for Sim-to-Real Quadrotors (arXiv:2610.15560)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.15560" target="_blank">📎 查看原文</a></td><td>2026-10-11</td></tr>
         <tr><td>Constrained Differentiable Policy Learning for Safe Quadrotor Navigation (arXiv:2610.16119)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.16119" target="_blank">📎 查看原文</a></td><td>2026-10-12</td></tr>
-        <tr><td>When Do Discrete Actions Make Good Continuous Controllers? (arXiv:2610.20429)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.20429" target="_blank">📎 查看原文</a></td><td>2026-10-14</td></tr>
-        <tr><td>Smart Fusion for Adaptive Visual-IMU Weighting in cuVSLAM (arXiv:2610.20226)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.20226" target="_blank">📎 查看原文</a></td><td>2026-10-14</td></tr>
-        <tr><td>Tiered-Resolution Volumetric Mapping for Outdoor UAV Navigation (arXiv:2610.20476)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.20476" target="_blank">📎 查看原文</a></td><td>2026-10-14</td></tr>
-        <tr><td>Towards Certifiable State Estimation under Observability Degeneracy (arXiv:2610.20490)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.20490" target="_blank">📎 查看原文</a></td><td>2026-10-14</td></tr>
-        <tr><td>Full-Order Safety for Nonlinear Reduced-Order MPC (CoRE-MPC, arXiv:2610.19250)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.19250" target="_blank">📎 查看原文</a></td><td>2026-10-13</td></tr>
-        <tr><td>VIGOR-MPC: Vision-Guided Objective Regulation MPC (arXiv:2610.20333)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.20333" target="_blank">📎 查看原文</a></td><td>2026-10-14</td></tr>
-        <tr><td>Safe RL with Receding-Horizon Safety Critic and Differentiable Shields (arXiv:2610.20255)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.20255" target="_blank">📎 查看原文</a></td><td>2026-10-14</td></tr>
-        <tr><td>Optimal Decay Matrix Control Barrier Functions (arXiv:2610.18675)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.18675" target="_blank">📎 查看原文</a></td><td>2026-10-13</td></tr>
-        <tr><td>Heterogeneous Services in Multi-UAV Networks with No-Fly Zone (arXiv:2610.19515)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.19515" target="_blank">📎 查看原文</a></td><td>2026-10-14</td></tr>
-        <tr><td>Learning in Orbit: Onboard Training and Closed-Loop Attitude Control (arXiv:2610.19122)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.19122" target="_blank">📎 查看原文</a></td><td>2026-10-13</td></tr>
-        <tr><td>SafeDriveVLA: Conflict-Aware End-to-End Autonomous Driving (arXiv:2610.20609)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.20609" target="_blank">📎 查看原文</a></td><td>2026-10-14</td></tr>
-        <tr><td>DJI Teases Dock 4 With Battery Swapping for October 14（DroneXL）</td><td><a class="source-link" href="https://dronexl.co/2026/10/08/dji-enterprise-teaser-battery-swap-dock-october-14/" target="_blank">📎 查看原文</a></td><td>2026-10-08</td></tr>
-        <tr><td>我国低空经济领域国际标准化建设提速（光明网 · 经济参考报）</td><td><a class="source-link" href="https://www.toutiao.com/article/7695594002044764714" target="_blank">📎 查看原文</a></td><td>2026-10-12</td></tr>
-        <tr><td>齐飞航空完成近亿元融资，载人 eVTOL W280 获 TC 受理（科技区角）</td><td><a class="source-link" href="https://www.x-techcon.com/article/195447.html" target="_blank">📎 查看原文</a></td><td>2026-10-08</td></tr>
-        <tr><td>TCab Tech and SIDEC Sign MOU on E20 eVTOL Commercialisation（eVTOL Insights）</td><td><a class="source-link" href="https://evtolinsights.com/tcab-tech-and-sidec-sign-mou-to-explore-e20-evtol-commercialisation-in-malaysia/" target="_blank">📎 查看原文</a></td><td>2026-10-09</td></tr>
-        <tr><td>新《民航法》施行满百日与北京无人机新规（搜狐 · 低空经济周报）</td><td><a class="source-link" href="https://www.sohu.com/a/1086885755_100288030" target="_blank">📎 查看原文</a></td><td>2026-10-09</td></tr>
+        <tr><td>LBA-CBF: Rapidly Adaptive Safety Filters via Parallel Dynamics Inference (arXiv:2610.08765)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.08765" target="_blank">📎 查看原文</a></td><td>2026-10-06</td></tr>
+        <tr><td>Asynchronous Tracking, Optical Communication and 3D Motion Capture using Event-based Sensors (arXiv:2610.04342)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.04342" target="_blank">📎 查看原文</a></td><td>2026-10-03</td></tr>
+        <tr><td>BGC-Nav: Cross-Altitude Multi-UAV Collaborative Navigation (arXiv:2610.14702)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.14702" target="_blank">📎 查看原文</a></td><td>2026-10-10</td></tr>
+        <tr><td>Managing Context and Communication in Distributed Agentic UAV Swarms (arXiv:2610.01569, CCNC 2027)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.01569" target="_blank">📎 查看原文</a></td><td>2026-10-01</td></tr>
+        <tr><td>Defense-in-Depth at the Perception-Reasoning Interface of LLM-Centric Agentic UAV Swarms (arXiv:2610.03319)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.03319" target="_blank">📎 查看原文</a></td><td>2026-10-02</td></tr>
+        <tr><td>AUGUstus: Autonomous Driving VLA with Unified Generation and Understanding (arXiv:2610.16985)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.16985" target="_blank">📎 查看原文</a></td><td>2026-10-12</td></tr>
+        <tr><td>SafeDriveVLA: Navigation-Conditioned World Model Dreaming (arXiv:2610.20609, CoRL 2026)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.20609" target="_blank">📎 查看原文</a></td><td>2026-10-14</td></tr>
+        <tr><td>DriveWLA: Unifying Future Dynamics and Scene Semantics (arXiv:2610.17903)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.17903" target="_blank">📎 查看原文</a></td><td>2026-10-13</td></tr>
+        <tr><td>YOUDrive: Driving Style as a Composable Direction (arXiv:2610.14802)</td><td><a class="source-link" href="https://arxiv.org/abs/2610.14802" target="_blank">📎 查看原文</a></td><td>2026-10-10</td></tr>
+        <tr><td>法治护航：低空经济步入发展新阶段（中国经济网）</td><td><a class="source-link" href="https://www.ce.cn/cysc/newmain/yc/jsxw/202610/t20261009_3250162.shtml" target="_blank">📎 查看原文</a></td><td>2026-10-09</td></tr>
+        <tr><td>低空经济首次写进国家法律（腾讯新闻）</td><td><a class="source-link" href="https://new.qq.com/rain/a/20261012A03LT800" target="_blank">📎 查看原文</a></td><td>2026-10-12</td></tr>
+        <tr><td>低空经济迎政策出海双重共振（中国经济网）</td><td><a class="source-link" href="http://i5.ce.cn/finance/stock/gsgdbd/202610/t20261006_3248414.shtml" target="_blank">📎 查看原文</a></td><td>2026-10-06</td></tr>
+        <tr><td>2026低空经济产业发展大会自贡开幕（腾讯新闻）</td><td><a class="source-link" href="https://news.qq.com/rain/a/20261014A0ALGY00" target="_blank">📎 查看原文</a></td><td>2026-10-14</td></tr>
       </tbody>
     </table>
   </div>

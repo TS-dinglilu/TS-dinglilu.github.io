@@ -1,6 +1,6 @@
 <div class="report-header">
   <h1>无人机科研日报 · 2026-10-12</h1>
-  <div class="subtitle">四旋翼飞行控制与强化学习 · 路径规划 · 集群协同 · 低空经济制度 · eVTOL · 科研论文与项目进展</div>
+  <div class="subtitle">四旋翼飞行控制与强化学习 · 路径规划 · 集群协同 · 低空经济 · eVTOL</div>
   <div class="meta">
     <span class="date-badge">2026-10-12 星期一</span>
     <span class="text-muted">读者画像：安徽工业大学机械工程硕士（研二），四旋翼飞控仿真方向，徐州人，MATLAB/Simulink + Python 强化学习，求职车企 / 机械 / 研究院</span>
@@ -8,42 +8,41 @@
 </div>
 
 <div class="section">
-  <div class="section-title">板块一 · 本期导览：安全写成硬约束、协同改成软建议、制度进入法治周期</div>
+  <div class="section-title">板块一 · 本期导览</div>
   <div class="stats-grid">
-    <div class="stat-box"><div class="count-badge">16</div><div class="label">本期条目</div><div class="sub">10月9日-15日窗口 · 全新收录</div></div>
-    <div class="stat-box"><div class="count-badge">3 篇</div><div class="label">窗口期 arXiv 论文</div><div class="sub">10月10-12日新提交</div></div>
-    <div class="stat-box"><div class="count-badge">6000+</div><div class="label">飞行器设计大赛参赛学生</div><div class="sub">160 所高校 · 自贡总决赛</div></div>
-    <div class="stat-box"><div class="count-badge">近1亿元</div><div class="label">齐飞航空战略轮融资</div><div class="sub">W280 获民航华东局 TC 受理</div></div>
+    <div class="stat-box"><div class="count-badge">16</div><div class="label">本期条目</div></div>
+    <div class="stat-box"><div class="count-badge">3 篇</div><div class="label">窗口期 arXiv 论文</div></div>
+    <div class="stat-box"><div class="count-badge">6000+</div><div class="label">飞行器设计大赛参赛学生</div></div>
+    <div class="stat-box"><div class="count-badge">近1亿元</div><div class="label">齐飞航空战略轮融资</div></div>
   </div>
   <div class="highlight-box">
     <div class="highlight-title">💡 本期视角</div>
-    <p>本期为 <strong>2026-10-12（周一）</strong>补写稿，窗口取 <strong>10 月 9 日至 15 日</strong>，共 <strong>16 个条目、8 个板块</strong>。三条主线：<strong>其一，安全控制的形式化正从「惩罚项」走向「硬约束」</strong>——arXiv:2610.16119 把避障显式建模为约束、用原始-对偶梯度下降-上升训练，免掉惩罚权重手调，且零样本迁移到 Gazebo/PX4 与真机；<strong>其二，集群协同出现「软建议」范式</strong>——BGC-Nav 让高空机以信念先验「建议」而非「指挥」低空机，与 Palladyne AI 强调的「实时决策才叫自主」互为印证；<strong>其三，制度面进入法治周期</strong>——新《民航法》施行满百日、中央定调「确保安全前提下推动低空经济健康有序发展」，而北京全域管制、多地「退补」提示行业从补贴驱动转向场景驱动。<strong>对课题的映射：约束 RL 与软先验协同，一个治「单机安全」、一个治「多机分工」，恰好覆盖开题里控制与协同两章的方法论缺口</strong>。</p>
+    <p>本期为 <strong>2026-10-12（周一）</strong>补写稿，窗口取 <strong>10 月 9 日至 15 日</strong>，共 <strong>16 个条目、8 个板块</strong>。三条主线：<strong>其一，安全控制从「惩罚项」走向「硬约束」</strong>——arXiv:2610.16119 把避障建模为约束、用原始-对偶梯度下降-上升训练，免掉权重手调并零样本迁移真机；<strong>其二，集群协同出现「软建议」范式</strong>——BGC-Nav 让高空机以信念先验「建议」而非「指挥」低空机；<strong>其三，制度进入法治周期</strong>——新《民航法》满百日，北京全域管制、多地「退补」提示行业转向场景驱动。<strong>对课题的映射：约束 RL 与软先验协同，一个治「单机安全」、一个治「多机分工」</strong>。</p>
   </div>
-  <div class="info-box"><div class="info-title">ℹ️ 阅读说明</div><p>本期与 10 月 14 日当期无重复，当期已收录的 2610.11809（WAND）、2610.14522（四阶 CBF）、2610.06874（风扰保真度阶梯）不再列入。条目时间均标注真实发生时间；arXiv 链接指向摘要页，实验数字来自作者摘要自述。</p></div>
 </div>
 
 <div class="section">
-  <div class="section-title">板块二 · 论文速递：四旋翼飞行控制、规划与状态估计</div>
+  <div class="section-title">板块二 · 论文速递：控制、规划与状态估计</div>
   <div class="card">
-    <h3>① 约束可微策略学习：把「安全」写成硬约束而不是惩罚项，零样本迁移真机（10 月 12 日提交）</h3>
+    <h3>① 约束可微策略学习：安全写成硬约束，零样本迁移真机（10 月 12 日提交）</h3>
     <div class="news-item">
       <div class="news-meta"><span class="tag tag-accent">安全 RL</span><span class="badge hot">🔥 硬约束路线</span><span>arXiv:2610.16119 · cs.RO</span></div>
-      <p>Yan Rui Tan、Praveen Krishnapur、Zeyu Feng、Han Bao、Yew-Soon Ong、Fan Shi 的 <strong>Constrained Differentiable Policy Learning for Safe Quadrotor Navigation</strong>。可微仿真让策略优化能拿到解析梯度，但现有工作几乎都把安全当作加权惩罚项，任务与约束的权衡全靠手调。这篇把避障显式建模为约束，在可微仿真器里用<strong>原始-对偶梯度下降-上升（primal-dual gradient descent-ascent）</strong>训练四旋翼策略，两个关键组件：一是有界间隙约束函数，在安全边界附近给出有信息量的梯度，同时防止大违规把优化搞崩；二是 log-mean-exp（LME）聚合，在单一对偶变量下平滑突出整条轨迹与批次中的关键逐步违规。作者证明了优化收敛到可行策略；实验上安全-性能权衡优于固定惩罚与既有基线，<strong>学到的策略零样本迁移到 Gazebo/PX4 与真实四旋翼，无需额外微调</strong>。</p>
-      <p><strong>读法：「约束 RL / 安全 RL」形式化在四旋翼上的完整落地——拉格朗日乘子自动学出「任务与安全的汇率」</strong>。最省事的复现切口：把 PPO 脚本里的惩罚项换成对偶变量，与固定权重做消融；LME 聚合也可搬进风扰穿越的碰撞惩罚设计。</p>
+      <p>Yan Rui Tan、Praveen Krishnapur、Zeyu Feng、Han Bao、Yew-Soon Ong、Fan Shi 的 <strong>Constrained Differentiable Policy Learning for Safe Quadrotor Navigation</strong>。可微仿真让策略优化能拿到解析梯度，但现有工作几乎都把安全当加权惩罚项，权衡全靠手调。这篇把避障显式建模为约束，在可微仿真器里用<strong>原始-对偶梯度下降-上升（primal-dual gradient descent-ascent）</strong>训练四旋翼策略：一是有界间隙约束函数，在安全边界附近给出有信息量的梯度又防止大违规破坏优化；二是 log-mean-exp（LME）聚合，在单一对偶变量下平滑突出关键逐步违规。作者证明了收敛性，安全-性能权衡优于固定惩罚与既有基线，<strong>学到的策略零样本迁移到 Gazebo/PX4 与真实四旋翼，无需额外微调</strong>。</p>
+      <p><strong>读法：「约束 RL」在四旋翼上的完整落地——拉格朗日乘子自动学出「任务与安全的汇率」</strong>。复现切口：把 PPO 惩罚项换成对偶变量做消融。</p>
       <a class="source-link" href="https://arxiv.org/abs/2610.16119" target="_blank">📎 查看原文</a>
     </div>
     <h3 class="mt-4">② Stereo-Planner：双目 RGB 直接出轨迹，Orin NX 上 24.27 ms 推理、7 m/s 实飞（10 月 11 日提交）</h3>
     <div class="news-item">
       <div class="news-meta"><span class="tag tag-purple">视觉导航</span><span class="badge new">🆕 零样本迁移</span><span>arXiv:2610.15560 · cs.RO</span></div>
-      <p>Hongming Shen、Junjie Lu、Xun Chen、Wei Wang、Xinhang Xu、Bailing Tian、Lihua Xie（南洋理工大学）的 <strong>Stereo-Planner: Learning Stereo-to-Trajectory Planning for Zero-Shot Sim-to-Real Quadrotor Navigation</strong>。现有导航要么依赖专用深度传感器、要么显式重建深度，从 RGB 直接生成轨迹一直被 sim-to-real 域差卡住。这篇把轨迹生成建模为<strong>「以状态与尺度为条件的隐式立体几何查询」</strong>：Scene Representor 借用预训练视觉定位基础模型提取跨域共享的几何线索；轻量 Trajectory Decoder 通过交错注意力把表征转成轨迹，并把<strong>双目基线长度当作米制尺度线索注入</strong>。训练全在仿真中完成、以可微轨迹代价优化，部署无需微调。数据：仿真指令速度 8 m/s 时成功率 <strong>95%</strong>；真机用 NVIDIA Orin NX 的紧凑四旋翼飞到 <strong>7 m/s</strong>，平均机载视觉到动作推理时间 <strong>24.27 ms</strong>；代码与硬件设计将开源。</p>
-      <p><strong>读法：端到端「感知即规划」的代表作，且把推理延迟压进 25 ms 以内</strong>——对机载算力受限的场景是有说服力的存在证明。「双目基线作为尺度先验」这个技巧值得记进笔记：它等于在视觉链路里内置了一把米尺。</p>
+      <p>Hongming Shen、Junjie Lu、Xun Chen、Wei Wang、Xinhang Xu、Bailing Tian、Lihua Xie（南洋理工大学）的 <strong>Stereo-Planner: Learning Stereo-to-Trajectory Planning for Zero-Shot Sim-to-Real Quadrotor Navigation</strong>。现有导航要么依赖专用深度传感器、要么显式重建深度，从 RGB 直接生成轨迹一直被 sim-to-real 域差卡住。这篇把轨迹生成建模为<strong>「以状态与尺度为条件的隐式立体几何查询」</strong>：Scene Representor 借预训练视觉定位基础模型提取跨域几何线索，Trajectory Decoder 以交错注意力把表征转成轨迹，并把<strong>双目基线长度当作米制尺度线索注入</strong>。训练全在仿真中完成，部署无需微调。数据：仿真指令速度 8 m/s 时成功率 <strong>95%</strong>；真机用 NVIDIA Orin NX 飞到 <strong>7 m/s</strong>，平均机载视觉到动作推理 <strong>24.27 ms</strong>。</p>
+      <p><strong>读法：端到端「感知即规划」代表作，推理延迟压进 25 ms 以内</strong>；「双目基线作为尺度先验」等于在视觉链路里内置了一把米尺。</p>
       <a class="source-link" href="https://arxiv.org/abs/2610.15560v1" target="_blank">📎 查看原文</a>
     </div>
     <h3 class="mt-4">③ 中山大学团队破解「纯方位跟踪」：无测距、无 GPS，四旋翼只凭一个角度锁定移动目标（10 月 15 日报道）</h3>
     <div class="news-item">
       <div class="news-meta"><span class="tag tag-teal">状态估计</span><span class="badge-info">🎯 IROS 2025</span><span>网易 · 飞行邦</span></div>
-      <p>中山大学张清瑞老师团队联合电子科技大学深圳高等研究院在 <strong>IROS 2025</strong> 上展示了纯方位目标运动分析（Bearing-only TMA）新方案：没有雷达测距、没有激光雷达，甚至 GPS 信号都可能丢失，四旋翼仅凭机载传感器获取的目标方位角，就在复杂环境中实现对地面移动目标的持续定位与绕飞监视。痛点在于测量模型高度非线性、距离信息缺失导致可观测性极差，传统伪线性卡尔曼滤波存在「越算越偏」的系统性偏差。团队的双重突破：算法层把全最小二乘理论拓展为<strong>递归形式（RTLS）</strong>，同时建模方位测量噪声与观测器自身定位误差，用递归迭代替代奇异值分解，可在嵌入式平台实时估计；观测策略层设计<strong>输入有界的绕飞运动控制器</strong>，主动环绕目标飞行，从观测几何上破解可观测性不足。</p>
-      <p><strong>读法：「控制即感知」的教科书案例——飞行动作本身在改善估计品质</strong>。当状态量不可直接观测时，参考轨迹可以主动「喂」信息给估计器；开题谈可观测性与主动观测时，这是现成引文。</p>
+      <p>中山大学张清瑞老师团队联合电子科技大学深圳高等研究院在 <strong>IROS 2025</strong> 上展示了纯方位目标运动分析（Bearing-only TMA）新方案：没有雷达测距、激光雷达，甚至 GPS 都可能丢失，四旋翼仅凭机载传感器获取的目标方位角，就在复杂环境中实现对地面移动目标的持续定位与绕飞监视。痛点在距离信息缺失导致可观测性极差，传统伪线性卡尔曼滤波「越算越偏」。团队双重突破：算法层把全最小二乘拓展为<strong>递归形式（RTLS）</strong>，同时建模方位测量噪声与观测器定位误差，用递归迭代替代奇异值分解，可嵌入式实时估计；观测策略层设计<strong>输入有界的绕飞运动控制器</strong>，主动环绕目标飞行，从观测几何上破解可观测性不足。</p>
+      <p><strong>读法：「控制即感知」的教科书案例——飞行动作本身在改善估计品质</strong>，参考轨迹可以主动「喂」信息给估计器。</p>
       <a class="source-link" href="https://www.163.com/dy/article/L9941VFE05503O4L.html" target="_blank">📎 查看原文</a>
     </div>
   </div>
@@ -55,49 +54,49 @@
     <h3>① BGC-Nav：高空机当「建议者」不当「指挥官」，跨海拔双机协同导航（10 月 10 日提交）</h3>
     <div class="news-item">
       <div class="news-meta"><span class="tag tag-green">集群协同</span><span class="badge high">💎 训练无关</span><span>arXiv:2610.14702 · cs.RO</span></div>
-      <p>Jiuwu Hao、Yueyang Wu、Liguo Sun、Haolin Song、Zao Zhang、Pin Lv（电子科技大学）的 <strong>BGC-Nav: Cross-Altitude Multi-UAV Collaborative Navigation via Belief-Guided Coupling</strong>。问题：室外搜救场景下单机受部分可观测性制约，跨海拔协同（高空广域搜索 + 低空抵近确认）是可行方向，但现有方法依赖精确目标定位和刚性目标分发范式，既忽视高空观测的不确定性，又压制低空机的探索自主性。方案是一个<strong>训练无关（training-free）的跨海拔协同框架</strong>：高空机维护编码任务条件先验的 Global Belief Memory，低空机通过 Local Exhaustion Memory（局部穷尽记忆）、Local Attraction Augmentation（局部吸引增强）与 Directional Belief Prior（方向信念先验）三个模块，把高层信息以<strong>「建议偏差」而非「刚性指令」</strong>的形式纳入决策。在 ESARBench 上持续优于单智能体与协同类 SOTA，代码已在 GitHub 开源。</p>
-      <p><strong>读法：「建议而非命令」的接口设计对集群课题极有参考价值</strong>——高层信息以软先验注入、低层保留自主权，这恰好是「人在回路」与「机在回路」共通的折中。</p>
+      <p>Jiuwu Hao、Yueyang Wu、Liguo Sun、Haolin Song、Zao Zhang、Pin Lv（电子科技大学）的 <strong>BGC-Nav: Cross-Altitude Multi-UAV Collaborative Navigation via Belief-Guided Coupling</strong>。室外搜救中单机受部分可观测性制约，跨海拔协同（高空搜索 + 低空抵近）是可行方向，但现有方法依赖精确目标定位与刚性分发，既忽视高空观测不确定性，又压制低空机自主性。方案是一个<strong>训练无关（training-free）的跨海拔协同框架</strong>：高空机维护编码任务条件先验的 Global Belief Memory，低空机通过 Local Exhaustion Memory（局部穷尽记忆）、Local Attraction Augmentation（局部吸引增强）与 Directional Belief Prior（方向信念先验）三个模块，把高层信息以<strong>「建议偏差」而非「刚性指令」</strong>的形式纳入决策。在 ESARBench 上持续优于单智能体与协同类 SOTA，代码已在 GitHub 开源。</p>
+      <p><strong>读法：「建议而非命令」的接口设计对集群课题极有参考价值</strong>——软先验注入、低层保留自主权，是「人在回路」共通的折中。</p>
       <a class="source-link" href="https://arxiv.org/abs/2610.14702" target="_blank">📎 查看原文</a>
     </div>
     <h3 class="mt-4">② Palladyne AI 谈「真正的自主」：航点跟随不是自主，DECA 把决策权下沉到每一架（10 月 9 日）</h3>
     <div class="news-item">
       <div class="news-meta"><span class="tag tag-orange">自主决策</span><span class="badge-info">🧠 架构之争</span><span>Breaking Defense · HiWars</span></div>
-      <p>据 Breaking Defense 报道，Palladyne AI 正把「去中心化具身协作人工智能」（DECA）用于战场无人机群：<strong>每架无人机都在机载智能体里感知、推理、行动，无需人类指挥即可对变化实时动态反应</strong>。公司总裁 Ben Wolff 特别做了概念辨析——「无人」与「自主」不是同义词：业内常把航点跟随或预编程协同称为自主，但真正的自主意味着机器实时做决策，而不是执行人类提前写好所有决策的脚本。配套背景是美军 Northern Strike 26-2 演习在密歇根州 CAMP Grayling 的「无人机场」进行蜂群与反蜂群演练。</p>
-      <p><strong>读法：开题里「自主等级」界定的好引文</strong>——自主等级可以按「决策实时性」划分，而不是笼统写「自主飞行」；「可解释的自主边界」也是面试里能聊出深度的话题。</p>
+      <p>据 Breaking Defense 报道，Palladyne AI 正把「去中心化具身协作人工智能」（DECA）用于战场无人机群：<strong>每架无人机都在机载智能体里感知、推理、行动，无需人类指挥即可对变化实时动态反应</strong>。公司总裁 Ben Wolff 特别做了概念辨析——「无人」与「自主」不是同义词：业内常把航点跟随或预编程协同称为自主，但真正的自主意味着机器实时做决策，而不是执行人类提前写好所有决策的脚本。</p>
+      <p><strong>读法：开题里「自主等级」界定的好引文</strong>——按「决策实时性」划分，而不是笼统写「自主飞行」。</p>
       <a class="source-link" href="https://hiwars.com/zh/intel/bringing-real-autonomy-to-battlefield-drone-swarms" target="_blank">📎 查看原文</a>
     </div>
     <h3 class="mt-4">③ 空客「女武神」U740 完成欧洲首飞：0.8 马赫、火箭助推起飞，MARS「欧洲大脑」协调多机（10 月 12 日）</h3>
     <div class="news-item">
       <div class="news-meta"><span class="tag tag-red">有人-无人协同</span><span class="badge hot">🔥 欧洲首架 CCA</span><span>腾讯新闻 · 空客官方新闻稿</span></div>
-      <p>空客与美国 Kratos 在欧洲北部一处测试基地完成 <strong>U740「女武神」无人作战飞机首次欧洲飞行，这是欧洲第一款完成飞行的「协同作战飞机」（CCA）</strong>。飞行中达成一系列目标：火箭助推起飞、不依赖跑道；速度达到 <strong>0.8 马赫</strong>并在不同高度完成机动测试；验证了飞行中调整任务的能力。平台底子是 Kratos 的 XQ-58A，空客换上自研 <strong>MARS 任务系统</strong>——用 AI 辅助软件让无人机自主执行任务并协调多架无人机编队，同时保留「人在回路」机制确保关键决策符合交战规则。参数：机长 <strong>9.1 米</strong>、翼展 8.2 米、最大起飞重量约 <strong>3 吨</strong>、航程超 5000 公里。空客目标 2029 年前向德国空军交付作战能力型号；德方同时在评估莱茵金属与波音合作的 MQ-28「幽灵蝙蝠」，背景则是德法 FCAS 项目 2026 年 6 月中止后各国寻找过渡方案。</p>
-      <p><strong>读法：「忠诚僚机」本质是有人-无人协同（MUM-T），与多旋翼集群共享同一套任务分配与通信约束问题</strong>。其「AI 辅助软件 + 人在回路」的控制权分配设计，可与集群协同论文对照阅读。</p>
+      <p>空客与美国 Kratos 在欧洲北部一处测试基地完成 <strong>U740「女武神」无人作战飞机首次欧洲飞行，这是欧洲第一款完成飞行的「协同作战飞机」（CCA）</strong>。飞行中火箭助推起飞不依赖跑道，速度达 <strong>0.8 马赫</strong>，还验证了飞行中调整任务的能力。平台底子是 Kratos 的 XQ-58A，空客换上自研 <strong>MARS 任务系统</strong>——用 AI 辅助软件让无人机自主执行任务并协调多架无人机编队，同时保留「人在回路」机制确保关键决策符合交战规则。参数：机长 <strong>9.1 米</strong>、翼展 8.2 米、最大起飞重量约 <strong>3 吨</strong>、航程超 5000 公里。空客目标 2029 年前向德国空军交付；背景是德法 FCAS 项目 6 月中止后寻找过渡方案。</p>
+      <p><strong>读法：「忠诚僚机」本质是有人-无人协同（MUM-T），与多旋翼集群共享任务分配与通信约束问题</strong>。</p>
       <a class="source-link" href="https://news.qq.com/rain/a/20261013A02UWU00" target="_blank">📎 查看原文</a>
     </div>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-title">板块四 · 顶层制度：低空经济进入「法治护航」新阶段</div>
+  <div class="section-title">板块四 · 顶层制度：进入「法治护航」新阶段</div>
   <div class="card">
     <h3>① 中共中央、国务院印发《关于发展新质生产力的意见》：确保安全前提下，推动低空经济健康有序发展（10 月 9 日）</h3>
     <div class="news-item">
       <div class="news-meta"><span class="tag tag-accent">顶层文件</span><span class="badge hot">🔥 战略定调</span><span>今日头条 · 澎湃新闻</span></div>
-      <p>10 月 9 日，中共中央、国务院印发《关于发展新质生产力的意见》，在「培育壮大新兴产业」部分明确提出：加快新一代信息技术、新能源、新材料、<strong>智能网联新能源汽车、机器人、生物医药、高端装备、航空航天</strong>等战略性新兴产业发展，因地制宜建设各具特色、优势互补的战略性新兴产业集群，避免「内卷式」竞争；<strong>在确保安全前提下，推动低空经济、商业航天健康有序发展</strong>。未来产业方面，文件还提出探索量子科技、生物制造、氢能和核聚变能、脑机接口、具身智能、第六代移动通信等方向，建立未来产业投入增长和风险分担机制。</p>
-      <p><strong>读法：注意两个并列信号——「智能网联新能源汽车」与「低空经济」同列于战略性新兴产业</strong>，这正是车企布局飞行汽车的政策依据。求职车企时，「车-低空协同」是可以主动谈的技术叙事：飞控与车用智驾在规划、估计、控制栈上高度同源。</p>
+      <p>10 月 9 日，中共中央、国务院印发《关于发展新质生产力的意见》，在「培育壮大新兴产业」部分明确提出：加快新一代信息技术、新能源、新材料、<strong>智能网联新能源汽车、机器人、生物医药、高端装备、航空航天</strong>等战略性新兴产业发展，因地制宜建设各具特色、优势互补的战略性新兴产业集群，避免「内卷式」竞争；<strong>在确保安全前提下，推动低空经济、商业航天健康有序发展</strong>。文件还提出探索量子科技、生物制造、氢能和核聚变能、脑机接口、具身智能、第六代移动通信等未来产业方向。</p>
+      <p><strong>读法：「智能网联新能源汽车」与「低空经济」同列于战略性新兴产业</strong>，这是车企布局飞行汽车的政策依据；求职车企时，「车-低空协同」是主动可谈的技术叙事，飞控与车用智驾在规划、估计、控制栈上高度同源。</p>
       <a class="source-link" href="https://www.toutiao.com/article/7694610910157767203" target="_blank">📎 查看原文</a>
     </div>
     <h3 class="mt-4">② 新《民航法》施行满百日：低空经济从「政策引导」迈入「法治护航」（10 月 10 日）</h3>
     <div class="news-item">
       <div class="news-meta"><span class="tag tag-green">法治框架</span><span class="badge-success">✅ 制度落地</span><span>新华网</span></div>
-      <p>新修订的《中华人民共和国民用航空法》7 月 1 日施行，至 10 月上旬已满百日。这部法律<strong>首次将「低空经济」写入国家法律文本，增设「发展促进」专章，明确 300 米以下低空空域分类分级管理，并将以往「一事一批」的空域审批部分转为备案制</strong>。国研新经济研究院创始院长朱克力认为，此次修订最大的价值是把低空经济从地方试点、部门政策推动阶段，升级到上位法保障的新周期：稳定市场预期、理顺央地权责、通过无人机唯一识别码与适航许可等差异化监管统筹发展与安全。产业侧，丰翼科技作为国内首家取得民用无人驾驶航空器运营合格证的企业，已将低空物流用于快递配送、医疗冷链、景区物流等场景；目前全国 <strong>20 多个省份</strong>已将低空经济纳入地方重点产业布局。</p>
-      <p><strong>读法：300 米以下分类分级加备案制，直接决定「哪些空域能飞、飞多少要报批」</strong>——这是低空运营类岗位的常识底座。报道中「动力电池、导航芯片、智能飞控配套产业集群成熟」一句，对机械加控制复合背景的求职者最值得划线。</p>
+      <p>新修订的《中华人民共和国民用航空法》7 月 1 日施行，至 10 月上旬已满百日。这部法律<strong>首次将「低空经济」写入国家法律文本，增设「发展促进」专章，明确 300 米以下低空空域分类分级管理，并将以往「一事一批」的空域审批部分转为备案制</strong>。朱克力认为，修订最大价值是把低空经济从地方试点、部门政策推动升级到上位法保障周期：稳定预期、理顺权责、以无人机唯一识别码与适航许可等差异化监管统筹发展与安全。产业侧，首家取得运营合格证的丰翼科技已将低空物流用于快递配送、医疗冷链、景区物流等场景；全国 <strong>20 多个省份</strong>已将低空经济纳入地方重点产业布局。</p>
+      <p><strong>读法：300 米以下分类分级加备案制，直接决定「哪些空域能飞、飞多少要报批」</strong>，是低空运营类岗位的常识底座；「智能飞控配套产业集群成熟」一句对机械加控制复合背景最值得划线。</p>
       <a class="source-link" href="https://www.xinzhoupeace.gov.cn/info/1025/8845.htm" target="_blank">📎 查看原文</a>
     </div>
     <h3 class="mt-4">③ 一边顶层定调、一边地方「退补」：低空经济遭遇「急刹车」了吗？（10 月 9 日）</h3>
     <div class="news-item">
       <div class="news-meta"><span class="tag tag-info">政策观察</span><span class="badge-warn">⚠️ 辩证解读</span><span>通信世界网</span></div>
-      <p>通信世界网 10 月 9 日刊文梳理了近期的政策张力：中央层面定调「健康有序发展」，地方却出现「收紧」信号——北京新修订的《北京市无人驾驶航空器管理规定》将于 <strong>11 月 15 日</strong>起实施，明确北京行政区域全域为管制空域、所有室外飞行活动均需申请；杭州、广州天河、绍兴、深圳光明等地陆续废止或暂停低空经济直接奖补政策。文章的判断是：这不是「急刹车」而是阶段切换——行业从培育期进入规模化应用阶段后，企业需要的不再是落户奖励，而是能飞起来的空域、能跑通的场景、能算得过账的商业模式。监管架构也在加速成型：2024 年 12 月国家发改委成立低空经济发展司；2026 年 5 月民航局低空安全司亮相；2026 年 9 月 8 日工信部装备工业二司设立无人机处——<strong>「一个管发展、一个管安全、一个管产业」</strong>。</p>
-      <p><strong>读法：适合作为行业分析的方法论样本——把「退补」读成制度清理而非行业否定</strong>。三大机构沿革图建议直接存进开题的「政策背景」一节；监管细化也意味着适航、空管、合规类岗位在扩容。</p>
+      <p>通信世界网 10 月 9 日刊文梳理了近期的政策张力：中央层面定调「健康有序发展」，地方却出现「收紧」信号——北京新修订的《北京市无人驾驶航空器管理规定》将于 <strong>11 月 15 日</strong>起实施，明确北京行政区域全域为管制空域、所有室外飞行活动均需申请；杭州、广州天河、绍兴、深圳光明等地陆续废止或暂停低空经济直接奖补政策。文章判断：这不是「急刹车」而是阶段切换——企业需要的不再是落户奖励，而是能飞起来的空域、能跑通的场景、能算得过账的商业模式。监管架构加速成型：2024 年 12 月发改委设低空经济发展司，2026 年 5 月民航局低空安全司亮相，9 月 8 日工信部装备工业二司设无人机处——<strong>「一个管发展、一个管安全、一个管产业」</strong>。</p>
+      <p><strong>读法：把「退补」读成制度清理而非行业否定的方法论样本</strong>，三大机构沿革图可存进开题「政策背景」一节。</p>
       <a class="source-link" href="https://www.cww.net.cn/article?id=F7CE2CEB1EDC4246A3F82505E4CAF287" target="_blank">📎 查看原文</a>
     </div>
   </div>
@@ -109,21 +108,21 @@
     <h3>① 云南：2026 年工业科技计划已支持低空项目 6 项、经费 4498 万元，2027 年指南将单列（10 月 10 日）</h3>
     <div class="news-item">
       <div class="news-meta"><span class="tag tag-teal">省级布局</span><span class="badge-info">📊 经费信号</span><span>云南政协新闻网</span></div>
-      <p>云南省政协网站 10 月 10 日披露：省科技厅 2026 年工业领域科技计划项目中支持低空经济项目 <strong>6 项</strong>，科研经费累计 <strong>4498 万元</strong>，其中财政经费 1395 万元；2027 年工业领域科技计划项目申报指南将把低空经济领域单列，目前已申报项目 <strong>36 项</strong>。《云南省支持低空经济健康发展的若干措施》明确鼓励科技成果转化对接，支持航空器整机制造及材料电池、电机、内燃机、<strong>飞行控制系统</strong>等产业配套发展；今年 6 月印发的《云南省有序拓展低空经济应用场景实施方案》围绕公共服务、物流运输、农林植保、巡检作业、文旅消费、海外市场拓展提出 <strong>18 条</strong>措施。</p>
-      <p><strong>读法：省级科技计划的经费规模与选题措辞是研究生最好的选题风向标</strong>——「飞行控制系统」被写进产业配套清单，说明控制类研究在省级层面就有对口渠道；高原场景与低空装备耐候性、风扰控制天然绑定，是差异化选题的富矿。</p>
+      <p>云南省政协网站 10 月 10 日披露：省科技厅 2026 年工业领域科技计划项目中支持低空经济项目 <strong>6 项</strong>，科研经费累计 <strong>4498 万元</strong>，其中财政经费 1395 万元；2027 年工业领域科技计划项目申报指南将把低空经济领域单列，目前已申报项目 <strong>36 项</strong>。《云南省支持低空经济健康发展的若干措施》支持航空器整机制造及材料电池、电机、<strong>飞行控制系统</strong>等产业配套发展；6 月印发的《云南省有序拓展低空经济应用场景实施方案》围绕公共服务、物流运输、农林植保、巡检作业、文旅消费、海外市场拓展提出 <strong>18 条</strong>措施。</p>
+      <p><strong>读法：省级科技计划的经费规模与选题措辞是研究生最好的选题风向标</strong>——「飞行控制系统」被写进产业配套清单，说明控制类研究在省级层面就有对口渠道。</p>
       <a class="source-link" href="https://www.ynzxb.cn/content/2026-10/10/content_58472.html" target="_blank">📎 查看原文</a>
     </div>
     <h3 class="mt-4">② 汕头印发 2026 年工作要点：优先发展山区、海岛、锚地低空货运（2026 年 10 月）</h3>
     <div class="news-item">
       <div class="news-meta"><span class="tag tag-info">城市级场景</span><span class="badge-info">🚚 物流场景</span><span>国家邮政局网站</span></div>
-      <p>汕头市发改局近日印发《汕头市推动低空经济高质量发展 2026 年工作要点》，明确充分发挥低空运输效率优势，探索发展低空货运航线，<strong>优先发展山区、海岛、锚地等偏远地区低空货运</strong>；在确保安全、避免扰民的前提下，根据企业需求探索在城市范围内适度应用无人机，开展电商快递末端服务、高值物品直达配送等试点，探索城市低空配送安全可靠、商业可持续的发展模式。</p>
-      <p><strong>读法：「优先偏远地区」的措辞说明低空物流的经济性拐点先出现在地面交通不划算的场景</strong>——海岛、锚地、山区。求职物流无人机运营商时，可重点准备「偏远场景续航与可靠性」的技术叙事。</p>
+      <p>汕头市发改局近日印发《汕头市推动低空经济高质量发展 2026 年工作要点》，明确充分发挥低空运输效率优势，探索发展低空货运航线，<strong>优先发展山区、海岛、锚地等偏远地区低空货运</strong>；同时按企业需求探索城市范围内适度应用无人机，开展电商快递末端服务、高值物品直达配送等试点，寻找城市低空配送安全可靠、商业可持续的发展模式。</p>
+      <p><strong>读法：「优先偏远地区」的措辞说明低空物流的经济性拐点先出现在地面交通不划算的场景</strong>。求职物流无人机运营商时，可重点准备「偏远场景续航与可靠性」的技术叙事。</p>
       <a class="source-link" href="https://www.spb.gov.cn/gjyzj/c100015/c100017/202610/7244c55d6eec41a7b7c29ac1ddfb75a3.shtml" target="_blank">📎 查看原文</a>
     </div>
     <h3 class="mt-4">③ 2026 低空经济产业发展大会自贡开幕：300 多家企业参会，6000 余名大学生同场竞技（10 月 14 日）</h3>
     <div class="news-item">
       <div class="news-meta"><span class="tag tag-green">产业大会</span><span class="badge hot">🔥 赛会融合</span><span>科技日报</span></div>
-      <p>10 月 14 日，以「低空新蓝海·翼起向未来」为主题的 <strong>2026 低空经济产业发展大会</strong>在四川自贡航空产业园开幕，全国 <strong>300 多家</strong>低空经济企业、高校院所与应用需求单位代表参会，会期 5 天。大会集会议、赛事、展示、供需对接于一体：中国电子信息产业发展研究院发布《中国低空经济发展研究报告（2026）》；10 场平行会议覆盖低空物流、警务、文旅等方向；<strong>首次争取到「中国大学生飞行器设计创新大赛」总决赛落户，全国 160 所高校超 6000 名学生参赛</strong>；7 家全国低空制造头部企业集中发布一批新产品新技术。主旨演讲环节，董志毅、闫楚良、马建新分别围绕低空经济发展、低空装备前沿技术、有人无人协同运行安全保障作分享。</p>
+      <p>10 月 14 日，以「低空新蓝海·翼起向未来」为主题的 <strong>2026 低空经济产业发展大会</strong>在四川自贡航空产业园开幕，全国 <strong>300 多家</strong>低空经济企业、高校院所与应用需求单位代表参会，会期 5 天。大会集会议、赛事、展示、供需对接于一体：中国电子信息产业发展研究院发布《中国低空经济发展研究报告（2026）》；10 场平行会议覆盖低空物流、警务、文旅等方向；<strong>首次争取到「中国大学生飞行器设计创新大赛」总决赛落户，全国 160 所高校超 6000 名学生参赛</strong>；7 家全国低空制造头部企业集中发布一批新产品新技术。</p>
       <p><strong>读法：对学生最实用的一条——「中国大学生飞行器设计创新大赛」是飞行器设计方向本科生与研究生的顶级赛事</strong>，6000 人规模意味着尽早组队价值巨大，研二正是出成果、攒履历的窗口。</p>
       <a class="source-link" href="https://www.stdaily.com/web/gdxw/2026-10/14/content_596079.html" target="_blank">📎 查看原文</a>
     </div>
@@ -136,14 +135,14 @@
     <h3>① 齐飞航空完成近亿元战略轮融资，W280 载人 eVTOL 获 TC 受理（10 月 9 日首发）</h3>
     <div class="news-item">
       <div class="news-meta"><span class="tag tag-accent">eVTOL</span><span class="badge hot">🔥 TC 受理</span><span>36氪 · 腾讯新闻</span></div>
-      <p>eVTOL 主机厂齐飞航空科技（苏州）完成<strong>近亿元人民币战略轮融资</strong>，由苏州创新投资集团领投，江苏省战新未来天使基金、相城投控集团联合注资，老股东渶策资本、线性资本加码，资金主要投向产品研发、试飞和适航取证。其载人机型 W280 已于 <strong>9 月 1 日获得中国民航局华东地区管理局型号合格证（TC）受理</strong>，据称为新《民航法》生效后首个获受理的载人 eVTOL 型号。W280 为复合翼构型纯电载人 eVTOL：最大起飞重量 <strong>3.18 吨</strong>、5-6 座、最大速度 <strong>280 km/h</strong>、最大航程 <strong>300 公里</strong>，载货版最大商载 1 吨；从 2025 年 5 月总装下线、7 月首飞，到 2026 年 9 月 TC 受理仅用一年，被称为全球在研最重的纯电 eVTOL。团队核心成员曾参与湾流 G500/G650、空客 A350/A400、波音 787/777X 与 C919/ARJ21 项目。业内判断载人 eVTOL 真正商业化运营至少要等到 2028 年。</p>
+      <p>eVTOL 主机厂齐飞航空科技（苏州）完成<strong>近亿元人民币战略轮融资</strong>，由苏州创新投资集团领投，江苏省战新未来天使基金、相城投控集团联合注资，老股东渶策资本、线性资本加码，资金主要投向产品研发、试飞和适航取证。其载人机型 W280 已于 <strong>9 月 1 日获得中国民航局华东地区管理局型号合格证（TC）受理</strong>，据称为新《民航法》生效后首个获受理的载人 eVTOL 型号。W280 为复合翼构型纯电载人 eVTOL：最大起飞重量 <strong>3.18 吨</strong>、5-6 座、最大速度 <strong>280 km/h</strong>、最大航程 <strong>300 公里</strong>，载货版最大商载 1 吨；从 2025 年 5 月总装下线、7 月首飞，到 2026 年 9 月 TC 受理仅用一年，被称为全球在研最重的纯电 eVTOL。团队曾参与湾流 G500/G650、空客 A350、波音 787 与 C919 项目。业内判断载人 eVTOL 真正商业化运营至少要等到 2028 年。</p>
       <p><strong>读法：复合翼与倾转旋翼的路线之争仍在继续</strong>，齐飞选择复合翼的逻辑是「30-150 公里城市内与城市群点对点出行，多旋翼续航撑不住」。从受理到取得 TC 通常还需 2-3 年审定试飞——适航周期长意味着结构、强度、系统岗位需求稳定，是机械背景的长线出口。</p>
       <a class="source-link" href="https://news.qq.com/rain/a/20261009A089BM00" target="_blank">📎 查看原文</a>
     </div>
     <h3 class="mt-4">② 成都锦江建「空中出租车的成都东站」：eVTOL 首飞验证起降、空域、保障三环节（10 月 10 日）</h3>
     <div class="news-item">
       <div class="news-meta"><span class="tag tag-purple">城市出行</span><span class="badge-new">🆕 基建样板</span><span>四川新闻网</span></div>
-      <p>成都锦江区白鹭湾片区的「智飞中心」完成 eVTOL 首飞验证飞行，重点验证<strong>地面起降场地、空域保障及飞行保障三大关键环节</strong>，从筹备到实施约历时一个月。四川省低空经济产业发展有限公司总经理严智介绍，「智飞中心」不仅是起降点，更是低空飞行综合运营节点——未来集航空器起降、维护保养、补能服务、飞行调度于一体，同时承载载人飞行、物流运输、文旅体验、研学科普等多场景应用，「类似城市里的成都东站」。场景规划上，锦江到青城山低空观光预计 <strong>40 分钟以内</strong>（地面约 1.5 小时）；成都已集聚 <strong>200 余家</strong>无人机及通航企业，形成「研发+制造+运营+服务」完整产业链。</p>
+      <p>成都锦江区白鹭湾片区的「智飞中心」完成 eVTOL 首飞验证飞行，重点验证<strong>地面起降场地、空域保障及飞行保障三大关键环节</strong>，从筹备到实施约历时一个月。四川省低空经济产业发展有限公司总经理严智介绍，「智飞中心」不仅是起降点，更是低空飞行综合运营节点——未来集航空器起降、维护保养、补能服务、飞行调度于一体，同时承载载人飞行、物流运输、文旅体验、研学科普等多场景应用，「类似城市里的成都东站」。规划中锦江到青城山低空观光预计 <strong>40 分钟以内</strong>（地面约 1.5 小时）；成都已集聚 <strong>200 余家</strong>无人机及通航企业，形成「研发+制造+运营+服务」完整产业链。</p>
       <p><strong>读法：起降场加补能加运维的新基建正在从规划走进工地</strong>，随之而来的是运营保障、测试验证、调度系统类岗位；「飞控算法 + 运营系统」的复合背景比单点算法更稀缺。</p>
       <a class="source-link" href="https://city.newssc.org/system/20261010/003629413.html" target="_blank">📎 查看原文</a>
     </div>
@@ -156,15 +155,15 @@
     <h3>① 银川发布「低慢小」管制通告：葡萄酒大会期间，场馆周边 2 公里未经申请不得升空（10 月 10 日）</h3>
     <div class="news-item">
       <div class="news-meta"><span class="tag tag-red">空域管控</span><span class="badge-warn">⚠️ 合规提醒</span><span>宁夏网络广播电视台</span></div>
-      <p>银川市金凤区人民政府 10 月 10 日发布通告：第 47 届世界葡萄与葡萄酒大会暨 OIV 成员国代表大会和第六届中国（宁夏）国际葡萄酒文化旅游博览会于 <strong>10 月 12 日至 16 日</strong>举办，期间在银川国际会展中心等三个场馆周边<strong>半径 2 公里</strong>范围内加强「低慢小」飞行器管理。通告明确「低慢小」指飞行高度低于 <strong>500 米</strong>、速度小于 <strong>200 公里/小时</strong>、雷达反射面积小于 <strong>2 平方米</strong>的飞行目标，涵盖无人机、轻型直升机、滑翔伞、热气球、航空模型等。未向空管单位申请空域批准、未向公安机关报备的一律不得升空；擅自飞行的将采取反制强降措施，情节严重依法追究刑事责任。</p>
-      <p><strong>读法：「低慢小」三参数定义（500 米 / 200 km/h / 2 m²）是飞手合规的基本功，建议背下来</strong>。大型活动管控已成程序化常规操作——商业航拍团队必须配一名懂空域报备的运营，而不是只会飞的技术。</p>
+      <p>银川市金凤区人民政府 10 月 10 日发布通告：第 47 届世界葡萄与葡萄酒大会暨 OIV 成员国代表大会和第六届中国（宁夏）国际葡萄酒文化旅游博览会于 <strong>10 月 12 日至 16 日</strong>举办，期间在银川国际会展中心等三个场馆周边<strong>半径 2 公里</strong>范围内加强「低慢小」飞行器管理。通告明确「低慢小」指飞行高度低于 <strong>500 米</strong>、速度小于 <strong>200 公里/小时</strong>、雷达反射面积小于 <strong>2 平方米</strong>的飞行目标，涵盖无人机、轻型直升机、滑翔伞、热气球、航空模型等。未申请空域批准、未向公安报备的一律不得升空，擅自飞行将遭反制强降，情节严重依法追究刑事责任。</p>
+      <p><strong>读法：「低慢小」三参数定义（500 米 / 200 km/h / 2 m²）是飞手合规的基本功，建议背下来</strong>。大型活动管控已成程序化常规操作，商业航拍团队必须配一名懂空域报备的运营。</p>
       <a class="source-link" href="https://www.nxtv.com.cn/19/19kds/nxggpd/jrnx/169141.shtml" target="_blank">📎 查看原文</a>
     </div>
     <h3 class="mt-4">② 甘肃白银：中乙联赛期间体育中心空域管控，航拍转播等任务除外（10 月 9 日）</h3>
     <div class="news-item">
       <div class="news-meta"><span class="tag tag-orange">空域管控</span><span class="badge-info">ℹ️ 豁免机制</span><span>白银市人民政府</span></div>
-      <p>白银市公安局白银分局发布通告：2026 赛季中国足球乙级联赛期间，于 <strong>10 月 11 日</strong>当天对白银市体育中心及附近范围区域加强无人机等「低慢小」航空器和空飘物管理，禁止任何飞行施放活动；<strong>经依法批准执行重大活动的电视转播和航拍、警务、应急救援、气象探测等飞行任务除外</strong>。违反通告的由公安、民航等部门联合查处，依据《治安管理处罚法》与《无人驾驶航空器飞行管理暂行条例》予以处罚，构成犯罪的依法追究刑事责任。</p>
-      <p><strong>读法：注意豁免清单——电视转播、航拍、警务、应急、气象</strong>。体育赛事航拍是无人机商业作业的稳定赛道，但「报备加豁免」是前置条件；这类通告是了解空域管理实务的一手材料。</p>
+      <p>白银市公安局白银分局发布通告：2026 赛季中国足球乙级联赛期间，于 <strong>10 月 11 日</strong>当天对白银市体育中心及附近范围区域加强无人机等「低慢小」航空器和空飘物管理，禁止任何飞行施放活动；<strong>经依法批准执行重大活动的电视转播和航拍、警务、应急救援、气象探测等飞行任务除外</strong>。违规者由公安、民航等部门联合查处，依据《治安管理处罚法》与《无人驾驶航空器飞行管理暂行条例》予以处罚，构成犯罪的依法追究刑事责任。</p>
+      <p><strong>读法：注意豁免清单——电视转播、航拍、警务、应急、气象</strong>。体育赛事航拍是无人机商业作业的稳定赛道，但「报备加豁免」是前置条件。</p>
       <a class="source-link" href="https://www.baiyin.gov.cn/ywdt/tzgg8181/art/2026/art_b156e91c37114e608649216b296936fd.html" target="_blank">📎 查看原文</a>
     </div>
   </div>
@@ -174,9 +173,9 @@
   <div class="section-title">板块八 · 本周精读建议：把「硬约束」与「软建议」拆成四个可操作问题</div>
   <div class="highlight-box">
     <div class="highlight-title">💡 给四旋翼飞控仿真方向的四个落点</div>
-    <p><strong>落点一（安全侧）：</strong>精读 arXiv:2610.16119，把「安全从惩罚项改为显式约束、对偶变量自动权衡」搬进本组仿真：在现有 PPO 穿越环境里把碰撞惩罚换成拉格朗日形式，与固定权重基线做消融——这是把开题「安全控制」一节从口号变成方法的最短路径。<strong>落点二（协同侧）：</strong>对照 BGC-Nav 的「建议而非命令」接口，在多机仿真里设计高层-低层信息耦合实验：高层只输出软先验时，低层策略鲁棒性是否反而更好？可直接扩写成协同章节的小实验。<strong>落点三（感知侧）：</strong>RTLS 方案提示「主动机动改善可观测性」，若课题涉及 GPS 拒止场景，可把绕飞机动写进参考轨迹生成器做一轮仿真验证。<strong>落点四（赛事与求职侧）：</strong>关注自贡飞行器设计创新大赛总决赛赛题方向，尽早组队；同时把新《民航法》与三大监管机构沿革整理进「政策背景」页，面试聊行业时能直接引用。</p>
+    <p><strong>落点一（安全侧）：</strong>精读 arXiv:2610.16119，把「安全从惩罚项改为显式约束、对偶变量自动权衡」搬进本组仿真：在现有 PPO 穿越环境里把碰撞惩罚换成拉格朗日形式，与固定权重基线做消融——这是把开题「安全控制」一节从口号变成方法的最短路径。<strong>落点二（协同侧）：</strong>对照 BGC-Nav 的「建议而非命令」接口，在多机仿真里设计高层-低层信息耦合实验：高层只输出软先验时，低层策略鲁棒性是否反而更好？<strong>落点三（感知侧）：</strong>RTLS 方案提示「主动机动改善可观测性」，若课题涉及 GPS 拒止场景，可把绕飞机动写进参考轨迹生成器做一轮仿真验证。<strong>落点四（赛事与求职侧）：</strong>关注自贡飞行器设计创新大赛总决赛赛题方向，尽早组队；同时把新《民航法》与三大监管机构沿革整理进「政策背景」页，面试聊行业时能直接引用。</p>
   </div>
-  <div class="warning-box"><div class="warning-title">⚠️ 核验提醒</div><p>本期 16 个条目均来自公开检索结果，链接原样保留；报道窗口为 2026 年 10 月 9 日至 15 日，与 10 月 14 日当期无重复。论文实验数字来自作者摘要自述，复现请注意仿真条件差异；地方通告类条目具有时效性，请以最新发布为准。</p></div>
+  <div class="warning-box"><div class="warning-title">⚠️ 核验提醒</div><p>本期 16 个条目均来自公开检索结果，链接原样保留；报道窗口为 2026 年 10 月 9 日至 15 日，与 10 月 14 日当期无重复。论文实验数字来自作者摘要自述；地方通告类条目具有时效性，请以最新发布为准。</p></div>
 </div>
 
 <div class="section">
