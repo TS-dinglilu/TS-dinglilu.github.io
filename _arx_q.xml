@@ -1,0 +1,746 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/CQGGR54zajdQVLOPoy48idIDA6Y</id>
+  <title>arXiv Query: search_query=abs:quadrotor&amp;id_list=&amp;start=0&amp;max_results=30</title>
+  <updated>2026-10-17T16:37:35Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=abs:quadrotor&amp;start=0&amp;max_results=30&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>30</opensearch:itemsPerPage>
+  <opensearch:totalResults>1459</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2610.17419v1</id>
+    <title>ClearNav: Perception-Aligned Quadrotor Flight Using Differential-Physics</title>
+    <updated>2026-10-12T21:33:50Z</updated>
+    <link href="https://arxiv.org/abs/2610.17419v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.17419v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Autonomous quadrotor flight in cluttered environment is an key capability for tasks like inspection and search. Navigation policies trained in simulation and transferred to hardware can fly at high speed in open space, but they can still collide as obstacle clearance shrinks. We attribute most of these collisions to a single mechanism, namely motion in directions the onboard camera does not observe. Heading that is not aligned with the direction of travel and lateral excursion during obstacle avoidance both carry the vehicle toward obstacles outside its field of view. We introduce ClearNav, a navigation policy trained with two reward terms that constrain motion to the observed direction, a forward-looking heading target and a penalty on lateral velocity. A third term penalizes speed near obstacles so that an obstacle entering the field of view remains avoidable. In simulation, across 18 held-out scenarios with 2304 paired flights per policy unseen in training, ClearNav improves success by 6.8 points, cuts the collision rate by 65% relative to the state of the arts, and flies at maximum 5m/s. For the proximity term alone under matched commanded speeds, the collision reduction still holds at 70%. The effect is significant on static scenes and consistent in direction on moving obstacles, though not significant there at the suite level, showing that safer flight in clutter is possible even on the limited sensors and compute of small drones. We also validate our navigation policy in a real-world cluttered environment, showing that it enables the quadrotor to navigate through the cluttered environment successfully and safely.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-12T21:33:50Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Aditya Azad</name>
+    </author>
+    <author>
+      <name>Arthur Huang</name>
+    </author>
+    <author>
+      <name>Guanrui Li</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.16119v1</id>
+    <title>Constrained Differentiable Policy Learning for Safe Quadrotor Navigation</title>
+    <updated>2026-10-12T03:35:24Z</updated>
+    <link href="https://arxiv.org/abs/2610.16119v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.16119v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Differentiable simulation enables efficient policy optimization through analytic gradients, yet safety is commonly incorporated as a weighted penalty, requiring manual tuning of the trade-off between task performance and constraint satisfaction. We instead formulate obstacle avoidance as an explicit constraint and train quadrotor policies using primal--dual gradient descent--ascent through a differentiable simulator. We introduce two key components to enable effective constrained training. First, we propose a bounded clearance-based constraint function that provides informative gradients around the safety boundary while preventing large violations from destabilizing primal--dual optimization. Second, we introduce log-mean-exp (LME) aggregation to smoothly emphasize critical per-step safety violations across a trajectory and training batch within a single constraint governed by one dual variable. Together, these components enable the desired safety level to be specified directly while balancing constraint satisfaction and task completion. We theoretically prove that the proposed optimization with differentiable simulation converges to feasible policy under mild assumptions. Experiments demonstrate improved safety--performance trade-offs over fixed-penalty and existing policy-learning baselines, as well as generalization to denser out-of-distribution environments. Finally, the learned policy transfers zero-shot to Gazebo/PX4 and a physical quadrotor without additional fine-tuning.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-12T03:35:24Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yan Rui Tan</name>
+    </author>
+    <author>
+      <name>Praveen Krishnapur</name>
+    </author>
+    <author>
+      <name>Zeyu Feng</name>
+    </author>
+    <author>
+      <name>Han Bao</name>
+    </author>
+    <author>
+      <name>Yew-Soon Ong</name>
+    </author>
+    <author>
+      <name>Fan Shi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.15867v1</id>
+    <title>REFLEX: A Learned On-Board Reflex for Robust Autonomous Collision Recovery of Soft Quadrotors</title>
+    <updated>2026-10-11T19:39:29Z</updated>
+    <link href="https://arxiv.org/abs/2610.15867v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.15867v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Collision-resilient airframes allow quadrotors to survive impacts, but do not ensure autonomous post-collision recovery. Innovation gating in stock onboard estimators often rejects valid external velocity measurements after high-speed impacts, compromising recovery. We present REFLEX, a collision-recovery flight mode that runs entirely on the flight controller, requiring neither contact sensors nor a companion computer. Its proprioceptive recurrent policy stabilizes the vehicle without position, velocity, heading, or altitude estimates. The translational estimate is reinitialized while REFLEX is active, and a trust gate checks estimator consistency before returning control to the stock autopilot. The policy is trained in simulation using proximal policy optimization, with episodes initialized from post-impact states measured in 47 real collisions. In hardware experiments, REFLEX recovered 19 of 22 wall impacts at 5.03 $\pm$ 0.09 m/s, compared with 1 of 14 for the matched stock autopilot. These included 15 consecutive recoveries in a single flight. A separate exploratory flight demonstrated two additional recoveries at 6.02 and 6.05 m/s within the same flight, exceeding the previously reported velocity for autonomous wall-collision recovery by 64%.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-11T19:39:29Z</published>
+    <arxiv:comment>J.H. and L.G. contributed equally;S.L. and S.M. jointly advised;Supplementary video: https://youtu.be/Q76GmW9cNgE;Supported by EU Horizon Europe project SPEAR (grant no. 101119774);Submitted to ICRA 2027</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Jakob Hermeler</name>
+    </author>
+    <author>
+      <name>Luca Girardi</name>
+    </author>
+    <author>
+      <name>Gabriel Maquignaz</name>
+    </author>
+    <author>
+      <name>Stefan Leutenegger</name>
+    </author>
+    <author>
+      <name>Stefano Mintchev</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.15740v1</id>
+    <title>Multimodal Sensor-Gated Mid-Air Launch and Vision-Based Recovery of a Child UAV on a Hovering Mothership Drone</title>
+    <updated>2026-10-11T16:23:16Z</updated>
+    <link href="https://arxiv.org/abs/2610.15740v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.15740v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Launching a micro unmanned aerial vehicle (UAV) from a hovering carrier and recovering it in flight requires reliable confirmation that the child is securely seated before the carrier is allowed to descend. This is challenging because vision provides relative guidance but does not directly indicate load transfer, and a downward-facing camera can lose its fiducial near touchdown. This letter presents a mothership-child quadrotor system in which mission transitions are gated by complementary nonvisual sensing. An upward-facing single-beam LiDAR on the recovery deck provides a binary occupancy state using hysteresis and a debounce interval derived from the child's occluding footprint and crossing speed; real-time kinematic (RTK) positioning conditions the carrier hover; and carrier thrust provides a proprioceptive indication of load transfer. In ten outdoor missions using an F450-class mothership and a Q250-class child with camera-guided recovery, nine completed successfully while RTK-fixed positioning was maintained through release and capture. A complementary MuJoCo study of fully autonomous fiducial-based recovery achieved touchdown 0.077 m from the deck center, while marker detection was lost within the final approximately 0.2 m above the docked configuration. In simulation, carrier thrust changed by -17.0 N at release and +17.3 N at capture, agreeing within 6% with the child's 18.0 N hover thrust. The results support a sensing architecture in which vision guides the approach, while range and proprioceptive information corroborate the final docking decision.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-11T16:23:16Z</published>
+    <arxiv:comment>4 pages, 5 figures, 2 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Aashish Sahu</name>
+    </author>
+    <author>
+      <name>R. Prasanth Kumar</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.15560v1</id>
+    <title>Stereo-Planner: Learning Stereo-to-Trajectory Planning for Zero-Shot Sim-to-Real Quadrotor Navigation</title>
+    <updated>2026-10-11T12:04:10Z</updated>
+    <link href="https://arxiv.org/abs/2610.15560v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.15560v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Existing navigation systems commonly rely on dedicated depth sensors or explicit depth reconstruction, while learning to generate trajectories directly from RGB images remains challenging due to the sim-to-real domain gap. In this work, we propose Stereo-Planner, an end-to-end vision-to-trajectory framework that enables zero-shot sim-to-real planning from stereo RGB observations. The key idea is to formulate trajectory generation as state- and scale-conditioned querying of latent stereo geometry. A Scene Representor incorporates a pretrained vision grounding foundation model to extract geometric cues shared across simulated and real-world environments, supporting generalization across visual domains. A lightweight Trajectory Decoder then translates these representations into trajectories through interleaved attention, separating trajectory-state interaction from scene-feature retrieval and incorporating the stereo baseline as a metric-scale cue. With these designs, Stereo-Planner is trained entirely on simulated data by minimizing differentiable trajectory costs and deployed directly in real-world environments without fine-tuning. Benchmark results demonstrate strong cross-scene generalization, with a 95% success rate in simulation environments at a commanded speed of 8 m/s, and competitive performance against depth-based planners using only stereo RGB observations for scene perception. Furthermore, deployment on a compact quadrotor equipped with an NVIDIA Orin NX enables autonomous flight at speeds of up to 7 m/s, with a mean onboard vision-to-action inference time of 24.27 ms. The software, simulation environments, and hardware designs will be open-sourced at https://github.com/Stereo-Planner/Stereo-Planner.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-11T12:04:10Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Hongming Shen</name>
+    </author>
+    <author>
+      <name>Junjie Lu</name>
+    </author>
+    <author>
+      <name>Xun Chen</name>
+    </author>
+    <author>
+      <name>Wei Wang</name>
+    </author>
+    <author>
+      <name>Xinhang Xu</name>
+    </author>
+    <author>
+      <name>Bailing Tian</name>
+    </author>
+    <author>
+      <name>Lihua Xie</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.15308v1</id>
+    <title>An Open MuJoCo Simulation Framework for a Quadrotor Carrying a Tendon-Driven Soft Continuum Arm</title>
+    <updated>2026-10-11T03:32:57Z</updated>
+    <link href="https://arxiv.org/abs/2610.15308v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.15308v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Combining aerial robots with soft continuum manipulators promises safe, compliant interaction with the environment, but the coupled dynamics of a free-flying base and a highly deformable, underactuated arm are difficult to study without a suitable simulator. This paper describes an open-source simulation framework, built on the MuJoCo physics engine, for a quadrotor that carries a tendon-driven soft continuum arm underneath its body. The arm is modelled as a pseudo-rigid-body chain of twelve segments joined by pairs of orthogonal compliant hinges. Three tendons, spaced \SI{120}{\degree} apart and routed through every segment, bend it in any direction. A geometric tracking controller on $SE(3)$ flies the vehicle; its rotor allocation matrix is generated directly from the model description. A closed-form tendon-tension allocation keeps every tension within its limits and gives the same bending moment in every direction. We report the full set of modelling choices and parameters, and we evaluate the framework in four simulated scenarios: a \SI{36}{\second} mission with a figure-eight and a tendon-driven tip sweep, an attitude-gain study, a quasi-static characterization of the bending workspace, and an impulsive disturbance applied to the arm tip. With the nominal gains the vehicle tracks the mission with \SI{3.1}{\centi\meter} RMS position error while the arm tip swings up to \SI{37}{\centi\meter} from the body axis. The gain study shows that a low-bandwidth attitude loop lets the arm excite sustained oscillations. The simulation runs about $15\times$ faster than real time on a laptop CPU. All models, controllers and scripts that reproduce the figures are released.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-11T03:32:57Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Haitham El-Hussieny</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.14522v1</id>
+    <title>Safety-Critical Quadrotor Navigation Using Fourth-Order Control Barrier Functions with Full Nonlinear Quadrotor Dynamics</title>
+    <updated>2026-10-10T03:32:35Z</updated>
+    <link href="https://arxiv.org/abs/2610.14522v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.14522v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Safety-critical quadrotor navigation in cluttered environments typically relies on hierarchical architectures in which a high-level safety filter modifies position references that are then tracked by a separate attitude controller. However, this separation can create a mismatch between translational safety objectives and attitude evolution. To address this gap, we propose a safety controller based on fourth-order control barrier functions (CBFs) that explicitly incorporates the full nonlinear quadrotor dynamics, including attitude dynamics and torque-level actuation. Furthermore, we apply the integral high-order CBF technique to resolve the mixed-relative degree issue in the derived constraint formulation. The resulting formulation enforces obstacle-avoidance constraints while optimizing control torques, granting the safety layer direct authority over attitude behavior and eliminating the hierarchical disconnect inherent in reference-tracking safety filters. We validate the approaches in both high-fidelity simulation and real-world flight experiments, demonstrating reliable constraint satisfaction and successful obstacle avoidance. These results suggest that torque-level high-order CBFs provide a practical pathway to provably safer quadrotor navigation under full rigid-body dynamics.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-10T03:32:35Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yanze Liu</name>
+    </author>
+    <author>
+      <name>Yaşar İdikut</name>
+    </author>
+    <author>
+      <name>Dhruv Madhusudan Agrawal</name>
+    </author>
+    <author>
+      <name>Wei Xiao</name>
+    </author>
+    <author>
+      <name>Guanrui Li</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.13665v1</id>
+    <title>Cooperative Aerial Transportation of a Payload with a Sliding Cable Attachment</title>
+    <updated>2026-10-09T14:35:25Z</updated>
+    <link href="https://arxiv.org/abs/2610.13665v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.13665v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This paper presents a dual-quadrotor hook- suspended transport system for cooperative aerial manipulation of a payload that is not rigidly attached to a fixed point along the cable. Two quadrotors are connected by a single inextensible cable that passes through a frictionless hook mounted on the payload, allowing the cable to slide between its two segments. This introduces a cable-distribution variable that couples the quadrotor motion, cable geometry, and payload dynamics. A feasible reference-generation framework is formulated using the desired payload pose, cable distribution, and system shape while satisfying the cable-length constraint and elliptical workspace. The quadrotors track the geometrically generated trajectories while maintaining positive cable tension and respecting actuator limits. The payload pose is estimated from the system geometry, and its measured position is used only to validate the desired trajectory. The approach is evaluated through experimental demonstrations.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-09T14:35:25Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Sebastian Tilaguy Lezama</name>
+    </author>
+    <author>
+      <name>Diego S D'Antonio</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.11809v1</id>
+    <title>WAND: Learning Robust Navigation under Complex Wind Disturbances and Dense Obstacles for Quadrotors</title>
+    <updated>2026-10-08T12:17:45Z</updated>
+    <link href="https://arxiv.org/abs/2610.11809v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.11809v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Robust navigation in cluttered environments remains a fundamental challenge for quadrotors, particularly when strong wind disturbances arise, which perturb vehicle dynamics, limit control authority, and substantially increase collision risk. Existing learning-based navigation policies typically rely on obstacle perception and proprioceptive observations, requiring the policy to infer time-varying disturbance effects implicitly and thereby limiting robustness under partial observability. This paper proposes WAND (Wind-Aware Navigation with Disturbance Estimation), a reinforcement learning framework for navigation under time-varying wind disturbances in dense obstacle fields. Specifically, WAND estimates wind-induced disturbance acceleration from historical proprioceptive states using a Temporal Convolutional Network (TCN). This estimation is integrated into the policy via a zero-initialized residual module, \emph{WindAdapter}, while simultaneously providing feedforward compensation for low-level control. The dual use of the estimate couples disturbance-conditioned navigation with feedforward disturbance rejection. Across 12 wind-disturbed simulation settings, WAND improved the observed success rate by 8.3 percentage points on average relative to feedforward compensation alone. Controlled opposite-crosswind experiments further showed wind-direction-dependent trajectory adaptation. In indoor fan-induced flight tests, WAND succeeded in 18 of 20 trials, demonstrating the feasibility of real-time onboard navigation.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-08T12:17:45Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <arxiv:journal_ref>IEEE Robotics and Automation Letters, vol. 11, no. 11, pp. 12392-12399, Nov. 2026</arxiv:journal_ref>
+    <author>
+      <name>Zhonghan Tang</name>
+    </author>
+    <author>
+      <name>Chenhui Li</name>
+    </author>
+    <author>
+      <name>Shuai Liang</name>
+    </author>
+    <author>
+      <name>Zhongrui You</name>
+    </author>
+    <author>
+      <name>Jianan Li</name>
+    </author>
+    <author>
+      <name>Bin Zhao</name>
+    </author>
+    <author>
+      <name>Zhigang Wang</name>
+    </author>
+    <author>
+      <name>Xuelong Li</name>
+    </author>
+    <arxiv:doi>10.1109/LRA.2026.3730214</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1109/LRA.2026.3730214" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.10987v1</id>
+    <title>Constructive Safety-Critical Control for a Class of Underactuated Systems: A Hierarchical Approach</title>
+    <updated>2026-10-07T23:21:44Z</updated>
+    <link href="https://arxiv.org/abs/2610.10987v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.10987v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Underactuated systems with nontrivial geometry are abundant in practical robotic problems. However, little is known about constructive safety-critical control design in the presence of underactuation. In this work, we provide a constructive framework for synthesizing safe control architectures and control barrier functions for a class of quadrotor-like underactuated systems. By studying the geometry of their underactuation, we characterize when these systems have natural layered architectures useful for safety-critical control design. Using these architectures, we devise a constructive, hierarchical CBF synthesis procedure and provide conditions under which it succeeds.</summary>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.OC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-07T23:21:44Z</published>
+    <arxiv:comment>8 pages, 2 figures. To appear at the IEEE Conference on Decision and Control (CDC), 2026</arxiv:comment>
+    <arxiv:primary_category term="eess.SY"/>
+    <author>
+      <name>Massimiliano de Sa</name>
+    </author>
+    <author>
+      <name>Aaron D. Ames</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.10905v1</id>
+    <title>Informationally Decoupled Trajectory Design for Sim-to-Real System Identification</title>
+    <updated>2026-10-07T21:02:51Z</updated>
+    <link href="https://arxiv.org/abs/2610.10905v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.10905v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Sampling-based system identification estimates physically meaningful parameters by tuning a simulator to reproduce the target system dynamics, providing an interpretable approach to improving sim-to-real transfer. Yet when the collected trajectories do not distinguish the effects of different parameters, multiple parameter combinations can reproduce those trajectories, leading to unreliable parameter estimates. To address this challenge, we introduce an Informationally Decoupled Trajectory Design framework (IDTD), which formulates the objective for the exploration policy built on the Schur complement score derived from the Fisher information matrix. To faithfully reflect parameter separability in the exploration objective, IDTD normalizes the score against the per-parameter information, selects the most favorable trajectory segment for each parameter, and aggregates the resulting scores logarithmically. The optimized trajectory is therefore composed of complementary intervals, each exposing a distinct subset of parameters whose contribution to the motion over that interval can be attributed unambiguously. Across diverse simulation environments, ranging from a linear-dynamics system to the Go2 quadruped, G1 humanoid, and Crazyflie quadrotor, IDTD reduces the parameter identification error by 39.6% on average relative to the strongest prior active-exploration baseline and attains improved downstream policy transfer. Furthermore, we validate the proposed trajectory design on a real K1 humanoid, demonstrating that the resulting identified parameters accurately capture the real-system dynamics.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-07T21:02:51Z</published>
+    <arxiv:comment>arxiv_r1</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Sangwoo Shin</name>
+    </author>
+    <author>
+      <name>Ashvin Anilkumar</name>
+    </author>
+    <author>
+      <name>Ryan Gao</name>
+    </author>
+    <author>
+      <name>Josiah P. Hanna</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.08765v1</id>
+    <title>LBA-CBF: Rapidly Adaptive Safety Filters via Parallel Dynamics Inference</title>
+    <updated>2026-10-06T17:51:12Z</updated>
+    <link href="https://arxiv.org/abs/2610.08765v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.08765v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Control barrier functions (CBFs) certify commands through an assumed dynamics model, so an abrupt, unmeasured regime change can undermine the certificate exactly when safety matters most. We present Look-Back Adaptive Control Barrier Functions (LBA-CBF), which rank a finite bank of candidate dynamics by recent prediction error over a short look-back window and enforce the high-order CBF condition against every model within a tolerance of the best, spanning best-fit adaptation to full-bank robust filtering. The dynamics may depend nonlinearly on the unknown parameters, and no switching model or continuously parameterized estimator is required. We prove that any feasible filtered input satisfies the true CBF condition whenever a safety-representative candidate is retained. In quadrotor simulation with abrupt wind reversals and an unknown payload, LBA-CBF is safe and reaches the goal from all random initial conditions, matching an oracle, while adaptive and robust baselines achieve 0-88% success. Banks of up to 250,000 models run inside the control loop, and Crazyflie 2.1 and F1TENTH experiments demonstrate adaptation to wind, payload release, and varying tire-road friction. Code, videos, and project details are available at: https://lla-control.github.io</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-06T17:51:12Z</published>
+    <arxiv:comment>8 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Maitham F. AL-Sunni</name>
+    </author>
+    <author>
+      <name>Timeea-Andreea Radu</name>
+    </author>
+    <author>
+      <name>Hassan Almubarak</name>
+    </author>
+    <author>
+      <name>Henry Z. Liao</name>
+    </author>
+    <author>
+      <name>Michael Görner</name>
+    </author>
+    <author>
+      <name>Francesco Maurelli</name>
+    </author>
+    <author>
+      <name>John M. Dolan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.08697v1</id>
+    <title>On the Exact Linearization of Multi-Input Discrete-Time Flat Systems</title>
+    <updated>2026-10-06T17:12:01Z</updated>
+    <link href="https://arxiv.org/abs/2610.08697v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.08697v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In this contribution, we address the exact linearization of forward- and backward-flat discrete-time nonlinear systems with an arbitrary number of inputs. Building on structural properties of the flat parameterization, we show that forward-flat systems can be rendered static feedback linearizable by prolongations of suitably transformed inputs. Analogously, for backward-flat systems, we derive a constructive procedure showing that an exact linearization can be achieved by prelongations of suitably chosen functions of the system variables. In this way, we extend previously established results for two-input systems to the general m-input case. Finally, we illustrate the proposed linearization procedures by an academic example and a discrete-time model of a quadrotor.</summary>
+    <category term="math.OC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-06T17:12:01Z</published>
+    <arxiv:primary_category term="math.OC"/>
+    <author>
+      <name>Johannes Schrotshamer</name>
+    </author>
+    <author>
+      <name>Bernd Kolar</name>
+    </author>
+    <author>
+      <name>Markus Schöberl</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.08695v1</id>
+    <title>NMPP: Nonlinear Model Predictive Planning for Agile UAV Flight in Cluttered Environments</title>
+    <updated>2026-10-06T17:10:59Z</updated>
+    <link href="https://arxiv.org/abs/2610.08695v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.08695v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Flying a quadrotor through a cluttered environment requires not only planning a collision-free reference trajectory based on perceived obstacles, but the reference also needs to be dynamically feasible and within the actuation limits of the vehicle, so that the controller can track it precisely. Existing methods either optimize a smooth polynomial inside a convex corridor, which limits agility, or treat obstacles as soft costs traded against tracking performance. We propose a Nonlinear Model Predictive Planning (NMPP) that imposes perceived obstacles as hard geometric constraints and hands a full-state reference to an obstacle-blind SE(3) controller. Our planner achieves a 58-67 % lower position RMSE than a linear Model Predictive Control trajectory planner and a 41-70 % lower RMSE than a polynomial trajectory planner. It also completes all forest flights with up to 9.5 m/s speed without collisions, and achieves 86 % flight success rate under a more aggressive speed profile where a state-of-the-art planner has only 26 % success rate. The real-world deployment showed reliable execution flying up to 5.5 m/s in an unknown cluttered environment.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-06T17:10:59Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Ondřej Procházka</name>
+    </author>
+    <author>
+      <name>Juraj Pauko</name>
+    </author>
+    <author>
+      <name>Robert Pěnička</name>
+    </author>
+    <author>
+      <name>Martin Saska</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.08541v1</id>
+    <title>Micro Neural Policies for Safe Real-Time Robotic Control</title>
+    <updated>2026-10-06T15:29:28Z</updated>
+    <link href="https://arxiv.org/abs/2610.08541v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.08541v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In this paper, we investigate the synthesis of Micro Neural Policies (MNP) to enable safe and robust real-time robotic control on computationally constrained embedded devices. We demonstrate that integrating Evolution Strategy (ES) and Statistical Model Checking (SMC)-based verification for policy search can drastically reduce neural network size without compromising safety and robustness. We conduct a large-scale training and evaluation of MNP on Cartpole and Quadrotor control tasks, varying control frequencies and network architectures. After validating these policies in simulation, we evaluate their deployability through zero-shot transfer to physical systems. Our experiments show that MNP can successfully achieve safe sim-to-real transfer without sacrificing control performance. We then show that the policies' memory footprint, ranging from 0.5 to 7.5 kB, allows deployment on microcontrollers, where they achieve real-time inference latency with under 25 ns of jitter while leaving the chip idle for over 97% of the time for additional workloads. This makes them a highly practical solution for severely resource-constrained robotic systems.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-06T15:29:28Z</published>
+    <arxiv:comment>9 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Hongpeng Cao</name>
+    </author>
+    <author>
+      <name>Riccardo Curcio</name>
+    </author>
+    <author>
+      <name>Daniele Ottaviano</name>
+    </author>
+    <author>
+      <name>Marco Caccamo</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.08306v1</id>
+    <title>Sensor-Layout-Agnostic Navigation via Geometric Observation Canonicalization</title>
+    <updated>2026-10-06T13:11:38Z</updated>
+    <link href="https://arxiv.org/abs/2610.08306v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.08306v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Existing visual navigation policies are inherently bound to fixed camera configurations, creating a fundamental barrier to zero-shot deployment across heterogeneous robot sensor layouts. To overcome this limitation, we present an embodiment-informed navigation policy capable of generalizing across diverse depth sensor configurations on a specific aerial platform. Instead of implicitly learning spatial alignments, our approach explicitly unprojects depth measurements from arbitrary depth sensor payloads, varying in sensor count, mounting extrinsics, and intrinsics, into a shared robot-centric frame, stitching them into a unified spherical range image and a binary validity mask. This mask allows the downstream policy to explicitly distinguish covered space from unobserved blind spots. Trained via reinforcement learning with aggressive camera randomization, our policy generalizes zero-shot to unseen layouts featuring up to seven cameras, scaling success rates from 78% to 95% as total spatial sensing coverage increases. Finally, real-world flight trials on a physical quadrotor, conducted in an obstacle-filled corridor and an outdoor forest, validate the policy's zero-shot transfer across camera configurations and its resilience to sudden online sensor dropouts.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-06T13:11:38Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Welf Rehberg</name>
+    </author>
+    <author>
+      <name>Kostas Alexis</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.06629v1</id>
+    <title>Vector Field Following for Quadrotors via Reduced Attitude Representations with Applications to Safety-Critical Control</title>
+    <updated>2026-10-05T16:24:06Z</updated>
+    <link href="https://arxiv.org/abs/2610.06629v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.06629v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Vector field tracking for quadrotors provides a systematic framework for specifying complex behaviors at the translational level and transferring them to the full vehicle dynamics. Objectives such as safety, for example, can be encoded into a low-dimensional vector field, which is then embedded into the full dynamics through appropriate tracking conditions. The development of such tracking controllers for quadrotors can be facilitated by the fact that their translational dynamics depend only on the thrust direction and are independent of the vehicle's heading. Thus, reduced-attitude representations, leveraging the geometry of the unit sphere, provide a natural framework for vector field tracking on quadrotors. In this work, we propose two vector field tracking controllers for quadrotors using reduced-attitude representations based on dynamic extension and geometric control, respectively. Next, we illustrate how safety can be encoded into the desired vector field using control barrier functions and enforced for the full system. The effectiveness of the proposed approaches is demonstrated via simulations and experimental flight tests.</summary>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-05T16:24:06Z</published>
+    <arxiv:primary_category term="eess.SY"/>
+    <author>
+      <name>Mohammad Mirtaba</name>
+    </author>
+    <author>
+      <name>Max H. Cohen</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.05381v1</id>
+    <title>Backup Control Barrier Functions with Memory for Online Set Expansion</title>
+    <updated>2026-10-04T17:14:18Z</updated>
+    <link href="https://arxiv.org/abs/2610.05381v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.05381v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Backup control barrier functions (bCBFs) construct implicit safe sets for nonlinear systems with bounded inputs using finite-horizon predictions under a backup controller. As in model predictive control, an invariant backup set serves as a terminal set that guarantees safe continuation beyond the prediction horizon. However, reaching a small terminal set may require long prediction horizons, increasing the cost of online prediction. In this paper, we introduce an online construction that builds a certified region from sets stored along backup trajectories while keeping the prediction horizon fixed. The method stores finite collections of balls and connects each newly certified collection to the backup set or to previously stored balls. We derive conditions that guarantee forward invariance of the union of these balls and the backup set under a fixed backup controller. These conditions also ensure that every stored state reaches the backup set in finite time. The resulting union serves as an enlarged terminal set, allowing safety to be certified with shorter prediction horizons. We formulate a feasible quadratic program for safe control and prove that safety is preserved as additional certified collections are stored online. Simulations on a quadrotor demonstrate safe task completion with a shorter prediction horizon than the standard bCBF.</summary>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-04T17:14:18Z</published>
+    <arxiv:primary_category term="eess.SY"/>
+    <author>
+      <name>M. Yusuf Uzun</name>
+    </author>
+    <author>
+      <name>Ersin Das</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.04545v1</id>
+    <title>Nonlinear Density-Driven Optimal Control (D2OC) for Multi-Agent Spatial Coverage via Sequential Convex Programming</title>
+    <updated>2026-10-03T14:18:28Z</updated>
+    <link href="https://arxiv.org/abs/2610.04545v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.04545v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This paper presents a nonlinear extension of Density-Driven Optimal Control (D2OC) for multi-agent spatial coverage with prescribed density distributions. Rather than assigning individual target locations, D2OC drives the collective spatial distribution of agents toward a desired density through a Wasserstein-based objective. We extend this framework to multi-step finite-horizon control for discrete-time control-affine nonlinear systems using sequential convex programming. At each control update, the nonlinear dynamics are locally linearized over the prediction horizon, yielding a strictly convex quadratic program that preserves the Wasserstein barycentric structure while directly incorporating input constraints. We further characterize the effect of constrained control deviations and nonlinear Taylor remainders on the accuracy of the local linear prediction, establishing an explicit finite-horizon error bound and a two-step specialization for receding-horizon implementation. The resulting method retains the decentralized, distribution-driven nature of D2OC while providing a computationally efficient optimization procedure for nonlinear multi-agent systems. Simulations with unicycle and quadrotor teams show coverage performance comparable to nonlinear model predictive control, while substantially reducing computation time. These results demonstrate a tractable and theoretically characterized framework for density-driven spatial coverage under nonlinear dynamics.</summary>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.OC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-03T14:18:28Z</published>
+    <arxiv:primary_category term="cs.MA"/>
+    <author>
+      <name>Julian Martinez</name>
+    </author>
+    <author>
+      <name>Kooktae Lee</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.03530v1</id>
+    <title>DR-IPC: Disturbance-Resilient Integrated Planning and Control for LiDAR-Based Quadrotor Navigation</title>
+    <updated>2026-10-02T16:16:43Z</updated>
+    <link href="https://arxiv.org/abs/2610.03530v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.03530v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>LiDAR-based quadrotor navigation in cluttered environments remains challenging under external disturbances, particularly when obstacle-aware motion generation and disturbance-rejection control are handled in separate layers. This article presents disturbance-resilient integrated planning and control (DR-IPC), which combines lightweight path guidance with nonlinear model predictive control (NMPC) to directly generate angular velocity and thrust. An interconnected extended Kalman filter and nonlinear disturbance observer jointly provide filtered state estimates and reconstructed disturbances for NMPC prediction. The resulting formulation unifies nonlinear quadrotor dynamics, actuator constraints, local motion generation, and penalised safe-flight-corridor residuals without requiring a separate trajectory-optimization stage. Gazebo and MARSIM simulations, together with indoor and outdoor experiments, validate DR-IPC under wind, suspended payloads, narrow passages, ball impacts and reactive avoidance of a dynamic obstacle. In multi-goal navigation with disturbances, DR-IPC increases the number of completed missions from 1/10 to 9/10 in Gazebo and reduces the altitude RMSE from 0.34 to 0.01 m in experiments. The complete system operates onboard at 100 Hz. Supplementary videos are available on the project page https://drpp316.github.io/DR-IPC-Page/, and the source code will be released.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-02T16:16:43Z</published>
+    <arxiv:comment>11 pages, 16 figures, 7 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Peng Liu</name>
+    </author>
+    <author>
+      <name>Jingyan Wang</name>
+    </author>
+    <author>
+      <name>Qipeng Ye</name>
+    </author>
+    <author>
+      <name>Wen Li</name>
+    </author>
+    <author>
+      <name>Jinya Su</name>
+    </author>
+    <author>
+      <name>Zuo Wang</name>
+    </author>
+    <author>
+      <name>Shihua Li</name>
+    </author>
+    <author>
+      <name>Yunda Yan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.03830v2</id>
+    <title>Memory-State Critic for Asymmetric Actor-Critic with Application to Vision-Based Pursuit-Evasion</title>
+    <updated>2026-10-12T10:57:07Z</updated>
+    <link href="https://arxiv.org/abs/2610.03830v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.03830v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In partially observable Markov decision processes, the optimal policy generally depends on the history of observations and past actions. Asymmetric actor-critic methods have become popular to learn such policies when additional information, such as the true state of the environment, is available during training. The critic, which is not needed at execution, is given access to the state. A critic conditioned on the state alone is generally ill-defined and yields biased policy gradients. Conditioning on the state and the history, the history-state critic restores both. In this paper, we show that conditioning the critic on the state and the policy's own memory, i.e., the internal representation of the history through which the policy selects its actions, is already well-defined and gives unbiased policy gradients, removing the need for a second recurrent approximator of the history. We call it the memory state critic. It follows that a critic based on the policy's memory need not backpropagate its loss into that memory, even though the memory is a lossy encoding of the history. We evaluate the memory-state critic in a vision-based pursuit-evasion environment between two quadrotors across two arena types. The pursuer is the learning agent, and the evader is sampled per episode from a fixed pool of heuristic behaviours. The results show that the memory-state critic outperforms the history-state critic and converges faster. In addition to being unbiased compared to the state-only critic, it maintains a slight edge in the wall arena, where the actor's history carries information that the privileged state alone does not.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-02T11:58:56Z</published>
+    <arxiv:comment>Accepted at the 19th European Workshop on Reinforcement Learning (EWRL 2026), Lille, France. Non-archival workshop</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Arthur Louette</name>
+    </author>
+    <author>
+      <name>Alejandro Sánchez Roncero</name>
+    </author>
+    <author>
+      <name>Gaspard Lambrechts</name>
+    </author>
+    <author>
+      <name>Pascal Leroy</name>
+    </author>
+    <author>
+      <name>Julien Hansen</name>
+    </author>
+    <author>
+      <name>Petter Ögren</name>
+    </author>
+    <author>
+      <name>Damien Ernst</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.38707v1</id>
+    <title>Residual Wrench Certification and Margin-Aware Control Synthesis for Aerial Physical Interaction</title>
+    <updated>2026-09-30T00:46:42Z</updated>
+    <link href="https://arxiv.org/abs/2609.38707v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.38707v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We develop a task-relative framework for certifying residual wrench authority after hover and contact loading in multirotors with bounded actuators. Using convex geometry, we derive signed margins for prescribed convex reserves, including Euclidean balls and weighted ellipsoids. We obtain computable reserve certificates from actuator-interiority bounds to support slack-maximizing allocation. To preserve the required reserve, we propose command projection onto a tightened feasible set. We then connect the available reserve to structured gain synthesis and certify a local tracking region that respects actuator limits. Within this region, we establish nominal exponential convergence and robust ultimate boundedness. For the prescribed task and morphology family, we show that the optimized octarotor attains a larger margin than the optimized hexarotor at equal total thrust. We evaluate the proposed framework in closed-loop simulations of sustained rigid-wall contact using a fixed-geometry octarotor and a variable-tilt quadrotor with matched installed thrust. The quadrotor's local certificate admits a higher normalized push limit for the prescribed task family. In tests beyond the realizability boundaries, we observe the predicted loss of authority through rotor-thrust limits for the octarotor and tilt-servo limits for the quadrotor.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-30T00:46:42Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Abhimanyu Khadga</name>
+    </author>
+    <author>
+      <name>Abhinav Sinha</name>
+    </author>
+    <author>
+      <name>Shashi Ranjan Kumar</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.36840v1</id>
+    <title>High Performance Computing of SDRE models with Discrete Kalman Filtering for Robust $H_{\infty}$-Controls</title>
+    <updated>2026-09-29T06:47:32Z</updated>
+    <link href="https://arxiv.org/abs/2609.36840v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.36840v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>State-dependent Riccati equation (SDRE) control requires repeated online solution of continuous-time algebraic Riccati equations (CAREs). A projected-channel $H_\infty$ formulation preserves the physical actuator and sensor dimensions of under-actuated, partially observed systems. We derive a computable sufficient attenuation bound for positive-semidefinite stabilizing Riccati solutions and construct an update that enforces their spectral-radius coupling condition. A discrete Kalman recursion supplies the scheduling state estimates. The two CAREs arising in controller synthesis are solved by a structure-preserving doubling algorithm (SDA) or a warm-started Newton--Kleinman iteration equipped with a doubling Lyapunov solver. Numerical studies use a twelve-state F-16 model with complete aerodynamic forces, moments, and trim, together with quadrotor spiral tracking. With instantaneous command updates, all three CARE backends give essentially the same closed-loop response. In the tracking simulations, measured computation times determine when new control inputs are applied, and the previous inputs are held during computation. SDA and Newton reduce airspeed and pitch errors in all six paired aircraft tracking runs. In the faster quadrotor task with limited computational resources, SDA and Newton complete all paired runs, while runs using MATLAB \texttt{icare} terminate early.</summary>
+    <category term="math.NA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-29T06:47:32Z</published>
+    <arxiv:comment>27 pages, 6 figures</arxiv:comment>
+    <arxiv:primary_category term="math.NA"/>
+    <author>
+      <name>Yunfeng Cai</name>
+    </author>
+    <author>
+      <name>Tiexiang Li</name>
+    </author>
+    <author>
+      <name>Wen-Wei Lin</name>
+    </author>
+    <author>
+      <name>Junxin Zhang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.36482v1</id>
+    <title>DQ-MPCC: Dual-Quaternion MPCC for Quadrotor Racing</title>
+    <updated>2026-09-29T01:42:44Z</updated>
+    <link href="https://arxiv.org/abs/2609.36482v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.36482v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Quadrotor racing demands aggressive attitude and progress control while passing through every gate, and conventional quadrotor MPCC formulations state the prediction model in inertial coordinates and the attitude error in the body frame. We present a Dual-Quaternion Model Predictive Contouring Control (DQ-MPCC) for quadrotor racing in which the pose is a unit dual quaternion and the contouring errors are projected onto the tangent space of the dual quaternion manifold, expressed in the desired body frame: the same rigid-body dynamics as the conventional model, in unified pose-twist coordinates in the body frame. We compare DQ-MPCC against a baseline MPCC through Monte Carlo software-in-the-loop simulations and real-world racing on an eight-gate circuit of 11x4.5x3.65 m. With the same gains in simulation and hardware, DQ-MPCC keeps every crossing of its completed flights within the prescribed geometric margin, whereas the baseline exceeds it, its median worst-gate offset growing by 71.5% sim-to-real against a 10.1% decrease for DQ-MPCC. Among the configurations that keep every simulated gate crossing within the geometric margin, DQ-MPCC also reduces the minimum lap time by 6.7%, and by 10.5% in the real-world flights, while running onboard at 100 Hz.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-29T01:42:44Z</published>
+    <arxiv:comment>8 pages, 6 figures. Submitted to IEEE Robotics and Automation Letters</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Bryan S. Guevara</name>
+    </author>
+    <author>
+      <name>Luis F. Recalde</name>
+    </author>
+    <author>
+      <name>Guanrui Li</name>
+    </author>
+    <author>
+      <name>Tiago Nascimento</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.35651v1</id>
+    <title>Denoising Multi-Robot Trajectories</title>
+    <updated>2026-09-28T17:18:58Z</updated>
+    <link href="https://arxiv.org/abs/2609.35651v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.35651v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Multi-robot trajectory planning is a fundamental problem in multi-robot coordination but remains computationally challenging due to its nonconvex, multimodal, and high-dimensional nature. This work builds upon D4orm, a dynamics-aware diffusion-denoising framework, and develops a family of planning architectures for diverse operational requirements. Unlike conventional numerical optimization methods, D4orm employs sampling-based optimization to generate solution trajectories through massively parallel sampling, leveraging modern computing architectures such as GPUs. Its diffusion-denoising structure iteratively optimizes \textit{deformations} to candidate control trajectories, providing an efficient and versatile paradigm for generating kinodynamically feasible and conflict-free trajectories. Using D4orm as the building block for advanced planners, we present a decoupled planner for improved scalability, an online receding-horizon planner with feedback control, and a distributed planner for resource-constrained settings. Evaluations with differential-drive and holonomic robots in 2D and 3D environments demonstrate that D4orm-based approaches find high-quality solutions faster and more reliably than other sampling-based optimization methods, such as MPPI, as well as a learned diffusion-model-based method. We further demonstrate zero-shot deployment on ten real quadrotors with obstacles, large-scale deconfliction with 100 simulated robots, and fully onboard distributed `lifelong' operation with six ground robots. Overall, these results establish diffusion denoising as a scalable and reliable framework for multi-robot coordination. Code and video: https://github.com/proroklab/d4orm</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T17:18:58Z</published>
+    <arxiv:comment>Accepted to IEEE Transactions on Robotics (T-RO)</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yuhao Zhang</name>
+    </author>
+    <author>
+      <name>Keisuke Okumura</name>
+    </author>
+    <author>
+      <name>Ajay Shankar</name>
+    </author>
+    <author>
+      <name>Amanda Prorok</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.35094v1</id>
+    <title>QuadHand: A Compact Quadrotor Aerial Manipulator with MRC-SDF-Based Whole-Body Motion Planning</title>
+    <updated>2026-09-28T13:08:06Z</updated>
+    <link href="https://arxiv.org/abs/2609.35094v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.35094v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Uncrewed aerial manipulators (UAMs) integrate robotic arms with aerial platforms for three-dimensional physical interaction. However, enlarging the workspace increases arm-induced disturbances, while existing geometric representations face a trade-off between geometric fidelity and computational efficiency in close-proximity interaction. This paper presents QuadHand, a compact quadrotor aerial manipulator with a 3-DoF arm, gripper, and battery-assisted passive CoG compensation module to reduce dominant arm-induced disturbances. We further propose MRC-SDF, a Multi-articulated Robot-Centric Signed Distance Field that preserves fine geometric detail with tractable computation, and a spatiotemporal whole-body trajectory optimization framework that jointly optimizes the quadrotor and manipulator for safe and executable trajectory generation. Simulations and real-world experiments demonstrate safe and executable aerial manipulation in complex environments.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-28T13:08:06Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Rui Jin</name>
+    </author>
+    <author>
+      <name>Ruiyang Liu</name>
+    </author>
+    <author>
+      <name>Xinhang Xu</name>
+    </author>
+    <author>
+      <name>Haotian Jin</name>
+    </author>
+    <author>
+      <name>Yi Wang</name>
+    </author>
+    <author>
+      <name>Yizhuo Yang</name>
+    </author>
+    <author>
+      <name>Lihua Xie</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.33337v1</id>
+    <title>Safe Score Matching: Diffusion Policies with Hamilton-Jacobi Reachability for Online Safe Reinforcement Learning</title>
+    <updated>2026-09-27T08:09:52Z</updated>
+    <link href="https://arxiv.org/abs/2609.33337v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.33337v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Online safe reinforcement learning (RL) seeks policies that maximize reward while satisfying safety constraints. A popular line of research in safe RL relaxes safety to a soft expected-cost constraint and solves the resulting Constrained Markov Decision Process via primal-dual Lagrangian updates that only enforce safety on average. To address this limitation, hard, state-wise constraints are introduced and often imposed through Hamilton-Jacobi (HJ) reachability. Yet such constraints require solving different objectives in the feasible and infeasible regions: reward maximization in the former, recovery toward the feasible regions in the latter. The resulting target action distributions are inherently multimodal, and this structure poses a fundamental challenge for the Gaussian or deterministic actors used in existing HJ-based safe RL, which often collapse onto suboptimal modes. Diffusion policies provide the expressiveness needed to represent such distributions, and recent work on Q-score matching offers a route to training them for online RL by score regression -- but has been applied only to reward maximization. We propose Safe Score Matching (SSM), an off-policy actor-critic method that adapts Q-score matching to hard-constrained safe RL by gating a two-branch score target with HJ reachability: inside the feasible set, the denoising process degenerates to Q-score matching on actions classified as viable by the HJ critic; outside, a recovery branch biases denoising toward regions with lower worst-case violation. On quadrotor and fixed-wing trajectory-tracking and stabilize-and-avoid benchmarks, SSM attains the best or near-best task performance with low false-safe rates, whereas the primal-dual baseline admits more unsafe behavior and reachability-based baselines tend to be more conservative; on Safety-Gymnasium velocity tasks, SSM attains the lowest cost with competitive reward.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-27T08:09:52Z</published>
+    <arxiv:comment>Accepted to NeurIPS 2026. 29 pages, 4 figures. Code: https://github.com/byli888/safe-score-matching</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Boyang Li</name>
+    </author>
+    <author>
+      <name>Matthew Kim</name>
+    </author>
+    <author>
+      <name>Sylvia Lee Herbert</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.33169v2</id>
+    <title>When Does Backpropagating Through Policy Memory Matter? Physical Credit, Optimizer Updates, and Observability</title>
+    <updated>2026-10-03T08:46:02Z</updated>
+    <link href="https://arxiv.org/abs/2609.33169v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.33169v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Policies with memory can learn along two backward paths: through the physical states their actions produce and through the representations they store. Transformer-XL and truncated backpropagation through time cut the second path at stored history while keeping its values. We ask when this cut matters. Holding the forward computation fixed and varying only derivative edges, we measure parameter gradients, the updates the optimizer applies, and continued training in a Transformer vessel-trajectory model and a quadrotor tracking policy. In the vessel model, detaching the key-value cache shrank the gradient to about a tenth of its norm, with little rotation, when gradients flowed through all earlier physical states, but barely changed it under one-step physical credit. In this strongly clipped regime the optimizer, not the gradient, set how far updates differed: global-norm clipping removed most of the gradient difference between memory-cut graphs, whereas AdamW turned a 2% gradient difference between two placements of the cut into update differences of up to 31% at the step where the placement was switched. In a quadrotor trained from initialization with 0.20 m/s velocity noise, removing memory raised tracking error by 43% and cutting memory gradients raised it by 32%; at low noise the cut's mean cost exceeded the value of memory. Two-step truncation segments gave no measurable gain, although with hidden velocity a two-step window captured most of the value of memory; eight-step segments removed half to three quarters of the cost. Switching the cut on only for the last fifth of training understated its cost about threefold at 0.20-0.30 m/s, but not at low noise or with hidden velocity. These results suggest measuring the cost of a memory cut by training with it from initialization, and comparing backward graphs by the updates the optimizer applies rather than by raw gradients.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-27T03:46:06Z</published>
+    <arxiv:comment>33 pages, 9 figures, 20 tables, Under review at TMLR</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Xingjian Li</name>
+    </author>
+    <author>
+      <name>Jianhua Z. Huang</name>
+    </author>
+    <author>
+      <name>Junli Duan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.32747v1</id>
+    <title>Path Invariance of a Quadrotor System under Cyber Attacks with Theoretical Guarantees</title>
+    <updated>2026-09-26T16:05:44Z</updated>
+    <link href="https://arxiv.org/abs/2609.32747v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.32747v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This paper presents a path-following controller for a quadrotor system to guarantee safe maneuvers, in terms of forward path invariance, in the presence of cyber-physical attacks. We assume that an adversarial agent can control any one of the rotors through a false data injection (FDI) type of attack. A feedback controller is designed using transverse feedback linearization which guarantees that the system follows a class of smooth curves under FDI attacks. Our proposed controller is computationally efficient, with a closed-form analytical expression, that not only mitigates the effect of bounded malicious signal but also ensures mission success. We provide theoretical guarantees of forward path invariance under FDI attacks with realistic assumptions and demonstrate the effectiveness of our approach through simulation.</summary>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.OC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-26T16:05:44Z</published>
+    <arxiv:comment>6 pages, 3 figures, accepted paper at the American Control Conference (ACC)</arxiv:comment>
+    <arxiv:primary_category term="eess.SY"/>
+    <author>
+      <name>Hamza Mahmood</name>
+    </author>
+    <author>
+      <name>Usman Ali</name>
+    </author>
+    <author>
+      <name>Adeel Akhtar</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.32223v1</id>
+    <title>Physics-Informed Learning of Feedback-Linearizing Representations</title>
+    <updated>2026-09-26T04:32:18Z</updated>
+    <link href="https://arxiv.org/abs/2609.32223v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.32223v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Feedback linearization is a powerful tool in nonlinear control, but finding the linearizing coordinate transform remains challenging. Feedback linearizing transforms are governed by well-established partial differential equations (PDEs) whose well-posedness is based on the Lie-algebraic Frobenius theorem, but solving the PDEs becomes computationally intractable for large system dimensions. To address this challenge, we propose a cascaded physics-informed neural network (PINN) framework to approximately solve these PDEs. By separately parameterizing terms of different Lie derivative orders, we mitigate the compounding errors inherent in fitting high-order Lie derivatives of neural networks. Furthermore, we use the learned transform to design a tracking controller and establish theoretical bounds on its error with respect to inaccuracies in the learned feedback-linearizing representation. We validate our method on a broad class of feedback linearizable systems, including a multi-input, multi-output planar quadrotor and synthetic examples for which analytical approaches are impractical, and demonstrate that our approach can computationally discover effective feedback-linearizing representations of nonlinear systems for control tasks.</summary>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-26T04:32:18Z</published>
+    <arxiv:primary_category term="eess.SY"/>
+    <author>
+      <name>Pavlos Kallinikidis</name>
+    </author>
+    <author>
+      <name>Fengjun Yang</name>
+    </author>
+    <author>
+      <name>David Snyder</name>
+    </author>
+    <author>
+      <name>Jacob H. Seidman</name>
+    </author>
+    <author>
+      <name>Nikolai Matni</name>
+    </author>
+    <author>
+      <name>Paris Perdikaris</name>
+    </author>
+    <author>
+      <name>George J. Pappas</name>
+    </author>
+  </entry>
+</feed>

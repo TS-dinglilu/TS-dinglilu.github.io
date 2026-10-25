@@ -138,3 +138,11 @@
 - `scripts/deep_inject.py` 幂等注入当天报告（第一个 section 前）；日报自动化已固化步骤 4.5（publish_all → deep_inject → --push）。正文草稿**不要**手写深度板块。
 - 税后统一估算口径（正文必须写明）：月薪×12、个人五险一金约 17.5%（公积金按 7% 估）、免征额 5000 元/月。薪资数字必须有来源链接，查不到写"暂无可靠公开数据"。
 - chery-insider / company-reputation 本身已是口碑深度专刊，未纳入注入（保持原分工）。
+
+## 12. 站点基建层（2026-10-15 全站优化）
+- **禁再引入 Google Fonts**（link/@import 都禁）：已全站移除（report.css 的 @import 是首屏白屏根源）；字体用本地系统栈。违者会被 audit 抓不到，须靠 review。
+- **canonical 新约定**：报告页 og:url/canonical 指向报告自身（og:type=article）；只有归档页/主页指向目录/站点根。audit_site 判据已同步，勿改回。
+- 幂等工具链（publish_all 步骤 3.2–3.4 自动跑，日常勿手动）：`optimize_site.py`（head 收敛，指纹 `optimize_site:head`，改 head 规则时升 OP_VERSION 即可全站重收敛）、`build_search.py`（索引 803 条 + 搜索入口注入，marker `search-entry`）、`build_feed.py`（RSS 60 期）。`fix_meta.py` 已弃用。
+- 站点功能页：`/search.html`（全站搜索，索引只存板块名/h3 条目/摘要——刻意不存全文防 JSON 膨胀）、`/feed.xml`、`/manifest.webmanifest`、og 封面 `/assets/cover.png`（改版重跑 make_cover.py，需 venv Pillow：`C:/Users/dingliu/.workbuddy/binaries/python/envs/default/Scripts/python.exe`）。
+- audit_site 三个新白名单/判定：`SITE_RESOURCE_SEGS`（assets/search/feed/manifest 资源段）、根绝对路径 href 相对仓库根解析、`_page_expected_url` 报告页指向自身。
+- CSS 可访问性已固化在 assets/report.css 尾部（marker `a11y-font-enhance:v1`）：reduced-motion/:focus-visible/skip-link/窄屏表格滚动。
