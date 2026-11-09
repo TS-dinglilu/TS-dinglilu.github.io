@@ -39,6 +39,11 @@ def main():
     if os.path.exists(sp):
         urls.append((BASE + "/search.html", iso(sp), "0.7", "weekly"))
 
+    # 站点公告：历史停更说明（2026-11-09）
+    np = os.path.join(ROOT, "outage-notice.html")
+    if os.path.exists(np):
+        urls.append((BASE + "/outage-notice.html", iso(np), "0.4", "yearly"))
+
     for d in sorted(os.listdir(ROOT)):
         full = os.path.join(ROOT, d)
         if not os.path.isdir(full) or d in SKIP_DIRS or d.startswith("."):
